@@ -91,13 +91,22 @@ import Photos
         }
     }
     func accept(_ session: FlowSession) {
-        let id = UUID(), copyPhotos = photos
-        operations[id] = Task {
-            defer { operations.removeValue(forKey: id) }
-            let photoHandler: (@Sendable (URL, String) async -> String?)? = copyPhotos ? { url, type in await PhotoLibrary.copy(url, type: type) } : nil
-            await store.accept(session.id, photoCopy: photoHandler)
-            await update()
+        let id = UUID()
+        let sessionID = session.id
+        let copyPhotos = photos
+        // Give the callback a concrete, non-optional type before creating the
+        // task. A conditional async closure here confuses Xcode's type checker.
+        let photoHandler: @Sendable (URL, String) async -> String? = { (url: URL, type: String) async -> String? in
+            guard copyPhotos else { return nil }
+            return await PhotoLibrary.copy(url, type: type)
         }
+        let operation = Task<Void, Never> { @MainActor [weak self] in
+            guard let self else { return }
+            defer { self.operations.removeValue(forKey: id) }
+            await self.store.accept(sessionID, photoCopy: photoHandler)
+            await self.update()
+        }
+        operations[id] = operation
     }
     func reject(_ session: FlowSession) { Task { await store.reject(session.id); await update() } }
 }

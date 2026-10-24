@@ -153,7 +153,7 @@ struct PreferencesView: View {
                 Text("Cho phép FlowDrop truy cập Mạng cục bộ trong Cài đặt iOS. Hai thiết bị cần cùng Wi-Fi; Wi-Fi khách có thể chặn các thiết bị nhìn thấy nhau.").font(.subheadline).foregroundStyle(.secondary)
                 Button("Mở cài đặt hệ thống") { if let url = URL(string: UIApplication.openSettingsURLString) { UIApplication.shared.open(url) } }
             }
-            Text("FlowDrop iOS/iPadOS 1.0.1 · Bản phát triển\nTruyền trực tiếp trong LAN. Giữ ứng dụng mở khi truyền file.").font(.caption).foregroundStyle(.secondary)
+            Text("FlowDrop iOS/iPadOS 1.0.2 · Bản phát triển\nTruyền trực tiếp trong LAN. Giữ ứng dụng mở khi truyền file.").font(.caption).foregroundStyle(.secondary)
         }
     }
 }

@@ -2,25 +2,32 @@ import Foundation
 import Darwin
 
 /// Standard Bonjour works with Windows/Android without a restricted multicast entitlement.
-@MainActor final class Discovery: NSObject, NetServiceBrowserDelegate, NetServiceDelegate {
+// Foundation's Objective-C delegates lack actor annotations. All these services
+// are scheduled on the main run loop, so their callbacks run on the main actor.
+@MainActor final class Discovery: NSObject, @preconcurrency NetServiceBrowserDelegate, @preconcurrency NetServiceDelegate {
     var onPeers: ([Peer]) -> Void = { _ in }, onError: (String) -> Void = { _ in }
     private let browser = NetServiceBrowser(), client = HTTPClient()
     private var publisher: NetService?, services: [String: NetService] = [:], resolving: Set<String> = []
     private var peers: [String: Peer] = [:], serviceIDs: [String: String] = [:], seen: [String: Date] = [:]
     private var checks: [String: Task<Void, Never>] = [:], timer: Timer?, ownID = "", generation = UUID()
-    override init() { super.init(); browser.delegate = self; browser.includesPeerToPeer = false }
+    override init() {
+        super.init()
+        browser.delegate = self; browser.includesPeerToPeer = false
+        browser.schedule(in: .main, forMode: .common)
+    }
     func start(config: PeerConfig, port: Int) {
         stop(); ownID = config.deviceId
         let service = NetService(domain: "local.", type: "_flowdrop._tcp.", name: "FlowDrop - " + String(config.deviceName.prefix(18)) + " " + String(ownID.suffix(6)), port: Int32(port))
         service.delegate = self; service.includesPeerToPeer = false
+        service.schedule(in: .main, forMode: .common)
         service.setTXTRecord(NetService.data(fromTXTRecord: ["app": Data("flowdrop".utf8), "protocol": Data("1".utf8), "id": Data(ownID.utf8), "platform": Data(config.platform.utf8), "version": Data(config.version.utf8), "direct": Data("1".utf8)]))
         publisher = service; service.publish()
         browser.searchForServices(ofType: "_flowdrop._tcp.", inDomain: "local.")
         timer = Timer.scheduledTimer(withTimeInterval: 12, repeats: true) { [weak self] _ in Task { @MainActor in self?.rescan() } }
     }
     func stop() {
-        generation = UUID(); timer?.invalidate(); timer = nil; browser.stop(); publisher?.stop(); publisher = nil
-        for service in services.values { service.stop() }; services.removeAll(); resolving.removeAll()
+        generation = UUID(); timer?.invalidate(); timer = nil; browser.stop(); publisher?.stop(); publisher?.remove(from: .main, forMode: .common); publisher = nil
+        for service in services.values { service.stop(); service.remove(from: .main, forMode: .common) }; services.removeAll(); resolving.removeAll()
         checks.values.forEach { $0.cancel() }; checks.removeAll(); peers.removeAll(); serviceIDs.removeAll(); seen.removeAll(); emit()
     }
     private func key(_ service: NetService) -> String { service.name + service.type + service.domain }
@@ -34,9 +41,14 @@ import Darwin
         guard !resolving.contains(k), checks[k] == nil else { return }
         resolving.insert(k); service.delegate = self; service.resolve(withTimeout: 5)
     }
-    func netServiceBrowser(_ browser: NetServiceBrowser, didFind service: NetService, moreComing: Bool) { services[key(service)] = service; resolve(service) }
+    func netServiceBrowser(_ browser: NetServiceBrowser, didFind service: NetService, moreComing: Bool) {
+        service.schedule(in: .main, forMode: .common)
+        services[key(service)] = service; resolve(service)
+    }
     func netServiceBrowser(_ browser: NetServiceBrowser, didRemove service: NetService, moreComing: Bool) {
-        let k = key(service); services.removeValue(forKey: k)?.stop(); resolving.remove(k); checks.removeValue(forKey: k)?.cancel()
+        let k = key(service)
+        if let removed = services.removeValue(forKey: k) { removed.stop(); removed.remove(from: .main, forMode: .common) }
+        resolving.remove(k); checks.removeValue(forKey: k)?.cancel()
         if let id = serviceIDs.removeValue(forKey: k), !serviceIDs.values.contains(id) { peers.removeValue(forKey: id); seen.removeValue(forKey: id); emit() }
     }
     func netServiceBrowser(_ browser: NetServiceBrowser, didNotSearch errorDict: [String: NSNumber]) { onError("Chưa tìm được thiết bị. Cho phép Mạng cục bộ trong Cài đặt → FlowDrop rồi thử lại.") }

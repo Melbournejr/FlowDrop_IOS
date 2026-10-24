@@ -1,28 +1,28 @@
 {
-  "version": "1.0.1",
+  "version": "1.0.2",
   "status": "build-fix-prepared-not-rebuilt",
   "reported_failure": {
-    "source": "user-provided GitHub Actions macOS log",
-    "file": "FlowDropCore/Sources/FlowDropCore/Protocol.swift",
-    "type": "SavedFile",
-    "error": "return from initializer without initializing all stored properties"
+    "source": "user-provided GitHub Actions Xcode log",
+    "xcode": "26.6",
+    "sdk": "iphoneos26.5",
+    "file": "FlowDropApple/AppModel.swift",
+    "line": 95,
+    "error": "failed to produce diagnostic for expression",
+    "expression": "operations[id] = Task {"
   },
   "changes": [
-    "separate SavedFile stored properties and add explicit public initializer",
-    "regression test for history decoding/encoding and missing size",
-    "use local deviceName before AppModel finishes initializing stored properties",
-    "mark private HTTPConnection as Sendable with serial queue confinement documented",
-    "Node 24 checkout/upload actions and downloadable build logs"
+    "declare non-optional Sendable async photo callback before constructing receive task",
+    "use explicit Task<Void, Never> on MainActor and capture session ID separately",
+    "use guarded callback instead of optional async closure ternary; Photos is not called when disabled",
+    "schedule Bonjour browser and services on main run loop; preconcurrency Objective-C delegate conformances",
+    "retain SavedFile and Node 24 fixes from 1.0.1"
   ],
   "checks": {
-    "plist_and_privacy_manifest": "passed Python plist parser",
-    "xcode_project_references_and_version": "passed structural validation; not Xcode validation",
-    "shared_scheme_xml": "passed XML parser",
-    "asset_catalog_json": "passed JSON parser",
-    "workflow": "passed YAML: manual-only, Node 24 actions, read-only contents, log upload on failure",
-    "shell_syntax": "passed bash -n for build script and workflow shell steps",
-    "swift_compile_after_fix": "not run: no Swift/Xcode toolchain available",
-    "swift_core_tests_after_fix": "not run; macOS CI required",
+    "plist_privacy_xml_assets": "passed parser checks",
+    "version_metadata": "1.0.2 in both Xcode configurations, peer metadata and app UI",
+    "workflow_and_shell_syntax": "passed; remains manual-only with log artifact on failure",
+    "swift_xcode_compile_after_fix": "not run: no Apple SDK or macOS runner connected here",
+    "swift_core_tests_after_fix": "not rerun: transfer core behavior unchanged; macOS workflow retains tests",
     "iphone_ipad_physical_test": "not run",
     "signed_ipa": "not created"
   },

@@ -47,7 +47,7 @@ public struct Manifest: Codable, Sendable {
 public struct PeerConfig: Codable, Sendable {
     public var name: String, deviceName: String, platform: String, version: String, deviceId: String, offerKey: String
     public var direct: Int = 1, sessions: Int = 1
-    public init(deviceName: String, platform: String, deviceId: String) { name = "FlowDrop"; self.deviceName = deviceName; self.platform = platform; version = "1.0.1"; self.deviceId = deviceId; offerKey = UUID().uuidString.lowercased() }
+    public init(deviceName: String, platform: String, deviceId: String) { name = "FlowDrop"; self.deviceName = deviceName; self.platform = platform; version = "1.0.2"; self.deviceId = deviceId; offerKey = UUID().uuidString.lowercased() }
 }
 public struct Peer: Identifiable, Hashable, Sendable {
     public var id: String, name: String, platform: String, base: URL

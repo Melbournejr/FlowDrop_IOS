@@ -219,7 +219,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-                "MARKETING_VERSION" = "1.0.1";
+                "MARKETING_VERSION" = "1.0.2";
 				"PRODUCT_BUNDLE_IDENTIFIER" = "app.flowdrop.apple";
 				"PRODUCT_NAME" = "FlowDrop";
 				"SUPPORTED_PLATFORMS" = "iphoneos iphonesimulator";
@@ -255,7 +255,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-                "MARKETING_VERSION" = "1.0.1";
+                "MARKETING_VERSION" = "1.0.2";
 				"PRODUCT_BUNDLE_IDENTIFIER" = "app.flowdrop.apple";
 				"PRODUCT_NAME" = "FlowDrop";
 				"SUPPORTED_PLATFORMS" = "iphoneos iphonesimulator";

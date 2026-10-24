@@ -1,19 +1,21 @@
-# FlowDrop cho iPhone và iPad — mã nguồn bản phát triển 1.0.1
+# FlowDrop cho iPhone và iPad — mã nguồn bản phát triển 1.0.2
 
 Đây là ứng dụng SwiftUI native, cửa sổ riêng, không dùng trình duyệt hoặc WebView. Một dự án dùng chung cho iPhone và iPad chạy iOS/iPadOS 16 trở lên.
 
 **Trạng thái:** mã nguồn và workflow đã được chuẩn bị trong môi trường Linux. Chưa có lần build Xcode thành công, IPA, chữ ký Apple hay kiểm thử trên iPhone/iPad thật. Workflow sẽ biên dịch và kiểm thử trên máy macOS của GitHub; cần có kết quả xanh trước khi tải IPA. Bản iOS đang phát triển, chưa phải bản phát hành ổn định.
 
-## Cập nhật từ gói 1.0 đã đưa lên GitHub
+## Cập nhật từ gói 1.0 hoặc 1.0.1 đã đưa lên GitHub
 
-Gói 1.0.1 sửa lỗi Swift `return from initializer without initializing all stored properties` ở `SavedFile` mà log GitHub Actions của bản 1.0 đã báo. Các thuộc tính được khai báo riêng và có hàm khởi tạo rõ ràng; có kiểm thử đọc/ghi lịch sử file. Đã sửa thêm việc đọc thuộc tính `@Published` trước khi khởi tạo xong AppModel, khai báo an toàn truyền giữa các hàng đợi cho HTTPConnection theo cơ chế chạy trên một serial queue, và cập nhật checkout/upload-artifact sang v6 sử dụng Node.js 24. Chưa có kết quả chạy lại trên macOS để xác nhận toàn bộ build thành công.
+Gói 1.0.2 sửa khối `AppModel.accept` mà Xcode 26.6 báo `failed to produce diagnostic for expression` tại `operations[id] = Task {`. Callback lưu ảnh được khai báo kiểu cụ thể trước khi tạo `Task<Void, Never>`, bỏ biểu thức callback async tùy chọn dùng toán tử ba ngôi. Khi tắt lưu vào Ảnh, callback không gọi Photos. Bonjour cũng được đăng ký trên main run loop và đánh dấu conformance `@preconcurrency` để giữ đúng luồng gọi delegate của Foundation. Chưa có kết quả build lại trên macOS để xác nhận bản 1.0.2 tạo IPA thành công.
+
+Bản này giữ các sửa đổi của gói 1.0.1: tách thuộc tính và thêm hàm khởi tạo cho `SavedFile`, tránh đọc `@Published` trước khi khởi tạo xong AppModel, cập nhật checkout/upload-artifact sang v6 sử dụng Node.js 24 và thêm artifact log.
 
 Nếu đã có repository, không cần tạo lại:
 
-1. Giải nén `FlowDrop-iOS-iPadOS-Source-1.0.1.zip`.
+1. Giải nén `FlowDrop-iOS-iPadOS-Source-1.0.2.zip`.
 2. Mở GitHub Desktop → chọn repository của bạn → **Repository → Show in Explorer**.
 3. Chép đè nội dung gói mới vào thư mục repository, giữ nguyên thư mục `.git`. Đảm bảo cả `ios` và `.github` được cập nhật.
-4. Trong GitHub Desktop, nhập Summary `Fix iOS build 1.0.1` → **Commit to main → Push origin**.
+4. Trong GitHub Desktop, nhập Summary `Fix iOS build 1.0.2` → **Commit to main → Push origin**.
 5. Trên GitHub, vào **Actions → Build FlowDrop iOS → Run workflow** để tạo lần chạy mới từ commit vừa push.
 6. Nếu lỗi tiếp, tải artifact **FlowDrop-iOS-Build-Logs**, gửi file log tương ứng để chẩn đoán. File IPA chỉ xuất hiện khi bước build thành công.
 
@@ -23,7 +25,7 @@ Nếu đã có repository, không cần tạo lại:
 2. Cài **GitHub Desktop** từ <https://desktop.github.com/download/>. Đăng nhập tài khoản GitHub của bạn trong ứng dụng.
 3. Trong GitHub Desktop, chọn **File → Clone repository → GitHub.com**, chọn `FlowDrop-iOS` và **Clone**.
 4. Chọn **Repository → Show in Explorer** để mở thư mục vừa clone.
-5. Giải nén gói `FlowDrop-iOS-iPadOS-Source-1.0.1.zip`. Chép **nội dung bên trong** vào thư mục repository. Sau khi chép, phải có `ios` và `.github` trực tiếp trong thư mục repository, không nằm trong một thư mục lồng thêm. Không chép vào thư mục `.git`.
+5. Giải nén gói `FlowDrop-iOS-iPadOS-Source-1.0.2.zip`. Chép **nội dung bên trong** vào thư mục repository. Sau khi chép, phải có `ios` và `.github` trực tiếp trong thư mục repository, không nằm trong một thư mục lồng thêm. Không chép vào thư mục `.git`.
 6. Trở lại GitHub Desktop. Ô **Summary** nhập `Add FlowDrop iOS source`. Bấm **Commit to main → Push origin**. Nếu repo dùng nhánh tên khác, commit và push lên nhánh mặc định đó.
 
 Không cần cài Xcode, Swift, Node.js hay Android SDK trên Windows để chạy quy trình này. Gói nguồn không chứa tài khoản, khóa ký hoặc bộ cài Windows/Android.
@@ -65,7 +67,7 @@ Nếu không thấy thiết bị, kiểm tra quyền Mạng cục bộ, cùng Wi
 
 ## Chi tiết cho lập trình viên
 
-- Mở `ios/FlowDropApple.xcodeproj`, scheme `FlowDropApple`. Target universal `1,2`, iOS 16+, Swift 5, không thư viện bên ngoài.
+- Mở `ios/FlowDropApple.xcodeproj`, scheme `FlowDropApple`, dùng Xcode 16 trở lên. Target universal `1,2`, iOS 16+, Swift 5, không thư viện bên ngoài.
 - Chạy `swift test --package-path ios/FlowDropCore` trên Mac để kiểm tra parser, metadata lớn, tên file, lưu chống ghi đè và HTTP hai host thật. Kiểm thử host dùng loopback, không thay thế kiểm tra trên LAN và thiết bị iOS thật.
 - `bash ios/scripts/build-unsigned.sh` tạo icon vector, build Xcode và đóng gói IPA chưa ký vào `ios/output`.
 - Giao thức tương thích luồng gửi trực tiếp 1.9: cache file ở máy gửi, đề nghị `/api/offers`, máy nhận xác nhận rồi tải từ máy gửi và báo trạng thái qua `/api/offers/status` có token riêng. Không triển khai các API tạo upload của bản legacy từ trình duyệt.
