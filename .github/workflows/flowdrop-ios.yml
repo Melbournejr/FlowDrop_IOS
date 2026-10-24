@@ -1,0 +1,28 @@
+name: Build FlowDrop iOS
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  build:
+    name: Test and build unsigned iPhone + iPad app
+    runs-on: macos-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Show Xcode version
+        run: xcodebuild -version
+      - name: Test transfer protocol and HTTP server
+        run: swift test --package-path ios/FlowDropCore
+      - name: Validate app metadata
+        run: plutil -lint ios/FlowDropApple/Info.plist ios/FlowDropApple/PrivacyInfo.xcprivacy ios/FlowDropApple.xcodeproj/project.pbxproj
+      - name: Build unsigned IPA
+        run: bash ios/scripts/build-unsigned.sh
+      - name: Upload unsigned IPA
+        uses: actions/upload-artifact@v4
+        with:
+          name: FlowDrop-iOS-iPadOS-Unsigned
+          path: ios/output/*
+          if-no-files-found: error
+          retention-days: 7

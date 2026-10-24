@@ -1,0 +1,20 @@
+{
+  "status": "source-prepared-not-built",
+  "platforms": [
+    "iOS 16+",
+    "iPadOS 16+"
+  ],
+  "checks": {
+    "plist_and_privacy_manifest": "passed Python plist parser",
+    "xcode_project_references": "passed structural validation; not Xcode validation",
+    "shared_scheme_xml": "passed XML parser",
+    "asset_catalog_json": "passed JSON parser",
+    "workflow_manual_only_and_read_only_permissions": "passed YAML validation",
+    "build_script_shell_syntax": "passed bash -n",
+    "swift_compile": "not run: no Swift/Xcode toolchain available",
+    "swift_core_tests": "written, not run; macOS CI required",
+    "iphone_ipad_physical_test": "not run",
+    "signed_ipa": "not created"
+  },
+  "windows_android_installers": "unchanged 1.9.0"
+}

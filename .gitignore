@@ -1,0 +1,24 @@
+dist/
+outputs/
+.local-data/
+node_modules/
+.sites-runtime/
+.env*
+.dev.vars*
+artifacts/
+android/build/
+*.keystore
+*.jks
+
+__pycache__/
+*.pyc
+
+# Installers are generated build artifacts, distributed in the deployment archive.
+releases/*/*.apk
+releases/*/*.exe
+ios/.build/
+ios/output/
+ios/FlowDropCore/.build/
+ios/FlowDropApple/Assets.xcassets/AppIcon.appiconset/AppIcon.png
+*.xcuserstate
+xcuserdata/
