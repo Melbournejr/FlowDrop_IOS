@@ -1,18 +1,28 @@
 {
-  "status": "source-prepared-not-built",
-  "platforms": [
-    "iOS 16+",
-    "iPadOS 16+"
+  "version": "1.0.1",
+  "status": "build-fix-prepared-not-rebuilt",
+  "reported_failure": {
+    "source": "user-provided GitHub Actions macOS log",
+    "file": "FlowDropCore/Sources/FlowDropCore/Protocol.swift",
+    "type": "SavedFile",
+    "error": "return from initializer without initializing all stored properties"
+  },
+  "changes": [
+    "separate SavedFile stored properties and add explicit public initializer",
+    "regression test for history decoding/encoding and missing size",
+    "use local deviceName before AppModel finishes initializing stored properties",
+    "mark private HTTPConnection as Sendable with serial queue confinement documented",
+    "Node 24 checkout/upload actions and downloadable build logs"
   ],
   "checks": {
     "plist_and_privacy_manifest": "passed Python plist parser",
-    "xcode_project_references": "passed structural validation; not Xcode validation",
+    "xcode_project_references_and_version": "passed structural validation; not Xcode validation",
     "shared_scheme_xml": "passed XML parser",
     "asset_catalog_json": "passed JSON parser",
-    "workflow_manual_only_and_read_only_permissions": "passed YAML validation",
-    "build_script_shell_syntax": "passed bash -n",
-    "swift_compile": "not run: no Swift/Xcode toolchain available",
-    "swift_core_tests": "written, not run; macOS CI required",
+    "workflow": "passed YAML: manual-only, Node 24 actions, read-only contents, log upload on failure",
+    "shell_syntax": "passed bash -n for build script and workflow shell steps",
+    "swift_compile_after_fix": "not run: no Swift/Xcode toolchain available",
+    "swift_core_tests_after_fix": "not run; macOS CI required",
     "iphone_ipad_physical_test": "not run",
     "signed_ipa": "not created"
   },

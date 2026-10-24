@@ -23,11 +23,12 @@ import Photos
     init() throws {
         let defaults = UserDefaults.standard
         let id = defaults.string(forKey: "deviceId") ?? UUID().uuidString.lowercased(); defaults.set(id, forKey: "deviceId")
-        name = defaults.string(forKey: "deviceName") ?? UIDevice.current.model; photos = defaults.bool(forKey: "copyPhotos")
+        let deviceName = defaults.string(forKey: "deviceName") ?? UIDevice.current.model
+        name = deviceName; photos = defaults.bool(forKey: "copyPhotos")
         let fm = FileManager.default
         let documents = fm.urls(for: .documentDirectory, in: .userDomainMask)[0]
         let cache = fm.urls(for: .cachesDirectory, in: .userDomainMask)[0].appendingPathComponent("FlowDrop", isDirectory: true)
-        store = try HostStore(root: cache, downloads: documents, config: PeerConfig(deviceName: name, platform: UIDevice.current.userInterfaceIdiom == .pad ? "ipados" : "ios", deviceId: id))
+        store = try HostStore(root: cache, downloads: documents, config: PeerConfig(deviceName: deviceName, platform: UIDevice.current.userInterfaceIdiom == .pad ? "ipados" : "ios", deviceId: id))
         host = HTTPHost(store: store)
         discovery.onPeers = { [weak self] peers in self?.peers = peers }
         discovery.onError = { [weak self] text in self?.error = text }

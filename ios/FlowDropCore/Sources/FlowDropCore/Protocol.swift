@@ -47,7 +47,7 @@ public struct Manifest: Codable, Sendable {
 public struct PeerConfig: Codable, Sendable {
     public var name: String, deviceName: String, platform: String, version: String, deviceId: String, offerKey: String
     public var direct: Int = 1, sessions: Int = 1
-    public init(deviceName: String, platform: String, deviceId: String) { name = "FlowDrop"; self.deviceName = deviceName; self.platform = platform; version = "1.0.0"; self.deviceId = deviceId; offerKey = UUID().uuidString.lowercased() }
+    public init(deviceName: String, platform: String, deviceId: String) { name = "FlowDrop"; self.deviceName = deviceName; self.platform = platform; version = "1.0.1"; self.deviceId = deviceId; offerKey = UUID().uuidString.lowercased() }
 }
 public struct Peer: Identifiable, Hashable, Sendable {
     public var id: String, name: String, platform: String, base: URL
@@ -86,7 +86,18 @@ public struct FlowSession: Codable, Identifiable, Sendable {
     }
 }
 public struct SavedFile: Codable, Identifiable, Sendable {
-    public var id = UUID().uuidString.lowercased(), name: String, path: String, size: Int64, date = FlowProtocol.now
+    public var id: String
+    public var name: String
+    public var path: String
+    public var size: Int64
+    public var date: Int64
+    public init(id: String = UUID().uuidString.lowercased(), name: String, path: String, size: Int64, date: Int64 = FlowProtocol.now) {
+        self.id = id
+        self.name = name
+        self.path = path
+        self.size = size
+        self.date = date
+    }
     public var url: URL { URL(fileURLWithPath: path) }
 }
 public struct FileSource: Sendable {

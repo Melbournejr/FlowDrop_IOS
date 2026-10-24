@@ -2,6 +2,22 @@ import XCTest
 @testable import FlowDropCore
 
 final class ProtocolTests: XCTestCase {
+    func testSavedFileHistoryRemainsCompatible() throws {
+        let data = Data(#"{"id":"saved-1","name":"video.mp4","path":"/documents/video.mp4","size":5368709120,"date":123456789}"#.utf8)
+        let saved = try JSONDecoder().decode(SavedFile.self, from: data)
+        XCTAssertEqual(saved.name, "video.mp4")
+        XCTAssertEqual(saved.size, 5 * 1024 * 1024 * 1024)
+        XCTAssertEqual(saved.date, 123456789)
+        let restored = try JSONDecoder().decode(SavedFile.self, from: JSONEncoder().encode(saved))
+        XCTAssertEqual(restored.id, saved.id)
+        XCTAssertEqual(restored.path, saved.path)
+        let created = SavedFile(name: "empty", path: "/documents/empty", size: 0)
+        XCTAssertFalse(created.id.isEmpty)
+        XCTAssertGreaterThan(created.date, 0)
+        // Incomplete history must not be silently treated as a successfully saved file.
+        let incomplete = Data(#"{"id":"saved-1","name":"empty","path":"/documents/empty","date":1}"#.utf8)
+        XCTAssertThrowsError(try JSONDecoder().decode(SavedFile.self, from: incomplete))
+    }
     func testAndroidPendingStatusMayOmitOptionalFields() throws {
         let data = Data(#"{"id":"a","direction":"receive","name":"Android","code":"ABCDEFGH","count":1,"size":0,"state":"pending","createdAt":1,"updatedAt":1}"#.utf8)
         let value = try JSONDecoder().decode(FlowSession.self, from: data)
@@ -23,7 +39,7 @@ final class ProtocolTests: XCTestCase {
         try Data("first".utf8).write(to: a); try Data().write(to: b)
         let first = try DiskFiles.commit(a, name: "../report.txt", directory: directory)
         let second = try DiskFiles.commit(b, name: "../report.txt", directory: directory)
-        XCTAssertEqual(first.deletingLastPathComponent().standardizedFileURL, directory.standardizedFileURL)
+        XCTAssertEqual(first.deletingLastPathComponent().standardizedFileURL.path, directory.standardizedFileURL.path)
         XCTAssertNotEqual(first, second); XCTAssertEqual(try Data(contentsOf: first), Data("first".utf8)); XCTAssertEqual(try DiskFiles.size(second), 0)
         XCTAssertLessThanOrEqual(FlowProtocol.safeName(String(repeating: "Ả", count: 255) + ".pdf").utf8.count, 190)
     }

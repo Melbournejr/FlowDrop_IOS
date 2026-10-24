@@ -10,19 +10,33 @@ jobs:
     timeout-minutes: 30
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
       - name: Show Xcode version
         run: xcodebuild -version
       - name: Test transfer protocol and HTTP server
-        run: swift test --package-path ios/FlowDropCore
+        run: |
+          set -o pipefail
+          mkdir -p ios/ci-logs
+          swift test --package-path ios/FlowDropCore 2>&1 | tee ios/ci-logs/swift-test.log
       - name: Validate app metadata
         run: plutil -lint ios/FlowDropApple/Info.plist ios/FlowDropApple/PrivacyInfo.xcprivacy ios/FlowDropApple.xcodeproj/project.pbxproj
       - name: Build unsigned IPA
-        run: bash ios/scripts/build-unsigned.sh
+        run: |
+          set -o pipefail
+          mkdir -p ios/ci-logs
+          bash ios/scripts/build-unsigned.sh 2>&1 | tee ios/ci-logs/xcodebuild.log
       - name: Upload unsigned IPA
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: FlowDrop-iOS-iPadOS-Unsigned
           path: ios/output/*
           if-no-files-found: error
+          retention-days: 7
+      - name: Upload build logs
+        if: always()
+        uses: actions/upload-artifact@v6
+        with:
+          name: FlowDrop-iOS-Build-Logs
+          path: ios/ci-logs/*
+          if-no-files-found: ignore
           retention-days: 7

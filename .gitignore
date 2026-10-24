@@ -18,6 +18,7 @@ releases/*/*.apk
 releases/*/*.exe
 ios/.build/
 ios/output/
+ios/ci-logs/
 ios/FlowDropCore/.build/
 ios/FlowDropApple/Assets.xcassets/AppIcon.appiconset/AppIcon.png
 *.xcuserstate

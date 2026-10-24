@@ -1,8 +1,21 @@
-# FlowDrop cho iPhone và iPad — mã nguồn bản phát triển
+# FlowDrop cho iPhone và iPad — mã nguồn bản phát triển 1.0.1
 
 Đây là ứng dụng SwiftUI native, cửa sổ riêng, không dùng trình duyệt hoặc WebView. Một dự án dùng chung cho iPhone và iPad chạy iOS/iPadOS 16 trở lên.
 
 **Trạng thái:** mã nguồn và workflow đã được chuẩn bị trong môi trường Linux. Chưa có lần build Xcode thành công, IPA, chữ ký Apple hay kiểm thử trên iPhone/iPad thật. Workflow sẽ biên dịch và kiểm thử trên máy macOS của GitHub; cần có kết quả xanh trước khi tải IPA. Bản iOS đang phát triển, chưa phải bản phát hành ổn định.
+
+## Cập nhật từ gói 1.0 đã đưa lên GitHub
+
+Gói 1.0.1 sửa lỗi Swift `return from initializer without initializing all stored properties` ở `SavedFile` mà log GitHub Actions của bản 1.0 đã báo. Các thuộc tính được khai báo riêng và có hàm khởi tạo rõ ràng; có kiểm thử đọc/ghi lịch sử file. Đã sửa thêm việc đọc thuộc tính `@Published` trước khi khởi tạo xong AppModel, khai báo an toàn truyền giữa các hàng đợi cho HTTPConnection theo cơ chế chạy trên một serial queue, và cập nhật checkout/upload-artifact sang v6 sử dụng Node.js 24. Chưa có kết quả chạy lại trên macOS để xác nhận toàn bộ build thành công.
+
+Nếu đã có repository, không cần tạo lại:
+
+1. Giải nén `FlowDrop-iOS-iPadOS-Source-1.0.1.zip`.
+2. Mở GitHub Desktop → chọn repository của bạn → **Repository → Show in Explorer**.
+3. Chép đè nội dung gói mới vào thư mục repository, giữ nguyên thư mục `.git`. Đảm bảo cả `ios` và `.github` được cập nhật.
+4. Trong GitHub Desktop, nhập Summary `Fix iOS build 1.0.1` → **Commit to main → Push origin**.
+5. Trên GitHub, vào **Actions → Build FlowDrop iOS → Run workflow** để tạo lần chạy mới từ commit vừa push.
+6. Nếu lỗi tiếp, tải artifact **FlowDrop-iOS-Build-Logs**, gửi file log tương ứng để chẩn đoán. File IPA chỉ xuất hiện khi bước build thành công.
 
 ## Làm trên Windows: đưa mã lên GitHub
 
@@ -10,7 +23,7 @@
 2. Cài **GitHub Desktop** từ <https://desktop.github.com/download/>. Đăng nhập tài khoản GitHub của bạn trong ứng dụng.
 3. Trong GitHub Desktop, chọn **File → Clone repository → GitHub.com**, chọn `FlowDrop-iOS` và **Clone**.
 4. Chọn **Repository → Show in Explorer** để mở thư mục vừa clone.
-5. Giải nén gói `FlowDrop-iOS-iPadOS-Source-1.0.zip`. Chép **nội dung bên trong** vào thư mục repository. Sau khi chép, phải có `ios` và `.github` trực tiếp trong thư mục repository, không nằm trong một thư mục lồng thêm. Không chép vào thư mục `.git`.
+5. Giải nén gói `FlowDrop-iOS-iPadOS-Source-1.0.1.zip`. Chép **nội dung bên trong** vào thư mục repository. Sau khi chép, phải có `ios` và `.github` trực tiếp trong thư mục repository, không nằm trong một thư mục lồng thêm. Không chép vào thư mục `.git`.
 6. Trở lại GitHub Desktop. Ô **Summary** nhập `Add FlowDrop iOS source`. Bấm **Commit to main → Push origin**. Nếu repo dùng nhánh tên khác, commit và push lên nhánh mặc định đó.
 
 Không cần cài Xcode, Swift, Node.js hay Android SDK trên Windows để chạy quy trình này. Gói nguồn không chứa tài khoản, khóa ký hoặc bộ cài Windows/Android.

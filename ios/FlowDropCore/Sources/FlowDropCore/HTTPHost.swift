@@ -40,7 +40,9 @@ public final class HTTPHost: @unchecked Sendable {
         queue.async { self.listener?.cancel(); self.listener = nil; let old = Array(self.connections.values); self.connections.removeAll(); old.forEach { $0.close() } }
     }
 }
-private final class HTTPConnection {
+// Mutable state is confined to HTTPHost.queue. Tasks only read the immutable
+// store/queue references, then dispatch the reply back onto that same queue.
+private final class HTTPConnection: @unchecked Sendable {
     let connection: NWConnection, queue: DispatchQueue, store: HostStore, finished: () -> Void
     var parser = HTTPParser(), file: FileHandle?, remaining: Int64 = 0, timeout: DispatchWorkItem?, closed = false
     init(_ connection: NWConnection, queue: DispatchQueue, store: HostStore, finished: @escaping () -> Void) { self.connection = connection; self.queue = queue; self.store = store; self.finished = finished }
