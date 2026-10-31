@@ -1,0 +1,17 @@
+name: Publish FlowDrop 1.11.0
+on:
+  push:
+    branches: [automation/flowdrop-release-1.11.0]
+permissions:
+  contents: write
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v5
+      - name: Verify signed manifest, upload installers, verify hashes and publish
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+        run: python .release/publish.py

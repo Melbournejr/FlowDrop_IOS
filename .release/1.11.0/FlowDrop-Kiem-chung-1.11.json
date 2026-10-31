@@ -1,0 +1,26 @@
+{
+  "version": "1.11.0",
+  "androidVersionCode": 12,
+  "changes": [
+    "Marked folder packages restore original root directory, filenames, nested and empty directories",
+    "Folders with an existing root name use a numbered new root without merging or replacing existing files",
+    "Folder transfers stay together in Download/FlowDrop on Android; standalone images/videos retain Album routing",
+    "Ordinary ZIP files remain ZIP files",
+    "Windows native Open folder requests a prepared receive path and uses Windows Shell, including a fallback and visible error handling"
+  ],
+  "passed": [
+    "4 folder restoration tests, including independent Java/Node ZIP reader interoperability, collisions, receipts, invalid paths, corrupt CRC, interrupted downloads and ZIP64 file of 4295098385 bytes",
+    "6 API/storage regression tests",
+    "Real HTTP, peer/code receive, mDNS and UDP/TCP discovery network integration",
+    "Android 16 emulator APK upgrade/install, native folder receiver/MediaStore, original Unicode names and byte content, nested/empty directories, collision roots, completion after import",
+    "Android 16 emulator regular native send/receive, 3 files including image, Album/Downloads routing, exact bytes, history and revoke",
+    "Windows installer compilation; native window/file picker/selected-peer send/receive/session regression steps passed in Wine before extended folder fixture failed",
+    "APK original signing certificate and versionCode 12 verified; alignment and v1/v2/v3 signatures checked"
+  ],
+  "limits": [
+    "Windows extended GUI folder/Explorer test did not complete: Unicode test fixture in Wine failed, and later reruns were interrupted before launch",
+    "Open-folder Windows Shell implementation has compiled, but visible Explorer behavior needs confirmation on a real Windows computer",
+    "No physical Android/Windows devices or user Wi-Fi/router were tested",
+    "Native Android folder picker/SAF producer remains dependent on the document provider; receiver was exercised on Android 16 emulator"
+  ]
+}
