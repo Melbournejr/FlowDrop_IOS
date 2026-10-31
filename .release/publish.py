@@ -17,7 +17,18 @@ for platform,name in [('windows','FlowDrop-Setup-1.10.0-Windows-x64.exe'),('andr
  assert item['version']=='1.10.0' and item['url']=='https://github.com/'+repo+'/releases/download/'+tag+'/'+name
  assert item['size']==record['size'] and item['sha256']==record['sha256']
  if platform=='android':assert item['versionCode']==11
-info=json.loads(run(['gh','api','repos/'+repo+'/releases/tags/'+tag]));assert info['tag_name']==tag and not info['prerelease']
+target='ae85b16d9bf4d2f5d365d694b489af9234194099'
+probe=subprocess.run(['gh','api','repos/'+repo+'/git/ref/tags/'+tag],capture_output=True,text=True,timeout=60)
+if probe.returncode:
+ assert '404' in probe.stderr,'Cannot inspect the release tag'
+ run(['gh','api','repos/'+repo+'/git/refs','--method','POST','-f','ref=refs/tags/'+tag,'-f','sha='+target])
+else:assert json.loads(probe.stdout)['object']['sha']==target,'Release tag points to a different commit'
+matches=[item for item in json.loads(run(['gh','api','repos/'+repo+'/releases'])) if item['tag_name']==tag]
+if not matches:
+ run(['gh','release','create',tag,'--repo',repo,'--verify-tag','--draft','--title','FlowDrop 1.10.0 — Windows & Android','--notes-file',str(root/'release-notes.md')])
+ matches=[item for item in json.loads(run(['gh','api','repos/'+repo+'/releases'])) if item['tag_name']==tag]
+assert len(matches)==1,'Expected exactly one release for the tag'
+info=matches[0];assert info['tag_name']==tag and not info['prerelease']
 expected={x['name']:x for x in checks};existing={x['name']:x for x in info['assets']};assert not set(existing)-set(expected)
 if not info['draft']:assert set(existing)==set(expected),'An already published release is missing assets'
 for name,item in expected.items():
