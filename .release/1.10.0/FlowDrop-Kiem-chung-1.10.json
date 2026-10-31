@@ -1,0 +1,27 @@
+{
+  "version": "1.10.0",
+  "androidVersionCode": 11,
+  "apkCertificateSha256": "65cbed4feb375d2c3c2eb94e668bd7aaee7ce5b24f436887873a6fa11719f97f",
+  "passed": [
+    "API and permanent storage tests (6)",
+    "Real HTTP/JVM host integration with byte hashes, empty files, revoke, expiry and interruption",
+    "mDNS two-way integration",
+    "Real UDP/TCP discovery among two Java Android engines and a Node Windows engine",
+    "Native DeviceDiscovery with Android API stubs: Wi-Fi binding, hang timeout, network switch, multiple IPv4 and legacy TXT hints",
+    "Direct offers Windows → Android, Android → Windows and Android → Android with receive-confirmed progress and completion",
+    "Global code receive from Android on Windows without peer selection, exact bytes and tracked completion",
+    "Java and Node global code resolution, ambiguity, wrong and revoked codes",
+    "ZIP Unicode paths, nested/empty directories, empty files, cancellation and symlink refusal",
+    "ZIP64 file of 4295098385 bytes, independently checked with Python zipfile CRC and size",
+    "Signed manifest verification in Java and Node, tamper rejection, bad hash, truncation, HTTP redirects, downgrade prevention and busy deferral",
+    "Windows native controls in Wine: file picker, selected peer, outgoing/incoming saves, session completion, folder job and automatic update checkbox",
+    "APK v1/v2/v3 signature and zip alignment; original certificate; versionCode 11"
+  ],
+  "limits": [
+    "Not verified on physical Android 16 devices or the user Wi-Fi/router",
+    "Android SAF folder picker and PackageInstaller self-update need device verification",
+    "Windows real Firewall/UAC and unattended installation need device verification",
+    "GitHub repository public verified, but release publishing authentication invalid in this session; prepared bundle still requires initial upload",
+    "Existing iOS 1.0.3 source preserved unchanged"
+  ]
+}
