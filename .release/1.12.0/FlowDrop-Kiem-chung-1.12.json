@@ -1,0 +1,24 @@
+{
+  "version": "1.12.0",
+  "androidVersionCode": 13,
+  "date": "2026-11-06",
+  "checks": {
+    "unitAndStorage": "8 tests passed: transfers, names, storage, update choice/busy/error/version state",
+    "signedUpdater": "Node and Java validate same RSA manifest; reject tampering, HTTP redirects, bad hashes and incomplete download; no download before acceptance",
+    "http": "Production API integration passed including rename authorization, persisted name and unchanged device ID",
+    "mdns": "Two devices discover and follow successive Unicode friendly name changes",
+    "lan": "Two Java engines and Node discover each other; Android rename during live upload preserves ID and exact SHA-256",
+    "peerTransfers": "Windows/Android, Android/Android offers, progress, code receive, consent, failure and completion integration passed",
+    "androidDiscovery": "Production NSD state machine and Wi-Fi fallback tests passed",
+    "androidHost": "Production Java host uploads/downloads in both directions, Unicode/empty files, partial cleanup and auth passed",
+    "windowsNativeWine": "Cold-start multi-file --send-files; existing-instance IPC merge/dedup; Unicode/spaces; invalid path rejection; native rename dialog; stable ID; persisted name after restart passed",
+    "androidBuild": "Native APK compiled, zipaligned and signed with original certificate; package/versionCode verified",
+    "windowsBuild": "Native x64 PE and per-user NSIS installer compiled; Send To shortcut added and removed by installer/uninstaller"
+  },
+  "limits": [
+    "Windows native UI exercised in Wine 10, not on a physical Windows PC.",
+    "Version 1.12 APK not installed on a physical Android device during this release; production Java host/discovery and APK signing/build were tested.",
+    "Updater check/consent/download/hash/install-preparation logic tested with signed fixtures. A future production update and Windows installer restart cycle were not exercised end to end.",
+    "Explorer context menu appearance under Windows 11 was not visually tested; NSIS creates a per-user Send To shortcut using --send-files."
+  ]
+}

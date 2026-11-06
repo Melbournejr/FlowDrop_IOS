@@ -1,0 +1,2 @@
+b9892009888caa5865612083729daba4717c0b1f51b6ba9a9e868c269be434ee  FlowDrop-Setup-1.12.0-Windows-x64.exe
+280632976983ccec02af18db928de3fd5bb835aed9855e9e4ce1e604c55d422a  FlowDrop-1.12.0-Android.apk

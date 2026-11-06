@@ -1,0 +1,37 @@
+[
+  {
+    "name": "FlowDrop-Setup-1.12.0-Windows-x64.exe",
+    "size": 23904005,
+    "sha256": "b9892009888caa5865612083729daba4717c0b1f51b6ba9a9e868c269be434ee"
+  },
+  {
+    "name": "FlowDrop-1.12.0-Android.apk",
+    "size": 271124,
+    "sha256": "280632976983ccec02af18db928de3fd5bb835aed9855e9e4ce1e604c55d422a"
+  },
+  {
+    "name": "latest.json",
+    "size": 1292,
+    "sha256": "4a3fd32195338904a3f01d8899c38da919da424dd2dd4d86883cbd89a962dda6"
+  },
+  {
+    "name": "FlowDrop-Source-1.12.zip",
+    "size": 590636,
+    "sha256": "c8d41204eea8b7d5edb421c7f8c0576ed10750a8c6b7e6fbd1e8ffdd43a5a6aa"
+  },
+  {
+    "name": "FlowDrop-Huong-dan-1.12.md",
+    "size": 10022,
+    "sha256": "794a72abcf8821b384f87c85ea9f18f12900adc51362840fef30cf6e3a930ecc"
+  },
+  {
+    "name": "FlowDrop-Kiem-chung-1.12.json",
+    "size": 2114,
+    "sha256": "503b506216c8b53b1e54bab1f77686dcdfea80d1b3f7943bdbc0696ed8897350"
+  },
+  {
+    "name": "SHA256SUMS-release.txt",
+    "size": 198,
+    "sha256": "e813a30d2d6d5fc3ac057f3a906c769fcc41edcacbf53621e50bfbfca959b3e8"
+  }
+]
