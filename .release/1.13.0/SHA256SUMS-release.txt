@@ -1,0 +1,2 @@
+576c3aebfc07e82cdf7031d3d607c10cb951f3a348c3e60e2e1393caf4d1349c  FlowDrop-Setup-1.13.0-Windows-x64.exe
+42b6b774153aae6241affd874f63293ace7178665a6c89cf179cefbb66f22d69  FlowDrop-1.13.0-Android.apk

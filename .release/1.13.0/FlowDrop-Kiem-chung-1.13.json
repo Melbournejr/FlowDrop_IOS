@@ -1,0 +1,53 @@
+{
+  "version": "1.13.0",
+  "androidVersionCode": 14,
+  "date": "2026-11-10",
+  "sourceCommit": "7847c97ad9d94911c3e9b44a10ca7023bca7bec2",
+  "windowsRuntime": {
+    "nodeVersion": "24.22.2",
+    "source": "https://nodejs.org/dist/v24.22.2/node-v24.22.2-win-x64.zip",
+    "archiveSha256": "ca1bff5d8ead13c9f2ea404a176db46bd430704d5b5113734049fa365e7799e2",
+    "executableSha256": "1c331340fa6cac5e4294725959070a143fa0507195a78ad77eed7943f719aac9"
+  },
+  "androidSharesheet": {
+    "passed": true,
+    "sdk": 36,
+    "sharesheetSendAndMultiple": true,
+    "photoVideoPdfMimeResolution": true,
+    "separateSenderUid": true,
+    "coldActivityShare": true,
+    "warmActivityReuse": true,
+    "deduplicate": true,
+    "originalNames": true,
+    "noAutomaticSend": true,
+    "unsafeUrisRejected": true,
+    "missingGrantRejected": true,
+    "localUploadCapabilityRequired": true,
+    "nativeSendService": true,
+    "recipientConsent": true,
+    "exactBytes": true
+  },
+  "checks": {
+    "unit": "10 passed, including invalid metadata before disk/body access and capability/origin checks",
+    "signedUpdates": "Node and Java signed release verification and update choice/hash/truncation regressions passed",
+    "network": "Windows/Android and Android/Android exact bytes, consent, code receive, progress, completion/failure and discovery passed",
+    "nativeWindowsWine": "Cold/warm Send To, Unicode paths, dedup, native rename and restart, protected bootstrap, authenticated native upload and revoke passed with bundled Node 24.22.2",
+    "securityHttp": "Windows and production Java/Android capabilities, no capability in config, remote-write rejection even with known local capability, origin and Host/DNS-rebinding guards, CL/TE/duplicate Host rejection, absolute header deadline passed",
+    "folders": "5 passed: preserve original folder/file names and empty directories, CRC/traversal rejection, ZIP64 above 4GiB, claimed-petabyte rejection before expansion",
+    "dependencies": {
+      "info": 0,
+      "low": 0,
+      "moderate": 0,
+      "high": 0,
+      "critical": 0,
+      "total": 0
+    },
+    "androidSigning": "Original certificate SHA256 65cbed4feb375d2c3c2eb94e668bd7aaee7ce5b24f436887873a6fa11719f97f retained; APK signature and zip alignment verified"
+  },
+  "limits": [
+    "LAN file transport remains HTTP, without encryption or cryptographic device pairing. Use a trusted network for sensitive files.",
+    "Native Android sharesheet tested on Android 16 emulator with a separate-UID source app and a loopback recipient; physical-device Wi-Fi tests remain separate.",
+    "Windows UI exercised in Wine rather than on a physical Windows PC.",
+    "No claim of antivirus scanning or complete security certification."
+  ]
+}
