@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "app": "FlowDrop",
+  "createdAt": "2026-11-11T03:23:45.243Z",
+  "android": {
+    "certificateSha256": "65cbed4feb375d2c3c2eb94e668bd7aaee7ce5b24f436887873a6fa11719f97f",
+    "identityPreserved": true
+  },
+  "updates": {
+    "algorithm": "RSA-SHA256",
+    "publicKeySha256": "10edffbf006bbd6e6a8fe5e8ab5859a44f62bdcd03aa3d339a158cbf4685c4b1",
+    "identityPreserved": true
+  },
+  "project": {
+    "algorithm": "Ed25519",
+    "publicKeySha256": "5df2169434521030e8123aeb7ed39084c798f005afbb9f38bff59fec0a420277",
+    "purpose": "Sign source and release checksum manifests; separate from the installed app updater."
+  }
+}
