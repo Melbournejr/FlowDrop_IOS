@@ -45,14 +45,15 @@ jobs:
       - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
         with:
           persist-credentials: false
+      - name: Test the transfer protocol
+        timeout-minutes: 5
+        run: swift test --package-path ios/FlowDropCore
       - name: Initialize Swift analysis
         uses: github/codeql-action/init@33d7b85da1a04171e211befe2c739303b9a4c066 # v4
         with:
           languages: swift
           build-mode: manual
           queries: security-extended
-      - name: Test the transfer protocol
-        run: swift test --package-path ios/FlowDropCore
       - name: Build the unsigned iPhone and iPad app for analysis
         run: bash ios/scripts/build-unsigned.sh
       - name: Analyze Swift security
