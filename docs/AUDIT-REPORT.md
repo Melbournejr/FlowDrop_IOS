@@ -149,6 +149,14 @@ P0: nguy cơ mất dữ liệu/khóa, phát hành sai identity hoặc cập nh�
 6. `docs/RELEASE-PROCESS.md` — hash asset, pipeline prebuilt/signing và rollback có giới hạn.
 7. `docs/AUDIT-REPORT.md` — snapshot, PR #1, rủi ro, giới hạn và quyết định.
 
+### Phạm vi riêng của Giai đoạn 1
+
+Quy định trong mục này chỉ áp dụng cho đợt kiểm toán Giai đoạn 1 và PR #3, không phải allowlist lâu dài cho các nhiệm vụ sửa lỗi, kiểm thử hoặc phát triển tiếp theo. Các nhiệm vụ về sau tuân theo `AGENTS.md` và phạm vi được chủ dự án giao; các quy tắc bảo vệ giao thức, chữ ký, dữ liệu, kiểm thử, PR và phát hành vẫn giữ nguyên.
+
+Allowlist thay đổi chỉ gồm `AGENTS.md` và sáu tài liệu `docs/ARCHITECTURE.md`, `docs/PROTOCOL.md`, `docs/FEATURES.md`, `docs/REGRESSION-PLAN.md`, `docs/RELEASE-PROCESS.md`, `docs/AUDIT-REPORT.md`.
+
+Không sửa mã ứng dụng, test, workflow, dependency, cấu hình ký hoặc bộ cài; không merge, không phát hành. Chỉ chạy kiểm tra hiện có theo cách không sửa các đối tượng đó, và ghi nhận trung thực kết quả. Việc bổ sung/sửa test hoặc CI là kế hoạch cho giai đoạn sau.
+
 Không thêm CI/test executable hoặc copy native code vào main. Draft PR để chủ dự án xem; chưa merge. Khi hoàn tất, đối chiếu diff allowlist, public refs/assets/workflow trạng thái và PR #1 với snapshot; thay đổi ngoài phạm vi hoặc hoạt động đồng thời phải được ghi rõ, không ghi đè.
 
 [REPO]: https://github.com/Melbournejr/FlowDrop_IOS

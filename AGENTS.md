@@ -1,5 +1,7 @@
 # Quy tắc làm việc với FlowDrop
 
+Các quy tắc dưới đây áp dụng lâu dài cho các nhiệm vụ sửa lỗi, kiểm thử và phát triển FlowDrop. Phạm vi riêng của đợt kiểm toán Giai đoạn 1 được ghi trong [báo cáo kiểm toán](docs/AUDIT-REPORT.md).
+
 ## Mục tiêu và phạm vi
 
 - Bảo toàn hành vi FlowDrop 1.13.0, dữ liệu đã nhận và khả năng khôi phục bản đã phát hành.
@@ -39,9 +41,3 @@
 - Báo cáo: điều gì thay đổi, lý do, kiểm thử đã chạy, kiểm thử chưa chạy, rủi ro và cách revert.
 - Tách bằng chứng từ mã nguồn, kiểm thử đã chạy, báo cáo cũ và điều chưa xác minh. Không suy diễn báo cáo lịch sử thành kết quả mới.
 - Dừng trước merge/phát hành để chủ dự án quyết định. Không hỏi lại quyền cho các bước đọc, kiểm tra hoặc hoàn thiện PR đã được giao.
-
-## Riêng giai đoạn 1
-
-Allowlist thay đổi chỉ gồm `AGENTS.md` và sáu tài liệu `docs/ARCHITECTURE.md`, `docs/PROTOCOL.md`, `docs/FEATURES.md`, `docs/REGRESSION-PLAN.md`, `docs/RELEASE-PROCESS.md`, `docs/AUDIT-REPORT.md`.
-
-Không sửa mã ứng dụng, test, workflow, dependency, cấu hình ký hoặc bộ cài; không merge, không phát hành. Chỉ chạy kiểm tra hiện có theo cách không sửa các đối tượng đó, và ghi nhận trung thực kết quả. Việc bổ sung/sửa test hoặc CI là kế hoạch cho giai đoạn sau.
