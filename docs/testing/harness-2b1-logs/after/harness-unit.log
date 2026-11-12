@@ -1,0 +1,33 @@
+Command: /opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node --test tests/harness.test.mjs
+CWD: /workspace/flowdrop-build/flowdrop-harness-2b1/repository
+Exit code: 0
+Wall seconds: 0.559
+Timeout: False
+
+STDOUT (capabilities/UUIDs redacted):
+✔ REG-001: Java source paths remain individual arguments, including roots with spaces (4.573171ms)
+✔ compiler arguments reject outside-repository and non-Java inputs (0.692823ms)
+✔ test JAR configuration supports an explicit path and the existing build-tools override (0.449076ms)
+✔ concurrent workspaces are distinct and cleanup is idempotent (18.724004ms)
+✔ a missing JAR produces an actionable preflight failure and no scratch leak (3.665419ms)
+✔ a mismatched JAR is rejected before compilation instead of silently changing the fixture dependency (3.909692ms)
+✔ desktop readiness waits for the private pipe record and handles fragmented UTF-8 (2.200972ms)
+✔ Android readiness parses a fragmented local capability from the JVM pipe (0.500385ms)
+✔ readiness rejects missing capabilities and non-loopback addresses (8.65784ms)
+✔ startup failure and timeout detach listeners and redact capability diagnostics (11.638886ms)
+✔ a host that exited before the readiness listener was attached fails immediately (0.584255ms)
+✔ a missing executable is reported and cleaned up without waiting for an exit event (7.331431ms)
+✔ cleanup terminates a child that ignores graceful shutdown and removes its files (79.663043ms)
+✔ local requests use the correct per-host header; missing and wrong credentials remain denied (44.383609ms)
+✔ local capabilities are not forwarded when a local endpoint redirects to another origin (8.589365ms)
+✔ optional report output stays outside scratch cleanup and redacts capability fields (14.972595ms)
+ℹ tests 16
+ℹ suites 0
+ℹ pass 16
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 470.210941
+
+STDERR (capabilities/UUIDs redacted):

@@ -1,0 +1,31 @@
+Command: /opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/npm test
+CWD: /workspace/flowdrop-build/flowdrop-harness-2b1/repository
+Exit code: 0
+Wall seconds: 0.708
+Timeout: False
+
+STDOUT (capabilities/UUIDs redacted):
+
+> flowdrop@1.13.0 test
+> node --test --test-isolation=none tests/transfer.test.mjs tests/desktop-storage.test.mjs tests/device-name.test.mjs tests/update-choice.test.mjs tests/security.test.mjs
+
+✔ receiver preserves data, folder settings, duplicate names and already saved files (106.062468ms)
+✔ receiver never exposes partial files and handles unsafe or long filenames (8.422293ms)
+✔ device labels persist Unicode names, validate codepoints and serialize writes (6.088619ms)
+✔ reject untrusted metadata before opening any file body or destination (15.095374ms)
+✔ capabilities compare full bytes, and browser cross-origin requests are rejected (0.381034ms)
+✔ send, finalize, receive original bytes, and revoke across clients (19.409698ms)
+✔ upload and revoke require uploader token; foreign origin blocked (5.3716ms)
+✔ invalid names, protocol bounds, byte mismatch and missing codes rejected (5.00952ms)
+✔ expiry blocks access; empty files transfer; finalized uploads immutable (3.093345ms)
+✔ manual and scheduled checks report results; Later never downloads; explicit acceptance waits for active transfers (15.213645ms)
+ℹ tests 10
+ℹ suites 0
+ℹ pass 10
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 325.14274
+
+STDERR (capabilities/UUIDs redacted):

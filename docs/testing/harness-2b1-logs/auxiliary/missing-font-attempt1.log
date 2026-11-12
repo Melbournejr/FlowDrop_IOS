@@ -1,0 +1,18 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: The input did not match the regular expression /ENOENT/. Input:
+
+''
+
+    at file:///workspace/flowdrop-build/flowdrop-harness-2b1/repository/[eval1]:12:40 {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: '',
+  expected: /ENOENT/,
+  operator: 'match',
+  diff: 'simple'
+}
+
+Node.js v24.19.0

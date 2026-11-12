@@ -1,0 +1,25 @@
+{
+  "npm_ci": [
+    {
+      "command": "npm ci --ignore-scripts --no-audit --no-fund",
+      "exit_code": 226,
+      "observation": "Default npm cache under /home/agent is read-only (EROFS). No dependency version was changed."
+    },
+    {
+      "command": "npm ci --ignore-scripts --no-audit --no-fund --cache /workspace/flowdrop-build/flowdrop-harness-2b1/npm-cache",
+      "exit_code": 0,
+      "observation": "Installed the 8 packages in the existing lockfile."
+    }
+  ],
+  "initial_unit_environment": {
+    "command": "node --test tests/harness.test.mjs",
+    "outer_python_wrapper_exit_code": 1,
+    "completed_node_exit_code": null,
+    "timeout_seconds": 90,
+    "observation": "Default restricted sandbox denied loopback bind (EPERM in a separate probe); no completed unit log was retained by the first wrapper. Owned test processes were terminated. Not a PASS. Re-run with network permission is logged separately; final full run has 16/16."
+  },
+  "diagnostic_attempts": {
+    "attempt1": "Exit 1: auxiliary observer incorrectly expected stderr ENOENT; Node destroys an already-headered font response without logging that exception. This was an observer assumption, not a new product finding. Log retained.",
+    "attempt2": "Exit 0: records filesystem ENOENT, CSS 200, incomplete font response/UND_ERR_SOCKET, config still 200. Does not repair assets or production."
+  }
+}

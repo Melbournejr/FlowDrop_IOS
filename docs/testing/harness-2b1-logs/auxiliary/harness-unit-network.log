@@ -1,0 +1,100 @@
+TAP version 13
+# Subtest: REG-001: Java source paths remain individual arguments, including roots with spaces
+ok 1 - REG-001: Java source paths remain individual arguments, including roots with spaces
+  ---
+  duration_ms: 5.302267
+  type: 'test'
+  ...
+# Subtest: compiler arguments reject outside-repository and non-Java inputs
+ok 2 - compiler arguments reject outside-repository and non-Java inputs
+  ---
+  duration_ms: 1.192596
+  type: 'test'
+  ...
+# Subtest: test JAR configuration supports an explicit path and the existing build-tools override
+ok 3 - test JAR configuration supports an explicit path and the existing build-tools override
+  ---
+  duration_ms: 0.839726
+  type: 'test'
+  ...
+# Subtest: concurrent workspaces are distinct and cleanup is idempotent
+ok 4 - concurrent workspaces are distinct and cleanup is idempotent
+  ---
+  duration_ms: 23.496734
+  type: 'test'
+  ...
+# Subtest: a missing JAR produces an actionable preflight failure and no scratch leak
+ok 5 - a missing JAR produces an actionable preflight failure and no scratch leak
+  ---
+  duration_ms: 3.62082
+  type: 'test'
+  ...
+# Subtest: a mismatched JAR is rejected before compilation instead of silently changing the fixture dependency
+ok 6 - a mismatched JAR is rejected before compilation instead of silently changing the fixture dependency
+  ---
+  duration_ms: 8.088401
+  type: 'test'
+  ...
+# Subtest: desktop readiness waits for the private pipe record and handles fragmented UTF-8
+ok 7 - desktop readiness waits for the private pipe record and handles fragmented UTF-8
+  ---
+  duration_ms: 2.787408
+  type: 'test'
+  ...
+# Subtest: Android readiness parses a fragmented local capability from the JVM pipe
+ok 8 - Android readiness parses a fragmented local capability from the JVM pipe
+  ---
+  duration_ms: 0.743742
+  type: 'test'
+  ...
+# Subtest: readiness rejects missing capabilities and non-loopback addresses
+ok 9 - readiness rejects missing capabilities and non-loopback addresses
+  ---
+  duration_ms: 20.348531
+  type: 'test'
+  ...
+# Subtest: startup failure and timeout detach listeners and redact capability diagnostics
+ok 10 - startup failure and timeout detach listeners and redact capability diagnostics
+  ---
+  duration_ms: 11.507448
+  type: 'test'
+  ...
+# Subtest: a host that exited before the readiness listener was attached fails immediately
+ok 11 - a host that exited before the readiness listener was attached fails immediately
+  ---
+  duration_ms: 0.409887
+  type: 'test'
+  ...
+# Subtest: a missing executable is reported and cleaned up without waiting for an exit event
+ok 12 - a missing executable is reported and cleaned up without waiting for an exit event
+  ---
+  duration_ms: 7.834954
+  type: 'test'
+  ...
+# Subtest: cleanup terminates a child that ignores graceful shutdown and removes its files
+ok 13 - cleanup terminates a child that ignores graceful shutdown and removes its files
+  ---
+  duration_ms: 126.419428
+  type: 'test'
+  ...
+# Subtest: local requests use the correct per-host header; missing and wrong credentials remain denied
+ok 14 - local requests use the correct per-host header; missing and wrong credentials remain denied
+  ---
+  duration_ms: 69.282921
+  type: 'test'
+  ...
+# Subtest: optional report output stays outside scratch cleanup and redacts capability fields
+ok 15 - optional report output stays outside scratch cleanup and redacts capability fields
+  ---
+  duration_ms: 15.989497
+  type: 'test'
+  ...
+1..15
+# tests 15
+# suites 0
+# pass 15
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 705.518276

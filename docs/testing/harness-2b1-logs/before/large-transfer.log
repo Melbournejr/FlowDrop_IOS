@@ -1,0 +1,30 @@
+Command: /opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node tests/large-transfer-integration.mjs
+CWD: /workspace/flowdrop-build/flowdrop-harness-2b1/repository
+Exit code: 1
+Wall seconds: 0.264
+Timeout: False
+
+STDOUT (capabilities/UUIDs redacted):
+
+STDERR (capabilities/UUIDs redacted):
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: error: file not found: /workspace/flowdrop-build/flowdrop-harness-2b1/repository/android/src/app/flowdrop/mobile/RequestSecurity.java/android/src/app/flowdrop/mobile/TransferServer.java
+Usage: javac <options> <source files>
+use --help for a list of possible options
+
+
+2 !== 0
+
+    at file:///workspace/flowdrop-build/flowdrop-harness-2b1/repository/tests/large-transfer-integration.mjs:12:414 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: 2,
+  expected: 0,
+  operator: 'strictEqual',
+  diff: 'simple'
+}
+
+Node.js v24.19.0

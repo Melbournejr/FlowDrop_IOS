@@ -1,0 +1,13 @@
+Command: /opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node tests/android-native-client.mjs
+CWD: /workspace/flowdrop-build/flowdrop-harness-2b1/repository
+Exit code: 0
+Wall seconds: 20.251
+Timeout: False
+
+STDOUT (capabilities/UUIDs redacted):
+Testing native Java client → Windows 1.5 host; large file 402653201 bytes.
+{"host":"Windows 1.5 host","cancel":true,"largeFileBytes":402653201,"streaming":true,"sha256":"8c09a0b93691cbe747fd2184f321b88366995ab57a9dde8a52e309d9c022c752","sourceChanged":true,"files":101,"revoke":true,"passed":true}
+Testing native Java client → Android 1.6 host; large file 4295098385 bytes.
+{"host":"Android 1.6 host","cancel":true,"largeFileBytes":4295098385,"streaming":true,"sha256":"3c22a6577a50fc787f324c80451451b6c7643c1539dee3e8314cc9bf6e015d05","sourceChanged":true,"files":101,"revoke":true,"passed":true}
+
+STDERR (capabilities/UUIDs redacted):

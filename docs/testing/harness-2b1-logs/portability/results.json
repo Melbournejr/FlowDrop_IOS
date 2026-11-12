@@ -1,0 +1,45 @@
+{
+  "baseline_commit": "c04affa26441440434d821fe9ff3c6fb4ddf2a07",
+  "original_script_sha256": "2edc6f8e75ed1598a62c0ff85e2b5f864b77077a256c73d33c06e823d3881fb3",
+  "results": [
+    {
+      "name": "before-foreign-cwd",
+      "command": [
+        "node",
+        "/workspace/flowdrop-build/flowdrop-harness-2b1/evidence/portability/before-original.mjs"
+      ],
+      "cwd": "/workspace/flowdrop-build/flowdrop-harness-2b1/evidence/portability/cwd without repository",
+      "exit_code": 1,
+      "timeout": false,
+      "wall_seconds": 0.115,
+      "temporary_entries_after": [],
+      "log": "before-foreign-cwd.log"
+    },
+    {
+      "name": "after-explicit-jar",
+      "command": [
+        "node",
+        "/workspace/flowdrop-build/flowdrop-harness-2b1/repository/tests/android-discovery-state.mjs"
+      ],
+      "cwd": "/workspace/flowdrop-build/flowdrop-harness-2b1/evidence/portability/cwd without repository",
+      "exit_code": 0,
+      "timeout": false,
+      "wall_seconds": 2.297,
+      "temporary_entries_after": [],
+      "log": "after-explicit-jar.log"
+    },
+    {
+      "name": "after-legacy-tools",
+      "command": [
+        "node",
+        "/workspace/flowdrop-build/flowdrop-harness-2b1/repository/tests/android-discovery-state.mjs"
+      ],
+      "cwd": "/workspace/flowdrop-build/flowdrop-harness-2b1/evidence/portability/cwd without repository",
+      "exit_code": 0,
+      "timeout": false,
+      "wall_seconds": 1.796,
+      "temporary_entries_after": [],
+      "log": "after-legacy-tools.log"
+    }
+  ]
+}

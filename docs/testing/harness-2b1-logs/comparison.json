@@ -1,0 +1,136 @@
+{
+  "baseline_commit": "c04affa26441440434d821fe9ff3c6fb4ddf2a07",
+  "before": {
+    "commands": 12,
+    "passed": 9,
+    "failed": 3
+  },
+  "after_existing": {
+    "commands": 12,
+    "passed": 10,
+    "failed": 2
+  },
+  "new_harness_unit": {
+    "exit_code": 0,
+    "tests": 16,
+    "passed": 16,
+    "failed": 0,
+    "skipped": 0
+  },
+  "overall_all_green": false,
+  "new_regressions_in_executed_existing_suites": [],
+  "remaining_failed_existing_suites": [
+    "http",
+    "android-host"
+  ],
+  "matrix": [
+    {
+      "name": "unit",
+      "before_exit": 0,
+      "after_exit": 0,
+      "before_seconds": 0.615,
+      "after_seconds": 0.708,
+      "before_log": "before/unit.log",
+      "after_log": "after/unit.log"
+    },
+    {
+      "name": "http",
+      "before_exit": 1,
+      "after_exit": 1,
+      "before_seconds": 0.351,
+      "after_seconds": 0.358,
+      "before_log": "before/http.log",
+      "after_log": "after/http.log"
+    },
+    {
+      "name": "discovery",
+      "before_exit": 0,
+      "after_exit": 0,
+      "before_seconds": 2.786,
+      "after_seconds": 2.796,
+      "before_log": "before/discovery.log",
+      "after_log": "after/discovery.log"
+    },
+    {
+      "name": "peer",
+      "before_exit": 0,
+      "after_exit": 0,
+      "before_seconds": 11.704,
+      "after_seconds": 12.237,
+      "before_log": "before/peer.log",
+      "after_log": "after/peer.log"
+    },
+    {
+      "name": "lan-discovery",
+      "before_exit": 0,
+      "after_exit": 0,
+      "before_seconds": 17.044,
+      "after_seconds": 15.027,
+      "before_log": "before/lan-discovery.log",
+      "after_log": "after/lan-discovery.log"
+    },
+    {
+      "name": "android-host",
+      "before_exit": 1,
+      "after_exit": 1,
+      "before_seconds": 2.501,
+      "after_seconds": 2.744,
+      "before_log": "before/android-host.log",
+      "after_log": "after/android-host.log"
+    },
+    {
+      "name": "android-discovery",
+      "before_exit": 0,
+      "after_exit": 0,
+      "before_seconds": 1.948,
+      "after_seconds": 1.783,
+      "before_log": "before/android-discovery.log",
+      "after_log": "after/android-discovery.log"
+    },
+    {
+      "name": "security",
+      "before_exit": 0,
+      "after_exit": 0,
+      "before_seconds": 12.38,
+      "after_seconds": 12.211,
+      "before_log": "before/security.log",
+      "after_log": "after/security.log"
+    },
+    {
+      "name": "large-transfer",
+      "before_exit": 1,
+      "after_exit": 0,
+      "before_seconds": 0.264,
+      "after_seconds": 19.767,
+      "before_log": "before/large-transfer.log",
+      "after_log": "after/large-transfer.log"
+    },
+    {
+      "name": "features",
+      "before_exit": 0,
+      "after_exit": 0,
+      "before_seconds": 46.186,
+      "after_seconds": 54.522,
+      "before_log": "before/features.log",
+      "after_log": "after/features.log"
+    },
+    {
+      "name": "folders",
+      "before_exit": 0,
+      "after_exit": 0,
+      "before_seconds": 49.3,
+      "after_seconds": 78.432,
+      "before_log": "before/folders.log",
+      "after_log": "after/folders.log"
+    },
+    {
+      "name": "native-client",
+      "before_exit": 0,
+      "after_exit": 0,
+      "before_seconds": 20.251,
+      "after_seconds": 24.905,
+      "before_log": "before/native-client.log",
+      "after_log": "after/native-client.log"
+    }
+  ]
+}

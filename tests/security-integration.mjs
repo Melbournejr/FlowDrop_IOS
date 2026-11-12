@@ -1,16 +1,14 @@
-import {spawn,spawnSync} from 'node:child_process';
-import {mkdtemp,mkdir,rm} from 'node:fs/promises';
-import {tmpdir,networkInterfaces} from 'node:os';
+import {networkInterfaces} from 'node:os';
 import path from 'node:path';
 import net from 'node:net';
 import assert from 'node:assert/strict';
-const tools='/workspace/flowdrop-build',jar=tools+'/downloads/json-test.jar',dir=await mkdtemp(path.join(tmpdir(),'flowdrop-security-')),children=[];
-const compiled=path.join(dir,'java');await mkdir(compiled);
-const build=spawnSync('java',['-m','jdk.compiler/com.sun.tools.javac.Main','-source','8','-target','8','-encoding','UTF-8','-cp',jar,'-d',compiled,'android/src/app/flowdrop/mobile/RequestSecurity.java','android/src/app/flowdrop/mobile/CodeLookup.java','android/src/app/flowdrop/mobile/TransferServer.java','tests/HostHarness.java'],{encoding:'utf8'});assert.equal(build.status,0,build.stderr);
-function start(command,args,env={}){const child=spawn(command,args,{env:{...process.env,...env},stdio:['ignore','pipe','pipe']});children.push(child);return new Promise((resolve,reject)=>{let text='',errors='';const timeout=setTimeout(()=>reject(new Error('Startup timeout '+errors)),15000);child.stderr.on('data',b=>errors+=b);child.on('exit',c=>{clearTimeout(timeout);reject(new Error('Startup exit '+c+' '+errors));});child.stdout.on('data',b=>{text+=b;for(const line of text.split('\n'))try{let ready=JSON.parse(line.replace(/^FLOWDROP_READY /,''));if(ready.url||ready.port){clearTimeout(timeout);resolve({origin:ready.url?.replace(/\/$/,'')||'http://127.0.0.1:'+ready.port,token:ready.localToken||ready.token});return;}}catch{}});});}
+import {createHarness,javaCommand,root,waitForHost} from './helpers/harness.mjs';
+const harness=await createHarness('security'),dir=harness.directory;
+function start(command,args,env={}){const child=harness.spawn(command,args,{env:{...process.env,...env},stdio:['ignore','pipe','pipe']});return waitForHost(child,command===javaCommand?'android':'desktop');}
 async function raw(origin,head){const url=new URL(origin);return new Promise((resolve,reject)=>{const socket=net.createConnection({host:'127.0.0.1',port:url.port});let text='';socket.on('connect',()=>socket.write(head));socket.on('data',b=>text+=b);socket.on('end',()=>resolve(text));socket.on('close',()=>resolve(text));socket.on('error',reject);socket.setTimeout(15000,()=>{socket.destroy();reject(new Error('Request not terminated'));});});}
 try{
- const [win,phone]=await Promise.all([start(process.execPath,['scripts/dev.mjs','--host','0.0.0.0'],{PORT:'0',FLOWDROP_DESKTOP:'1',FLOWDROP_DESKTOP_NATIVE:'1',FLOWDROP_DISABLE_UPDATES:'1',FLOWDROP_DATA_DIR:path.join(dir,'win')}),start('java',['-cp',compiled+path.delimiter+jar,'app.flowdrop.mobile.HostHarness',path.join(dir,'phone'),path.join(process.cwd(),'web')])]);
+ const {classpath}=await harness.compileJava(['android/src/app/flowdrop/mobile/RequestSecurity.java','android/src/app/flowdrop/mobile/CodeLookup.java','android/src/app/flowdrop/mobile/TransferServer.java','tests/HostHarness.java']);
+ const [win,phone]=await Promise.all([start(process.execPath,['scripts/dev.mjs','--host','0.0.0.0'],{PORT:'0',FLOWDROP_DESKTOP:'1',FLOWDROP_DESKTOP_NATIVE:'1',FLOWDROP_DISABLE_UPDATES:'1',FLOWDROP_DATA_DIR:path.join(dir,'win'),FLOWDROP_DEFAULT_RECEIVE_DIR:path.join(dir,'received')}),start(javaCommand,['-cp',classpath,'app.flowdrop.mobile.HostHarness',path.join(dir,'phone'),path.join(root,'web')])]);
  assert.equal((await fetch(win.origin+'/api/desktop/settings')).status,403);
  assert.equal((await fetch(win.origin+'/api/desktop/settings',{headers:{'X-Desktop-Token':win.token}})).status,200);
  const iface=Object.values(networkInterfaces()).flat().find(i=>i?.family==='IPv4'&&!i.internal);
@@ -29,4 +27,4 @@ try{
  }
  // Header timeout is absolute: bytes arriving slowly cannot keep a Java worker occupied forever.
  const host=new URL(phone.origin).host;const started=Date.now();const response=await raw(phone.origin,'GET /api/config HTTP/1.1\r\nHost: '+host+'\r\nX-Slow: unfinished');assert.match(response,/^HTTP\/1\.1 408/);assert.ok(Date.now()-started<13000);console.log('PASS: Android incomplete headers terminate within the absolute 10 second deadline.');
-}finally{for(const child of children)child.kill();await Promise.all(children.map(c=>new Promise(r=>c.exitCode!==null?r():c.once('exit',r))));await rm(dir,{recursive:true,force:true});}
+}finally{await harness.cleanup();}

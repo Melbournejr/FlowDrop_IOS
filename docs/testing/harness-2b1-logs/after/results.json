@@ -1,0 +1,215 @@
+[
+  {
+    "name": "unit",
+    "command": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/npm",
+      "test"
+    ],
+    "exit_code": 0,
+    "timeout": false,
+    "wall_seconds": 0.708,
+    "wall_timeout_seconds": 90,
+    "over_4gib_resource_check": false,
+    "free_disk_before": 20723974144,
+    "temporary_entries_after_test": [
+      "node-compile-cache"
+    ],
+    "stdout_log": "unit.stdout.log",
+    "stderr_log": "unit.stderr.log"
+  },
+  {
+    "name": "harness-unit",
+    "command": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+      "--test",
+      "tests/harness.test.mjs"
+    ],
+    "exit_code": 0,
+    "timeout": false,
+    "wall_seconds": 0.559,
+    "wall_timeout_seconds": 90,
+    "over_4gib_resource_check": false,
+    "free_disk_before": 20723965952,
+    "temporary_entries_after_test": [],
+    "stdout_log": "harness-unit.stdout.log",
+    "stderr_log": "harness-unit.stderr.log"
+  },
+  {
+    "name": "http",
+    "command": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+      "tests/http-integration.mjs"
+    ],
+    "exit_code": 1,
+    "timeout": false,
+    "wall_seconds": 0.358,
+    "wall_timeout_seconds": 120,
+    "over_4gib_resource_check": false,
+    "free_disk_before": 20723961856,
+    "temporary_entries_after_test": [],
+    "stdout_log": "http.stdout.log",
+    "stderr_log": "http.stderr.log"
+  },
+  {
+    "name": "discovery",
+    "command": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+      "tests/discovery-integration.mjs"
+    ],
+    "exit_code": 0,
+    "timeout": false,
+    "wall_seconds": 2.796,
+    "wall_timeout_seconds": 120,
+    "over_4gib_resource_check": false,
+    "free_disk_before": 20723957760,
+    "temporary_entries_after_test": [],
+    "stdout_log": "discovery.stdout.log",
+    "stderr_log": "discovery.stderr.log"
+  },
+  {
+    "name": "peer",
+    "command": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+      "tests/peer-integration.mjs"
+    ],
+    "exit_code": 0,
+    "timeout": false,
+    "wall_seconds": 12.237,
+    "wall_timeout_seconds": 240,
+    "over_4gib_resource_check": false,
+    "free_disk_before": 20723953664,
+    "temporary_entries_after_test": [],
+    "stdout_log": "peer.stdout.log",
+    "stderr_log": "peer.stderr.log"
+  },
+  {
+    "name": "lan-discovery",
+    "command": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+      "tests/lan-discovery-integration.mjs"
+    ],
+    "exit_code": 0,
+    "timeout": false,
+    "wall_seconds": 15.027,
+    "wall_timeout_seconds": 240,
+    "over_4gib_resource_check": false,
+    "free_disk_before": 20723941376,
+    "temporary_entries_after_test": [],
+    "stdout_log": "lan-discovery.stdout.log",
+    "stderr_log": "lan-discovery.stderr.log"
+  },
+  {
+    "name": "android-host",
+    "command": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+      "tests/android-host-integration.mjs"
+    ],
+    "exit_code": 1,
+    "timeout": false,
+    "wall_seconds": 2.744,
+    "wall_timeout_seconds": 120,
+    "over_4gib_resource_check": false,
+    "free_disk_before": 20723929088,
+    "temporary_entries_after_test": [],
+    "stdout_log": "android-host.stdout.log",
+    "stderr_log": "android-host.stderr.log"
+  },
+  {
+    "name": "android-discovery",
+    "command": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+      "tests/android-discovery-state.mjs"
+    ],
+    "exit_code": 0,
+    "timeout": false,
+    "wall_seconds": 1.783,
+    "wall_timeout_seconds": 120,
+    "over_4gib_resource_check": false,
+    "free_disk_before": 20723924992,
+    "temporary_entries_after_test": [],
+    "stdout_log": "android-discovery.stdout.log",
+    "stderr_log": "android-discovery.stderr.log"
+  },
+  {
+    "name": "security",
+    "command": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+      "tests/security-integration.mjs"
+    ],
+    "exit_code": 0,
+    "timeout": false,
+    "wall_seconds": 12.211,
+    "wall_timeout_seconds": 120,
+    "over_4gib_resource_check": false,
+    "free_disk_before": 20723912704,
+    "temporary_entries_after_test": [],
+    "stdout_log": "security.stdout.log",
+    "stderr_log": "security.stderr.log"
+  },
+  {
+    "name": "large-transfer",
+    "command": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+      "tests/large-transfer-integration.mjs"
+    ],
+    "exit_code": 0,
+    "timeout": false,
+    "wall_seconds": 19.767,
+    "wall_timeout_seconds": 300,
+    "over_4gib_resource_check": false,
+    "free_disk_before": 20723904512,
+    "temporary_entries_after_test": [],
+    "stdout_log": "large-transfer.stdout.log",
+    "stderr_log": "large-transfer.stderr.log"
+  },
+  {
+    "name": "features",
+    "command": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+      "--test",
+      "tests/features-1.10.test.mjs"
+    ],
+    "exit_code": 0,
+    "timeout": false,
+    "wall_seconds": 54.522,
+    "wall_timeout_seconds": 600,
+    "over_4gib_resource_check": true,
+    "free_disk_before": 20723892224,
+    "temporary_entries_after_test": [],
+    "stdout_log": "features.stdout.log",
+    "stderr_log": "features.stderr.log"
+  },
+  {
+    "name": "folders",
+    "command": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+      "--test",
+      "tests/folder-receive.test.mjs"
+    ],
+    "exit_code": 0,
+    "timeout": false,
+    "wall_seconds": 78.432,
+    "wall_timeout_seconds": 900,
+    "over_4gib_resource_check": true,
+    "free_disk_before": 20723888128,
+    "temporary_entries_after_test": [],
+    "stdout_log": "folders.stdout.log",
+    "stderr_log": "folders.stderr.log"
+  },
+  {
+    "name": "native-client",
+    "command": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+      "tests/android-native-client.mjs"
+    ],
+    "exit_code": 0,
+    "timeout": false,
+    "wall_seconds": 24.905,
+    "wall_timeout_seconds": 1500,
+    "over_4gib_resource_check": true,
+    "free_disk_before": 20723884032,
+    "temporary_entries_after_test": [],
+    "stdout_log": "native-client.stdout.log",
+    "stderr_log": "native-client.stderr.log"
+  }
+]

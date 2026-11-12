@@ -1,0 +1,22 @@
+Command: /opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node --test tests/folder-receive.test.mjs
+CWD: /workspace/flowdrop-build/flowdrop-harness-2b1/repository
+Exit code: 0
+Wall seconds: 49.3
+Timeout: False
+
+STDOUT (capabilities/UUIDs redacted):
+✔ folder transfer restores original names and nested/empty directories, reserves root without merging, and verifies receipts (200.641748ms)
+✔ Java deflated folder packages restore on Windows engine with exact names (132.244618ms)
+✔ invalid paths, duplicate names, corrupt CRC and interrupted downloads never become completed folders (524.678814ms)
+✔ folder import streams ZIP64 file above 4 GiB in both production readers (46595.726572ms)
+✔ ZIP64 inflated size beyond available storage is rejected before file extraction (128.163667ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 49213.333025
+
+STDERR (capabilities/UUIDs redacted):
