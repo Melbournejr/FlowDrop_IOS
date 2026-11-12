@@ -1,0 +1,8 @@
+package app.flowdrop.mobile;
+public final class ReleaseConfig {
+  public static final String VERSION="1.13.0";
+  public static final int VERSION_CODE=14;
+  public static final String FEED="https://github.com/Melbournejr/FlowDrop_IOS/releases/latest/download/latest.json";
+  public static final String PUBLIC_KEY="MIIBojANBgkqhkiG9w0BAQEFAAOCAY8AMIIBigKCAYEA7yWsBNvEa7n9slxnYEALpWu6tvYrdV++2z9HMiKGes17Ao61pOuHsP6Qq3OjqLRtsL5p6q1tiPq6O1WuRzSMLd5EQ6k3WGPgo9bbAkgvplmYFuBla1BGSSp2j16nCdiIAJ159PKBNKeXemrpRYQN4lVdBV209Ou4d8SvGbZa1xkjHjNbZ+QiaP1B3ggWkWVFaTD1wZtqaM5zGrfe1ad89M5Z1X198VVo0dooFLvCsR5uRsfAOrjoDPvoCgsq+Mm2gWtAMRkaa2NBMYq71Ze2LQ902LU0903upIbTengIR1pb2xKvr4SUFZClwxjwBmwNO2IaXAV4ZrnRD6vW1JWGrPu1+BM41S/z6+NfsY5tQDoKCWYMNbAbZJ/9m5qbWkWcnKZtSZqp4YEvOu9y44VQ6epVTP/Pcr++2cpKuZrxgRECC/kp+xFIsuyuQEiutEYSIOaJvg2twWMBM6JjGKRY7h9KXiDOd+AAAfRddPEtHp0otMnqp6IJMFH6ql9y9qBZAgMBAAE=";
+  private ReleaseConfig(){}
+}

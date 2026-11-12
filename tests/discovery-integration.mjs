@@ -1,0 +1,30 @@
+import assert from 'node:assert/strict';
+import multicastDNS from 'multicast-dns';
+import {advertiseFlowDrop} from '../scripts/discovery.mjs';
+const dns=multicastDNS({interface:'127.0.0.1',bind:'0.0.0.0',loopback:true});
+const seen=[],errors=[];
+dns.on('response',packet=>seen.push(...packet.answers,...packet.additionals));
+dns.on('error',e=>errors.push(e.message));
+const options={interface:'127.0.0.1',bind:'0.0.0.0',loopback:true};
+const first=advertiseFlowDrop({port:5191,deviceId:'first',deviceName:'PC kiểm thử',options,onError:e=>errors.push(e)});
+const second=advertiseFlowDrop({port:5192,deviceId:'second',deviceName:'Máy tính thứ hai',options,onError:e=>errors.push(e)});
+const waitFor=async(predicate,message)=>{const until=Date.now()+10000;while(Date.now()<until){if(predicate())return;await new Promise(r=>setTimeout(r,100));}throw new Error(message+'; errors: '+errors.join(', '));};
+const query=setInterval(()=>dns.query('_flowdrop._tcp.local','PTR'),400);
+try{
+ await waitFor(()=>seen.some(r=>r.type==='SRV'&&r.data.port===5191)&&seen.some(r=>r.type==='SRV'&&r.data.port===5192),'No multicast service responses');
+ await waitFor(()=>first.peers().some(p=>p.id==='second')&&second.peers().some(p=>p.id==='first'),'Peer browsers did not find each other');assert.equal(first.peers().length,1);assert.equal(second.peers().length,1);
+ const ptr=seen.filter(r=>r.type==='PTR'&&r.name==='_flowdrop._tcp.local');assert.ok(ptr.some(r=>r.data.includes(first.name)));assert.ok(ptr.some(r=>r.data.includes(second.name)));
+ const srv=seen.find(r=>r.type==='SRV'&&r.data.port===5191);assert.match(srv.data.target,/\.local$/);
+ assert.ok(seen.some(r=>r.type==='A'&&r.name===srv.data.target));assert.ok(!seen.some(r=>r.type==='AAAA'&&r.name===srv.data.target));
+ const txt=seen.find(r=>r.type==='TXT'&&r.name===srv.name);assert.ok(txt);const values=txt.data.map(b=>b.toString());assert.ok(values.includes('app=flowdrop'));assert.ok(values.includes('version=1.13.0'));assert.ok(!values.some(s=>/token|password/i.test(s)));
+ first.rename('Tên thiết bị mới 📁');
+ await waitFor(()=>second.peers().some(p=>p.id==='first'&&p.name==='Tên thiết bị mới 📁'),'Renamed device did not propagate');
+ first.rename('Tên cuối cùng');first.rename('Máy đã đổi tên');
+ await waitFor(()=>second.peers().some(p=>p.id==='first'&&p.name==='Máy đã đổi tên'),'Consecutive renames lost latest name');
+ assert.equal(second.peers().filter(p=>p.id==='first').length,1);
+ const offset=seen.length;await first.stop();
+ await waitFor(()=>seen.slice(offset).some(r=>r.type==='PTR'&&r.ttl===0&&r.data.includes(first.name)),'No goodbye packet');
+ await waitFor(()=>second.peers().length===0,'Goodbye did not remove peer');
+ assert.ok(seen.some(r=>r.type==='SRV'&&r.data.port===5192&&r.ttl>0));assert.deepEqual(errors,[]);
+ console.log('mDNS integration passed: two named devices, PTR/SRV/TXT/A, correct ports, local hostnames and goodbye on stop.');
+}finally{clearInterval(query);await first.stop();await second.stop();dns.destroy();}

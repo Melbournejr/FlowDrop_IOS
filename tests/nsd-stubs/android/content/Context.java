@@ -1,0 +1,2 @@
+package android.content;
+public class Context{public static final String NSD_SERVICE="nsd",WIFI_SERVICE="wifi",CONNECTIVITY_SERVICE="connectivity";public android.net.nsd.NsdManager nsd=new android.net.nsd.NsdManager();public android.net.wifi.WifiManager wifi=new android.net.wifi.WifiManager();public android.net.ConnectivityManager connectivity=new android.net.ConnectivityManager();public Context getApplicationContext(){return this;}public Object getSystemService(String name){return NSD_SERVICE.equals(name)?nsd:WIFI_SERVICE.equals(name)?wifi:connectivity;}}

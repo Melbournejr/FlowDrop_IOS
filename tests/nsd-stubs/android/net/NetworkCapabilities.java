@@ -1,0 +1,1 @@
+package android.net;public class NetworkCapabilities{public static final int TRANSPORT_WIFI=1,TRANSPORT_VPN=4;private int type;public NetworkCapabilities(int type){this.type=type;}public boolean hasTransport(int t){return t==type;}}

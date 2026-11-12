@@ -1,0 +1,44 @@
+import {spawn} from 'node:child_process';
+import {mkdtemp,rm,readdir} from 'node:fs/promises';
+import {tmpdir} from 'node:os';
+import path from 'node:path';
+import assert from 'node:assert/strict';
+import {createHash,randomBytes} from 'node:crypto';
+import http from 'node:http';
+import net from 'node:net';
+const folder=await mkdtemp(path.join(tmpdir(),'flowdrop-http-'));
+const child=spawn(process.execPath,['scripts/dev.mjs'],{cwd:process.env.FLOWDROP_TEST_ROOT||new URL('../',import.meta.url),env:{...process.env,PORT:'0',FLOWDROP_DESKTOP:'1',FLOWDROP_DESKTOP_NATIVE:'1',FLOWDROP_DATA_DIR:folder,FLOWDROP_DEFAULT_RECEIVE_DIR:path.join(folder,'received')},stdio:['ignore','pipe','pipe']});
+let nativeToken='';
+let log='';child.stderr.on('data',b=>log+=b);
+try{
+ const origin=await new Promise((resolve,reject)=>{let output='';const timer=setTimeout(()=>reject(new Error('Server timeout: '+log)),10000);child.on('exit',code=>{clearTimeout(timer);reject(new Error('Server exited '+code+': '+log));});child.stdout.on('data',b=>{output+=b;const match=output.match(/FLOWDROP_READY (\{[^\n]+\})/);if(match){clearTimeout(timer);nativeToken=JSON.parse(match[1]).token;resolve('http://127.0.0.1:'+JSON.parse(match[1]).port);}});});
+ const config=await (await fetch(origin+'/api/config')).json();assert.equal(config.name,'FlowDrop');assert.equal(config.mode,'local');
+ const settings=await (await fetch(origin+'/api/desktop/settings',{headers:{'X-Desktop-Token':nativeToken}})).json();assert.equal(settings.autoSave,true);assert.equal(settings.directory,path.join(folder,'received'));
+ assert.equal((await fetch(origin+'/api/desktop/settings',{method:'POST',body:'{}'})).status,403);
+ assert.equal((await fetch(origin+'/api/desktop/settings',{method:'POST',headers:{'X-Desktop-Token':settings.token,Origin:'http://foreign.test'},body:'{}'})).status,403);
+ const rename=body=>fetch(origin+'/api/desktop/device-name',{method:'POST',headers:{'X-Desktop-Token':settings.token,'Content-Type':'application/json'},body:JSON.stringify(body)});
+ assert.equal((await fetch(origin+'/api/desktop/device-name',{method:'POST',body:JSON.stringify({name:'blocked'})})).status,403);
+ for(const name of ['', 'x'.repeat(51),'bad\nname'])assert.equal((await rename({name})).status,400);
+ const renamed=await rename({name:'  Máy tính của tôi 🖥️  '});assert.equal(renamed.status,200);const newName=(await renamed.json()).deviceName;assert.equal(newName,'Máy tính của tôi 🖥️');
+ const renamedConfig=await (await fetch(origin+'/api/config')).json();assert.equal(renamedConfig.deviceId,config.deviceId);assert.equal(renamedConfig.deviceName,newName);
+ assert.equal(JSON.parse(await (await import('node:fs/promises')).readFile(path.join(folder,'device-settings.json'),'utf8')).name,newName);
+ const rebinding=await new Promise((resolve,reject)=>{const req=http.get(origin+'/api/desktop/settings',{headers:{Host:'rebind.test:'+new URL(origin).port}},response=>{response.resume();resolve(response.statusCode);});req.on('error',reject);});assert.equal(rebinding,403);
+ for(const asset of ['/','/app.js','/style.css','/favicon.svg','/manifest.webmanifest','/assets/fonts/BeVietnamPro-Regular.ttf'])assert.equal((await fetch(origin+asset)).status,200,asset);
+ const bytes=randomBytes(1024*1024),sha=b=>createHash('sha256').update(b).digest('hex');
+ const created=await fetch(origin+'/api/transfers',{method:'POST',headers:{'Content-Type':'application/json','X-Desktop-Token':nativeToken},body:JSON.stringify({files:[{name:'Tài liệu kiểm tra.bin',size:bytes.length},{name:'empty.txt',size:0}]})});assert.equal(created.status,201);
+ const session=await created.json(),base=origin+'/api/transfers/'+session.code,headers={'X-Upload-Token':session.token};
+ for(const [i,body] of [bytes,Buffer.alloc(0)].entries()){const response=await fetch(base+'/files/'+session.files[i].id,{method:'PUT',body,headers});assert.equal(response.status,200,await response.text());}
+ assert.equal((await fetch(base+'/complete',{method:'POST',headers})).status,200);
+ const info=await (await fetch(base)).json();assert.equal(info.files.length,2);assert.equal(info.token,undefined);
+ const received=await fetch(base+'/files/'+session.files[0].id);assert.equal(sha(Buffer.from(await received.arrayBuffer())),sha(bytes));assert.match(received.headers.get('Content-Disposition'),/UTF-8/);
+ const save=await fetch(origin+'/api/desktop/receive',{method:'POST',headers:{'X-Desktop-Token':settings.token,'Content-Type':'application/json'},body:JSON.stringify({code:session.code})});assert.equal(save.status,200);const saved=await save.json();assert.equal(saved.files.length,2);const {readFile}=await import('node:fs/promises');assert.equal(sha(await readFile(saved.files[0].path)),sha(bytes));assert.equal((await readFile(saved.files[1].path)).length,0);
+ assert.equal((await fetch(origin+'/api/desktop/stop',{method:'POST'})).status,403);
+ const incomplete=await (await fetch(origin+'/api/transfers',{method:'POST',headers:{'X-Desktop-Token':nativeToken},body:JSON.stringify({files:[{name:'incomplete.bin',size:20}]})})).json();
+ await new Promise((resolve,reject)=>{const socket=net.createConnection({host:'127.0.0.1',port:new URL(origin).port});socket.on('connect',()=>socket.end('PUT /api/transfers/'+incomplete.code+'/files/'+incomplete.files[0].id+' HTTP/1.1\r\nHost: '+new URL(origin).host+'\r\nX-Upload-Token: '+incomplete.token+'\r\nContent-Length: 20\r\n\r\nshort'));socket.on('data',()=>{});socket.on('end',resolve);socket.on('error',reject);socket.setTimeout(5000,()=>socket.destroy(new Error('Abort test timeout')));});
+ for(let i=0;i<40&&(await readdir(folder)).some(n=>n.startsWith('.upload-'));i++)await new Promise(r=>setTimeout(r,50));
+ assert.ok(!(await readdir(folder)).some(n=>n.startsWith('.upload-')),'Partial disk upload was not removed');
+ assert.equal((await fetch(origin+'/api/transfers/'+incomplete.code+'/complete',{method:'POST',headers:{'X-Upload-Token':incomplete.token}})).status,409);
+ assert.equal((await fetch(base,{method:'DELETE',headers})).status,200);assert.equal((await fetch(base)).status,404);
+ assert.equal(sha(await readFile(saved.files[0].path)),sha(bytes));
+ console.log('HTTP integration passed: assets, config, 1 MiB + empty file, exact SHA-256, permanent desktop save, partial stream cleanup, revoke, private settings/token/origin/Host checks.');
+}finally{child.kill();await new Promise(resolve=>{if(child.exitCode!==null)resolve();else child.once('exit',resolve);});await rm(folder,{recursive:true,force:true});}

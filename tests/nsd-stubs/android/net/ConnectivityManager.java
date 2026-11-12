@@ -1,0 +1,1 @@
+package android.net;public class ConnectivityManager{public Network wifi=new Network(1),cellular=new Network(0);public Network[] getAllNetworks(){return new Network[]{cellular,wifi};}public NetworkCapabilities getNetworkCapabilities(Network n){return new NetworkCapabilities(n.type);}public LinkProperties getLinkProperties(Network n){return new LinkProperties();}}
