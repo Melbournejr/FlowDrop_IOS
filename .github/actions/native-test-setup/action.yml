@@ -1,0 +1,29 @@
+name: Native test prerequisites
+description: Node 24, Java 21, Python 3, pinned test JAR and npm lockfile; no application build or signing.
+inputs:
+  gate:
+    description: CI gate identifier
+    required: true
+runs:
+  using: composite
+  steps:
+  - name: Node 24
+    uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1
+    with:
+      node-version: '24'
+      package-manager-cache: false
+  - name: Java 21
+    uses: actions/setup-java@77dd5b2ce225ea11469928ac317850245a74ae78
+    with:
+      distribution: temurin
+      java-version: '21'
+      overwrite-settings: false
+  - name: Python 3
+    uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0
+    with:
+      python-version: '3.12'
+  - name: Verify prerequisites and install locked packages
+    shell: bash
+    env:
+      FLOWDROP_CI_GATE: ${{ inputs.gate }}
+    run: python3 tests/ci/run.py setup --work-root "$RUNNER_TEMP/flowdrop-native-$FLOWDROP_CI_GATE"

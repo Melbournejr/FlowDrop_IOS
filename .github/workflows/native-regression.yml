@@ -1,0 +1,230 @@
+name: Native regression
+'on':
+  pull_request:
+    branches:
+    - main
+    types:
+    - opened
+    - synchronize
+    - reopened
+    - ready_for_review
+    - labeled
+    - unlabeled
+  workflow_dispatch:
+    inputs:
+      run_zip64:
+        description: Run full >4 GiB suites after resource preflight
+        type: boolean
+        required: false
+        default: false
+permissions:
+  contents: read
+concurrency:
+  group: native-regression-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+jobs:
+  fast:
+    name: Fast / unit and contracts
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+    - name: Checkout reviewed source
+      uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      with:
+        persist-credentials: false
+    - name: Prepare test toolchain
+      uses: ./.github/actions/native-test-setup
+      with:
+        gate: fast
+    - name: Run fast gate
+      timeout-minutes: 5
+      shell: bash
+      run: python3 tests/ci/run.py fast --work-root "$RUNNER_TEMP/flowdrop-native-fast"
+    - name: Record missing verification
+      if: ${{ always() }}
+      shell: bash
+      run: |
+        mkdir -p "$RUNNER_TEMP/flowdrop-native-fast/logs"
+        if [[ ! -f "$RUNNER_TEMP/flowdrop-native-fast/logs/results.json" ]]; then
+          printf '%s\n' '{"status":"NOT VERIFIED","reason":"Test runner did not produce a completed result; inspect checkout/setup/job failure."}' > "$RUNNER_TEMP/flowdrop-native-fast/logs/not-verified.json"
+        fi
+    - name: Upload sanitized test evidence
+      if: ${{ always() }}
+      uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+      with:
+        name: FlowDrop-Native-fast-${{ github.run_id }}-${{ github.run_attempt }}
+        path: ${{ runner.temp }}/flowdrop-native-fast/logs/
+        if-no-files-found: error
+        retention-days: 7
+        include-hidden-files: false
+    - name: Clean owned test data
+      if: ${{ always() }}
+      shell: bash
+      run: |
+        if [[ -f tests/ci/run.py && -f "$RUNNER_TEMP/flowdrop-native-fast/.flowdrop-native-ci-owned" ]]; then
+          python3 tests/ci/run.py cleanup --work-root "$RUNNER_TEMP/flowdrop-native-fast"
+        fi
+  integration:
+    name: Integration / serial discovery and HTTP
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    needs:
+    - fast
+    steps:
+    - name: Checkout reviewed source
+      uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      with:
+        persist-credentials: false
+    - name: Prepare test toolchain
+      uses: ./.github/actions/native-test-setup
+      with:
+        gate: integration
+    - name: Run integration gate
+      timeout-minutes: 20
+      shell: bash
+      run: python3 tests/ci/run.py integration --work-root "$RUNNER_TEMP/flowdrop-native-integration"
+    - name: Record missing verification
+      if: ${{ always() }}
+      shell: bash
+      run: |
+        mkdir -p "$RUNNER_TEMP/flowdrop-native-integration/logs"
+        if [[ ! -f "$RUNNER_TEMP/flowdrop-native-integration/logs/results.json" ]]; then
+          printf '%s\n' '{"status":"NOT VERIFIED","reason":"Test runner did not produce a completed result; inspect checkout/setup/job failure."}' > "$RUNNER_TEMP/flowdrop-native-integration/logs/not-verified.json"
+        fi
+    - name: Upload sanitized test evidence
+      if: ${{ always() }}
+      uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+      with:
+        name: FlowDrop-Native-integration-${{ github.run_id }}-${{ github.run_attempt }}
+        path: ${{ runner.temp }}/flowdrop-native-integration/logs/
+        if-no-files-found: error
+        retention-days: 7
+        include-hidden-files: false
+    - name: Clean owned test data
+      if: ${{ always() }}
+      shell: bash
+      run: |
+        if [[ -f tests/ci/run.py && -f "$RUNNER_TEMP/flowdrop-native-integration/.flowdrop-native-ci-owned" ]]; then
+          python3 tests/ci/run.py cleanup --work-root "$RUNNER_TEMP/flowdrop-native-integration"
+        fi
+  stream:
+    name: Large / 101 files and 384 MiB streaming
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    needs:
+    - fast
+    steps:
+    - name: Checkout reviewed source
+      uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      with:
+        persist-credentials: false
+    - name: Prepare test toolchain
+      uses: ./.github/actions/native-test-setup
+      with:
+        gate: stream
+    - name: Run stream gate
+      timeout-minutes: 8
+      shell: bash
+      run: python3 tests/ci/run.py stream --work-root "$RUNNER_TEMP/flowdrop-native-stream"
+    - name: Record missing verification
+      if: ${{ always() }}
+      shell: bash
+      run: |
+        mkdir -p "$RUNNER_TEMP/flowdrop-native-stream/logs"
+        if [[ ! -f "$RUNNER_TEMP/flowdrop-native-stream/logs/results.json" ]]; then
+          printf '%s\n' '{"status":"NOT VERIFIED","reason":"Test runner did not produce a completed result; inspect checkout/setup/job failure."}' > "$RUNNER_TEMP/flowdrop-native-stream/logs/not-verified.json"
+        fi
+    - name: Upload sanitized test evidence
+      if: ${{ always() }}
+      uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+      with:
+        name: FlowDrop-Native-stream-${{ github.run_id }}-${{ github.run_attempt }}
+        path: ${{ runner.temp }}/flowdrop-native-stream/logs/
+        if-no-files-found: error
+        retention-days: 7
+        include-hidden-files: false
+    - name: Clean owned test data
+      if: ${{ always() }}
+      shell: bash
+      run: |
+        if [[ -f tests/ci/run.py && -f "$RUNNER_TEMP/flowdrop-native-stream/.flowdrop-native-ci-owned" ]]; then
+          python3 tests/ci/run.py cleanup --work-root "$RUNNER_TEMP/flowdrop-native-stream"
+        fi
+  zip64:
+    name: Large / full ZIP64 above 4 GiB
+    runs-on: ubuntu-24.04
+    timeout-minutes: 65
+    needs:
+    - fast
+    if: ${{ (github.event_name == 'workflow_dispatch' && inputs.run_zip64) || contains(github.event.pull_request.labels.*.name, 'ci-zip64')
+      }}
+    steps:
+    - name: Checkout reviewed source
+      uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      with:
+        persist-credentials: false
+    - name: Prepare test toolchain
+      uses: ./.github/actions/native-test-setup
+      with:
+        gate: zip64
+    - name: Run zip64 gate
+      timeout-minutes: 55
+      shell: bash
+      run: python3 tests/ci/run.py zip64 --work-root "$RUNNER_TEMP/flowdrop-native-zip64"
+    - name: Record missing verification
+      if: ${{ always() }}
+      shell: bash
+      run: |
+        mkdir -p "$RUNNER_TEMP/flowdrop-native-zip64/logs"
+        if [[ ! -f "$RUNNER_TEMP/flowdrop-native-zip64/logs/results.json" ]]; then
+          printf '%s\n' '{"status":"NOT VERIFIED","reason":"Test runner did not produce a completed result; inspect checkout/setup/job failure."}' > "$RUNNER_TEMP/flowdrop-native-zip64/logs/not-verified.json"
+        fi
+    - name: Upload sanitized test evidence
+      if: ${{ always() }}
+      uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+      with:
+        name: FlowDrop-Native-zip64-${{ github.run_id }}-${{ github.run_attempt }}
+        path: ${{ runner.temp }}/flowdrop-native-zip64/logs/
+        if-no-files-found: error
+        retention-days: 7
+        include-hidden-files: false
+    - name: Clean owned test data
+      if: ${{ always() }}
+      shell: bash
+      run: |
+        if [[ -f tests/ci/run.py && -f "$RUNNER_TEMP/flowdrop-native-zip64/.flowdrop-native-ci-owned" ]]; then
+          python3 tests/ci/run.py cleanup --work-root "$RUNNER_TEMP/flowdrop-native-zip64"
+        fi
+  coverage:
+    name: Coverage / explicit verification status
+    if: ${{ always() }}
+    needs:
+    - fast
+    - integration
+    - stream
+    - zip64
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+    - name: Report actual job conclusions
+      shell: bash
+      env:
+        FAST: ${{ needs.fast.result }}
+        INTEGRATION: ${{ needs.integration.result }}
+        STREAM: ${{ needs.stream.result }}
+        ZIP64: ${{ needs.zip64.result }}
+        ZIP64_REQUESTED: ${{ (github.event_name == 'workflow_dispatch' && inputs.run_zip64) || contains(github.event.pull_request.labels.*.name,
+          'ci-zip64') }}
+      run: |
+        printf '## Native regression coverage\n\n| Gate | GitHub result |\n|---|---|\n' >> "$GITHUB_STEP_SUMMARY"
+        printf '| Fast | %s |\n| Integration | %s |\n| 101 files / 384 MiB | %s |\n| ZIP64 >4 GiB | %s |\n' "$FAST" "$INTEGRATION" "$STREAM" "$ZIP64" >> "$GITHUB_STEP_SUMMARY"
+        if [[ "$ZIP64" == "skipped" ]]; then
+          printf '\n**NOT VERIFIED: ZIP64 >4 GiB was not run.** Opt in with the ci-zip64 PR label or workflow_dispatch run_zip64=true. No full-suite claim.\n' >> "$GITHUB_STEP_SUMMARY"
+        fi
+        for result in "$FAST" "$INTEGRATION" "$STREAM"; do
+          if [[ "$result" != "success" ]]; then exit 1; fi
+        done
+        if [[ "$ZIP64_REQUESTED" == "true" && "$ZIP64" != "success" ]]; then exit 1; fi
+        if [[ "$ZIP64" == "success" ]]; then
+          printf '\nAll selected Node/JVM gates completed successfully. Windows/Android OS and installer builds remain NOT VERIFIED.\n' >> "$GITHUB_STEP_SUMMARY"
+        fi
