@@ -49,7 +49,52 @@ Linux; Node **v24.19.0**, Java **21.0.12.1**, Python **3.12.14**. Mỗi gate ch�
 
 ## GitHub Actions
 
-**NOT VERIFIED tại commit chuẩn bị PR:** chưa có run của workflow mới. Phải tạo Draft PR, xác nhận sự kiện PR thực sự tạo run, bật label `ci-zip64` cho đợt nghiệm thu, rồi đối chiếu job/step/log/artifact và exit từng suite. Phần này sẽ cập nhật bằng run URL/kết quả thực tế sau quan sát; không coi kết quả Codex là kết quả runner GitHub.
+**[API/log, đã thực chạy]** [Draft PR #7](https://github.com/Melbournejr/FlowDrop_IOS/pull/7) tạo sự kiện PR và [run #1](https://github.com/Melbournejr/FlowDrop_IOS/actions/runs/43250684364). Sau khi thêm label `ci-zip64`, [run #2](https://github.com/Melbournejr/FlowDrop_IOS/actions/runs/43250769922) được kích hoạt và **completed/success**. Run #1 bị **cancelled** do concurrency khi run mới bắt đầu; không tính là PASS.
+
+Run #2 kiểm commit head **`e2855b8c5db2f0bec89144d57863bc34743079bb`** (PR merge checkout theo hành vi checkout mặc định). Đã đọc log của đủ năm job, đối chiếu conclusion/steps và các dòng PASS/exit thực do runner ghi; không suy từ một ô trạng thái tổng hợp.
+
+| Job | Kết quả thực | Test/upload/cleanup |
+| --- | --- | --- |
+| [Fast](https://github.com/Melbournejr/FlowDrop_IOS/actions/runs/43250769922/job/131295695641) | success | Đều success |
+| [Integration](https://github.com/Melbournejr/FlowDrop_IOS/actions/runs/43250769922/job/131295824688) | success | Đều success |
+| [Stream](https://github.com/Melbournejr/FlowDrop_IOS/actions/runs/43250769922/job/131295824906) | success | Đều success |
+| [ZIP64](https://github.com/Melbournejr/FlowDrop_IOS/actions/runs/43250769922/job/131295824488) | success | Đều success, không skip |
+| [Coverage](https://github.com/Melbournejr/FlowDrop_IOS/actions/runs/43250769922/job/131296534309) | success | Cả bốn gate cần đều success |
+
+Mỗi job log xác nhận `Contents: read`. Ubuntu 24.04; setup Node 24, Java 21 và CPython **3.12.16** (patch khác môi trường Codex, giữ đúng dòng 3.12). Setup kiểm version/JAR/npm ci đều success. Các dòng log exit/thời gian thực:
+
+| Suite | GitHub exit | Thời gian |
+| --- | ---: | ---: |
+| CI runner unit | 0 | 0,546s |
+| Asset integrity | 0 | 0,003s |
+| npm unit | 0 | 0,248s |
+| Harness unit | 0 | 0,274s |
+| HTTP | 0 | 1,597s |
+| Android host | 0 | 4,478s |
+| Discovery | 0 | 2,769s |
+| Peer | 0 | 9,771s |
+| LAN discovery | 0 | 16,289s |
+| Android discovery | 0 | 1,333s |
+| Security | 0 | 11,641s |
+| Large transfer | 0 | 8,988s |
+| Features | 0 | 13,843s |
+| Folders | 0 | 25,172s |
+| Native client | 0 | 15,792s |
+
+**13/13 lệnh gốc và hai guard mới đều chạy đạt trên GitHub**, gồm đầy đủ ba file test ZIP64, không timeout. Đây là bằng chứng Node/JVM/Linux; không thêm coverage OS/thiết bị thật. Run mặc định không bật ZIP64 và nhánh manual chưa được nghiệm thu riêng ở GitHub; logic thông báo NOT VERIFIED đã kiểm từ source, preflight thiếu tài nguyên được unit test thực chạy. Không suy run #1 bị hủy thành bằng chứng cho kết quả default gate hoàn chỉnh.
+
+Bốn artifact run #2 có trong API, upload steps success, digest API trùng digest upload job log; hết hạn **19/11/2026**:
+
+| Artifact | Byte ZIP | SHA-256 từ API/upload |
+| --- | ---: | --- |
+| [fast](https://github.com/Melbournejr/FlowDrop_IOS/actions/runs/43250769922/artifacts/13957738869) | 4915 | `eeddd5f5ac16312a1462393b603023e62433e3cbc18942b7c5222bc176c42028` |
+| [integration](https://github.com/Melbournejr/FlowDrop_IOS/actions/runs/43250769922/artifacts/13959565943) | 4694 | `04701ebb61302b65881e41c5fc16a209177d8a0b5dd22839fd09f16f7a4a5a19` |
+| [stream](https://github.com/Melbournejr/FlowDrop_IOS/actions/runs/43250769922/artifacts/13959098425) | 2485 | `9d6686a12b6cb8cb5167d332637d70babc8b2649b347397479c0a8a1cceb2203` |
+| [zip64](https://github.com/Melbournejr/FlowDrop_IOS/actions/runs/43250769922/artifacts/13959640674) | 3532 | `1a9e16bb3056ee99cd3f4958222a1c401508fae65ab9a63d78f091eee15960e4` |
+
+Đã xác nhận API tải artifact Fast trả file ZIP. Chưa giải nén/đối chiếu nội dung ZIP GitHub trong shell vì môi trường thực thi không còn khả dụng sau push; không tuyên bố đã kiểm tra từng member của archive GitHub. Quy trình chỉ upload logs đã sanitize, sanitizer có unit thực chạy ở cả local/GitHub; log local đã quét mẫu UUID/PAT trước commit. Việc kiểm archive byte độc lập còn là giới hạn bằng chứng, tách khỏi kết quả test/step thực chạy.
+
+Commit cập nhật báo cáo này chỉ bổ sung bằng chứng, không đổi workflow/runner/source đã kiểm ở run #2. Push đồng bộ PR sẽ tạo run kế tiếp; trạng thái commit cuối được đối chiếu riêng trong PR trước bàn giao.
 
 ## Rủi ro, giới hạn và rollback
 
