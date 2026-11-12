@@ -1,0 +1,34 @@
+Command: /opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node tests/http-integration.mjs
+CWD: /workspace/flowdrop-build/flowdrop-assets-2b2/repository
+Exit code: 1
+Wall seconds: 0.438
+Timeout: False
+
+STDOUT (capabilities/UUIDs redacted):
+
+STDERR (capabilities/UUIDs redacted):
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+[TypeError: fetch failed] {
+  [cause]: SocketError: other side closed
+      at Socket.onHttpSocketEnd (node:internal/deps/undici/undici:7833:26)
+      at Socket.emit (node:events:521:24)
+      at endReadableNT (node:internal/streams/readable:1736:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:90:21) {
+    code: 'UND_ERR_SOCKET',
+    socket: {
+      localAddress: '127.0.0.1',
+      localPort: 55014,
+      remoteAddress: '127.0.0.1',
+      remotePort: 41549,
+      remoteFamily: 'IPv4',
+      timeout: undefined,
+      bytesWritten: 564,
+      bytesRead: 24270
+    }
+  }
+}
+
+Node.js v24.19.0

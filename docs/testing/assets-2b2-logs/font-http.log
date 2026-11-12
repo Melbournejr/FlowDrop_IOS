@@ -1,0 +1,53 @@
+{
+  "requests": 6,
+  "results": [
+    {
+      "host": "desktop-node-native",
+      "route": "/assets/fonts/BeVietnamPro-Regular.ttf",
+      "status": 200,
+      "contentType": "font/ttf",
+      "bytes": 132948,
+      "sha256": "cd1ef6e9d7db28ad5cdb88a65ccbe693870e60d340b791f349d248342b4fe4c3"
+    },
+    {
+      "host": "desktop-node-native",
+      "route": "/assets/fonts/BeVietnamPro-Medium.ttf",
+      "status": 200,
+      "contentType": "font/ttf",
+      "bytes": 135980,
+      "sha256": "b60832bfa0fcd015158112c64d7e3fdad3b0c6287d1823f85a3103636e845268"
+    },
+    {
+      "host": "desktop-node-native",
+      "route": "/assets/fonts/BeVietnamPro-Bold.ttf",
+      "status": 200,
+      "contentType": "font/ttf",
+      "bytes": 140300,
+      "sha256": "7f738fe5c43c8872807b20e2d30d42163618de8a4daf7f48a939adac32c16847"
+    },
+    {
+      "host": "android-jvm",
+      "route": "/assets/fonts/BeVietnamPro-Regular.ttf",
+      "status": 200,
+      "contentType": "font/ttf",
+      "bytes": 132948,
+      "sha256": "cd1ef6e9d7db28ad5cdb88a65ccbe693870e60d340b791f349d248342b4fe4c3"
+    },
+    {
+      "host": "android-jvm",
+      "route": "/assets/fonts/BeVietnamPro-Medium.ttf",
+      "status": 200,
+      "contentType": "font/ttf",
+      "bytes": 135980,
+      "sha256": "b60832bfa0fcd015158112c64d7e3fdad3b0c6287d1823f85a3103636e845268"
+    },
+    {
+      "host": "android-jvm",
+      "route": "/assets/fonts/BeVietnamPro-Bold.ttf",
+      "status": 200,
+      "contentType": "font/ttf",
+      "bytes": 140300,
+      "sha256": "7f738fe5c43c8872807b20e2d30d42163618de8a4daf7f48a939adac32c16847"
+    }
+  ]
+}

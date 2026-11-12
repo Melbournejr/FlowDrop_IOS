@@ -1,0 +1,214 @@
+{
+  "schema": 1,
+  "phase": "2B.2",
+  "base_commit": "6f13c909ca146dcb54fa6e0e3874e76875a090af",
+  "branch": "fix/restore-baseline-fonts-1.13.0",
+  "pr5_merged": true,
+  "pr5_merge_commit": "6f13c909ca146dcb54fa6e0e3874e76875a090af",
+  "source_archive": {
+    "release_tag": "v1.13.0",
+    "asset_id": 733185749,
+    "url": "https://github.com/Melbournejr/FlowDrop_IOS/releases/download/v1.13.0/FlowDrop-Source-1.13.zip",
+    "size": 611206,
+    "sha256": "d1fea853ad992c0b8febf8efa1cc988ef52bc2ca8e6b798eb440f2c7a243a962",
+    "paths_types_crc_validated_before_import": true
+  },
+  "authorization_scope": "The Phase 2B.2 request authorizes a Draft PR for original resources whose provenance and license allow safe import. Only these three original OFL font binaries are included. The Phase 2A binary exclusion remains a historical record and is not rewritten.",
+  "license": {
+    "spdx": "OFL-1.1",
+    "notice_path": "web/assets/fonts/OFL.txt",
+    "notice_sha256": "6b7f8f73609a25ea78c891e34cf37b06f8a676b7ea986e941e43b009110f2a85",
+    "notice_unchanged": true,
+    "embedded_font_license_matches_notice": true,
+    "distribution_basis": "OFL permission and conditions 1, 2, 3 and 5 allow bundling/redistributing unchanged fonts with copyright notice and the full OFL; fonts remain under OFL. No standalone font sale, renaming, conversion or relicensing is performed. No new license is applied to the rest of the project."
+  },
+  "restored": [
+    {
+      "path": "web/assets/fonts/BeVietnamPro-Regular.ttf",
+      "archive_path": "FlowDrop/web/assets/fonts/BeVietnamPro-Regular.ttf",
+      "size": 132948,
+      "sha256": "cd1ef6e9d7db28ad5cdb88a65ccbe693870e60d340b791f349d248342b4fe4c3",
+      "git_blob_sha1": "dfa34c09fe2bae0626e00aa3265af2119345c27b",
+      "git_mode": "100644",
+      "spdx_license": "OFL-1.1",
+      "metadata": {
+        "copyright": [
+          "Copyright 2021 The Be Vietnam Pro Project Authors (https://github.com/bettergui/BeVietnamPro)"
+        ],
+        "family": [
+          "Be Vietnam Pro"
+        ],
+        "subfamily": [
+          "Regular"
+        ],
+        "full_name": [
+          "Be Vietnam Pro Regular"
+        ],
+        "version": [
+          "Version 1.002; ttfautohint (v1.8.3)"
+        ],
+        "postscript_name": [
+          "BeVietnamPro-Regular"
+        ],
+        "manufacturer": [
+          "Yellow Type Foundry"
+        ],
+        "designer": [
+          "Lam Bao, Tony Le, Vietanh Nguyen"
+        ],
+        "license": [
+          "This Font Software is licensed under the SIL Open Font License, Version 1.1. This license is available with a FAQ at: https://scripts.sil.org/OFL"
+        ],
+        "license_url": [
+          "https://scripts.sil.org/OFL"
+        ]
+      }
+    },
+    {
+      "path": "web/assets/fonts/BeVietnamPro-Medium.ttf",
+      "archive_path": "FlowDrop/web/assets/fonts/BeVietnamPro-Medium.ttf",
+      "size": 135980,
+      "sha256": "b60832bfa0fcd015158112c64d7e3fdad3b0c6287d1823f85a3103636e845268",
+      "git_blob_sha1": "d6deb87afdd7ddf003f3d0ab1070ab9df1df0724",
+      "git_mode": "100644",
+      "spdx_license": "OFL-1.1",
+      "metadata": {
+        "copyright": [
+          "Copyright 2021 The Be Vietnam Pro Project Authors (https://github.com/bettergui/BeVietnamPro)"
+        ],
+        "family": [
+          "Be Vietnam Pro Medium"
+        ],
+        "subfamily": [
+          "Regular"
+        ],
+        "full_name": [
+          "Be Vietnam Pro Medium"
+        ],
+        "version": [
+          "Version 1.002; ttfautohint (v1.8.3)"
+        ],
+        "postscript_name": [
+          "BeVietnamPro-Medium"
+        ],
+        "manufacturer": [
+          "Yellow Type Foundry"
+        ],
+        "designer": [
+          "Lam Bao, Tony Le, Vietanh Nguyen"
+        ],
+        "license": [
+          "This Font Software is licensed under the SIL Open Font License, Version 1.1. This license is available with a FAQ at: https://scripts.sil.org/OFL"
+        ],
+        "license_url": [
+          "https://scripts.sil.org/OFL"
+        ]
+      }
+    },
+    {
+      "path": "web/assets/fonts/BeVietnamPro-Bold.ttf",
+      "archive_path": "FlowDrop/web/assets/fonts/BeVietnamPro-Bold.ttf",
+      "size": 140300,
+      "sha256": "7f738fe5c43c8872807b20e2d30d42163618de8a4daf7f48a939adac32c16847",
+      "git_blob_sha1": "52aadc6da089ed8ae647b5e0c8cac4f8b3e24750",
+      "git_mode": "100644",
+      "spdx_license": "OFL-1.1",
+      "metadata": {
+        "copyright": [
+          "Copyright 2021 The Be Vietnam Pro Project Authors (https://github.com/bettergui/BeVietnamPro)"
+        ],
+        "family": [
+          "Be Vietnam Pro"
+        ],
+        "subfamily": [
+          "Bold"
+        ],
+        "full_name": [
+          "Be Vietnam Pro Bold"
+        ],
+        "version": [
+          "Version 1.002; ttfautohint (v1.8.3)"
+        ],
+        "postscript_name": [
+          "BeVietnamPro-Bold"
+        ],
+        "manufacturer": [
+          "Yellow Type Foundry"
+        ],
+        "designer": [
+          "Lam Bao, Tony Le, Vietanh Nguyen"
+        ],
+        "license": [
+          "This Font Software is licensed under the SIL Open Font License, Version 1.1. This license is available with a FAQ at: https://scripts.sil.org/OFL"
+        ],
+        "license_url": [
+          "https://scripts.sil.org/OFL"
+        ]
+      }
+    }
+  ],
+  "restored_binary_bytes": 409228,
+  "inspected_not_restored": {
+    "desktop/windows/FlowDrop.ico": {
+      "size": 19820,
+      "sha256": "cce4d31a79b6350c73daa884e9493d6ebc70746ac8e7471c924e0ad1b767650e",
+      "icon_type": 1,
+      "image_count": 6,
+      "images": [
+        {
+          "width": 16,
+          "height": 16,
+          "bpp": 32,
+          "size": 833,
+          "offset": 102,
+          "format": "PNG"
+        },
+        {
+          "width": 32,
+          "height": 32,
+          "bpp": 32,
+          "size": 1857,
+          "offset": 935,
+          "format": "PNG"
+        },
+        {
+          "width": 48,
+          "height": 48,
+          "bpp": 32,
+          "size": 2909,
+          "offset": 2792,
+          "format": "PNG"
+        },
+        {
+          "width": 64,
+          "height": 64,
+          "bpp": 32,
+          "size": 4060,
+          "offset": 5701,
+          "format": "PNG"
+        },
+        {
+          "width": 128,
+          "height": 128,
+          "bpp": 32,
+          "size": 7628,
+          "offset": 9761,
+          "format": "PNG"
+        },
+        {
+          "width": 256,
+          "height": 256,
+          "bpp": 32,
+          "size": 2431,
+          "offset": 17389,
+          "format": "PNG"
+        }
+      ],
+      "main_file_present": false,
+      "license_evidence": "No icon-specific copyright/license or global project license found in the inspected repository/ZIP filenames; not covered by the font OFL."
+    }
+  },
+  "icon_scope": "Requirement 6 requests inspection for a later build. No icon is imported; icon-specific provenance/rights must be decided before a future icon-restoration task. The font OFL is not applied to the icon.",
+  "original_font_manifest_unchanged": true,
+  "application_code_test_code_helpers_workflows_signing_ios_dependencies_changed": false
+}

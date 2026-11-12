@@ -1,0 +1,10 @@
+Command: /opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node tests/http-integration.mjs
+CWD: /workspace/flowdrop-build/flowdrop-assets-2b2/repository
+Exit code: 0
+Wall seconds: 1.713
+Timeout: False
+
+STDOUT (capabilities/UUIDs redacted):
+HTTP integration passed: assets, config, 1 MiB + empty file, exact SHA-256, permanent desktop save, partial stream cleanup, revoke, private settings/token/origin/Host checks.
+
+STDERR (capabilities/UUIDs redacted):

@@ -1,0 +1,15 @@
+Command: /opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node tests/lan-discovery-integration.mjs
+CWD: /workspace/flowdrop-build/flowdrop-assets-2b2/repository
+Exit code: 0
+Wall seconds: 18.565
+Timeout: False
+
+STDOUT (capabilities/UUIDs redacted):
+[
+  "Two production Java LAN engines and Node Windows engine each find both other devices over real UDP/TCP without mDNS; same-name phones remain distinct; self is excluded",
+  "Android friendly name updates in Node/Java lists without changing device ID or interrupting an active upload; exact SHA-256 preserved",
+  "Non-FlowDrop HTTP server and mismatched device IDs never enter device lists",
+  "Device removal and automatic rediscovery after restart; actual dynamically assigned HTTP ports confirmed"
+]
+
+STDERR (capabilities/UUIDs redacted):

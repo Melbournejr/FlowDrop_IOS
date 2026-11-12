@@ -1,0 +1,12 @@
+Command: /opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node tests/security-integration.mjs
+CWD: /workspace/flowdrop-build/flowdrop-assets-2b2/repository
+Exit code: 0
+Wall seconds: 13.108
+Timeout: False
+
+STDOUT (capabilities/UUIDs redacted):
+PASS: Windows local capability, remote-write rejection, token privacy, cross-origin and DNS-rebinding guards, duplicate Host and CL/TE rejection.
+PASS: Android local capability, remote-write rejection, token privacy, cross-origin and DNS-rebinding guards, duplicate Host and CL/TE rejection.
+PASS: Android incomplete headers terminate within the absolute 10 second deadline.
+
+STDERR (capabilities/UUIDs redacted):

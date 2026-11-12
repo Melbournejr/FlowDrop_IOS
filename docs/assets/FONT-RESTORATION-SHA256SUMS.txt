@@ -1,0 +1,5 @@
+cd1ef6e9d7db28ad5cdb88a65ccbe693870e60d340b791f349d248342b4fe4c3  web/assets/fonts/BeVietnamPro-Regular.ttf
+b60832bfa0fcd015158112c64d7e3fdad3b0c6287d1823f85a3103636e845268  web/assets/fonts/BeVietnamPro-Medium.ttf
+7f738fe5c43c8872807b20e2d30d42163618de8a4daf7f48a939adac32c16847  web/assets/fonts/BeVietnamPro-Bold.ttf
+6b7f8f73609a25ea78c891e34cf37b06f8a676b7ea986e941e43b009110f2a85  web/assets/fonts/OFL.txt
+150b3b220978afc45bae87121edc9def57fe40aa7deb91ddba6673a327fbbc2b  web/assets/fonts/manifest.json

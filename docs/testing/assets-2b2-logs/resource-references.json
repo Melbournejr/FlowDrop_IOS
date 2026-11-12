@@ -1,0 +1,80 @@
+{
+  "fonttools_version": "4.61.1",
+  "references": [
+    {
+      "path": "web/assets/fonts/BeVietnamPro-Regular.ttf",
+      "source": "web/style.css:1; scripts/dev.mjs:82; Android TransferServer.java:250; desktop FlowDrop.cpp:401",
+      "role": "original font, weight 400",
+      "present_after_restore": true
+    },
+    {
+      "path": "web/assets/fonts/BeVietnamPro-Medium.ttf",
+      "source": "web/style.css:1; scripts/dev.mjs:82; Android TransferServer.java:250; desktop FlowDrop.cpp:401",
+      "role": "original font, weight 500",
+      "present_after_restore": true
+    },
+    {
+      "path": "web/assets/fonts/BeVietnamPro-Bold.ttf",
+      "source": "web/style.css:1; scripts/dev.mjs:82; Android TransferServer.java:250; desktop FlowDrop.cpp:401",
+      "role": "original font, weight 700",
+      "present_after_restore": true
+    },
+    {
+      "path": "web/assets/fonts/OFL.txt",
+      "source": "font distribution notice, baseline manifest",
+      "role": "full font license and copyright; must accompany redistribution",
+      "present_after_restore": true
+    },
+    {
+      "path": "desktop/windows/FlowDrop.ico",
+      "source": "desktop/windows/FlowDrop.rc:4",
+      "role": "missing icon needed by future windres; inspected, not imported",
+      "present_after_restore": false
+    },
+    {
+      "path": "desktop/windows/FlowDrop.manifest",
+      "source": "desktop/windows/FlowDrop.rc:3",
+      "role": "existing application manifest resource",
+      "present_after_restore": true
+    },
+    {
+      "path": "android/res/drawable/ic_launcher.xml",
+      "source": "android/AndroidManifest.xml",
+      "role": "existing vector launcher resource",
+      "present_after_restore": true
+    },
+    {
+      "path": ".openai/hosting.json",
+      "source": "scripts/build.mjs:12; scripts/build-downloads.mjs:26",
+      "role": "legacy website deployment input; absent in ZIP and main; not part of font restoration",
+      "present_after_restore": false
+    },
+    {
+      "path": "scripts/build-installers.py",
+      "source": "Phase 2A exclusions.json",
+      "role": "excluded signing/packaging script; not restored or edited",
+      "present_after_restore": false
+    },
+    {
+      "path": "scripts/build-native-test-apk.py",
+      "source": "Phase 2A exclusions.json",
+      "role": "excluded signing test APK script; not restored or edited",
+      "present_after_restore": false
+    }
+  ],
+  "generated_routes_not_missing_files": [
+    "/favicon.svg (inline SVG in Node/Java handlers)",
+    "/manifest.webmanifest (generated JSON in Node/Java handlers)"
+  ],
+  "external_build_prerequisites": [
+    "Pinned Windows Node runtime in desktop/windows/runtime.json; node.exe is a build payload, not a source font resource",
+    "Android SDK/JDK, MinGW/NSIS and authorized signing tool setup; no installers built in this phase"
+  ],
+  "os_tools": {
+    "wine": null,
+    "x86_64-w64-mingw32-g++": null,
+    "makensis": null,
+    "adb": null,
+    "emulator": null
+  }
+}

@@ -1,0 +1,12 @@
+Command: /opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node tests/android-host-integration.mjs
+CWD: /workspace/flowdrop-build/flowdrop-assets-2b2/repository
+Exit code: 0
+Wall seconds: 2.615
+Timeout: False
+
+STDOUT (capabilities/UUIDs redacted):
+Android Java host: A → B exact SHA-256, empty file, access controls and revoke passed.
+Android Java host: B → A exact SHA-256, empty file, access controls and revoke passed.
+Android Java host integration passed: both directions, assets/config, Content-Length and chunked uploads, 1 MiB, Unicode names, protocol bounds, partial cleanup, expiry, origin and token checks.
+
+STDERR (capabilities/UUIDs redacted):

@@ -1,0 +1,10 @@
+Command: /opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node tests/android-discovery-state.mjs
+CWD: /workspace/flowdrop-build/flowdrop-assets-2b2/repository
+Exit code: 0
+Wall seconds: 1.781
+Timeout: False
+
+STDOUT (capabilities/UUIDs redacted):
+PASS: production Android discovery uses Wi-Fi, merges LAN fallback without NSD callbacks, excludes self, survives hung resolution and late callbacks, rebinds on Wi-Fi change, restarts safely, probes every advertised IPv4 when a VPN address fails, and uses TXT address hints on Android 10.
+
+STDERR (capabilities/UUIDs redacted):
