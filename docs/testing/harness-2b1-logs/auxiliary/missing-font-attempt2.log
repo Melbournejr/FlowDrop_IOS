@@ -1,0 +1,11 @@
+{
+  "asset": "/assets/fonts/BeVietnamPro-Regular.ttf",
+  "diskError": "ENOENT",
+  "stylesheetStatus": 200,
+  "client": {
+    "completed": false,
+    "error": "fetch failed",
+    "cause": "UND_ERR_SOCKET"
+  },
+  "configStatusAfterFontRequest": 200
+}

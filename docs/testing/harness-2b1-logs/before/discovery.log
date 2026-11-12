@@ -1,0 +1,10 @@
+Command: /opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node tests/discovery-integration.mjs
+CWD: /workspace/flowdrop-build/flowdrop-harness-2b1/repository
+Exit code: 0
+Wall seconds: 2.786
+Timeout: False
+
+STDOUT (capabilities/UUIDs redacted):
+mDNS integration passed: two named devices, PTR/SRV/TXT/A, correct ports, local hostnames and goodbye on stop.
+
+STDERR (capabilities/UUIDs redacted):

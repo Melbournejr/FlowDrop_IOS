@@ -1,0 +1,28 @@
+Command: /opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node tests/android-host-integration.mjs
+CWD: /workspace/flowdrop-build/flowdrop-harness-2b1/repository
+Exit code: 1
+Wall seconds: 2.501
+Timeout: False
+
+STDOUT (capabilities/UUIDs redacted):
+
+STDERR (capabilities/UUIDs redacted):
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: /assets/fonts/BeVietnamPro-Regular.ttf
+
+500 !== 200
+
+    at file:///workspace/flowdrop-build/flowdrop-harness-2b1/repository/tests/android-host-integration.mjs:28:137
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5) {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: 500,
+  expected: 200,
+  operator: 'strictEqual',
+  diff: 'simple'
+}
+
+Node.js v24.19.0

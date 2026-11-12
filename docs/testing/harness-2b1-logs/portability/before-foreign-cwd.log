@@ -1,0 +1,15 @@
+node:internal/fs/promises:1013
+  const result = await PromisePrototypeThen(
+                 ^
+
+Error: ENOENT: no such file or directory, scandir 'tests/nsd-stubs'
+    at async readdir (node:internal/fs/promises:1013:18)
+    at async sources (file:///workspace/flowdrop-build/flowdrop-harness-2b1/evidence/portability/before-original.mjs:6:58)
+    at async file:///workspace/flowdrop-build/flowdrop-harness-2b1/evidence/portability/before-original.mjs:7:17 {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'scandir',
+  path: 'tests/nsd-stubs'
+}
+
+Node.js v24.19.0

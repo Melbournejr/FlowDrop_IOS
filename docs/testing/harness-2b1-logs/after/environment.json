@@ -1,0 +1,29 @@
+{
+  "phase": "after",
+  "started_utc": "2026-11-12T06:57:22.332684+00:00",
+  "git_head": "c04affa26441440434d821fe9ff3c6fb4ddf2a07",
+  "git_status_before": " M tests/android-discovery-state.mjs\n M tests/android-host-integration.mjs\n M tests/android-native-client.mjs\n M tests/features-1.10.test.mjs\n M tests/folder-receive.test.mjs\n M tests/http-integration.mjs\n M tests/lan-discovery-integration.mjs\n M tests/large-transfer-integration.mjs\n M tests/peer-integration.mjs\n M tests/security-integration.mjs\n?? tests/harness.test.mjs\n?? tests/helpers/\n",
+  "node": "v24.19.0",
+  "java": "openjdk version \"21.0.12.1\" 2026-08-18\nOpenJDK Runtime Environment (build 21.0.12.1+1-1-deb13u1-Debian)\nOpenJDK 64-Bit Server VM (build 21.0.12.1+1-1-deb13u1-Debian, mixed mode, sharing)",
+  "json_jar_sha256": "3cf6cd6892e32e2b4c1c39e0f52f5248a2f5b37646fdfbb79a66b46b618414ed",
+  "disk_free_start": 20723978240,
+  "cgroup_memory_max": "8589934592",
+  "cgroup_cpu_max": "200000 100000",
+  "over_4gib_policy": "Run sequentially only with >=18 GiB free disk and >=2 GiB cgroup memory; bounded per-command wall timeout. Original assertions and sizes unchanged.",
+  "unsupported": [
+    {
+      "suite": "Windows C++ UI/shell smoke",
+      "reason": "Linux runner; no MinGW, Wine or Windows OS; do not build application or fetch binary assets."
+    },
+    {
+      "suite": "Android instrumentation/UI/share smoke",
+      "reason": "No adb/emulator/device; no APK build/sign/install authorized in this harness task."
+    },
+    {
+      "suite": "iOS tests",
+      "reason": "iOS explicitly out of scope."
+    }
+  ],
+  "finished_utc": "2026-11-12T07:01:08.668441+00:00",
+  "tracked_sources_unchanged_by_test_execution": true
+}

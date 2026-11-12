@@ -1,22 +1,15 @@
-import {spawn,spawnSync} from 'node:child_process';
-import {fileURLToPath} from 'node:url';
-import {mkdtemp,rm,mkdir,readFile,writeFile,readdir} from 'node:fs/promises';
-import {tmpdir} from 'node:os';
+import {readFile,writeFile,readdir} from 'node:fs/promises';
 import path from 'node:path';
 import net from 'node:net';
 import assert from 'node:assert/strict';
 import {createHash,randomBytes} from 'node:crypto';
-const root=fileURLToPath(new URL('../',import.meta.url));
-const tools=process.env.FLOWDROP_BUILD_TOOLS||'/workspace/flowdrop-build',jar=path.join(tools,'downloads/json-test.jar');
-const compiled=path.join(tools,'android-jvm-tests');await mkdir(compiled,{recursive:true});
-const javac=spawnSync('java',['-m','jdk.compiler/com.sun.tools.javac.Main','-source','8','-target','8','-encoding','UTF-8','-classpath',jar,'-d',compiled,path.join(root,'android/src/app/flowdrop/mobile/RequestSecurity.java'),path.join(root,'android/src/app/flowdrop/mobile/TransferServer.java'),path.join(root,'android/src/app/flowdrop/mobile/CodeLookup.java'),path.join(root,'tests/HostHarness.java')],{encoding:'utf8'});
-assert.equal(javac.status,0,javac.stderr);
-const data=await mkdtemp(path.join(tmpdir(),'flowdrop-android-host-'));
-const child=spawn('java',['-cp',compiled+path.delimiter+jar,'app.flowdrop.mobile.HostHarness',data,path.join(root,'web')],{stdio:['ignore','pipe','pipe']});let errorLog='';child.stderr.on('data',b=>errorLog+=b);
-let localToken='';
+import {createHarness,javaCommand,root,waitForHost} from './helpers/harness.mjs';
 const hash=b=>createHash('sha256').update(b).digest('hex');
+const harness=await createHarness('android-host'),data=path.join(harness.directory,'data');
 try{
- const origin=await new Promise((resolve,reject)=>{const timer=setTimeout(()=>reject(new Error('Java host timeout: '+errorLog)),10000);child.once('exit',c=>{clearTimeout(timer);reject(new Error('Java host exited '+c+': '+errorLog));});child.stdout.on('data',b=>{const ready=JSON.parse(b.toString().trim());localToken=ready.localToken;const m=b.toString().match(/http:\/\/127\.0\.0\.1:\d+/);if(m){clearTimeout(timer);resolve(m[0].replace(/\/$/,''));}});});
+ const {classpath}=await harness.compileJava(['android/src/app/flowdrop/mobile/RequestSecurity.java','android/src/app/flowdrop/mobile/TransferServer.java','android/src/app/flowdrop/mobile/CodeLookup.java','tests/HostHarness.java']);
+ const child=harness.spawn(javaCommand,['-cp',classpath,'app.flowdrop.mobile.HostHarness',data,path.join(root,'web')],{stdio:['ignore','pipe','pipe']});
+ const {origin,token:localToken}=await waitForHost(child,'android',{timeoutMs:10000});
  const request=(p,options={})=>fetch(origin+p,{...options,headers:{'X-Local-Token':localToken,...options.headers}});
  const create=async(files)=>{const r=await request('/api/transfers',{method:'POST',body:JSON.stringify({files})});assert.equal(r.status,201,await r.clone().text());return r.json();};
  const upload=async(session,index,bytes,chunked=false)=>{
@@ -45,4 +38,4 @@ try{
  assert.equal((await request('/api/transfers/'+partial.code+'/complete',{method:'POST',headers:{'X-Upload-Token':partial.token}})).status,409);
  const expiring=await create([{name:'expired.txt',size:0}]);const metaPath=path.join(data,expiring.code,'meta.json'),meta=JSON.parse(await readFile(metaPath,'utf8'));meta.expiresAt=Date.now()-1;await writeFile(metaPath,JSON.stringify(meta));assert.equal((await request('/api/transfers/'+expiring.code)).status,410);assert.equal((await request('/api/transfers/'+expiring.code)).status,404);
  console.log('Android Java host integration passed: both directions, assets/config, Content-Length and chunked uploads, 1 MiB, Unicode names, protocol bounds, partial cleanup, expiry, origin and token checks.');
-}finally{child.kill();await new Promise(resolve=>{if(child.exitCode!==null)resolve();else child.once('exit',resolve);});await rm(data,{recursive:true,force:true});}
+}finally{await harness.cleanup();}

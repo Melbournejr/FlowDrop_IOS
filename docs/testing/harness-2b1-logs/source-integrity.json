@@ -1,0 +1,44 @@
+{
+  "base_commit": "c04affa26441440434d821fe9ff3c6fb4ddf2a07",
+  "original_main_file_count": 152,
+  "changed_original_test_files": [
+    "tests/android-discovery-state.mjs",
+    "tests/android-host-integration.mjs",
+    "tests/android-native-client.mjs",
+    "tests/features-1.10.test.mjs",
+    "tests/folder-receive.test.mjs",
+    "tests/http-integration.mjs",
+    "tests/lan-discovery-integration.mjs",
+    "tests/large-transfer-integration.mjs",
+    "tests/peer-integration.mjs",
+    "tests/security-integration.mjs"
+  ],
+  "unchanged_original_file_count": 142,
+  "production_ios_workflows_signing_dependencies_unchanged": true,
+  "all_existing_files_outside_tests_unchanged": true,
+  "unchanged_original_test_files": 37,
+  "existing_test_body_checks": {
+    "features-1.10.test.mjs": "All original test bodies byte-identical after substituting only the Python executable identifier; sizes, names, assertions and >4 GiB cases retained.",
+    "folder-receive.test.mjs": "All original test bodies byte-identical after substituting only the Python executable identifier; sizes, names, assertions and >4 GiB cases retained.",
+    "http-integration.mjs": "Original core test body and assertions unchanged; bootstrap, per-host capability, paths/report/cleanup moved to shared harness.",
+    "android-host-integration.mjs": "Original core test body and assertions unchanged; bootstrap, per-host capability, paths/report/cleanup moved to shared harness.",
+    "security-integration.mjs": "Original core test body and assertions unchanged; bootstrap, per-host capability, paths/report/cleanup moved to shared harness.",
+    "peer-integration.mjs": "Original core test body and assertions unchanged; bootstrap, per-host capability, paths/report/cleanup moved to shared harness.",
+    "lan-discovery-integration.mjs": "Original core test body and assertions unchanged; bootstrap, per-host capability, paths/report/cleanup moved to shared harness."
+  },
+  "candidate_test_source_sha256": {
+    "tests/android-discovery-state.mjs": "040a0f8c2a202f7c3bc9ff350b9c4e2a4f2bfb9e50943a1e95e7f1a1cc9b2c03",
+    "tests/android-host-integration.mjs": "07b1756b644bbf626795b863f93516af99f612ff475c1b335642151abf04a077",
+    "tests/android-native-client.mjs": "1fec855830b9b0d9ee77396d05f7e140692e42d6952a25ac41956a3315fdfebe",
+    "tests/features-1.10.test.mjs": "d846fccab7392679bd41d0569d3a6357ac2941398f9fef9936c05df86e06a8f0",
+    "tests/folder-receive.test.mjs": "32bf5faa7de8322e082bfa0a70eca16369b4129c533e44944c86a832a058e84b",
+    "tests/http-integration.mjs": "53c77a4f28f96a7e4ab4fa8ada65323017ca9bfe07b81bf333b03e9c16700bbc",
+    "tests/lan-discovery-integration.mjs": "6bc951362d538b41e20d823868c7927ceec11a75c08ef2229361c50ff1501d28",
+    "tests/large-transfer-integration.mjs": "952f41f4b7cf5b44200ab423ebc7e80b1d3d894cf478694225cbe2512d409f4b",
+    "tests/peer-integration.mjs": "96f389e7b93e6ef78e2d23fa00682355c7fa5945704d110555512d0b7d57d326",
+    "tests/security-integration.mjs": "03ed5bf829f7d63a07d1a7cc96cdd1274292b7f507d8884613ab4e48afb1f2f8",
+    "tests/helpers/harness.mjs": "367a2253d7cc0060ed70553430251ffa7fbb2014fc21ffe22a0eb40fe4e77d98",
+    "tests/harness.test.mjs": "80677647d74e0331d7a1029b58e12365071eec098128fccd75f2cce8540c2fee"
+  },
+  "git_diff_check_exit_code": 0
+}

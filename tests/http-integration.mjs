@@ -1,17 +1,14 @@
-import {spawn} from 'node:child_process';
-import {mkdtemp,rm,readdir} from 'node:fs/promises';
-import {tmpdir} from 'node:os';
+import {readdir} from 'node:fs/promises';
 import path from 'node:path';
 import assert from 'node:assert/strict';
 import {createHash,randomBytes} from 'node:crypto';
 import http from 'node:http';
 import net from 'node:net';
-const folder=await mkdtemp(path.join(tmpdir(),'flowdrop-http-'));
-const child=spawn(process.execPath,['scripts/dev.mjs'],{cwd:process.env.FLOWDROP_TEST_ROOT||new URL('../',import.meta.url),env:{...process.env,PORT:'0',FLOWDROP_DESKTOP:'1',FLOWDROP_DESKTOP_NATIVE:'1',FLOWDROP_DATA_DIR:folder,FLOWDROP_DEFAULT_RECEIVE_DIR:path.join(folder,'received')},stdio:['ignore','pipe','pipe']});
-let nativeToken='';
-let log='';child.stderr.on('data',b=>log+=b);
+import {createHarness,root,waitForHost} from './helpers/harness.mjs';
+const harness=await createHarness('http'),folder=harness.directory;
 try{
- const origin=await new Promise((resolve,reject)=>{let output='';const timer=setTimeout(()=>reject(new Error('Server timeout: '+log)),10000);child.on('exit',code=>{clearTimeout(timer);reject(new Error('Server exited '+code+': '+log));});child.stdout.on('data',b=>{output+=b;const match=output.match(/FLOWDROP_READY (\{[^\n]+\})/);if(match){clearTimeout(timer);nativeToken=JSON.parse(match[1]).token;resolve('http://127.0.0.1:'+JSON.parse(match[1]).port);}});});
+ const child=harness.spawn(process.execPath,['scripts/dev.mjs'],{cwd:process.env.FLOWDROP_TEST_ROOT||root,env:{...process.env,PORT:'0',FLOWDROP_DESKTOP:'1',FLOWDROP_DESKTOP_NATIVE:'1',FLOWDROP_DISABLE_UPDATES:'1',FLOWDROP_DATA_DIR:folder,FLOWDROP_DEFAULT_RECEIVE_DIR:path.join(folder,'received')},stdio:['ignore','pipe','pipe']});
+ const {origin,token:nativeToken}=await waitForHost(child,'desktop',{timeoutMs:10000});
  const config=await (await fetch(origin+'/api/config')).json();assert.equal(config.name,'FlowDrop');assert.equal(config.mode,'local');
  const settings=await (await fetch(origin+'/api/desktop/settings',{headers:{'X-Desktop-Token':nativeToken}})).json();assert.equal(settings.autoSave,true);assert.equal(settings.directory,path.join(folder,'received'));
  assert.equal((await fetch(origin+'/api/desktop/settings',{method:'POST',body:'{}'})).status,403);
@@ -41,4 +38,4 @@ try{
  assert.equal((await fetch(base,{method:'DELETE',headers})).status,200);assert.equal((await fetch(base)).status,404);
  assert.equal(sha(await readFile(saved.files[0].path)),sha(bytes));
  console.log('HTTP integration passed: assets, config, 1 MiB + empty file, exact SHA-256, permanent desktop save, partial stream cleanup, revoke, private settings/token/origin/Host checks.');
-}finally{child.kill();await new Promise(resolve=>{if(child.exitCode!==null)resolve();else child.once('exit',resolve);});await rm(folder,{recursive:true,force:true});}
+}finally{await harness.cleanup();}

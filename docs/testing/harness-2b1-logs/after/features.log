@@ -1,0 +1,21 @@
+Command: /opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node --test tests/features-1.10.test.mjs
+CWD: /workspace/flowdrop-build/flowdrop-harness-2b1/repository
+Exit code: 0
+Wall seconds: 54.522
+Timeout: False
+
+STDOUT (capabilities/UUIDs redacted):
+✔ ZIP preserves Unicode, nested/empty folders, empty files; refuses links and cancellation (93.83564ms)
+✔ ZIP64 streams a file above 4 GiB and validates independently with Python (50951.395899ms)
+✔ Windows and Android verify the same signed release; tampering/invalid URLs rejected (1066.152587ms)
+✔ Java/Node resolve codes across multiple hosts, reject ambiguity, wrong and revoked shares (945.855898ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 4
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 54447.620609
+
+STDERR (capabilities/UUIDs redacted):

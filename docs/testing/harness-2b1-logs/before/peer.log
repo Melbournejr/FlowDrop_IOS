@@ -1,0 +1,31 @@
+Command: /opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node tests/peer-integration.mjs
+CWD: /workspace/flowdrop-build/flowdrop-harness-2b1/repository
+Exit code: 0
+Wall seconds: 11.704
+Timeout: False
+
+STDOUT (capabilities/UUIDs redacted):
+PASS: Sender sees pending, live increasing receiver bytes, and completion only after all committed files; premature completion rejected
+PASS: Windows discovers Android once, selects peer, sends offer; Android accepts and downloads exact bytes
+PASS: Global code receive finds the Android host without selecting it, saves exact bytes and empty file, and tracks completion
+PASS: Android native client sends offer; Windows consent streams into configured folder, exact SHA-256 and empty file
+PASS: Android to Android request and rejection
+PASS: Android to Android consent and exact file bytes
+PASS: Android sender learns peer failure; interrupted session never reports complete
+PASS: Windows receiver publishes live byte progress, waits for permanent commit before completion, and reports stream interruption with partial-file cleanup
+PASS: Invalid offer capability, remote consent and foreign-origin requests blocked
+PASS: Goodbye removes offline device automatically
+[
+  "Sender sees pending, live increasing receiver bytes, and completion only after all committed files; premature completion rejected",
+  "Windows discovers Android once, selects peer, sends offer; Android accepts and downloads exact bytes",
+  "Global code receive finds the Android host without selecting it, saves exact bytes and empty file, and tracks completion",
+  "Android native client sends offer; Windows consent streams into configured folder, exact SHA-256 and empty file",
+  "Android to Android request and rejection",
+  "Android to Android consent and exact file bytes",
+  "Android sender learns peer failure; interrupted session never reports complete",
+  "Windows receiver publishes live byte progress, waits for permanent commit before completion, and reports stream interruption with partial-file cleanup",
+  "Invalid offer capability, remote consent and foreign-origin requests blocked",
+  "Goodbye removes offline device automatically"
+]
+
+STDERR (capabilities/UUIDs redacted):

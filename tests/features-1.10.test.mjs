@@ -1,29 +1,29 @@
 import {test,after} from 'node:test';
 import assert from 'node:assert/strict';
-import {mkdtemp,mkdir,writeFile,readFile,rm,symlink,open,readdir} from 'node:fs/promises';
+import {mkdir,writeFile,readFile,rm,symlink,open,readdir} from 'node:fs/promises';
 import path from 'node:path';
 import {createHash,generateKeyPairSync,sign,randomUUID} from 'node:crypto';
-import {spawnSync,spawn} from 'node:child_process';
+import {spawnSync} from 'node:child_process';
 import {zipFolder} from '../scripts/folder-zip.mjs';
 import {verifyRelease,compareVersions,DesktopUpdater} from '../scripts/secure-update.mjs';
 import {findCode} from '../scripts/code-lookup.mjs';
-const tools='/workspace/flowdrop-build',jar=tools+'/downloads/json-test.jar';
-const dir=await mkdtemp(tools+'/features-1.10-');
-after(()=>rm(dir,{recursive:true,force:true}));
-const compiled=path.join(dir,'java');await mkdir(compiled);
-const build=spawnSync('java',['-m','jdk.compiler/com.sun.tools.javac.Main','-source','8','-target','8','-encoding','UTF-8','-cp',jar,'-d',compiled,'android/src/app/flowdrop/mobile/UpdateManifest.java','android/src/app/flowdrop/mobile/CodeLookup.java','tests/UpdateManifestHarness.java'],{encoding:'utf8'});assert.equal(build.status,0,build.stderr);
-const java=(...args)=>new Promise((resolve,reject)=>{const child=spawn('java',['-cp',compiled+path.delimiter+jar,'app.flowdrop.mobile.UpdateManifestHarness',...args],{stdio:['ignore','pipe','pipe']});let out='',err='';child.stdout.on('data',b=>out+=b);child.stderr.on('data',b=>err+=b);child.once('exit',code=>code?reject(new Error(err)):resolve(JSON.parse(out)));});
+import {createHarness,javaCommand,pythonCommand} from './helpers/harness.mjs';
+const harness=await createHarness('features'),dir=harness.directory;
+after(()=>harness.cleanup());
+let classpath;
+try{({classpath}=await harness.compileJava(['android/src/app/flowdrop/mobile/UpdateManifest.java','android/src/app/flowdrop/mobile/CodeLookup.java','tests/UpdateManifestHarness.java']));}catch(error){await harness.cleanup();throw error;}
+const java=(...args)=>new Promise((resolve,reject)=>{const child=harness.spawn(javaCommand,['-cp',classpath,'app.flowdrop.mobile.UpdateManifestHarness',...args],{stdio:['ignore','pipe','pipe']});let out='',err='';child.stdout.on('data',b=>out+=b);child.stderr.on('data',b=>err+=b);child.once('error',reject);child.once('exit',code=>code?reject(new Error(err)):resolve(JSON.parse(out)));});
 test('ZIP preserves Unicode, nested/empty folders, empty files; refuses links and cancellation',async()=>{
  const source=path.join(dir,'Thư mục 📁');await mkdir(path.join(source,'con','rỗng'),{recursive:true});await writeFile(path.join(source,'con','nội dung.txt'),'Dữ liệu thử nghiệm\n');await writeFile(path.join(source,'zero'),Buffer.alloc(0));
  const archive=path.join(dir,'normal.zip');const zipped=await zipFolder(source,archive);assert.equal(zipped.files,2);
- const validate=spawnSync('python',['-c',`import zipfile,sys\nwith zipfile.ZipFile(sys.argv[1]) as z:\n assert z.testzip() is None\n assert z.read('Thư mục 📁/con/nội dung.txt').decode()=='Dữ liệu thử nghiệm\\n'\n assert z.read('Thư mục 📁/zero')==b''\n assert z.getinfo('Thư mục 📁/con/rỗng/').is_dir()`,archive],{encoding:'utf8'});assert.equal(validate.status,0,validate.stderr);
+ const validate=spawnSync(pythonCommand,['-c',`import zipfile,sys\nwith zipfile.ZipFile(sys.argv[1]) as z:\n assert z.testzip() is None\n assert z.read('Thư mục 📁/con/nội dung.txt').decode()=='Dữ liệu thử nghiệm\\n'\n assert z.read('Thư mục 📁/zero')==b''\n assert z.getinfo('Thư mục 📁/con/rỗng/').is_dir()`,archive],{encoding:'utf8'});assert.equal(validate.status,0,validate.stderr);
  await assert.rejects(zipFolder(source,path.join(source,'nested.zip')),/ngoài/);
  await symlink(path.join(source,'zero'),path.join(source,'link'));await assert.rejects(zipFolder(source,path.join(dir,'links.zip')),/liên kết/);await rm(path.join(source,'link'));
  const abort=new AbortController();abort.abort();await assert.rejects(zipFolder(source,path.join(dir,'cancel.zip'),()=>{},abort.signal));
 });
 test('ZIP64 streams a file above 4 GiB and validates independently with Python',async()=>{
  const source=path.join(dir,'large');await mkdir(source);const size=2**32+131089,handle=await open(path.join(source,'large.bin'),'w');await handle.truncate(size);await handle.write(Buffer.from('A'),0,1,0);await handle.write(Buffer.from('Z'),0,1,size-1);await handle.close();const archive=path.join(dir,'large.zip');
- try{const result=await zipFolder(source,archive);assert.ok(result.size>size);const verify=spawnSync('python',['-c',`import zipfile,sys\nwith zipfile.ZipFile(sys.argv[1]) as z:\n info=z.getinfo('large/large.bin');assert info.file_size==int(sys.argv[2]);assert info.extract_version==45\n assert z.testzip() is None\n with z.open(info) as f:\n  assert f.read(1)==b'A';f.seek(info.file_size-1);assert f.read()==b'Z'`,archive,String(size)],{encoding:'utf8',timeout:120000});assert.equal(verify.status,0,verify.stderr);}finally{await rm(source,{recursive:true,force:true});await rm(archive,{force:true});}
+ try{const result=await zipFolder(source,archive);assert.ok(result.size>size);const verify=spawnSync(pythonCommand,['-c',`import zipfile,sys\nwith zipfile.ZipFile(sys.argv[1]) as z:\n info=z.getinfo('large/large.bin');assert info.file_size==int(sys.argv[2]);assert info.extract_version==45\n assert z.testzip() is None\n with z.open(info) as f:\n  assert f.read(1)==b'A';f.seek(info.file_size-1);assert f.read()==b'Z'`,archive,String(size)],{encoding:'utf8',timeout:120000});assert.equal(verify.status,0,verify.stderr);}finally{await rm(source,{recursive:true,force:true});await rm(archive,{force:true});}
 });
 test('Windows and Android verify the same signed release; tampering/invalid URLs rejected',async()=>{
  const {privateKey,publicKey}=generateKeyPairSync('rsa',{modulusLength:2048}),key=publicKey.export({type:'spki',format:'pem'}),androidKey=publicKey.export({type:'spki',format:'der'}).toString('base64');

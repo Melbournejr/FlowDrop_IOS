@@ -1,6 +1,4 @@
-import {spawn,spawnSync} from 'node:child_process';
-import {mkdtemp,mkdir,rm,readFile,writeFile,readdir} from 'node:fs/promises';
-import {tmpdir} from 'node:os';
+import {rm,readFile,readdir} from 'node:fs/promises';
 import path from 'node:path';
 import assert from 'node:assert/strict';
 import http from 'node:http';
@@ -9,18 +7,19 @@ import {once} from 'node:events';
 import {randomBytes,createHash} from 'node:crypto';
 import {createInterface} from 'node:readline';
 import {advertiseFlowDrop} from '../scripts/discovery.mjs';
-const root=process.cwd(),tools='/workspace/flowdrop-build',jar=tools+'/downloads/json-test.jar',compiled=tools+'/peer-tests';await mkdir(compiled,{recursive:true});
-const javac=spawnSync('java',['-m','jdk.compiler/com.sun.tools.javac.Main','-source','8','-target','8','-encoding','UTF-8','-cp',jar,'-d',compiled,'android/src/app/flowdrop/mobile/TransferClient.java','android/src/app/flowdrop/mobile/CodeLookup.java','android/src/app/flowdrop/mobile/RequestSecurity.java','android/src/app/flowdrop/mobile/TransferServer.java','tests/PeerHostHarness.java'],{encoding:'utf8'});assert.equal(javac.status,0,javac.stderr);
+import {createHarness,javaCommand,waitForHost} from './helpers/harness.mjs';
+const harness=await createHarness('peers');let classpath;
 const localCapabilities=new Map();
-const folder=await mkdtemp(path.join(tmpdir(),'flowdrop-peers-')),children=[],adverts=[],servers=[],report=[];
+const folder=harness.directory,adverts=[],servers=[],report=[];
 report.push=(...messages)=>{messages.forEach(m=>console.log('PASS: '+m));return Array.prototype.push.apply(report,messages);};
-async function phone(name){const child=spawn('java',['-Xmx96m','-cp',compiled+path.delimiter+jar,'app.flowdrop.mobile.PeerHostHarness',path.join(folder,name),name],{stdio:['pipe','pipe','inherit']});children.push(child);const lines=createInterface({input:child.stdout})[Symbol.asyncIterator]();const next=async()=>{const line=await lines.next();assert.equal(line.done,false);const value=JSON.parse(line.value);assert.ok(!value.error,value.error);return value;};const {url,localToken}=await next();localCapabilities.set(url,localToken);return {url,command:async command=>{child.stdin.write(JSON.stringify(command)+'\n');return next();}};}
-async function json(url,body,token){const r=await fetch(url,{method:body?'POST':'GET',headers:{'Content-Type':'application/json',...(localCapabilities.get(new URL(url).origin+'/')?{'X-Local-Token':localCapabilities.get(new URL(url).origin+'/')}:{}),...(token?{'X-Desktop-Token':token}:{})},body:body?JSON.stringify(body):undefined});const value=await r.json();assert.ok(r.ok,JSON.stringify(value));return value;}
+async function phone(name){const child=harness.spawn(javaCommand,['-Xmx96m','-cp',classpath,'app.flowdrop.mobile.PeerHostHarness',path.join(folder,name),name],{stdio:['pipe','pipe','inherit']});const lines=createInterface({input:child.stdout})[Symbol.asyncIterator]();const next=async()=>{const line=await lines.next();assert.equal(line.done,false);const value=JSON.parse(line.value);assert.ok(!value.error,value.error);return value;};const {url,localToken}=await next();localCapabilities.set(url,{header:'X-Local-Token',token:localToken});return {url,command:async command=>{child.stdin.write(JSON.stringify(command)+'\n');return next();}};}
+async function json(url,body,token){const capability=localCapabilities.get(new URL(url).origin+'/');const r=await fetch(url,{method:body?'POST':'GET',headers:{'Content-Type':'application/json',...(capability?{[capability.header]:capability.token}:{}),...(token?{'X-Desktop-Token':token}:{})},body:body?JSON.stringify(body):undefined});const value=await r.json();assert.ok(r.ok,JSON.stringify(value));return value;}
 async function session(url,length=1024*1024+17){const bytes=randomBytes(length),s=await json(url+'api/transfers',{files:[{name:'Ảnh từ Wi-Fi.bin',size:bytes.length},{name:'rỗng.txt',size:0}]});for(let i=0;i<s.files.length;i++){const r=await fetch(url+'api/transfers/'+s.code+'/files/'+s.files[i].id,{method:'PUT',headers:{'X-Upload-Token':s.token},body:i===0?bytes:Buffer.alloc(0)});assert.equal(r.status,200);}await fetch(url+'api/transfers/'+s.code+'/complete',{method:'POST',headers:{'X-Upload-Token':s.token}});return {s,bytes};}
 const hash=b=>createHash('sha256').update(b).digest('hex');
 try{
- const desktop=spawn(process.execPath,['scripts/dev.mjs','--host','0.0.0.0'],{env:{...process.env,PORT:'0',FLOWDROP_DATA_DIR:path.join(folder,'windows')},stdio:['ignore','pipe','inherit']});children.push(desktop);
- const win=await new Promise((resolve,reject)=>{const timer=setTimeout(()=>reject(new Error('Windows host timeout')),15000);desktop.stdout.on('data',b=>{const m=b.toString().match(/http:\/\/127\.0\.0\.1:\d+/);if(m){clearTimeout(timer);resolve(m[0]+'/');}});});
+ ({classpath}=await harness.compileJava(['android/src/app/flowdrop/mobile/TransferClient.java','android/src/app/flowdrop/mobile/CodeLookup.java','android/src/app/flowdrop/mobile/RequestSecurity.java','android/src/app/flowdrop/mobile/TransferServer.java','tests/PeerHostHarness.java']));
+ const desktop=harness.spawn(process.execPath,['scripts/dev.mjs','--host','0.0.0.0'],{env:{...process.env,PORT:'0',FLOWDROP_DESKTOP:'1',FLOWDROP_DESKTOP_NATIVE:'1',FLOWDROP_DISABLE_UPDATES:'1',FLOWDROP_DATA_DIR:path.join(folder,'windows'),FLOWDROP_DEFAULT_RECEIVE_DIR:path.join(folder,'saved')},stdio:['ignore','pipe','pipe']});
+ const desktopHost=await waitForHost(desktop,'desktop'),win=desktopHost.origin+'/';localCapabilities.set(win,{header:desktopHost.header,token:desktopHost.token});
  const [a,b]=await Promise.all([phone('Android-A'),phone('Android-B')]);
  const cfg=await json(a.url+'api/config');adverts.push(advertiseFlowDrop({port:Number(new URL(a.url).port),deviceName:'Android-A',deviceId:cfg.deviceId,platform:'android'}));
  const settings=await json(win+'api/desktop/settings'),token=settings.token,save=path.join(folder,'saved');await json(win+'api/desktop/settings',{directory:save,autoSave:true},token);
@@ -72,5 +71,5 @@ try{
  assert.equal((await fetch(win+'api/desktop/answer-offer',{method:'POST',body:'{}'})).status,403);
  for(const url of [win,a.url])assert.equal((await fetch(url+'api/offers',{method:'POST',headers:{Origin:'https://foreign.test'},body:JSON.stringify(invalid)})).status,403);report.push('Invalid offer capability, remote consent and foreign-origin requests blocked');
  await adverts[0].stop();for(let i=0;i<50;i++){peers=(await json(win+'api/desktop/peers',{},token)).peers;if(!peers.some(p=>p.id===cfg.deviceId))break;await new Promise(r=>setTimeout(r,100));}assert.ok(!peers.some(p=>p.id===cfg.deviceId),'Stopped Android remained in peer list');report.push('Goodbye removes offline device automatically');
- await writeFile(tools+'/peer-verification-1.9.json',JSON.stringify(report,null,2));console.log(JSON.stringify(report,null,2));
-}finally{for(const server of servers){server.closeAllConnections();await new Promise(r=>server.close(r));}for(const advert of adverts)await advert.stop();for(const child of children)child.kill();await Promise.all(children.map(c=>new Promise(r=>c.exitCode!==null?r():c.once('exit',r))));await rm(folder,{recursive:true,force:true});}
+ await harness.writeReport('peer-verification-1.9.json',report);console.log(JSON.stringify(report,null,2));
+}finally{try{for(const server of servers){server.closeAllConnections();await new Promise(r=>server.close(r));}for(const advert of adverts)await advert.stop();}finally{await harness.cleanup();}}
