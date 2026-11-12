@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Tải bộ cài FlowDrop cho Windows và Android. Chuyển file hai chiều trong cùng Wi-Fi.">
+  <title>Tải FlowDrop — FlowDrop 1.12 · Tự tìm Windows và Android qua Wi-Fi</title>
+  <style>
+    *{box-sizing:border-box}body{margin:0;background:#0b1020;color:#edf3ff;font:16px/1.65 system-ui,sans-serif}main{max-width:880px;margin:auto;padding:60px 24px}header{margin-bottom:32px}.brand{font-weight:800;color:#58e6a3;letter-spacing:.03em}h1{font-size:clamp(32px,6vw,48px);line-height:1.2;margin:16px 0}h2{font-size:23px;margin:0 0 8px}p{color:#9eacc2;margin:12px 0}.cards{display:grid;grid-template-columns:1fr 1fr;gap:20px}.card{padding:28px;border:1px solid #2a3750;border-radius:20px;background:#131c2e}.button{display:inline-block;background:#58e6a3;color:#0b2920;text-decoration:none;border-radius:10px;padding:12px 20px;margin-top:12px;font-weight:650}.button:hover{background:#86f5bc}.button:focus-visible,a:focus-visible{outline:3px solid #a7c7ff;outline-offset:4px}.note{font-size:14px}section{margin-top:32px}a{color:#58e6a3}ol{padding-left:24px}li{padding:4px 0}footer{border-top:1px solid #2a3750;margin-top:32px;padding-top:20px;font-size:14px;color:#9eacc2}@media(max-width:600px){main{padding-top:32px}.cards{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+<main>
+  <header>
+    <div class="brand">FlowDrop · 1.12 · Windows và Android native</div>
+    <h1>Chuyển file giữa<br>các thiết bị cùng Wi-Fi.</h1>
+    <p>Giao diện tối, điểm nhấn xanh. Bỏ hạn mức 10 file / 50 MB / 200 MB. Tự nhận diện thiết bị. Gửi hai chiều Windows ↔ Android và Android ↔ Android. Chọn thiết bị để gửi trực tiếp; bên nhận xác nhận rồi tự lưu file. Bản 1.12 thêm đổi tên thiết bị, gửi nhanh từ menu Send to của Windows và hộp thoại Cập nhật ngay / Để sau. Giữ tên file và cấu trúc khi gửi thư mục.</p>
+  </header>
+  <div class="cards">
+    <article class="card">
+      <h2>Windows</h2>
+      <p>Bộ cài cho Windows 10/11, 64 bit.<br>Dung lượng khoảng 23 MB.</p>
+      <a class="button" href="/downloads/FlowDrop-Setup-1.12.0-Windows-x64.exe" download>Tải bộ cài EXE</a>
+      <p class="note">Giao diện Windows gốc, cửa sổ riêng. Có chọn thư mục lưu file. Không dùng trình duyệt hoặc WebView.</p>
+    </article>
+    <article class="card">
+      <h2>Android</h2>
+      <p>Android 10 trở lên.<br>Dung lượng khoảng 271 KB.</p>
+      <a class="button" href="/downloads/FlowDrop-1.12.0-Android.apk" download>Tải ứng dụng APK</a>
+      <p class="note">Ảnh/video vào album FlowDrop; các file khác vào Download/FlowDrop. Giao diện Android native nền tối, điểm nhấn xanh; không cần WebView. Font tiếng Việt có sẵn ngoại tuyến.</p>
+    </article>
+  </div>
+  <section class="card">
+    <h2>iPhone và iPad · mã nguồn bản phát triển</h2>
+    <p>Dự án SwiftUI native cho iOS/iPadOS 15 trở lên, gồm iOS 15.8.7, giao diện tối và điểm nhấn xanh. Có workflow build IPA trên máy macOS của GitHub Actions.</p>
+    <a class="button" href="/downloads/FlowDrop-iOS-iPadOS-Source-1.0.3.zip" download>Tải dự án iOS/iPadOS 1.0.3</a>
+    <p><a href="/downloads/FlowDrop-iOS-Huong-dan-1.0.3.md" download>Hướng dẫn cập nhật, build lại và cài trên iOS 15.8.7</a></p>
+    <p class="note">Gói 1.0.3 thêm giao diện điều hướng/chia sẻ cho iOS 15 và kiểm tra MinimumOSVersion 15.0 trước khi đóng gói. Bản 1.0.2 đã có ảnh GitHub Actions build thành công do người dùng cung cấp. Gói 1.0.3 cần build lại; chưa kiểm thử trên thiết bị iOS 15.8.7 thật.</p>
+    <p class="note">Đây là mã nguồn, chưa phải bộ cài IPA. IPA từ workflow chưa ký; dùng Sideloadly/Xcode, hoặc TrollStore trên firmware tương thích. Apple ID miễn phí thường cần ký lại sau 7 ngày; hướng dẫn kèm cách cài TrollStore cho iOS 15.8.7. Kiểm tra hạn mức GitHub Actions trước khi chạy.</p>
+  </section>
+  <section>
+    <h2>Bắt đầu trong 3 bước</h2>
+    <ol>
+      <li>Cập nhật FlowDrop 1.12 trên cả hai thiết bị, kết nối cùng Wi-Fi và mở ứng dụng.</li>
+      <li>Android tự quét cả Windows lẫn Android bằng dò Wi-Fi trực tiếp và mDNS. Chọn tên thiết bị muốn gửi đến.</li>
+      <li>Chọn file → Gửi đến… → bên nhận chấp nhận để lưu. Không cần nhập địa chỉ hoặc mã.</li>
+    </ol>
+    <p><a href="/downloads/FlowDrop-Huong-dan-1.12.md" download>Tải hướng dẫn cài đặt và sử dụng</a> · <a href="/downloads/SHA256SUMS.txt" download>Mã kiểm tra SHA256</a></p>
+  </section>
+  <section class="card">
+    <h2>Đổi tên, gửi nhanh và cập nhật</h2>
+    <p>Windows: nút Đổi tên cạnh Máy này. Android: Cài đặt → Đổi tên thiết bị. Tên mới được lưu và hiển thị cho các thiết bị cùng Wi-Fi.</p>
+    <p>Trong Explorer, chọn file → chuột phải → Send to → FlowDrop. Windows 11: Show more options → Send to. File được thêm vào FlowDrop để chọn máy nhận và gửi.</p>
+    <p>Windows tự kiểm tra khi mở và mỗi 6 giờ. Nút Cập nhật thông báo rõ có bản mới hay chưa; chọn Cập nhật ngay để tải/cài đè, hoặc Để sau. Ứng dụng chờ các phiên truyền kết thúc trước khi cập nhật.</p>
+  </section>
+  <section class="card">
+    <h2>Nhận thư mục nguyên cấu trúc</h2>
+    <p>Cập nhật cả hai máy lên 1.12. Chọn thư mục để gửi; máy nhận tự tạo FlowDrop/Tên thư mục và giữ các file, thư mục con, thư mục rỗng. Khi trùng tên, chỉ thêm số vào thư mục ngoài để tránh ghi đè. Android đặt nguyên thư mục trong Download/FlowDrop; ảnh/video gửi lẻ vẫn vào Album.</p>
+    <a class="button" href="https://github.com/Melbournejr/FlowDrop_IOS/releases/tag/v1.12.0">Xem bản phát hành trên GitHub</a>
+    <p class="note">Bản 1.10 có thể nhận cập nhật qua GitHub; bản cũ hơn cần cài đè một lần. Android có thể yêu cầu xác nhận của hệ thống. ZIP gửi như file thường vẫn giữ nguyên ZIP.</p>
+    <p><a href="/downloads/FlowDrop-Source-1.12.zip" download>Tải mã nguồn Windows và Android</a> · <a href="/downloads/FlowDrop-Kiem-chung-1.12.json" download>Phạm vi kiểm chứng</a></p>
+  </section>
+  <section>
+    <h2>Nếu điện thoại chưa kiểm tra được APK</h2>
+    <p>Thông báo “A network error occurred. Couldn't check this app” xuất hiện ở bước quét bảo mật của máy. Kết nối Internet ổn định rồi bấm Try again. Bản 1.12 dùng giao diện Android native, tự quảng bá thiết bị khi mở app. Khóa ký giữ nguyên để cài đè bản trước. Nếu Android chưa thấy Windows, bấm Cho phép Wi-Fi trên máy tính và chấp nhận yêu cầu Firewall của Windows. Kiểm tra hai máy cùng mạng.</p>
+  </section>
+  <footer>Đã kiểm tra luồng cập nhật có lựa chọn, chữ ký/SHA-256, lưu tên, phát hiện thiết bị và truyền file qua Node/Java. Đổi tên Android trong khi đang tải lên giữ đúng dữ liệu. EXE/APK đã biên dịch; APK giữ khóa ký gốc. Phạm vi kiểm chứng chi tiết nằm trong tệp đi kèm. Chưa thử bản 1.12 trên Windows/Android thật và Wi-Fi của người dùng.</footer>
+</main>
+</body>
+</html>

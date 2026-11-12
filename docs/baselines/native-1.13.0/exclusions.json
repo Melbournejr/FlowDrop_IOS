@@ -1,0 +1,386 @@
+{
+  "schema": 1,
+  "source_archive_sha256": "d1fea853ad992c0b8febf8efa1cc988ef52bc2ca8e6b798eb440f2c7a243a962",
+  "excluded_file_count": 31,
+  "note": "Only paths, line numbers, sizes and whole-file digests are recorded; no credential value or secret-bearing file content is included.",
+  "files": [
+    {
+      "archive_path": "FlowDrop/.github/workflows/flowdrop-ios.yml",
+      "path": ".github/workflows/flowdrop-ios.yml",
+      "size": 1378,
+      "sha256": "b4627f366ccf78985e54e778d52d6decda393a33dcfb5556c1ffe6531ccb0b54",
+      "reasons": [
+        {
+          "code": "workflow-frozen",
+          "detail": "Không nhập hoặc thay đổi workflow; path này cũng nằm trong phạm vi PR #1."
+        }
+      ]
+    },
+    {
+      "archive_path": "FlowDrop/.gitignore",
+      "path": ".gitignore",
+      "size": 507,
+      "sha256": "7955a35fc4c4cbcb2f14f7e796b9a205c89b0a38a68176a22462187fa77e7ed2",
+      "reasons": [
+        {
+          "code": "existing-policy-preserved",
+          "detail": "Giữ nguyên .gitignore trên main; tránh chồng chéo PR #1."
+        }
+      ]
+    },
+    {
+      "archive_path": "FlowDrop/README.md",
+      "path": "README.md",
+      "size": 5509,
+      "sha256": "871405d704dbc5e45a87d205d85a9ae8154503a57985ef5d9f0a51f4ec2c7f33",
+      "reasons": [
+        {
+          "code": "existing-document-preserved",
+          "detail": "Không ghi đè README hiện có hoặc thay tài liệu iOS bằng bản native cũ trong ZIP."
+        }
+      ]
+    },
+    {
+      "archive_path": "FlowDrop/SECURITY.md",
+      "path": "SECURITY.md",
+      "size": 4429,
+      "sha256": "39c8cb6543fc044612a32687b272cae9a68f3da1b284c7f675c9f75e89a494e4",
+      "reasons": [
+        {
+          "code": "pr1-overlap",
+          "detail": "SECURITY.md đang được đề xuất trong PR #1; không tạo bản cạnh tranh."
+        }
+      ]
+    },
+    {
+      "archive_path": "FlowDrop/desktop/windows/FlowDrop.ico",
+      "path": "desktop/windows/FlowDrop.ico",
+      "size": 19820,
+      "sha256": "cce4d31a79b6350c73daa884e9493d6ebc70746ac8e7471c924e0ad1b767650e",
+      "reasons": [
+        {
+          "code": "binary-asset-prohibited",
+          "detail": "File nhị phân (icon/font); yêu cầu Giai đoạn 2A cấm nhập binary, không thay thế hoặc tái sinh asset."
+        }
+      ]
+    },
+    {
+      "archive_path": "FlowDrop/ios/FlowDropApple.xcodeproj/project.pbxproj",
+      "path": "ios/FlowDropApple.xcodeproj/project.pbxproj",
+      "size": 9337,
+      "sha256": "be2428b2ed824a25cf3aa0d36978b86dc29e7bd94f5382afaf149b47027782ba",
+      "reasons": [
+        {
+          "code": "ios-frozen",
+          "detail": "Giữ nguyên toàn bộ cây iOS hiện có trên main; iOS ngoài phạm vi Giai đoạn 2A."
+        }
+      ]
+    },
+    {
+      "archive_path": "FlowDrop/ios/FlowDropApple.xcodeproj/xcshareddata/xcschemes/FlowDropApple.xcscheme",
+      "path": "ios/FlowDropApple.xcodeproj/xcshareddata/xcschemes/FlowDropApple.xcscheme",
+      "size": 2071,
+      "sha256": "e106a808b8de3ecf3a848d6d8167e2067f364c78cb8a4bf0cccd24e04e03a487",
+      "reasons": [
+        {
+          "code": "ios-frozen",
+          "detail": "Giữ nguyên toàn bộ cây iOS hiện có trên main; iOS ngoài phạm vi Giai đoạn 2A."
+        }
+      ]
+    },
+    {
+      "archive_path": "FlowDrop/ios/FlowDropApple/AppModel.swift",
+      "path": "ios/FlowDropApple/AppModel.swift",
+      "size": 7747,
+      "sha256": "5d80946ab255b69b23084ea2be7e8cc2656f70500f4f25f36045f6ee7be1b9b2",
+      "reasons": [
+        {
+          "code": "ios-frozen",
+          "detail": "Giữ nguyên toàn bộ cây iOS hiện có trên main; iOS ngoài phạm vi Giai đoạn 2A."
+        }
+      ]
+    },
+    {
+      "archive_path": "FlowDrop/ios/FlowDropApple/Assets.xcassets/AppIcon.appiconset/Contents.json",
+      "path": "ios/FlowDropApple/Assets.xcassets/AppIcon.appiconset/Contents.json",
+      "size": 134,
+      "sha256": "6ad2c5c3bbcf972c7f02d217d6afcac3f24a10e30510c7e2d06c582371ed9d22",
+      "reasons": [
+        {
+          "code": "ios-frozen",
+          "detail": "Giữ nguyên toàn bộ cây iOS hiện có trên main; iOS ngoài phạm vi Giai đoạn 2A."
+        }
+      ]
+    },
+    {
+      "archive_path": "FlowDrop/ios/FlowDropApple/Assets.xcassets/Contents.json",
+      "path": "ios/FlowDropApple/Assets.xcassets/Contents.json",
+      "size": 40,
+      "sha256": "10e3b5dc202f1cd9fad1f688c8fc9fe9e9669bf3f8295e67d216b10fd99b6f49",
+      "reasons": [
+        {
+          "code": "ios-frozen",
+          "detail": "Giữ nguyên toàn bộ cây iOS hiện có trên main; iOS ngoài phạm vi Giai đoạn 2A."
+        }
+      ]
+    },
+    {
+      "archive_path": "FlowDrop/ios/FlowDropApple/Discovery.swift",
+      "path": "ios/FlowDropApple/Discovery.swift",
+      "size": 6683,
+      "sha256": "a8f27d5cf55e210c07accbafae098957115ca860b4c3d7a1dd2729d0cd86f091",
+      "reasons": [
+        {
+          "code": "ios-frozen",
+          "detail": "Giữ nguyên toàn bộ cây iOS hiện có trên main; iOS ngoài phạm vi Giai đoạn 2A."
+        }
+      ]
+    },
+    {
+      "archive_path": "FlowDrop/ios/FlowDropApple/FlowDropApp.swift",
+      "path": "ios/FlowDropApple/FlowDropApp.swift",
+      "size": 12571,
+      "sha256": "7770a4b3757e74ba82fdee54b1a884f2fc98f541f9f0811a27fdab7961b59e03",
+      "reasons": [
+        {
+          "code": "ios-frozen",
+          "detail": "Giữ nguyên toàn bộ cây iOS hiện có trên main; iOS ngoài phạm vi Giai đoạn 2A."
+        }
+      ]
+    },
+    {
+      "archive_path": "FlowDrop/ios/FlowDropApple/Info.plist",
+      "path": "ios/FlowDropApple/Info.plist",
+      "size": 1974,
+      "sha256": "0dc25cd1991ab9ec0002b59490a8431682bc06975306a9fbc90ae48189a4859e",
+      "reasons": [
+        {
+          "code": "ios-frozen",
+          "detail": "Giữ nguyên toàn bộ cây iOS hiện có trên main; iOS ngoài phạm vi Giai đoạn 2A."
+        }
+      ]
+    },
+    {
+      "archive_path": "FlowDrop/ios/FlowDropApple/PrivacyInfo.xcprivacy",
+      "path": "ios/FlowDropApple/PrivacyInfo.xcprivacy",
+      "size": 758,
+      "sha256": "05f01874f3679f7b92f3f2c10e7c97886a77e5c6a3b038f980b74a40c7091f34",
+      "reasons": [
+        {
+          "code": "ios-frozen",
+          "detail": "Giữ nguyên toàn bộ cây iOS hiện có trên main; iOS ngoài phạm vi Giai đoạn 2A."
+        }
+      ]
+    },
+    {
+      "archive_path": "FlowDrop/ios/FlowDropCore/Package.swift",
+      "path": "ios/FlowDropCore/Package.swift",
+      "size": 322,
+      "sha256": "426e63a5ae08a23f234d14ccd6317c1bb55d8a2bfcdb2450ac461857e66a10e6",
+      "reasons": [
+        {
+          "code": "ios-frozen",
+          "detail": "Giữ nguyên toàn bộ cây iOS hiện có trên main; iOS ngoài phạm vi Giai đoạn 2A."
+        }
+      ]
+    },
+    {
+      "archive_path": "FlowDrop/ios/FlowDropCore/Sources/FlowDropCore/HTTPClient.swift",
+      "path": "ios/FlowDropCore/Sources/FlowDropCore/HTTPClient.swift",
+      "size": 5937,
+      "sha256": "a0c0c3d4f904a4bbee04a87e5daf619501a6af08d94c8d627b55dd535530c419",
+      "reasons": [
+        {
+          "code": "ios-frozen",
+          "detail": "Giữ nguyên toàn bộ cây iOS hiện có trên main; iOS ngoài phạm vi Giai đoạn 2A."
+        }
+      ]
+    },
+    {
+      "archive_path": "FlowDrop/ios/FlowDropCore/Sources/FlowDropCore/HTTPHost.swift",
+      "path": "ios/FlowDropCore/Sources/FlowDropCore/HTTPHost.swift",
+      "size": 6010,
+      "sha256": "3e211258e2a2ac0aa44c7a9e9eb147eaab80e791779fdaf2cb065b29b7b66c96",
+      "reasons": [
+        {
+          "code": "ios-frozen",
+          "detail": "Giữ nguyên toàn bộ cây iOS hiện có trên main; iOS ngoài phạm vi Giai đoạn 2A."
+        }
+      ]
+    },
+    {
+      "archive_path": "FlowDrop/ios/FlowDropCore/Sources/FlowDropCore/HTTPParser.swift",
+      "path": "ios/FlowDropCore/Sources/FlowDropCore/HTTPParser.swift",
+      "size": 2794,
+      "sha256": "ed82c68cdd6a83c61df21332970e88f299c09ff09f9697674386a00f920e5902",
+      "reasons": [
+        {
+          "code": "ios-frozen",
+          "detail": "Giữ nguyên toàn bộ cây iOS hiện có trên main; iOS ngoài phạm vi Giai đoạn 2A."
+        }
+      ]
+    },
+    {
+      "archive_path": "FlowDrop/ios/FlowDropCore/Sources/FlowDropCore/HostStore.swift",
+      "path": "ios/FlowDropCore/Sources/FlowDropCore/HostStore.swift",
+      "size": 16989,
+      "sha256": "da3048f6b2e009e7a9ddd12a4efccb3aac4cf393cb47743069c425b58612c7a2",
+      "reasons": [
+        {
+          "code": "ios-frozen",
+          "detail": "Giữ nguyên toàn bộ cây iOS hiện có trên main; iOS ngoài phạm vi Giai đoạn 2A."
+        }
+      ]
+    },
+    {
+      "archive_path": "FlowDrop/ios/FlowDropCore/Sources/FlowDropCore/Protocol.swift",
+      "path": "ios/FlowDropCore/Sources/FlowDropCore/Protocol.swift",
+      "size": 9207,
+      "sha256": "04fc59a052e4adf3f06d6162ab00a9579d20f720be8773c17ef70e088b6b1bad",
+      "reasons": [
+        {
+          "code": "ios-frozen",
+          "detail": "Giữ nguyên toàn bộ cây iOS hiện có trên main; iOS ngoài phạm vi Giai đoạn 2A."
+        }
+      ]
+    },
+    {
+      "archive_path": "FlowDrop/ios/FlowDropCore/Tests/FlowDropCoreTests/HostIntegrationTests.swift",
+      "path": "ios/FlowDropCore/Tests/FlowDropCoreTests/HostIntegrationTests.swift",
+      "size": 2978,
+      "sha256": "045ead323f302c334fcfdbc2e276ea35b95eabb84ab92ff88acc2d4a97769d75",
+      "reasons": [
+        {
+          "code": "ios-frozen",
+          "detail": "Giữ nguyên toàn bộ cây iOS hiện có trên main; iOS ngoài phạm vi Giai đoạn 2A."
+        }
+      ]
+    },
+    {
+      "archive_path": "FlowDrop/ios/FlowDropCore/Tests/FlowDropCoreTests/ProtocolTests.swift",
+      "path": "ios/FlowDropCore/Tests/FlowDropCoreTests/ProtocolTests.swift",
+      "size": 4713,
+      "sha256": "11d75ef4650a46fca2d9e1d02b97a933539ee52d09a3ac7de0db309afc58bfa8",
+      "reasons": [
+        {
+          "code": "ios-frozen",
+          "detail": "Giữ nguyên toàn bộ cây iOS hiện có trên main; iOS ngoài phạm vi Giai đoạn 2A."
+        }
+      ]
+    },
+    {
+      "archive_path": "FlowDrop/ios/README.md",
+      "path": "ios/README.md",
+      "size": 11144,
+      "sha256": "4484271c888c2eb63be110e424e9dad1a6292339c9a315bf85cdd99edb3a919f",
+      "reasons": [
+        {
+          "code": "ios-frozen",
+          "detail": "Giữ nguyên toàn bộ cây iOS hiện có trên main; iOS ngoài phạm vi Giai đoạn 2A."
+        }
+      ]
+    },
+    {
+      "archive_path": "FlowDrop/ios/VALIDATION.json",
+      "path": "ios/VALIDATION.json",
+      "size": 1459,
+      "sha256": "84fa5ddd0afd44a7bd92457c89203d907e02cad9ef22c2a7e53e7cb2a1124ccf",
+      "reasons": [
+        {
+          "code": "ios-frozen",
+          "detail": "Giữ nguyên toàn bộ cây iOS hiện có trên main; iOS ngoài phạm vi Giai đoạn 2A."
+        }
+      ]
+    },
+    {
+      "archive_path": "FlowDrop/ios/scripts/build-unsigned.sh",
+      "path": "ios/scripts/build-unsigned.sh",
+      "size": 2395,
+      "sha256": "811dce910d259a6ca6b3bb6b4e7f0ec72390e49465738fd0daa183c60c0f2cf6",
+      "reasons": [
+        {
+          "code": "ios-frozen",
+          "detail": "Giữ nguyên toàn bộ cây iOS hiện có trên main; iOS ngoài phạm vi Giai đoạn 2A."
+        }
+      ]
+    },
+    {
+      "archive_path": "FlowDrop/ios/scripts/draw-icon.swift",
+      "path": "ios/scripts/draw-icon.swift",
+      "size": 1575,
+      "sha256": "e5020514dd06413b106e888e4adb0704dd4627c151e8be36ef50e206d31b70a2",
+      "reasons": [
+        {
+          "code": "ios-frozen",
+          "detail": "Giữ nguyên toàn bộ cây iOS hiện có trên main; iOS ngoài phạm vi Giai đoạn 2A."
+        }
+      ]
+    },
+    {
+      "archive_path": "FlowDrop/scripts/build-installers.py",
+      "path": "scripts/build-installers.py",
+      "size": 5711,
+      "sha256": "d39fa1ab2e5a77193631011d18a8fd501dc330fee3f3a6a7058f8e57967a6a42",
+      "reasons": [
+        {
+          "code": "embedded-signing-password",
+          "detail": "Lệnh ký APK chứa mật khẩu cố định. Loại nguyên file; chưa sửa source hoặc cấu hình ký, không ghi giá trị mật khẩu."
+        }
+      ],
+      "finding_lines": [
+        35
+      ]
+    },
+    {
+      "archive_path": "FlowDrop/scripts/build-native-test-apk.py",
+      "path": "scripts/build-native-test-apk.py",
+      "size": 1736,
+      "sha256": "c7e5e0f32bb30144899b1ad4f84d4355b5d4aec77a93c962d90ffd2e2412c677",
+      "reasons": [
+        {
+          "code": "embedded-signing-password",
+          "detail": "Lệnh ký APK chứa mật khẩu cố định. Loại nguyên file; chưa sửa source hoặc cấu hình ký, không ghi giá trị mật khẩu."
+        }
+      ],
+      "finding_lines": [
+        16
+      ]
+    },
+    {
+      "archive_path": "FlowDrop/web/assets/fonts/BeVietnamPro-Bold.ttf",
+      "path": "web/assets/fonts/BeVietnamPro-Bold.ttf",
+      "size": 140300,
+      "sha256": "7f738fe5c43c8872807b20e2d30d42163618de8a4daf7f48a939adac32c16847",
+      "reasons": [
+        {
+          "code": "binary-asset-prohibited",
+          "detail": "File nhị phân (icon/font); yêu cầu Giai đoạn 2A cấm nhập binary, không thay thế hoặc tái sinh asset."
+        }
+      ]
+    },
+    {
+      "archive_path": "FlowDrop/web/assets/fonts/BeVietnamPro-Medium.ttf",
+      "path": "web/assets/fonts/BeVietnamPro-Medium.ttf",
+      "size": 135980,
+      "sha256": "b60832bfa0fcd015158112c64d7e3fdad3b0c6287d1823f85a3103636e845268",
+      "reasons": [
+        {
+          "code": "binary-asset-prohibited",
+          "detail": "File nhị phân (icon/font); yêu cầu Giai đoạn 2A cấm nhập binary, không thay thế hoặc tái sinh asset."
+        }
+      ]
+    },
+    {
+      "archive_path": "FlowDrop/web/assets/fonts/BeVietnamPro-Regular.ttf",
+      "path": "web/assets/fonts/BeVietnamPro-Regular.ttf",
+      "size": 132948,
+      "sha256": "cd1ef6e9d7db28ad5cdb88a65ccbe693870e60d340b791f349d248342b4fe4c3",
+      "reasons": [
+        {
+          "code": "binary-asset-prohibited",
+          "detail": "File nhị phân (icon/font); yêu cầu Giai đoạn 2A cấm nhập binary, không thay thế hoặc tái sinh asset."
+        }
+      ]
+    }
+  ]
+}

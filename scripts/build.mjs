@@ -1,0 +1,15 @@
+import {readFile,mkdir,writeFile,rm,copyFile} from 'node:fs/promises';
+import assert from 'node:assert/strict';
+const root=new URL('../',import.meta.url),dist=new URL('dist/',root);
+const assets={};
+for(const [route,path,type] of [['/','web/index.html','text/html; charset=utf-8'],['/app.js','web/app.js','text/javascript; charset=utf-8'],['/style.css','web/style.css','text/css; charset=utf-8']])assets[route]={type,body:await readFile(new URL(path,root),'utf8')};
+assets['/favicon.svg']={type:'image/svg+xml',body:'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><rect width="48" height="48" rx="12" fill="#1b654e"/><path d="M13 18a12 12 0 0 1 21-3l2 2m0-9v9h-9M35 30a12 12 0 0 1-21 3l-2-2m0 9v-9h9" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>'};
+assets['/manifest.webmanifest']={type:'application/manifest+json',body:JSON.stringify({name:'FlowDrop — Chuyển file',short_name:'FlowDrop',lang:'vi',start_url:'/',display:'standalone',background_color:'#f9faf7',theme_color:'#1b654e',icons:[{src:'/favicon.svg',sizes:'any',type:'image/svg+xml',purpose:'any'}]})};
+for(const weight of ['Regular','Medium','Bold'])assets['/assets/fonts/BeVietnamPro-'+weight+'.ttf']={type:'font/ttf',base64:await readFile(new URL('web/assets/fonts/BeVietnamPro-'+weight+'.ttf',root),'base64')};
+const worker=await readFile(new URL('worker/index.js',root),'utf8');
+await rm(dist,{recursive:true,force:true});await mkdir(new URL('server/',dist),{recursive:true});await mkdir(new URL('.openai/',dist),{recursive:true});
+const output='globalThis.__FLOWDROP_ASSETS__='+JSON.stringify(assets)+';\n'+worker;
+await writeFile(new URL('server/index.js',dist),output);await copyFile(new URL('.openai/hosting.json',root),new URL('.openai/hosting.json',dist));
+const mod=await import('data:text/javascript;base64,'+Buffer.from(output).toString('base64'));assert.equal(typeof mod.default.fetch,'function');
+const page=await mod.default.fetch(new Request('https://flowdrop.test/'),{},{});assert.equal(page.status,200);assert.ok((await page.text()).includes('Gửi nhanh.'));
+console.log('Built and validated dist/server/index.js ('+Buffer.byteLength(output)+' bytes)');

@@ -1,0 +1,37 @@
+#pragma code_page(65001)
+#include <windows.h>
+1 RT_MANIFEST "FlowDrop.manifest"
+1 ICON "FlowDrop.ico"
+1 VERSIONINFO
+ FILEVERSION 1,13,0,0
+ PRODUCTVERSION 1,13,0,0
+ FILETYPE VFT_APP
+ BEGIN
+  BLOCK "StringFileInfo"
+  BEGIN
+   BLOCK "040904B0"
+   BEGIN
+    VALUE "CompanyName", "FlowDrop\0"
+    VALUE "FileDescription", "FlowDrop native Windows application\0"
+    VALUE "FileVersion", "1.13.0\0"
+    VALUE "ProductName", "FlowDrop\0"
+    VALUE "ProductVersion", "1.13.0\0"
+    VALUE "OriginalFilename", "FlowDrop.exe\0"
+   END
+  END
+  BLOCK "VarFileInfo"
+  BEGIN
+   VALUE "Translation", 0x409, 1200
+  END
+ END
+
+6001 DIALOGEX 0, 0, 280, 86
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Đổi tên thiết bị"
+FONT 10, "Segoe UI"
+BEGIN
+ LTEXT "Tên hiển thị trong Wi-Fi · tối đa 50 ký tự", -1, 12, 10, 256, 14
+ EDITTEXT 6002, 12, 28, 256, 20, ES_AUTOHSCROLL | WS_TABSTOP
+ DEFPUSHBUTTON "Lưu", IDOK, 154, 59, 54, 18
+ PUSHBUTTON "Hủy", IDCANCEL, 214, 59, 54, 18
+END
