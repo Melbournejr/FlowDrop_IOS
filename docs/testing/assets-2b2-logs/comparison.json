@@ -1,0 +1,158 @@
+{
+  "before_commands": 13,
+  "before_passed": 11,
+  "before_failed": 2,
+  "after_commands": 13,
+  "after_passed": 13,
+  "after_failed": 0,
+  "all_executed_suites_green_after": true,
+  "not_a_claim_of_os_build_or_full_product_coverage": true,
+  "matrix": [
+    {
+      "name": "unit",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/npm",
+        "test"
+      ],
+      "before_exit": 0,
+      "after_exit": 0,
+      "before_seconds": 0.732,
+      "after_seconds": 0.607
+    },
+    {
+      "name": "harness-unit",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+        "--test",
+        "tests/harness.test.mjs"
+      ],
+      "before_exit": 0,
+      "after_exit": 0,
+      "before_seconds": 1.597,
+      "after_seconds": 0.452
+    },
+    {
+      "name": "http",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+        "tests/http-integration.mjs"
+      ],
+      "before_exit": 1,
+      "after_exit": 0,
+      "before_seconds": 0.438,
+      "after_seconds": 1.713
+    },
+    {
+      "name": "discovery",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+        "tests/discovery-integration.mjs"
+      ],
+      "before_exit": 0,
+      "after_exit": 0,
+      "before_seconds": 3.302,
+      "after_seconds": 3.08
+    },
+    {
+      "name": "peer",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+        "tests/peer-integration.mjs"
+      ],
+      "before_exit": 0,
+      "after_exit": 0,
+      "before_seconds": 12.113,
+      "after_seconds": 11.904
+    },
+    {
+      "name": "lan-discovery",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+        "tests/lan-discovery-integration.mjs"
+      ],
+      "before_exit": 0,
+      "after_exit": 0,
+      "before_seconds": 18.565,
+      "after_seconds": 16.646
+    },
+    {
+      "name": "android-host",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+        "tests/android-host-integration.mjs"
+      ],
+      "before_exit": 1,
+      "after_exit": 0,
+      "before_seconds": 2.535,
+      "after_seconds": 2.615
+    },
+    {
+      "name": "android-discovery",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+        "tests/android-discovery-state.mjs"
+      ],
+      "before_exit": 0,
+      "after_exit": 0,
+      "before_seconds": 2.241,
+      "after_seconds": 1.781
+    },
+    {
+      "name": "security",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+        "tests/security-integration.mjs"
+      ],
+      "before_exit": 0,
+      "after_exit": 0,
+      "before_seconds": 12.587,
+      "after_seconds": 13.108
+    },
+    {
+      "name": "large-transfer",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+        "tests/large-transfer-integration.mjs"
+      ],
+      "before_exit": 0,
+      "after_exit": 0,
+      "before_seconds": 19.495,
+      "after_seconds": 16.313
+    },
+    {
+      "name": "features",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+        "--test",
+        "tests/features-1.10.test.mjs"
+      ],
+      "before_exit": 0,
+      "after_exit": 0,
+      "before_seconds": 57.7,
+      "after_seconds": 22.975
+    },
+    {
+      "name": "folders",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+        "--test",
+        "tests/folder-receive.test.mjs"
+      ],
+      "before_exit": 0,
+      "after_exit": 0,
+      "before_seconds": 66.734,
+      "after_seconds": 34.198
+    },
+    {
+      "name": "native-client",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+        "tests/android-native-client.mjs"
+      ],
+      "before_exit": 0,
+      "after_exit": 0,
+      "before_seconds": 25.887,
+      "after_seconds": 23.708
+    }
+  ]
+}

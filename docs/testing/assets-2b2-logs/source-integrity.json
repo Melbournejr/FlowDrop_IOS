@@ -1,0 +1,17 @@
+{
+  "base_commit": "6f13c909ca146dcb54fa6e0e3874e76875a090af",
+  "existing_main_files": 201,
+  "unchanged_existing_files": 200,
+  "only_modified_existing_file": "docs/testing/REGRESSION-HARNESS.md",
+  "reason_for_document_change": "Update the current test guide to distinguish historical missing-font failures from the verified Phase 2B.2 restoration; historical reports and manifests unchanged.",
+  "all_application_source_tests_helpers_ios_workflows_signing_dependencies_unchanged": true,
+  "unchanged_test_files": 49,
+  "only_new_binary_paths": [
+    "web/assets/fonts/BeVietnamPro-Regular.ttf",
+    "web/assets/fonts/BeVietnamPro-Medium.ttf",
+    "web/assets/fonts/BeVietnamPro-Bold.ttf"
+  ],
+  "total_new_binary_bytes": 409228,
+  "font_notice_and_original_manifest_unchanged": true,
+  "icon_imported": false
+}

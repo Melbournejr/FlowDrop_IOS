@@ -77,7 +77,7 @@ timeout --kill-after=5s 1500s node tests/android-native-client.mjs
 
 Các timeout trên là công cụ GNU/Linux, không phải timeout mới trong giao thức. Trong đợt này runner xác nhận ít nhất **18 GiB đĩa trống**, giới hạn RAM ít nhất **2 GiB**, chạy tuần tự; thực tế lúc bắt đầu có khoảng 19,3 GiB trống, cgroup RAM 8 GiB và CPU quota 2 core. Mỗi lệnh được kiểm tra lại đĩa trước chạy. Không bỏ ca >4 GiB rồi báo cả file test đã đạt.
 
-Giữ nguyên các assertion asset trong `http-integration` và `android-host-integration`: main sau nhập baseline thiếu font nhị phân nên hai lệnh hiện vẫn thất bại. Không xóa assertion, tự tải font hoặc sửa production trong nhiệm vụ harness này. Những lệnh sau trong danh sách vẫn phải chạy; không dùng một chuỗi `&&` khiến lỗi asset chặn các nhóm còn lại.
+Giữ nguyên các assertion asset trong `http-integration` và `android-host-integration`. Tại mốc Giai đoạn 2B.1, hai lệnh thất bại do font bị loại khi nhập baseline. [Giai đoạn 2B.2](ASSET-REPORT-2B2.md) khôi phục đúng ba TTF gốc có OFL và ghi nhận hai lệnh đạt, không đổi test/helper hoặc mã production. Không bỏ assertion để che thiếu tài nguyên. Khi một nhóm lỗi, các lệnh sau trong danh sách vẫn phải chạy; không dùng một chuỗi `&&` khiến lỗi asset chặn các nhóm còn lại.
 
 ## 4. Capability và cleanup
 
@@ -93,4 +93,4 @@ Giữ nguyên các assertion asset trong `http-integration` và `android-host-in
 
 Windows C++ UI/shell và fixture `windows-peer-fixture.mjs` cần Windows/Wine cùng payload; Android instrumentation cần emulator/device và test APK. Không chạy hoặc sửa các fixture đó trong đợt này; đường dẫn workspace cũ ở fixture Windows vẫn được ghi nhận cho nhiệm vụ OS riêng. iOS ngoài phạm vi. Không có coverage OS/mixed-version mới chỉ vì các engine test chạy trên Linux.
 
-Không thay publisher, không tạo workflow CI hoặc phát hành. Bước tiếp theo là review kết quả còn đỏ và chuẩn bị nhiệm vụ CI riêng; không biến suite hiện tại thành gate “tất cả xanh” bằng cách loại test.
+Không thay publisher, không tạo workflow CI hoặc phát hành. Bước tiếp theo là review log và giới hạn coverage trước nhiệm vụ CI riêng; không biến suite thành gate “tất cả xanh” bằng cách loại test. Kết quả lịch sử Giai đoạn 2B.1 và kết quả tài nguyên Giai đoạn 2B.2 được giữ trong hai báo cáo riêng.
