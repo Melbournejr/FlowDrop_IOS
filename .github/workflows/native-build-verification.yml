@@ -214,11 +214,15 @@ jobs:
         with open(os.environ['GITHUB_STEP_SUMMARY'], 'a') as report:
             report.write('## Native test-only build verification\n\n| Check | Actual status |\n|---|---|\n')
             for key, name in names.items():
-                report.write('| ' + name + ' | ' + (results[key].get('outputs', {}).get('verification_status') or states.get(results[key]['result'], 'NOT VERIFIED')) + ' |\n')
+                explicit = results[key].get('outputs', {}).get('verification_status')
+                actual = states.get(results[key]['result'], 'NOT VERIFIED')
+                if explicit in ('BLOCKED', 'FAIL', 'NOT VERIFIED', 'SKIPPED'):
+                    actual = explicit
+                report.write('| ' + name + ' | ' + actual + ' |\n')
             report.write('| Android / Windows OS runtime | NOT VERIFIED; phase 2D |\n| Production signing equivalence | NOT VERIFIED; intentionally no production key |\n')
             if not requested:
                 report.write('\nSKIPPED: opt in using ci-native-build or workflow_dispatch. No build success claim.\n')
             report.write('\nNo release, tag, update feed or production installation is performed. Native Regression is a separate workflow.\n')
-        if requested and any(value['result'] != 'success' for value in results.values()):
+        if requested and any(value['result'] != 'success' or value.get('outputs', {}).get('verification_status') != 'PASS' for value in results.values()):
             raise SystemExit(1)
         PY
