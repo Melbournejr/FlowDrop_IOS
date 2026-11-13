@@ -1,0 +1,3 @@
+PASS: Windows local capability, remote-write rejection, token privacy, cross-origin and DNS-rebinding guards, duplicate Host and CL/TE rejection.
+PASS: Android local capability, remote-write rejection, token privacy, cross-origin and DNS-rebinding guards, duplicate Host and CL/TE rejection.
+PASS: Android incomplete headers terminate within the absolute 10 second deadline.

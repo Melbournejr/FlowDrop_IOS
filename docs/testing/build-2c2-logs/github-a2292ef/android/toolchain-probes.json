@@ -1,0 +1,47 @@
+[
+  {
+    "tool": "java",
+    "command": [
+      "/home/runner/work/_temp/flowdrop-2c2-android/jdk/bin/java",
+      "-version"
+    ],
+    "exit_code": 0,
+    "observed": "openjdk version \"21.0.13\" 2026-10-20 LTS\nOpenJDK Runtime Environment Temurin-21.0.13+9 (build 21.0.13+9-LTS)\nOpenJDK 64-Bit Server VM Temurin-21.0.13+9 (build 21.0.13+9-LTS, mixed mode, sharing)",
+    "expected": "21.0.13"
+  },
+  {
+    "tool": "aapt2",
+    "command": [
+      "/home/runner/work/_temp/flowdrop-2c2-android/tools/sdk/build-tools/android-15/aapt2",
+      "version"
+    ],
+    "exit_code": 0,
+    "observed": "Android Asset Packaging Tool (aapt) 2.19-11948202",
+    "expected": "2.19-11948202"
+  },
+  {
+    "tool": "d8",
+    "command": [
+      "/home/runner/work/_temp/flowdrop-2c2-android/jdk/bin/java",
+      "-cp",
+      "/home/runner/work/_temp/flowdrop-2c2-android/tools/sdk/build-tools/android-15/lib/d8.jar",
+      "com.android.tools.r8.D8",
+      "--version"
+    ],
+    "exit_code": 0,
+    "observed": "D8 8.6.2-dev (build abaab469b5ebd4dd2bb91ba0ed6f45277faae4ca from go/r8bot (luci-r8-custom-ci-archive-0-77gl))",
+    "expected": "8.6.2-dev"
+  },
+  {
+    "tool": "apksigner",
+    "command": [
+      "/home/runner/work/_temp/flowdrop-2c2-android/jdk/bin/java",
+      "-jar",
+      "/home/runner/work/_temp/flowdrop-2c2-android/tools/sdk/build-tools/android-15/lib/apksigner.jar",
+      "version"
+    ],
+    "exit_code": 0,
+    "observed": "0.9",
+    "expected": "0.9"
+  }
+]

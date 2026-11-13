@@ -2,7 +2,7 @@
 
 Ngày lập: **13/11/2026**. Phạm vi: build **TEST ONLY**, không phát hành.
 
-**Trạng thái hiện tại: PARTIAL.** Android app, instrumentation, Windows installer và xác minh artifact độc lập đã thực chạy local, exit 0. GitHub Actions và toàn bộ Native regression ở head PR mới **chưa xác minh tại lần ghi này**; phải bổ sung bằng chứng thực chạy trước nghiệm thu. OS runtime và production signing equivalence không được suy ra từ build.
+**Các điều kiện build bắt buộc đạt PASS tại mốc bằng chứng `a2292ef7aff2fd49d7053e23f5e0c52a300a37ff`.** Local và GitHub thực build APK app, instrumentation, Windows EXE; verifier độc lập và toàn bộ Native Regression/ZIP64/Coverage đạt. [Draft PR #9](https://github.com/Melbournejr/FlowDrop_IOS/pull/9) giữ Draft. Bản báo cáo này đóng bằng chứng của mốc đã chạy; sau commit tài liệu sẽ kiểm lại cả hai workflow trên head bàn giao cuối và ghi URL/head/status cuối trong PR body. OS smoke/runtime và production signing equivalence vẫn **NOT VERIFIED**.
 
 ## 1. Điều kiện, base và head
 
@@ -10,8 +10,8 @@ Ngày lập: **13/11/2026**. Phạm vi: build **TEST ONLY**, không phát hành.
 - Ruleset `protectMain` ID **27172303**, **active**, target `~DEFAULT_BRANCH`, strict required check **Coverage / explicit verification status**, integration15368, không bypass actors. Chỉ đọc; không sửa settings.
 - PR #1 vẫn open, head `2ccf9248ed6de184a200a950e1d37dd1e5b11741`; 11 file security/iOS/ruleset riêng, không trùng đường dẫn thay đổi nhiệm vụ. Không sửa/merge PR #1.
 - Đã đọc AGENTS root (không có AGENTS con), audit/architecture/protocol/features/release/regression/baseline/import/harness/asset/CI/build2C1/rights, restoration manifest, ba script build-control, tests/ci, runtime.json, security/README và workflow hiện có.
-- [Snapshot bảo toàn](../build/NATIVE-SOURCE-BASELINE-2C2.json): 262/265 file base được kiểm SHA-256 trước mỗi build; ba file còn lại là build-control được phép sửa tối thiểu. Không có app source production, iOS, UI/font/icon, package/dependency/lock, version/public pin hoặc workflow cũ nào đổi byte.
-- Local build sử dụng snapshot working tree trên base nêu trên, **chưa phải build một commit Git hoàn chỉnh**. `artifact-manifest.json` ghi checkout SHA và uncommitted paths thực tế. Head GitHub sẽ được ghi cùng run sau khi tạo Draft PR; không bịa self-SHA trong báo cáo.
+- [Snapshot bảo toàn](../build/NATIVE-SOURCE-BASELINE-2C2.json): 262/265 file base được kiểm SHA-256 trước mỗi build; ba file còn lại là build-control được phép sửa tối thiểu. Không có app source production, iOS, UI/font/icon, package/dependency/lock, version/public pin hoặc workflow cũ nào đổi byte. Kiểm public key inventory thực exit0; Android cert/RSA update/Ed25519 project fingerprints giữ nguyên. Diff-check source/test/workflow/docs điều khiển exit0; raw evidence log/metadata ký giữ byte gốc nên có whitespace do công cụ, không normalize chữ ký hoặc giả log.
+- Local build sử dụng snapshot working tree trên base nêu trên, **chưa phải build một commit Git hoàn chỉnh**. `artifact-manifest.json` ghi checkout SHA và uncommitted paths thực tế. Mốc GitHub đã chạy: **head `a2292ef7aff2fd49d7053e23f5e0c52a300a37ff`**, checkout merge `8d812c53eb8d35b362f3cdee6663301fbae6c773`, uncommitted paths rỗng; không nhầm merge SHA với PR head. Commit đóng evidence tài liệu tạo head mới; kết quả kiểm lại head cuối nằm trong PR body để tránh vòng lặp tự ghi SHA của chính commit.
 
 ## 2. Phạm vi file
 
@@ -34,7 +34,7 @@ Chỉ sửa ba file có sẵn: `scripts/build-installers.py`, `scripts/build-nat
 | Windows Node | 24.22.2, giữ runtime.json | archive/executable SHA khớp pin |
 | Linux Node đóng gói npm | 24.22.2 | v24.22.2 |
 | 7zip kiểm NSIS | 25.01+dfsg-1~deb13u2 | 25.01; binary lib/7zip riêng, không dùng wrapper /usr/bin của host |
-| Python | CI3.12.16 | local3.12.14; CI chưa chạy ở lần ghi này |
+| Python | CI3.12.16 | local3.12.14; GitHub3.12.16 |
 | nlohmann/npm | vendored3.11.3; 8 dependency theo lock | source header/package-lock giữ byte; npm ci exit0; payload versions khớp |
 
 Bằng chứng độc lập: Debian ba chữ ký InRelease → hash Packages.xz → hash từng .deb; Node signed SHASUMS + signer trong README tag; Adoptium publishedSHA256 + detachedPGP + release asset digest. Mỗi provisioning kiểm lại chữ ký và metadata records trước khi giải nén/chạy. Google metadata HTTPS công bố **SHA-1/size**; SHA-256 được ghi sau đối chiếu, **không được gọi là SHA-256 do Google ký**. Public keys chỉ của nhà phân phối, không phải production app keys.
@@ -96,7 +96,7 @@ Native FlowDrop.exe từ C++ hiện có: **PE AMD64/x64, Windows GUI subsystem2*
 
 Node Windows archive SHA `ca1bff5d8ead13c9f2ea404a176db46bd430704d5b5113734049fa365e7799e2`; node.exe SHA **`1c331340fa6cac5e4294725959070a143fa0507195a78ad77eed7943f719aac9`**. npm payload8 package đúng lock; web/worker/font/OFL,15 LAN/discovery/security/update/folder scripts, startup/stop/LAN scripts, licenses và hướng dẫn đầy đủ.
 
-7zip thực list/extract: **129 payload files** (gồm bản dereference .bin link npm nội bộ) khớp SHA với payload mới. Ba NSIS wizard/plugin files khớp distribution đã xác thực; từ chối file thừa. Không secret/cache/toolchain/classes/objects/keystore. Giữ byte NSIS/source nên đường dẫn install/data, SendTo, single-instance, startup/shutdown, uninstall/update không đổi theo source; **chưa xác minh hành vi OS thực**.
+7zip thực list/extract: **128 payload files** (gồm bản dereference .bin link npm nội bộ) khớp SHA với payload mới. Ba NSIS wizard/plugin files khớp distribution đã xác thực; từ chối file thừa. Không secret/cache/toolchain/classes/objects/keystore. Giữ byte NSIS/source nên đường dẫn install/data, SendTo, single-instance, startup/shutdown, uninstall/update không đổi theo source; **chưa xác minh hành vi OS thực**.
 
 ## 8. So sánh Release1.13.0
 
@@ -109,7 +109,7 @@ Tải lại APK/EXE chính thức chỉ làm đối chứng read-only, đối ch
 | Mức tương đương | Kết luận |
 |---|---|
 | Source equivalence | PASS cho262 protected base files;3 build-control sửa có kiểm soát |
-| Build success | PASS local Android/test/Windows; GitHub chưa xác minh ở lần ghi này |
+| Build success | PASS local và GitHub Android/test/Windows, exit0 |
 | Artifact structural equivalence | PASS cho identity/SDK/permission/resource/PE/runtime; có inventory differences công bố phía trên |
 | Runtime equivalence | NOT VERIFIED; Linux/JVM không thay Android/Windows OS |
 | Production signing equivalence | NOT VERIFIED; cố ý dùng cert thử khác, không đụng production key |
@@ -121,7 +121,38 @@ Tải lại APK/EXE chính thức chỉ làm đối chứng read-only, đối ch
 
 Workflow mới chỉ PR opt-in ci-native-build/workflow_dispatch, contents:read, fullSHA Actions, không production secrets/publisher/release. Năm job và timeout16–25phút, artifact retention7ngày, separate logs/cleanup và summary fail nếu mandatory job không success. Fork không có đường cấp repository write/production secrets. [Hướng dẫn chạy/lỗi](../build/README-2C2.md).
 
-**GitHub Actions: NOT VERIFIED tại lần ghi này.** Cần ghi run/build/regression trên head PR, kiểm logs và artifact thực. Nhãn ci-zip64 phải thực chạy cả features/folder/native-client >4GiB; Coverage / explicit verification status phải success. Không đổi101file,384MiB+17byte,RSS,timeout,assertion hoặc SHA. Existing workflow/composite/runner/test commands giữ nguyên.
+**GitHub Actions thực chạy trên Draft PR**, nhãn ci-native-build + ci-zip64, head **a2292ef7aff2fd49d7053e23f5e0c52a300a37ff**:
+
+| Workflow/job | Run/job | Kết quả thực |
+|---|---|---|
+| Native Build Verification | [run #4](https://github.com/Melbournejr/FlowDrop_IOS/actions/runs/43384264087) | **5/5 success** |
+| Toolchain | [131748978917](https://github.com/Melbournejr/FlowDrop_IOS/actions/runs/43384264087/job/131748978917) | 25 authenticated archives, version probes, cleanup success |
+| Android app + instrumentation | [131749211738](https://github.com/Melbournejr/FlowDrop_IOS/actions/runs/43384264087/job/131749211738) | build14 tool calls + signature/alignment/manifest verification, tất cảexit0 |
+| Windows | [131749211765](https://github.com/Melbournejr/FlowDrop_IOS/actions/runs/43384264087/job/131749211765) | npmci + windres/g++/NSIS + extract, tất cảexit0; payload128 file |
+| Independent artifact verification | [131749689101](https://github.com/Melbournejr/FlowDrop_IOS/actions/runs/43384264087/job/131749689101) | same-run downloads + fresh tools, APK/PE/payload checks PASS |
+| Build verification summary | [131749897191](https://github.com/Melbournejr/FlowDrop_IOS/actions/runs/43384264087/job/131749897191) | mandatory job outputs đều PASS, job success |
+| Native regression | [run #13](https://github.com/Melbournejr/FlowDrop_IOS/actions/runs/43384264145) | **5/5 success** |
+| Fast | [131748985687](https://github.com/Melbournejr/FlowDrop_IOS/actions/runs/43384264145/job/131748985687) | ci-unit40/40 + asset integrity + npm unit + harness,4 command exit0 |
+| Integration | [131749124470](https://github.com/Melbournejr/FlowDrop_IOS/actions/runs/43384264145/job/131749124470) | HTTP/Android-host/discovery/peer/LAN/Android-discovery/security,7 command exit0 |
+| 101 files /384MiB+17 | [131749124648](https://github.com/Melbournejr/FlowDrop_IOS/actions/runs/43384264145/job/131749124648) | large-transfer exit0 |
+| ZIP64 >4GiB | [131749124592](https://github.com/Melbournejr/FlowDrop_IOS/actions/runs/43384264145/job/131749124592) | features/folders/native-client,3 command exit0, không skip |
+| Coverage / explicit verification status | [131749684828](https://github.com/Melbournejr/FlowDrop_IOS/actions/runs/43384264145/job/131749684828) | **PASS**, ZIP64 được yêu cầu và thực chạy |
+
+Đã đọc cả10 job logs/API; tải **7 archive** (hai build, independent và bốn regression) bằng kết nối GitHub hợp lệ, đối chiếu API digest trước ZIP path/type/CRC và SHA từng file. Không lấy exit của collector thay test. Có `results.json`/per-case logs/cert/inventory/commands trong [evidence GitHub](build-2c2-logs/github-a2292ef/); không lưu environment dump. Upload và cleanup đều success. Hai log đã lọc Coverage/summary chỉ lưu trạng thái công khai, không giả stdout test.
+
+Regression giữ **13 command Node/JVM gốc +2 guard =15 command**, 101file,384MiB+17,RSS300MiB/host, assertions/timeouts/SHA nguyên. ZIP64 preflight thực ~91.5GB free/16.76GB RAM, vượt18GiB/2GiB yêu cầu. Features4/4 và folders5/5, skipped0; native-client truyền file **4295098385byte** ở Android JVM host. Đây là engine/JVM test, không phải Android OS. Coverage workflow cũ có câu installer NOT VERIFIED vì scope cũ không build; kết quả build mới được chứng minh riêng, không sửa workflow cũ.
+
+Artifact CI ở run4 (không nhầm với local hoặc run sau):
+
+| Artifact | Byte | SHA-256 |
+|---|---:|---|
+| APK app | 279316 | d5c45a4cc8c78baa15b48987b2fd7dac5c0226ec795144c305b738679939dbca |
+| APK instrumentation | 33171 | 6fa7dd1905829585a850a2152223257ec38f464b81fad218dabd966f1b1f3bc5 |
+| Windows NSIS | 24528373 | 55cd76c50316d6fbe22754ffb1038c073cfb5a05a67735d2e272a9a1b9021a28 |
+
+Cert thử CI **c5ddb26b6c6679ed9c4c8b24d0e420268306f7b6619f6052c8ed619916ba0343**, app/test cùng cert; app69/test12 Java8 classes. [Android archive](https://github.com/Melbournejr/FlowDrop_IOS/actions/runs/43384264087/artifacts/14017748408) SHA8570604f…, [Windows archive](https://github.com/Melbournejr/FlowDrop_IOS/actions/runs/43384264087/artifacts/14017807537) SHAa78f9bc0…; manifest đầy đủ hash/byte/artifactID. Cùng128 payload path local/CI, chỉ FlowDrop.exe khác byte; runtime/dependency/script/font giữ byte. Mỗi run có manifest/fingerprint riêng; artifact giữ7ngày đến20/11/2026.
+
+Run #2 build trước opt-in chỉ summary success với các build SKIPPED, **không** được tính build PASS. Run #3 build và #11/#12 regression bị concurrency hủy khi thêm label; **không** tính PASS. Không dispatch publisher, không build từ binary release.
 
 **Local Node/JVM:** setup mới đã exit0 (Node24.19.0,JDK21.0.12.1,Python3.12.14,pinnedorg.json,8 lockednpm). Gate chưa được dùng làm bằng chứng PASS ở lần ghi này. Local ZIP64 chưa chạy lại vì còn ~12GiB free, thấp hơn preflight18GiB của runner; không hạ ngưỡng. Toàn bộ CI phải chạy trên runner riêng đủ tài nguyên.
 
@@ -159,4 +190,4 @@ Rollback bằng **PR revert các commit2C.2** (tắt workflow build mới bằng
 
 Quyết định chủ dự án: duyệt Draft PR; chọn môi trường OS2D; quy trình bảo quản/migration signing credential lịch sử nếu cần; lịch review lock khi distribution retire package. Không cần cung cấp production secrets để nghiệm thu build thử này.
 
-[Artifact manifest](BUILD-ARTIFACT-MANIFEST-2C2.json) · [Log checksums](BUILD-LOG-SHA256SUMS-2C2.txt) · [Log folder](build-2c2-logs/). CI/head cuối sẽ được cập nhật bằng bằng chứng thực, PR giữ Draft; **không merge/publish/nâng version/đổi production key**.
+[Artifact manifest](BUILD-ARTIFACT-MANIFEST-2C2.json) · [Log checksums](BUILD-LOG-SHA256SUMS-2C2.txt) · [Log folder](build-2c2-logs/). Báo cáo ghi mốc evidence đã chạy; CI/head bàn giao cuối được kiểm lại và ghi trong PR body sau commit tài liệu. PR giữ Draft; **không merge/publish/nâng version/đổi production key**.

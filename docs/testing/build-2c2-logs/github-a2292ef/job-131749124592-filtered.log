@@ -1,0 +1,6 @@
+2026-11-13T07:14:39.3172833Z RUN: features
+2026-11-13T07:14:52.2437013Z PASS: features exit=0 duration=12.925s
+2026-11-13T07:14:52.2447596Z RUN: folders
+2026-11-13T07:15:37.7198678Z PASS: folders exit=0 duration=45.475s
+2026-11-13T07:15:37.7207544Z RUN: native-client
+2026-11-13T07:15:52.4752786Z PASS: native-client exit=0 duration=14.754s

@@ -1,0 +1,2 @@
+2026-11-13T07:14:41.8887689Z RUN: large-transfer
+2026-11-13T07:14:52.0522167Z PASS: large-transfer exit=0 duration=10.161s

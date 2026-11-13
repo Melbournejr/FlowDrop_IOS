@@ -1,0 +1,13 @@
+✔ folder transfer restores original names and nested/empty directories, reserves root without merging, and verifies receipts (85.147653ms)
+✔ Java deflated folder packages restore on Windows engine with exact names (68.323098ms)
+✔ invalid paths, duplicate names, corrupt CRC and interrupted downloads never become completed folders (277.107925ms)
+✔ folder import streams ZIP64 file above 4 GiB in both production readers (44360.297447ms)
+✔ ZIP64 inflated size beyond available storage is rejected before file extraction (64.866855ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 45450.642416

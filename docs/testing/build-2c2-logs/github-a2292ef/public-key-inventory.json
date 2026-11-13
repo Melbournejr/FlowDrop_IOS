@@ -1,0 +1,8 @@
+{
+  "command": [
+    "node",
+    "security/verify-key-inventory.mjs"
+  ],
+  "exit_code": 0,
+  "scope": "public verification only; no signing"
+}
