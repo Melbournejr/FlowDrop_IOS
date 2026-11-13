@@ -1,0 +1,43 @@
+{
+  "stage": "2C.1",
+  "observed_date": "2026-11-13",
+  "timezone": "Asia/Saigon",
+  "base_main": "893443d50c4eb02c8cd5537c1f0c42d37ede551d",
+  "source_archive": {
+    "url": "https://github.com/Melbournejr/FlowDrop_IOS/releases/download/v1.13.0/FlowDrop-Source-1.13.zip",
+    "size": 611206,
+    "sha256": "d1fea853ad992c0b8febf8efa1cc988ef52bc2ca8e6b798eb440f2c7a243a962",
+    "entries_validated": 141,
+    "all_entries_match_baseline_records": true
+  },
+  "restored_files": [
+    {
+      "path": "scripts/build-installers.py",
+      "size": 6005,
+      "sha256": "96325c887e04ae4908b0e893a26f0c2195fdbfacfcfb4a2b3aab74bc5d29199a",
+      "archive_sha256": "d39fa1ab2e5a77193631011d18a8fd501dc330fee3f3a6a7058f8e57967a6a42",
+      "archive_size": 5711,
+      "restoration": "credential and build-control changes; see BUILD-REPORT-2C1.md"
+    },
+    {
+      "path": "scripts/build-native-test-apk.py",
+      "size": 2088,
+      "sha256": "328cf00347fa21a070d1928ba765cdad78405236effb06d83e296a18c873283a",
+      "archive_sha256": "c7e5e0f32bb30144899b1ad4f84d4355b5d4aec77a93c962d90ffd2e2412c677",
+      "archive_size": 1736,
+      "restoration": "credential and build-control changes; see BUILD-REPORT-2C1.md"
+    },
+    {
+      "path": "desktop/windows/FlowDrop.ico",
+      "size": 19820,
+      "sha256": "cce4d31a79b6350c73daa884e9493d6ebc70746ac8e7471c924e0ad1b767650e",
+      "archive_sha256": "cce4d31a79b6350c73daa884e9493d6ebc70746ac8e7471c924e0ad1b767650e",
+      "archive_size": 19820,
+      "restoration": "exact byte restoration; owner authorization in FLOWDROP-ICON-RIGHTS.md"
+    }
+  ],
+  "icon_rights_record": "docs/assets/FLOWDROP-ICON-RIGHTS.md",
+  "keystore_or_private_key_imported": false,
+  "production_key_used": false,
+  "app_build_or_signing_executed": false
+}

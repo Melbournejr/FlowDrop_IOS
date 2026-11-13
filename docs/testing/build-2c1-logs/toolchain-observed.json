@@ -1,0 +1,81 @@
+{
+  "sdk/build-tools/android-15/source.properties": "Pkg.UserSrc=false\nPkg.Revision=35.0.0\n#Pkg.Revision=35.0.0 rc4\n",
+  "sdk/platforms/android-35/source.properties": "Pkg.Desc=Android SDK Platform 15\nPkg.UserSrc=false\nPlatform.Version=15\nPlatform.CodeName=\nPkg.Revision=2\nAndroidVersion.ApiLevel=35\nAndroidVersion.ExtensionLevel=13\nAndroidVersion.IsBaseSdk=true\nLayoutlib.Api=15\nLayoutlib.Revision=1\nPlatform.MinToolsRev=22\n",
+  "jdk": {
+    "command": [
+      "java",
+      "-version"
+    ],
+    "exit_code": 0,
+    "output": "openjdk version \"21.0.12.1\" 2026-08-18\nOpenJDK Runtime Environment (build 21.0.12.1+1-1-deb13u1-Debian)\nOpenJDK 64-Bit Server VM (build 21.0.12.1+1-1-deb13u1-Debian, mixed mode, sharing)"
+  },
+  "javac-module": {
+    "command": [
+      "java",
+      "-m",
+      "jdk.compiler/com.sun.tools.javac.Main",
+      "-version"
+    ],
+    "exit_code": 0,
+    "output": "javac 21.0.12.1"
+  },
+  "aapt2": {
+    "command": [
+      "/workspace/flowdrop-build/sdk/build-tools/android-15/aapt2",
+      "version"
+    ],
+    "exit_code": 0,
+    "output": "Android Asset Packaging Tool (aapt) 2.19-11948202"
+  },
+  "d8": {
+    "command": [
+      "java",
+      "-cp",
+      "/workspace/flowdrop-build/sdk/build-tools/android-15/lib/d8.jar",
+      "com.android.tools.r8.D8",
+      "--version"
+    ],
+    "exit_code": 0,
+    "output": "D8 8.6.2-dev (build abaab469b5ebd4dd2bb91ba0ed6f45277faae4ca from go/r8bot (luci-r8-custom-ci-archive-0-77gl))"
+  },
+  "apksigner": {
+    "command": [
+      "java",
+      "-jar",
+      "/workspace/flowdrop-build/sdk/build-tools/android-15/lib/apksigner.jar",
+      "version"
+    ],
+    "exit_code": 0,
+    "output": "0.9"
+  },
+  "mingw-g++": {
+    "command": [
+      "/workspace/flowdrop-build/mingw/usr/bin/x86_64-w64-mingw32-g++-posix",
+      "--version"
+    ],
+    "exit_code": 0,
+    "output": "x86_64-w64-mingw32-g++-posix (GCC) 14-posix\nCopyright (C) 2024 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE."
+  },
+  "windres": {
+    "command": [
+      "/workspace/flowdrop-build/mingw/usr/bin/x86_64-w64-mingw32-windres",
+      "--version"
+    ],
+    "exit_code": 0,
+    "output": "GNU windres (GNU Binutils) 2.44\nCopyright (C) 2025 Free Software Foundation, Inc.\nThis program is free software; you may redistribute it under the terms of\nthe GNU General Public License version 3 or (at your option) any later version.\nThis program has absolutely no warranty."
+  },
+  "nsis": {
+    "command": [
+      "/workspace/flowdrop-build/nsis/usr/bin/makensis",
+      "-VERSION"
+    ],
+    "exit_code": 0,
+    "output": "v3.11-1"
+  },
+  "node-windows-runtime": {
+    "present": true,
+    "pinned_version": "24.22.2",
+    "expected_sha256": "1c331340fa6cac5e4294725959070a143fa0507195a78ad77eed7943f719aac9",
+    "actual_sha256": "1c331340fa6cac5e4294725959070a143fa0507195a78ad77eed7943f719aac9"
+  }
+}

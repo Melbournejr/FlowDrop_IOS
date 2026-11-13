@@ -1,0 +1,198 @@
+
+===== fast/ci-runner-tests exit=0 =====
+test_a_signal_is_not_pass (test_runner.NativeRunnerTests.test_a_signal_is_not_pass) ... ok
+test_all_thirteen_existing_commands_are_present_once_without_skip_flags (test_runner.NativeRunnerTests.test_all_thirteen_existing_commands_are_present_once_without_skip_flags) ... ok
+test_cleanup_does_not_follow_a_scratch_symlink (test_runner.NativeRunnerTests.test_cleanup_does_not_follow_a_scratch_symlink) ... ok
+test_cleanup_refuses_unowned_directory_and_preserves_logs (test_runner.NativeRunnerTests.test_cleanup_refuses_unowned_directory_and_preserves_logs) ... ok
+test_environment_tokens_and_local_capabilities_are_removed_before_logging (test_runner.NativeRunnerTests.test_environment_tokens_and_local_capabilities_are_removed_before_logging) ... ok
+test_group_keeps_first_test_failure_even_when_later_commands_pass (test_runner.NativeRunnerTests.test_group_keeps_first_test_failure_even_when_later_commands_pass) ... RUN: bad
+FAIL: bad exit=7 duration=0.016s
+RUN: good
+PASS: good exit=0 duration=0.015s
+ok
+test_insufficient_resources_do_not_execute_or_pass_tests (test_runner.NativeRunnerTests.test_insufficient_resources_do_not_execute_or_pass_tests) ... NOT VERIFIED: features (resource/OS preflight)
+ok
+test_missing_executable_is_not_verified (test_runner.NativeRunnerTests.test_missing_executable_is_not_verified) ... ok
+test_real_nonzero_exit_code_is_not_replaced_by_log_collection_success (test_runner.NativeRunnerTests.test_real_nonzero_exit_code_is_not_replaced_by_log_collection_success) ... ok
+test_timeout_kills_the_process_group_and_stays_failed (test_runner.NativeRunnerTests.test_timeout_kills_the_process_group_and_stays_failed) ... ok
+test_wrong_jar_checksum_stops_before_compilation (test_runner.NativeRunnerTests.test_wrong_jar_checksum_stops_before_compilation) ... ok
+
+----------------------------------------------------------------------
+Ran 11 tests in 0.212s
+
+OK
+
+===== fast/asset-integrity exit=0 =====
+web/assets/fonts/BeVietnamPro-Regular.ttf: OK
+web/assets/fonts/BeVietnamPro-Medium.ttf: OK
+web/assets/fonts/BeVietnamPro-Bold.ttf: OK
+web/assets/fonts/OFL.txt: OK
+web/assets/fonts/manifest.json: OK
+
+===== fast/unit exit=0 =====
+
+> flowdrop@1.13.0 test
+> node --test --test-isolation=none tests/transfer.test.mjs tests/desktop-storage.test.mjs tests/device-name.test.mjs tests/update-choice.test.mjs tests/security.test.mjs
+
+✔ receiver preserves data, folder settings, duplicate names and already saved files (70.496885ms)
+✔ receiver never exposes partial files and handles unsafe or long filenames (3.904366ms)
+✔ device labels persist Unicode names, validate codepoints and serialize writes (3.215799ms)
+✔ reject untrusted metadata before opening any file body or destination (9.435083ms)
+✔ capabilities compare full bytes, and browser cross-origin requests are rejected (0.453364ms)
+✔ send, finalize, receive original bytes, and revoke across clients (19.405262ms)
+✔ upload and revoke require uploader token; foreign origin blocked (3.697013ms)
+✔ invalid names, protocol bounds, byte mismatch and missing codes rejected (3.35918ms)
+✔ expiry blocks access; empty files transfer; finalized uploads immutable (1.743466ms)
+✔ manual and scheduled checks report results; Later never downloads; explicit acceptance waits for active transfers (11.892121ms)
+ℹ tests 10
+ℹ suites 0
+ℹ pass 10
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 198.445552
+
+===== fast/harness-unit exit=0 =====
+✔ REG-001: Java source paths remain individual arguments, including roots with spaces (3.38139ms)
+✔ compiler arguments reject outside-repository and non-Java inputs (0.385946ms)
+✔ test JAR configuration supports an explicit path and the existing build-tools override (0.235374ms)
+✔ concurrent workspaces are distinct and cleanup is idempotent (14.284323ms)
+✔ a missing JAR produces an actionable preflight failure and no scratch leak (2.603248ms)
+✔ a mismatched JAR is rejected before compilation instead of silently changing the fixture dependency (2.93221ms)
+✔ desktop readiness waits for the private pipe record and handles fragmented UTF-8 (1.667894ms)
+✔ Android readiness parses a fragmented local capability from the JVM pipe (0.62098ms)
+✔ readiness rejects missing capabilities and non-loopback addresses (7.024228ms)
+✔ startup failure and timeout detach listeners and redact capability diagnostics (11.052252ms)
+✔ a host that exited before the readiness listener was attached fails immediately (0.412085ms)
+✔ a missing executable is reported and cleaned up without waiting for an exit event (7.718763ms)
+✔ cleanup terminates a child that ignores graceful shutdown and removes its files (103.64493ms)
+✔ local requests use the correct per-host header; missing and wrong credentials remain denied (50.726737ms)
+✔ local capabilities are not forwarded when a local endpoint redirects to another origin (9.229405ms)
+✔ optional report output stays outside scratch cleanup and redacts capability fields (11.758913ms)
+ℹ tests 16
+ℹ suites 0
+ℹ pass 16
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 399.002271
+
+===== integration/http exit=0 =====
+HTTP integration passed: assets, config, 1 MiB + empty file, exact SHA-256, permanent desktop save, partial stream cleanup, revoke, private settings/token/origin/Host checks.
+
+===== integration/android-host exit=0 =====
+Android Java host: A → B exact SHA-256, empty file, access controls and revoke passed.
+Android Java host: B → A exact SHA-256, empty file, access controls and revoke passed.
+Android Java host integration passed: both directions, assets/config, Content-Length and chunked uploads, 1 MiB, Unicode names, protocol bounds, partial cleanup, expiry, origin and token checks.
+
+===== integration/discovery exit=0 =====
+mDNS integration passed: two named devices, PTR/SRV/TXT/A, correct ports, local hostnames and goodbye on stop.
+
+===== integration/peer exit=0 =====
+PASS: Sender sees pending, live increasing receiver bytes, and completion only after all committed files; premature completion rejected
+PASS: Windows discovers Android once, selects peer, sends offer; Android accepts and downloads exact bytes
+PASS: Global code receive finds the Android host without selecting it, saves exact bytes and empty file, and tracks completion
+PASS: Android native client sends offer; Windows consent streams into configured folder, exact SHA-256 and empty file
+PASS: Android to Android request and rejection
+PASS: Android to Android consent and exact file bytes
+PASS: Android sender learns peer failure; interrupted session never reports complete
+PASS: Windows receiver publishes live byte progress, waits for permanent commit before completion, and reports stream interruption with partial-file cleanup
+PASS: Invalid offer capability, remote consent and foreign-origin requests blocked
+PASS: Goodbye removes offline device automatically
+[
+  "Sender sees pending, live increasing receiver bytes, and completion only after all committed files; premature completion rejected",
+  "Windows discovers Android once, selects peer, sends offer; Android accepts and downloads exact bytes",
+  "Global code receive finds the Android host without selecting it, saves exact bytes and empty file, and tracks completion",
+  "Android native client sends offer; Windows consent streams into configured folder, exact SHA-256 and empty file",
+  "Android to Android request and rejection",
+  "Android to Android consent and exact file bytes",
+  "Android sender learns peer failure; interrupted session never reports complete",
+  "Windows receiver publishes live byte progress, waits for permanent commit before completion, and reports stream interruption with partial-file cleanup",
+  "Invalid offer capability, remote consent and foreign-origin requests blocked",
+  "Goodbye removes offline device automatically"
+]
+
+===== integration/lan-discovery exit=0 =====
+[
+  "Two production Java LAN engines and Node Windows engine each find both other devices over real UDP/TCP without mDNS; same-name phones remain distinct; self is excluded",
+  "Android friendly name updates in Node/Java lists without changing device ID or interrupting an active upload; exact SHA-256 preserved",
+  "Non-FlowDrop HTTP server and mismatched device IDs never enter device lists",
+  "Device removal and automatic rediscovery after restart; actual dynamically assigned HTTP ports confirmed"
+]
+
+===== integration/android-discovery exit=0 =====
+PASS: production Android discovery uses Wi-Fi, merges LAN fallback without NSD callbacks, excludes self, survives hung resolution and late callbacks, rebinds on Wi-Fi change, restarts safely, probes every advertised IPv4 when a VPN address fails, and uses TXT address hints on Android 10.
+
+===== integration/security exit=0 =====
+PASS: Windows local capability, remote-write rejection, token privacy, cross-origin and DNS-rebinding guards, duplicate Host and CL/TE rejection.
+PASS: Android local capability, remote-write rejection, token privacy, cross-origin and DNS-rebinding guards, duplicate Host and CL/TE rejection.
+PASS: Android incomplete headers terminate within the absolute 10 second deadline.
+
+===== stream/large-transfer exit=0 =====
+desktop: missing, wrong and wrong-kind local capabilities rejected; token absent from config.
+desktop: 101 files uploaded, finalized and downloaded.
+android: missing, wrong and wrong-kind local capabilities rejected; token absent from config.
+android: 101 files uploaded, finalized and downloaded.
+[
+  {
+    "host": "desktop",
+    "files": 101,
+    "passed": true
+  },
+  {
+    "host": "android",
+    "files": 101,
+    "passed": true
+  },
+  {
+    "directions": [
+      "Desktop → Android",
+      "Android → Desktop"
+    ],
+    "size": 402653201,
+    "sha256": "4bdcb708f8ca8ffe5e86325e3621e6cc501da14e3285ec680fb417c8bae95a0f",
+    "permanentSave": true,
+    "peakRssBytes": {
+      "desktop": 137699328,
+      "android": 125980672
+    },
+    "passed": true
+  }
+]
+
+===== zip64/features exit=0 =====
+✔ ZIP preserves Unicode, nested/empty folders, empty files; refuses links and cancellation (61.242608ms)
+✔ ZIP64 streams a file above 4 GiB and validates independently with Python (21423.443917ms)
+✔ Windows and Android verify the same signed release; tampering/invalid URLs rejected (980.360247ms)
+✔ Java/Node resolve codes across multiple hosts, reject ambiguity, wrong and revoked shares (637.904133ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 4
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 24418.122292
+
+===== zip64/folders exit=0 =====
+✔ folder transfer restores original names and nested/empty directories, reserves root without merging, and verifies receipts (200.616353ms)
+✔ Java deflated folder packages restore on Windows engine with exact names (113.772545ms)
+✔ invalid paths, duplicate names, corrupt CRC and interrupted downloads never become completed folders (494.744216ms)
+✔ folder import streams ZIP64 file above 4 GiB in both production readers (35216.171233ms)
+✔ ZIP64 inflated size beyond available storage is rejected before file extraction (153.321813ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 37659.417881
+
+===== zip64/native-client exit=0 =====
+Testing native Java client → Windows 1.5 host; large file 402653201 bytes.
+{"host":"Windows 1.5 host","cancel":true,"largeFileBytes":402653201,"streaming":true,"sha256":"8c09a0b93691cbe747fd2184f321b88366995ab57a9dde8a52e309d9c022c752","sourceChanged":true,"files":101,"revoke":true,"passed":true}
+Testing native Java client → Android 1.6 host; large file 4295098385 bytes.
+{"host":"Android 1.6 host","cancel":true,"largeFileBytes":4295098385,"streaming":true,"sha256":"3c22a6577a50fc787f324c80451451b6c7643c1539dee3e8314cc9bf6e015d05","sourceChanged":true,"files":101,"revoke":true,"passed":true}

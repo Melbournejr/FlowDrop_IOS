@@ -1,0 +1,81 @@
+{
+  "base": "893443d50c4eb02c8cd5537c1f0c42d37ede551d",
+  "base_files_checked": 251,
+  "existing_files_modified": [],
+  "source_archive": {
+    "url": "https://github.com/Melbournejr/FlowDrop_IOS/releases/download/v1.13.0/FlowDrop-Source-1.13.zip",
+    "size": 611206,
+    "sha256": "d1fea853ad992c0b8febf8efa1cc988ef52bc2ca8e6b798eb440f2c7a243a962",
+    "entries_validated": 141,
+    "all_entries_match_baseline_records": true,
+    "expanded_bytes": 2114636,
+    "key_store_name_findings": [],
+    "private_key_pem_findings": [],
+    "icon": {
+      "archive_path": "FlowDrop/desktop/windows/FlowDrop.ico",
+      "path": "desktop/windows/FlowDrop.ico",
+      "size": 19820,
+      "sha256": "cce4d31a79b6350c73daa884e9493d6ebc70746ac8e7471c924e0ad1b767650e",
+      "reasons": [
+        {
+          "code": "binary-asset-prohibited",
+          "detail": "File nh\u1ecb ph\u00e2n (icon/font); y\u00eau c\u1ea7u Giai \u0111o\u1ea1n 2A c\u1ea5m nh\u1eadp binary, kh\u00f4ng thay th\u1ebf ho\u1eb7c t\u00e1i sinh asset."
+        }
+      ]
+    }
+  },
+  "command_comparison": {
+    "build-installers.py": {
+      "command_count_before": 12,
+      "command_count_after": 12,
+      "noncredential_command_arguments_preserved": true
+    },
+    "build-native-test-apk.py": {
+      "command_count_before": 5,
+      "command_count_after": 5,
+      "noncredential_command_arguments_preserved": true
+    }
+  },
+  "icon_audit": {
+    "icon_sizes": [
+      [
+        16,
+        16
+      ],
+      [
+        32,
+        32
+      ],
+      [
+        48,
+        48
+      ],
+      [
+        64,
+        64
+      ],
+      [
+        128,
+        128
+      ],
+      [
+        256,
+        256
+      ]
+    ],
+    "embedded_text_chunk_types": [],
+    "separate_icon_license_files": [],
+    "source_zip_icon_generation_script": false
+  },
+  "public_key_inventory_exit": 0,
+  "build_control_focused_exit": 0,
+  "combined_ci_units_exit": 0,
+  "combined_ci_unit_cases": 26,
+  "help_checks": {
+    "build-installers.py": 0,
+    "build-native-test-apk.py": 0
+  },
+  "app_build_or_signing_executed": false,
+  "production_key_accessed": false,
+  "aborted_local_after_attempt": "No execution ledger existed after user interruption; not counted as a run or PASS."
+}
