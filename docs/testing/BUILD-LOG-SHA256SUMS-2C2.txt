@@ -31,7 +31,7 @@ e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  docs/testing/b
 17eaf5bbb56990524f52bf22ee18caa487568646a1bb1bcacae8650e1e6bd253  docs/testing/build-2c2-logs/artifacts-verified/toolchain.json
 4b633303722c0ffc14a8b200ee8d9c809fb536942a0ea5f0f13a3c538e28b2ac  docs/testing/build-2c2-logs/build-controls-after.log
 4af0cdb8384bf2d86e1abf646b112f8050a773e7402a161e8f0cb5e70638cb6e  docs/testing/build-2c2-logs/build-controls-before.log
-cfac36e0c3de9f4d52d18e5d3cc5913bb454cab49cd82071c618ae37a89954c2  docs/testing/build-2c2-logs/changed-files.txt
+68cf5e3d23bcd98ca5c00e1c6ae3eea577439cffa219a2989f06195f3b1d6e39  docs/testing/build-2c2-logs/changed-files.txt
 0a1d95428c084dc1a8a568351453e5abd5c0b668fa4be9b0d4e680f7ccbeee65  docs/testing/build-2c2-logs/github-a2292ef/android/app-badging.log
 8d9224be114265efe6006e5e2d8201d52b60c72bed4c95b690d09530e9cc0378  docs/testing/build-2c2-logs/github-a2292ef/android/app-manifest-tree.log
 f96fc1509964c68cfcbb6319cb3f8860322545ad048b2bf1004ce1002a1dac0b  docs/testing/build-2c2-logs/github-a2292ef/android/app-signature.log
@@ -118,6 +118,9 @@ c619accb6fa26aa611846d27498f135510f10f7acb51891a5e2b166f95590f66  docs/testing/b
 11fed0063463d01ec74dffd4493d1e2490e12c3e9a97ab58fbe6ba9089aad2b4  docs/testing/build-2c2-logs/github-a2292ef/windows/toolchain-probes.json
 1e55d8c68c0c71bd8cb71992ada057ec8e11f7bed760796c5a603096cafa9102  docs/testing/build-2c2-logs/github-a2292ef/windows/toolchain.json
 854d6ad0e079bad1d39230ec437d3431b562df29a69986829e5bdad29e0afbcf  docs/testing/build-2c2-logs/hardlink-test-before.log
+a4ae365136ff47be8e84e6e2a54c7de743d4acbd59359c8ed120121912be3dc7  docs/testing/build-2c2-logs/log-upload-after.json
+6fba2227bef74c8a341b388becdf887e451a1c097e2ed3da8d0ee4f50769a846  docs/testing/build-2c2-logs/log-upload-after.log
+d56ef24f256f594954b9909c48fcc326c344e9ddc3afdcea61d4968e0173b1fb  docs/testing/build-2c2-logs/log-upload-before.log
 0f3f90083aead789def2b0622117b596d7d5f5c51ebd351de4235ed2ea77bef9  docs/testing/build-2c2-logs/python-ci-unit-after.json
 92a4b27697d540b4841c835ca53c071c3bc766a0cfd82d3ef3f0c396aac8285c  docs/testing/build-2c2-logs/python-ci-unit-after.log
 72ba9bb4e683a6df75606b52259e820ba45a0ab615d94c1f2ed9e21212dc5636  docs/testing/build-2c2-logs/reference-verification/commands.json

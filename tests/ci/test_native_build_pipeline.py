@@ -21,6 +21,7 @@ from native_build_ci.toolchain import fetch
 from native_build_ci.verify import apk_identity, certificate_fingerprint, reject_secret_bytes, verify_apk, PRODUCTION_CERT
 from native_build_ci.artifacts import check_export
 from native_build_ci.runner import Journal, StepFailed
+from native_build_ci.finish import prepare_logs
 import native_build_support as support
 sys.path.pop(0)
 
@@ -202,6 +203,16 @@ class NativePipelineTests(unittest.TestCase):
             record = json.loads((root / 'logs/commands.json').read_text())[0]
             self.assertEqual(record['exit_code'], 7)
             self.assertEqual(record['status'], 'FAIL')
+
+    def test_failed_log_screening_cannot_leave_a_publishable_directory(self):
+        with tempfile.TemporaryDirectory() as temp:
+            root = owned_root(Path(temp) / 'work')
+            (root / 'logs').mkdir()
+            # Deliberately synthetic token syntax; no real credential is used.
+            (root / 'logs/rejected.log').write_text('ghp_' + '0' * 36)
+            with self.assertRaises(Blocked):
+                prepare_logs(root)
+            self.assertFalse((root / 'safe-logs').exists(), 'Rejected evidence must not be available to artifact upload')
 
 
 if __name__ == '__main__':

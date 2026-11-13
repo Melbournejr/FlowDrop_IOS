@@ -117,7 +117,7 @@ Tải lại APK/EXE chính thức chỉ làm đối chứng read-only, đối ch
 
 ## 9. Regression và CI
 
-**Unit/mock:** 40/40 Python CI unit đã thực chạy exit0 (26 cũ +14 mới), bảo vệ stale APK/classes, path/link/cleanup, key purpose/prod pin, Java path, download checksum, badging, multi-signer, artifact tamper/secret và child exit. Các mock/fixture không được coi là build thật.
+**Unit/mock:** local mới nhất **41/41** Python CI unit đã thực chạy exit0 (26 cũ +15 mới); mốc CI evidence bên dưới thực chạy40/40 trước bổ sung guard upload log, bảo vệ stale APK/classes, path/link/cleanup, key purpose/prod pin, Java path, download checksum, badging, multi-signer, artifact tamper/secret và child exit. Các mock/fixture không được coi là build thật.
 
 Workflow mới chỉ PR opt-in ci-native-build/workflow_dispatch, contents:read, fullSHA Actions, không production secrets/publisher/release. Năm job và timeout16–25phút, artifact retention7ngày, separate logs/cleanup và summary fail nếu mandatory job không success. Fork không có đường cấp repository write/production secrets. [Hướng dẫn chạy/lỗi](../build/README-2C2.md).
 
@@ -152,6 +152,8 @@ Artifact CI ở run4 (không nhầm với local hoặc run sau):
 
 Cert thử CI **c5ddb26b6c6679ed9c4c8b24d0e420268306f7b6619f6052c8ed619916ba0343**, app/test cùng cert; app69/test12 Java8 classes. [Android archive](https://github.com/Melbournejr/FlowDrop_IOS/actions/runs/43384264087/artifacts/14017748408) SHA8570604f…, [Windows archive](https://github.com/Melbournejr/FlowDrop_IOS/actions/runs/43384264087/artifacts/14017807537) SHAa78f9bc0…; manifest đầy đủ hash/byte/artifactID. Cùng128 payload path local/CI, chỉ FlowDrop.exe khác byte; runtime/dependency/script/font giữ byte. Mỗi run có manifest/fingerprint riêng; artifact giữ7ngày đến20/11/2026.
 
+Sau commit evidence, **head `24463bb4d8da6add9099b704969f9e79661fe146`** đã được kiểm lại: [build run #5](https://github.com/Melbournejr/FlowDrop_IOS/actions/runs/43385749769) và [regression run #14](https://github.com/Melbournejr/FlowDrop_IOS/actions/runs/43385749768), cả10 job success, Coverage/ZIP64 thực chạy. Kiểm tra cuối phát hiện nhánh upload log cần ràng buộc vào kết quả screening; bổ sung guard và test tái hiện trước/sau (1FAIL→41PASS local). Thay đổi cuối chỉ build-control/workflow thử/test/docs. Sau push tiếp theo, phải kiểm lại cả hai workflow ở head bàn giao và ghi vào PR body; không dùng run #5/#14 thay kết quả head mới.
+
 Run #2 build trước opt-in chỉ summary success với các build SKIPPED, **không** được tính build PASS. Run #3 build và #11/#12 regression bị concurrency hủy khi thêm label; **không** tính PASS. Không dispatch publisher, không build từ binary release.
 
 **Local Node/JVM:** setup mới đã exit0 (Node24.19.0,JDK21.0.12.1,Python3.12.14,pinnedorg.json,8 lockednpm). Gate chưa được dùng làm bằng chứng PASS ở lần ghi này. Local ZIP64 chưa chạy lại vì còn ~12GiB free, thấp hơn preflight18GiB của runner; không hạ ngưỡng. Toàn bộ CI phải chạy trên runner riêng đủ tài nguyên.
@@ -172,6 +174,7 @@ Run #2 build trước opt-in chỉ summary success với các build SKIPPED, **k
 | G++ driver dumpfullversion format | provision mong14.2.0, nhận14-posix | phân biệt packagepin14.2.0 và driverobserved14-posix; không thay compiler |
 | aapt2 badging35 dùng minSdkVersion | verifier BLOCKED sau buildexit0 | parser hỗ trợ tên minSdkVersion và sdkVersion cũ; unit+APK thựcPASS |
 | Debian7z wrapper dùng absolutehost path | nsis-list exit127 sau buildexit0 | gọi authenticated lib/7zip/7z; actualextractPASS |
+| Screening log lỗi vẫn để lại safe-logs và uploader luôn chạy | test mới tái hiện FAIL/exit1 | kiểm toàn bộ log trước khi tạo export, xóa stale export; uploader chỉ chạy khi evidence.outcome=success; full41 unit PASS/exit0 |
 
 Giữ log thất bại và unit trước/sau; không sửa production để ép build/test xanh. Không thay dependency/resource/key/version; không skip/assertion giảm. Lượt failed provision/build-verifier không được tính PASS.
 

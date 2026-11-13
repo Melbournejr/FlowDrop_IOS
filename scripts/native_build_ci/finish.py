@@ -13,7 +13,9 @@ from .verify import reject_secret_bytes
 
 def prepare_logs(root):
     root = require_owned(root)
-    output = fresh_child(root, root / 'safe-logs')
+    # A failed screen must leave no stale or partial publishable export.
+    remove_child(root, root / 'safe-logs')
+    checked = []
     for file in (root / 'logs').glob('*'):
         if file.is_symlink() or not file.is_file() or not re.fullmatch(r'[A-Za-z0-9_-]+\.(log|json|jsonl)', file.name):
             raise Blocked('Unexpected evidence entry')
@@ -21,7 +23,10 @@ def prepare_logs(root):
             raise Blocked('Evidence exceeds the sanitized log limit')
         data = redact(file.read_text())
         reject_secret_bytes(data.encode())
-        (output / file.name).write_text(data)
+        checked.append((file.name, data))
+    output = fresh_child(root, root / 'safe-logs')
+    for name, data in checked:
+        (output / name).write_text(data)
     if not list(output.iterdir()):
         (output / 'not-verified.log').write_text('NOT VERIFIED: no completed verification log was produced.\n')
     (output / 'SHA256SUMS.txt').write_text(''.join(digest(file) + '  ' + file.name + '\n' for file in sorted(output.iterdir())))

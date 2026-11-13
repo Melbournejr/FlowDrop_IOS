@@ -143,6 +143,9 @@ docs/testing/build-2c2-logs/github-a2292ef/windows/nsis-extract.log
 docs/testing/build-2c2-logs/github-a2292ef/windows/toolchain-probes.json
 docs/testing/build-2c2-logs/github-a2292ef/windows/toolchain.json
 docs/testing/build-2c2-logs/hardlink-test-before.log
+docs/testing/build-2c2-logs/log-upload-after.json
+docs/testing/build-2c2-logs/log-upload-after.log
+docs/testing/build-2c2-logs/log-upload-before.log
 docs/testing/build-2c2-logs/python-ci-unit-after.json
 docs/testing/build-2c2-logs/python-ci-unit-after.log
 docs/testing/build-2c2-logs/reference-verification/commands.json

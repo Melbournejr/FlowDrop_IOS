@@ -32,10 +32,11 @@ jobs:
       timeout-minutes: 16
       run: python3 -m scripts.native_build_ci.toolchain --group all --work-root "$RUNNER_TEMP/flowdrop-2c2-toolchain" --cache-root "$RUNNER_TEMP/flowdrop-2c2-toolchain/download-cache"
     - name: Prepare sanitized evidence
+      id: evidence
       if: ${{ always() }}
       run: python3 -m scripts.native_build_ci.finish logs --work-root "$RUNNER_TEMP/flowdrop-2c2-toolchain"
     - name: Upload public toolchain evidence
-      if: ${{ always() }}
+      if: ${{ always() && steps.evidence.outcome == 'success' }}
       uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
       with:
         name: FlowDrop-2C2-Toolchain-${{ github.run_id }}-${{ github.run_attempt }}
@@ -78,10 +79,11 @@ jobs:
         retention-days: 7
         include-hidden-files: false
     - name: Prepare sanitized evidence
+      id: evidence
       if: ${{ always() }}
       run: python3 -m scripts.native_build_ci.finish logs --work-root "$RUNNER_TEMP/flowdrop-2c2-android"
     - name: Upload sanitized Android evidence
-      if: ${{ always() }}
+      if: ${{ always() && steps.evidence.outcome == 'success' }}
       uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
       with:
         name: FlowDrop-2C2-Android-Logs-${{ github.run_id }}-${{ github.run_attempt }}
@@ -124,10 +126,11 @@ jobs:
         retention-days: 7
         include-hidden-files: false
     - name: Prepare sanitized evidence
+      id: evidence
       if: ${{ always() }}
       run: python3 -m scripts.native_build_ci.finish logs --work-root "$RUNNER_TEMP/flowdrop-2c2-windows"
     - name: Upload sanitized Windows evidence
-      if: ${{ always() }}
+      if: ${{ always() && steps.evidence.outcome == 'success' }}
       uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
       with:
         name: FlowDrop-2C2-Windows-Logs-${{ github.run_id }}-${{ github.run_attempt }}
@@ -174,10 +177,11 @@ jobs:
       timeout-minutes: 16
       run: python3 -m scripts.native_build_ci.artifacts --work-root "$RUNNER_TEMP/flowdrop-2c2-verifier" --cache-root "$RUNNER_TEMP/flowdrop-2c2-verifier/download-cache" --android "$RUNNER_TEMP/flowdrop-2c2-downloads/android" --windows "$RUNNER_TEMP/flowdrop-2c2-downloads/windows"
     - name: Prepare sanitized evidence
+      id: evidence
       if: ${{ always() }}
       run: python3 -m scripts.native_build_ci.finish logs --work-root "$RUNNER_TEMP/flowdrop-2c2-verifier"
     - name: Upload independent verification evidence
-      if: ${{ always() }}
+      if: ${{ always() && steps.evidence.outcome == 'success' }}
       uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
       with:
         name: FlowDrop-2C2-Independent-Verification-${{ github.run_id }}-${{ github.run_attempt }}
