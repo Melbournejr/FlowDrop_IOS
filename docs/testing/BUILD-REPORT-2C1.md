@@ -133,7 +133,50 @@ Checksum năm file bằng chứng: [BUILD-LOG-SHA256SUMS-2C1.txt](BUILD-LOG-SHA2
 
 Workflow/composite/runner cũ giữ nguyên. Python unit discovery sẵn có tự lấy thêm `test_build_security.py`; không cần cấp secrets/SDK hoặc thay workflow để chạy mock. Các gate Node/JVM không gọi script build thực; assets icon chỉ được kiểm hash. Không thay 13 lệnh cũ, assertions, protocol hoặc dependency để làm xanh.
 
-**NOT VERIFIED tại commit chuẩn bị PR:** phải mở Draft PR, thêm `ci-zip64`, quan sát đủ Fast/Integration/Stream/ZIP64 và **Coverage / explicit verification status** trên GitHub. Phần này sẽ cập nhật sau khi đọc run/job/log/artifact thực. Không coi unit/mock/local xanh là CI GitHub xanh hoặc APK/EXE build được.
+**[API/TEST, thực chạy] [Draft PR #8](https://github.com/Melbournejr/FlowDrop_IOS/pull/8)**, label `ci-zip64`. [Run #6](https://github.com/Melbournejr/FlowDrop_IOS/actions/runs/43358891831) trên head **`040b43ce55daf9d72bc4c852ab9ad6b8da47fe87`** completed/success, **5/5 job success**. Đã đọc đủ năm job log và đối chiếu từng dòng exit; bốn job test đều upload/cleanup success. Workflow chạy bằng PR merge checkout mặc định và `contents: read`. Run #5 khi mở PR bị concurrency hủy sau thêm label, không tính là PASS.
+
+Ubuntu 24.04; archived version logs của Fast ghi Node **v24.22.2**, OpenJDK **21.0.13 LTS**, Python **3.12.16**. Đây là runtime Linux của test; không phải đã chạy Windows PE hoặc Android SDK build.
+
+| Job GitHub | Kết quả thực | Phạm vi |
+| --- | --- | --- |
+| [Fast](https://github.com/Melbournejr/FlowDrop_IOS/actions/runs/43358891831/job/131667485548) | success | 4 lệnh, gồm Python CI unit **26/26** |
+| [Integration](https://github.com/Melbournejr/FlowDrop_IOS/actions/runs/43358891831/job/131667588668) | success | 7 lệnh chạy tuần tự |
+| [Stream](https://github.com/Melbournejr/FlowDrop_IOS/actions/runs/43358891831/job/131667588675) | success | Đủ 101 file/384 MiB, SHA/RSS assertions |
+| [ZIP64](https://github.com/Melbournejr/FlowDrop_IOS/actions/runs/43358891831/job/131667588700) | success | Cả ba suite có ca >4 GiB; không skip |
+| [Coverage / explicit verification status](https://github.com/Melbournejr/FlowDrop_IOS/actions/runs/43358891831/job/131668033889) | **PASS / success** | FAST/INTEGRATION/STREAM/ZIP64 đều success; ZIP64_REQUESTED=true |
+
+| Suite GitHub | Exit thực | Giây |
+| --- | ---: | ---: |
+| CI runner unit (26 cases) | 0 | 0,521 |
+| Asset integrity | 0 | 0,004 |
+| npm unit | 0 | 0,392 |
+| Harness unit | 0 | 0,320 |
+| HTTP | 0 | 1,462 |
+| Android host | 0 | 1,649 |
+| Discovery | 0 | 2,955 |
+| Peer | 0 | 9,194 |
+| LAN discovery | 0 | 17,647 |
+| Android discovery | 0 | 0,998 |
+| Security | 0 | 11,005 |
+| Large transfer | 0 | 10,110 |
+| Features đủ ZIP64 | 0 | 14,441 |
+| Folders đủ ZIP64 | 0 | 26,931 |
+| Native client đủ >4 GiB | 0 | 17,150 |
+
+**13/13 lệnh gốc + hai guard đạt trên GitHub sau khôi phục**. Không có test giảm assertion/size hoặc production fix để ép đạt; không có timeout/skip ở run #6. Kết quả không bổ sung coverage APK/EXE build, instrumentation-device hoặc OS thật.
+
+API có bốn artifact, retention tới **20/11/2026**; digest API khớp upload log:
+
+| Artifact | ZIP byte | SHA-256 |
+| --- | ---: | --- |
+| [Fast](https://github.com/Melbournejr/FlowDrop_IOS/actions/runs/43358891831/artifacts/14007720565) | 5371 | `8b0475960e95105b9003c72eda28fff6df657e3272846b2ac9145d360b41d663` |
+| [Integration](https://github.com/Melbournejr/FlowDrop_IOS/actions/runs/43358891831/artifacts/14006763447) | 4690 | `b871f2803cc1050158598b3ec8fb85a6820aa5d0977b86231b498e6cf384634d` |
+| [Stream](https://github.com/Melbournejr/FlowDrop_IOS/actions/runs/43358891831/artifacts/14007491312) | 2488 | `bd9e75c38257aae20ebb4c0d253676fd83a374642bcc4f0574e72c953fb1cf2b` |
+| [ZIP64](https://github.com/Melbournejr/FlowDrop_IOS/actions/runs/43358891831/artifacts/14007316902) | 3527 | `51ef50aa7464c41205b55941e92a21b357795e795c45ba6528d7f7e31a8cde6f` |
+
+**[CHECK byte độc lập cho Fast]** Đã tải qua kết nối GitHub, đối chiếu hash ZIP với API, kiểm path/type/CRC của 11 member (chỉ `.log`/`.json`), đọc `results.json` và dòng **Ran 26 tests** trong archived unit log. Không có finding private-key/PAT/UUID theo mẫu quét. Một lượt CLI tải artifact trước đó exit 1 và không được tính là kiểm archive; kết nối GitHub hợp lệ sau đó tải Fast thành công. Ba artifact còn lại mới đối chiếu metadata/upload log, chưa kiểm nội dung ZIP từng member; không suy thành byte verification đầy đủ.
+
+Commit cập nhật mục bằng chứng này chỉ sửa báo cáo; source/build-control đã kiểm ở run #6 giữ nguyên. Run cho commit cuối được kiểm riêng và ghi ở PR trước bàn giao. Không sửa Ruleset để làm check xanh, không merge hoặc phát hành.
 
 ## 9. Kế hoạch Giai đoạn 2C.2 — chưa thực hiện
 
