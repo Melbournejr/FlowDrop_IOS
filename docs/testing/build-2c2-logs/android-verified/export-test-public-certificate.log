@@ -1,0 +1,4 @@
+Certificate stored in file </workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/test-certificate.der>
+
+Warning:
+The JKS keystore uses a proprietary format. It is recommended to migrate to PKCS12 which is an industry standard format using "keytool -importkeystore -srckeystore [REDACTED] -destkeystore [REDACTED] -deststoretype pkcs12".

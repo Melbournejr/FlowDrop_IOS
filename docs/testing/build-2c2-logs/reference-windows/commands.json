@@ -1,0 +1,31 @@
+[
+  {
+    "name": "nsis-list",
+    "command": [
+      "/workspace/flowdrop-build/flowdrop-verification-2c2/work/reference-windows/tools/mingw/usr/lib/7zip/7z",
+      "l",
+      "-slt",
+      "/workspace/flowdrop-build/flowdrop-verification-2c2/evidence/release-reference/FlowDrop-Setup-1.13.0-Windows-x64.exe"
+    ],
+    "status": "PASS",
+    "exit_code": 0,
+    "raw_returncode": 0,
+    "wall_seconds": 0.032,
+    "log_sha256": "481858aaebc8994658fc47d3f69218b0f51474aa0f1eb9f578f44c927668789f"
+  },
+  {
+    "name": "nsis-extract",
+    "command": [
+      "/workspace/flowdrop-build/flowdrop-verification-2c2/work/reference-windows/tools/mingw/usr/lib/7zip/7z",
+      "x",
+      "-y",
+      "-o/workspace/flowdrop-build/flowdrop-verification-2c2/work/reference-windows/installer-inspection",
+      "/workspace/flowdrop-build/flowdrop-verification-2c2/evidence/release-reference/FlowDrop-Setup-1.13.0-Windows-x64.exe"
+    ],
+    "status": "PASS",
+    "exit_code": 0,
+    "raw_returncode": 0,
+    "wall_seconds": 1.582,
+    "log_sha256": "48ad27658bd494340cbebda7d58d18f0d1738721b8766f1d7c30b4354bd5527e"
+  }
+]

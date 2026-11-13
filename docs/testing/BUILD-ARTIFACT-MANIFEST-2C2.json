@@ -1,0 +1,36 @@
+{
+  "schema": 1,
+  "purpose": "FlowDrop 2C2 TEST ONLY; no production installation or release",
+  "base": "c502c2f8793839e7f10289bf051df06dd1c466a0",
+  "local_artifacts": [
+    {
+      "file": "FlowDrop-1.13.0-Android-TEST-ONLY.apk",
+      "size": 279316,
+      "sha256": "9cd01fdef70602772a4c3c39cd45ba394236255ebc9801eb921e9a94d29b0871",
+      "test_certificate_sha256": "94fa0d5499f964dd901726008553b3d4eead89b231189b7cb6424b3a99e1c534",
+      "evidence": "local isolated build; uncommitted build-control snapshot on base c502c2f8793839e7f10289bf051df06dd1c466a0",
+      "log_directory": "android-verified"
+    },
+    {
+      "file": "FlowDrop-1.13.0-Android-Instrumentation-TEST-ONLY.apk",
+      "size": 33171,
+      "sha256": "6fee09b102f64240be3e9c9a47113d88198fe4c2abad4dcb49be8f97bce59bd2",
+      "test_certificate_sha256": "94fa0d5499f964dd901726008553b3d4eead89b231189b7cb6424b3a99e1c534",
+      "evidence": "local isolated build; uncommitted build-control snapshot on base c502c2f8793839e7f10289bf051df06dd1c466a0",
+      "log_directory": "android-verified"
+    },
+    {
+      "file": "FlowDrop-Setup-1.13.0-Windows-x64-TEST-ONLY.exe",
+      "size": 24527415,
+      "sha256": "ab861a3f9eba4aebfca6563be4aba65a3a668337718e54671a8b24f2e0be3630",
+      "test_certificate_sha256": null,
+      "evidence": "local isolated build; uncommitted build-control snapshot on base c502c2f8793839e7f10289bf051df06dd1c466a0",
+      "log_directory": "windows-verified"
+    }
+  ],
+  "github_actions_status": "NOT VERIFIED; awaiting Draft PR runs",
+  "production_certificate_pin_unchanged": "65cbed4feb375d2c3c2eb94e668bd7aaee7ce5b24f436887873a6fa11719f97f",
+  "production_signing_equivalence": "NOT VERIFIED; deliberately different ephemeral test certificate",
+  "runtime_equivalence": "NOT VERIFIED",
+  "reproducible_binary": "NOT VERIFIED"
+}

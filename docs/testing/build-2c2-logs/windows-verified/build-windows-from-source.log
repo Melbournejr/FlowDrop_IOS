@@ -1,0 +1,29 @@
+Running: x86_64-w64-mingw32-windres
+Running: x86_64-w64-mingw32-g++-posix
+Running: makensis
+MakeNSIS v3.11-1 - Copyright 1999-2025 Contributors
+See the file COPYING for license details.
+Credits can be found in the Users Manual.
+
+Command line defined: "PAYLOAD_DIR=/workspace/flowdrop-build/flowdrop-verification-2c2/work/windows-verified/tools/windows-payload"
+Command line defined: "OUTPUT_FILE=/workspace/flowdrop-build/flowdrop-verification-2c2/work/windows-verified/source/artifacts/FlowDrop-Setup-1.13.0-Windows-x64.exe"
+Processing script file: "/workspace/flowdrop-build/flowdrop-verification-2c2/work/windows-verified/source/desktop/windows/installer.nsi" (UTF8)
+
+Processed 1 file, writing output (x86-unicode):
+
+Output: "/workspace/flowdrop-build/flowdrop-verification-2c2/work/windows-verified/source/artifacts/FlowDrop-Setup-1.13.0-Windows-x64.exe"
+Install: 4 pages (256 bytes), 1 section (4120 bytes), 693 instructions (19404 bytes), 327 strings (10574 bytes), 1 language table (302 bytes).
+Uninstall: 2 pages (192 bytes), 1 section (4120 bytes), 56 instructions (1568 bytes), 102 strings (2796 bytes), 1 language table (250 bytes).
+Datablock optimizer saved 28045 bytes (~0.0%).
+
+Using lzma (compress whole) compression.
+
+EXE header size:              115712 / 102400 bytes
+Install code:                          (33072 bytes)
+Install data:                          (97426608 bytes)
+Uninstall code+data:                   (21242 bytes)
+Compressed data:            24411699 / 97480922 bytes
+CRC (0x04F689F6):                  4 / 4 bytes
+
+Total size:                 24527415 / 97583326 bytes (25.1%)
+EXE: /workspace/flowdrop-build/flowdrop-verification-2c2/work/windows-verified/source/artifacts/FlowDrop-Setup-1.13.0-Windows-x64.exe

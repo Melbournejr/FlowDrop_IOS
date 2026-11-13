@@ -1,0 +1,510 @@
+{
+  "status": "PASS",
+  "role": "android",
+  "production_signing_equivalence": "NOT VERIFIED",
+  "os_smoke": "NOT VERIFIED",
+  "source": {
+    "base_commit": "c502c2f8793839e7f10289bf051df06dd1c466a0",
+    "protected_files_checked": 262,
+    "production_source_equivalence": "PASS",
+    "snapshot_files": 292,
+    "checkout_commit": "c502c2f8793839e7f10289bf051df06dd1c466a0",
+    "uncommitted_paths": [
+      " M scripts/build-installers.py",
+      " M scripts/build-native-test-apk.py",
+      " M scripts/native_build_support.py",
+      "?? docs/build/",
+      "?? scripts/native_build_ci/",
+      "?? tests/ci/test_native_build_pipeline.py"
+    ]
+  },
+  "app_java8_classes": 69,
+  "instrumentation_java8_classes": 12,
+  "android": {
+    "status": "PASS",
+    "type": "app",
+    "identity": {
+      "package": "app.flowdrop.mobile",
+      "version_code": "14",
+      "version_name": "1.13.0",
+      "min_sdk": 29,
+      "target_sdk": 35,
+      "permissions": [
+        "android.permission.ACCESS_NETWORK_STATE",
+        "android.permission.ACCESS_WIFI_STATE",
+        "android.permission.CHANGE_WIFI_MULTICAST_STATE",
+        "android.permission.FOREGROUND_SERVICE",
+        "android.permission.FOREGROUND_SERVICE_DATA_SYNC",
+        "android.permission.HIDE_OVERLAY_WINDOWS",
+        "android.permission.INTERNET",
+        "android.permission.POST_NOTIFICATIONS",
+        "android.permission.RECEIVE_BOOT_COMPLETED",
+        "android.permission.REQUEST_INSTALL_PACKAGES",
+        "android.permission.UPDATE_PACKAGES_WITHOUT_USER_ACTION"
+      ]
+    },
+    "test_certificate_sha256": "94fa0d5499f964dd901726008553b3d4eead89b231189b7cb6424b3a99e1c534",
+    "production_signing_equivalence": "NOT VERIFIED; intentionally different test certificate",
+    "size": 279316,
+    "sha256": "9cd01fdef70602772a4c3c39cd45ba394236255ebc9801eb921e9a94d29b0871",
+    "inventory": [
+      {
+        "path": "AndroidManifest.xml",
+        "size": 5920,
+        "sha256": "2e2822afa8b71ec18fd74ce8ee36bf98f22cef4741a78ddf0b8390e5d2650174"
+      },
+      {
+        "path": "res/drawable/ic_launcher.xml",
+        "size": 920,
+        "sha256": "3dd6826fdc1568a9362f1ef4583895de34794bc3990c04ae4f4be639546ce3df"
+      },
+      {
+        "path": "resources.arsc",
+        "size": 588,
+        "sha256": "26d21f44a6a168bf74c8f8f8b941a4124dcc17bde859e72d7b308c5e51f1293e"
+      },
+      {
+        "path": "classes.dex",
+        "size": 223912,
+        "sha256": "a312214ea359072a7663f33904b2712e947b1121f45ec6a78ce02d2ac964aebd"
+      },
+      {
+        "path": "assets/fonts/BeVietnamPro-Medium.ttf",
+        "size": 135980,
+        "sha256": "b60832bfa0fcd015158112c64d7e3fdad3b0c6287d1823f85a3103636e845268"
+      },
+      {
+        "path": "assets/fonts/BeVietnamPro-Regular.ttf",
+        "size": 132948,
+        "sha256": "cd1ef6e9d7db28ad5cdb88a65ccbe693870e60d340b791f349d248342b4fe4c3"
+      },
+      {
+        "path": "assets/fonts/OFL.txt",
+        "size": 4397,
+        "sha256": "6b7f8f73609a25ea78c891e34cf37b06f8a676b7ea986e941e43b009110f2a85"
+      },
+      {
+        "path": "assets/fonts/BeVietnamPro-Bold.ttf",
+        "size": 140300,
+        "sha256": "7f738fe5c43c8872807b20e2d30d42163618de8a4daf7f48a939adac32c16847"
+      },
+      {
+        "path": "META-INF/FLOWDROP.SF",
+        "size": 927,
+        "sha256": "51285c7be744b6c70a1c92941bb787116265f7b5f4c3eaaed0291caaa03d9656"
+      },
+      {
+        "path": "META-INF/FLOWDROP.RSA",
+        "size": 1539,
+        "sha256": "38c428c4893191371981a1c74b2e78e78797ea559419cc71aedfa3ff669cc7c3"
+      },
+      {
+        "path": "META-INF/MANIFEST.MF",
+        "size": 800,
+        "sha256": "d0610458cac0997a1553659a9c734d27bd442eefda9d2f5550a87e0213f14b7f"
+      }
+    ]
+  },
+  "instrumentation": {
+    "status": "PASS",
+    "type": "instrumentation",
+    "identity": {
+      "package": "app.flowdrop.mobile.test",
+      "version_code": "",
+      "version_name": "",
+      "min_sdk": 29,
+      "target_sdk": 35,
+      "permissions": []
+    },
+    "test_certificate_sha256": "94fa0d5499f964dd901726008553b3d4eead89b231189b7cb6424b3a99e1c534",
+    "production_signing_equivalence": "NOT VERIFIED; intentionally different test certificate",
+    "size": 33171,
+    "sha256": "6fee09b102f64240be3e9c9a47113d88198fe4c2abad4dcb49be8f97bce59bd2",
+    "inventory": [
+      {
+        "path": "AndroidManifest.xml",
+        "size": 2920,
+        "sha256": "bb1cbc8cb40166255b38eae8b9980dc60bb2fd60e061c3dca8f372a5c29ceaa2"
+      },
+      {
+        "path": "resources.arsc",
+        "size": 40,
+        "sha256": "1fa3cb291285348ec1b33c85e7317d989467707f4791c4e5302f2d312d1e18c8"
+      },
+      {
+        "path": "classes.dex",
+        "size": 48524,
+        "sha256": "69a7d8ecb911f5f5e9d1190d4bbf58f0bf76025bcef8d410d984f27683a0334b"
+      },
+      {
+        "path": "META-INF/FLOWDROP.SF",
+        "size": 412,
+        "sha256": "be87d0c00e1de56816f8843a1e109a39737425935bea6f8f830ff1b70da86d87"
+      },
+      {
+        "path": "META-INF/FLOWDROP.RSA",
+        "size": 1539,
+        "sha256": "f46ff0e9516d09c7a300b16235bf77c2b0837d412c159e8838f430bde843130c"
+      },
+      {
+        "path": "META-INF/MANIFEST.MF",
+        "size": 285,
+        "sha256": "aadf9fc785e5ee8f9020089a0b644898091e92e1411f9683cfc8e26bc559db4a"
+      }
+    ]
+  },
+  "build_and_structural_verification": "PASS",
+  "exit_code": 0,
+  "builder_steps": [
+    {
+      "command": [
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/tools/sdk/build-tools/android-15/aapt2",
+        "compile",
+        "--dir",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/source/android/res",
+        "-o",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/source/android/build/resources.zip"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "wall_seconds": 0.005
+    },
+    {
+      "command": [
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/tools/sdk/build-tools/android-15/aapt2",
+        "link",
+        "-o",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/source/android/build/resources.apk",
+        "-I",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/tools/sdk/platforms/android-35/android.jar",
+        "--manifest",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/source/android/AndroidManifest.xml",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/source/android/build/resources.zip"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "wall_seconds": 0.12
+    },
+    {
+      "command": [
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/jdk/bin/java",
+        "-m",
+        "jdk.compiler/com.sun.tools.javac.Main",
+        "-source",
+        "8",
+        "-target",
+        "8",
+        "-encoding",
+        "UTF-8",
+        "-bootclasspath",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/tools/sdk/build-tools/android-15/core-lambda-stubs.jar:/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/tools/sdk/platforms/android-35/android.jar",
+        "-classpath",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/tools/sdk/platforms/android-35/android.jar",
+        "-d",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/source/android/build/classes",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/source/android/src/app/flowdrop/mobile/ReceiveFiles.java",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/source/android/src/app/flowdrop/mobile/FolderReceive.java",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/source/android/src/app/flowdrop/mobile/ReceiveService.java",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/source/android/src/app/flowdrop/mobile/AppUpdates.java",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/source/android/src/app/flowdrop/mobile/FlowArtwork.java",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/source/android/src/app/flowdrop/mobile/ReleaseConfig.java",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/source/android/src/app/flowdrop/mobile/WifiNetwork.java",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/source/android/src/app/flowdrop/mobile/DeviceLabel.java",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/source/android/src/app/flowdrop/mobile/TransferClient.java",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/source/android/src/app/flowdrop/mobile/DeviceDiscovery.java",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/source/android/src/app/flowdrop/mobile/HostService.java",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/source/android/src/app/flowdrop/mobile/LanDiscovery.java",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/source/android/src/app/flowdrop/mobile/FolderPackage.java",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/source/android/src/app/flowdrop/mobile/UpdateInstallReceiver.java",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/source/android/src/app/flowdrop/mobile/FolderArchive.java",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/source/android/src/app/flowdrop/mobile/UpdateManifest.java",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/source/android/src/app/flowdrop/mobile/SharedFiles.java",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/source/android/src/app/flowdrop/mobile/CodeLookup.java",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/source/android/src/app/flowdrop/mobile/SendService.java",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/source/android/src/app/flowdrop/mobile/MainActivity.java",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/source/android/src/app/flowdrop/mobile/TransferServer.java",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/source/android/src/app/flowdrop/mobile/TransferHistory.java",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/source/android/src/app/flowdrop/mobile/RequestSecurity.java",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/source/android/src/app/flowdrop/mobile/UpdateJobService.java"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "wall_seconds": 5.128
+    },
+    {
+      "command": [
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/jdk/bin/java",
+        "-cp",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/tools/sdk/build-tools/android-15/lib/d8.jar",
+        "com.android.tools.r8.D8",
+        "--release",
+        "--min-api",
+        "29",
+        "--lib",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/tools/sdk/platforms/android-35/android.jar",
+        "--output",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/source/android/build/dex",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/source/android/build/classes/app/flowdrop/mobile/LanDiscovery$Peer.class",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/source/android/build/classes/app/flowdrop/mobile/MainActivity$2.class",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/source/android/build/classes/app/flowdrop/mobile/UpdateJobService.class",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/source/android/build/classes/app/flowdrop/mobile/TransferClient$Source.class",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/source/android/build/classes/app/flowdrop/mobile/TransferClient$Opener.class",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/source/android/build/classes/app/flowdrop/mobile/WifiNetwork.class",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/source/android/build/classes/app/flowdrop/mobile/ReleaseConfig.class",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/source/android/build/classes/app/flowdrop/mobile/HostService$2.class",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/source/android/build/classes/app/flowdrop/mobile/TransferServer$Assets.class",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/source/android/build/classes/app/flowdrop/mobile/TransferServer$2.class",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/source/android/build/classes/app/flowdrop/mobile/HostService$LocalBinder.class",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/source/android/build/classes/app/flowdrop/mobile/RequestSecurity.class",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/source/android/build/classes/app/flowdrop/mobile/LanDiscovery.class",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/source/android/build/classes/app/flowdrop/mobile/UpdateManifest.class",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/source/android/build/classes/app/flowdrop/mobile/TransferClient$Cancellation.class",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/source/android/build/classes/app/flowdrop/mobile/TransferClient$Connections.class",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/source/android/build/classes/app/flowdrop/mobile/ReceiveFiles.class",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/source/android/build/classes/app/flowdrop/mobile/HostService.class",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/source/android/build/classes/app/flowdrop/mobile/ReceiveService$Batch.class",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/source/android/build/classes/app/flowdrop/mobile/FolderPackage$Result.class",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/source/android/build/classes/app/flowdrop/mobile/TransferServer$Limited.class",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/source/android/build/classes/app/flowdrop/mobile/FolderArchive$Progress.class",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/source/android/build/classes/app/flowdrop/mobile/HostService$3.class",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/source/android/build/classes/app/flowdrop/mobile/TransferServer$HeaderInput.class",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/source/android/build/classes/app/flowdrop/mobile/FolderArchive$Result.class",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/source/android/build/classes/app/flowdrop/mobile/TransferClient$Progress.class",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/source/android/build/classes/app/flowdrop/mobile/FolderPackage$Progress.class",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/source/android/build/classes/app/flowdrop/mobile/ReceiveFiles$Route.class",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/source/android/build/classes/app/flowdrop/mobile/LanDiscovery$Adapter.class",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/source/android/build/classes/app/flowdrop/mobile/DeviceLabel.class",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/source/android/build/classes/app/flowdrop/mobile/TransferServer$Request.class",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/source/android/build/classes/app/flowdrop/mobile/TransferServer$HttpError.class",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/source/android/build/classes/app/flowdrop/mobile/DeviceDiscovery$Listener.class",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/source/android/build/classes/app/flowdrop/mobile/FolderPackage$Sink.class",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/source/android/build/classes/app/flowdrop/mobile/SendService$Listener.class",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/source/android/build/classes/app/flowdrop/mobile/CodeLookup$Connections.class",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/source/android/build/classes/app/flowdrop/mobile/UpdateInstallReceiver.class",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/source/android/build/classes/app/flowdrop/mobile/DeviceDiscovery$2.class",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/source/android/build/classes/app/flowdrop/mobile/CodeLookup.class",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/source/android/build/classes/app/flowdrop/mobile/MainActivity$4.class",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/source/android/build/classes/app/flowdrop/mobile/MainActivity.class",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/source/android/build/classes/app/flowdrop/mobile/TransferServer$1.class",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/source/android/build/classes/app/flowdrop/mobile/ReceiveService$Listener.class",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/source/android/build/classes/app/flowdrop/mobile/TransferServer$Chunked.class",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/source/android/build/classes/app/flowdrop/mobile/HostService$1.class",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/source/android/build/classes/app/flowdrop/mobile/MainActivity$3.class",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/source/android/build/classes/app/flowdrop/mobile/TransferServer.class",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/source/android/build/classes/app/flowdrop/mobile/UpdateManifest$Entry.class",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/source/android/build/classes/app/flowdrop/mobile/ReceiveService.class",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/source/android/build/classes/app/flowdrop/mobile/AppUpdates.class",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/source/android/build/classes/app/flowdrop/mobile/TransferHistory.class",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/source/android/build/classes/app/flowdrop/mobile/FolderReceive.class",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/source/android/build/classes/app/flowdrop/mobile/MainActivity$5.class",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/source/android/build/classes/app/flowdrop/mobile/TransferClient.class",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/source/android/build/classes/app/flowdrop/mobile/MainActivity$SessionViews.class",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/source/android/build/classes/app/flowdrop/mobile/FolderPackage.class",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/source/android/build/classes/app/flowdrop/mobile/FolderArchive.class",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/source/android/build/classes/app/flowdrop/mobile/CodeLookup$Found.class",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/source/android/build/classes/app/flowdrop/mobile/DeviceDiscovery$1.class",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/source/android/build/classes/app/flowdrop/mobile/DeviceDiscovery$Peer.class",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/source/android/build/classes/app/flowdrop/mobile/DeviceDiscovery.class",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/source/android/build/classes/app/flowdrop/mobile/DeviceDiscovery$4.class",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/source/android/build/classes/app/flowdrop/mobile/SharedFiles.class",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/source/android/build/classes/app/flowdrop/mobile/SendService.class",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/source/android/build/classes/app/flowdrop/mobile/MainActivity$1.class",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/source/android/build/classes/app/flowdrop/mobile/FlowArtwork.class",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/source/android/build/classes/app/flowdrop/mobile/TransferServer$Connections.class",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/source/android/build/classes/app/flowdrop/mobile/DeviceDiscovery$3.class",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/source/android/build/classes/app/flowdrop/mobile/HostService$Listener.class"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "wall_seconds": 7.803
+    },
+    {
+      "command": [
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/tools/sdk/build-tools/android-15/zipalign",
+        "-f",
+        "-p",
+        "4",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/source/android/build/unsigned.apk",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/source/android/build/aligned.apk"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "wall_seconds": 0.006
+    },
+    {
+      "command": [
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/jdk/bin/java",
+        "-jar",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/tools/sdk/build-tools/android-15/lib/apksigner.jar",
+        "sign",
+        "--ks",
+        "[REDACTED]",
+        "--ks-key-alias",
+        "flowdrop",
+        "--ks-pass",
+        "env:FLOWDROP_ANDROID_STORE_PASSWORD",
+        "--key-pass",
+        "env:FLOWDROP_ANDROID_KEY_PASSWORD",
+        "--v1-signing-enabled",
+        "true",
+        "--v2-signing-enabled",
+        "true",
+        "--v3-signing-enabled",
+        "true",
+        "--out",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/source/artifacts/FlowDrop-1.13.0-Android.apk",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/source/android/build/aligned.apk"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "wall_seconds": 1.089
+    },
+    {
+      "command": [
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/jdk/bin/java",
+        "-jar",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/tools/sdk/build-tools/android-15/lib/apksigner.jar",
+        "verify",
+        "--verbose",
+        "--print-certs",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/source/artifacts/FlowDrop-1.13.0-Android.apk"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "wall_seconds": 0.43
+    },
+    {
+      "command": [
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/tools/sdk/build-tools/android-15/zipalign",
+        "-c",
+        "-p",
+        "4",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/source/artifacts/FlowDrop-1.13.0-Android.apk"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "wall_seconds": 0.004
+    },
+    {
+      "command": [
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/tools/sdk/build-tools/android-15/aapt2",
+        "dump",
+        "badging",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/source/artifacts/FlowDrop-1.13.0-Android.apk"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "wall_seconds": 0.006
+    },
+    {
+      "command": [
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/tools/sdk/build-tools/android-15/aapt2",
+        "link",
+        "-o",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/tools/native-instrumentation/resources.apk",
+        "-I",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/tools/sdk/platforms/android-35/android.jar",
+        "--manifest",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/source/tests/android-native-smoke/AndroidManifest.xml"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "wall_seconds": 0.12
+    },
+    {
+      "command": [
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/jdk/bin/java",
+        "-m",
+        "jdk.compiler/com.sun.tools.javac.Main",
+        "-source",
+        "8",
+        "-target",
+        "8",
+        "-encoding",
+        "UTF-8",
+        "-bootclasspath",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/tools/sdk/build-tools/android-15/core-lambda-stubs.jar:/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/tools/sdk/platforms/android-35/android.jar",
+        "-classpath",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/tools/sdk/platforms/android-35/android.jar:/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/source/android/build/classes",
+        "-d",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/tools/native-instrumentation/classes",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/source/tests/android-native-smoke/NativeServiceSmoke.java",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/source/tests/android-native-smoke/NativeFolderSmoke.java",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/source/tests/android-native-smoke/ShareSourceProvider.java",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/source/tests/android-native-smoke/ShareSenderActivity.java",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/source/tests/android-native-smoke/NativeShareSmoke.java",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/source/tests/android-native-smoke/NativeSmoke.java"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "wall_seconds": 3.113
+    },
+    {
+      "command": [
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/jdk/bin/java",
+        "-cp",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/tools/sdk/build-tools/android-15/lib/d8.jar",
+        "com.android.tools.r8.D8",
+        "--release",
+        "--min-api",
+        "29",
+        "--lib",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/tools/sdk/platforms/android-35/android.jar",
+        "--classpath",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/source/android/build/classes",
+        "--output",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/tools/native-instrumentation/dex",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/tools/native-instrumentation/classes/app/flowdrop/mobile/test/NativeShareSmoke.class",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/tools/native-instrumentation/classes/app/flowdrop/mobile/test/NativeSmoke.class",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/tools/native-instrumentation/classes/app/flowdrop/mobile/test/NativeServiceSmoke$Condition.class",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/tools/native-instrumentation/classes/app/flowdrop/mobile/test/NativeFolderSmoke.class",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/tools/native-instrumentation/classes/app/flowdrop/mobile/test/ShareSenderActivity.class",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/tools/native-instrumentation/classes/app/flowdrop/mobile/test/NativeFolderSmoke$Condition.class",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/tools/native-instrumentation/classes/app/flowdrop/mobile/test/NativeFolderSmoke$1.class",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/tools/native-instrumentation/classes/app/flowdrop/mobile/test/NativeServiceSmoke.class",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/tools/native-instrumentation/classes/app/flowdrop/mobile/test/NativeSmoke$Condition.class",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/tools/native-instrumentation/classes/app/flowdrop/mobile/test/NativeServiceSmoke$1.class",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/tools/native-instrumentation/classes/app/flowdrop/mobile/test/ShareSourceProvider.class",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/tools/native-instrumentation/classes/app/flowdrop/mobile/test/NativeShareSmoke$Check.class"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "wall_seconds": 4.514
+    },
+    {
+      "command": [
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/tools/sdk/build-tools/android-15/zipalign",
+        "-f",
+        "-p",
+        "4",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/tools/native-instrumentation/unsigned.apk",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/tools/native-instrumentation/aligned.apk"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "wall_seconds": 0.004
+    },
+    {
+      "command": [
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/jdk/bin/java",
+        "-jar",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/tools/sdk/build-tools/android-15/lib/apksigner.jar",
+        "sign",
+        "--ks",
+        "[REDACTED]",
+        "--ks-key-alias",
+        "flowdrop",
+        "--ks-pass",
+        "env:FLOWDROP_ANDROID_STORE_PASSWORD",
+        "--key-pass",
+        "env:FLOWDROP_ANDROID_KEY_PASSWORD",
+        "--out",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/tools/native-instrumentation/FlowDrop-native-tests.apk",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/tools/native-instrumentation/aligned.apk"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "wall_seconds": 0.883
+    }
+  ]
+}

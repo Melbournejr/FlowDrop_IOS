@@ -1,0 +1,12 @@
+[GNUPG:] NEWSIG
+[GNUPG:] KEY_CONSIDERED 5BE8A3F6C8A5C01D106C0AD820B1A390B168D356 0
+[GNUPG:] SIG_ID Bq9b/HJiNPS//MDHUgR6AKsT2/M 2026-10-28 1793212588
+[GNUPG:] GOODSIG 20B1A390B168D356 Antoine du Hamel <antoine.duhamel@platformatic.dev>
+[GNUPG:] VALIDSIG 5BE8A3F6C8A5C01D106C0AD820B1A390B168D356 2026-10-28 1793212588 0 4 0 22 8 01 5BE8A3F6C8A5C01D106C0AD820B1A390B168D356
+gpg: Signature made Wed Oct 28 18:36:28 2026 UTC
+gpg:                using EDDSA key 5BE8A3F6C8A5C01D106C0AD820B1A390B168D356
+gpg: Good signature from "Antoine du Hamel <antoine.duhamel@platformatic.dev>" [unknown]
+gpg:                 aka "Antoine du Hamel <antoine.duhamel@rosa.be>" [unknown]
+gpg:                 aka "Antoine du Hamel <duhamelantoine1995@gmail.com>" [unknown]
+gpg: WARNING: Using untrusted key!
+gpg: WARNING: not a detached signature; file '/workspace/flowdrop-build/flowdrop-verification-2c2/evidence/distribution-metadata/node-SHASUMS256.txt' was NOT verified!

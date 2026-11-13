@@ -1,0 +1,5 @@
+Generating 3,072 bit RSA key pair and self-signed certificate (SHA256withRSA) with a validity of 3 days
+	for: CN=FlowDrop 2C2 TEST ONLY
+
+Warning:
+The JKS keystore uses a proprietary format. It is recommended to migrate to PKCS12 which is an industry standard format using "keytool -importkeystore -srckeystore [REDACTED] -destkeystore [REDACTED] -deststoretype pkcs12".

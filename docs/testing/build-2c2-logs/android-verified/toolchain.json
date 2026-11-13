@@ -1,0 +1,113 @@
+{
+  "status": "PASS",
+  "group": "android",
+  "resources": {
+    "os": "Linux-6.18.57-x86_64-with-glibc2.41",
+    "architecture": "x86_64",
+    "free_disk_bytes": 15254634496,
+    "memory_bytes": 8589934592
+  },
+  "artifacts": [
+    {
+      "id": "platforms;android-35",
+      "url": "https://dl.google.com/android/repository/platform-35_r02.zip",
+      "sha256": "0988cacad01b38a18a47bac14a0695f246bc76c1b06c0eeb8eb0dc825ab0c8e0",
+      "size": 64273788,
+      "authentication": "Google official HTTPS repository metadata published SHA-1; SHA-256 recorded after independent published checksum match"
+    },
+    {
+      "id": "build-tools;35.0.0",
+      "url": "https://dl.google.com/android/repository/build-tools_r35_linux.zip",
+      "sha256": "bd3a4966912eb8b30ed0d00b0cda6b6543b949d5ffe00bea54c04c81e1561d88",
+      "size": 61958799,
+      "authentication": "Google official HTTPS repository metadata published SHA-1; SHA-256 recorded after independent published checksum match"
+    },
+    {
+      "id": "jdk",
+      "url": "https://github.com/adoptium/temurin21-binaries/releases/download/jdk-21.0.13%2B9/OpenJDK21U-jdk_x64_linux_hotspot_21.0.13_9.tar.gz",
+      "sha256": "d7f5d5cf865a2902b70ff549b97586a7d3f234e016f041ab447ea740c7d66d1c",
+      "size": 207858352,
+      "authentication": "Eclipse Adoptium detached PGP signature, published SHA-256 and GitHub asset digest verified"
+    }
+  ],
+  "signatures": [
+    {
+      "type": "debian",
+      "exit_code": 0,
+      "valid_signatures": [
+        "[GNUPG:] VALIDSIG 4CB50190207B4758A3F73A796ED0E7B82643E131 2026-09-12 1789199778 0 4 0 1 8 01 B8B80B5B623EAB6AD8775C45B7C5D7D6350947F8",
+        "[GNUPG:] VALIDSIG B8E5F13176D2A7A75220028078DBA3BC47EF2265 2026-09-12 1789199779 0 4 0 1 8 01 04B54C3CDCA79751B16BC6B5225629DF75B188BD",
+        "[GNUPG:] VALIDSIG 41587F7DB8C774BCCF131416762F67A0B2C39DE4 2026-09-12 1789199867 0 4 0 22 8 01 41587F7DB8C774BCCF131416762F67A0B2C39DE4"
+      ]
+    },
+    {
+      "type": "releases",
+      "exit_code": 0,
+      "valid_signatures": [
+        "[GNUPG:] VALIDSIG 5BE8A3F6C8A5C01D106C0AD820B1A390B168D356 2026-10-28 1793212588 0 4 0 22 8 01 5BE8A3F6C8A5C01D106C0AD820B1A390B168D356"
+      ]
+    },
+    {
+      "type": "releases",
+      "exit_code": 0,
+      "valid_signatures": [
+        "[GNUPG:] VALIDSIG 3B04D753C9050D9A5D343F39843C48A565F8F04B 2026-10-21 1792603596 0 4 0 1 10 00 3B04D753C9050D9A5D343F39843C48A565F8F04B"
+      ]
+    }
+  ],
+  "distribution_records": {
+    "status": "PASS",
+    "debian_index_checked": false,
+    "debian_index_sha256": "7778d3e3f303b7ddb8ce0fe7c8d57473a076c6bf2e8f241f75421d2396352498",
+    "google_publication": "official HTTPS SHA-1/size",
+    "node_signed_shasums_checked": true
+  },
+  "versions": [
+    {
+      "tool": "java",
+      "command": [
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/jdk/bin/java",
+        "-version"
+      ],
+      "exit_code": 0,
+      "observed": "openjdk version \"21.0.13\" 2026-10-20 LTS\nOpenJDK Runtime Environment Temurin-21.0.13+9 (build 21.0.13+9-LTS)\nOpenJDK 64-Bit Server VM Temurin-21.0.13+9 (build 21.0.13+9-LTS, mixed mode, sharing)",
+      "expected": "21.0.13"
+    },
+    {
+      "tool": "aapt2",
+      "command": [
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/tools/sdk/build-tools/android-15/aapt2",
+        "version"
+      ],
+      "exit_code": 0,
+      "observed": "Android Asset Packaging Tool (aapt) 2.19-11948202",
+      "expected": "2.19-11948202"
+    },
+    {
+      "tool": "d8",
+      "command": [
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/jdk/bin/java",
+        "-cp",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/tools/sdk/build-tools/android-15/lib/d8.jar",
+        "com.android.tools.r8.D8",
+        "--version"
+      ],
+      "exit_code": 0,
+      "observed": "D8 8.6.2-dev (build abaab469b5ebd4dd2bb91ba0ed6f45277faae4ca from go/r8bot (luci-r8-custom-ci-archive-0-77gl))",
+      "expected": "8.6.2-dev"
+    },
+    {
+      "tool": "apksigner",
+      "command": [
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/jdk/bin/java",
+        "-jar",
+        "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/tools/sdk/build-tools/android-15/lib/apksigner.jar",
+        "version"
+      ],
+      "exit_code": 0,
+      "observed": "0.9",
+      "expected": "0.9"
+    }
+  ],
+  "exit_code": 0
+}

@@ -1,0 +1,182 @@
+[
+  {
+    "Package": "binutils-mingw-w64-x86-64",
+    "Version": "2.44-3+12+b1",
+    "Architecture": "amd64",
+    "Filename": "pool/main/b/binutils-mingw-w64/binutils-mingw-w64-x86-64_2.44-3+12+b1_amd64.deb",
+    "Size": "3473344",
+    "SHA256": "b53f4a091b16a0d0952b8e3bd6027931641386258f96b37db1f0c62c787221d3",
+    "Depends": "libc6 (>= 2.38), libzstd1 (>= 1.5.5), zlib1g (>= 1:1.2.0), binutils-common (>= 2.44)"
+  },
+  {
+    "Package": "g++-mingw-w64-x86-64-posix",
+    "Version": "14.2.0-19+27+b1",
+    "Architecture": "amd64",
+    "Filename": "pool/main/g/gcc-mingw-w64/g++-mingw-w64-x86-64-posix_14.2.0-19+27+b1_amd64.deb",
+    "Size": "15261820",
+    "SHA256": "cfa1773c2d0184819050138e587a81606d04a5f92e278b521b72b776d2c256c1",
+    "Depends": "gcc-mingw-w64-x86-64-posix (= 14.2.0-19+27+b1), gcc-mingw-w64-x86-64-posix-runtime (= 14.2.0-19+27+b1), gcc-mingw-w64-base (= 14.2.0-19+27+b1), libc6 (>= 2.38), libgmp10 (>= 2:6.3.0+dfsg), libisl23 (>= 0.15), libmpc3 (>= 1.1.0), libmpfr6 (>= 3.1.3), libzstd1 (>= 1.5.5), zlib1g (>= 1:1.2.2)"
+  },
+  {
+    "Package": "gcc-mingw-w64-x86-64-posix",
+    "Version": "14.2.0-19+27+b1",
+    "Architecture": "amd64",
+    "Filename": "pool/main/g/gcc-mingw-w64/gcc-mingw-w64-x86-64-posix_14.2.0-19+27+b1_amd64.deb",
+    "Size": "37567656",
+    "SHA256": "e32d24cfd1482394f16d9a84c1d0a9f5aa08ee826a79acc383c70cc8c23c4fe5",
+    "Depends": "binutils-mingw-w64-x86-64 (>= 2.30~), mingw-w64-x86-64-dev, gcc-mingw-w64-x86-64-posix-runtime (= 14.2.0-19+27+b1), gcc-mingw-w64-base (= 14.2.0-19+27+b1), libc6 (>= 2.38), libgcc-s1 (>= 3.0), libgmp10 (>= 2:6.3.0+dfsg), libisl23 (>= 0.15), libmpc3 (>= 1.1.0), libmpfr6 (>= 3.1.3), libstdc++6 (>= 5), libzstd1 (>= 1.5.5), zlib1g (>= 1:1.1.4)"
+  },
+  {
+    "Package": "gcc-mingw-w64-x86-64-posix-runtime",
+    "Version": "14.2.0-19+27+b1",
+    "Architecture": "amd64",
+    "Filename": "pool/main/g/gcc-mingw-w64/gcc-mingw-w64-x86-64-posix-runtime_14.2.0-19+27+b1_amd64.deb",
+    "Size": "13037152",
+    "SHA256": "c898d96177574a8a7238564a1e799d8ddfed5a3d2ea005510305f9ad466a6f59",
+    "Depends": "gcc-mingw-w64-base (= 14.2.0-19+27+b1)"
+  },
+  {
+    "Package": "gcc-mingw-w64-base",
+    "Version": "14.2.0-19+27+b1",
+    "Architecture": "amd64",
+    "Filename": "pool/main/g/gcc-mingw-w64/gcc-mingw-w64-base_14.2.0-19+27+b1_amd64.deb",
+    "Size": "194268",
+    "SHA256": "8d2c64b886ab4a435a78ddc4cd3b510f149b65fbd6be8472e8f460627562718a",
+    "Depends": null
+  },
+  {
+    "Package": "mingw-w64-common",
+    "Version": "12.0.0-5",
+    "Architecture": "all",
+    "Filename": "pool/main/m/mingw-w64/mingw-w64-common_12.0.0-5_all.deb",
+    "Size": "5792084",
+    "SHA256": "97dce5d0d8aff1cade4786ad4ef5078345477a598829afcac2e7f2fbc5399990",
+    "Depends": null
+  },
+  {
+    "Package": "mingw-w64-x86-64-dev",
+    "Version": "12.0.0-5",
+    "Architecture": "all",
+    "Filename": "pool/main/m/mingw-w64/mingw-w64-x86-64-dev_12.0.0-5_all.deb",
+    "Size": "4871860",
+    "SHA256": "0bf89cf7454cccb49cd2a46a6f7b33896f6ae3a1a2fe33e02c40be6155bbb385",
+    "Depends": "mingw-w64-common"
+  },
+  {
+    "Package": "nsis",
+    "Version": "3.11-1",
+    "Architecture": "amd64",
+    "Filename": "pool/main/n/nsis/nsis_3.11-1_amd64.deb",
+    "Size": "568816",
+    "SHA256": "e6eb6ffb70f0df09e95dedb2d2cf55ad3c2679f7c2ae357d0c00cc4c83178690",
+    "Depends": "nsis-common (>= 3.11-1), libc6 (>= 2.38), libgcc-s1 (>= 3.0), libstdc++6 (>= 13.1), zlib1g (>= 1:1.1.4)"
+  },
+  {
+    "Package": "nsis-common",
+    "Version": "3.11-1",
+    "Architecture": "all",
+    "Filename": "pool/main/n/nsis/nsis-common_3.11-1_all.deb",
+    "Size": "1168188",
+    "SHA256": "103a3284c1a5356efa0aba90fdfc391c3cde8e7df8726377cef0f98471584047",
+    "Depends": null
+  },
+  {
+    "Package": "libstdc++6",
+    "Version": "14.2.0-19",
+    "Architecture": "amd64",
+    "Filename": "pool/main/g/gcc-14/libstdc++6_14.2.0-19_amd64.deb",
+    "Size": "713628",
+    "SHA256": "ab1fa05837aa7a92aae748fd07a18a35f7d18bb4a71c4724fe2bbf0e32089de0",
+    "Depends": "gcc-14-base (= 14.2.0-19), libc6 (>= 2.38), libgcc-s1 (>= 4.3)"
+  },
+  {
+    "Package": "libgcc-s1",
+    "Version": "14.2.0-19",
+    "Architecture": "amd64",
+    "Filename": "pool/main/g/gcc-14/libgcc-s1_14.2.0-19_amd64.deb",
+    "Size": "72772",
+    "SHA256": "3c71917b490d1a17aed43196a2787a256ecf060526cdb20216a74bedc061b150",
+    "Depends": "gcc-14-base (= 14.2.0-19), libc6 (>= 2.35)"
+  },
+  {
+    "Package": "libzstd1",
+    "Version": "1.5.7+dfsg-1",
+    "Architecture": "amd64",
+    "Filename": "pool/main/libz/libzstd/libzstd1_1.5.7+dfsg-1_amd64.deb",
+    "Size": "303836",
+    "SHA256": "2f6a2aeacfc925eba8b00ac9139bc4bfccf8cacb09eb93de067074b26948eef9",
+    "Depends": "libc6 (>= 2.34)"
+  },
+  {
+    "Package": "libmpc3",
+    "Version": "1.3.1-1+b3",
+    "Architecture": "amd64",
+    "Filename": "pool/main/m/mpclib3/libmpc3_1.3.1-1+b3_amd64.deb",
+    "Size": "52244",
+    "SHA256": "2af0a5c128e03694a41c0b011bd8a958b7297436cdb3a15ddad7866dae8c300b",
+    "Depends": "libc6 (>= 2.4), libgmp10 (>= 2:6.3.0+dfsg), libmpfr6 (>= 4.0.0)"
+  },
+  {
+    "Package": "libmpfr6",
+    "Version": "4.2.2-1",
+    "Architecture": "amd64",
+    "Filename": "pool/main/m/mpfr4/libmpfr6_4.2.2-1_amd64.deb",
+    "Size": "729320",
+    "SHA256": "75dddce11dabc7fc543712c33dc27b7f2ee66a111763eb5eac654d010b42cd92",
+    "Depends": "libc6 (>= 2.14), libgmp10 (>= 2:6.3.0+dfsg)"
+  },
+  {
+    "Package": "libgmp10",
+    "Version": "2:6.3.0+dfsg-3",
+    "Architecture": "amd64",
+    "Filename": "pool/main/g/gmp/libgmp10_6.3.0+dfsg-3_amd64.deb",
+    "Size": "560220",
+    "SHA256": "d0d0265eb01770f17afd0f7c8c0622f80479dcfbbe13653a0debeec61464e622",
+    "Depends": "libc6 (>= 2.38)"
+  },
+  {
+    "Package": "libisl23",
+    "Version": "0.27-1",
+    "Architecture": "amd64",
+    "Filename": "pool/main/i/isl/libisl23_0.27-1_amd64.deb",
+    "Size": "659152",
+    "SHA256": "ac8518042e81c00de1effb72bba7e88ac4ecd488f7ea8b9e3ebc63159cb53b35",
+    "Depends": "libc6 (>= 2.14), libgmp10 (>= 2:6.3.0+dfsg)"
+  },
+  {
+    "Package": "7zip",
+    "Version": "25.01+dfsg-1~deb13u2",
+    "Architecture": "amd64",
+    "Filename": "pool/main/7/7zip/7zip_25.01+dfsg-1~deb13u2_amd64.deb",
+    "Size": "1573700",
+    "SHA256": "b2cb210bee3be6a10230b38b8645d71846d19364b157f44fd08e1a54cae1652f",
+    "Depends": "libc6 (>= 2.34), libgcc-s1 (>= 3.0), libstdc++6 (>= 14)"
+  },
+  {
+    "Package": "binutils-common",
+    "Version": "2.44-3",
+    "Architecture": "amd64",
+    "Filename": "pool/main/b/binutils/binutils-common_2.44-3_amd64.deb",
+    "Size": "2508768",
+    "SHA256": "002da5d23f8757dee97a2c0a40e0e1d4d85a43da094488ee2ee7068d4d3691f9",
+    "Depends": null
+  },
+  {
+    "Package": "gcc-14-base",
+    "Version": "14.2.0-19",
+    "Architecture": "amd64",
+    "Filename": "pool/main/g/gcc-14/gcc-14-base_14.2.0-19_amd64.deb",
+    "Size": "49432",
+    "SHA256": "5b6825de4263824b78c4c51f6476414f3b4e89c2ab63e81dc8b9b5501e867cf6",
+    "Depends": null
+  },
+  {
+    "Package": "zlib1g",
+    "Version": "1:1.3.dfsg+really1.3.1-1+b1",
+    "Architecture": "amd64",
+    "Filename": "pool/main/z/zlib/zlib1g_1.3.dfsg+really1.3.1-1+b1_amd64.deb",
+    "Size": "88892",
+    "SHA256": "015be740d6236ad114582dea500c1d907f29e16d6db00566ca32fb68d71ac90d",
+    "Depends": "libc6 (>= 2.14)"
+  }
+]

@@ -1,7 +1,7 @@
 """Builds instrumentation only; never included in the production installer."""
 from pathlib import Path
 import zipfile,os,argparse
-from native_build_support import BuildError, load_signing, require_tool_root, run_command, report_failure
+from native_build_support import BuildError, load_signing, require_tool_root, run_command, report_failure, fresh_build_directory
 r=Path(__file__).resolve().parents[1]
 def run(args,**kwargs):return run_command(args,**kwargs)
 def main():
@@ -9,7 +9,7 @@ def main():
  try:
   signing=load_signing(r);tools=require_tool_root();bt=tools/'sdk/build-tools/android-15';jar=tools/'sdk/platforms/android-35/android.jar'
   if not (r/'android/build/classes').is_dir():raise BuildError('Compile Android app classes before the instrumentation APK')
-  build=tools/'native-instrumentation';build.mkdir(exist_ok=True)
+  build=fresh_build_directory(tools/'native-instrumentation',tools)
   run([bt/'aapt2','link','-o',build/'resources.apk','-I',jar,'--manifest',r/'tests/android-native-smoke/AndroidManifest.xml'])
   classes=build/'classes';classes.mkdir(exist_ok=True);dex=build/'dex';dex.mkdir(exist_ok=True)
   run(['java','-m','jdk.compiler/com.sun.tools.javac.Main','-source','8','-target','8','-encoding','UTF-8','-bootclasspath',str(bt/'core-lambda-stubs.jar')+os.pathsep+str(jar),'-classpath',str(jar)+os.pathsep+str(r/'android/build/classes'),'-d',classes,*list((r/'tests/android-native-smoke').glob('*.java'))])

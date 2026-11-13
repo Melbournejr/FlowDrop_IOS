@@ -1,0 +1,480 @@
+{
+  "schema": 1,
+  "purpose": "FlowDrop 2C2 TEST ONLY; no release or production signing",
+  "base_commit": "c502c2f8793839e7f10289bf051df06dd1c466a0",
+  "recorded_date": "2026-11-13",
+  "production_certificate_sha256": "65cbed4feb375d2c3c2eb94e668bd7aaee7ce5b24f436887873a6fa11719f97f",
+  "host_requirements": {
+    "os": "Linux x86_64; CI ubuntu-24.04",
+    "glibc_minimum": "2.38",
+    "python": "3.12.16 in CI",
+    "tools": [
+      "gpg",
+      "dpkg-deb",
+      "curl",
+      "tar"
+    ],
+    "minimum_ram_gib": 2,
+    "minimum_free_disk_gib": 8
+  },
+  "versions_pinned": {
+    "android_platform": "35 revision 2 extension 13",
+    "android_build_tools": "35.0.0",
+    "java": "Eclipse Temurin 21.0.13+9",
+    "gcc": "MinGW-w64 POSIX x64 GCC 14.2.0-19+27+b1",
+    "binutils": "2.44-3+12+b1",
+    "nsis": "3.11-1",
+    "node": "24.22.2",
+    "nlohmann_json": "3.11.3 vendored, unchanged",
+    "npm_dependencies": "unchanged package-lock.json"
+  },
+  "historical_observations": "BUILD-REPORT-2C1.md describes observations, not binary reproducibility. JDK provider/build is now explicitly pinned; Java 8/min29/target35 flags unchanged.",
+  "authentication": {
+    "debian": "All three signatures of signed InRelease verified; Packages.xz SHA-256 from signed Release; each .deb hash from that index. Lock pins immutable package versions, never selects latest.",
+    "google": "Official repository metadata publishes SHA-1 and sizes. SHA-256 recorded only after published SHA-1/size match; computed SHA-256 is not claimed to be independently published/signed by Google.",
+    "node": "PGP signed SHASUMS verified, signer fingerprint matches official v24.22.2 README, Windows archive also matches baseline runtime.json.",
+    "jdk": "Adoptium published SHA-256, detached PGP signature and GitHub asset digest match."
+  },
+  "artifacts": [
+    {
+      "id": "platforms;android-35",
+      "kind": "zip",
+      "url": "https://dl.google.com/android/repository/platform-35_r02.zip",
+      "filename": "platform-35_r02.zip",
+      "size": 64273788,
+      "sha256": "0988cacad01b38a18a47bac14a0695f246bc76c1b06c0eeb8eb0dc825ab0c8e0",
+      "published_sha1": "0bb560a90a7a2cbd0dd8348224d518b638fe7949",
+      "authentication": "Google official HTTPS repository metadata published SHA-1; SHA-256 recorded after independent published checksum match",
+      "license": "Android SDK License",
+      "destination": "tools/sdk/platforms",
+      "groups": [
+        "android",
+        "verify"
+      ]
+    },
+    {
+      "id": "build-tools;35.0.0",
+      "kind": "zip",
+      "url": "https://dl.google.com/android/repository/build-tools_r35_linux.zip",
+      "filename": "build-tools_r35_linux.zip",
+      "size": 61958799,
+      "sha256": "bd3a4966912eb8b30ed0d00b0cda6b6543b949d5ffe00bea54c04c81e1561d88",
+      "published_sha1": "2cfaa0bbb2336e9ec18ed3ecea84fa2e2af607bc",
+      "authentication": "Google official HTTPS repository metadata published SHA-1; SHA-256 recorded after independent published checksum match",
+      "license": "Android SDK License",
+      "destination": "tools/sdk/build-tools",
+      "groups": [
+        "android",
+        "verify"
+      ]
+    },
+    {
+      "id": "node-windows",
+      "kind": "zip",
+      "url": "https://nodejs.org/dist/v24.22.2/node-v24.22.2-win-x64.zip",
+      "filename": "node-v24.22.2-win-x64.zip",
+      "size": 37754834,
+      "sha256": "ca1bff5d8ead13c9f2ea404a176db46bd430704d5b5113734049fa365e7799e2",
+      "authentication": "Node.js release SHASUMS256 PGP signature verified; signer fingerprint in tagged official README",
+      "license": "Node.js LICENSE including bundled third-party notices",
+      "destination": "tools/windows-runtime",
+      "groups": [
+        "windows"
+      ]
+    },
+    {
+      "id": "node-linux",
+      "kind": "tar",
+      "url": "https://nodejs.org/dist/v24.22.2/node-v24.22.2-linux-x64.tar.xz",
+      "filename": "node-v24.22.2-linux-x64.tar.xz",
+      "size": 32039312,
+      "sha256": "48cc0e21e048790e54c0cf5749c2725005313d652651c40b7a21feb9697aaf75",
+      "authentication": "Node.js release SHASUMS256 PGP signature verified; signer fingerprint in tagged official README",
+      "license": "Node.js LICENSE including bundled third-party notices",
+      "destination": "node-linux",
+      "strip": 1,
+      "groups": [
+        "windows"
+      ]
+    },
+    {
+      "id": "jdk",
+      "version": "21.0.13+9",
+      "kind": "tar",
+      "url": "https://github.com/adoptium/temurin21-binaries/releases/download/jdk-21.0.13%2B9/OpenJDK21U-jdk_x64_linux_hotspot_21.0.13_9.tar.gz",
+      "filename": "OpenJDK21U-jdk_x64_linux_hotspot_21.0.13_9.tar.gz",
+      "size": 207858352,
+      "sha256": "d7f5d5cf865a2902b70ff549b97586a7d3f234e016f041ab447ea740c7d66d1c",
+      "authentication": "Eclipse Adoptium detached PGP signature, published SHA-256 and GitHub asset digest verified",
+      "license": "GPL-2.0-with-classpath-exception plus included notices",
+      "destination": "jdk",
+      "strip": 1,
+      "groups": [
+        "android",
+        "verify"
+      ]
+    },
+    {
+      "id": "binutils-mingw-w64-x86-64",
+      "version": "2.44-3+12+b1",
+      "kind": "deb",
+      "url": "https://deb.debian.org/debian/pool/main/b/binutils-mingw-w64/binutils-mingw-w64-x86-64_2.44-3+12+b1_amd64.deb",
+      "filename": "binutils-mingw-w64-x86-64_2.44-3+12+b1_amd64.deb",
+      "size": 3473344,
+      "sha256": "b53f4a091b16a0d0952b8e3bd6027931641386258f96b37db1f0c62c787221d3",
+      "authentication": "Debian trixie signed InRelease -> Packages.xz SHA-256 -> versioned .deb SHA-256",
+      "license": "See /usr/share/doc/binutils-mingw-w64-x86-64/copyright in verified package",
+      "destination": "tools/mingw",
+      "groups": [
+        "windows"
+      ]
+    },
+    {
+      "id": "g++-mingw-w64-x86-64-posix",
+      "version": "14.2.0-19+27+b1",
+      "kind": "deb",
+      "url": "https://deb.debian.org/debian/pool/main/g/gcc-mingw-w64/g++-mingw-w64-x86-64-posix_14.2.0-19+27+b1_amd64.deb",
+      "filename": "g++-mingw-w64-x86-64-posix_14.2.0-19+27+b1_amd64.deb",
+      "size": 15261820,
+      "sha256": "cfa1773c2d0184819050138e587a81606d04a5f92e278b521b72b776d2c256c1",
+      "authentication": "Debian trixie signed InRelease -> Packages.xz SHA-256 -> versioned .deb SHA-256",
+      "license": "See /usr/share/doc/g++-mingw-w64-x86-64-posix/copyright in verified package",
+      "destination": "tools/mingw",
+      "groups": [
+        "windows"
+      ]
+    },
+    {
+      "id": "gcc-mingw-w64-x86-64-posix",
+      "version": "14.2.0-19+27+b1",
+      "kind": "deb",
+      "url": "https://deb.debian.org/debian/pool/main/g/gcc-mingw-w64/gcc-mingw-w64-x86-64-posix_14.2.0-19+27+b1_amd64.deb",
+      "filename": "gcc-mingw-w64-x86-64-posix_14.2.0-19+27+b1_amd64.deb",
+      "size": 37567656,
+      "sha256": "e32d24cfd1482394f16d9a84c1d0a9f5aa08ee826a79acc383c70cc8c23c4fe5",
+      "authentication": "Debian trixie signed InRelease -> Packages.xz SHA-256 -> versioned .deb SHA-256",
+      "license": "See /usr/share/doc/gcc-mingw-w64-x86-64-posix/copyright in verified package",
+      "destination": "tools/mingw",
+      "groups": [
+        "windows"
+      ]
+    },
+    {
+      "id": "gcc-mingw-w64-x86-64-posix-runtime",
+      "version": "14.2.0-19+27+b1",
+      "kind": "deb",
+      "url": "https://deb.debian.org/debian/pool/main/g/gcc-mingw-w64/gcc-mingw-w64-x86-64-posix-runtime_14.2.0-19+27+b1_amd64.deb",
+      "filename": "gcc-mingw-w64-x86-64-posix-runtime_14.2.0-19+27+b1_amd64.deb",
+      "size": 13037152,
+      "sha256": "c898d96177574a8a7238564a1e799d8ddfed5a3d2ea005510305f9ad466a6f59",
+      "authentication": "Debian trixie signed InRelease -> Packages.xz SHA-256 -> versioned .deb SHA-256",
+      "license": "See /usr/share/doc/gcc-mingw-w64-x86-64-posix-runtime/copyright in verified package",
+      "destination": "tools/mingw",
+      "groups": [
+        "windows"
+      ]
+    },
+    {
+      "id": "gcc-mingw-w64-base",
+      "version": "14.2.0-19+27+b1",
+      "kind": "deb",
+      "url": "https://deb.debian.org/debian/pool/main/g/gcc-mingw-w64/gcc-mingw-w64-base_14.2.0-19+27+b1_amd64.deb",
+      "filename": "gcc-mingw-w64-base_14.2.0-19+27+b1_amd64.deb",
+      "size": 194268,
+      "sha256": "8d2c64b886ab4a435a78ddc4cd3b510f149b65fbd6be8472e8f460627562718a",
+      "authentication": "Debian trixie signed InRelease -> Packages.xz SHA-256 -> versioned .deb SHA-256",
+      "license": "See /usr/share/doc/gcc-mingw-w64-base/copyright in verified package",
+      "destination": "tools/mingw",
+      "groups": [
+        "windows"
+      ]
+    },
+    {
+      "id": "mingw-w64-common",
+      "version": "12.0.0-5",
+      "kind": "deb",
+      "url": "https://deb.debian.org/debian/pool/main/m/mingw-w64/mingw-w64-common_12.0.0-5_all.deb",
+      "filename": "mingw-w64-common_12.0.0-5_all.deb",
+      "size": 5792084,
+      "sha256": "97dce5d0d8aff1cade4786ad4ef5078345477a598829afcac2e7f2fbc5399990",
+      "authentication": "Debian trixie signed InRelease -> Packages.xz SHA-256 -> versioned .deb SHA-256",
+      "license": "See /usr/share/doc/mingw-w64-common/copyright in verified package",
+      "destination": "tools/mingw",
+      "groups": [
+        "windows"
+      ]
+    },
+    {
+      "id": "mingw-w64-x86-64-dev",
+      "version": "12.0.0-5",
+      "kind": "deb",
+      "url": "https://deb.debian.org/debian/pool/main/m/mingw-w64/mingw-w64-x86-64-dev_12.0.0-5_all.deb",
+      "filename": "mingw-w64-x86-64-dev_12.0.0-5_all.deb",
+      "size": 4871860,
+      "sha256": "0bf89cf7454cccb49cd2a46a6f7b33896f6ae3a1a2fe33e02c40be6155bbb385",
+      "authentication": "Debian trixie signed InRelease -> Packages.xz SHA-256 -> versioned .deb SHA-256",
+      "license": "See /usr/share/doc/mingw-w64-x86-64-dev/copyright in verified package",
+      "destination": "tools/mingw",
+      "groups": [
+        "windows"
+      ]
+    },
+    {
+      "id": "nsis",
+      "version": "3.11-1",
+      "kind": "deb",
+      "url": "https://deb.debian.org/debian/pool/main/n/nsis/nsis_3.11-1_amd64.deb",
+      "filename": "nsis_3.11-1_amd64.deb",
+      "size": 568816,
+      "sha256": "e6eb6ffb70f0df09e95dedb2d2cf55ad3c2679f7c2ae357d0c00cc4c83178690",
+      "authentication": "Debian trixie signed InRelease -> Packages.xz SHA-256 -> versioned .deb SHA-256",
+      "license": "See /usr/share/doc/nsis/copyright in verified package",
+      "destination": "tools/nsis",
+      "groups": [
+        "windows",
+        "verify"
+      ]
+    },
+    {
+      "id": "nsis-common",
+      "version": "3.11-1",
+      "kind": "deb",
+      "url": "https://deb.debian.org/debian/pool/main/n/nsis/nsis-common_3.11-1_all.deb",
+      "filename": "nsis-common_3.11-1_all.deb",
+      "size": 1168188,
+      "sha256": "103a3284c1a5356efa0aba90fdfc391c3cde8e7df8726377cef0f98471584047",
+      "authentication": "Debian trixie signed InRelease -> Packages.xz SHA-256 -> versioned .deb SHA-256",
+      "license": "See /usr/share/doc/nsis-common/copyright in verified package",
+      "destination": "tools/nsis",
+      "groups": [
+        "windows",
+        "verify"
+      ]
+    },
+    {
+      "id": "libstdc++6",
+      "version": "14.2.0-19",
+      "kind": "deb",
+      "url": "https://deb.debian.org/debian/pool/main/g/gcc-14/libstdc++6_14.2.0-19_amd64.deb",
+      "filename": "libstdc++6_14.2.0-19_amd64.deb",
+      "size": 713628,
+      "sha256": "ab1fa05837aa7a92aae748fd07a18a35f7d18bb4a71c4724fe2bbf0e32089de0",
+      "authentication": "Debian trixie signed InRelease -> Packages.xz SHA-256 -> versioned .deb SHA-256",
+      "license": "See /usr/share/doc/libstdc++6/copyright in verified package",
+      "destination": "tools/mingw",
+      "groups": [
+        "windows",
+        "verify"
+      ]
+    },
+    {
+      "id": "libgcc-s1",
+      "version": "14.2.0-19",
+      "kind": "deb",
+      "url": "https://deb.debian.org/debian/pool/main/g/gcc-14/libgcc-s1_14.2.0-19_amd64.deb",
+      "filename": "libgcc-s1_14.2.0-19_amd64.deb",
+      "size": 72772,
+      "sha256": "3c71917b490d1a17aed43196a2787a256ecf060526cdb20216a74bedc061b150",
+      "authentication": "Debian trixie signed InRelease -> Packages.xz SHA-256 -> versioned .deb SHA-256",
+      "license": "See /usr/share/doc/libgcc-s1/copyright in verified package",
+      "destination": "tools/mingw",
+      "groups": [
+        "windows",
+        "verify"
+      ]
+    },
+    {
+      "id": "libzstd1",
+      "version": "1.5.7+dfsg-1",
+      "kind": "deb",
+      "url": "https://deb.debian.org/debian/pool/main/libz/libzstd/libzstd1_1.5.7+dfsg-1_amd64.deb",
+      "filename": "libzstd1_1.5.7+dfsg-1_amd64.deb",
+      "size": 303836,
+      "sha256": "2f6a2aeacfc925eba8b00ac9139bc4bfccf8cacb09eb93de067074b26948eef9",
+      "authentication": "Debian trixie signed InRelease -> Packages.xz SHA-256 -> versioned .deb SHA-256",
+      "license": "See /usr/share/doc/libzstd1/copyright in verified package",
+      "destination": "tools/mingw",
+      "groups": [
+        "windows",
+        "verify"
+      ]
+    },
+    {
+      "id": "libmpc3",
+      "version": "1.3.1-1+b3",
+      "kind": "deb",
+      "url": "https://deb.debian.org/debian/pool/main/m/mpclib3/libmpc3_1.3.1-1+b3_amd64.deb",
+      "filename": "libmpc3_1.3.1-1+b3_amd64.deb",
+      "size": 52244,
+      "sha256": "2af0a5c128e03694a41c0b011bd8a958b7297436cdb3a15ddad7866dae8c300b",
+      "authentication": "Debian trixie signed InRelease -> Packages.xz SHA-256 -> versioned .deb SHA-256",
+      "license": "See /usr/share/doc/libmpc3/copyright in verified package",
+      "destination": "tools/mingw",
+      "groups": [
+        "windows",
+        "verify"
+      ]
+    },
+    {
+      "id": "libmpfr6",
+      "version": "4.2.2-1",
+      "kind": "deb",
+      "url": "https://deb.debian.org/debian/pool/main/m/mpfr4/libmpfr6_4.2.2-1_amd64.deb",
+      "filename": "libmpfr6_4.2.2-1_amd64.deb",
+      "size": 729320,
+      "sha256": "75dddce11dabc7fc543712c33dc27b7f2ee66a111763eb5eac654d010b42cd92",
+      "authentication": "Debian trixie signed InRelease -> Packages.xz SHA-256 -> versioned .deb SHA-256",
+      "license": "See /usr/share/doc/libmpfr6/copyright in verified package",
+      "destination": "tools/mingw",
+      "groups": [
+        "windows",
+        "verify"
+      ]
+    },
+    {
+      "id": "libgmp10",
+      "version": "2:6.3.0+dfsg-3",
+      "kind": "deb",
+      "url": "https://deb.debian.org/debian/pool/main/g/gmp/libgmp10_6.3.0+dfsg-3_amd64.deb",
+      "filename": "libgmp10_6.3.0+dfsg-3_amd64.deb",
+      "size": 560220,
+      "sha256": "d0d0265eb01770f17afd0f7c8c0622f80479dcfbbe13653a0debeec61464e622",
+      "authentication": "Debian trixie signed InRelease -> Packages.xz SHA-256 -> versioned .deb SHA-256",
+      "license": "See /usr/share/doc/libgmp10/copyright in verified package",
+      "destination": "tools/mingw",
+      "groups": [
+        "windows",
+        "verify"
+      ]
+    },
+    {
+      "id": "libisl23",
+      "version": "0.27-1",
+      "kind": "deb",
+      "url": "https://deb.debian.org/debian/pool/main/i/isl/libisl23_0.27-1_amd64.deb",
+      "filename": "libisl23_0.27-1_amd64.deb",
+      "size": 659152,
+      "sha256": "ac8518042e81c00de1effb72bba7e88ac4ecd488f7ea8b9e3ebc63159cb53b35",
+      "authentication": "Debian trixie signed InRelease -> Packages.xz SHA-256 -> versioned .deb SHA-256",
+      "license": "See /usr/share/doc/libisl23/copyright in verified package",
+      "destination": "tools/mingw",
+      "groups": [
+        "windows",
+        "verify"
+      ]
+    },
+    {
+      "id": "7zip",
+      "version": "25.01+dfsg-1~deb13u2",
+      "kind": "deb",
+      "url": "https://deb.debian.org/debian/pool/main/7/7zip/7zip_25.01+dfsg-1~deb13u2_amd64.deb",
+      "filename": "7zip_25.01+dfsg-1~deb13u2_amd64.deb",
+      "size": 1573700,
+      "sha256": "b2cb210bee3be6a10230b38b8645d71846d19364b157f44fd08e1a54cae1652f",
+      "authentication": "Debian trixie signed InRelease -> Packages.xz SHA-256 -> versioned .deb SHA-256",
+      "license": "Verified package /usr/share/doc/7zip/copyright",
+      "destination": "tools/mingw",
+      "groups": [
+        "windows",
+        "verify"
+      ]
+    },
+    {
+      "id": "binutils-common",
+      "version": "2.44-3",
+      "kind": "deb",
+      "url": "https://deb.debian.org/debian/pool/main/b/binutils/binutils-common_2.44-3_amd64.deb",
+      "filename": "binutils-common_2.44-3_amd64.deb",
+      "size": 2508768,
+      "sha256": "002da5d23f8757dee97a2c0a40e0e1d4d85a43da094488ee2ee7068d4d3691f9",
+      "authentication": "Debian trixie signed InRelease -> Packages.xz SHA-256 -> versioned .deb SHA-256",
+      "license": "Verified package /usr/share/doc/binutils-common/copyright",
+      "destination": "tools/mingw",
+      "groups": [
+        "windows",
+        "verify"
+      ]
+    },
+    {
+      "id": "gcc-14-base",
+      "version": "14.2.0-19",
+      "kind": "deb",
+      "url": "https://deb.debian.org/debian/pool/main/g/gcc-14/gcc-14-base_14.2.0-19_amd64.deb",
+      "filename": "gcc-14-base_14.2.0-19_amd64.deb",
+      "size": 49432,
+      "sha256": "5b6825de4263824b78c4c51f6476414f3b4e89c2ab63e81dc8b9b5501e867cf6",
+      "authentication": "Debian trixie signed InRelease -> Packages.xz SHA-256 -> versioned .deb SHA-256",
+      "license": "Verified package /usr/share/doc/gcc-14-base/copyright",
+      "destination": "tools/mingw",
+      "groups": [
+        "windows",
+        "verify"
+      ]
+    },
+    {
+      "id": "zlib1g",
+      "version": "1:1.3.dfsg+really1.3.1-1+b1",
+      "kind": "deb",
+      "url": "https://deb.debian.org/debian/pool/main/z/zlib/zlib1g_1.3.dfsg+really1.3.1-1+b1_amd64.deb",
+      "filename": "zlib1g_1.3.dfsg+really1.3.1-1+b1_amd64.deb",
+      "size": 88892,
+      "sha256": "015be740d6236ad114582dea500c1d907f29e16d6db00566ca32fb68d71ac90d",
+      "authentication": "Debian trixie signed InRelease -> Packages.xz SHA-256 -> versioned .deb SHA-256",
+      "license": "Verified package /usr/share/doc/zlib1g/copyright",
+      "destination": "tools/mingw",
+      "groups": [
+        "windows",
+        "verify"
+      ]
+    }
+  ],
+  "source_verification_logs": {
+    "debian-signature-verification.log": "36a2d63d384f43ce0d695d121124ed5ae9a8f84a89e38e19751c3cd51c779117",
+    "node-signature-verification.log": "9ede4df655076212cfb60024e8caa0bf14994a24824f050bbb344af3a2591372",
+    "jdk-signature-verification.log": "27b36e93b87bfdf77d900831ed32443955916be8d73ca6b154ce1842a0c03add"
+  },
+  "distribution_metadata": {
+    "debian_packages": {
+      "id": "debian-packages-index",
+      "filename": "debian-Packages.xz",
+      "url": "https://deb.debian.org/debian/dists/trixie/main/binary-amd64/Packages.xz",
+      "size": 9678380,
+      "sha256": "7778d3e3f303b7ddb8ce0fe7c8d57473a076c6bf2e8f241f75421d2396352498",
+      "signed_release_path": "main/binary-amd64/Packages.xz"
+    },
+    "google": {
+      "file": "google-repository.xml",
+      "url": "https://dl.google.com/android/repository/repository2-3.xml",
+      "sha256": "d670de8bce15cc4ecf5d1a135f2168137ccbb8402111dfc8efcf9cb6f3b2f28f",
+      "note": "Snapshot fetched over official HTTPS; SHA-1/size published here. Not a detached signature."
+    },
+    "node_readme": {
+      "file": "node-README.md",
+      "url": "https://raw.githubusercontent.com/nodejs/node/v24.22.2/README.md",
+      "sha256": "66a4abdc81f9fc48e196aad4af434cc30aac77cb9a3bf74304f8da3fe80344da"
+    },
+    "debian_inrelease": {
+      "file": "debian-InRelease",
+      "url": "https://deb.debian.org/debian/dists/trixie/InRelease",
+      "sha256": "0584fba32e13e0ab8285fb16c27adea1ec03a73669c18702821094fd6ca86675",
+      "date": "2026-09-12"
+    }
+  },
+  "versions_observed_local": {
+    "java": "21.0.13+9-LTS",
+    "gcc_driver_dumpfullversion": "14-posix",
+    "gcc_debian_package": "14.2.0-19+27+b1",
+    "gcc_target": "x86_64-w64-mingw32",
+    "binutils": "2.44",
+    "nsis": "v3.11-1",
+    "aapt2": "2.19-11948202",
+    "d8": "8.6.2-dev (abaab469b5ebd4dd2bb91ba0ed6f45277faae4ca)",
+    "apksigner": "0.9",
+    "node_linux": "v24.22.2"
+  },
+  "not_verified": [
+    "Binary reproducibility against production release",
+    "Production signing equivalence",
+    "Android/Windows runtime equivalence until separately executed OS smoke"
+  ]
+}

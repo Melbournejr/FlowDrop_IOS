@@ -1,0 +1,15 @@
+test_owned_cleanup_paths_refuse_outside_and_symlink_destinations (test_native_build_pipeline.NativePipelineTests.test_owned_cleanup_paths_refuse_outside_and_symlink_destinations) ... ok
+test_tar_hardlinked_compiler_preserves_executable_permissions (test_native_build_pipeline.NativePipelineTests.test_tar_hardlinked_compiler_preserves_executable_permissions) ... FAIL
+
+======================================================================
+FAIL: test_tar_hardlinked_compiler_preserves_executable_permissions (test_native_build_pipeline.NativePipelineTests.test_tar_hardlinked_compiler_preserves_executable_permissions)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/flowdrop-build/flowdrop-verification-2c2/repository/tests/ci/test_native_build_pipeline.py", line 29, in test_tar_hardlinked_compiler_preserves_executable_permissions
+    self.assertEqual(stat.S_IMODE((Path(temp) / 'tools/usr/bin/compiler-alias').stat().st_mode), 0o755)
+AssertionError: 384 != 493
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.004s
+
+FAILED (failures=1)
