@@ -67,7 +67,7 @@ jobs:
         python-version: 3.12.16
     - name: Build same-source TEST ONLY android
       run: python3 -m scripts.native_runtime_ci.build --role android --work-root "$RUNNER_TEMP/flowdrop-2d1-build-android"
-        --cache-root "$RUNNER_TEMP/flowdrop-2d1-build-android/download-cache"
+        --cache-root "$RUNNER_TEMP/flowdrop-2d1-build-android/download-cache" --adapt-reviewed-selectors
       timeout-minutes: 25
     - name: Upload FlowDrop-2D1-Build-android
       uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2 (verified pin from Phase 2C.2)

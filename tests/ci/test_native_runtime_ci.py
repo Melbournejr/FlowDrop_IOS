@@ -15,13 +15,41 @@ ROOT = Path(__file__).resolve().parents[2]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 from scripts.native_runtime_ci.common import Blocked, Recorder, child, own_root, sanitize
-from scripts.native_runtime_ci.android import instrumentation_result
+from scripts.native_runtime_ci.android import instrumentation_result, forwarded_config
 from scripts.native_runtime_ci.sdk import extract_runtime_zip, host_libraries, official_ubuntu_mirrors, installed_metadata, selected_rows
 from scripts.native_runtime_ci.finish import export
 from scripts.native_runtime_ci.test_sources import windows_driver
 
 
 class NativeRuntimeHarnessTests(unittest.TestCase):
+    def test_adb_http_bridge_preserves_origin_host_without_weakening_server_check(self):
+        import http.client
+        from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
+        import threading
+        observed = []
+        class Fixture(BaseHTTPRequestHandler):
+            def do_GET(self):
+                observed.append(self.headers.get('Host'))
+                valid = self.headers.get('Host') == '127.0.0.1:5173' and self.path == '/api/config'
+                self.send_response(200 if valid else 403); self.end_headers()
+                self.wfile.write(b'{"name":"FlowDrop","scope":"HTTP fixture, not Android runtime"}')
+            def log_message(self, *args):
+                pass
+        server = ThreadingHTTPServer(('127.0.0.1', 0), Fixture)
+        worker = threading.Thread(target=server.serve_forever, daemon=True); worker.start()
+        try:
+            result = forwarded_config(server.server_port)
+            self.assertEqual(result['name'], 'FlowDrop')
+            self.assertEqual(observed[-1], '127.0.0.1:5173')
+            connection = http.client.HTTPConnection('127.0.0.1', server.server_port, timeout=3)
+            try:
+                connection.request('GET', '/api/config')
+                self.assertEqual(connection.getresponse().status, 403)
+            finally:
+                connection.close()
+        finally:
+            server.shutdown(); worker.join(5); server.server_close()
+
     def test_emulator_adb_public_key_is_omitted_from_exported_boot_log(self):
         raw = 'INFO | androidboot.qemu.adb.pubkey=public-fixture-key runner@fixture\nINFO | Boot completed\n'
         result = sanitize(raw)
@@ -78,6 +106,9 @@ class NativeRuntimeHarnessTests(unittest.TestCase):
             for literal in re.findall(r'"([^"\n]+)"', original):
                 self.assertIn(literal, compiled)
             self.assertGreaterEqual(compiled.count('check('), original.count('check('))
+            if name == 'windows-native-smoke':
+                self.assertNotIn('L"Con"', compiled)
+                self.assertEqual(compiled.count('L"Con hợp lệ"'), 5)
             self.assertEqual((ROOT / 'tests' / (name + '.cpp')).read_text(encoding='utf-8'), original)
 
     def test_dialog_driver_fails_closed_on_source_drift(self):

@@ -232,6 +232,7 @@ def run(root, downloads, helpers):
             row['actual'] = client.disconnect()
         with rec.case('W14-invalid', WINDOWS['W14-invalid']) as row:
             row['actual'] = client.invalid()
+            row['actual']['reserved_folder'] = client.reserved_folder(directory)
         stop()
         for case_id, name in [('W15-legacy-native', 'windows-native-smoke'), ('W16-legacy-shell', 'windows-shell-smoke')]:
             with rec.case(case_id, WINDOWS[case_id]) as row:
@@ -239,7 +240,8 @@ def run(root, downloads, helpers):
                 observer = threading.Thread(target=dialog_evidence, args=(observer_stop, rec.root / ('logs/' + name + '-dialogs.json'), rec.secrets), daemon=True)
                 observer.start()
                 try:
-                    output, code = rec.run(name, [Path(helpers) / ('FlowDrop-' + name + '-TEST-ONLY.exe'), install / 'FlowDrop.exe'], timeout=600)
+                    helper_env = clean_env(); helper_env['FLOWDROP_DISABLE_UPDATES'] = '1'
+                    output, code = rec.run(name, [Path(helpers) / ('FlowDrop-' + name + '-TEST-ONLY.exe'), install / 'FlowDrop.exe'], timeout=600, env=helper_env)
                 finally:
                     observer_stop.set(); observer.join(timeout=5)
                 assert 'PASS:' in output

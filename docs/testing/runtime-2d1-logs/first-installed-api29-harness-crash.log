@@ -1,0 +1,20 @@
+--------- beginning of crash
+11-14 07:31:26.396  4032  4032 E AndroidRuntime: FATAL EXCEPTION: main
+11-14 07:31:26.396  4032  4032 E AndroidRuntime: Process: app.flowdrop.mobile, PID: 4032
+11-14 07:31:26.396  4032  4032 E AndroidRuntime: java.lang.RuntimeException: This method can not be called from the main application thread
+11-14 07:31:26.396  4032  4032 E AndroidRuntime: 	at android.app.Instrumentation.validateNotAppThread(Instrumentation.java:2088)
+11-14 07:31:26.396  4032  4032 E AndroidRuntime: 	at android.app.Instrumentation.runOnMainSync(Instrumentation.java:436)
+11-14 07:31:26.396  4032  4032 E AndroidRuntime: 	at app.flowdrop.mobile.test.NativeRuntimeSmoke.widget(NativeRuntimeSmoke.java:40)
+11-14 07:31:26.396  4032  4032 E AndroidRuntime: 	at app.flowdrop.mobile.test.NativeRuntimeSmoke.lambda$click$3$app-flowdrop-mobile-test-NativeRuntimeSmoke(NativeRuntimeSmoke.java:41)
+11-14 07:31:26.396  4032  4032 E AndroidRuntime: 	at app.flowdrop.mobile.test.NativeRuntimeSmoke$$ExternalSyntheticLambda5.run(D8$$SyntheticClass:0)
+11-14 07:31:26.396  4032  4032 E AndroidRuntime: 	at android.app.Instrumentation$SyncRunnable.run(Instrumentation.java:2207)
+11-14 07:31:26.396  4032  4032 E AndroidRuntime: 	at android.os.Handler.handleCallback(Handler.java:883)
+11-14 07:31:26.396  4032  4032 E AndroidRuntime: 	at android.os.Handler.dispatchMessage(Handler.java:100)
+11-14 07:31:26.396  4032  4032 E AndroidRuntime: 	at android.os.Looper.loop(Looper.java:214)
+11-14 07:31:26.396  4032  4032 E AndroidRuntime: 	at android.app.ActivityThread.main(ActivityThread.java:7356)
+11-14 07:31:26.396  4032  4032 E AndroidRuntime: 	at java.lang.reflect.Method.invoke(Native Method)
+11-14 07:31:26.396  4032  4032 E AndroidRuntime: 	at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:492)
+11-14 07:31:26.396  4032  4032 E AndroidRuntime: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:930)
+11-14 07:31:26.396  4032  4032 I Process : Sending signal. PID: 4032 SIG: 9
+11-14 07:31:26.397  1907  4076 I DropBoxManagerService: add tag=data_app_crash isTagEnabled=true flags=0x2
+11-14 07:31:26.474  1907  3678 E WifiMulticastLockManager: Multicaster binderDied

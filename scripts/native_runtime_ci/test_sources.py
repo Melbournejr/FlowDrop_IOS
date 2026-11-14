@@ -39,6 +39,16 @@ void runtimeDialogInput(HWND dialog,HWND edit,const std::wstring& value){
         source = once(source,
             'std::wcout<<L"Native window ready; status: "<<text(GetDlgItem(app,1002))<<std::endl;',
             '''{auto value=text(GetDlgItem(app,1002));int n=WideCharToMultiByte(CP_UTF8,0,value.data(),(int)value.size(),nullptr,0,nullptr,nullptr);std::string log(n,' ');if(n)WideCharToMultiByte(CP_UTF8,0,value.data(),(int)value.size(),log.data(),n,nullptr,nullptr);std::cout<<"Native window ready; status: "<<log<<std::endl;}''')
+        source = once(source,
+            'std::wcerr<<L"Status: "<<text(GetDlgItem(app,1002))<<std::endl;',
+            '''{auto value=text(GetDlgItem(app,1002));int n=WideCharToMultiByte(CP_UTF8,0,value.data(),(int)value.size(),nullptr,0,nullptr,nullptr);std::string log(n,' ');if(n)WideCharToMultiByte(CP_UTF8,0,value.data(),(int)value.size(),log.data(),n,nullptr,nullptr);std::cerr<<"Status: "<<log<<std::endl;}''')
+        # "Con" is a reserved Windows device name (CON), even as a directory.
+        # Preserve the nested/Unicode/empty-directory/collision assertions with
+        # a legal portable fixture; the live Windows API probe separately
+        # asserts that reserved-name folder packages are still rejected.
+        if source.count('L"Con"') != 5:
+            raise Blocked('Reviewed reserved-name fixture adaptation no longer matches')
+        source = source.replace('L"Con"', 'L"Con hợp lệ"')
     elif name == 'windows-shell-smoke':
         source = once(source,
             'SetDlgItemTextW(rename,6002,L"Máy kiểm thử FlowDrop");PostMessageW(rename,WM_COMMAND,IDOK,0);',

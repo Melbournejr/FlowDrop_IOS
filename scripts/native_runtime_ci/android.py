@@ -1,5 +1,6 @@
 """Real Android Emulator runtime checks. ADB targets only this owned emulator."""
 import argparse
+import http.client
 import json
 import os
 from pathlib import Path
@@ -7,7 +8,6 @@ import re
 import shutil
 import subprocess
 import time
-import urllib.request
 
 from scripts.native_build_ci.verify import verify_apk
 from .common import Blocked, Recorder, REPO, clean_env, json_file, protected_source, sanitize, sha256, verify_export
@@ -24,6 +24,26 @@ def instrumentation_result(output, code):
     if result.get('passed') is not True:
         raise AssertionError('Instrumentation returned no true assertion result')
     return result
+
+
+def forwarded_config(port):
+    """ADB forwards bytes, not HTTP origins; preserve the app's actual Host.
+
+    The production allowedHost check remains enabled. Using the host-side
+    ephemeral tunnel port as Host would correctly be rejected by the app.
+    """
+    connection = http.client.HTTPConnection('127.0.0.1', int(port), timeout=3)
+    try:
+        connection.request('GET', '/api/config', headers={'Host': '127.0.0.1:5173'})
+        response = connection.getresponse()
+        if response.status != 200:
+            raise AssertionError('Actual forwarded config response=' + str(response.status))
+        raw = response.read(1024 * 1024 + 1)
+        if len(raw) > 1024 * 1024:
+            raise AssertionError('Config response exceeded bound')
+        return json.loads(raw)
+    finally:
+        connection.close()
 
 
 def run(root, artifact, api):
@@ -132,8 +152,13 @@ def run(root, artifact, api):
             adb('launch-main-activity', 'shell', 'am', 'start', '-W', '-n', 'app.flowdrop.mobile/.MainActivity')
             activity, _ = adb('initial-activity-state', 'shell', 'dumpsys', 'activity', 'activities')
             assert re.search(r'(?:mResumedActivity|topResumedActivity).*app\.flowdrop\.mobile/\.MainActivity', activity), 'MainActivity not actually resumed'
-            windows, _ = adb('initial-window-focus', 'shell', 'dumpsys', 'window', 'windows')
-            assert re.search(r'mCurrentFocus=.*app\.flowdrop\.mobile/', windows), 'App Activity does not own the focused Android window'
+            focused = False
+            for attempt in range(60):
+                windows, _ = adb('initial-window-focus-' + str(attempt), 'shell', 'dumpsys', 'window')
+                if re.search(r'mCurrentFocus=.*app\.flowdrop\.mobile/', windows):
+                    focused = True; break
+                time.sleep(.5)
+            assert focused, 'App Activity does not own the focused Android window'
             adb('initial-screenshot-device', 'shell', 'screencap', '-p', '/sdcard/flowdrop-runtime-initial.png')
             adb('initial-screenshot-pull', 'pull', '/sdcard/flowdrop-runtime-initial.png', rec.root / 'logs/initial-activity.png')
             row.update(exit_code=0, actual={'main_activity_resumed': True, 'screenshot': 'logs/initial-activity.png'})
@@ -153,13 +178,13 @@ def run(root, artifact, api):
             config = None
             for _ in range(60):
                 try:
-                    with urllib.request.urlopen('http://127.0.0.1:' + str(forwarding) + '/api/config', timeout=3) as response:
-                        config = json.load(response)
+                    config = forwarded_config(forwarding)
                     break
-                except OSError:
+                except (OSError, http.client.HTTPException):
                     time.sleep(.5)
             assert config and config['name'] == 'FlowDrop' and config['version'] == '1.13.0'
             row['actual'] = {k: config.get(k) for k in ['name', 'version', 'platform', 'mode']}
+            row['actual']['tunnel_preserves_host'] = '127.0.0.1:5173'
         for test_id, component in INSTRUMENTATIONS.items():
             with rec.case(test_id, ANDROID[test_id]) as row:
                 name = test_id.lower()
@@ -174,10 +199,9 @@ def run(root, artifact, api):
             ready = None
             for _ in range(60):
                 try:
-                    with urllib.request.urlopen('http://127.0.0.1:' + str(forwarding) + '/api/config', timeout=3) as response:
-                        ready = json.load(response)
+                    ready = forwarded_config(forwarding)
                     break
-                except OSError:
+                except (OSError, http.client.HTTPException):
                     time.sleep(.5)
             assert ready and ready['name'] == 'FlowDrop'
             row.update(exit_code=0, actual={'force_stop_observed': True, 'real_backend_restarted': True})

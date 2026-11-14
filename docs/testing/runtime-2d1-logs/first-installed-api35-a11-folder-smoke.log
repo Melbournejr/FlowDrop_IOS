@@ -1,0 +1,4 @@
+INSTRUMENTATION_STATUS: stage=folders_names_empty_dirs_and_no_overwrite_verified
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_RESULT: result={"passed":true,"sdk":35,"originalFolderName":true,"nestedDirectories":true,"emptyDirectories":true,"exactOriginalFilenamesAndBytes":true,"folderCollisionKeepsFilesUnchanged":true,"nativeReceiveService":true,"completionAfterImport":true}
+INSTRUMENTATION_CODE: -1

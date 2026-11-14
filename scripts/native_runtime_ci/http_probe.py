@@ -1,9 +1,11 @@
 """Protocol smoke against an already running real native OS backend, never a mock."""
 import hashlib
 import http.client
+import io
 import json
 import socket
 import time
+import zipfile
 from pathlib import Path
 
 
@@ -101,3 +103,24 @@ class LiveHTTP:
         self.json('POST', '/api/transfers', bad, {'X-Desktop-Token': self.capability}, expected=400)
         self.json('GET', '/api/desktop/settings', expected=403)
         return {'missing_capability': 403, 'incorrect_capability': 403, 'invalid_metadata': 400, 'protected_settings': 403}
+
+    def reserved_folder(self, directory):
+        """Exercise the existing Windows reserved-name defense on the live app."""
+        memory = io.BytesIO()
+        with zipfile.ZipFile(memory, 'w', zipfile.ZIP_STORED) as archive:
+            archive.writestr('RuntimeRoot/', b'')
+            archive.writestr('RuntimeRoot/Con/', b'')
+        data = memory.getvalue()
+        transfer = self.json('POST', '/api/transfers', {'files': [{'name': 'reserved.zip', 'size': len(data),
+            'type': 'application/vnd.flowdrop.folder+zip'}]}, {'X-Desktop-Token': self.capability}, expected=201)
+        code, token = transfer['code'], transfer['token']
+        self.request('PUT', '/api/transfers/' + code + '/files/' + transfer['files'][0]['id'],
+                     raw=data, headers={'X-Upload-Token': token})
+        self.json('POST', '/api/transfers/' + code + '/complete', headers={'X-Upload-Token': token})
+        before = {p.name for p in Path(directory).iterdir()}
+        response = self.json('POST', '/api/desktop/receive', {'code': code}, {'X-Desktop-Token': self.capability}, expected=400)
+        assert response.get('error') == 'Windows không hỗ trợ tên: Con', 'Reserved-name security rule changed'
+        assert before == {p.name for p in Path(directory).iterdir()}, 'Rejected folder left data behind'
+        self.json('DELETE', '/api/transfers/' + code, headers={'X-Upload-Token': token})
+        return {'http_status': 400, 'error': response['error'], 'synthetic_archive_sha256': hashlib.sha256(data).hexdigest(),
+                'rejected_folder_left_no_files': True}
