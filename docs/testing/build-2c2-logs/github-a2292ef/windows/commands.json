@@ -1,0 +1,69 @@
+[
+  {
+    "name": "locked-npm-ci",
+    "command": [
+      "/home/runner/work/_temp/flowdrop-2c2-windows/node-linux/bin/node",
+      "/home/runner/work/_temp/flowdrop-2c2-windows/node-linux/lib/node_modules/npm/bin/npm-cli.js",
+      "ci",
+      "--ignore-scripts",
+      "--no-audit",
+      "--no-fund",
+      "--cache",
+      "/home/runner/work/_temp/flowdrop-2c2-windows/npm-cache",
+      "--registry",
+      "https://registry.npmjs.org/",
+      "--userconfig",
+      "/home/runner/work/_temp/flowdrop-2c2-windows/empty-user.npmrc",
+      "--globalconfig",
+      "/home/runner/work/_temp/flowdrop-2c2-windows/empty-global.npmrc"
+    ],
+    "status": "PASS",
+    "exit_code": 0,
+    "raw_returncode": 0,
+    "wall_seconds": 0.394,
+    "log_sha256": "767ab2e0e4acda56ceb61904714807c548a554950a7f76c45d179951d197484b"
+  },
+  {
+    "name": "build-windows-from-source",
+    "command": [
+      "/opt/hostedtoolcache/Python/3.12.16/x64/bin/python3",
+      "/home/runner/work/_temp/flowdrop-2c2-windows/source/scripts/build-installers.py",
+      "--only",
+      "windows"
+    ],
+    "status": "PASS",
+    "exit_code": 0,
+    "raw_returncode": 0,
+    "wall_seconds": 38.045,
+    "log_sha256": "ef102a88b14dd5a629d2b52c78056731ee557bb76c4659f606c8a11ae2f36052"
+  },
+  {
+    "name": "nsis-list",
+    "command": [
+      "/home/runner/work/_temp/flowdrop-2c2-windows/tools/mingw/usr/lib/7zip/7z",
+      "l",
+      "-slt",
+      "/home/runner/work/_temp/flowdrop-2c2-windows/source/artifacts/FlowDrop-Setup-1.13.0-Windows-x64.exe"
+    ],
+    "status": "PASS",
+    "exit_code": 0,
+    "raw_returncode": 0,
+    "wall_seconds": 0.006,
+    "log_sha256": "5812403f8626b21b564d43c54bd51b24dd634c3f05b7500ab57449c2dedf8a95"
+  },
+  {
+    "name": "nsis-extract",
+    "command": [
+      "/home/runner/work/_temp/flowdrop-2c2-windows/tools/mingw/usr/lib/7zip/7z",
+      "x",
+      "-y",
+      "-o/home/runner/work/_temp/flowdrop-2c2-windows/installer-inspection",
+      "/home/runner/work/_temp/flowdrop-2c2-windows/source/artifacts/FlowDrop-Setup-1.13.0-Windows-x64.exe"
+    ],
+    "status": "PASS",
+    "exit_code": 0,
+    "raw_returncode": 0,
+    "wall_seconds": 0.851,
+    "log_sha256": "0fdcadb18a57b5392e5734c23afa16472c5cf0e93f5bf94b75ca531581fd3cbe"
+  }
+]

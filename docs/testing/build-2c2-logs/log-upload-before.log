@@ -1,0 +1,14 @@
+test_failed_log_screening_cannot_leave_a_publishable_directory (test_native_build_pipeline.NativePipelineTests.test_failed_log_screening_cannot_leave_a_publishable_directory) ... FAIL
+
+======================================================================
+FAIL: test_failed_log_screening_cannot_leave_a_publishable_directory (test_native_build_pipeline.NativePipelineTests.test_failed_log_screening_cannot_leave_a_publishable_directory)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/flowdrop-build/flowdrop-verification-2c2/repository/tests/ci/test_native_build_pipeline.py", line 215, in test_failed_log_screening_cannot_leave_a_publishable_directory
+    self.assertFalse((root / 'safe-logs').exists(), 'Rejected evidence must not be available to artifact upload')
+AssertionError: True is not false : Rejected evidence must not be available to artifact upload
+
+----------------------------------------------------------------------
+Ran 1 test in 0.002s
+
+FAILED (failures=1)

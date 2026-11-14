@@ -1,0 +1,33 @@
+[
+  {
+    "name": "release-app-signature",
+    "command": [
+      "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/jdk/bin/java",
+      "-jar",
+      "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/tools/sdk/build-tools/android-15/lib/apksigner.jar",
+      "verify",
+      "--verbose",
+      "--print-certs",
+      "/workspace/flowdrop-build/flowdrop-verification-2c2/evidence/release-reference/FlowDrop-1.13.0-Android.apk"
+    ],
+    "status": "PASS",
+    "exit_code": 0,
+    "raw_returncode": 0,
+    "wall_seconds": 0.407,
+    "log_sha256": "17f0a513d30e41d4b002a0413fdae1fe6e465e7b46beedaf6c5f4270bd2c029c"
+  },
+  {
+    "name": "release-app-badging",
+    "command": [
+      "/workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/tools/sdk/build-tools/android-15/aapt2",
+      "dump",
+      "badging",
+      "/workspace/flowdrop-build/flowdrop-verification-2c2/evidence/release-reference/FlowDrop-1.13.0-Android.apk"
+    ],
+    "status": "PASS",
+    "exit_code": 0,
+    "raw_returncode": 0,
+    "wall_seconds": 0.009,
+    "log_sha256": "0a1d95428c084dc1a8a568351453e5abd5c0b668fa4be9b0d4e680f7ccbeee65"
+  }
+]

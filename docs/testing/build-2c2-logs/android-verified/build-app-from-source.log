@@ -1,0 +1,64 @@
+Running: aapt2
+Running: aapt2
+Running: java
+warning: [options] source value 8 is obsolete and will be removed in a future release
+warning: [options] target value 8 is obsolete and will be removed in a future release
+warning: [options] To suppress warnings about obsolete options, use -Xlint:-options.
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+3 warnings
+Running: java
+Running: zipalign
+Running: java
+Running: java
+Verifies
+Verified using v1 scheme (JAR signing): false
+Verified using v2 scheme (APK Signature Scheme v2): false
+Verified using v3 scheme (APK Signature Scheme v3): true
+Verified using v3.1 scheme (APK Signature Scheme v3.1): false
+Verified using v4 scheme (APK Signature Scheme v4): false
+Verified for SourceStamp: false
+Number of signers: 1
+Signer #1 certificate DN: CN=FlowDrop 2C2 TEST ONLY
+Signer #1 certificate SHA-256 digest: 94fa0d5499f964dd901726008553b3d4eead89b231189b7cb6424b3a99e1c534
+Signer #1 certificate SHA-1 digest: 5118de0ccec3863579011d4107004cad2d139273
+Signer #1 certificate MD5 digest: a01e65d0e5f642dcce8c26a0938d8ef5
+Signer #1 key algorithm: RSA
+Signer #1 key size (bits): 3072
+Signer #1 public key SHA-256 digest: c81f9fa51b5e61cd0b83ab652210d0fef2951d18e9d1dbedeb3e5483432f1142
+Signer #1 public key SHA-1 digest: 47cfab198e11fb0de6b8d1674a2f4c40e8bbdc68
+Signer #1 public key MD5 digest: a8e58581c62d51759d20a73535e7502e
+Running: zipalign
+Running: aapt2
+package: name='app.flowdrop.mobile' versionCode='14' versionName='1.13.0' platformBuildVersionName='15' platformBuildVersionCode='35' compileSdkVersion='35' compileSdkVersionCodename='15'
+install-location:'internalOnly'
+minSdkVersion:'29'
+targetSdkVersion:'35'
+uses-permission: name='android.permission.HIDE_OVERLAY_WINDOWS'
+uses-permission: name='android.permission.INTERNET'
+uses-permission: name='android.permission.ACCESS_NETWORK_STATE'
+uses-permission: name='android.permission.ACCESS_WIFI_STATE'
+uses-permission: name='android.permission.CHANGE_WIFI_MULTICAST_STATE'
+uses-permission: name='android.permission.FOREGROUND_SERVICE'
+uses-permission: name='android.permission.FOREGROUND_SERVICE_DATA_SYNC'
+uses-permission: name='android.permission.POST_NOTIFICATIONS'
+uses-permission: name='android.permission.REQUEST_INSTALL_PACKAGES'
+uses-permission: name='android.permission.UPDATE_PACKAGES_WITHOUT_USER_ACTION'
+uses-permission: name='android.permission.RECEIVE_BOOT_COMPLETED'
+application-label:'FlowDrop'
+application-icon-160:'res/drawable/ic_launcher.xml'
+application: label='FlowDrop' icon='res/drawable/ic_launcher.xml'
+launchable-activity: name='app.flowdrop.mobile.MainActivity'  label='' icon=''
+feature-group: label=''
+  uses-feature: name='android.hardware.faketouch'
+  uses-implied-feature: name='android.hardware.faketouch' reason='default feature for all apps'
+  uses-feature: name='android.hardware.wifi'
+  uses-implied-feature: name='android.hardware.wifi' reason='requested android.permission.ACCESS_WIFI_STATE permission, and requested android.permission.CHANGE_WIFI_MULTICAST_STATE permission'
+main
+other-receivers
+other-services
+supports-screens: 'small' 'normal' 'large' 'xlarge'
+supports-any-density: 'true'
+locales: '--_--'
+densities: '160'
+APK: /workspace/flowdrop-build/flowdrop-verification-2c2/work/android-verified/source/artifacts/FlowDrop-1.13.0-Android.apk

@@ -1,0 +1,8 @@
+2026-11-13T07:14:26.2585791Z RUN: ci-runner-tests
+2026-11-13T07:14:26.9326632Z PASS: ci-runner-tests exit=0 duration=0.671s
+2026-11-13T07:14:26.9330335Z RUN: asset-integrity
+2026-11-13T07:14:26.9382824Z PASS: asset-integrity exit=0 duration=0.004s
+2026-11-13T07:14:26.9386254Z RUN: unit
+2026-11-13T07:14:27.4010769Z PASS: unit exit=0 duration=0.459s
+2026-11-13T07:14:27.4013477Z RUN: harness-unit
+2026-11-13T07:14:27.8966577Z PASS: harness-unit exit=0 duration=0.494s

@@ -1,0 +1,1199 @@
+
+7-Zip 25.01 (x64) : Copyright (c) 1999-2025 Igor Pavlov : 2025-08-03
+ 64-bit locale=C.UTF-8 Threads:3 OPEN_MAX:16384, ASM
+
+Scanning the drive for archives:
+1 file, 24527415 bytes (24 MiB)
+
+Listing archive: /workspace/flowdrop-build/flowdrop-verification-2c2/work/windows-verified/export/FlowDrop-Setup-1.13.0-Windows-x64-TEST-ONLY.exe
+
+--
+Path = /workspace/flowdrop-build/flowdrop-verification-2c2/work/windows-verified/export/FlowDrop-Setup-1.13.0-Windows-x64-TEST-ONLY.exe
+Type = Nsis
+Physical Size = 24527415
+Method = LZMA:23
+Solid = +
+Headers Size = 33044
+Embedded Stub Size = 115712
+SubType = NSIS-3 Unicode BadCmd=13
+
+----------
+Path = $PLUGINSDIR/modern-wizard.bmp
+Size = 26494
+Packed Size = 24411699
+Modified = 2026-11-13 06:38:20.0000000
+Attributes = 
+Method = LZMA:23
+Solid = +
+Offset = 0
+
+Path = $PLUGINSDIR/nsDialogs.dll
+Size = 14336
+Packed Size = 
+Modified = 
+Attributes = 
+Method = LZMA:23
+Solid = +
+Offset = 26498
+
+Path = $PLUGINSDIR/System.dll
+Size = 28672
+Packed Size = 
+Modified = 
+Attributes = 
+Method = LZMA:23
+Solid = +
+Offset = 40838
+
+Path = Allow-LAN.ps1
+Size = 710
+Packed Size = 
+Modified = 2026-11-13 06:38:24.0000000
+Attributes = 
+Method = LZMA:23
+Solid = +
+Offset = 69514
+
+Path = FlowDrop.exe
+Size = 1477632
+Packed Size = 
+Modified = 2026-11-13 06:38:38.0000000
+Attributes = 
+Method = LZMA:23
+Solid = +
+Offset = 70228
+
+Path = FlowDrop.vbs
+Size = 288
+Packed Size = 
+Modified = 2026-11-13 06:38:24.0000000
+Attributes = 
+Method = LZMA:23
+Solid = +
+Offset = 1547864
+
+Path = Huong-dan.md
+Size = 11474
+Packed Size = 
+Modified = 2026-11-13 06:38:38.0000000
+Attributes = 
+Method = LZMA:23
+Solid = +
+Offset = 1548156
+
+Path = Stop-FlowDrop.vbs
+Size = 470
+Packed Size = 
+Modified = 2026-11-13 06:38:24.0000000
+Attributes = 
+Method = LZMA:23
+Solid = +
+Offset = 1559634
+
+Path = nlohmann-json-license-and-source.hpp
+Size = 919975
+Packed Size = 
+Modified = 2026-11-13 06:38:38.0000000
+Attributes = 
+Method = LZMA:23
+Solid = +
+Offset = 1560108
+
+Path = package.json
+Size = 1184
+Packed Size = 
+Modified = 2026-11-13 06:38:38.0000000
+Attributes = 
+Method = LZMA:23
+Solid = +
+Offset = 2480087
+
+Path = node_modules/.package-lock.json
+Size = 2932
+Packed Size = 
+Modified = 2026-11-13 06:38:22.0000000
+Attributes = 
+Method = LZMA:23
+Solid = +
+Offset = 2481275
+
+Path = node_modules/.bin/multicast-dns
+Size = 1403
+Packed Size = 
+Modified = 2026-11-13 06:38:22.0000000
+Attributes = 
+Method = LZMA:23
+Solid = +
+Offset = 2484211
+
+Path = node_modules/multicast-dns/cli.js
+Size = 1403
+Packed Size = 
+Modified = 2026-11-13 06:38:22.0000000
+Attributes = 
+Method = LZMA:23
+Solid = +
+Offset = 2484211
+
+Path = node_modules/@leichtgewicht/ip-codec/LICENSE
+Size = 1073
+Packed Size = 
+Modified = 2026-11-13 06:38:22.0000000
+Attributes = 
+Method = LZMA:23
+Solid = +
+Offset = 2485618
+
+Path = node_modules/@leichtgewicht/ip-codec/Readme.md
+Size = 1437
+Packed Size = 
+Modified = 2026-11-13 06:38:22.0000000
+Attributes = 
+Method = LZMA:23
+Solid = +
+Offset = 2486695
+
+Path = node_modules/@leichtgewicht/ip-codec/index.cjs
+Size = 7160
+Packed Size = 
+Modified = 2026-11-13 06:38:22.0000000
+Attributes = 
+Method = LZMA:23
+Solid = +
+Offset = 2488136
+
+Path = node_modules/@leichtgewicht/ip-codec/index.mjs
+Size = 6000
+Packed Size = 
+Modified = 2026-11-13 06:38:22.0000000
+Attributes = 
+Method = LZMA:23
+Solid = +
+Offset = 2495300
+
+Path = node_modules/@leichtgewicht/ip-codec/package.json
+Size = 1231
+Packed Size = 
+Modified = 2026-11-13 06:38:22.0000000
+Attributes = 
+Method = LZMA:23
+Solid = +
+Offset = 2501304
+
+Path = node_modules/@leichtgewicht/ip-codec/types/index.d.ts
+Size = 809
+Packed Size = 
+Modified = 2026-11-13 06:38:22.0000000
+Attributes = 
+Method = LZMA:23
+Solid = +
+Offset = 2502539
+
+Path = node_modules/bonjour-service/LICENSE
+Size = 1225
+Packed Size = 
+Modified = 2026-11-13 06:38:22.0000000
+Attributes = 
+Method = LZMA:23
+Solid = +
+Offset = 2503352
+
+Path = node_modules/bonjour-service/README.md
+Size = 5763
+Packed Size = 
+Modified = 2026-11-13 06:38:22.0000000
+Attributes = 
+Method = LZMA:23
+Solid = +
+Offset = 2504581
+
+Path = node_modules/bonjour-service/package.json
+Size = 1487
+Packed Size = 
+Modified = 2026-11-13 06:38:22.0000000
+Attributes = 
+Method = LZMA:23
+Solid = +
+Offset = 2510348
+
+Path = node_modules/bonjour-service/dist/index.d.ts
+Size = 725
+Packed Size = 
+Modified = 2026-11-13 06:38:22.0000000
+Attributes = 
+Method = LZMA:23
+Solid = +
+Offset = 2511839
+
+Path = node_modules/bonjour-service/dist/index.js
+Size = 1794
+Packed Size = 
+Modified = 2026-11-13 06:38:22.0000000
+Attributes = 
+Method = LZMA:23
+Solid = +
+Offset = 2512568
+
+Path = node_modules/bonjour-service/dist/index.js.map
+Size = 1434
+Packed Size = 
+Modified = 2026-11-13 06:38:22.0000000
+Attributes = 
+Method = LZMA:23
+Solid = +
+Offset = 2514366
+
+Path = node_modules/bonjour-service/dist/lib/KeyValue.d.ts
+Size = 70
+Packed Size = 
+Modified = 2026-11-13 06:38:22.0000000
+Attributes = 
+Method = LZMA:23
+Solid = +
+Offset = 2515804
+
+Path = node_modules/bonjour-service/dist/lib/KeyValue.js
+Size = 113
+Packed Size = 
+Modified = 2026-11-13 06:38:22.0000000
+Attributes = 
+Method = LZMA:23
+Solid = +
+Offset = 2515878
+
+Path = node_modules/bonjour-service/dist/lib/KeyValue.js.map
+Size = 115
+Packed Size = 
+Modified = 2026-11-13 06:38:22.0000000
+Attributes = 
+Method = LZMA:23
+Solid = +
+Offset = 2515995
+
+Path = node_modules/bonjour-service/dist/lib/browser.d.ts
+Size = 863
+Packed Size = 
+Modified = 2026-11-13 06:38:22.0000000
+Attributes = 
+Method = LZMA:23
+Solid = +
+Offset = 2516114
+
+Path = node_modules/bonjour-service/dist/lib/browser.js
+Size = 7063
+Packed Size = 
+Modified = 2026-11-13 06:38:22.0000000
+Attributes = 
+Method = LZMA:23
+Solid = +
+Offset = 2516981
+
+Path = node_modules/bonjour-service/dist/lib/browser.js.map
+Size = 7211
+Packed Size = 
+Modified = 2026-11-13 06:38:22.0000000
+Attributes = 
+Method = LZMA:23
+Solid = +
+Offset = 2524048
+
+Path = node_modules/bonjour-service/dist/lib/dns-txt.d.ts
+Size = 269
+Packed Size = 
+Modified = 2026-11-13 06:38:22.0000000
+Attributes = 
+Method = LZMA:23
+Solid = +
+Offset = 2531263
+
+Path = node_modules/bonjour-service/dist/lib/dns-txt.js
+Size = 1145
+Packed Size = 
+Modified = 2026-11-13 06:38:22.0000000
+Attributes = 
+Method = LZMA:23
+Solid = +
+Offset = 2531536
+
+Path = node_modules/bonjour-service/dist/lib/dns-txt.js.map
+Size = 1417
+Packed Size = 
+Modified = 2026-11-13 06:38:22.0000000
+Attributes = 
+Method = LZMA:23
+Solid = +
+Offset = 2532685
+
+Path = node_modules/bonjour-service/dist/lib/mdns-server.d.ts
+Size = 501
+Packed Size = 
+Modified = 2026-11-13 06:38:22.0000000
+Attributes = 
+Method = LZMA:23
+Solid = +
+Offset = 2534106
+
+Path = node_modules/bonjour-service/dist/lib/mdns-server.js
+Size = 4220
+Packed Size = 
+Modified = 2026-11-13 06:38:22.0000000
+Attributes = 
+Method = LZMA:23
+Solid = +
+Offset = 2534611
+
+Path = node_modules/bonjour-service/dist/lib/mdns-server.js.map
+Size = 4089
+Packed Size = 
+Modified = 2026-11-13 06:38:22.0000000
+Attributes = 
+Method = LZMA:23
+Solid = +
+Offset = 2538835
+
+Path = node_modules/bonjour-service/dist/lib/registry.d.ts
+Size = 415
+Packed Size = 
+Modified = 2026-11-13 06:38:22.0000000
+Attributes = 
+Method = LZMA:23
+Solid = +
+Offset = 2542928
+
+Path = node_modules/bonjour-service/dist/lib/registry.js
+Size = 5235
+Packed Size = 
+Modified = 2026-11-13 06:38:22.0000000
+Attributes = 
+Method = LZMA:23
+Solid = +
+Offset = 2543347
+
+Path = node_modules/bonjour-service/dist/lib/registry.js.map
+Size = 4967
+Packed Size = 
+Modified = 2026-11-13 06:38:22.0000000
+Attributes = 
+Method = LZMA:23
+Solid = +
+Offset = 2548586
+
+Path = node_modules/bonjour-service/dist/lib/service-types.d.ts
+Size = 265
+Packed Size = 
+Modified = 2026-11-13 06:38:22.0000000
+Attributes = 
+Method = LZMA:23
+Solid = +
+Offset = 2553557
+
+Path = node_modules/bonjour-service/dist/lib/service-types.js
+Size = 1406
+Packed Size = 
+Modified = 2026-11-13 06:38:22.0000000
+Attributes = 
+Method = LZMA:23
+Solid = +
+Offset = 2553826
+
+Path = node_modules/bonjour-service/dist/lib/service-types.js.map
+Size = 1761
+Packed Size = 
+Modified = 2026-11-13 06:38:22.0000000
+Attributes = 
+Method = LZMA:23
+Solid = +
+Offset = 2555236
+
+Path = node_modules/bonjour-service/dist/lib/service.d.ts
+Size = 1329
+Packed Size = 
+Modified = 2026-11-13 06:38:22.0000000
+Attributes = 
+Method = LZMA:23
+Solid = +
+Offset = 2557001
+
+Path = node_modules/bonjour-service/dist/lib/service.js
+Size = 3767
+Packed Size = 
+Modified = 2026-11-13 06:38:22.0000000
+Attributes = 
+Method = LZMA:23
+Solid = +
+Offset = 2558334
+
+Path = node_modules/bonjour-service/dist/lib/service.js.map
+Size = 3340
+Packed Size = 
+Modified = 2026-11-13 06:38:22.0000000
+Attributes = 
+Method = LZMA:23
+Solid = +
+Offset = 2562105
+
+Path = node_modules/bonjour-service/dist/lib/utils/dns-equal.d.ts
+Size = 65
+Packed Size = 
+Modified = 2026-11-13 06:38:22.0000000
+Attributes = 
+Method = LZMA:23
+Solid = +
+Offset = 2565449
+
+Path = node_modules/bonjour-service/dist/lib/utils/dns-equal.js
+Size = 443
+Packed Size = 
+Modified = 2026-11-13 06:38:22.0000000
+Attributes = 
+Method = LZMA:23
+Solid = +
+Offset = 2565518
+
+Path = node_modules/bonjour-service/dist/lib/utils/dns-equal.js.map
+Size = 457
+Packed Size = 
+Modified = 2026-11-13 06:38:22.0000000
+Attributes = 
+Method = LZMA:23
+Solid = +
+Offset = 2565965
+
+Path = node_modules/bonjour-service/dist/lib/utils/equal-txt.d.ts
+Size = 97
+Packed Size = 
+Modified = 2026-11-13 06:38:22.0000000
+Attributes = 
+Method = LZMA:23
+Solid = +
+Offset = 2566426
+
+Path = node_modules/bonjour-service/dist/lib/utils/equal-txt.js
+Size = 468
+Packed Size = 
+Modified = 2026-11-13 06:38:22.0000000
+Attributes = 
+Method = LZMA:23
+Solid = +
+Offset = 2566527
+
+Path = node_modules/bonjour-service/dist/lib/utils/equal-txt.js.map
+Size = 578
+Packed Size = 
+Modified = 2026-11-13 06:38:22.0000000
+Attributes = 
+Method = LZMA:23
+Solid = +
+Offset = 2566999
+
+Path = node_modules/bonjour-service/dist/lib/utils/filter-service.d.ts
+Size = 182
+Packed Size = 
+Modified = 2026-11-13 06:38:22.0000000
+Attributes = 
+Method = LZMA:23
+Solid = +
+Offset = 2567581
+
+Path = node_modules/bonjour-service/dist/lib/utils/filter-service.js
+Size = 638
+Packed Size = 
+Modified = 2026-11-13 06:38:22.0000000
+Attributes = 
+Method = LZMA:23
+Solid = +
+Offset = 2567767
+
+Path = node_modules/bonjour-service/dist/lib/utils/filter-service.js.map
+Size = 705
+Packed Size = 
+Modified = 2026-11-13 06:38:22.0000000
+Attributes = 
+Method = LZMA:23
+Solid = +
+Offset = 2568409
+
+Path = node_modules/bonjour-service/dist/lib/utils/filter-txt.d.ts
+Size = 109
+Packed Size = 
+Modified = 2026-11-13 06:38:22.0000000
+Attributes = 
+Method = LZMA:23
+Solid = +
+Offset = 2569118
+
+Path = node_modules/bonjour-service/dist/lib/utils/filter-txt.js
+Size = 292
+Packed Size = 
+Modified = 2026-11-13 06:38:22.0000000
+Attributes = 
+Method = LZMA:23
+Solid = +
+Offset = 2569231
+
+Path = node_modules/bonjour-service/dist/lib/utils/filter-txt.js.map
+Size = 452
+Packed Size = 
+Modified = 2026-11-13 06:38:22.0000000
+Attributes = 
+Method = LZMA:23
+Solid = +
+Offset = 2569527
+
+Path = node_modules/bonjour-service/types/multicast-dns.d.ts
+Size = 100
+Packed Size = 
+Modified = 2026-11-13 06:38:22.0000000
+Attributes = 
+Method = LZMA:23
+Solid = +
+Offset = 2569983
+
+Path = node_modules/dns-packet/LICENSE
+Size = 1079
+Packed Size = 
+Modified = 2026-11-13 06:38:22.0000000
+Attributes = 
+Method = LZMA:23
+Solid = +
+Offset = 2570087
+
+Path = node_modules/dns-packet/README.md
+Size = 7109
+Packed Size = 
+Modified = 2026-11-13 06:38:22.0000000
+Attributes = 
+Method = LZMA:23
+Solid = +
+Offset = 2571170
+
+Path = node_modules/dns-packet/classes.js
+Size = 437
+Packed Size = 
+Modified = 2026-11-13 06:38:22.0000000
+Attributes = 
+Method = LZMA:23
+Solid = +
+Offset = 2578283
+
+Path = node_modules/dns-packet/index.js
+Size = 44599
+Packed Size = 
+Modified = 2026-11-13 06:38:22.0000000
+Attributes = 
+Method = LZMA:23
+Solid = +
+Offset = 2578724
+
+Path = node_modules/dns-packet/opcodes.js
+Size = 1315
+Packed Size = 
+Modified = 2026-11-13 06:38:22.0000000
+Attributes = 
+Method = LZMA:23
+Solid = +
+Offset = 2623327
+
+Path = node_modules/dns-packet/optioncodes.js
+Size = 1398
+Packed Size = 
+Modified = 2026-11-13 06:38:22.0000000
+Attributes = 
+Method = LZMA:23
+Solid = +
+Offset = 2624646
+
+Path = node_modules/dns-packet/package.json
+Size = 1115
+Packed Size = 
+Modified = 2026-11-13 06:38:22.0000000
+Attributes = 
+Method = LZMA:23
+Solid = +
+Offset = 2626048
+
+Path = node_modules/dns-packet/rcodes.js
+Size = 1284
+Packed Size = 
+Modified = 2026-11-13 06:38:22.0000000
+Attributes = 
+Method = LZMA:23
+Solid = +
+Offset = 2627167
+
+Path = node_modules/dns-packet/types.js
+Size = 2672
+Packed Size = 
+Modified = 2026-11-13 06:38:22.0000000
+Attributes = 
+Method = LZMA:23
+Solid = +
+Offset = 2628455
+
+Path = node_modules/fast-deep-equal/LICENSE
+Size = 1074
+Packed Size = 
+Modified = 2026-11-13 06:38:22.0000000
+Attributes = 
+Method = LZMA:23
+Solid = +
+Offset = 2631131
+
+Path = node_modules/fast-deep-equal/README.md
+Size = 3323
+Packed Size = 
+Modified = 2026-11-13 06:38:22.0000000
+Attributes = 
+Method = LZMA:23
+Solid = +
+Offset = 2632209
+
+Path = node_modules/fast-deep-equal/index.d.ts
+Size = 103
+Packed Size = 
+Modified = 2026-11-13 06:38:22.0000000
+Attributes = 
+Method = LZMA:23
+Solid = +
+Offset = 2635536
+
+Path = node_modules/fast-deep-equal/index.js
+Size = 1177
+Packed Size = 
+Modified = 2026-11-13 06:38:22.0000000
+Attributes = 
+Method = LZMA:23
+Solid = +
+Offset = 2635643
+
+Path = node_modules/fast-deep-equal/package.json
+Size = 1496
+Packed Size = 
+Modified = 2026-11-13 06:38:22.0000000
+Attributes = 
+Method = LZMA:23
+Solid = +
+Offset = 2636824
+
+Path = node_modules/fast-deep-equal/react.d.ts
+Size = 66
+Packed Size = 
+Modified = 2026-11-13 06:38:22.0000000
+Attributes = 
+Method = LZMA:23
+Solid = +
+Offset = 2638324
+
+Path = node_modules/fast-deep-equal/es6/index.d.ts
+Size = 66
+Packed Size = 
+Modified = 2026-11-13 06:38:22.0000000
+Attributes = 
+Method = LZMA:23
+Solid = +
+Offset = 2638324
+
+Path = node_modules/fast-deep-equal/es6/react.d.ts
+Size = 66
+Packed Size = 
+Modified = 2026-11-13 06:38:22.0000000
+Attributes = 
+Method = LZMA:23
+Solid = +
+Offset = 2638324
+
+Path = node_modules/fast-deep-equal/react.js
+Size = 1451
+Packed Size = 
+Modified = 2026-11-13 06:38:22.0000000
+Attributes = 
+Method = LZMA:23
+Solid = +
+Offset = 2638394
+
+Path = node_modules/fast-deep-equal/es6/index.js
+Size = 1935
+Packed Size = 
+Modified = 2026-11-13 06:38:22.0000000
+Attributes = 
+Method = LZMA:23
+Solid = +
+Offset = 2639849
+
+Path = node_modules/fast-deep-equal/es6/react.js
+Size = 2209
+Packed Size = 
+Modified = 2026-11-13 06:38:22.0000000
+Attributes = 
+Method = LZMA:23
+Solid = +
+Offset = 2641788
+
+Path = node_modules/multicast-dns/.travis.yml
+Size = 62
+Packed Size = 
+Modified = 2026-11-13 06:38:22.0000000
+Attributes = 
+Method = LZMA:23
+Solid = +
+Offset = 2644001
+
+Path = node_modules/multicast-dns/LICENSE
+Size = 1079
+Packed Size = 
+Modified = 2026-11-13 06:38:22.0000000
+Attributes = 
+Method = LZMA:23
+Solid = +
+Offset = 2644067
+
+Path = node_modules/multicast-dns/README.md
+Size = 4246
+Packed Size = 
+Modified = 2026-11-13 06:38:22.0000000
+Attributes = 
+Method = LZMA:23
+Solid = +
+Offset = 2645150
+
+Path = node_modules/multicast-dns/appveyor.yml
+Size = 397
+Packed Size = 
+Modified = 2026-11-13 06:38:22.0000000
+Attributes = 
+Method = LZMA:23
+Solid = +
+Offset = 2649400
+
+Path = node_modules/multicast-dns/example.js
+Size = 788
+Packed Size = 
+Modified = 2026-11-13 06:38:22.0000000
+Attributes = 
+Method = LZMA:23
+Solid = +
+Offset = 2649801
+
+Path = node_modules/multicast-dns/index.js
+Size = 5529
+Packed Size = 
+Modified = 2026-11-13 06:38:22.0000000
+Attributes = 
+Method = LZMA:23
+Solid = +
+Offset = 2650593
+
+Path = node_modules/multicast-dns/package.json
+Size = 894
+Packed Size = 
+Modified = 2026-11-13 06:38:22.0000000
+Attributes = 
+Method = LZMA:23
+Solid = +
+Offset = 2656126
+
+Path = node_modules/multicast-dns/test.js
+Size = 7570
+Packed Size = 
+Modified = 2026-11-13 06:38:22.0000000
+Attributes = 
+Method = LZMA:23
+Solid = +
+Offset = 2657024
+
+Path = node_modules/pend/LICENSE
+Size = 1082
+Packed Size = 
+Modified = 2026-11-13 06:38:22.0000000
+Attributes = 
+Method = LZMA:23
+Solid = +
+Offset = 2664598
+
+Path = node_modules/pend/README.md
+Size = 973
+Packed Size = 
+Modified = 2026-11-13 06:38:22.0000000
+Attributes = 
+Method = LZMA:23
+Solid = +
+Offset = 2665684
+
+Path = node_modules/pend/index.js
+Size = 1101
+Packed Size = 
+Modified = 2026-11-13 06:38:22.0000000
+Attributes = 
+Method = LZMA:23
+Solid = +
+Offset = 2666661
+
+Path = node_modules/pend/package.json
+Size = 410
+Packed Size = 
+Modified = 2026-11-13 06:38:22.0000000
+Attributes = 
+Method = LZMA:23
+Solid = +
+Offset = 2667766
+
+Path = node_modules/pend/test.js
+Size = 2449
+Packed Size = 
+Modified = 2026-11-13 06:38:22.0000000
+Attributes = 
+Method = LZMA:23
+Solid = +
+Offset = 2668180
+
+Path = node_modules/thunky/.travis.yml
+Size = 69
+Packed Size = 
+Modified = 2026-11-13 06:38:22.0000000
+Attributes = 
+Method = LZMA:23
+Solid = +
+Offset = 2670633
+
+Path = node_modules/thunky/LICENSE
+Size = 1079
+Packed Size = 
+Modified = 2026-11-13 06:38:22.0000000
+Attributes = 
+Method = LZMA:23
+Solid = +
+Offset = 2670706
+
+Path = node_modules/thunky/README.md
+Size = 2441
+Packed Size = 
+Modified = 2026-11-13 06:38:22.0000000
+Attributes = 
+Method = LZMA:23
+Solid = +
+Offset = 2671789
+
+Path = node_modules/thunky/index.js
+Size = 1057
+Packed Size = 
+Modified = 2026-11-13 06:38:22.0000000
+Attributes = 
+Method = LZMA:23
+Solid = +
+Offset = 2674234
+
+Path = node_modules/thunky/package.json
+Size = 709
+Packed Size = 
+Modified = 2026-11-13 06:38:22.0000000
+Attributes = 
+Method = LZMA:23
+Solid = +
+Offset = 2675295
+
+Path = node_modules/thunky/promise.js
+Size = 344
+Packed Size = 
+Modified = 2026-11-13 06:38:22.0000000
+Attributes = 
+Method = LZMA:23
+Solid = +
+Offset = 2676008
+
+Path = node_modules/thunky/test.js
+Size = 2059
+Packed Size = 
+Modified = 2026-11-13 06:38:22.0000000
+Attributes = 
+Method = LZMA:23
+Solid = +
+Offset = 2676356
+
+Path = node_modules/yauzl/LICENSE
+Size = 1077
+Packed Size = 
+Modified = 2026-11-13 06:38:22.0000000
+Attributes = 
+Method = LZMA:23
+Solid = +
+Offset = 2678419
+
+Path = node_modules/yauzl/README.md
+Size = 56006
+Packed Size = 
+Modified = 2026-11-13 06:38:22.0000000
+Attributes = 
+Method = LZMA:23
+Solid = +
+Offset = 2679500
+
+Path = node_modules/yauzl/crc32.js
+Size = 3434
+Packed Size = 
+Modified = 2026-11-13 06:38:22.0000000
+Attributes = 
+Method = LZMA:23
+Solid = +
+Offset = 2735510
+
+Path = node_modules/yauzl/fd-slicer.js
+Size = 5159
+Packed Size = 
+Modified = 2026-11-13 06:38:22.0000000
+Attributes = 
+Method = LZMA:23
+Solid = +
+Offset = 2738948
+
+Path = node_modules/yauzl/index.js
+Size = 43463
+Packed Size = 
+Modified = 2026-11-13 06:38:22.0000000
+Attributes = 
+Method = LZMA:23
+Solid = +
+Offset = 2744111
+
+Path = node_modules/yauzl/package.json
+Size = 762
+Packed Size = 
+Modified = 2026-11-13 06:38:22.0000000
+Attributes = 
+Method = LZMA:23
+Solid = +
+Offset = 2787578
+
+Path = runtime/LICENSE
+Size = 160555
+Packed Size = 
+Modified = 2026-11-13 06:38:38.0000000
+Attributes = 
+Method = LZMA:23
+Solid = +
+Offset = 2788344
+
+Path = runtime/node.exe
+Size = 93922624
+Packed Size = 
+Modified = 2026-11-13 06:38:38.0000000
+Attributes = 
+Method = LZMA:23
+Solid = +
+Offset = 2948903
+
+Path = scripts/code-lookup.mjs
+Size = 2517
+Packed Size = 
+Modified = 2026-11-13 06:38:24.0000000
+Attributes = 
+Method = LZMA:23
+Solid = +
+Offset = 96871531
+
+Path = scripts/desktop-storage.mjs
+Size = 9330
+Packed Size = 
+Modified = 2026-11-13 06:38:24.0000000
+Attributes = 
+Method = LZMA:23
+Solid = +
+Offset = 96874052
+
+Path = scripts/dev.mjs
+Size = 15451
+Packed Size = 
+Modified = 2026-11-13 06:38:24.0000000
+Attributes = 
+Method = LZMA:23
+Solid = +
+Offset = 96883386
+
+Path = scripts/device-name.mjs
+Size = 1093
+Packed Size = 
+Modified = 2026-11-13 06:38:24.0000000
+Attributes = 
+Method = LZMA:23
+Solid = +
+Offset = 96898841
+
+Path = scripts/discovery.mjs
+Size = 4001
+Packed Size = 
+Modified = 2026-11-13 06:38:24.0000000
+Attributes = 
+Method = LZMA:23
+Solid = +
+Offset = 96899938
+
+Path = scripts/folder-jobs.mjs
+Size = 1714
+Packed Size = 
+Modified = 2026-11-13 06:38:24.0000000
+Attributes = 
+Method = LZMA:23
+Solid = +
+Offset = 96903943
+
+Path = scripts/folder-receive.mjs
+Size = 4934
+Packed Size = 
+Modified = 2026-11-13 06:38:24.0000000
+Attributes = 
+Method = LZMA:23
+Solid = +
+Offset = 96905661
+
+Path = scripts/folder-zip.mjs
+Size = 6120
+Packed Size = 
+Modified = 2026-11-13 06:38:24.0000000
+Attributes = 
+Method = LZMA:23
+Solid = +
+Offset = 96910599
+
+Path = scripts/lan-discovery.mjs
+Size = 5193
+Packed Size = 
+Modified = 2026-11-13 06:38:24.0000000
+Attributes = 
+Method = LZMA:23
+Solid = +
+Offset = 96916723
+
+Path = scripts/local-bucket.mjs
+Size = 2136
+Packed Size = 
+Modified = 2026-11-13 06:38:24.0000000
+Attributes = 
+Method = LZMA:23
+Solid = +
+Offset = 96921920
+
+Path = scripts/peer-offers.mjs
+Size = 10890
+Packed Size = 
+Modified = 2026-11-13 06:38:24.0000000
+Attributes = 
+Method = LZMA:23
+Solid = +
+Offset = 96924060
+
+Path = scripts/release-config.mjs
+Size = 815
+Packed Size = 
+Modified = 2026-11-13 06:38:24.0000000
+Attributes = 
+Method = LZMA:23
+Solid = +
+Offset = 96934954
+
+Path = scripts/request-security.mjs
+Size = 1377
+Packed Size = 
+Modified = 2026-11-13 06:38:24.0000000
+Attributes = 
+Method = LZMA:23
+Solid = +
+Offset = 96935773
+
+Path = scripts/secure-update.mjs
+Size = 8653
+Packed Size = 
+Modified = 2026-11-13 06:38:24.0000000
+Attributes = 
+Method = LZMA:23
+Solid = +
+Offset = 96937154
+
+Path = scripts/stop.mjs
+Size = 642
+Packed Size = 
+Modified = 2026-11-13 06:38:24.0000000
+Attributes = 
+Method = LZMA:23
+Solid = +
+Offset = 96945811
+
+Path = web/app.js
+Size = 23370
+Packed Size = 
+Modified = 2026-11-13 06:38:22.0000000
+Attributes = 
+Method = LZMA:23
+Solid = +
+Offset = 96946457
+
+Path = web/index.html
+Size = 14468
+Packed Size = 
+Modified = 2026-11-13 06:38:22.0000000
+Attributes = 
+Method = LZMA:23
+Solid = +
+Offset = 96969831
+
+Path = web/style.css
+Size = 18083
+Packed Size = 
+Modified = 2026-11-13 06:38:22.0000000
+Attributes = 
+Method = LZMA:23
+Solid = +
+Offset = 96984303
+
+Path = web/assets/fonts/BeVietnamPro-Bold.ttf
+Size = 140300
+Packed Size = 
+Modified = 2026-11-13 06:38:22.0000000
+Attributes = 
+Method = LZMA:23
+Solid = +
+Offset = 97002390
+
+Path = web/assets/fonts/BeVietnamPro-Medium.ttf
+Size = 135980
+Packed Size = 
+Modified = 2026-11-13 06:38:22.0000000
+Attributes = 
+Method = LZMA:23
+Solid = +
+Offset = 97142694
+
+Path = web/assets/fonts/BeVietnamPro-Regular.ttf
+Size = 132948
+Packed Size = 
+Modified = 2026-11-13 06:38:22.0000000
+Attributes = 
+Method = LZMA:23
+Solid = +
+Offset = 97278678
+
+Path = web/assets/fonts/OFL.txt
+Size = 4397
+Packed Size = 
+Modified = 2026-11-13 06:38:22.0000000
+Attributes = 
+Method = LZMA:23
+Solid = +
+Offset = 97411630
+
+Path = web/assets/fonts/manifest.json
+Size = 584
+Packed Size = 
+Modified = 2026-11-13 06:38:22.0000000
+Attributes = 
+Method = LZMA:23
+Solid = +
+Offset = 97416031
+
+Path = worker/index.js
+Size = 
+Packed Size = 
+Modified = 2026-11-13 06:38:22.0000000
+Attributes = 
+Method = LZMA:23
+Solid = +
+Offset = 97416619
+

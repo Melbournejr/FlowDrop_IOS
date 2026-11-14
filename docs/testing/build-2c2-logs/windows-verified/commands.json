@@ -1,0 +1,69 @@
+[
+  {
+    "name": "locked-npm-ci",
+    "command": [
+      "/workspace/flowdrop-build/flowdrop-verification-2c2/work/windows-verified/node-linux/bin/node",
+      "/workspace/flowdrop-build/flowdrop-verification-2c2/work/windows-verified/node-linux/lib/node_modules/npm/bin/npm-cli.js",
+      "ci",
+      "--ignore-scripts",
+      "--no-audit",
+      "--no-fund",
+      "--cache",
+      "/workspace/flowdrop-build/flowdrop-verification-2c2/work/windows-verified/npm-cache",
+      "--registry",
+      "https://registry.npmjs.org/",
+      "--userconfig",
+      "/workspace/flowdrop-build/flowdrop-verification-2c2/work/windows-verified/empty-user.npmrc",
+      "--globalconfig",
+      "/workspace/flowdrop-build/flowdrop-verification-2c2/work/windows-verified/empty-global.npmrc"
+    ],
+    "status": "PASS",
+    "exit_code": 0,
+    "raw_returncode": 0,
+    "wall_seconds": 1.314,
+    "log_sha256": "72d1483732f64a9ddf78aff8670ec1ab08a0bc40501f22cd419377d9e2dcc298"
+  },
+  {
+    "name": "build-windows-from-source",
+    "command": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+      "/workspace/flowdrop-build/flowdrop-verification-2c2/work/windows-verified/source/scripts/build-installers.py",
+      "--only",
+      "windows"
+    ],
+    "status": "PASS",
+    "exit_code": 0,
+    "raw_returncode": 0,
+    "wall_seconds": 64.404,
+    "log_sha256": "f26cd42bc250fcc84feba52512b59c133cfaf6bb3fcb15853bb6c925268f742c"
+  },
+  {
+    "name": "nsis-list",
+    "command": [
+      "/workspace/flowdrop-build/flowdrop-verification-2c2/work/windows-verified/tools/mingw/usr/lib/7zip/7z",
+      "l",
+      "-slt",
+      "/workspace/flowdrop-build/flowdrop-verification-2c2/work/windows-verified/source/artifacts/FlowDrop-Setup-1.13.0-Windows-x64.exe"
+    ],
+    "status": "PASS",
+    "exit_code": 0,
+    "raw_returncode": 0,
+    "wall_seconds": 0.016,
+    "log_sha256": "52c7e58087931bbe0673c0f6427712b9b4fbbcf091e4fcb1a1a93ee65c1b6af1"
+  },
+  {
+    "name": "nsis-extract",
+    "command": [
+      "/workspace/flowdrop-build/flowdrop-verification-2c2/work/windows-verified/tools/mingw/usr/lib/7zip/7z",
+      "x",
+      "-y",
+      "-o/workspace/flowdrop-build/flowdrop-verification-2c2/work/windows-verified/installer-inspection",
+      "/workspace/flowdrop-build/flowdrop-verification-2c2/work/windows-verified/source/artifacts/FlowDrop-Setup-1.13.0-Windows-x64.exe"
+    ],
+    "status": "PASS",
+    "exit_code": 0,
+    "raw_returncode": 0,
+    "wall_seconds": 1.697,
+    "log_sha256": "0ec241038b05d3a4bf3f2f1f2a812f417b5d35e40113aadcd626d64af68fd82c"
+  }
+]

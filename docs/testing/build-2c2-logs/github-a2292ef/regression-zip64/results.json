@@ -1,0 +1,72 @@
+{
+  "group": "zip64",
+  "status": "PASS",
+  "exit_code": 0,
+  "results": [
+    {
+      "name": "features",
+      "command": [
+        "node",
+        "--test",
+        "tests/features-1.10.test.mjs"
+      ],
+      "status": "PASS",
+      "executed": true,
+      "exit_code": 0,
+      "raw_returncode": 0,
+      "timeout": false,
+      "timeout_seconds": 600,
+      "wall_seconds": 12.925,
+      "resources": {
+        "supported": true,
+        "free_disk_bytes": 91476963328,
+        "memory_limit_bytes": 16760344576,
+        "minimum_disk_bytes": 19327352832,
+        "minimum_memory_bytes": 2147483648
+      }
+    },
+    {
+      "name": "folders",
+      "command": [
+        "node",
+        "--test",
+        "tests/folder-receive.test.mjs"
+      ],
+      "status": "PASS",
+      "executed": true,
+      "exit_code": 0,
+      "raw_returncode": 0,
+      "timeout": false,
+      "timeout_seconds": 900,
+      "wall_seconds": 45.475,
+      "resources": {
+        "supported": true,
+        "free_disk_bytes": 91476992000,
+        "memory_limit_bytes": 16760344576,
+        "minimum_disk_bytes": 19327352832,
+        "minimum_memory_bytes": 2147483648
+      }
+    },
+    {
+      "name": "native-client",
+      "command": [
+        "node",
+        "tests/android-native-client.mjs"
+      ],
+      "status": "PASS",
+      "executed": true,
+      "exit_code": 0,
+      "raw_returncode": 0,
+      "timeout": false,
+      "timeout_seconds": 1500,
+      "wall_seconds": 14.754,
+      "resources": {
+        "supported": true,
+        "free_disk_bytes": 91477053440,
+        "memory_limit_bytes": 16760344576,
+        "minimum_disk_bytes": 19327352832,
+        "minimum_memory_bytes": 2147483648
+      }
+    }
+  ]
+}

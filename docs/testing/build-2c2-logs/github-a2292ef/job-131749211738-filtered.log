@@ -1,0 +1,28 @@
+2026-11-13T07:14:58.0699183Z PROVISIONED: platforms;android-35
+2026-11-13T07:14:58.6064653Z PROVISIONED: build-tools;35.0.0
+2026-11-13T07:15:00.8182289Z PROVISIONED: jdk
+2026-11-13T07:15:01.1040326Z RUN: generate-temporary-test-key
+2026-11-13T07:15:01.6410116Z PASS: generate-temporary-test-key exit=0
+2026-11-13T07:15:01.6420564Z RUN: export-test-public-certificate
+2026-11-13T07:15:01.7800195Z PASS: export-test-public-certificate exit=0
+2026-11-13T07:15:01.7805761Z RUN: build-app-from-source
+2026-11-13T07:15:06.4335934Z PASS: build-app-from-source exit=0
+2026-11-13T07:15:06.4337626Z RUN: build-instrumentation-from-source
+2026-11-13T07:15:09.3841544Z PASS: build-instrumentation-from-source exit=0
+2026-11-13T07:15:09.3863568Z RUN: app-signature
+2026-11-13T07:15:09.5419552Z PASS: app-signature exit=0
+2026-11-13T07:15:09.5426201Z RUN: app-zipalign
+2026-11-13T07:15:09.5450872Z PASS: app-zipalign exit=0
+2026-11-13T07:15:09.5455358Z RUN: app-badging
+2026-11-13T07:15:09.5482816Z PASS: app-badging exit=0
+2026-11-13T07:15:09.5493694Z RUN: app-manifest-tree
+2026-11-13T07:15:09.5524566Z PASS: app-manifest-tree exit=0
+2026-11-13T07:15:09.5619201Z RUN: instrumentation-signature
+2026-11-13T07:15:09.7133621Z PASS: instrumentation-signature exit=0
+2026-11-13T07:15:09.7139221Z RUN: instrumentation-zipalign
+2026-11-13T07:15:09.7165709Z PASS: instrumentation-zipalign exit=0
+2026-11-13T07:15:09.7170230Z RUN: instrumentation-badging
+2026-11-13T07:15:09.7198193Z PASS: instrumentation-badging exit=0
+2026-11-13T07:15:09.7205970Z RUN: instrumentation-manifest-tree
+2026-11-13T07:15:09.7232608Z PASS: instrumentation-manifest-tree exit=0
+2026-11-13T07:15:09.7308414Z PASS: build and structural verification only; runtime/production signing remain separately reported

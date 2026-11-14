@@ -1,7 +1,7 @@
 """Build installable Windows x64 EXE and Android 10+ APK using local toolchains."""
 from pathlib import Path
 import os,shutil,zipfile,argparse,json,re,hashlib
-from native_build_support import BuildError, load_signing, require_tool_root, run_command, report_failure
+from native_build_support import BuildError, load_signing, require_tool_root, run_command, report_failure, fresh_build_directory, clear_build_output
 ROOT=Path(__file__).resolve().parents[1]
 TOOLS=Path(os.environ.get('FLOWDROP_BUILD_TOOLS','/workspace/flowdrop-build'))
 OUT=ROOT/'artifacts'
@@ -15,7 +15,8 @@ def run(args,**kwargs):
 def android():
     signing=load_signing(ROOT)
     OUT.mkdir(exist_ok=True)
-    build=ROOT/'android/build';shutil.rmtree(build,ignore_errors=True);build.mkdir(parents=True)
+    apk=OUT/('FlowDrop-'+ANDROID_VERSION+'-Android.apk');clear_build_output(apk,OUT)
+    build=fresh_build_directory(ROOT/'android/build',ROOT)
     for name in ['aapt2','zipalign']:(BT/name).chmod(0o755)
     run([BT/'aapt2','compile','--dir',ROOT/'android/res','-o',build/'resources.zip'])
     run([BT/'aapt2','link','-o',build/'resources.apk','-I',JAR,'--manifest',ROOT/'android/AndroidManifest.xml',build/'resources.zip'])
@@ -40,7 +41,8 @@ def android():
 def windows():
     if not (ROOT/'desktop/windows/FlowDrop.ico').is_file():raise BuildError('Original FlowDrop.ico is required; no substitute will be generated')
     OUT.mkdir(exist_ok=True)
-    payload=TOOLS/'windows-payload';shutil.rmtree(payload,ignore_errors=True);payload.mkdir()
+    exe=OUT/('FlowDrop-Setup-'+VERSION+'-Windows-x64.exe');clear_build_output(exe,OUT)
+    payload=fresh_build_directory(TOOLS/'windows-payload',TOOLS)
     for folder in ['web','worker','node_modules']:shutil.copytree(ROOT/folder,payload/folder)
     (payload/'scripts').mkdir()
     for f in ['request-security.mjs','device-name.mjs','dev.mjs','stop.mjs','discovery.mjs','desktop-storage.mjs','local-bucket.mjs','peer-offers.mjs','lan-discovery.mjs','folder-jobs.mjs','folder-zip.mjs','folder-receive.mjs','code-lookup.mjs','secure-update.mjs','release-config.mjs']:shutil.copyfile(ROOT/'scripts'/f,payload/'scripts'/f)

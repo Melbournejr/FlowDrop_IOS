@@ -1,0 +1,3 @@
+Android Java host: A → B exact SHA-256, empty file, access controls and revoke passed.
+Android Java host: B → A exact SHA-256, empty file, access controls and revoke passed.
+Android Java host integration passed: both directions, assets/config, Content-Length and chunked uploads, 1 MiB, Unicode names, protocol bounds, partial cleanup, expiry, origin and token checks.

@@ -1,0 +1,205 @@
+[
+  {
+    "name": "generate-temporary-test-key",
+    "command": [
+      "/home/runner/work/_temp/flowdrop-2c2-android/jdk/bin/keytool",
+      "-genkeypair",
+      "-alias",
+      "flowdrop",
+      "-keyalg",
+      "RSA",
+      "-keysize",
+      "3072",
+      "-sigalg",
+      "SHA256withRSA",
+      "-validity",
+      "3",
+      "-dname",
+      "CN=FlowDrop 2C2 TEST ONLY",
+      "-storetype",
+      "JKS",
+      "-keystore",
+      "[REDACTED]",
+      "-storepass:env",
+      "FLOWDROP_ANDROID_STORE_PASSWORD",
+      "-keypass:env",
+      "FLOWDROP_ANDROID_KEY_PASSWORD",
+      "-noprompt"
+    ],
+    "status": "PASS",
+    "exit_code": 0,
+    "raw_returncode": 0,
+    "wall_seconds": 0.536,
+    "log_sha256": "788ec6831085eced404312e73de260ec5ce67a7bb9da73c3f0ef9c89d0c0b504"
+  },
+  {
+    "name": "export-test-public-certificate",
+    "command": [
+      "/home/runner/work/_temp/flowdrop-2c2-android/jdk/bin/keytool",
+      "-exportcert",
+      "-alias",
+      "flowdrop",
+      "-keystore",
+      "[REDACTED]",
+      "-storepass:env",
+      "FLOWDROP_ANDROID_STORE_PASSWORD",
+      "-file",
+      "/home/runner/work/_temp/flowdrop-2c2-android/test-certificate.der"
+    ],
+    "status": "PASS",
+    "exit_code": 0,
+    "raw_returncode": 0,
+    "wall_seconds": 0.137,
+    "log_sha256": "5f87b2778b115423eaab1f219ee908db162259a10bf1009eb5b147bb4707fedc"
+  },
+  {
+    "name": "build-app-from-source",
+    "command": [
+      "/opt/hostedtoolcache/Python/3.12.16/x64/bin/python3",
+      "/home/runner/work/_temp/flowdrop-2c2-android/source/scripts/build-installers.py",
+      "--only",
+      "android"
+    ],
+    "status": "PASS",
+    "exit_code": 0,
+    "raw_returncode": 0,
+    "wall_seconds": 4.652,
+    "log_sha256": "b71f7fb7a95465cf057e3fe67cd44ced8b1e0c47506d39899ed1c50c4cc21ea0"
+  },
+  {
+    "name": "build-instrumentation-from-source",
+    "command": [
+      "/opt/hostedtoolcache/Python/3.12.16/x64/bin/python3",
+      "/home/runner/work/_temp/flowdrop-2c2-android/source/scripts/build-native-test-apk.py"
+    ],
+    "status": "PASS",
+    "exit_code": 0,
+    "raw_returncode": 0,
+    "wall_seconds": 2.949,
+    "log_sha256": "269f97c051c69198f059a433731e19a906888ed165bdc4228a61922c87cb1dc6"
+  },
+  {
+    "name": "app-signature",
+    "command": [
+      "/home/runner/work/_temp/flowdrop-2c2-android/jdk/bin/java",
+      "-jar",
+      "/home/runner/work/_temp/flowdrop-2c2-android/tools/sdk/build-tools/android-15/lib/apksigner.jar",
+      "verify",
+      "--verbose",
+      "--print-certs",
+      "/home/runner/work/_temp/flowdrop-2c2-android/source/artifacts/FlowDrop-1.13.0-Android.apk"
+    ],
+    "status": "PASS",
+    "exit_code": 0,
+    "raw_returncode": 0,
+    "wall_seconds": 0.155,
+    "log_sha256": "f96fc1509964c68cfcbb6319cb3f8860322545ad048b2bf1004ce1002a1dac0b"
+  },
+  {
+    "name": "app-zipalign",
+    "command": [
+      "/home/runner/work/_temp/flowdrop-2c2-android/tools/sdk/build-tools/android-15/zipalign",
+      "-c",
+      "-p",
+      "4",
+      "/home/runner/work/_temp/flowdrop-2c2-android/source/artifacts/FlowDrop-1.13.0-Android.apk"
+    ],
+    "status": "PASS",
+    "exit_code": 0,
+    "raw_returncode": 0,
+    "wall_seconds": 0.002,
+    "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "app-badging",
+    "command": [
+      "/home/runner/work/_temp/flowdrop-2c2-android/tools/sdk/build-tools/android-15/aapt2",
+      "dump",
+      "badging",
+      "/home/runner/work/_temp/flowdrop-2c2-android/source/artifacts/FlowDrop-1.13.0-Android.apk"
+    ],
+    "status": "PASS",
+    "exit_code": 0,
+    "raw_returncode": 0,
+    "wall_seconds": 0.002,
+    "log_sha256": "0a1d95428c084dc1a8a568351453e5abd5c0b668fa4be9b0d4e680f7ccbeee65"
+  },
+  {
+    "name": "app-manifest-tree",
+    "command": [
+      "/home/runner/work/_temp/flowdrop-2c2-android/tools/sdk/build-tools/android-15/aapt2",
+      "dump",
+      "xmltree",
+      "/home/runner/work/_temp/flowdrop-2c2-android/source/artifacts/FlowDrop-1.13.0-Android.apk",
+      "--file",
+      "AndroidManifest.xml"
+    ],
+    "status": "PASS",
+    "exit_code": 0,
+    "raw_returncode": 0,
+    "wall_seconds": 0.002,
+    "log_sha256": "8d9224be114265efe6006e5e2d8201d52b60c72bed4c95b690d09530e9cc0378"
+  },
+  {
+    "name": "instrumentation-signature",
+    "command": [
+      "/home/runner/work/_temp/flowdrop-2c2-android/jdk/bin/java",
+      "-jar",
+      "/home/runner/work/_temp/flowdrop-2c2-android/tools/sdk/build-tools/android-15/lib/apksigner.jar",
+      "verify",
+      "--verbose",
+      "--print-certs",
+      "/home/runner/work/_temp/flowdrop-2c2-android/tools/native-instrumentation/FlowDrop-native-tests.apk"
+    ],
+    "status": "PASS",
+    "exit_code": 0,
+    "raw_returncode": 0,
+    "wall_seconds": 0.151,
+    "log_sha256": "f96fc1509964c68cfcbb6319cb3f8860322545ad048b2bf1004ce1002a1dac0b"
+  },
+  {
+    "name": "instrumentation-zipalign",
+    "command": [
+      "/home/runner/work/_temp/flowdrop-2c2-android/tools/sdk/build-tools/android-15/zipalign",
+      "-c",
+      "-p",
+      "4",
+      "/home/runner/work/_temp/flowdrop-2c2-android/tools/native-instrumentation/FlowDrop-native-tests.apk"
+    ],
+    "status": "PASS",
+    "exit_code": 0,
+    "raw_returncode": 0,
+    "wall_seconds": 0.002,
+    "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "instrumentation-badging",
+    "command": [
+      "/home/runner/work/_temp/flowdrop-2c2-android/tools/sdk/build-tools/android-15/aapt2",
+      "dump",
+      "badging",
+      "/home/runner/work/_temp/flowdrop-2c2-android/tools/native-instrumentation/FlowDrop-native-tests.apk"
+    ],
+    "status": "PASS",
+    "exit_code": 0,
+    "raw_returncode": 0,
+    "wall_seconds": 0.002,
+    "log_sha256": "a85331ff0e09011afea9b815901790b4c37b1e8875165defc3ec37df73dc212d"
+  },
+  {
+    "name": "instrumentation-manifest-tree",
+    "command": [
+      "/home/runner/work/_temp/flowdrop-2c2-android/tools/sdk/build-tools/android-15/aapt2",
+      "dump",
+      "xmltree",
+      "/home/runner/work/_temp/flowdrop-2c2-android/tools/native-instrumentation/FlowDrop-native-tests.apk",
+      "--file",
+      "AndroidManifest.xml"
+    ],
+    "status": "PASS",
+    "exit_code": 0,
+    "raw_returncode": 0,
+    "wall_seconds": 0.002,
+    "log_sha256": "069ff59647d00b9a1f6700fc069d8679b7b624b48cae86e010546d53ef2731eb"
+  }
+]

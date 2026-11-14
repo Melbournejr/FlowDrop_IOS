@@ -1,0 +1,23 @@
+
+7-Zip 25.01 (x64) : Copyright (c) 1999-2025 Igor Pavlov : 2025-08-03
+ 64-bit locale=C.UTF-8 Threads:3 OPEN_MAX:16384, ASM
+
+Scanning the drive for archives:
+1 file, 24521113 bytes (24 MiB)
+
+Extracting archive: /workspace/flowdrop-build/flowdrop-verification-2c2/evidence/release-reference/FlowDrop-Setup-1.13.0-Windows-x64.exe
+--
+Path = /workspace/flowdrop-build/flowdrop-verification-2c2/evidence/release-reference/FlowDrop-Setup-1.13.0-Windows-x64.exe
+Type = Nsis
+Physical Size = 24521113
+Method = LZMA:23
+Solid = +
+Headers Size = 33296
+Embedded Stub Size = 115712
+SubType = NSIS-3 Unicode BadCmd=13
+
+Everything is Ok
+
+Files: 134
+Size:       97427643
+Compressed: 24521113

@@ -1,0 +1,430 @@
+{
+  "schema": 1,
+  "purpose": "FlowDrop 2C2 TEST ONLY; no production installation or release",
+  "base": "c502c2f8793839e7f10289bf051df06dd1c466a0",
+  "local_artifacts": [
+    {
+      "file": "FlowDrop-1.13.0-Android-TEST-ONLY.apk",
+      "size": 279316,
+      "sha256": "9cd01fdef70602772a4c3c39cd45ba394236255ebc9801eb921e9a94d29b0871",
+      "test_certificate_sha256": "94fa0d5499f964dd901726008553b3d4eead89b231189b7cb6424b3a99e1c534",
+      "evidence": "local isolated build; uncommitted build-control snapshot on base c502c2f8793839e7f10289bf051df06dd1c466a0",
+      "log_directory": "android-verified"
+    },
+    {
+      "file": "FlowDrop-1.13.0-Android-Instrumentation-TEST-ONLY.apk",
+      "size": 33171,
+      "sha256": "6fee09b102f64240be3e9c9a47113d88198fe4c2abad4dcb49be8f97bce59bd2",
+      "test_certificate_sha256": "94fa0d5499f964dd901726008553b3d4eead89b231189b7cb6424b3a99e1c534",
+      "evidence": "local isolated build; uncommitted build-control snapshot on base c502c2f8793839e7f10289bf051df06dd1c466a0",
+      "log_directory": "android-verified"
+    },
+    {
+      "file": "FlowDrop-Setup-1.13.0-Windows-x64-TEST-ONLY.exe",
+      "size": 24527415,
+      "sha256": "ab861a3f9eba4aebfca6563be4aba65a3a668337718e54671a8b24f2e0be3630",
+      "test_certificate_sha256": null,
+      "evidence": "local isolated build; uncommitted build-control snapshot on base c502c2f8793839e7f10289bf051df06dd1c466a0",
+      "log_directory": "windows-verified"
+    }
+  ],
+  "github_actions_status": "PASS at evidence head a2292ef7aff2fd49d7053e23f5e0c52a300a37ff; final PR head rechecked separately in PR body",
+  "production_certificate_pin_unchanged": "65cbed4feb375d2c3c2eb94e668bd7aaee7ce5b24f436887873a6fa11719f97f",
+  "production_signing_equivalence": "NOT VERIFIED; deliberately different ephemeral test certificate",
+  "runtime_equivalence": "NOT VERIFIED",
+  "reproducible_binary": "NOT VERIFIED",
+  "github_evidence": {
+    "head": "a2292ef7aff2fd49d7053e23f5e0c52a300a37ff",
+    "build_run": 43384264087,
+    "regression_run": 43384264145,
+    "build_status": "PASS",
+    "regression_status": "PASS",
+    "coverage_status": "PASS",
+    "archive_digests_verified_against_API": true,
+    "artifacts": [
+      {
+        "file": "FlowDrop-1.13.0-Android-TEST-ONLY.apk",
+        "size": 279316,
+        "sha256": "d5c45a4cc8c78baa15b48987b2fd7dac5c0226ec795144c305b738679939dbca",
+        "test_certificate_sha256": "c5ddb26b6c6679ed9c4c8b24d0e420268306f7b6619f6052c8ed619916ba0343",
+        "artifact_id": 14017748408,
+        "archive_sha256": "8570604f2f4d59bf1a03d9519ab85e551f5c5e73b6966ec01dbf0e4f0c7aae4d",
+        "url": "https://github.com/Melbournejr/FlowDrop_IOS/actions/runs/43384264087/artifacts/14017748408"
+      },
+      {
+        "file": "FlowDrop-1.13.0-Android-Instrumentation-TEST-ONLY.apk",
+        "size": 33171,
+        "sha256": "6fa7dd1905829585a850a2152223257ec38f464b81fad218dabd966f1b1f3bc5",
+        "test_certificate_sha256": "c5ddb26b6c6679ed9c4c8b24d0e420268306f7b6619f6052c8ed619916ba0343",
+        "artifact_id": 14017748408,
+        "archive_sha256": "8570604f2f4d59bf1a03d9519ab85e551f5c5e73b6966ec01dbf0e4f0c7aae4d",
+        "url": "https://github.com/Melbournejr/FlowDrop_IOS/actions/runs/43384264087/artifacts/14017748408"
+      },
+      {
+        "file": "FlowDrop-Setup-1.13.0-Windows-x64-TEST-ONLY.exe",
+        "size": 24528373,
+        "sha256": "55cd76c50316d6fbe22754ffb1038c073cfb5a05a67735d2e272a9a1b9021a28",
+        "test_certificate_sha256": null,
+        "artifact_id": 14017807537,
+        "archive_sha256": "a78f9bc0e21350caa7815a7f342e715dd57ccc5b4974e4e16aaa9bb2d8631c2b",
+        "url": "https://github.com/Melbournejr/FlowDrop_IOS/actions/runs/43384264087/artifacts/14017807537"
+      }
+    ],
+    "regression_results": {
+      "fast": {
+        "group": "fast",
+        "status": "PASS",
+        "exit_code": 0,
+        "results": [
+          {
+            "name": "ci-runner-tests",
+            "command": [
+              "/opt/hostedtoolcache/Python/3.12.16/x64/bin/python3",
+              "-m",
+              "unittest",
+              "discover",
+              "-s",
+              "tests/ci",
+              "-p",
+              "test_*.py",
+              "-v"
+            ],
+            "status": "PASS",
+            "executed": true,
+            "exit_code": 0,
+            "raw_returncode": 0,
+            "timeout": false,
+            "timeout_seconds": 90,
+            "wall_seconds": 0.671,
+            "resources": {
+              "supported": true,
+              "free_disk_bytes": 91476967424,
+              "memory_limit_bytes": 16760340480,
+              "minimum_disk_bytes": 536870912,
+              "minimum_memory_bytes": 2147483648
+            }
+          },
+          {
+            "name": "asset-integrity",
+            "command": [
+              "sha256sum",
+              "--check",
+              "docs/assets/FONT-RESTORATION-SHA256SUMS.txt"
+            ],
+            "status": "PASS",
+            "executed": true,
+            "exit_code": 0,
+            "raw_returncode": 0,
+            "timeout": false,
+            "timeout_seconds": 30,
+            "wall_seconds": 0.004,
+            "resources": {
+              "supported": true,
+              "free_disk_bytes": 91476733952,
+              "memory_limit_bytes": 16760340480,
+              "minimum_disk_bytes": 536870912,
+              "minimum_memory_bytes": 2147483648
+            }
+          },
+          {
+            "name": "unit",
+            "command": [
+              "npm",
+              "test"
+            ],
+            "status": "PASS",
+            "executed": true,
+            "exit_code": 0,
+            "raw_returncode": 0,
+            "timeout": false,
+            "timeout_seconds": 90,
+            "wall_seconds": 0.459,
+            "resources": {
+              "supported": true,
+              "free_disk_bytes": 91476729856,
+              "memory_limit_bytes": 16760340480,
+              "minimum_disk_bytes": 536870912,
+              "minimum_memory_bytes": 2147483648
+            }
+          },
+          {
+            "name": "harness-unit",
+            "command": [
+              "node",
+              "--test",
+              "tests/harness.test.mjs"
+            ],
+            "status": "PASS",
+            "executed": true,
+            "exit_code": 0,
+            "raw_returncode": 0,
+            "timeout": false,
+            "timeout_seconds": 90,
+            "wall_seconds": 0.494,
+            "resources": {
+              "supported": true,
+              "free_disk_bytes": 91476725760,
+              "memory_limit_bytes": 16760340480,
+              "minimum_disk_bytes": 536870912,
+              "minimum_memory_bytes": 2147483648
+            }
+          }
+        ]
+      },
+      "integration": {
+        "group": "integration",
+        "status": "PASS",
+        "exit_code": 0,
+        "results": [
+          {
+            "name": "http",
+            "command": [
+              "node",
+              "tests/http-integration.mjs"
+            ],
+            "status": "PASS",
+            "executed": true,
+            "exit_code": 0,
+            "raw_returncode": 0,
+            "timeout": false,
+            "timeout_seconds": 120,
+            "wall_seconds": 1.588,
+            "resources": {
+              "supported": true,
+              "free_disk_bytes": 91476951040,
+              "memory_limit_bytes": 16760336384,
+              "minimum_disk_bytes": 536870912,
+              "minimum_memory_bytes": 2147483648
+            }
+          },
+          {
+            "name": "android-host",
+            "command": [
+              "node",
+              "tests/android-host-integration.mjs"
+            ],
+            "status": "PASS",
+            "executed": true,
+            "exit_code": 0,
+            "raw_returncode": 0,
+            "timeout": false,
+            "timeout_seconds": 120,
+            "wall_seconds": 4.116,
+            "resources": {
+              "supported": true,
+              "free_disk_bytes": 91476959232,
+              "memory_limit_bytes": 16760336384,
+              "minimum_disk_bytes": 536870912,
+              "minimum_memory_bytes": 2147483648
+            }
+          },
+          {
+            "name": "discovery",
+            "command": [
+              "node",
+              "tests/discovery-integration.mjs"
+            ],
+            "status": "PASS",
+            "executed": true,
+            "exit_code": 0,
+            "raw_returncode": 0,
+            "timeout": false,
+            "timeout_seconds": 120,
+            "wall_seconds": 2.765,
+            "resources": {
+              "supported": true,
+              "free_disk_bytes": 91476955136,
+              "memory_limit_bytes": 16760336384,
+              "minimum_disk_bytes": 536870912,
+              "minimum_memory_bytes": 2147483648
+            }
+          },
+          {
+            "name": "peer",
+            "command": [
+              "node",
+              "tests/peer-integration.mjs"
+            ],
+            "status": "PASS",
+            "executed": true,
+            "exit_code": 0,
+            "raw_returncode": 0,
+            "timeout": false,
+            "timeout_seconds": 240,
+            "wall_seconds": 9.793,
+            "resources": {
+              "supported": true,
+              "free_disk_bytes": 91476951040,
+              "memory_limit_bytes": 16760336384,
+              "minimum_disk_bytes": 536870912,
+              "minimum_memory_bytes": 2147483648
+            }
+          },
+          {
+            "name": "lan-discovery",
+            "command": [
+              "node",
+              "tests/lan-discovery-integration.mjs"
+            ],
+            "status": "PASS",
+            "executed": true,
+            "exit_code": 0,
+            "raw_returncode": 0,
+            "timeout": false,
+            "timeout_seconds": 240,
+            "wall_seconds": 16.009,
+            "resources": {
+              "supported": true,
+              "free_disk_bytes": 91476946944,
+              "memory_limit_bytes": 16760336384,
+              "minimum_disk_bytes": 536870912,
+              "minimum_memory_bytes": 2147483648
+            }
+          },
+          {
+            "name": "android-discovery",
+            "command": [
+              "node",
+              "tests/android-discovery-state.mjs"
+            ],
+            "status": "PASS",
+            "executed": true,
+            "exit_code": 0,
+            "raw_returncode": 0,
+            "timeout": false,
+            "timeout_seconds": 120,
+            "wall_seconds": 1.343,
+            "resources": {
+              "supported": true,
+              "free_disk_bytes": 91476955136,
+              "memory_limit_bytes": 16760336384,
+              "minimum_disk_bytes": 536870912,
+              "minimum_memory_bytes": 2147483648
+            }
+          },
+          {
+            "name": "security",
+            "command": [
+              "node",
+              "tests/security-integration.mjs"
+            ],
+            "status": "PASS",
+            "executed": true,
+            "exit_code": 0,
+            "raw_returncode": 0,
+            "timeout": false,
+            "timeout_seconds": 120,
+            "wall_seconds": 11.601,
+            "resources": {
+              "supported": true,
+              "free_disk_bytes": 91476951040,
+              "memory_limit_bytes": 16760336384,
+              "minimum_disk_bytes": 536870912,
+              "minimum_memory_bytes": 2147483648
+            }
+          }
+        ]
+      },
+      "stream": {
+        "group": "stream",
+        "status": "PASS",
+        "exit_code": 0,
+        "results": [
+          {
+            "name": "large-transfer",
+            "command": [
+              "node",
+              "tests/large-transfer-integration.mjs"
+            ],
+            "status": "PASS",
+            "executed": true,
+            "exit_code": 0,
+            "raw_returncode": 0,
+            "timeout": false,
+            "timeout_seconds": 300,
+            "wall_seconds": 10.161,
+            "resources": {
+              "supported": true,
+              "free_disk_bytes": 91476951040,
+              "memory_limit_bytes": 16760344576,
+              "minimum_disk_bytes": 2147483648,
+              "minimum_memory_bytes": 2147483648
+            }
+          }
+        ]
+      },
+      "zip64": {
+        "group": "zip64",
+        "status": "PASS",
+        "exit_code": 0,
+        "results": [
+          {
+            "name": "features",
+            "command": [
+              "node",
+              "--test",
+              "tests/features-1.10.test.mjs"
+            ],
+            "status": "PASS",
+            "executed": true,
+            "exit_code": 0,
+            "raw_returncode": 0,
+            "timeout": false,
+            "timeout_seconds": 600,
+            "wall_seconds": 12.925,
+            "resources": {
+              "supported": true,
+              "free_disk_bytes": 91476963328,
+              "memory_limit_bytes": 16760344576,
+              "minimum_disk_bytes": 19327352832,
+              "minimum_memory_bytes": 2147483648
+            }
+          },
+          {
+            "name": "folders",
+            "command": [
+              "node",
+              "--test",
+              "tests/folder-receive.test.mjs"
+            ],
+            "status": "PASS",
+            "executed": true,
+            "exit_code": 0,
+            "raw_returncode": 0,
+            "timeout": false,
+            "timeout_seconds": 900,
+            "wall_seconds": 45.475,
+            "resources": {
+              "supported": true,
+              "free_disk_bytes": 91476992000,
+              "memory_limit_bytes": 16760344576,
+              "minimum_disk_bytes": 19327352832,
+              "minimum_memory_bytes": 2147483648
+            }
+          },
+          {
+            "name": "native-client",
+            "command": [
+              "node",
+              "tests/android-native-client.mjs"
+            ],
+            "status": "PASS",
+            "executed": true,
+            "exit_code": 0,
+            "raw_returncode": 0,
+            "timeout": false,
+            "timeout_seconds": 1500,
+            "wall_seconds": 14.754,
+            "resources": {
+              "supported": true,
+              "free_disk_bytes": 91477053440,
+              "memory_limit_bytes": 16760344576,
+              "minimum_disk_bytes": 19327352832,
+              "minimum_memory_bytes": 2147483648
+            }
+          }
+        ]
+      }
+    }
+  }
+}

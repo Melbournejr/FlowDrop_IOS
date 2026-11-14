@@ -1,0 +1,232 @@
+name: Native Build Verification
+'on':
+  pull_request:
+    branches: [main]
+    types: [opened, synchronize, reopened, ready_for_review, labeled, unlabeled]
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: native-build-verification-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+env:
+  FLOWDROP_REVIEWED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+jobs:
+  toolchain:
+    outputs:
+      verification_status: ${{ steps.result.outputs.status }}
+    name: Toolchain verification
+    if: ${{ github.event_name == 'workflow_dispatch' || contains(github.event.pull_request.labels.*.name, 'ci-native-build') }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+    - name: Checkout reviewed source
+      uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      with:
+        persist-credentials: false
+    - name: Python 3.12.16
+      uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+      with:
+        python-version: '3.12.16'
+    - name: Authenticate archives and execute pinned tool probes
+      timeout-minutes: 16
+      run: python3 -m scripts.native_build_ci.toolchain --group all --work-root "$RUNNER_TEMP/flowdrop-2c2-toolchain" --cache-root "$RUNNER_TEMP/flowdrop-2c2-toolchain/download-cache"
+    - name: Prepare sanitized evidence
+      id: evidence
+      if: ${{ always() }}
+      run: python3 -m scripts.native_build_ci.finish logs --work-root "$RUNNER_TEMP/flowdrop-2c2-toolchain"
+    - name: Upload public toolchain evidence
+      if: ${{ always() && steps.evidence.outcome == 'success' }}
+      uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+      with:
+        name: FlowDrop-2C2-Toolchain-${{ github.run_id }}-${{ github.run_attempt }}
+        path: ${{ runner.temp }}/flowdrop-2c2-toolchain/safe-logs/
+        if-no-files-found: error
+        retention-days: 7
+        include-hidden-files: false
+    - name: Record explicit verification status
+      id: result
+      if: ${{ always() }}
+      run: python3 -m scripts.native_build_ci.finish status --work-root "$RUNNER_TEMP/flowdrop-2c2-toolchain"
+    - name: Clean owned toolchain work root
+      if: ${{ always() }}
+      run: python3 -m scripts.native_build_ci.finish cleanup --work-root "$RUNNER_TEMP/flowdrop-2c2-toolchain"
+  android:
+    outputs:
+      verification_status: ${{ steps.result.outputs.status }}
+    name: Android app and instrumentation TEST ONLY
+    needs: [toolchain]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+    - name: Checkout reviewed source
+      uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      with:
+        persist-credentials: false
+    - name: Python 3.12.16
+      uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+      with:
+        python-version: '3.12.16'
+    - name: Build and verify two APKs using one ephemeral test certificate
+      timeout-minutes: 20
+      run: python3 -m scripts.native_build_ci.runner --role android --work-root "$RUNNER_TEMP/flowdrop-2c2-android" --cache-root "$RUNNER_TEMP/flowdrop-2c2-android/download-cache"
+    - name: Upload verified TEST ONLY Android installers
+      uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+      with:
+        name: FlowDrop-2C2-Android-TEST-ONLY-${{ github.run_id }}-${{ github.run_attempt }}
+        path: ${{ runner.temp }}/flowdrop-2c2-android/export/
+        if-no-files-found: error
+        retention-days: 7
+        include-hidden-files: false
+    - name: Prepare sanitized evidence
+      id: evidence
+      if: ${{ always() }}
+      run: python3 -m scripts.native_build_ci.finish logs --work-root "$RUNNER_TEMP/flowdrop-2c2-android"
+    - name: Upload sanitized Android evidence
+      if: ${{ always() && steps.evidence.outcome == 'success' }}
+      uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+      with:
+        name: FlowDrop-2C2-Android-Logs-${{ github.run_id }}-${{ github.run_attempt }}
+        path: ${{ runner.temp }}/flowdrop-2c2-android/safe-logs/
+        if-no-files-found: error
+        retention-days: 7
+        include-hidden-files: false
+    - name: Record explicit verification status
+      id: result
+      if: ${{ always() }}
+      run: python3 -m scripts.native_build_ci.finish status --work-root "$RUNNER_TEMP/flowdrop-2c2-android"
+    - name: Clean owned Android work root
+      if: ${{ always() }}
+      run: python3 -m scripts.native_build_ci.finish cleanup --work-root "$RUNNER_TEMP/flowdrop-2c2-android"
+  windows:
+    outputs:
+      verification_status: ${{ steps.result.outputs.status }}
+    name: Windows x64 installer TEST ONLY
+    needs: [toolchain]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+    - name: Checkout reviewed source
+      uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      with:
+        persist-credentials: false
+    - name: Python 3.12.16
+      uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+      with:
+        python-version: '3.12.16'
+    - name: Build and verify native PE and NSIS payload from locked source
+      timeout-minutes: 20
+      run: python3 -m scripts.native_build_ci.runner --role windows --work-root "$RUNNER_TEMP/flowdrop-2c2-windows" --cache-root "$RUNNER_TEMP/flowdrop-2c2-windows/download-cache"
+    - name: Upload verified TEST ONLY Windows installer
+      uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+      with:
+        name: FlowDrop-2C2-Windows-TEST-ONLY-${{ github.run_id }}-${{ github.run_attempt }}
+        path: ${{ runner.temp }}/flowdrop-2c2-windows/export/
+        if-no-files-found: error
+        retention-days: 7
+        include-hidden-files: false
+    - name: Prepare sanitized evidence
+      id: evidence
+      if: ${{ always() }}
+      run: python3 -m scripts.native_build_ci.finish logs --work-root "$RUNNER_TEMP/flowdrop-2c2-windows"
+    - name: Upload sanitized Windows evidence
+      if: ${{ always() && steps.evidence.outcome == 'success' }}
+      uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+      with:
+        name: FlowDrop-2C2-Windows-Logs-${{ github.run_id }}-${{ github.run_attempt }}
+        path: ${{ runner.temp }}/flowdrop-2c2-windows/safe-logs/
+        if-no-files-found: error
+        retention-days: 7
+        include-hidden-files: false
+    - name: Record explicit verification status
+      id: result
+      if: ${{ always() }}
+      run: python3 -m scripts.native_build_ci.finish status --work-root "$RUNNER_TEMP/flowdrop-2c2-windows"
+    - name: Clean owned Windows work root
+      if: ${{ always() }}
+      run: python3 -m scripts.native_build_ci.finish cleanup --work-root "$RUNNER_TEMP/flowdrop-2c2-windows"
+  artifacts:
+    outputs:
+      verification_status: ${{ steps.result.outputs.status }}
+    name: Independent artifact verification
+    needs: [android, windows]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+    - name: Checkout reviewed source
+      uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      with:
+        persist-credentials: false
+    - name: Python 3.12.16
+      uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+      with:
+        python-version: '3.12.16'
+    - name: Download same-run verified Android export
+      uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+      with:
+        name: FlowDrop-2C2-Android-TEST-ONLY-${{ github.run_id }}-${{ github.run_attempt }}
+        path: ${{ runner.temp }}/flowdrop-2c2-downloads/android
+        digest-mismatch: error
+    - name: Download same-run verified Windows export
+      uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+      with:
+        name: FlowDrop-2C2-Windows-TEST-ONLY-${{ github.run_id }}-${{ github.run_attempt }}
+        path: ${{ runner.temp }}/flowdrop-2c2-downloads/windows
+        digest-mismatch: error
+    - name: Re-verify downloaded installers using fresh verification tools
+      timeout-minutes: 16
+      run: python3 -m scripts.native_build_ci.artifacts --work-root "$RUNNER_TEMP/flowdrop-2c2-verifier" --cache-root "$RUNNER_TEMP/flowdrop-2c2-verifier/download-cache" --android "$RUNNER_TEMP/flowdrop-2c2-downloads/android" --windows "$RUNNER_TEMP/flowdrop-2c2-downloads/windows"
+    - name: Prepare sanitized evidence
+      id: evidence
+      if: ${{ always() }}
+      run: python3 -m scripts.native_build_ci.finish logs --work-root "$RUNNER_TEMP/flowdrop-2c2-verifier"
+    - name: Upload independent verification evidence
+      if: ${{ always() && steps.evidence.outcome == 'success' }}
+      uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+      with:
+        name: FlowDrop-2C2-Independent-Verification-${{ github.run_id }}-${{ github.run_attempt }}
+        path: ${{ runner.temp }}/flowdrop-2c2-verifier/safe-logs/
+        if-no-files-found: error
+        retention-days: 7
+        include-hidden-files: false
+    - name: Record explicit verification status
+      id: result
+      if: ${{ always() }}
+      run: python3 -m scripts.native_build_ci.finish status --work-root "$RUNNER_TEMP/flowdrop-2c2-verifier"
+    - name: Clean owned verification work root
+      if: ${{ always() }}
+      run: python3 -m scripts.native_build_ci.finish cleanup --work-root "$RUNNER_TEMP/flowdrop-2c2-verifier"
+  summary:
+    name: Build verification summary
+    if: ${{ always() }}
+    needs: [toolchain, android, windows, artifacts]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+    - name: Report actual verification status and fail on an incomplete mandatory build
+      env:
+        RESULTS: ${{ toJSON(needs) }}
+        REQUESTED: ${{ github.event_name == 'workflow_dispatch' || contains(github.event.pull_request.labels.*.name, 'ci-native-build') }}
+      shell: bash
+      run: |
+        python3 - <<'PY'
+        import json, os
+        results = json.loads(os.environ['RESULTS'])
+        requested = os.environ['REQUESTED'] == 'true'
+        names = {'toolchain': 'Toolchain', 'android': 'Android app + instrumentation', 'windows': 'Windows x64 installer', 'artifacts': 'Independent artifact checks'}
+        states = {'success': 'PASS', 'failure': 'FAIL', 'cancelled': 'NOT VERIFIED', 'skipped': 'SKIPPED'}
+        with open(os.environ['GITHUB_STEP_SUMMARY'], 'a') as report:
+            report.write('## Native test-only build verification\n\n| Check | Actual status |\n|---|---|\n')
+            for key, name in names.items():
+                explicit = results[key].get('outputs', {}).get('verification_status')
+                actual = states.get(results[key]['result'], 'NOT VERIFIED')
+                if explicit in ('BLOCKED', 'FAIL', 'NOT VERIFIED', 'SKIPPED'):
+                    actual = explicit
+                report.write('| ' + name + ' | ' + actual + ' |\n')
+            report.write('| Android / Windows OS runtime | NOT VERIFIED; phase 2D |\n| Production signing equivalence | NOT VERIFIED; intentionally no production key |\n')
+            if not requested:
+                report.write('\nSKIPPED: opt in using ci-native-build or workflow_dispatch. No build success claim.\n')
+            report.write('\nNo release, tag, update feed or production installation is performed. Native Regression is a separate workflow.\n')
+        if requested and any(value['result'] != 'success' or value.get('outputs', {}).get('verification_status') != 'PASS' for value in results.values()):
+            raise SystemExit(1)
+        PY

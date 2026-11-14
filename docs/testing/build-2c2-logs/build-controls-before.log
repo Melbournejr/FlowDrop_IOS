@@ -1,0 +1,47 @@
+test_failed_app_build_cannot_leave_previous_apk_as_output (test_native_build_pipeline.NativePipelineTests.test_failed_app_build_cannot_leave_previous_apk_as_output) ... FAIL
+test_instrumentation_rebuild_discards_old_classes_and_dex (test_native_build_pipeline.NativePipelineTests.test_instrumentation_rebuild_discards_old_classes_and_dex) ... FAIL
+test_owned_cleanup_paths_refuse_outside_and_symlink_destinations (test_native_build_pipeline.NativePipelineTests.test_owned_cleanup_paths_refuse_outside_and_symlink_destinations) ... ok
+test_pinned_java_path_wins_over_untrusted_path (test_native_build_pipeline.NativePipelineTests.test_pinned_java_path_wins_over_untrusted_path) ... FAIL
+test_tar_hardlinked_compiler_preserves_executable_permissions (test_native_build_pipeline.NativePipelineTests.test_tar_hardlinked_compiler_preserves_executable_permissions) ... ok
+test_verification_mode_rejects_keystore_outside_test_secret_directory (test_native_build_pipeline.NativePipelineTests.test_verification_mode_rejects_keystore_outside_test_secret_directory) ... FAIL
+
+======================================================================
+FAIL: test_failed_app_build_cannot_leave_previous_apk_as_output (test_native_build_pipeline.NativePipelineTests.test_failed_app_build_cannot_leave_previous_apk_as_output)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/flowdrop-build/flowdrop-verification-2c2/repository/tests/ci/test_native_build_pipeline.py", line 47, in test_failed_app_build_cannot_leave_previous_apk_as_output
+    self.assertFalse(old.exists(), 'A failed build must not retain a previous APK')
+AssertionError: True is not false : A failed build must not retain a previous APK
+
+======================================================================
+FAIL: test_instrumentation_rebuild_discards_old_classes_and_dex (test_native_build_pipeline.NativePipelineTests.test_instrumentation_rebuild_discards_old_classes_and_dex)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/flowdrop-build/flowdrop-verification-2c2/repository/tests/ci/test_native_build_pipeline.py", line 65, in test_instrumentation_rebuild_discards_old_classes_and_dex
+    self.assertFalse(old.exists(), 'Instrumentation cannot reuse stale classes')
+AssertionError: True is not false : Instrumentation cannot reuse stale classes
+
+======================================================================
+FAIL: test_pinned_java_path_wins_over_untrusted_path (test_native_build_pipeline.NativePipelineTests.test_pinned_java_path_wins_over_untrusted_path)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/flowdrop-build/flowdrop-verification-2c2/repository/tests/ci/test_native_build_pipeline.py", line 88, in test_pinned_java_path_wins_over_untrusted_path
+    self.assertEqual(child.call_args.args[0][0], str(java))
+AssertionError: 'java' != '/tmp/tmp7zx5p_54/work/jdk/bin/java'
+- java
++ /tmp/tmp7zx5p_54/work/jdk/bin/java
+
+
+======================================================================
+FAIL: test_verification_mode_rejects_keystore_outside_test_secret_directory (test_native_build_pipeline.NativePipelineTests.test_verification_mode_rejects_keystore_outside_test_secret_directory)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/flowdrop-build/flowdrop-verification-2c2/repository/tests/ci/test_native_build_pipeline.py", line 75, in test_verification_mode_rejects_keystore_outside_test_secret_directory
+    with patch.dict(os.environ, env, clear=True), self.assertRaises(support.BuildError):
+                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: BuildError not raised
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.015s
+
+FAILED (failures=4)

@@ -1,0 +1,887 @@
+{
+  "head": "a2292ef7aff2fd49d7053e23f5e0c52a300a37ff",
+  "build_jobs": [
+    {
+      "id": 131748978917,
+      "name": "Toolchain verification",
+      "status": "completed",
+      "conclusion": "success",
+      "run_id": 43384264087,
+      "logs_url": null,
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1
+        },
+        {
+          "name": "Checkout reviewed source",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2
+        },
+        {
+          "name": "Python 3.12.16",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3
+        },
+        {
+          "name": "Authenticate archives and execute pinned tool probes",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4
+        },
+        {
+          "name": "Prepare sanitized evidence",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5
+        },
+        {
+          "name": "Upload public toolchain evidence",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6
+        },
+        {
+          "name": "Record explicit verification status",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7
+        },
+        {
+          "name": "Clean owned toolchain work root",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8
+        },
+        {
+          "name": "Post Python 3.12.16",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 15
+        },
+        {
+          "name": "Post Checkout reviewed source",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 16
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 17
+        }
+      ]
+    },
+    {
+      "id": 131749211738,
+      "name": "Android app and instrumentation TEST ONLY",
+      "status": "completed",
+      "conclusion": "success",
+      "run_id": 43384264087,
+      "logs_url": null,
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1
+        },
+        {
+          "name": "Checkout reviewed source",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2
+        },
+        {
+          "name": "Python 3.12.16",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3
+        },
+        {
+          "name": "Build and verify two APKs using one ephemeral test certificate",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4
+        },
+        {
+          "name": "Upload verified TEST ONLY Android installers",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5
+        },
+        {
+          "name": "Prepare sanitized evidence",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6
+        },
+        {
+          "name": "Upload sanitized Android evidence",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7
+        },
+        {
+          "name": "Record explicit verification status",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8
+        },
+        {
+          "name": "Clean owned Android work root",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9
+        },
+        {
+          "name": "Post Python 3.12.16",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 17
+        },
+        {
+          "name": "Post Checkout reviewed source",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 18
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 19
+        }
+      ]
+    },
+    {
+      "id": 131749211765,
+      "name": "Windows x64 installer TEST ONLY",
+      "status": "completed",
+      "conclusion": "success",
+      "run_id": 43384264087,
+      "logs_url": null,
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1
+        },
+        {
+          "name": "Checkout reviewed source",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2
+        },
+        {
+          "name": "Python 3.12.16",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3
+        },
+        {
+          "name": "Build and verify native PE and NSIS payload from locked source",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4
+        },
+        {
+          "name": "Upload verified TEST ONLY Windows installer",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5
+        },
+        {
+          "name": "Prepare sanitized evidence",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6
+        },
+        {
+          "name": "Upload sanitized Windows evidence",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7
+        },
+        {
+          "name": "Record explicit verification status",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8
+        },
+        {
+          "name": "Clean owned Windows work root",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9
+        },
+        {
+          "name": "Post Python 3.12.16",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 17
+        },
+        {
+          "name": "Post Checkout reviewed source",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 18
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 19
+        }
+      ]
+    },
+    {
+      "id": 131749689101,
+      "name": "Independent artifact verification",
+      "status": "completed",
+      "conclusion": "success",
+      "run_id": 43384264087,
+      "logs_url": null,
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1
+        },
+        {
+          "name": "Checkout reviewed source",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2
+        },
+        {
+          "name": "Python 3.12.16",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3
+        },
+        {
+          "name": "Download same-run verified Android export",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4
+        },
+        {
+          "name": "Download same-run verified Windows export",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5
+        },
+        {
+          "name": "Re-verify downloaded installers using fresh verification tools",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6
+        },
+        {
+          "name": "Prepare sanitized evidence",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7
+        },
+        {
+          "name": "Upload independent verification evidence",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8
+        },
+        {
+          "name": "Record explicit verification status",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9
+        },
+        {
+          "name": "Clean owned verification work root",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10
+        },
+        {
+          "name": "Post Python 3.12.16",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 19
+        },
+        {
+          "name": "Post Checkout reviewed source",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 20
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 21
+        }
+      ]
+    },
+    {
+      "id": 131749897191,
+      "name": "Build verification summary",
+      "status": "completed",
+      "conclusion": "success",
+      "run_id": 43384264087,
+      "logs_url": null,
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1
+        },
+        {
+          "name": "Report actual verification status and fail on an incomplete mandatory build",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3
+        }
+      ]
+    }
+  ],
+  "regression_jobs": [
+    {
+      "id": 131748985687,
+      "name": "Fast / unit and contracts",
+      "status": "completed",
+      "conclusion": "success",
+      "run_id": 43384264145,
+      "logs_url": null,
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1
+        },
+        {
+          "name": "Checkout reviewed source",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2
+        },
+        {
+          "name": "Prepare test toolchain",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3
+        },
+        {
+          "name": "Run fast gate",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4
+        },
+        {
+          "name": "Record missing verification",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5
+        },
+        {
+          "name": "Upload sanitized test evidence",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6
+        },
+        {
+          "name": "Clean owned test data",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7
+        },
+        {
+          "name": "Post Prepare test toolchain",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 13
+        },
+        {
+          "name": "Post Checkout reviewed source",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 14
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 15
+        }
+      ]
+    },
+    {
+      "id": 131749124470,
+      "name": "Integration / serial discovery and HTTP",
+      "status": "completed",
+      "conclusion": "success",
+      "run_id": 43384264145,
+      "logs_url": null,
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1
+        },
+        {
+          "name": "Checkout reviewed source",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2
+        },
+        {
+          "name": "Prepare test toolchain",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3
+        },
+        {
+          "name": "Run integration gate",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4
+        },
+        {
+          "name": "Record missing verification",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5
+        },
+        {
+          "name": "Upload sanitized test evidence",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6
+        },
+        {
+          "name": "Clean owned test data",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7
+        },
+        {
+          "name": "Post Prepare test toolchain",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 13
+        },
+        {
+          "name": "Post Checkout reviewed source",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 14
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 15
+        }
+      ]
+    },
+    {
+      "id": 131749124592,
+      "name": "Large / full ZIP64 above 4 GiB",
+      "status": "completed",
+      "conclusion": "success",
+      "run_id": 43384264145,
+      "logs_url": null,
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1
+        },
+        {
+          "name": "Checkout reviewed source",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2
+        },
+        {
+          "name": "Prepare test toolchain",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3
+        },
+        {
+          "name": "Run zip64 gate",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4
+        },
+        {
+          "name": "Record missing verification",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5
+        },
+        {
+          "name": "Upload sanitized test evidence",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6
+        },
+        {
+          "name": "Clean owned test data",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7
+        },
+        {
+          "name": "Post Prepare test toolchain",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 13
+        },
+        {
+          "name": "Post Checkout reviewed source",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 14
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 15
+        }
+      ]
+    },
+    {
+      "id": 131749124648,
+      "name": "Large / 101 files and 384 MiB streaming",
+      "status": "completed",
+      "conclusion": "success",
+      "run_id": 43384264145,
+      "logs_url": null,
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1
+        },
+        {
+          "name": "Checkout reviewed source",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2
+        },
+        {
+          "name": "Prepare test toolchain",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3
+        },
+        {
+          "name": "Run stream gate",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4
+        },
+        {
+          "name": "Record missing verification",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5
+        },
+        {
+          "name": "Upload sanitized test evidence",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6
+        },
+        {
+          "name": "Clean owned test data",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7
+        },
+        {
+          "name": "Post Prepare test toolchain",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 13
+        },
+        {
+          "name": "Post Checkout reviewed source",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 14
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 15
+        }
+      ]
+    },
+    {
+      "id": 131749684828,
+      "name": "Coverage / explicit verification status",
+      "status": "completed",
+      "conclusion": "success",
+      "run_id": 43384264145,
+      "logs_url": null,
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1
+        },
+        {
+          "name": "Report actual job conclusions",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3
+        }
+      ]
+    }
+  ],
+  "build_artifacts": [
+    {
+      "id": 14018440236,
+      "name": "FlowDrop-2C2-Android-Logs-43384264087-1",
+      "size_in_bytes": 17165,
+      "url": "https://api.github.com/repos/Melbournejr/FlowDrop_IOS/actions/artifacts/14018440236",
+      "archive_download_url": "https://api.github.com/repos/Melbournejr/FlowDrop_IOS/actions/artifacts/14018440236/zip",
+      "expired": false,
+      "created_at": "2026-11-13T07:15:11Z",
+      "expires_at": "2026-11-20T07:15:11Z",
+      "updated_at": "2026-11-13T07:15:11Z",
+      "digest": "sha256:119fbd8a561b1abc849bb18706b5eecd2eda45295222e2f2414ebf4864324dd0",
+      "workflow_run": {
+        "id": 43384264087,
+        "repository_id": 1431935346,
+        "head_repository_id": 1431935346,
+        "head_branch": "build/native-verification-2c2",
+        "head_sha": "a2292ef7aff2fd49d7053e23f5e0c52a300a37ff"
+      }
+    },
+    {
+      "id": 14018275301,
+      "name": "FlowDrop-2C2-Windows-Logs-43384264087-1",
+      "size_in_bytes": 21816,
+      "url": "https://api.github.com/repos/Melbournejr/FlowDrop_IOS/actions/artifacts/14018275301",
+      "archive_download_url": "https://api.github.com/repos/Melbournejr/FlowDrop_IOS/actions/artifacts/14018275301/zip",
+      "expired": false,
+      "created_at": "2026-11-13T07:15:54Z",
+      "expires_at": "2026-11-20T07:15:53Z",
+      "updated_at": "2026-11-13T07:15:54Z",
+      "digest": "sha256:4cef91968249ceeec511d5a98dcc9717d3434f9f0326970448fe5d40b16807d0",
+      "workflow_run": {
+        "id": 43384264087,
+        "repository_id": 1431935346,
+        "head_repository_id": 1431935346,
+        "head_branch": "build/native-verification-2c2",
+        "head_sha": "a2292ef7aff2fd49d7053e23f5e0c52a300a37ff"
+      }
+    },
+    {
+      "id": 14017807537,
+      "name": "FlowDrop-2C2-Windows-TEST-ONLY-43384264087-1",
+      "size_in_bytes": 24521581,
+      "url": "https://api.github.com/repos/Melbournejr/FlowDrop_IOS/actions/artifacts/14017807537",
+      "archive_download_url": "https://api.github.com/repos/Melbournejr/FlowDrop_IOS/actions/artifacts/14017807537/zip",
+      "expired": false,
+      "created_at": "2026-11-13T07:15:53Z",
+      "expires_at": "2026-11-20T07:15:51Z",
+      "updated_at": "2026-11-13T07:15:53Z",
+      "digest": "sha256:a78f9bc0e21350caa7815a7f342e715dd57ccc5b4974e4e16aaa9bb2d8631c2b",
+      "workflow_run": {
+        "id": 43384264087,
+        "repository_id": 1431935346,
+        "head_repository_id": 1431935346,
+        "head_branch": "build/native-verification-2c2",
+        "head_sha": "a2292ef7aff2fd49d7053e23f5e0c52a300a37ff"
+      }
+    },
+    {
+      "id": 14017748408,
+      "name": "FlowDrop-2C2-Android-TEST-ONLY-43384264087-1",
+      "size_in_bytes": 320248,
+      "url": "https://api.github.com/repos/Melbournejr/FlowDrop_IOS/actions/artifacts/14017748408",
+      "archive_download_url": "https://api.github.com/repos/Melbournejr/FlowDrop_IOS/actions/artifacts/14017748408/zip",
+      "expired": false,
+      "created_at": "2026-11-13T07:15:10Z",
+      "expires_at": "2026-11-20T07:15:09Z",
+      "updated_at": "2026-11-13T07:15:10Z",
+      "digest": "sha256:8570604f2f4d59bf1a03d9519ab85e551f5c5e73b6966ec01dbf0e4f0c7aae4d",
+      "workflow_run": {
+        "id": 43384264087,
+        "repository_id": 1431935346,
+        "head_repository_id": 1431935346,
+        "head_branch": "build/native-verification-2c2",
+        "head_sha": "a2292ef7aff2fd49d7053e23f5e0c52a300a37ff"
+      }
+    },
+    {
+      "id": 14017722730,
+      "name": "FlowDrop-2C2-Independent-Verification-43384264087-1",
+      "size_in_bytes": 25744,
+      "url": "https://api.github.com/repos/Melbournejr/FlowDrop_IOS/actions/artifacts/14017722730",
+      "archive_download_url": "https://api.github.com/repos/Melbournejr/FlowDrop_IOS/actions/artifacts/14017722730/zip",
+      "expired": false,
+      "created_at": "2026-11-13T07:16:22Z",
+      "expires_at": "2026-11-20T07:16:21Z",
+      "updated_at": "2026-11-13T07:16:22Z",
+      "digest": "sha256:daf3275cff7df20b79b135be4167739610e56c8a529be9460104316aebe0c9af",
+      "workflow_run": {
+        "id": 43384264087,
+        "repository_id": 1431935346,
+        "head_repository_id": 1431935346,
+        "head_branch": "build/native-verification-2c2",
+        "head_sha": "a2292ef7aff2fd49d7053e23f5e0c52a300a37ff"
+      }
+    },
+    {
+      "id": 14016829495,
+      "name": "FlowDrop-2C2-Toolchain-43384264087-1",
+      "size_in_bytes": 9199,
+      "url": "https://api.github.com/repos/Melbournejr/FlowDrop_IOS/actions/artifacts/14016829495",
+      "archive_download_url": "https://api.github.com/repos/Melbournejr/FlowDrop_IOS/actions/artifacts/14016829495/zip",
+      "expired": false,
+      "created_at": "2026-11-13T07:14:42Z",
+      "expires_at": "2026-11-20T07:14:42Z",
+      "updated_at": "2026-11-13T07:14:42Z",
+      "digest": "sha256:50b8bcae71145debcfe15754eefe1c497824b83efb9c40ba7592b134811e9b33",
+      "workflow_run": {
+        "id": 43384264087,
+        "repository_id": 1431935346,
+        "head_repository_id": 1431935346,
+        "head_branch": "build/native-verification-2c2",
+        "head_sha": "a2292ef7aff2fd49d7053e23f5e0c52a300a37ff"
+      }
+    }
+  ],
+  "regression_artifacts": [
+    {
+      "id": 14018260579,
+      "name": "FlowDrop-Native-stream-43384264145-1",
+      "size_in_bytes": 2488,
+      "url": "https://api.github.com/repos/Melbournejr/FlowDrop_IOS/actions/artifacts/14018260579",
+      "archive_download_url": "https://api.github.com/repos/Melbournejr/FlowDrop_IOS/actions/artifacts/14018260579/zip",
+      "expired": false,
+      "created_at": "2026-11-13T07:14:53Z",
+      "expires_at": "2026-11-20T07:14:52Z",
+      "updated_at": "2026-11-13T07:14:53Z",
+      "digest": "sha256:03cfca094cde3f40406d5e3567cfc7354be5321861746928a5f62fc43574473a",
+      "workflow_run": {
+        "id": 43384264145,
+        "repository_id": 1431935346,
+        "head_repository_id": 1431935346,
+        "head_branch": "build/native-verification-2c2",
+        "head_sha": "a2292ef7aff2fd49d7053e23f5e0c52a300a37ff"
+      }
+    },
+    {
+      "id": 14017544210,
+      "name": "FlowDrop-Native-fast-43384264145-1",
+      "size_in_bytes": 5819,
+      "url": "https://api.github.com/repos/Melbournejr/FlowDrop_IOS/actions/artifacts/14017544210",
+      "archive_download_url": "https://api.github.com/repos/Melbournejr/FlowDrop_IOS/actions/artifacts/14017544210/zip",
+      "expired": false,
+      "created_at": "2026-11-13T07:14:29Z",
+      "expires_at": "2026-11-20T07:14:28Z",
+      "updated_at": "2026-11-13T07:14:29Z",
+      "digest": "sha256:f871b7f29bd73d81f35dc50a3d95cad3fc44df1dea0781298b391eaf3334af48",
+      "workflow_run": {
+        "id": 43384264145,
+        "repository_id": 1431935346,
+        "head_repository_id": 1431935346,
+        "head_branch": "build/native-verification-2c2",
+        "head_sha": "a2292ef7aff2fd49d7053e23f5e0c52a300a37ff"
+      }
+    },
+    {
+      "id": 14017314685,
+      "name": "FlowDrop-Native-integration-43384264145-1",
+      "size_in_bytes": 4689,
+      "url": "https://api.github.com/repos/Melbournejr/FlowDrop_IOS/actions/artifacts/14017314685",
+      "archive_download_url": "https://api.github.com/repos/Melbournejr/FlowDrop_IOS/actions/artifacts/14017314685/zip",
+      "expired": false,
+      "created_at": "2026-11-13T07:15:28Z",
+      "expires_at": "2026-11-20T07:15:27Z",
+      "updated_at": "2026-11-13T07:15:28Z",
+      "digest": "sha256:51cfa336f80de781bed8c89ad4b0677199ec4d05b93f0e73166e926ef986ac5f",
+      "workflow_run": {
+        "id": 43384264145,
+        "repository_id": 1431935346,
+        "head_repository_id": 1431935346,
+        "head_branch": "build/native-verification-2c2",
+        "head_sha": "a2292ef7aff2fd49d7053e23f5e0c52a300a37ff"
+      }
+    },
+    {
+      "id": 14017219917,
+      "name": "FlowDrop-Native-zip64-43384264145-1",
+      "size_in_bytes": 3525,
+      "url": "https://api.github.com/repos/Melbournejr/FlowDrop_IOS/actions/artifacts/14017219917",
+      "archive_download_url": "https://api.github.com/repos/Melbournejr/FlowDrop_IOS/actions/artifacts/14017219917/zip",
+      "expired": false,
+      "created_at": "2026-11-13T07:15:53Z",
+      "expires_at": "2026-11-20T07:15:52Z",
+      "updated_at": "2026-11-13T07:15:53Z",
+      "digest": "sha256:d8a1845b65e25d97bbe1c9cfb176799bd25d96017fc799e020112d2b8f8928ca",
+      "workflow_run": {
+        "id": 43384264145,
+        "repository_id": 1431935346,
+        "head_repository_id": 1431935346,
+        "head_branch": "build/native-verification-2c2",
+        "head_sha": "a2292ef7aff2fd49d7053e23f5e0c52a300a37ff"
+      }
+    }
+  ],
+  "runs": [
+    {
+      "id": 43384264145,
+      "name": "Native regression",
+      "status": "completed",
+      "conclusion": "success",
+      "run_number": 13,
+      "jobs_url": "https://api.github.com/repos/Melbournejr/FlowDrop_IOS/actions/runs/43384264145/jobs",
+      "logs_url": "https://api.github.com/repos/Melbournejr/FlowDrop_IOS/actions/runs/43384264145/logs",
+      "workflow_id": 416207187
+    },
+    {
+      "id": 43384264087,
+      "name": "Native Build Verification",
+      "status": "completed",
+      "conclusion": "success",
+      "run_number": 4,
+      "jobs_url": "https://api.github.com/repos/Melbournejr/FlowDrop_IOS/actions/runs/43384264087/jobs",
+      "logs_url": "https://api.github.com/repos/Melbournejr/FlowDrop_IOS/actions/runs/43384264087/logs",
+      "workflow_id": 416983475
+    }
+  ]
+}

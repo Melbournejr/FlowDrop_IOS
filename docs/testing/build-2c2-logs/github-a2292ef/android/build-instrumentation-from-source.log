@@ -1,0 +1,10 @@
+Running: aapt2
+Running: java
+warning: [options] source value 8 is obsolete and will be removed in a future release
+warning: [options] target value 8 is obsolete and will be removed in a future release
+warning: [options] To suppress warnings about obsolete options, use -Xlint:-options.
+3 warnings
+Running: java
+Running: zipalign
+Running: java
+Native test APK: /home/runner/work/_temp/flowdrop-2c2-android/tools/native-instrumentation/FlowDrop-native-tests.apk
