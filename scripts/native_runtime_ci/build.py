@@ -122,17 +122,28 @@ def windows(root, cache):
     journal = c2.Journal(helpers, env)
     compiler = root / 'tools/mingw/usr/bin/x86_64-w64-mingw32-g++-posix'
     source = root / 'source'
+    resource = helpers / 'helper.rc'
+    resource.write_text('#include <windows.h>\n1 RT_MANIFEST "FlowDrop.manifest"\n', encoding='utf-8')
+    resource_object = helpers / 'helper-manifest.o'
+    journal.run('compile-helper-activation-manifest', [root / 'tools/mingw/usr/bin/x86_64-w64-mingw32-windres',
+        '--preprocessor=' + str(root / 'tools/mingw/usr/bin/x86_64-w64-mingw32-gcc-posix'),
+        '--preprocessor-arg=-E', '--preprocessor-arg=-xc', '--preprocessor-arg=-DRC_INVOKED',
+        '-I', source / 'desktop/windows', resource, '-O', 'coff', '-o', resource_object], env=env)
+    manifest = (source / 'desktop/windows/FlowDrop.manifest').read_bytes().rstrip(b'\0')
     files = []
     for name in ['windows-native-smoke', 'windows-shell-smoke']:
         output = helpers / ('FlowDrop-' + name + '-TEST-ONLY.exe')
         journal.run('compile-' + name, [compiler, '-std=c++17', '-O2', '-s', '-municode', '-static', '-static-libgcc', '-static-libstdc++',
-            '-I', source / 'desktop/windows/vendor', source / 'tests' / (name + '.cpp'), '-o', output,
+            '-I', source / 'desktop/windows/vendor', source / 'tests' / (name + '.cpp'), resource_object, '-o', output,
             '-lwinhttp', '-lcomctl32', '-lole32', '-luuid', '-lshell32', '-luxtheme', '-lgdi32', '-luser32', '-ladvapi32'], timeout=600)
         pe = pe_info(output.read_bytes())
         if pe['machine'] != 0x8664 or pe['subsystem'] != 3:
             raise RuntimeError('Test helper must be a real Windows x64 console PE')
+        if not any(path[0] == 24 and raw.rstrip(b'\0') == manifest for path, raw in pe['resources']):
+            raise RuntimeError('Helper activation manifest missing; TaskDialogIndirect requires Common Controls v6')
         files.append({'name': output.name, 'sha256': digest(output), 'size': output.stat().st_size,
-                      'source': 'tests/' + name + '.cpp', 'source_sha256': digest(source / 'tests' / (name + '.cpp'))})
+                      'source': 'tests/' + name + '.cpp', 'source_sha256': digest(source / 'tests' / (name + '.cpp')),
+                      'common_controls_v6_manifest_sha256': hashlib.sha256(manifest).hexdigest()})
     export = fresh_child(root, root / 'helper-export')
     for record in files:
         shutil.copyfile(helpers / record['name'], export / record['name'])

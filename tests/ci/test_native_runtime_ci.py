@@ -16,11 +16,19 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 from scripts.native_runtime_ci.common import Blocked, Recorder, child, own_root, sanitize
 from scripts.native_runtime_ci.android import instrumentation_result
-from scripts.native_runtime_ci.sdk import extract_runtime_zip, host_libraries
+from scripts.native_runtime_ci.sdk import extract_runtime_zip, host_libraries, official_ubuntu_mirrors
 from scripts.native_runtime_ci.finish import export
 
 
 class NativeRuntimeHarnessTests(unittest.TestCase):
+    def test_regional_official_mirrors_and_lookalike_rejection(self):
+        valid = 'http://us-east-2.ec2.archive.ubuntu.com/ubuntu/\nhttp://azure.archive.ubuntu.com/ubuntu/\n'
+        self.assertEqual(len(official_ubuntu_mirrors(valid)), 2)
+        for value in ['https://archive.ubuntu.com.invalid/ubuntu', 'https://untrusted.example/ubuntu',
+                      'https://archive.ubuntu.com/other', 'http://user:password@archive.ubuntu.com/ubuntu', '']:
+            with self.assertRaises(Blocked):
+                official_ubuntu_mirrors(value)
+
     def test_missing_unreviewed_host_library_cannot_install_packages(self):
         recorder = Mock()
         recorder.run.return_value = ('  lib-unreviewed.so.0 => not found\n', 0)

@@ -6,9 +6,16 @@
 beea78b9d276e213da0200e1162545016bccf6f2b27cd9d9f80387d8dd535d76  docs/testing/runtime-2d1-logs/first-api35-emulator-version.log
 ab66d66b787b0682424b6fb9216cc8697537686a2752091e6bf8fee82aa98319  docs/testing/runtime-2d1-logs/first-api35-results.json
 8c82717903ea1dce860de7ea217cb9b20d8eab0da434bc61a00c0fe514700ab8  docs/testing/runtime-2d1-logs/first-api35-test-matrix.json
+38357f831c8e2a2aa1c97acc5fefa4905ac55fc1dfacad4ce082d169a6272890  docs/testing/runtime-2d1-logs/first-windows-os-commands.json
+3ea0dffcac5360d061a6cc9c9f534d68bebf4184963593ed8ee0f0aeef0b6a0a  docs/testing/runtime-2d1-logs/first-windows-os-results.json
+432e9c3090511badbf3b478039df3ca6651cbf0b3a90f9b289c09cf493fe7d1b  docs/testing/runtime-2d1-logs/first-windows-os-test-matrix.json
+8f4a674dd3ca03b3e61425f99b5d82337ae71adbd7469634fe9b4eb2f690ea64  docs/testing/runtime-2d1-logs/first-windows-os-windows-native-smoke.log
+e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  docs/testing/runtime-2d1-logs/first-windows-os-windows-shell-smoke.log
 7d1c673fb43e8010a90dc7bbc92b6c90f8655da34002cb645716cdacd2bd1c04  docs/testing/runtime-2d1-logs/local-unit.json
 9fda17b9341cea812015ce9c0751cef4b458fd8ddfc7e24f24c05e70b107bc22  docs/testing/runtime-2d1-logs/local-unit.log
 ab3b95f9ba41a80906be8a920200b0ea644fddb980c2620ce616d95dbcfb40b9  docs/testing/runtime-2d1-logs/python-windows-provenance.json
 0dd0ac4256b36ef7f855f0f6786235892f9f68d6889efd0d6ff6753463e306d4  docs/testing/runtime-2d1-logs/second-api35-emulator-host-ldd-before.log
 61bb1f0c3ef7b2c39fcff4946c9cbaf4ebbf380af071d71067ab4c95ee1b6643  docs/testing/runtime-2d1-logs/second-api35-results.json
+66cf151da59bcca1f41535a214300b69c222bb68a5cfd854a420ffd81e0af719  docs/testing/runtime-2d1-logs/third-api35-results.json
+773d3deb4587d673fd60be8c238bfb3f50c75451fc783e40a56db515d91d0b4a  docs/testing/runtime-2d1-logs/third-api35-ubuntu-libpulse-policy.log
 c4ba61af8e3350862e3c252aa603f448125e3d5b8538a93b00370166dba315fa  docs/testing/runtime-2d1-logs/unit-host-library-fix.log

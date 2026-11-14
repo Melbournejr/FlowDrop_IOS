@@ -6,6 +6,7 @@ import re
 import shutil
 import stat
 import subprocess
+import urllib.parse
 import xml.etree.ElementTree as ET
 import zipfile
 
@@ -73,6 +74,18 @@ def selected_rows(api):
     return selected
 
 
+def official_ubuntu_mirrors(text):
+    urls = [line.split()[0] for line in text.splitlines() if line.strip() and not line.lstrip().startswith('#')]
+    if not urls:
+        raise Blocked('Empty Ubuntu mirror list')
+    for value in urls:
+        url = urllib.parse.urlsplit(value)
+        if (url.scheme not in ['http', 'https'] or url.username or url.password or url.query or url.fragment or
+            not re.fullmatch(r'(?:[a-z0-9-]+\.)*(?:archive|security)\.ubuntu\.com', url.hostname or '') or url.path.rstrip('/') != '/ubuntu'):
+            raise Blocked('Mirror file contains a non-official Ubuntu archive')
+    return urls
+
+
 def host_libraries(emulator, recorder, env):
     """Install only the missing library observed on the isolated Ubuntu 24.04 VM.
 
@@ -102,7 +115,17 @@ def host_libraries(emulator, recorder, env):
     candidate = re.search(r'^\s*Candidate:\s*(\S+)$', policy, re.M)
     if not candidate or not re.fullmatch(r'[0-9A-Za-z.+:~_-]+', candidate.group(1)) or candidate.group(1) == '(none)':
         raise Blocked('No explicit libpulse0 distribution candidate')
-    if not re.search(r'https?://(?:azure\.archive|archive|security)\.ubuntu\.com/ubuntu\s+noble(?:-updates|-security)?/main', policy):
+    # Hosted images now use APT's mirror+file transport, whose policy output
+    # does not contain the final HTTPS/HTTP archive URL. Validate the fixed,
+    # root-owned list as well as the signed APT index instead of rejecting it
+    # or trusting an arbitrary file transport.
+    if re.search(r'mirror\+file:/etc/apt/apt-mirrors.txt\s+noble(?:-updates|-security)?/main', policy):
+        mirror_file = Path('/etc/apt/apt-mirrors.txt')
+        if mirror_file.is_symlink() or mirror_file.stat().st_uid != 0:
+            raise Blocked('Ubuntu mirror list is not an owned system file')
+        mirrors, _ = recorder.run('ubuntu-official-mirrors', ['/usr/bin/cat', mirror_file], env=env)
+        official_ubuntu_mirrors(mirrors)
+    elif not re.search(r'https?://(?:[a-z0-9-]+\.)*(?:archive|security)\.ubuntu\.com/ubuntu/?\s+noble(?:-updates|-security)?/main', policy):
         raise Blocked('libpulse0 origin is not an expected official Ubuntu Noble archive')
     recorder.run('ubuntu-libpulse-install', ['sudo', '-n', '/usr/bin/apt-get', 'install', '--yes', '--no-install-recommends',
                  'libpulse0=' + candidate.group(1)], env=env, timeout=180)

@@ -1,0 +1,223 @@
+[
+  {
+    "name": "known-folders",
+    "command": [
+      "powershell.exe",
+      "-NoProfile",
+      "-NonInteractive",
+      "-Command",
+      "@([Environment]::GetFolderPath('Desktop'); [Environment]::GetFolderPath('StartMenu'); [Environment]::GetFolderPath('SendTo')) | ConvertTo-Json"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 4.344,
+    "timeout_seconds": 120,
+    "log": "logs/known-folders.log",
+    "log_sha256": "22f6d551f0550eaaf8fcf4412599f807a7eea5eb0914404aaab5d22687f0d8af"
+  },
+  {
+    "name": "windows-os-version",
+    "command": [
+      "powershell.exe",
+      "-NoProfile",
+      "-NonInteractive",
+      "-Command",
+      "Get-CimInstance Win32_OperatingSystem | Select-Object Caption,Version,BuildNumber,OSArchitecture | ConvertTo-Json"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 0.657,
+    "timeout_seconds": 120,
+    "log": "logs/windows-os-version.log",
+    "log_sha256": "4b772e9b061552481fb4d74d850e8cf1cb3214d06326fd70935252e6ac877190"
+  },
+  {
+    "name": "nsis-install",
+    "command": [
+      "D:\\a\\_temp\\runtime-downloads\\windows\\FlowDrop-Setup-1.13.0-Windows-x64-TEST-ONLY.exe",
+      "/S"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 4.735,
+    "timeout_seconds": 180,
+    "log": "logs/nsis-install.log",
+    "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "app-backend-processes",
+    "command": [
+      "powershell.exe",
+      "-NoProfile",
+      "-NonInteractive",
+      "-Command",
+      "Get-CimInstance Win32_Process | Where-Object { $_.ProcessId -in @(1608,5344) } | Select-Object ProcessId,ParentProcessId,ExecutablePath | ConvertTo-Json"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 0.5,
+    "timeout_seconds": 120,
+    "log": "logs/app-backend-processes.log",
+    "log_sha256": "9d5f5e0a36c0088baddaac4c7e457739d5f342f1922e6838c9eee11d44d51113"
+  },
+  {
+    "name": "desktop-capability",
+    "command": [
+      "powershell.exe",
+      "-NoProfile",
+      "-NonInteractive",
+      "-Command",
+      "[Environment]::UserInteractive; (Get-Process -Id $PID).SessionId"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 0.375,
+    "timeout_seconds": 120,
+    "log": "logs/desktop-capability.log",
+    "log_sha256": "250887f9289befe90817bb5f6f7510e48d3fd9a9d329f99a4f3850a0b1f3c7ce"
+  },
+  {
+    "name": "second-native-instance",
+    "command": [
+      "C:\\Users\\runneradmin\\AppData\\Local\\Programs\\FlowDrop\\FlowDrop.exe"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 0.032,
+    "timeout_seconds": 20,
+    "log": "logs/second-native-instance.log",
+    "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "sendto-shortcut",
+    "command": [
+      "powershell.exe",
+      "-NoProfile",
+      "-NonInteractive",
+      "-Command",
+      "$s=(New-Object -ComObject WScript.Shell).CreateShortcut('C:\\Users\\runneradmin\\AppData\\Roaming\\Microsoft\\Windows\\SendTo\\FlowDrop.lnk'); @{TargetPath=$s.TargetPath;Arguments=$s.Arguments} | ConvertTo-Json"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 0.562,
+    "timeout_seconds": 120,
+    "log": "logs/sendto-shortcut.log",
+    "log_sha256": "2fd6fd0ef1e1fcbc576c36effc55144dc383f448bc9eaa791eb8059c758f1eea"
+  },
+  {
+    "name": "native-shutdown-7",
+    "command": [
+      "C:\\Users\\runneradmin\\AppData\\Local\\Programs\\FlowDrop\\FlowDrop.exe",
+      "--shutdown"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 0.406,
+    "timeout_seconds": 30,
+    "log": "logs/native-shutdown-7.log",
+    "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "windows-native-smoke",
+    "command": [
+      "D:\\a\\_temp\\runtime-downloads\\helpers\\FlowDrop-windows-native-smoke-TEST-ONLY.exe",
+      "C:\\Users\\runneradmin\\AppData\\Local\\Programs\\FlowDrop\\FlowDrop.exe"
+    ],
+    "exit_code": 1,
+    "wall_seconds": 41.484,
+    "timeout_seconds": 600,
+    "log": "logs/windows-native-smoke.log",
+    "log_sha256": "c02344e997f6a0703ade0e480221a182c0d38460b5862dc9b1d105e7f9a3ff64"
+  },
+  {
+    "name": "stop-after-windows-native-smoke",
+    "command": [
+      "C:\\Users\\runneradmin\\AppData\\Local\\Programs\\FlowDrop\\FlowDrop.exe",
+      "--shutdown"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 0.437,
+    "timeout_seconds": 30,
+    "log": "logs/stop-after-windows-native-smoke.log",
+    "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "windows-shell-smoke",
+    "command": [
+      "D:\\a\\_temp\\runtime-downloads\\helpers\\FlowDrop-windows-shell-smoke-TEST-ONLY.exe",
+      "C:\\Users\\runneradmin\\AppData\\Local\\Programs\\FlowDrop\\FlowDrop.exe"
+    ],
+    "exit_code": 3221225785,
+    "wall_seconds": 0.016,
+    "timeout_seconds": 600,
+    "log": "logs/windows-shell-smoke.log",
+    "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "stop-after-windows-shell-smoke",
+    "command": [
+      "C:\\Users\\runneradmin\\AppData\\Local\\Programs\\FlowDrop\\FlowDrop.exe",
+      "--shutdown"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 0.015,
+    "timeout_seconds": 30,
+    "log": "logs/stop-after-windows-shell-smoke.log",
+    "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "stop-only-owned-backend",
+    "command": [
+      "powershell.exe",
+      "-NoProfile",
+      "-NonInteractive",
+      "-Command",
+      "Stop-Process -Id 1312 -Force"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 0.297,
+    "timeout_seconds": 120,
+    "log": "logs/stop-only-owned-backend.log",
+    "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "native-shutdown-13",
+    "command": [
+      "C:\\Users\\runneradmin\\AppData\\Local\\Programs\\FlowDrop\\FlowDrop.exe",
+      "--shutdown"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 0.078,
+    "timeout_seconds": 30,
+    "log": "logs/native-shutdown-13.log",
+    "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "native-shutdown-14",
+    "command": [
+      "C:\\Users\\runneradmin\\AppData\\Local\\Programs\\FlowDrop\\FlowDrop.exe",
+      "--shutdown"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 0.39,
+    "timeout_seconds": 30,
+    "log": "logs/native-shutdown-14.log",
+    "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "native-close-before-uninstall",
+    "command": [
+      "C:\\Users\\runneradmin\\AppData\\Local\\Programs\\FlowDrop\\FlowDrop.exe",
+      "--shutdown"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 0.016,
+    "timeout_seconds": 30,
+    "log": "logs/native-close-before-uninstall.log",
+    "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "nsis-uninstall",
+    "command": [
+      "C:\\Users\\runneradmin\\AppData\\Local\\Programs\\FlowDrop\\Uninstall.exe",
+      "/S"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 0.078,
+    "timeout_seconds": 180,
+    "log": "logs/nsis-uninstall.log",
+    "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+]

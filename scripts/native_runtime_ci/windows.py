@@ -7,6 +7,7 @@ from pathlib import Path
 import shutil
 import subprocess
 import sys
+import threading
 import time
 
 from scripts.native_build_ci.verify import pe_info
@@ -26,6 +27,62 @@ def wait(predicate, message, seconds=60):
             pass
         time.sleep(.2)
     raise AssertionError(message)
+
+
+def dialog_evidence(stop, destination, secrets):
+    """Observe actual OS file-dialog controls without operating them or changing assertions."""
+    from ctypes import wintypes
+    from .common import sanitize
+    user = ctypes.WinDLL('user32', use_last_error=True)
+    callback_type = ctypes.WINFUNCTYPE(wintypes.BOOL, wintypes.HWND, wintypes.LPARAM)
+    user.EnumWindows.argtypes = [callback_type, wintypes.LPARAM]
+    user.EnumChildWindows.argtypes = [wintypes.HWND, callback_type, wintypes.LPARAM]
+    user.GetWindowTextW.argtypes = [wintypes.HWND, wintypes.LPWSTR, ctypes.c_int]
+    user.GetClassNameW.argtypes = [wintypes.HWND, wintypes.LPWSTR, ctypes.c_int]
+    user.GetDlgCtrlID.argtypes = [wintypes.HWND]
+    user.IsWindowVisible.argtypes = [wintypes.HWND]
+    user.GetWindowRect.argtypes = [wintypes.HWND, ctypes.POINTER(wintypes.RECT)]
+    user.SendMessageTimeoutW.argtypes = [wintypes.HWND, wintypes.UINT, wintypes.WPARAM, wintypes.LPARAM,
+                                       wintypes.UINT, wintypes.UINT, ctypes.POINTER(ctypes.c_size_t)]
+    def text(hwnd, classname=False):
+        buffer = ctypes.create_unicode_buffer(1024)
+        (user.GetClassNameW if classname else user.GetWindowTextW)(hwnd, buffer, len(buffer))
+        return buffer.value
+    history, previous = [], None
+    try:
+        while not stop.is_set():
+            dialogs = []
+            def window(hwnd, parameter):
+                title = text(hwnd)
+                if title not in ['Chọn file để gửi', 'Chọn thư mục để gửi']:
+                    return True
+                controls = []
+                def child_window(child, unused):
+                    if len(controls) >= 80:
+                        return False
+                    kind = text(child, True)
+                    if not user.IsWindowVisible(child):
+                        return True
+                    value = text(child)
+                    if kind in ['Edit', 'ComboBox']:
+                        buffer, result = ctypes.create_unicode_buffer(2048), ctypes.c_size_t()
+                        user.SendMessageTimeoutW(child, 13, len(buffer), ctypes.addressof(buffer), 2, 200, ctypes.byref(result))
+                        value = buffer.value
+                    rect = wintypes.RECT(); user.GetWindowRect(child, ctypes.byref(rect))
+                    controls.append({'class': kind, 'id': user.GetDlgCtrlID(child), 'text': sanitize(value, secrets),
+                                     'rect': [rect.left, rect.top, rect.right, rect.bottom]})
+                    return True
+                user.EnumChildWindows(hwnd, callback_type(child_window), 0)
+                dialogs.append({'title': title, 'controls': controls})
+                return True
+            user.EnumWindows(callback_type(window), 0)
+            if dialogs != previous and len(history) < 50:
+                history.append({'utc': time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime()), 'dialogs': dialogs})
+                json_file(destination, {'scope': 'Actual Windows file-dialog diagnostics; no UI operations', 'observations': history})
+                previous = dialogs
+            stop.wait(.5)
+    except Exception as error:
+        json_file(destination, {'scope': 'Dialog diagnostics failed; does not change test outcome', 'error': sanitize(error, secrets)})
 
 
 def run(root, downloads, helpers):
@@ -101,6 +158,9 @@ def run(root, downloads, helpers):
                 assert helper['source'] == 'tests/' + helper['name'].removeprefix('FlowDrop-').removesuffix('-TEST-ONLY.exe') + '.cpp'
                 file = Path(helpers) / helper['name']
                 assert sha256(file) == helper['sha256'] and sha256(REPO / helper['source']) == helper['source_sha256']
+                expected_manifest = (REPO / 'desktop/windows/FlowDrop.manifest').read_bytes().rstrip(b'\0')
+                assert any(path[0] == 24 and raw.rstrip(b'\0') == expected_manifest
+                           for path, raw in pe_info(file.read_bytes())['resources']), 'Helper Common Controls activation manifest missing'
             row['actual'] = {'installer_sha256': rec.artifact['installer'], 'helper_files_verified': len(proof['files'])}
         if rec.cases[-1]['status'] != 'PASS':
             raise Blocked("A preceding required Windows prerequisite did not complete")
@@ -175,7 +235,13 @@ def run(root, downloads, helpers):
         stop()
         for case_id, name in [('W15-legacy-native', 'windows-native-smoke'), ('W16-legacy-shell', 'windows-shell-smoke')]:
             with rec.case(case_id, WINDOWS[case_id]) as row:
-                output, code = rec.run(name, [Path(helpers) / ('FlowDrop-' + name + '-TEST-ONLY.exe'), install / 'FlowDrop.exe'], timeout=600)
+                observer_stop = threading.Event()
+                observer = threading.Thread(target=dialog_evidence, args=(observer_stop, rec.root / ('logs/' + name + '-dialogs.json'), rec.secrets), daemon=True)
+                observer.start()
+                try:
+                    output, code = rec.run(name, [Path(helpers) / ('FlowDrop-' + name + '-TEST-ONLY.exe'), install / 'FlowDrop.exe'], timeout=600)
+                finally:
+                    observer_stop.set(); observer.join(timeout=5)
                 assert 'PASS:' in output
                 row.update(exit_code=code, actual='Original compiled C++ smoke ran on Windows and completed all assertions', evidence_path='logs/' + name + '.log')
             # A failing helper must not leave an application instance affecting the next case.
@@ -216,7 +282,13 @@ def run(root, downloads, helpers):
                         raise AssertionError('Uninstall registry remained')
                 except FileNotFoundError:
                     pass
-                row.update(exit_code=0, actual={'install_removed': True, 'shortcuts_removed': True, 'registry_removed': True})
+                app_path = str(install / 'FlowDrop.exe').replace("'", "''")
+                node_path = str(install / 'runtime/node.exe').replace("'", "''")
+                residual = json.loads(ps('confirm-no-owned-processes-after-uninstall',
+                    "$p=@(Get-CimInstance Win32_Process | Where-Object { $_.ExecutablePath -and ($_.ExecutablePath -eq '" + app_path +
+                    "' -or $_.ExecutablePath -eq '" + node_path + "') } | Select-Object ProcessId,ExecutablePath); ConvertTo-Json -InputObject $p")[0])
+                assert residual == [], 'Owned application/backend process remained after uninstall'
+                row.update(exit_code=0, actual={'install_removed': True, 'shortcuts_removed': True, 'registry_removed': True, 'owned_processes_remaining': 0})
             with rec.case('W21-preserve-data', WINDOWS['W21-preserve-data']) as row:
                 assert marker is not None and marker.is_file() and sha256(marker) == marker_hash, 'Uninstall removed or changed user data beyond NSIS design'
                 assert len(preserved_files) >= 3
