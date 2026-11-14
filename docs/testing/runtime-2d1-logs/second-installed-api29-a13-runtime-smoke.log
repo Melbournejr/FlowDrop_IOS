@@ -1,0 +1,12 @@
+INSTRUMENTATION_STATUS: stage=live-native-backend
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: stage=foreground-notification
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_RESULT: completedChecks=[{"sdk":29,"version":"1.13.0","id":"live-native-backend","passed":true},{"hostReady":true,"notificationId":120,"id":"foreground-notification","passed":true}]
+INSTRUMENTATION_RESULT: failure=java.lang.AssertionError: Picker cancel did not return to app
+	at app.flowdrop.mobile.test.NativeRuntimeSmoke.await(NativeRuntimeSmoke.java:32)
+	at app.flowdrop.mobile.test.NativeRuntimeSmoke.core(NativeRuntimeSmoke.java:74)
+	at app.flowdrop.mobile.test.NativeRuntimeSmoke.onStart(NativeRuntimeSmoke.java:106)
+	at android.app.Instrumentation$InstrumentationThread.run(Instrumentation.java:2189)
+
+INSTRUMENTATION_CODE: 0

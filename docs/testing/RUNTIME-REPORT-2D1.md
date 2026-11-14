@@ -113,3 +113,13 @@ A13 crash và A15 phát hiện đúng crash. Stack trên cả API chỉ vào hel
 Windows20/21 PASS; SendTo/rename shell helper nay PASS. Native helper đã qua picker/upload/receive/folderarchive/updateprefs, còn FAIL nhậnfolder vì fixture `Con` trùng Windows reservedCON. Source folder-receive.mjs chặn rõ CON theo thiết kế, không được nới regex. Chỉ đổi5 đường dẫn fixture trong bản sao sang `Con hợp lệ`, giữ structure/Unicode/emptydirs/collision/assertion; thêm probe live Windows gửi ZIP có Con và bắt buộc400/fullmessage/no-leftovers để kiểm bảo vệ vẫn hoạt động. Windows naming docs/blob được lưu. Mọi childapp do helper khởi động cũng nhận test-env disable-updates, không chạm update feed.
 
 Unit mới có socket fixture nên lần local sandbox mặc định exit1 PermissionError bind loopback; chạy lại nguyên58 test với network sandbox permission hỗ trợ loopback đạt58/58 exit0, không skip. Đây là unit/harness, không OS proof. NativeBuild43571092705 và fullRegression43571092770 PASS ở head trên; sẽ rerun ở head mới.
+
+## Mốc Windows21/21 và Android15/16
+
+Run43572621465 / head `afc3a3b679524c99f86b8d8d9eb93c5268fa1254`: Windows runtime **21/21 PASS**, bao gồm hai C++ helper, native realfile/folderpicker, exact folder structure/names/emptydirs/collision và Explorer window visible. Live reserved-name ZIP probe trả đúng400 “Windows không hỗ trợ tên: Con”, không để file lại; không sửa guard app. Uninstall xác nhận0ownedapp/backendprocess còn lại và dữ liệu synthetic ngoài installation giữSHA.
+
+Cả hai Android **15/16 nhóm PASS**: bốn old instrumentation đầy đủ đã thực chạy thành công sau test-onlyselectorfix; Activityfocus/screenshot/liveADBHTTP/force-stop/restart/no-crash cũng PASS. Chỉ A13 mới còn FAIL ở “Picker cancel did not return to app”; các subcase A13 phía sau chưa chạy nên không gọi toàn bộ transfer/fault smoke bổ sung PASS.
+
+Sửa input helper mới: tạo BACK/HOME KeyEvent với down/event uptime hiện hành, virtual keyboard source/flags rõ ràng và bắt buộc cả hai inject trảtrue; cặp sự kiện cũ không thiết lập time/source và không kiểm return. Giữ45s chờ actual appreturn, không thay bằng direct Activity launch để bỏ qua cancel. launch cũng phải thấy active accessibility window thuộcMainActivity cả khi mở lại từ nền. Java8 helper compile exit0; Android runtime kết quả chờ rerun.
+
+NativeBuild43572621478 và fullRegression43572621491/Coverage PASS tại mốc trên; sẽ xác minh lại head cuối.
