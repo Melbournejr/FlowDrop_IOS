@@ -1,0 +1,328 @@
+name: Native Runtime Verification
+'on':
+  pull_request:
+    branches:
+    - main
+    types:
+    - opened
+    - synchronize
+    - reopened
+    - ready_for_review
+    - labeled
+    - unlabeled
+  workflow_dispatch: null
+permissions:
+  contents: read
+concurrency:
+  group: native-runtime-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+env:
+  FLOWDROP_REVIEWED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+jobs:
+  preconditions:
+    name: Preconditions and artifact provenance
+    if: ${{ github.event_name == 'workflow_dispatch' || contains(github.event.pull_request.labels.*.name, 'ci-native-runtime')
+      }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+    - name: Checkout exact source revision
+      uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1 (verified pin from Phase 2C.2)
+      with:
+        persist-credentials: false
+        ref: ${{ github.sha }}
+        fetch-depth: 0
+    - name: Python 3.12.16
+      uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0 (verified pin from Phase 2C.2)
+      with:
+        python-version: 3.12.16
+    - name: Verify protected baseline and source ancestry
+      run: 'python3 - <<''PY''
+
+        import subprocess
+
+        from scripts.native_runtime_ci.common import protected_source,BASE
+
+        subprocess.run([''git'',''merge-base'',''--is-ancestor'',BASE,''HEAD''],check=True)
+
+        print(protected_source())
+
+        PY'
+  build_android:
+    name: Same-source android TEST ONLY artifacts
+    needs:
+    - preconditions
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+    - name: Checkout exact source revision
+      uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1 (verified pin from Phase 2C.2)
+      with:
+        persist-credentials: false
+        ref: ${{ github.sha }}
+        fetch-depth: 0
+    - name: Python 3.12.16
+      uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0 (verified pin from Phase 2C.2)
+      with:
+        python-version: 3.12.16
+    - name: Build same-source TEST ONLY android
+      run: python3 -m scripts.native_runtime_ci.build --role android --work-root "$RUNNER_TEMP/flowdrop-2d1-build-android"
+        --cache-root "$RUNNER_TEMP/flowdrop-2d1-build-android/download-cache"
+      timeout-minutes: 25
+    - name: Upload FlowDrop-2D1-Build-android
+      uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2 (verified pin from Phase 2C.2)
+      with:
+        name: FlowDrop-2D1-Build-android-${{ github.run_id }}-${{ github.run_attempt }}
+        path: ${{ runner.temp }}/flowdrop-2d1-build-android/export/
+        if-no-files-found: error
+        retention-days: 7
+        include-hidden-files: false
+    - name: Screen build evidence
+      run: python3 -m scripts.native_build_ci.finish logs --work-root "$RUNNER_TEMP/flowdrop-2d1-build-android"
+      id: evidence
+      if: ${{ always() }}
+    - name: Upload FlowDrop-2D1-Build-android-Logs
+      uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2 (verified pin from Phase 2C.2)
+      if: ${{ always() && steps.evidence.outcome == 'success' }}
+      with:
+        name: FlowDrop-2D1-Build-android-Logs-${{ github.run_id }}-${{ github.run_attempt }}
+        path: ${{ runner.temp }}/flowdrop-2d1-build-android/safe-logs/
+        if-no-files-found: error
+        retention-days: 7
+        include-hidden-files: false
+    - name: Clean owned build data and ephemeral signing material
+      run: python3 -m scripts.native_build_ci.finish cleanup --work-root "$RUNNER_TEMP/flowdrop-2d1-build-android"
+      if: ${{ always() }}
+  build_windows:
+    name: Same-source windows TEST ONLY artifacts
+    needs:
+    - preconditions
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+    - name: Checkout exact source revision
+      uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1 (verified pin from Phase 2C.2)
+      with:
+        persist-credentials: false
+        ref: ${{ github.sha }}
+        fetch-depth: 0
+    - name: Python 3.12.16
+      uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0 (verified pin from Phase 2C.2)
+      with:
+        python-version: 3.12.16
+    - name: Build same-source TEST ONLY windows
+      run: python3 -m scripts.native_runtime_ci.build --role windows --work-root "$RUNNER_TEMP/flowdrop-2d1-build-windows"
+        --cache-root "$RUNNER_TEMP/flowdrop-2d1-build-windows/download-cache"
+      timeout-minutes: 25
+    - name: Upload FlowDrop-2D1-Build-windows
+      uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2 (verified pin from Phase 2C.2)
+      with:
+        name: FlowDrop-2D1-Build-windows-${{ github.run_id }}-${{ github.run_attempt }}
+        path: ${{ runner.temp }}/flowdrop-2d1-build-windows/export/
+        if-no-files-found: error
+        retention-days: 7
+        include-hidden-files: false
+    - name: Upload FlowDrop-2D1-Windows-Helpers
+      uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2 (verified pin from Phase 2C.2)
+      with:
+        name: FlowDrop-2D1-Windows-Helpers-${{ github.run_id }}-${{ github.run_attempt }}
+        path: ${{ runner.temp }}/flowdrop-2d1-build-windows/helper-export/
+        if-no-files-found: error
+        retention-days: 7
+        include-hidden-files: false
+    - name: Screen build evidence
+      run: python3 -m scripts.native_build_ci.finish logs --work-root "$RUNNER_TEMP/flowdrop-2d1-build-windows"
+      id: evidence
+      if: ${{ always() }}
+    - name: Upload FlowDrop-2D1-Build-windows-Logs
+      uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2 (verified pin from Phase 2C.2)
+      if: ${{ always() && steps.evidence.outcome == 'success' }}
+      with:
+        name: FlowDrop-2D1-Build-windows-Logs-${{ github.run_id }}-${{ github.run_attempt }}
+        path: ${{ runner.temp }}/flowdrop-2d1-build-windows/safe-logs/
+        if-no-files-found: error
+        retention-days: 7
+        include-hidden-files: false
+    - name: Clean owned build data and ephemeral signing material
+      run: python3 -m scripts.native_build_ci.finish cleanup --work-root "$RUNNER_TEMP/flowdrop-2d1-build-windows"
+      if: ${{ always() }}
+  windows:
+    name: Windows native runtime smoke
+    needs:
+    - build_windows
+    runs-on: windows-2025
+    timeout-minutes: 45
+    outputs:
+      runtime_status: ${{ steps.result.outputs.status }}
+    steps:
+    - name: Checkout exact source revision
+      uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1 (verified pin from Phase 2C.2)
+      with:
+        persist-credentials: false
+        ref: ${{ github.sha }}
+        fetch-depth: 0
+    - name: Python 3.12.16
+      uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0 (verified pin from Phase 2C.2)
+      with:
+        python-version: 3.12.16
+    - name: Download FlowDrop-2D1-Build-windows
+      uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2 (verified pin from Phase 2C.2)
+      with:
+        name: FlowDrop-2D1-Build-windows-${{ github.run_id }}-${{ github.run_attempt }}
+        path: ${{ runner.temp }}/runtime-downloads/windows
+        digest-mismatch: error
+    - name: Download FlowDrop-2D1-Windows-Helpers
+      uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2 (verified pin from Phase 2C.2)
+      with:
+        name: FlowDrop-2D1-Windows-Helpers-${{ github.run_id }}-${{ github.run_attempt }}
+        path: ${{ runner.temp }}/runtime-downloads/helpers
+        digest-mismatch: error
+    - name: Execute actual native runtime assertions
+      run: python -m scripts.native_runtime_ci.windows --work-root "${{ runner.temp }}/flowdrop-runtime-windows" --artifact
+        "${{ runner.temp }}/runtime-downloads/windows" --helpers "${{ runner.temp }}/runtime-downloads/helpers"
+      timeout-minutes: 35
+    - name: Screen runtime evidence
+      run: python -m scripts.native_runtime_ci.finish export --work-root "${{ runner.temp }}/flowdrop-runtime-windows"
+      id: evidence
+      if: ${{ always() }}
+    - name: Upload FlowDrop-2D1-Runtime-windows
+      uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2 (verified pin from Phase 2C.2)
+      if: ${{ always() && steps.evidence.outcome == 'success' }}
+      with:
+        name: FlowDrop-2D1-Runtime-windows-${{ github.run_id }}-${{ github.run_attempt }}
+        path: ${{ runner.temp }}/flowdrop-runtime-windows/evidence-export/
+        if-no-files-found: error
+        retention-days: 7
+        include-hidden-files: false
+    - name: Record explicit runtime status
+      run: python -m scripts.native_runtime_ci.finish status --work-root "${{ runner.temp }}/flowdrop-runtime-windows"
+      id: result
+      if: ${{ always() }}
+    - name: Clean owned emulator keys, images and runtime workspace
+      run: python -m scripts.native_runtime_ci.finish cleanup --work-root "${{ runner.temp }}/flowdrop-runtime-windows"
+      if: ${{ always() }}
+  android_35:
+    name: Android API 35 native emulator smoke
+    needs:
+    - build_android
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    outputs:
+      runtime_status: ${{ steps.result.outputs.status }}
+    steps:
+    - name: Checkout exact source revision
+      uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1 (verified pin from Phase 2C.2)
+      with:
+        persist-credentials: false
+        ref: ${{ github.sha }}
+        fetch-depth: 0
+    - name: Python 3.12.16
+      uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0 (verified pin from Phase 2C.2)
+      with:
+        python-version: 3.12.16
+    - name: Download FlowDrop-2D1-Build-android
+      uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2 (verified pin from Phase 2C.2)
+      with:
+        name: FlowDrop-2D1-Build-android-${{ github.run_id }}-${{ github.run_attempt }}
+        path: ${{ runner.temp }}/runtime-downloads/android
+        digest-mismatch: error
+    - name: Execute actual native runtime assertions
+      run: python3 -m scripts.native_runtime_ci.android --api 35 --work-root "${{ runner.temp }}/flowdrop-runtime-35" --artifact
+        "${{ runner.temp }}/runtime-downloads/android"
+      timeout-minutes: 35
+    - name: Screen runtime evidence
+      run: python -m scripts.native_runtime_ci.finish export --work-root "${{ runner.temp }}/flowdrop-runtime-35"
+      id: evidence
+      if: ${{ always() }}
+    - name: Upload FlowDrop-2D1-Runtime-35
+      uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2 (verified pin from Phase 2C.2)
+      if: ${{ always() && steps.evidence.outcome == 'success' }}
+      with:
+        name: FlowDrop-2D1-Runtime-35-${{ github.run_id }}-${{ github.run_attempt }}
+        path: ${{ runner.temp }}/flowdrop-runtime-35/evidence-export/
+        if-no-files-found: error
+        retention-days: 7
+        include-hidden-files: false
+    - name: Record explicit runtime status
+      run: python -m scripts.native_runtime_ci.finish status --work-root "${{ runner.temp }}/flowdrop-runtime-35"
+      id: result
+      if: ${{ always() }}
+    - name: Clean owned emulator keys, images and runtime workspace
+      run: python -m scripts.native_runtime_ci.finish cleanup --work-root "${{ runner.temp }}/flowdrop-runtime-35"
+      if: ${{ always() }}
+  android_29:
+    name: Android API 29 native emulator smoke
+    needs:
+    - build_android
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    outputs:
+      runtime_status: ${{ steps.result.outputs.status }}
+    steps:
+    - name: Checkout exact source revision
+      uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1 (verified pin from Phase 2C.2)
+      with:
+        persist-credentials: false
+        ref: ${{ github.sha }}
+        fetch-depth: 0
+    - name: Python 3.12.16
+      uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0 (verified pin from Phase 2C.2)
+      with:
+        python-version: 3.12.16
+    - name: Download FlowDrop-2D1-Build-android
+      uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2 (verified pin from Phase 2C.2)
+      with:
+        name: FlowDrop-2D1-Build-android-${{ github.run_id }}-${{ github.run_attempt }}
+        path: ${{ runner.temp }}/runtime-downloads/android
+        digest-mismatch: error
+    - name: Execute actual native runtime assertions
+      run: python3 -m scripts.native_runtime_ci.android --api 29 --work-root "${{ runner.temp }}/flowdrop-runtime-29" --artifact
+        "${{ runner.temp }}/runtime-downloads/android"
+      timeout-minutes: 35
+    - name: Screen runtime evidence
+      run: python -m scripts.native_runtime_ci.finish export --work-root "${{ runner.temp }}/flowdrop-runtime-29"
+      id: evidence
+      if: ${{ always() }}
+    - name: Upload FlowDrop-2D1-Runtime-29
+      uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2 (verified pin from Phase 2C.2)
+      if: ${{ always() && steps.evidence.outcome == 'success' }}
+      with:
+        name: FlowDrop-2D1-Runtime-29-${{ github.run_id }}-${{ github.run_attempt }}
+        path: ${{ runner.temp }}/flowdrop-runtime-29/evidence-export/
+        if-no-files-found: error
+        retention-days: 7
+        include-hidden-files: false
+    - name: Record explicit runtime status
+      run: python -m scripts.native_runtime_ci.finish status --work-root "${{ runner.temp }}/flowdrop-runtime-29"
+      id: result
+      if: ${{ always() }}
+    - name: Clean owned emulator keys, images and runtime workspace
+      run: python -m scripts.native_runtime_ci.finish cleanup --work-root "${{ runner.temp }}/flowdrop-runtime-29"
+      if: ${{ always() }}
+  summary:
+    name: Runtime evidence and explicit coverage
+    if: ${{ always() }}
+    needs:
+    - preconditions
+    - build_android
+    - build_windows
+    - windows
+    - android_35
+    - android_29
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+    - name: Report actual job outcomes without masking failure
+      run: "python3 - <<'PY'\nimport os,json\nneeds=json.loads(os.environ['RESULTS']);requested=os.environ['REQUESTED']=='true'\n\
+        with open(os.environ['GITHUB_STEP_SUMMARY'],'a') as report:\n report.write('## Native runtime verification\\n\\n|\
+        \ Gate | Result | Explicit runtime status |\\n|---|---|---|\\n')\n for name,result in needs.items():\n  report.write('|\
+        \ '+name+' | '+result['result']+' | '+result.get('outputs',{}).get('runtime_status','N/A: build/preconditions')+'\
+        \ |\\n')\n report.write('\\nPhysical devices, OEM battery/Wi-Fi behavior, cross-platform physical LAN and production\
+        \ signing: NOT VERIFIED.\\n')\n if not requested:report.write('\\nSKIPPED: opt in with ci-native-runtime; a green\
+        \ opt-out summary is not runtime PASS.\\n')\n if requested and any(r['result']!='success' for r in needs.values()):raise\
+        \ SystemExit(1)\n if requested and any(needs[k].get('outputs',{}).get('runtime_status')!='PASS' for k in ['windows','android_35','android_29']):raise\
+        \ SystemExit(1)\nPY"
+      env:
+        RESULTS: ${{ toJSON(needs) }}
+        REQUESTED: ${{ github.event_name == 'workflow_dispatch' || contains(github.event.pull_request.labels.*.name, 'ci-native-runtime')
+          }}

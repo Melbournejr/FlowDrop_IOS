@@ -1,0 +1,2205 @@
+{
+  "base": "9171e7f1ffbc0143d6e11374e3f6c847853341fe",
+  "files": [
+    {
+      "path": ".github/actions/native-test-setup/action.yml",
+      "size": 943,
+      "sha256": "9746f981b5a085262dfce6b8ad542cba0b4ce8131c0466ab39ce0bd1c56f2f9a"
+    },
+    {
+      "path": ".github/workflows/flowdrop-ios.yml",
+      "size": 1378,
+      "sha256": "b4627f366ccf78985e54e778d52d6decda393a33dcfb5556c1ffe6531ccb0b54"
+    },
+    {
+      "path": ".github/workflows/native-build-verification.yml",
+      "size": 11656,
+      "sha256": "d364a47da2cdbcd5b0bdab9ea48df3ff119594fcb91a91407c0725580a6c59e5"
+    },
+    {
+      "path": ".github/workflows/native-regression.yml",
+      "size": 9237,
+      "sha256": "df7e5d6655ab020c5f5fd7abd36c83c9cadb265899c4f924401dc1f3e66a66a6"
+    },
+    {
+      "path": ".gitignore",
+      "size": 409,
+      "sha256": "dbaef7dd3b0b73fb5371f9949c4fbcf83e451964fdf6ebf161ef3eda228e712a"
+    },
+    {
+      "path": "AGENTS.md",
+      "size": 5876,
+      "sha256": "89ec3c3b090c2990b20d00c537451c5ddd1a200ee14aaa4fe2dc9e4cb9fd6bdd"
+    },
+    {
+      "path": "INSTALL.md",
+      "size": 11474,
+      "sha256": "9f17fe44ff9680cf12e2dbc314baaec5c76b1e2daafe4ad180f15f6f532664e7"
+    },
+    {
+      "path": "README.md",
+      "size": 10131,
+      "sha256": "50b039a07c1bde6ef9e075b74a6b2977ff49e2a9cba843d5528ba01d970f18a6"
+    },
+    {
+      "path": "android/AndroidManifest.xml",
+      "size": 2658,
+      "sha256": "93ea154b2d31e9ec8bb93d5806ea546df5aa307f6fc436c879364e736ce0bd66"
+    },
+    {
+      "path": "android/res/drawable/ic_launcher.xml",
+      "size": 505,
+      "sha256": "644d744383690205dad5f8e164b8414c411d081edf4b0d7141f99b115e2c55e6"
+    },
+    {
+      "path": "android/src/app/flowdrop/mobile/AppUpdates.java",
+      "size": 16810,
+      "sha256": "07898f058ad81661a62821e559c3761e3b21d0b3076512c4e20c1c35e2d2cae9"
+    },
+    {
+      "path": "android/src/app/flowdrop/mobile/CodeLookup.java",
+      "size": 4890,
+      "sha256": "080d346387de40f54d9974b3cdcde33741821e7eb5399b0634abbaaab5b167c3"
+    },
+    {
+      "path": "android/src/app/flowdrop/mobile/DeviceDiscovery.java",
+      "size": 10860,
+      "sha256": "e266030a9314b6bddc3950542e11f6148f2ec8c23de642de81ac5e8b0786402a"
+    },
+    {
+      "path": "android/src/app/flowdrop/mobile/DeviceLabel.java",
+      "size": 1074,
+      "sha256": "d0bbcb514ab9d421c832af9245c52c001cab43a5ad5db8073181285a658e9b17"
+    },
+    {
+      "path": "android/src/app/flowdrop/mobile/FlowArtwork.java",
+      "size": 2364,
+      "sha256": "ab6650090c43f35bed55cd2a2ba0c56e33cb943e719bb9dc839468510bf1cd0d"
+    },
+    {
+      "path": "android/src/app/flowdrop/mobile/FolderArchive.java",
+      "size": 4396,
+      "sha256": "4f61a1ec3802dab83df67de3abd92e01a45be06b1496e64c7c67efdbe2bd4dc1"
+    },
+    {
+      "path": "android/src/app/flowdrop/mobile/FolderPackage.java",
+      "size": 3473,
+      "sha256": "6449ca68ddff197ff34e41e8937eb880f847ba635aad0ec4ce6d5f91a7148423"
+    },
+    {
+      "path": "android/src/app/flowdrop/mobile/FolderReceive.java",
+      "size": 6878,
+      "sha256": "de2059d4a689441ed52e21c76a97213836984a20feca742ee8ba83312ffa5942"
+    },
+    {
+      "path": "android/src/app/flowdrop/mobile/HostService.java",
+      "size": 10778,
+      "sha256": "1df2c31350d9239e001041afab4c1a7410dc6f6f40318ee3a793eb1d526db94a"
+    },
+    {
+      "path": "android/src/app/flowdrop/mobile/LanDiscovery.java",
+      "size": 7520,
+      "sha256": "144fc1c28f664c8899ab18fe0324796667dc127f885b7a440e623b9f56a41034"
+    },
+    {
+      "path": "android/src/app/flowdrop/mobile/MainActivity.java",
+      "size": 58088,
+      "sha256": "5723842d292e94343b875fe33d5e98161da8e37425288966ca067e427bbfacd8"
+    },
+    {
+      "path": "android/src/app/flowdrop/mobile/ReceiveFiles.java",
+      "size": 2522,
+      "sha256": "204f89baee1a1ff01735345c3fc0b34ad29807f2c8d7b1dd9e4f8b571f25d672"
+    },
+    {
+      "path": "android/src/app/flowdrop/mobile/ReceiveService.java",
+      "size": 14555,
+      "sha256": "e8907f75361417aa646a759c4079d66ab2b5a79280715a22aa250343f1060884"
+    },
+    {
+      "path": "android/src/app/flowdrop/mobile/ReleaseConfig.java",
+      "size": 910,
+      "sha256": "2ccb45786d2c015088774559a4c01cbd863b18a7f21b0c928782d62aeb6450da"
+    },
+    {
+      "path": "android/src/app/flowdrop/mobile/RequestSecurity.java",
+      "size": 1731,
+      "sha256": "6beb70877a04b48716a099704ba6e38f16f3a4afeb38c202468830f585848a96"
+    },
+    {
+      "path": "android/src/app/flowdrop/mobile/SendService.java",
+      "size": 7521,
+      "sha256": "ed9dcd09cad94e87f9294702e768f28c48fb69010df0a77fe400863e52fe124b"
+    },
+    {
+      "path": "android/src/app/flowdrop/mobile/SharedFiles.java",
+      "size": 2581,
+      "sha256": "cb96e187cb2a4bff86bf8ceb09557fb15f0a09c2d8a60110f4bd5d547c8dc2e8"
+    },
+    {
+      "path": "android/src/app/flowdrop/mobile/TransferClient.java",
+      "size": 7664,
+      "sha256": "8bc718a1a4c0de540d76065538d4da9d39ab910d51358f6146029c93baa8ba1f"
+    },
+    {
+      "path": "android/src/app/flowdrop/mobile/TransferHistory.java",
+      "size": 2382,
+      "sha256": "05848ce50a11c14f5ae8fff85677507a624b0dfa7274ba317f0fa629faeebb63"
+    },
+    {
+      "path": "android/src/app/flowdrop/mobile/TransferServer.java",
+      "size": 40132,
+      "sha256": "e97da86bd3668892af5e1db6ac908e5f9c3c688bd8294200d6fe572ea2483f78"
+    },
+    {
+      "path": "android/src/app/flowdrop/mobile/UpdateInstallReceiver.java",
+      "size": 461,
+      "sha256": "5ec8e729e202cb9e860fa8a38c1c51473172bae283ab9104c73030f3d047ae7b"
+    },
+    {
+      "path": "android/src/app/flowdrop/mobile/UpdateJobService.java",
+      "size": 461,
+      "sha256": "7e01976c6493ad17262324aeebc6c31d3241e2598e9f898dd31ab22ef250a090"
+    },
+    {
+      "path": "android/src/app/flowdrop/mobile/UpdateManifest.java",
+      "size": 2611,
+      "sha256": "081528f2f84727356f18d73fd094f72139561f53489be52ee39f0662f1d285e7"
+    },
+    {
+      "path": "android/src/app/flowdrop/mobile/WifiNetwork.java",
+      "size": 1640,
+      "sha256": "f0bb94e85075c1a5bcfa68ada8d3ca57723409889c3284ea6b5bdf92ead59cdc"
+    },
+    {
+      "path": "desktop/windows/Allow-LAN.ps1",
+      "size": 710,
+      "sha256": "340067b5aaa2724f7f06da53677d8d0b042da1e251f1449021148199b0969832"
+    },
+    {
+      "path": "desktop/windows/FlowDrop.cpp",
+      "size": 64123,
+      "sha256": "f8a274fbc1ef1c560bc2455a15bab984918dce832b9e91410d3cc24595b64f23"
+    },
+    {
+      "path": "desktop/windows/FlowDrop.ico",
+      "size": 19820,
+      "sha256": "cce4d31a79b6350c73daa884e9493d6ebc70746ac8e7471c924e0ad1b767650e"
+    },
+    {
+      "path": "desktop/windows/FlowDrop.manifest",
+      "size": 912,
+      "sha256": "dfae8c217e50f5d2948985fb45c55687c34157718a5f05bc31d4c392fc6e85e0"
+    },
+    {
+      "path": "desktop/windows/FlowDrop.rc",
+      "size": 1009,
+      "sha256": "fa15640ec41373a8384d37962bb64fc576fdefdf86c398bf5bfc1ef5350db76a"
+    },
+    {
+      "path": "desktop/windows/FlowDrop.vbs",
+      "size": 288,
+      "sha256": "500d2d01c794e3d751914d61d6747f2ef49288e669faec9f473b2c75dc83f9a7"
+    },
+    {
+      "path": "desktop/windows/Stop-FlowDrop.vbs",
+      "size": 470,
+      "sha256": "28ec9bdcb7b325a96ef68e7da2578f68c66f04b367ca9747a017c49b6b4c851e"
+    },
+    {
+      "path": "desktop/windows/installer.nsi",
+      "size": 2872,
+      "sha256": "438c04541dd71f7dcd3849f87898135648bf6c7f39d54dd729103e80d8d5adba"
+    },
+    {
+      "path": "desktop/windows/runtime.json",
+      "size": 282,
+      "sha256": "7adbf07af746cd639b0b9ee6d209558bd7b5775dc1446325cfe5f0ac7f6538a2"
+    },
+    {
+      "path": "desktop/windows/vendor/json.hpp",
+      "size": 919975,
+      "sha256": "9bea4c8066ef4a1c206b2be5a36302f8926f7fdc6087af5d20b417d0cf103ea6"
+    },
+    {
+      "path": "docs/ARCHITECTURE.md",
+      "size": 9552,
+      "sha256": "2a7fecd27d334b0912ea5753b48e7202fae02be759c0746c0128dc4a4a6f8df4"
+    },
+    {
+      "path": "docs/AUDIT-REPORT.md",
+      "size": 19628,
+      "sha256": "61d9a1345c3b84343eb236bff65810ed9c223a9187a902c107ed4416d98e8ab2"
+    },
+    {
+      "path": "docs/FEATURES.md",
+      "size": 7973,
+      "sha256": "b5a1d18f6e8e793846fe2de4c726c65d482e3a6bafa3e641802f00ea4454f183"
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "size": 12632,
+      "sha256": "1665736adafb585ee63b1659996dc0849c56c6c93ea4188c9b80c42dfd367747"
+    },
+    {
+      "path": "docs/REGRESSION-PLAN.md",
+      "size": 12333,
+      "sha256": "4c929678e848bd19564d6e994e273bdcd04719fcb06729deafb17841000ddd8f"
+    },
+    {
+      "path": "docs/RELEASE-PROCESS.md",
+      "size": 10888,
+      "sha256": "b19b84baf8c537f6c55411deb2c0ffe4bda92dd823683f72e72f49559f82cd56"
+    },
+    {
+      "path": "docs/assets/FLOWDROP-ICON-RIGHTS.md",
+      "size": 2133,
+      "sha256": "0830ae0e6cec605140a0c32ae0f6d9e56d083512ad1cb08cd87cbc1d1778cf4e"
+    },
+    {
+      "path": "docs/assets/FONT-RESTORATION-1.13.0-2B2.json",
+      "size": 7169,
+      "sha256": "ddeece88ca7f376dfef9053528d16b66555e01dd356491c10edb23a1ac99507b"
+    },
+    {
+      "path": "docs/assets/FONT-RESTORATION-SHA256SUMS.txt",
+      "size": 508,
+      "sha256": "ae1a8220a50a50ee59e017c1d5116e606091c0f9ccbb3f14c66828e47e045eb4"
+    },
+    {
+      "path": "docs/assets/NATIVE-BUILD-RESTORATION-1.13.0-2C1.json",
+      "size": 1784,
+      "sha256": "4b3845d6de72b44842b96d45a0583f6b214d7399dc05a0d61496fb5241ff4564"
+    },
+    {
+      "path": "docs/baselines/native-1.13.0/IMPORT-REPORT.md",
+      "size": 13734,
+      "sha256": "657b7fa9e1495a57f66bf32ff2ba0aacba94e3e0efd66a285f28c79cc9993f2b"
+    },
+    {
+      "path": "docs/baselines/native-1.13.0/SHA256SUMS.txt",
+      "size": 11183,
+      "sha256": "e6c7eb89c949c3bd7e36d57f381f40402f6c6bd4dc136998a6edebb989d49647"
+    },
+    {
+      "path": "docs/baselines/native-1.13.0/exclusions.json",
+      "size": 14381,
+      "sha256": "1e2678a9a2ca80a3e5ce95facc9881b3ab0047432fd57dda2a2e2db75074b8e3"
+    },
+    {
+      "path": "docs/baselines/native-1.13.0/manifest.json",
+      "size": 37851,
+      "sha256": "22cce92030b04eb0a80a89239116369afbeebe6bd518bf175e42cbd3d89169f7"
+    },
+    {
+      "path": "docs/build/ACTIONS-PINS-2C2.json",
+      "size": 1394,
+      "sha256": "64212d634eea22411dbc1a84db23717511751c3de6fd4245801a388c30680de7"
+    },
+    {
+      "path": "docs/build/NATIVE-SOURCE-BASELINE-2C2.json",
+      "size": 46323,
+      "sha256": "dd85216acaf8c2e4cc54d28381f59e530dda490ea76b5df1c487c12a6f7f8685"
+    },
+    {
+      "path": "docs/build/NATIVE-TOOLCHAIN-LOCK-2C2.json",
+      "size": 20090,
+      "sha256": "7c7a4d33092e65cb2d5ee0784116bd31b0d2562e89390d7d2bc42a16a0acdb07"
+    },
+    {
+      "path": "docs/build/README-2C2.md",
+      "size": 6775,
+      "sha256": "15a487a63a581606d0ae8a817066795ad176e85dd45463ba31cee6e3e3f84047"
+    },
+    {
+      "path": "docs/build/provenance/OpenJDK21U-jdk_x64_linux_hotspot_21.0.13_9.tar.gz.sha256.txt",
+      "size": 116,
+      "sha256": "6df53c53ee4e8378dc1ce3ee772496e7c73d732d3c64dc9599ed89b0ba314338"
+    },
+    {
+      "path": "docs/build/provenance/OpenJDK21U-jdk_x64_linux_hotspot_21.0.13_9.tar.gz.sig.base64",
+      "size": 417,
+      "sha256": "a96e6860601ad2419a41b9430f225ee9fed98e03c3830622001fa8d10ceb831e"
+    },
+    {
+      "path": "docs/build/provenance/adoptium-key.asc",
+      "size": 1793,
+      "sha256": "a46d5d3ab75c3c86dddf1bfd2957a067a24b1c6b2d2ed2bc69294bf970c5160b"
+    },
+    {
+      "path": "docs/build/provenance/debian-InRelease",
+      "size": 140421,
+      "sha256": "0584fba32e13e0ab8285fb16c27adea1ec03a73669c18702821094fd6ca86675"
+    },
+    {
+      "path": "docs/build/provenance/debian-archive-key-12.asc",
+      "size": 11861,
+      "sha256": "c2a9a16fde95e037bafd0fa6b7e31f41b4ff1e85851de5558f19a2a2f0e955e2"
+    },
+    {
+      "path": "docs/build/provenance/debian-archive-key-13.asc",
+      "size": 11861,
+      "sha256": "6f1d277429dd7ffedcc6f8688a7ad9a458859b1139ffa026d1eeaadcbffb0da7"
+    },
+    {
+      "path": "docs/build/provenance/debian-package-records.json",
+      "size": 7234,
+      "sha256": "eddc5577d6d2e1bf7d622b68fabdbd3a9ac929a4570abd412a030d0b87b60ac1"
+    },
+    {
+      "path": "docs/build/provenance/debian-release-13.asc",
+      "size": 1384,
+      "sha256": "4d097bb93f83d731f475c5b92a0c2fcf108cfce1d4932792fca72d00b48d198b"
+    },
+    {
+      "path": "docs/build/provenance/debian-signature-verification.log",
+      "size": 1981,
+      "sha256": "36a2d63d384f43ce0d695d121124ed5ae9a8f84a89e38e19751c3cd51c779117"
+    },
+    {
+      "path": "docs/build/provenance/google-package-records.json",
+      "size": 2264,
+      "sha256": "88f1f72990296fa5d659a348af735f5d25970dc8e8ed22c9804c113d8242efd0"
+    },
+    {
+      "path": "docs/build/provenance/google-repository.xml",
+      "size": 432488,
+      "sha256": "d670de8bce15cc4ecf5d1a135f2168137ccbb8402111dfc8efcf9cb6f3b2f28f"
+    },
+    {
+      "path": "docs/build/provenance/jdk-signature-verification.log",
+      "size": 645,
+      "sha256": "27b36e93b87bfdf77d900831ed32443955916be8d73ca6b154ce1842a0c03add"
+    },
+    {
+      "path": "docs/build/provenance/node-README.md",
+      "size": 41882,
+      "sha256": "66a4abdc81f9fc48e196aad4af434cc30aac77cb9a3bf74304f8da3fe80344da"
+    },
+    {
+      "path": "docs/build/provenance/node-SHASUMS256.txt",
+      "size": 3171,
+      "sha256": "aec92ae945293821c22aed4c37b97741688254bac353b861fc9fb25b81ce4567"
+    },
+    {
+      "path": "docs/build/provenance/node-SHASUMS256.txt.asc",
+      "size": 3449,
+      "sha256": "cbff095ae2d793bc0ffed794e7ef4a6609f7157a0fcb3b051176c09e3320e4a2"
+    },
+    {
+      "path": "docs/build/provenance/node-release-key.asc",
+      "size": 1410,
+      "sha256": "3adca70e0239a43803df385987be8303ed9abb3c2fb203feeda31dc6a5256731"
+    },
+    {
+      "path": "docs/build/provenance/node-signature-verification.log",
+      "size": 954,
+      "sha256": "9ede4df655076212cfb60024e8caa0bf14994a24824f050bbb344af3a2591372"
+    },
+    {
+      "path": "docs/testing/ASSET-LOG-SHA256SUMS.txt",
+      "size": 3703,
+      "sha256": "c039074b94026f24a8f61e805e81cf9f982daf5ea04e4def280e18dc139b2645"
+    },
+    {
+      "path": "docs/testing/ASSET-REPORT-2B2.md",
+      "size": 15838,
+      "sha256": "adea32cae23fefbaad90927b5a6817f4aafe309efd7962a6ff96e59b52bd599d"
+    },
+    {
+      "path": "docs/testing/BUILD-ARTIFACT-MANIFEST-2C2.json",
+      "size": 14451,
+      "sha256": "b999afb2bda68e50090883ed92cfdb26740f7ea08ae4834fe51812be35b2091e"
+    },
+    {
+      "path": "docs/testing/BUILD-LOG-SHA256SUMS-2C1.txt",
+      "size": 571,
+      "sha256": "ddaefbaf4fdf52249843f0421d6d0f999ee8737dccea520b80f8157d6c056acb"
+    },
+    {
+      "path": "docs/testing/BUILD-LOG-SHA256SUMS-2C2.txt",
+      "size": 19435,
+      "sha256": "af1c0b5c6bdd683f774344e0f0d04e6ed24d34110d46b403b85e3ee6e3c3ee6c"
+    },
+    {
+      "path": "docs/testing/BUILD-REPORT-2C1.md",
+      "size": 28775,
+      "sha256": "2fdaaaaf7f216066f4d587e360f35742bcd2ae51b413a4c70bcd2cd736d22649"
+    },
+    {
+      "path": "docs/testing/BUILD-REPORT-2C2.md",
+      "size": 25211,
+      "sha256": "abe6f3e2e4ce3039cc5d26009be97d9c296690bc708cca644cd92377275f07bc"
+    },
+    {
+      "path": "docs/testing/CI-ACTION-PINS.json",
+      "size": 2398,
+      "sha256": "255fb02bc693aa07db84b48a7cc2adf6b4b0d3d4f9f13ad6b77cace649080ec2"
+    },
+    {
+      "path": "docs/testing/CI-REPORT-2B3.md",
+      "size": 10871,
+      "sha256": "903f2d6a9c1dd391c4c75920238ab94ee42887405b3dde2cb0c11bd36bcf52d5"
+    },
+    {
+      "path": "docs/testing/HARNESS-LOG-SHA256SUMS.txt",
+      "size": 4731,
+      "sha256": "d0cb8b9985b08e9d3c3354ef4a99a5f9e885aa8c71df229c66d0541bc4d31184"
+    },
+    {
+      "path": "docs/testing/HARNESS-REPORT-2B1.md",
+      "size": 15952,
+      "sha256": "02bfd943856bc2feb7eee3a8a3504dbb64c41637e413cdb8bc48135ad6f5d630"
+    },
+    {
+      "path": "docs/testing/NATIVE-CI.md",
+      "size": 10231,
+      "sha256": "6141558141890c43ef423023e82458efd9207b2a15e16e265be833ca6e69699d"
+    },
+    {
+      "path": "docs/testing/REGRESSION-HARNESS.md",
+      "size": 9115,
+      "sha256": "99066f9fece67a0aab5b27fb783c5cf25dcb05fc151a12c2560938e7fd233ba0"
+    },
+    {
+      "path": "docs/testing/assets-2b2-logs/after/android-discovery.log",
+      "size": 589,
+      "sha256": "a0395094711b7afcfb26a27f3033e99ff1f854fda182501aa7dde952e0e55233"
+    },
+    {
+      "path": "docs/testing/assets-2b2-logs/after/android-host.log",
+      "size": 674,
+      "sha256": "3573d6ad009f69b2ce350ffaeadb62402e593fde2a17bb4a66c08b03caa8df9f"
+    },
+    {
+      "path": "docs/testing/assets-2b2-logs/after/discovery.log",
+      "size": 408,
+      "sha256": "0fe369378bbb5d6ce0bd4028b4b79123d7ca219672fe68f39c37988dcad603dc"
+    },
+    {
+      "path": "docs/testing/assets-2b2-logs/after/environment.json",
+      "size": 1468,
+      "sha256": "d0f754ec92c7fb8c82a6982635762a4c6fe6e04f43fa7bfaa24371e8b85bccd5"
+    },
+    {
+      "path": "docs/testing/assets-2b2-logs/after/features.log",
+      "size": 834,
+      "sha256": "eeb4b4402cdc800beeb77c21d562bd5f33233b0229d57d3067f6d1211736349e"
+    },
+    {
+      "path": "docs/testing/assets-2b2-logs/after/folders.log",
+      "size": 967,
+      "sha256": "b58b9de83011350946c38bb1701b9785e85055dbaf091c8bb7812da112db9dee"
+    },
+    {
+      "path": "docs/testing/assets-2b2-logs/after/harness-unit.log",
+      "size": 1964,
+      "sha256": "fce5fee9a5955a822f158c2b0bbf9d441d750b04df1336ef96ed937157ee0cd7"
+    },
+    {
+      "path": "docs/testing/assets-2b2-logs/after/http.log",
+      "size": 468,
+      "sha256": "2368eae7df828ed820885c387d633c5cb8961700a2742a585eef2d3e7f098281"
+    },
+    {
+      "path": "docs/testing/assets-2b2-logs/after/lan-discovery.log",
+      "size": 809,
+      "sha256": "941f2054643a92720b259b19778a0f60d70870a35aa60fe99f0e506233ff486d"
+    },
+    {
+      "path": "docs/testing/assets-2b2-logs/after/large-transfer.log",
+      "size": 1071,
+      "sha256": "b03e138f3f9f23253ba63e9bde70643e6d4afd308dad94da6bb5a8a4a8e08e1c"
+    },
+    {
+      "path": "docs/testing/assets-2b2-logs/after/native-client.log",
+      "size": 901,
+      "sha256": "1063f026a00df7ffb6e50bf11a2f1d02b364e1011b9e367a010bd6e8145059bd"
+    },
+    {
+      "path": "docs/testing/assets-2b2-logs/after/peer.log",
+      "size": 2217,
+      "sha256": "31877624714909402631f51427178ed778ffb58d101b891870ee8187a457bfca"
+    },
+    {
+      "path": "docs/testing/assets-2b2-logs/after/results.json",
+      "size": 6271,
+      "sha256": "9b090935ea5f3facec1eecb41b977c92166ec48cecaf5e17af32ac620902aa36"
+    },
+    {
+      "path": "docs/testing/assets-2b2-logs/after/security.log",
+      "size": 673,
+      "sha256": "ed060da863fd602aba65e9c7bb797a5a1384cfd9a681ef196f12394d1994ca29"
+    },
+    {
+      "path": "docs/testing/assets-2b2-logs/after/unit.log",
+      "size": 1528,
+      "sha256": "0e8122c1d8d9f4012025a95f68d3dfff57949a28675e356215a9defb9c4a445d"
+    },
+    {
+      "path": "docs/testing/assets-2b2-logs/archive-validation.json",
+      "size": 456,
+      "sha256": "5898692be4c798b616ef35515064a708e2050eb8cd42150b9e937bd4777d6c1f"
+    },
+    {
+      "path": "docs/testing/assets-2b2-logs/before/android-discovery.log",
+      "size": 589,
+      "sha256": "0f554c65dd2b59325b8f0daf94056b45e614ef21be3c40ebc3e6093ecb9ee56a"
+    },
+    {
+      "path": "docs/testing/assets-2b2-logs/before/android-host.log",
+      "size": 804,
+      "sha256": "829d5e4eef6ed6c267b327185372d5c945c90368ce5d6e92e0ccd6098b563c2c"
+    },
+    {
+      "path": "docs/testing/assets-2b2-logs/before/discovery.log",
+      "size": 409,
+      "sha256": "15b402b37f68a5c3696cdf49395fb608e57898ae6f2d53366860386e09059660"
+    },
+    {
+      "path": "docs/testing/assets-2b2-logs/before/environment.json",
+      "size": 1318,
+      "sha256": "2f4d54223c83c751ff6666398ec7269ff54d33de81eff80ef5380ef7ca5e65e3"
+    },
+    {
+      "path": "docs/testing/assets-2b2-logs/before/features.log",
+      "size": 833,
+      "sha256": "45364c2da7d4fab7ee98ce2c6995a273d9fd5100f26136f760312f5f30963771"
+    },
+    {
+      "path": "docs/testing/assets-2b2-logs/before/folders.log",
+      "size": 966,
+      "sha256": "97c5db03e5917a36ea22b5984004f4a87649dcd4d07ee07cbae65ecf634af263"
+    },
+    {
+      "path": "docs/testing/assets-2b2-logs/before/harness-unit.log",
+      "size": 1966,
+      "sha256": "2e05ea52ddf858a4beaac1d86a3b86b9cdc0799012ce5fa8adf0dfd0e6053e1a"
+    },
+    {
+      "path": "docs/testing/assets-2b2-logs/before/http.log",
+      "size": 993,
+      "sha256": "64773044dee40f48fff6ff67bad61e523901f7ca39ff4c7cb2edcb19f9cf022e"
+    },
+    {
+      "path": "docs/testing/assets-2b2-logs/before/lan-discovery.log",
+      "size": 809,
+      "sha256": "1c770bc422992867f6d5fa7ab5962da3da609de3c819d2b479781c3774e1a82c"
+    },
+    {
+      "path": "docs/testing/assets-2b2-logs/before/large-transfer.log",
+      "size": 1071,
+      "sha256": "bd5c9d0eb17c8d44af46d315cd79797328e2831dbb2b2940c36712bc7a2b3105"
+    },
+    {
+      "path": "docs/testing/assets-2b2-logs/before/native-client.log",
+      "size": 901,
+      "sha256": "b38fd9d63319c2a073d255ec6488387e01feca54c0e3bc0d29990032550b01b1"
+    },
+    {
+      "path": "docs/testing/assets-2b2-logs/before/peer.log",
+      "size": 2217,
+      "sha256": "a8eed64cf4aa1f7998239755e9b410b8f3e3bb321326a300c74794f35f8d176c"
+    },
+    {
+      "path": "docs/testing/assets-2b2-logs/before/results.json",
+      "size": 6270,
+      "sha256": "a36401d621f486205eedc44124b94fd992215c46f3ba3e7bc42e587b87660dc3"
+    },
+    {
+      "path": "docs/testing/assets-2b2-logs/before/security.log",
+      "size": 673,
+      "sha256": "acb1115bdff02acc2f3390ff01626286a1e3b0bb3eac0de9119e8c949249be3a"
+    },
+    {
+      "path": "docs/testing/assets-2b2-logs/before/unit.log",
+      "size": 1530,
+      "sha256": "985d40c574c35d46e2fdadaa89ccb7d2944a084e45a9bceb49d5a8c77a87a0d8"
+    },
+    {
+      "path": "docs/testing/assets-2b2-logs/comparison.json",
+      "size": 4156,
+      "sha256": "1194976518805c67e854ddf030693fc8df910f640a4c8d9ce7b544195862c462"
+    },
+    {
+      "path": "docs/testing/assets-2b2-logs/font-http.json",
+      "size": 1860,
+      "sha256": "1140f22d5b2695c0a4e7702efa43e5161a20e4191121414c8ba26a8a97ea6557"
+    },
+    {
+      "path": "docs/testing/assets-2b2-logs/font-http.log",
+      "size": 1609,
+      "sha256": "5d80c8402546f12c226f88d341721d2840debb0eb016348d57eec7c1568352d0"
+    },
+    {
+      "path": "docs/testing/assets-2b2-logs/resource-references.json",
+      "size": 2981,
+      "sha256": "cb759c6761ddfbda994f654ad03bc78d7292a373b684174f20b9db076a40bf13"
+    },
+    {
+      "path": "docs/testing/assets-2b2-logs/source-integrity.json",
+      "size": 815,
+      "sha256": "1c595cb0c686c1b3133c390aebc0e5311af64bd30b2e1cf2432e507aa98136be"
+    },
+    {
+      "path": "docs/testing/build-2c1-logs/audit-checks.json",
+      "size": 2230,
+      "sha256": "71f59295eeebf17872badabc92ab015da98d3e1afa08508ad885c46a1d0f3215"
+    },
+    {
+      "path": "docs/testing/build-2c1-logs/build-ci-units.log",
+      "size": 4535,
+      "sha256": "d7e060f8f753751e852d9eabcc41f4ca3492f669bf029f54517abab4182ef2b3"
+    },
+    {
+      "path": "docs/testing/build-2c1-logs/local-regression.log",
+      "size": 11923,
+      "sha256": "273dc343234efec859c18d9177c990cc340d131a093bca2a1710eb374db23ca3"
+    },
+    {
+      "path": "docs/testing/build-2c1-logs/local-results.json",
+      "size": 14519,
+      "sha256": "72eaad179e3aec61f7d9527e169eb34acb4aa84d2d8a067cb176b1c6f3f6e93e"
+    },
+    {
+      "path": "docs/testing/build-2c1-logs/toolchain-observed.json",
+      "size": 2997,
+      "sha256": "6f8587ba01f251565dc8b0255a703e157b97b7768c726083b6ae697917621229"
+    },
+    {
+      "path": "docs/testing/build-2c2-logs/android-verified/app-badging.log",
+      "size": 1767,
+      "sha256": "0a1d95428c084dc1a8a568351453e5abd5c0b668fa4be9b0d4e680f7ccbeee65"
+    },
+    {
+      "path": "docs/testing/build-2c2-logs/android-verified/app-manifest-tree.log",
+      "size": 7063,
+      "sha256": "8d9224be114265efe6006e5e2d8201d52b60c72bed4c95b690d09530e9cc0378"
+    },
+    {
+      "path": "docs/testing/build-2c2-logs/android-verified/app-signature.log",
+      "size": 947,
+      "sha256": "837974c4f7b697e7a0f0a384e740d262513af3432e06c87e606ccf1d0c35a91f"
+    },
+    {
+      "path": "docs/testing/build-2c2-logs/android-verified/app-zipalign.log",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/testing/build-2c2-logs/android-verified/build-app-from-source.log",
+      "size": 3353,
+      "sha256": "2d4bd827822d54fa0a30ea88d05c2b631d19cb4739009f559ef62fd839294844"
+    },
+    {
+      "path": "docs/testing/build-2c2-logs/android-verified/build-instrumentation-from-source.log",
+      "size": 489,
+      "sha256": "b8101cbcf6e1369829f2b517a27377759ea5d1887d359498bd18fc39972c9bb9"
+    },
+    {
+      "path": "docs/testing/build-2c2-logs/android-verified/build-results.json",
+      "size": 32559,
+      "sha256": "a102375a02a953bdbe29e814f07327bb06be03b3bbf4e9832e6560adde23f66e"
+    },
+    {
+      "path": "docs/testing/build-2c2-logs/android-verified/builder-steps.jsonl",
+      "size": 24563,
+      "sha256": "1d197ed03cef11be807311d0e7d78fe294c4a8e41fabe9c25572055835e7aebb"
+    },
+    {
+      "path": "docs/testing/build-2c2-logs/android-verified/commands.json",
+      "size": 7054,
+      "sha256": "8d9e1e272c7704ca14a32e68ca88a2987decaaabf0d96cb3d7f6e06af3cf0a02"
+    },
+    {
+      "path": "docs/testing/build-2c2-logs/android-verified/export-test-public-certificate.log",
+      "size": 358,
+      "sha256": "75e160a6289d1dae8f310c49fcff509d20b2c4238801942b3379340e540ca2f7"
+    },
+    {
+      "path": "docs/testing/build-2c2-logs/android-verified/generate-temporary-test-key.log",
+      "size": 370,
+      "sha256": "788ec6831085eced404312e73de260ec5ce67a7bb9da73c3f0ef9c89d0c0b504"
+    },
+    {
+      "path": "docs/testing/build-2c2-logs/android-verified/instrumentation-badging.log",
+      "size": 565,
+      "sha256": "a85331ff0e09011afea9b815901790b4c37b1e8875165defc3ec37df73dc212d"
+    },
+    {
+      "path": "docs/testing/build-2c2-logs/android-verified/instrumentation-manifest-tree.log",
+      "size": 3469,
+      "sha256": "069ff59647d00b9a1f6700fc069d8679b7b624b48cae86e010546d53ef2731eb"
+    },
+    {
+      "path": "docs/testing/build-2c2-logs/android-verified/instrumentation-signature.log",
+      "size": 947,
+      "sha256": "837974c4f7b697e7a0f0a384e740d262513af3432e06c87e606ccf1d0c35a91f"
+    },
+    {
+      "path": "docs/testing/build-2c2-logs/android-verified/instrumentation-zipalign.log",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/testing/build-2c2-logs/android-verified/toolchain-probes.json",
+      "size": 1645,
+      "sha256": "c95bb5d42e015134d90a02c27d117763a331fcaed9b504ddd74f2b2c9d5228fe"
+    },
+    {
+      "path": "docs/testing/build-2c2-logs/android-verified/toolchain.json",
+      "size": 4493,
+      "sha256": "df1e093e9465379cbc0b24a225205b3812e63df44b355d09c6dfb26ed84dfeee"
+    },
+    {
+      "path": "docs/testing/build-2c2-logs/artifacts-verified/app-badging.log",
+      "size": 1767,
+      "sha256": "0a1d95428c084dc1a8a568351453e5abd5c0b668fa4be9b0d4e680f7ccbeee65"
+    },
+    {
+      "path": "docs/testing/build-2c2-logs/artifacts-verified/app-manifest-tree.log",
+      "size": 7063,
+      "sha256": "8d9224be114265efe6006e5e2d8201d52b60c72bed4c95b690d09530e9cc0378"
+    },
+    {
+      "path": "docs/testing/build-2c2-logs/artifacts-verified/app-signature.log",
+      "size": 947,
+      "sha256": "837974c4f7b697e7a0f0a384e740d262513af3432e06c87e606ccf1d0c35a91f"
+    },
+    {
+      "path": "docs/testing/build-2c2-logs/artifacts-verified/app-zipalign.log",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/testing/build-2c2-logs/artifacts-verified/commands.json",
+      "size": 5840,
+      "sha256": "66bf4f69759a9cccf3d7235fd8bb48dc775de286605c5dda6178d2a3a78b61c5"
+    },
+    {
+      "path": "docs/testing/build-2c2-logs/artifacts-verified/independent-verification.json",
+      "size": 29894,
+      "sha256": "f658930eb99d5c6ab3e473a92dec60052bf772e2db3a3b84dd064b6ecb97fc4b"
+    },
+    {
+      "path": "docs/testing/build-2c2-logs/artifacts-verified/instrumentation-badging.log",
+      "size": 565,
+      "sha256": "a85331ff0e09011afea9b815901790b4c37b1e8875165defc3ec37df73dc212d"
+    },
+    {
+      "path": "docs/testing/build-2c2-logs/artifacts-verified/instrumentation-manifest-tree.log",
+      "size": 3469,
+      "sha256": "069ff59647d00b9a1f6700fc069d8679b7b624b48cae86e010546d53ef2731eb"
+    },
+    {
+      "path": "docs/testing/build-2c2-logs/artifacts-verified/instrumentation-signature.log",
+      "size": 947,
+      "sha256": "837974c4f7b697e7a0f0a384e740d262513af3432e06c87e606ccf1d0c35a91f"
+    },
+    {
+      "path": "docs/testing/build-2c2-logs/artifacts-verified/instrumentation-zipalign.log",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/testing/build-2c2-logs/artifacts-verified/nsis-extract.log",
+      "size": 698,
+      "sha256": "6b195cc4486e4fbe8a1e6a9745d515c255e8559642ac2a02a6b4172b36274a5b"
+    },
+    {
+      "path": "docs/testing/build-2c2-logs/artifacts-verified/nsis-list.log",
+      "size": 22805,
+      "sha256": "081902dc1c87aa20f5d03d68d3f8d27414d36d8439421596b8a942c7eb9eed30"
+    },
+    {
+      "path": "docs/testing/build-2c2-logs/artifacts-verified/toolchain-probes.json",
+      "size": 7826,
+      "sha256": "3c694b183353eaf4a8266fa467d596d6deffd1946d36b941bb3544e3b3f6cba3"
+    },
+    {
+      "path": "docs/testing/build-2c2-logs/artifacts-verified/toolchain.json",
+      "size": 15170,
+      "sha256": "17eaf5bbb56990524f52bf22ee18caa487568646a1bb1bcacae8650e1e6bd253"
+    },
+    {
+      "path": "docs/testing/build-2c2-logs/build-controls-after.log",
+      "size": 5591,
+      "sha256": "4b633303722c0ffc14a8b200ee8d9c809fb536942a0ea5f0f13a3c538e28b2ac"
+    },
+    {
+      "path": "docs/testing/build-2c2-logs/build-controls-before.log",
+      "size": 4015,
+      "sha256": "4af0cdb8384bf2d86e1abf646b112f8050a773e7402a161e8f0cb5e70638cb6e"
+    },
+    {
+      "path": "docs/testing/build-2c2-logs/changed-files.txt",
+      "size": 11611,
+      "sha256": "68cf5e3d23bcd98ca5c00e1c6ae3eea577439cffa219a2989f06195f3b1d6e39"
+    },
+    {
+      "path": "docs/testing/build-2c2-logs/github-a2292ef/android/app-badging.log",
+      "size": 1767,
+      "sha256": "0a1d95428c084dc1a8a568351453e5abd5c0b668fa4be9b0d4e680f7ccbeee65"
+    },
+    {
+      "path": "docs/testing/build-2c2-logs/github-a2292ef/android/app-manifest-tree.log",
+      "size": 7063,
+      "sha256": "8d9224be114265efe6006e5e2d8201d52b60c72bed4c95b690d09530e9cc0378"
+    },
+    {
+      "path": "docs/testing/build-2c2-logs/github-a2292ef/android/app-signature.log",
+      "size": 947,
+      "sha256": "f96fc1509964c68cfcbb6319cb3f8860322545ad048b2bf1004ce1002a1dac0b"
+    },
+    {
+      "path": "docs/testing/build-2c2-logs/github-a2292ef/android/app-zipalign.log",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/testing/build-2c2-logs/github-a2292ef/android/artifact-manifest.json",
+      "size": 27559,
+      "sha256": "2e4e660e91a7f77d6f4b9a1bd35a3a73ddb7c3c4aea00a1149a44796834875a0"
+    },
+    {
+      "path": "docs/testing/build-2c2-logs/github-a2292ef/android/build-app-from-source.log",
+      "size": 3324,
+      "sha256": "b71f7fb7a95465cf057e3fe67cd44ced8b1e0c47506d39899ed1c50c4cc21ea0"
+    },
+    {
+      "path": "docs/testing/build-2c2-logs/github-a2292ef/android/build-instrumentation-from-source.log",
+      "size": 460,
+      "sha256": "269f97c051c69198f059a433731e19a906888ed165bdc4228a61922c87cb1dc6"
+    },
+    {
+      "path": "docs/testing/build-2c2-logs/github-a2292ef/android/build-results.json",
+      "size": 27559,
+      "sha256": "2e4e660e91a7f77d6f4b9a1bd35a3a73ddb7c3c4aea00a1149a44796834875a0"
+    },
+    {
+      "path": "docs/testing/build-2c2-logs/github-a2292ef/android/builder-steps.jsonl",
+      "size": 19808,
+      "sha256": "e429c343dce16797f100418e417bbb4222282f97c3b61e072b4d83de838d95a1"
+    },
+    {
+      "path": "docs/testing/build-2c2-logs/github-a2292ef/android/commands.json",
+      "size": 6342,
+      "sha256": "8eb8be497e6fd666619fbed27918432303a6d77795dd1354f32679c678c7f783"
+    },
+    {
+      "path": "docs/testing/build-2c2-logs/github-a2292ef/android/instrumentation-badging.log",
+      "size": 565,
+      "sha256": "a85331ff0e09011afea9b815901790b4c37b1e8875165defc3ec37df73dc212d"
+    },
+    {
+      "path": "docs/testing/build-2c2-logs/github-a2292ef/android/instrumentation-manifest-tree.log",
+      "size": 3469,
+      "sha256": "069ff59647d00b9a1f6700fc069d8679b7b624b48cae86e010546d53ef2731eb"
+    },
+    {
+      "path": "docs/testing/build-2c2-logs/github-a2292ef/android/instrumentation-signature.log",
+      "size": 947,
+      "sha256": "f96fc1509964c68cfcbb6319cb3f8860322545ad048b2bf1004ce1002a1dac0b"
+    },
+    {
+      "path": "docs/testing/build-2c2-logs/github-a2292ef/android/instrumentation-zipalign.log",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/testing/build-2c2-logs/github-a2292ef/android/toolchain-probes.json",
+      "size": 1471,
+      "sha256": "de94ae02b214297a931bc8cc3056c9296d0efab4ffe25c54ea48c1b24c3674cf"
+    },
+    {
+      "path": "docs/testing/build-2c2-logs/github-a2292ef/android/toolchain.json",
+      "size": 4329,
+      "sha256": "9b3a378fbf3d16a4cad19ce3b19d24db09d56569ac3e2dc6800e57e78cb7f4b4"
+    },
+    {
+      "path": "docs/testing/build-2c2-logs/github-a2292ef/independent/commands.json",
+      "size": 5188,
+      "sha256": "b9c7b728d0079108b84dea70822d69c7b64c048a478ad0cc7f9999c2d383fa74"
+    },
+    {
+      "path": "docs/testing/build-2c2-logs/github-a2292ef/independent/independent-verification.json",
+      "size": 29589,
+      "sha256": "269d8379140c297b4d88c54c1b0f0f4df92edba3b06b8d4a810cf832f1dab20c"
+    },
+    {
+      "path": "docs/testing/build-2c2-logs/github-a2292ef/independent/toolchain.json",
+      "size": 14940,
+      "sha256": "8f43de9d947f90ed317d88cccd08398e74600642da6fa79a0faca1bf127fa0b2"
+    },
+    {
+      "path": "docs/testing/build-2c2-logs/github-a2292ef/job-131748978917-filtered.log",
+      "size": 1412,
+      "sha256": "acfbd07455f5fb8e1e0a7e512de170531ad75c2249c86d6af6665f201447794a"
+    },
+    {
+      "path": "docs/testing/build-2c2-logs/github-a2292ef/job-131748985687-filtered.log",
+      "size": 468,
+      "sha256": "9e0e9547232a272ab49df2361b33e02f9162e1de23a67c369234e25672c88469"
+    },
+    {
+      "path": "docs/testing/build-2c2-logs/github-a2292ef/job-131749124470-filtered.log",
+      "size": 794,
+      "sha256": "0896bf9b137bc20d2aa83ea8fb28d8b0bbc9dba254bd1b82cb065ae2022743ec"
+    },
+    {
+      "path": "docs/testing/build-2c2-logs/github-a2292ef/job-131749124592-filtered.log",
+      "size": 341,
+      "sha256": "1320c3d6022ddc80ce5619fe1b43e948857e421ffce26b78b6126808051e3bc3"
+    },
+    {
+      "path": "docs/testing/build-2c2-logs/github-a2292ef/job-131749124648-filtered.log",
+      "size": 123,
+      "sha256": "feec7c0d825bd4012427001d7aa938bef2ffa1de5576328b357b91e773713341"
+    },
+    {
+      "path": "docs/testing/build-2c2-logs/github-a2292ef/job-131749211738-filtered.log",
+      "size": 1765,
+      "sha256": "a5a9e4bdc321341e3dc537f5649ed597ba0ced048744ea5463af92733b0fbe46"
+    },
+    {
+      "path": "docs/testing/build-2c2-logs/github-a2292ef/job-131749211765-filtered.log",
+      "size": 1801,
+      "sha256": "5b232d262b38db30c559b9bd20820602155631be6b6c305f13e0105eeacfe9f5"
+    },
+    {
+      "path": "docs/testing/build-2c2-logs/github-a2292ef/job-131749684828-filtered.log",
+      "size": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "path": "docs/testing/build-2c2-logs/github-a2292ef/job-131749689101-filtered.log",
+      "size": 2107,
+      "sha256": "4c6e7627e0dd95369890d542b0491d9f3712e65c424bf486e0fa312168f9ad68"
+    },
+    {
+      "path": "docs/testing/build-2c2-logs/github-a2292ef/job-131749897191-filtered.log",
+      "size": 244,
+      "sha256": "19fba4523aaaa1378a4da78ab1f4cd4a7618c834a8fcd736dd1890ed2d936fb8"
+    },
+    {
+      "path": "docs/testing/build-2c2-logs/github-a2292ef/job-artifact-metadata.json",
+      "size": 26646,
+      "sha256": "bd64d7ed2f5a259241fef24883093b5f576c0101785e101a76e823ef0bd81ee3"
+    },
+    {
+      "path": "docs/testing/build-2c2-logs/github-a2292ef/preconditions-checked.json",
+      "size": 1834,
+      "sha256": "eeac96bf74a37354c0c9abdb165e66585913bb881e2be0483fd02c4bf40d324a"
+    },
+    {
+      "path": "docs/testing/build-2c2-logs/github-a2292ef/public-key-inventory.json",
+      "size": 144,
+      "sha256": "29fdf1df92c3b4bc34eab028fccd1857c029e6d51c28765b6d8722c299d9a7e4"
+    },
+    {
+      "path": "docs/testing/build-2c2-logs/github-a2292ef/public-key-inventory.log",
+      "size": 69,
+      "sha256": "9ae3ff27b515a7f906b67897d8fa4c9a5a688659709e88190d5a88b14e0a8078"
+    },
+    {
+      "path": "docs/testing/build-2c2-logs/github-a2292ef/regression-fast/asset-integrity.log",
+      "size": 198,
+      "sha256": "bf87e9bf53dc1bf1b3a2cacb7732f76269d0dd1445c5a09603997718fa43e4f1"
+    },
+    {
+      "path": "docs/testing/build-2c2-logs/github-a2292ef/regression-fast/ci-runner-tests.log",
+      "size": 7045,
+      "sha256": "dba6429f06719f64237c1e9ff24339ef4bf4bae93024f9a7dd561170e76d59c9"
+    },
+    {
+      "path": "docs/testing/build-2c2-logs/github-a2292ef/regression-fast/harness-unit.log",
+      "size": 1668,
+      "sha256": "09dc2988fa5a11be364375ea50f8ad9b7d1f9e4323334687a361eb980fe8555c"
+    },
+    {
+      "path": "docs/testing/build-2c2-logs/github-a2292ef/regression-fast/jar-download.log",
+      "size": 317,
+      "sha256": "0aad0c3f4c89773f9120d5e09845f1044beedbe3ae0aa7b1dc28e4716e6d5df4"
+    },
+    {
+      "path": "docs/testing/build-2c2-logs/github-a2292ef/regression-fast/java-version.log",
+      "size": 195,
+      "sha256": "477d64a6b08c9a9dd143deae108edf7929a93b40434d87285d41addc8fba509f"
+    },
+    {
+      "path": "docs/testing/build-2c2-logs/github-a2292ef/regression-fast/node-version.log",
+      "size": 9,
+      "sha256": "6a0cec2e157365c1a8ac6d1715733b7c3321a7c5565862a701ca71ef00359d04"
+    },
+    {
+      "path": "docs/testing/build-2c2-logs/github-a2292ef/regression-fast/npm-ci.log",
+      "size": 24,
+      "sha256": "96257ee724afbdad43552ebf0379999a1234a2aa2f715848980d813a7d66dea1"
+    },
+    {
+      "path": "docs/testing/build-2c2-logs/github-a2292ef/regression-fast/python-version.log",
+      "size": 15,
+      "sha256": "9d0ae83e540febd225949f3df4aba97c7a9f79fcf745d6c835780f52a57b50cf"
+    },
+    {
+      "path": "docs/testing/build-2c2-logs/github-a2292ef/regression-fast/results.json",
+      "size": 2359,
+      "sha256": "1d1223beca3c8ead5eab99f8e77693aedc1c0cc3b6feb74207ecb20943483f9f"
+    },
+    {
+      "path": "docs/testing/build-2c2-logs/github-a2292ef/regression-fast/setup.json",
+      "size": 2192,
+      "sha256": "0b4c436315f7b2270bda65b7a65aa717b2628a40049bc70369154efe37d28e53"
+    },
+    {
+      "path": "docs/testing/build-2c2-logs/github-a2292ef/regression-fast/unit.log",
+      "size": 1259,
+      "sha256": "6d54a18b6e7fad3d522c2c0fc91e2f3c7327a37e492ba5846e1f2c4ee64faab9"
+    },
+    {
+      "path": "docs/testing/build-2c2-logs/github-a2292ef/regression-integration/android-discovery.log",
+      "size": 289,
+      "sha256": "dc1586377a185cae74038c3017e1de4a95c245d62352b31ff7c675c668134872"
+    },
+    {
+      "path": "docs/testing/build-2c2-logs/github-a2292ef/regression-integration/android-host.log",
+      "size": 373,
+      "sha256": "e56466c85b3f9c61e7e627b94d4e5ffbc84653132b007fa4781d31783369925a"
+    },
+    {
+      "path": "docs/testing/build-2c2-logs/github-a2292ef/regression-integration/discovery.log",
+      "size": 111,
+      "sha256": "f0ff039b14283a41a7d5d6a62ae0f0263f7c75d6f6b377756423c37ae64dc2e0"
+    },
+    {
+      "path": "docs/testing/build-2c2-logs/github-a2292ef/regression-integration/http.log",
+      "size": 175,
+      "sha256": "2bc1b387cd4eaa7afa4d284b102c994a68491440a23612f9e29a91dbb9545fab"
+    },
+    {
+      "path": "docs/testing/build-2c2-logs/github-a2292ef/regression-integration/jar-download.log",
+      "size": 317,
+      "sha256": "bc9c69b50bcb0ae74e407760ef75ac10a4a86bc87266775aa1ad990af2c64b56"
+    },
+    {
+      "path": "docs/testing/build-2c2-logs/github-a2292ef/regression-integration/java-version.log",
+      "size": 195,
+      "sha256": "477d64a6b08c9a9dd143deae108edf7929a93b40434d87285d41addc8fba509f"
+    },
+    {
+      "path": "docs/testing/build-2c2-logs/github-a2292ef/regression-integration/lan-discovery.log",
+      "size": 506,
+      "sha256": "559eae9c60c906c2b5eac6aa96d7f15053437806516c98273fccfc4c78d7fa4f"
+    },
+    {
+      "path": "docs/testing/build-2c2-logs/github-a2292ef/regression-integration/node-version.log",
+      "size": 9,
+      "sha256": "6a0cec2e157365c1a8ac6d1715733b7c3321a7c5565862a701ca71ef00359d04"
+    },
+    {
+      "path": "docs/testing/build-2c2-logs/github-a2292ef/regression-integration/npm-ci.log",
+      "size": 27,
+      "sha256": "d331d05fab5897e086aeda9cda3de8e9d6ca811c81c536f4ad51b8ddabd915ab"
+    },
+    {
+      "path": "docs/testing/build-2c2-logs/github-a2292ef/regression-integration/peer.log",
+      "size": 1923,
+      "sha256": "f4bc2c7066deb23c476cd6a22ab6324bd64a1ce86f22de9cd8fb95f52a3ddf8c"
+    },
+    {
+      "path": "docs/testing/build-2c2-logs/github-a2292ef/regression-integration/python-version.log",
+      "size": 15,
+      "sha256": "9d0ae83e540febd225949f3df4aba97c7a9f79fcf745d6c835780f52a57b50cf"
+    },
+    {
+      "path": "docs/testing/build-2c2-logs/github-a2292ef/regression-integration/results.json",
+      "size": 3793,
+      "sha256": "7c036365b33cd498c65740f6a101262be4787f283d781137426fb592c90dbc03"
+    },
+    {
+      "path": "docs/testing/build-2c2-logs/github-a2292ef/regression-integration/security.log",
+      "size": 375,
+      "sha256": "46a3addd4f91382464ae04eab635a19f2715258c75910d92c94722ea9aefb2d3"
+    },
+    {
+      "path": "docs/testing/build-2c2-logs/github-a2292ef/regression-integration/setup.json",
+      "size": 2205,
+      "sha256": "a8ec28d153eba17a81d2d0d2c93ea10b9d0460e20077c42e3bdd9dedea92aa88"
+    },
+    {
+      "path": "docs/testing/build-2c2-logs/github-a2292ef/regression-stream/jar-download.log",
+      "size": 317,
+      "sha256": "9ad421b971e53f8d118a5e536e84a2c6d878df98d2c935e2aa00f34438bfaaa8"
+    },
+    {
+      "path": "docs/testing/build-2c2-logs/github-a2292ef/regression-stream/java-version.log",
+      "size": 195,
+      "sha256": "477d64a6b08c9a9dd143deae108edf7929a93b40434d87285d41addc8fba509f"
+    },
+    {
+      "path": "docs/testing/build-2c2-logs/github-a2292ef/regression-stream/large-transfer.log",
+      "size": 767,
+      "sha256": "4f74c547c61349cf012a86be429202578f6174f7fd6cb1bfa9551c9b0f7221da"
+    },
+    {
+      "path": "docs/testing/build-2c2-logs/github-a2292ef/regression-stream/node-version.log",
+      "size": 9,
+      "sha256": "6a0cec2e157365c1a8ac6d1715733b7c3321a7c5565862a701ca71ef00359d04"
+    },
+    {
+      "path": "docs/testing/build-2c2-logs/github-a2292ef/regression-stream/npm-ci.log",
+      "size": 27,
+      "sha256": "7c653d9ad2b88ec6dd5d3568f004cc99ccd8b305d41ea917fd4520cd447c6add"
+    },
+    {
+      "path": "docs/testing/build-2c2-logs/github-a2292ef/regression-stream/python-version.log",
+      "size": 15,
+      "sha256": "9d0ae83e540febd225949f3df4aba97c7a9f79fcf745d6c835780f52a57b50cf"
+    },
+    {
+      "path": "docs/testing/build-2c2-logs/github-a2292ef/regression-stream/results.json",
+      "size": 622,
+      "sha256": "9ff71cfe27322627a52ce2bf2a58b5fd9cb79aaf38cb6579692e102a20f85eab"
+    },
+    {
+      "path": "docs/testing/build-2c2-logs/github-a2292ef/regression-stream/setup.json",
+      "size": 2196,
+      "sha256": "31d5aa0ea5ee0722b8f299a610728127948f843329a6ea41fc182e399b64281b"
+    },
+    {
+      "path": "docs/testing/build-2c2-logs/github-a2292ef/regression-zip64/features.log",
+      "size": 530,
+      "sha256": "d59f6235e2770e829f666e78d7e47fb90326bac34a8147b365e2a3155de31b8b"
+    },
+    {
+      "path": "docs/testing/build-2c2-logs/github-a2292ef/regression-zip64/folders.log",
+      "size": 660,
+      "sha256": "efde92bce7293fa4841567f1e73770f887ae91485c03bb4e32a0ef19a3920861"
+    },
+    {
+      "path": "docs/testing/build-2c2-logs/github-a2292ef/regression-zip64/jar-download.log",
+      "size": 317,
+      "sha256": "254964e07312e568863ab5c7a1d32c38374ecaaddadea8ea4c399b0f2f300b9b"
+    },
+    {
+      "path": "docs/testing/build-2c2-logs/github-a2292ef/regression-zip64/java-version.log",
+      "size": 195,
+      "sha256": "477d64a6b08c9a9dd143deae108edf7929a93b40434d87285d41addc8fba509f"
+    },
+    {
+      "path": "docs/testing/build-2c2-logs/github-a2292ef/regression-zip64/native-client.log",
+      "size": 602,
+      "sha256": "1f90070842ae5fb4e18b08cca2ab071ed97f2f4cb980f04b81dec60de563fc7d"
+    },
+    {
+      "path": "docs/testing/build-2c2-logs/github-a2292ef/regression-zip64/node-version.log",
+      "size": 9,
+      "sha256": "6a0cec2e157365c1a8ac6d1715733b7c3321a7c5565862a701ca71ef00359d04"
+    },
+    {
+      "path": "docs/testing/build-2c2-logs/github-a2292ef/regression-zip64/npm-ci.log",
+      "size": 27,
+      "sha256": "dbcd1165b703ebf4c79e5fb8194dbf9b805cfc1957c4219b9009a38a97cbfa09"
+    },
+    {
+      "path": "docs/testing/build-2c2-logs/github-a2292ef/regression-zip64/python-version.log",
+      "size": 15,
+      "sha256": "9d0ae83e540febd225949f3df4aba97c7a9f79fcf745d6c835780f52a57b50cf"
+    },
+    {
+      "path": "docs/testing/build-2c2-logs/github-a2292ef/regression-zip64/results.json",
+      "size": 1709,
+      "sha256": "32d906af56bb4a052c7066cfdc578185e431c83503b335712afff7e7d3b7eea2"
+    },
+    {
+      "path": "docs/testing/build-2c2-logs/github-a2292ef/regression-zip64/setup.json",
+      "size": 2193,
+      "sha256": "d5d4883abc49c9e20b8d4f4b7e57ba2f779ead3eb6017902a68bba14d4eea802"
+    },
+    {
+      "path": "docs/testing/build-2c2-logs/github-a2292ef/windows/artifact-manifest.json",
+      "size": 27122,
+      "sha256": "a228aee017d0153c930a5ed8d99e3e3751bb26d0140e9042603863375ad047dc"
+    },
+    {
+      "path": "docs/testing/build-2c2-logs/github-a2292ef/windows/build-results.json",
+      "size": 27122,
+      "sha256": "a228aee017d0153c930a5ed8d99e3e3751bb26d0140e9042603863375ad047dc"
+    },
+    {
+      "path": "docs/testing/build-2c2-logs/github-a2292ef/windows/build-windows-from-source.log",
+      "size": 1601,
+      "sha256": "ef102a88b14dd5a629d2b52c78056731ee557bb76c4659f606c8a11ae2f36052"
+    },
+    {
+      "path": "docs/testing/build-2c2-logs/github-a2292ef/windows/builder-steps.jsonl",
+      "size": 1617,
+      "sha256": "52e3628fb58671922a229d392dbf273158972dc32331600734146c1831c6486a"
+    },
+    {
+      "path": "docs/testing/build-2c2-logs/github-a2292ef/windows/commands.json",
+      "size": 2241,
+      "sha256": "c619accb6fa26aa611846d27498f135510f10f7acb51891a5e2b166f95590f66"
+    },
+    {
+      "path": "docs/testing/build-2c2-logs/github-a2292ef/windows/locked-npm-ci.log",
+      "size": 27,
+      "sha256": "767ab2e0e4acda56ceb61904714807c548a554950a7f76c45d179951d197484b"
+    },
+    {
+      "path": "docs/testing/build-2c2-logs/github-a2292ef/windows/nsis-extract.log",
+      "size": 640,
+      "sha256": "0fdcadb18a57b5392e5734c23afa16472c5cf0e93f5bf94b75ca531581fd3cbe"
+    },
+    {
+      "path": "docs/testing/build-2c2-logs/github-a2292ef/windows/toolchain-probes.json",
+      "size": 7611,
+      "sha256": "11fed0063463d01ec74dffd4493d1e2490e12c3e9a97ab58fbe6ba9089aad2b4"
+    },
+    {
+      "path": "docs/testing/build-2c2-logs/github-a2292ef/windows/toolchain.json",
+      "size": 16953,
+      "sha256": "1e55d8c68c0c71bd8cb71992ada057ec8e11f7bed760796c5a603096cafa9102"
+    },
+    {
+      "path": "docs/testing/build-2c2-logs/hardlink-test-before.log",
+      "size": 1157,
+      "sha256": "854d6ad0e079bad1d39230ec437d3431b562df29a69986829e5bdad29e0afbcf"
+    },
+    {
+      "path": "docs/testing/build-2c2-logs/log-upload-after.json",
+      "size": 201,
+      "sha256": "a4ae365136ff47be8e84e6e2a54c7de743d4acbd59359c8ed120121912be3dc7"
+    },
+    {
+      "path": "docs/testing/build-2c2-logs/log-upload-after.log",
+      "size": 7227,
+      "sha256": "6fba2227bef74c8a341b388becdf887e451a1c097e2ed3da8d0ee4f50769a846"
+    },
+    {
+      "path": "docs/testing/build-2c2-logs/log-upload-before.log",
+      "size": 1054,
+      "sha256": "d56ef24f256f594954b9909c48fcc326c344e9ddc3afdcea61d4968e0173b1fb"
+    },
+    {
+      "path": "docs/testing/build-2c2-logs/python-ci-unit-after.json",
+      "size": 190,
+      "sha256": "0f3f90083aead789def2b0622117b596d7d5f5c51ebd351de4235ed2ea77bef9"
+    },
+    {
+      "path": "docs/testing/build-2c2-logs/python-ci-unit-after.log",
+      "size": 7045,
+      "sha256": "92a4b27697d540b4841c835ca53c071c3bc766a0cfd82d3ef3f0c396aac8285c"
+    },
+    {
+      "path": "docs/testing/build-2c2-logs/reference-verification/commands.json",
+      "size": 1184,
+      "sha256": "72ba9bb4e683a6df75606b52259e820ba45a0ab615d94c1f2ed9e21212dc5636"
+    },
+    {
+      "path": "docs/testing/build-2c2-logs/reference-verification/release-app-badging.log",
+      "size": 1767,
+      "sha256": "0a1d95428c084dc1a8a568351453e5abd5c0b668fa4be9b0d4e680f7ccbeee65"
+    },
+    {
+      "path": "docs/testing/build-2c2-logs/reference-verification/release-app-signature.log",
+      "size": 963,
+      "sha256": "17f0a513d30e41d4b002a0413fdae1fe6e465e7b46beedaf6c5f4270bd2c029c"
+    },
+    {
+      "path": "docs/testing/build-2c2-logs/reference-windows/commands.json",
+      "size": 1109,
+      "sha256": "382ff71fb6ef759dd49f6df8b3f7c41956e588174a2fd9df7aa0bb7e66909a46"
+    },
+    {
+      "path": "docs/testing/build-2c2-logs/reference-windows/nsis-extract.log",
+      "size": 674,
+      "sha256": "48ad27658bd494340cbebda7d58d18f0d1738721b8766f1d7c30b4354bd5527e"
+    },
+    {
+      "path": "docs/testing/build-2c2-logs/reference-windows/nsis-list.log",
+      "size": 23274,
+      "sha256": "481858aaebc8994658fc47d3f69218b0f51474aa0f1eb9f578f44c927668789f"
+    },
+    {
+      "path": "docs/testing/build-2c2-logs/release-reference-comparison.json",
+      "size": 1642,
+      "sha256": "9a34d43ee22adedf4075b44b639abf5347b1fc6f50dec38cf95dae31e005f9f0"
+    },
+    {
+      "path": "docs/testing/build-2c2-logs/scope-and-secret-scan.json",
+      "size": 608,
+      "sha256": "39544ec0bb70a6a30724bb4d19fcbf6bf479abfac336a3f9979b4ed8d261deaf"
+    },
+    {
+      "path": "docs/testing/build-2c2-logs/windows-verified/build-results.json",
+      "size": 27716,
+      "sha256": "9fa07183b4ab552e707842fb884bf660f158865df25f831471620d67a2f6d6a8"
+    },
+    {
+      "path": "docs/testing/build-2c2-logs/windows-verified/build-windows-from-source.log",
+      "size": 1746,
+      "sha256": "f26cd42bc250fcc84feba52512b59c133cfaf6bb3fcb15853bb6c925268f742c"
+    },
+    {
+      "path": "docs/testing/build-2c2-logs/windows-verified/builder-steps.jsonl",
+      "size": 1966,
+      "sha256": "6bf5237ca3fe5c52aff3015e04f0c5a1e531068ca66d8d784ef30bc6954b9ee4"
+    },
+    {
+      "path": "docs/testing/build-2c2-logs/windows-verified/commands.json",
+      "size": 2582,
+      "sha256": "fa649f594a2c4696df624620c7f292b01583a65c9ec61d18945814134bce8ec0"
+    },
+    {
+      "path": "docs/testing/build-2c2-logs/windows-verified/locked-npm-ci.log",
+      "size": 233,
+      "sha256": "72d1483732f64a9ddf78aff8670ec1ab08a0bc40501f22cd419377d9e2dcc298"
+    },
+    {
+      "path": "docs/testing/build-2c2-logs/windows-verified/nsis-extract.log",
+      "size": 698,
+      "sha256": "0ec241038b05d3a4bf3f2f1f2a812f417b5d35e40113aadcd626d64af68fd82c"
+    },
+    {
+      "path": "docs/testing/build-2c2-logs/windows-verified/nsis-list.log",
+      "size": 22805,
+      "sha256": "52c7e58087931bbe0673c0f6427712b9b4fbbcf091e4fcb1a1a93ee65c1b6af1"
+    },
+    {
+      "path": "docs/testing/build-2c2-logs/windows-verified/toolchain-probes.json",
+      "size": 7814,
+      "sha256": "41e0004648e23e6584588f0a633512a51c2edd6048bb9bd5f3460649a0eff2b4"
+    },
+    {
+      "path": "docs/testing/build-2c2-logs/windows-verified/toolchain.json",
+      "size": 17148,
+      "sha256": "f548f6b4f1818b879a9815d625acd36caea57a81d72a45cf446787d0af11daf5"
+    },
+    {
+      "path": "docs/testing/harness-2b1-logs/after/android-discovery.log",
+      "size": 590,
+      "sha256": "56fe053b05b8ba333801143a5687e4b70124a50b63dcdb46dfdb63ce1e7dfabc"
+    },
+    {
+      "path": "docs/testing/harness-2b1-logs/after/android-host.log",
+      "size": 806,
+      "sha256": "f8c332a55edccb53fedc57917d97adb93c0da1106b3d60922581572553d6b0e8"
+    },
+    {
+      "path": "docs/testing/harness-2b1-logs/after/discovery.log",
+      "size": 410,
+      "sha256": "db6e2caf78872894f7777ce0c1fc8a15eba0698be71fbea190406233775bec3c"
+    },
+    {
+      "path": "docs/testing/harness-2b1-logs/after/environment.json",
+      "size": 1721,
+      "sha256": "d036924df4ef9074da8b6635637e5fe4cfb5cf62bcf224f3f73020f7b367bee2"
+    },
+    {
+      "path": "docs/testing/harness-2b1-logs/after/features.log",
+      "size": 834,
+      "sha256": "c738c4108f0376429aaa7b7fa479bc8129043b613bd2dd9de78ef85935296110"
+    },
+    {
+      "path": "docs/testing/harness-2b1-logs/after/folders.log",
+      "size": 967,
+      "sha256": "eb06785876ccb7633ad3a42e106d9c198ab1419d1be827fd11faea78a635fa02"
+    },
+    {
+      "path": "docs/testing/harness-2b1-logs/after/harness-unit.log",
+      "size": 1965,
+      "sha256": "464ab72a9ee8179e1fc72f4cfdec169c936020c1ae5b4f43d669fbd8a07c2b72"
+    },
+    {
+      "path": "docs/testing/harness-2b1-logs/after/http.log",
+      "size": 994,
+      "sha256": "cad313f39dba0e9a234304095c3350e31bab536906fbea196b1cd58c81c27304"
+    },
+    {
+      "path": "docs/testing/harness-2b1-logs/after/lan-discovery.log",
+      "size": 810,
+      "sha256": "ffe4f3cbe4b61246bda4926dcd46839457a7c028bfff0380da05fc051f78e07b"
+    },
+    {
+      "path": "docs/testing/harness-2b1-logs/after/large-transfer.log",
+      "size": 1072,
+      "sha256": "f2556dec4ebda440fcfa7f420f5b2a07c375679c37416db104e74100040a5d3c"
+    },
+    {
+      "path": "docs/testing/harness-2b1-logs/after/native-client.log",
+      "size": 902,
+      "sha256": "62c89efd2a0b8dda30a9218237af33560d46accb90a980dac6cfa15ed3caa656"
+    },
+    {
+      "path": "docs/testing/harness-2b1-logs/after/peer.log",
+      "size": 2218,
+      "sha256": "440d9651fa528818162f55c7d978b4c3b748f8e0bf7596da3d2e524b3fa20142"
+    },
+    {
+      "path": "docs/testing/harness-2b1-logs/after/results.json",
+      "size": 6272,
+      "sha256": "4e1c5ebd2664774d7346e551220941631b3f9be794f6f41e4f87cbeca20216e7"
+    },
+    {
+      "path": "docs/testing/harness-2b1-logs/after/security.log",
+      "size": 674,
+      "sha256": "8f1b7b66ab708cb5d9bbaef2120dfd2526b90d6127dc2960d871a1438da9b9d0"
+    },
+    {
+      "path": "docs/testing/harness-2b1-logs/after/unit.log",
+      "size": 1529,
+      "sha256": "5da1617380f55660e092eca411c4b4dbdbf25abd5157508998f4946a63ac3075"
+    },
+    {
+      "path": "docs/testing/harness-2b1-logs/auxiliary/harness-unit-network.json",
+      "size": 93,
+      "sha256": "14a5551120392748f3bf9437f78420d4a8efacd5e902a001b9052cd0763971a0"
+    },
+    {
+      "path": "docs/testing/harness-2b1-logs/auxiliary/harness-unit-network.log",
+      "size": 3545,
+      "sha256": "aaa5fa54338015af62e3c19b098a6827dd819fa02287481216ac3d2e303e0a41"
+    },
+    {
+      "path": "docs/testing/harness-2b1-logs/auxiliary/missing-font-attempt1.json",
+      "size": 79,
+      "sha256": "9a9d8491751c1132fa3b4669cdeeb01c50da61281f530d86aebefed8aed6f3e3"
+    },
+    {
+      "path": "docs/testing/harness-2b1-logs/auxiliary/missing-font-attempt1.log",
+      "size": 406,
+      "sha256": "33862596560be8fa1910ee1073f4c8bddc9c70bef5334d4e3cd40a8ed2bb224c"
+    },
+    {
+      "path": "docs/testing/harness-2b1-logs/auxiliary/missing-font-attempt2.json",
+      "size": 79,
+      "sha256": "4afa268516a4d1e61019c74f1d737fca9e6df88d5e911c1b821b440520d7ec3c"
+    },
+    {
+      "path": "docs/testing/harness-2b1-logs/auxiliary/missing-font-attempt2.log",
+      "size": 249,
+      "sha256": "ba392fbd20e6372099b78bbb21eddf01f71181d45f337ba75eb905ff918d256a"
+    },
+    {
+      "path": "docs/testing/harness-2b1-logs/auxiliary/reg001.stderr.log",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/testing/harness-2b1-logs/auxiliary/reg001.stdout.log",
+      "size": 767,
+      "sha256": "29912e5c8eaff11af80f5b7196ea5568b9a187b1c0c7706aa31edcc6751b4fc9"
+    },
+    {
+      "path": "docs/testing/harness-2b1-logs/auxiliary/setup-notes.json",
+      "size": 1385,
+      "sha256": "e75fdc060a4c543fe40228f1f7a1c7ef59f386245e0814849e730443422c0657"
+    },
+    {
+      "path": "docs/testing/harness-2b1-logs/before/android-discovery.log",
+      "size": 590,
+      "sha256": "9b7ea350267e6b06128db31c12ec3da913f668b407838345b338c34426b42f3f"
+    },
+    {
+      "path": "docs/testing/harness-2b1-logs/before/android-host.log",
+      "size": 806,
+      "sha256": "46f49559aecc1183f78baf73e76b1f367650960fdb32fffbca1d34dd3cacdb08"
+    },
+    {
+      "path": "docs/testing/harness-2b1-logs/before/discovery.log",
+      "size": 410,
+      "sha256": "7cf99cc5690c437326d7f8de665593903d3d9f26e3dd3aa78683245bb53d07fb"
+    },
+    {
+      "path": "docs/testing/harness-2b1-logs/before/environment.json",
+      "size": 1318,
+      "sha256": "2bda52a8ef13cdab60dc16841ed5d3d6ea6f43d337ee428537cf2130bcd08d6a"
+    },
+    {
+      "path": "docs/testing/harness-2b1-logs/before/features.log",
+      "size": 834,
+      "sha256": "cecab525d8fcf146719793c9a86b4a45eca9e07cd4fd8f419363105d8043ad4c"
+    },
+    {
+      "path": "docs/testing/harness-2b1-logs/before/folders.log",
+      "size": 966,
+      "sha256": "937d6b895b8a8140c750ea61668573c6bcad3a0b1db58f82e230575112bd94fc"
+    },
+    {
+      "path": "docs/testing/harness-2b1-logs/before/http.log",
+      "size": 994,
+      "sha256": "ddbadfb37930589484f6b84f36a2577a6fb1396889665349138c4c15a1f82093"
+    },
+    {
+      "path": "docs/testing/harness-2b1-logs/before/lan-discovery.log",
+      "size": 810,
+      "sha256": "d5a8d5d82747d4ec18aa0aabad759b893cf83d589553713ee537c5c0ffe9bdac"
+    },
+    {
+      "path": "docs/testing/harness-2b1-logs/before/large-transfer.log",
+      "size": 947,
+      "sha256": "81ed5352becd054c304a0da3aebe796b3312992b1574598e0e49ff1ae137217b"
+    },
+    {
+      "path": "docs/testing/harness-2b1-logs/before/native-client.log",
+      "size": 902,
+      "sha256": "40cd331c7682d631abcf7ace3f0a5ee3e69316478a87a8e8fc004defbf206e91"
+    },
+    {
+      "path": "docs/testing/harness-2b1-logs/before/peer.log",
+      "size": 2218,
+      "sha256": "6cec6ceede1d02b2b53216bbc9b86619db8cdf00f1757aa629248750a85d261c"
+    },
+    {
+      "path": "docs/testing/harness-2b1-logs/before/results.json",
+      "size": 5811,
+      "sha256": "20898e8c9313421d98b297e41fdd185480ec0d6b3023434f02d84998eea4e4b7"
+    },
+    {
+      "path": "docs/testing/harness-2b1-logs/before/security.log",
+      "size": 673,
+      "sha256": "007b0a9754b1534996bdb1595ba5076928f31b1930d5c50ddfb0406f99423750"
+    },
+    {
+      "path": "docs/testing/harness-2b1-logs/before/unit.log",
+      "size": 1532,
+      "sha256": "904c496376faed6f24673efa9d72936209b65b4792c9d0cbd500999acf21af49"
+    },
+    {
+      "path": "docs/testing/harness-2b1-logs/comparison.json",
+      "size": 3337,
+      "sha256": "f3ae987ef4f5079188bab9cae31f587b80c18fec54c9e902f196845d3b1ad017"
+    },
+    {
+      "path": "docs/testing/harness-2b1-logs/portability/after-explicit-jar.log",
+      "size": 289,
+      "sha256": "dc1586377a185cae74038c3017e1de4a95c245d62352b31ff7c675c668134872"
+    },
+    {
+      "path": "docs/testing/harness-2b1-logs/portability/after-legacy-tools.log",
+      "size": 289,
+      "sha256": "dc1586377a185cae74038c3017e1de4a95c245d62352b31ff7c675c668134872"
+    },
+    {
+      "path": "docs/testing/harness-2b1-logs/portability/before-foreign-cwd.log",
+      "size": 558,
+      "sha256": "a8b27ee5e5a1eb366e6dbbec65db8fbd731f6027180c3723ba50f7a9690283b7"
+    },
+    {
+      "path": "docs/testing/harness-2b1-logs/portability/results.json",
+      "size": 1535,
+      "sha256": "dc454c46becddc103e33f843875ac1674249335d5a27f8ed03528ca5cf514526"
+    },
+    {
+      "path": "docs/testing/harness-2b1-logs/source-integrity.json",
+      "size": 3286,
+      "sha256": "a80aab193956672b77809b6196b573dc53c4df28691625cfaf2720ba4156b4ab"
+    },
+    {
+      "path": "download-site/index.html",
+      "size": 7754,
+      "sha256": "4639c055a1be145ce3424d41b5cd5c64ceb6e7ea1272a7d095613544f2019c53"
+    },
+    {
+      "path": "ios/FlowDropApple.xcodeproj/project.pbxproj",
+      "size": 9337,
+      "sha256": "5124b52b96c7fd661633372d755104356d3ccf4166f0b9c8fbac484d4d77966b"
+    },
+    {
+      "path": "ios/FlowDropApple.xcodeproj/xcshareddata/xcschemes/FlowDropApple.xcscheme",
+      "size": 2071,
+      "sha256": "e106a808b8de3ecf3a848d6d8167e2067f364c78cb8a4bf0cccd24e04e03a487"
+    },
+    {
+      "path": "ios/FlowDropApple/AppModel.swift",
+      "size": 7747,
+      "sha256": "5d80946ab255b69b23084ea2be7e8cc2656f70500f4f25f36045f6ee7be1b9b2"
+    },
+    {
+      "path": "ios/FlowDropApple/Assets.xcassets/AppIcon.appiconset/Contents.json",
+      "size": 134,
+      "sha256": "6ad2c5c3bbcf972c7f02d217d6afcac3f24a10e30510c7e2d06c582371ed9d22"
+    },
+    {
+      "path": "ios/FlowDropApple/Assets.xcassets/Contents.json",
+      "size": 40,
+      "sha256": "10e3b5dc202f1cd9fad1f688c8fc9fe9e9669bf3f8295e67d216b10fd99b6f49"
+    },
+    {
+      "path": "ios/FlowDropApple/Discovery.swift",
+      "size": 6387,
+      "sha256": "d45e01d1ab22eb4423abeaa7d042713924670d61daa2bc18c87518fe718b57d0"
+    },
+    {
+      "path": "ios/FlowDropApple/FlowDropApp.swift",
+      "size": 11088,
+      "sha256": "95410c6aaa42ecae095fd08446105047760ba33629e4fd458162c9dd24029324"
+    },
+    {
+      "path": "ios/FlowDropApple/Info.plist",
+      "size": 1974,
+      "sha256": "0dc25cd1991ab9ec0002b59490a8431682bc06975306a9fbc90ae48189a4859e"
+    },
+    {
+      "path": "ios/FlowDropApple/PrivacyInfo.xcprivacy",
+      "size": 758,
+      "sha256": "05f01874f3679f7b92f3f2c10e7c97886a77e5c6a3b038f980b74a40c7091f34"
+    },
+    {
+      "path": "ios/FlowDropCore/Package.swift",
+      "size": 322,
+      "sha256": "4c94f633bce42a0433f467141aa55a5e321efbc52c2f25f32fcd5f99db209e9c"
+    },
+    {
+      "path": "ios/FlowDropCore/Sources/FlowDropCore/HTTPClient.swift",
+      "size": 5937,
+      "sha256": "a0c0c3d4f904a4bbee04a87e5daf619501a6af08d94c8d627b55dd535530c419"
+    },
+    {
+      "path": "ios/FlowDropCore/Sources/FlowDropCore/HTTPHost.swift",
+      "size": 6010,
+      "sha256": "3e211258e2a2ac0aa44c7a9e9eb147eaab80e791779fdaf2cb065b29b7b66c96"
+    },
+    {
+      "path": "ios/FlowDropCore/Sources/FlowDropCore/HTTPParser.swift",
+      "size": 2794,
+      "sha256": "ed82c68cdd6a83c61df21332970e88f299c09ff09f9697674386a00f920e5902"
+    },
+    {
+      "path": "ios/FlowDropCore/Sources/FlowDropCore/HostStore.swift",
+      "size": 16989,
+      "sha256": "da3048f6b2e009e7a9ddd12a4efccb3aac4cf393cb47743069c425b58612c7a2"
+    },
+    {
+      "path": "ios/FlowDropCore/Sources/FlowDropCore/Protocol.swift",
+      "size": 9207,
+      "sha256": "493d2cc96219c54edef03987501c8d610cecbf62d62badb98d3654a4d115ed2a"
+    },
+    {
+      "path": "ios/FlowDropCore/Tests/FlowDropCoreTests/HostIntegrationTests.swift",
+      "size": 2978,
+      "sha256": "045ead323f302c334fcfdbc2e276ea35b95eabb84ab92ff88acc2d4a97769d75"
+    },
+    {
+      "path": "ios/FlowDropCore/Tests/FlowDropCoreTests/ProtocolTests.swift",
+      "size": 4713,
+      "sha256": "11d75ef4650a46fca2d9e1d02b97a933539ee52d09a3ac7de0db309afc58bfa8"
+    },
+    {
+      "path": "ios/README.md",
+      "size": 10131,
+      "sha256": "50b039a07c1bde6ef9e075b74a6b2977ff49e2a9cba843d5528ba01d970f18a6"
+    },
+    {
+      "path": "ios/VALIDATION.json",
+      "size": 1421,
+      "sha256": "1301e662fce8b8fb2053e95a383d1ac02d70ae47e75e7caec2ac1a16dfeae952"
+    },
+    {
+      "path": "ios/scripts/build-unsigned.sh",
+      "size": 1697,
+      "sha256": "bb48b3185a079b12987f315cb5c035a34710d74f9485dc4286b48fcbfea7ef45"
+    },
+    {
+      "path": "ios/scripts/draw-icon.swift",
+      "size": 1575,
+      "sha256": "e5020514dd06413b106e888e4adb0704dd4627c151e8be36ef50e206d31b70a2"
+    },
+    {
+      "path": "package-lock.json",
+      "size": 3095,
+      "sha256": "6613250dc984c765a5361b6cb8c355eb08bb1333f0322aca47da0b48daceedf4"
+    },
+    {
+      "path": "package.json",
+      "size": 1184,
+      "sha256": "e7299d41f5d250355a2daf3a73394fb5a67b5cc33bdb26fcd24707aa639a1759"
+    },
+    {
+      "path": "scripts/build-downloads.mjs",
+      "size": 1659,
+      "sha256": "817198831c627e4ef5b151fd9e35df05ef6b8ff61f04f62e7feb2719b119a009"
+    },
+    {
+      "path": "scripts/build-installers.py",
+      "size": 6153,
+      "sha256": "b708ae17f4973e649f7015a3ee334048abbb1074dbeb67a0e5d302e868d3fbec"
+    },
+    {
+      "path": "scripts/build-native-test-apk.py",
+      "size": 2113,
+      "sha256": "7d13c5ffd02fdf3615b10d961053bbba6633886e24c653812a03d2e4225ac71e"
+    },
+    {
+      "path": "scripts/build.mjs",
+      "size": 2204,
+      "sha256": "93f7e28bf3d671358b6a5281210e8fac7bd27b5d05cb11eb12925a14e3d49241"
+    },
+    {
+      "path": "scripts/code-lookup.mjs",
+      "size": 2517,
+      "sha256": "aa268d89a5ee692d77d3bd6e41211068db80876192d35e4f671ade239d6b4634"
+    },
+    {
+      "path": "scripts/desktop-storage.mjs",
+      "size": 9330,
+      "sha256": "ce0bfaf849ec0fa9188d06cefcfd1bab93f2cf5fab34e9baed55c4ecf4b47371"
+    },
+    {
+      "path": "scripts/dev.mjs",
+      "size": 15451,
+      "sha256": "169796ee26c116dd6a2d66836f6f4ed5356d3cda7e92d3507c65f1f7e2b83643"
+    },
+    {
+      "path": "scripts/device-name.mjs",
+      "size": 1093,
+      "sha256": "424d2213a3a0babee567dce6754a7f6f977b8767a2cd05a9620789292aa7ced4"
+    },
+    {
+      "path": "scripts/discovery.mjs",
+      "size": 4001,
+      "sha256": "66d420cfbef1b44ee4e27226e12507b4006f38b8eda30f8090b8b6617db3729d"
+    },
+    {
+      "path": "scripts/folder-jobs.mjs",
+      "size": 1714,
+      "sha256": "46d37a1b085d5fdecb72632350cdd5045218faab1283b5d713473598b5710772"
+    },
+    {
+      "path": "scripts/folder-receive.mjs",
+      "size": 4934,
+      "sha256": "fe16d9ed66784839618c6416b5c362bcdb6ba9f1090575ea865fe453557d6c52"
+    },
+    {
+      "path": "scripts/folder-zip.mjs",
+      "size": 6120,
+      "sha256": "a46898886986535ff7288fb8a45a88e5304760f0f02ab47ddeba0e4d0742e7c4"
+    },
+    {
+      "path": "scripts/lan-discovery.mjs",
+      "size": 5193,
+      "sha256": "795a36a601e88870b8d8a3f3ad54e7d4d90fae2f985a162133487f6600efefd2"
+    },
+    {
+      "path": "scripts/local-bucket.mjs",
+      "size": 2136,
+      "sha256": "a1b33bc56d3498614c2451b96c5594a9ebb1cf5813e71e5f2724edc7d42fb4f0"
+    },
+    {
+      "path": "scripts/make-release.mjs",
+      "size": 3950,
+      "sha256": "b20fc195577bc314e18e4458ea7d4d8be335c65a253c8d3f1b1c0dd98cae31c4"
+    },
+    {
+      "path": "scripts/native_build_ci/__init__.py",
+      "size": 73,
+      "sha256": "592b3e07728980b470c61e08e9a5fe5ae854d9a4e46fce3ae1f87ff7e3300ad6"
+    },
+    {
+      "path": "scripts/native_build_ci/artifacts.py",
+      "size": 6109,
+      "sha256": "1a463adce3a24ce982e47d4456c90cdc2292efbdb4ec47e5b3a699b6fc43ff14"
+    },
+    {
+      "path": "scripts/native_build_ci/finish.py",
+      "size": 2674,
+      "sha256": "57a757b39ec14dc2370f0bec2c7bbadf49e1b939bb9d10e846e0988c0824efd7"
+    },
+    {
+      "path": "scripts/native_build_ci/paths.py",
+      "size": 8388,
+      "sha256": "ad2698816839705fad37ffae9c77603dc505970357245705b673d10a15631a47"
+    },
+    {
+      "path": "scripts/native_build_ci/runner.py",
+      "size": 12354,
+      "sha256": "a2ab45d57d1a1d95499c00f9460f54c2856c3f12b0aaa15596801a45b3048e5a"
+    },
+    {
+      "path": "scripts/native_build_ci/toolchain.py",
+      "size": 14089,
+      "sha256": "e02eccda261415f2ce9ee0d7def97e09657f43e67cc2e3f4cc1fd662bf4dde5c"
+    },
+    {
+      "path": "scripts/native_build_ci/verify.py",
+      "size": 17044,
+      "sha256": "8a80753c8bf946b4c8d29106eeed762abee4b81dd175e3062307041e68947d66"
+    },
+    {
+      "path": "scripts/native_build_support.py",
+      "size": 7584,
+      "sha256": "51b97caf6b18a4240c9fcd8a58a76a5865099ba7fdd1aa0cebe1f341dd6f2634"
+    },
+    {
+      "path": "scripts/peer-offers.mjs",
+      "size": 10890,
+      "sha256": "f1bfa02c12067bbbe02d2929c4c18d483af06e4a7aeb51422931eb3c17f75ac7"
+    },
+    {
+      "path": "scripts/release-config.mjs",
+      "size": 815,
+      "sha256": "693c18ebe0463c3ee3d4d306b2b2fd1544f2e34bb9ef1341eae23486901d93d7"
+    },
+    {
+      "path": "scripts/request-security.mjs",
+      "size": 1377,
+      "sha256": "4a468c6292d151bebcca51df4ce86f304e7b9a74a5116a7e5e2ad74ab8c52bc3"
+    },
+    {
+      "path": "scripts/secure-update.mjs",
+      "size": 8653,
+      "sha256": "c77046d018b095ec45444328cd1f8d16a615ce25a25d2fee356babc243fdc792"
+    },
+    {
+      "path": "scripts/stop.mjs",
+      "size": 642,
+      "sha256": "155647ca15eaae1b7e44dc70139c0eeb19bacffc6559501a8cea0a86895a2fb3"
+    },
+    {
+      "path": "security/README.md",
+      "size": 1459,
+      "sha256": "10728cdc67c95379394de82761610b2e8c766a35fe74d3737615eb825c7b2862"
+    },
+    {
+      "path": "security/android-signing-certificate.pem",
+      "size": 1494,
+      "sha256": "6fc97e41c7b9d2208805538bffedf8e663d31f6454fdeea04f3555b5215c16dd"
+    },
+    {
+      "path": "security/key-inventory.json",
+      "size": 638,
+      "sha256": "f7c6518e1a880c23a67e9486f5775ef4630dc7b656fdc4e34fd6c133f440a0af"
+    },
+    {
+      "path": "security/key-inventory.json.sig",
+      "size": 89,
+      "sha256": "c49c1adf0e38586f97eba08718cff32bd09c75c3bc2acff44c5d2f6a61f8b2b9"
+    },
+    {
+      "path": "security/project-signing-public.pem",
+      "size": 113,
+      "sha256": "e0e976a75452e3616e6616914346417fc0cffd68f8a1b8316495fe0edc6d1590"
+    },
+    {
+      "path": "security/update-signing-public.pem",
+      "size": 625,
+      "sha256": "e99d74c2b1ee94a1c6812ac91a3cbe1cf393546ab0682b7a104e0dcf383e2b76"
+    },
+    {
+      "path": "security/verify-key-inventory.mjs",
+      "size": 1478,
+      "sha256": "485677354c3b1fd8389ff57a11329c819cae6f756814965e014197ef15854394"
+    },
+    {
+      "path": "tests/FolderPackageHarness.java",
+      "size": 1498,
+      "sha256": "11f057bf6ecd57595cf8d1442eaf6c273342a99922ae4d3e2e112b29f69028be"
+    },
+    {
+      "path": "tests/HostHarness.java",
+      "size": 630,
+      "sha256": "5bcbfd7599904f7086bef025343df1d27ad1b8c9a7df7cf32e6c2c6837353bda"
+    },
+    {
+      "path": "tests/LanHostHarness.java",
+      "size": 1842,
+      "sha256": "f74344bb53a12454525843fc65d4a9a6b9ed8f46622d0f2795bbed327b145b28"
+    },
+    {
+      "path": "tests/NativeClientHarness.java",
+      "size": 4420,
+      "sha256": "c0d9e4619676572d95e5093791800618fef3276401c8795a77d0abe9294d4b6b"
+    },
+    {
+      "path": "tests/NativeHostHarness.java",
+      "size": 411,
+      "sha256": "b511a152c8a11c2e3e96326a1382c689d980887450683e7f7cdee6f6eb669574"
+    },
+    {
+      "path": "tests/NsdDiscoveryHarness.java",
+      "size": 5683,
+      "sha256": "5a983b56e26a4ac4b26ddcd108954782037bb94107e919cf5198241b9c959cb9"
+    },
+    {
+      "path": "tests/PeerHostHarness.java",
+      "size": 3239,
+      "sha256": "61c56300dde467ad183d4c60350d9cf3fe65495979f42f51fec0de5d7c8b3e12"
+    },
+    {
+      "path": "tests/ReceiveRoutingHarness.java",
+      "size": 1454,
+      "sha256": "b5e7d86fd099f59b038a1f572d8b3f9a33dc026a754969a7f1af4740c1bbcf47"
+    },
+    {
+      "path": "tests/UpdateManifestHarness.java",
+      "size": 624,
+      "sha256": "7e0d7ded2cf76fecc4599aa96e56d8118c70c4598ae1c6ee52c025f9cedb0d34"
+    },
+    {
+      "path": "tests/android-discovery-state.mjs",
+      "size": 1180,
+      "sha256": "040a0f8c2a202f7c3bc9ff350b9c4e2a4f2bfb9e50943a1e95e7f1a1cc9b2c03"
+    },
+    {
+      "path": "tests/android-host-integration.mjs",
+      "size": 5703,
+      "sha256": "07b1756b644bbf626795b863f93516af99f612ff475c1b335642151abf04a077"
+    },
+    {
+      "path": "tests/android-native-client.mjs",
+      "size": 3052,
+      "sha256": "1fec855830b9b0d9ee77396d05f7e140692e42d6952a25ac41956a3315fdfebe"
+    },
+    {
+      "path": "tests/android-native-smoke/AndroidManifest.xml",
+      "size": 1212,
+      "sha256": "9ac15804a25b1572c727a5f8cc45df6f4ad102290b567930f75ac952e2b9baff"
+    },
+    {
+      "path": "tests/android-native-smoke/NativeFolderSmoke.java",
+      "size": 6691,
+      "sha256": "3aeeccac8b0b751d2e902dfc647d428c8c35e5b510db79a773613e5a1a08bb75"
+    },
+    {
+      "path": "tests/android-native-smoke/NativeServiceSmoke.java",
+      "size": 6068,
+      "sha256": "f24394978ed128771041eac33da7f850ae80f21df48fa68bb458e30a4fad40ac"
+    },
+    {
+      "path": "tests/android-native-smoke/NativeShareSmoke.java",
+      "size": 8974,
+      "sha256": "b7cd82e321f619b58542dc432eaa0f54b91d69516820bc45b9743e039097ae47"
+    },
+    {
+      "path": "tests/android-native-smoke/NativeSmoke.java",
+      "size": 9001,
+      "sha256": "55c44ff385ddd99a60464d62dce0e11960b772ec449205c6f9e4299321189f83"
+    },
+    {
+      "path": "tests/android-native-smoke/ShareSenderActivity.java",
+      "size": 1747,
+      "sha256": "5cc17417fe2e12a02df9811ced8a11bd1c6ea9b3c381b7b48ce9c0ce11344942"
+    },
+    {
+      "path": "tests/android-native-smoke/ShareSourceProvider.java",
+      "size": 2322,
+      "sha256": "8db1630c599c2531b8e7d4d637e4a9c1034ac41dea57877e6ad088fb81b8c076"
+    },
+    {
+      "path": "tests/ci/run.py",
+      "size": 11498,
+      "sha256": "685f15b8246830901dd8d0403e1785c81ed09a4a6fd697700848004dc8e3df50"
+    },
+    {
+      "path": "tests/ci/test_build_security.py",
+      "size": 9313,
+      "sha256": "77cc4aa2b0f43e820e8978a6b7b07083c128146d05a3019554fc408ec84b119d"
+    },
+    {
+      "path": "tests/ci/test_native_build_pipeline.py",
+      "size": 12230,
+      "sha256": "07086b81af35188c3594320f52375201353f15402e0955eef9176cc2390073d9"
+    },
+    {
+      "path": "tests/ci/test_runner.py",
+      "size": 5925,
+      "sha256": "f7f675b252cccc33207e29b0fef867a989003bd40aca255fb5892bd9e0d343fc"
+    },
+    {
+      "path": "tests/desktop-storage.test.mjs",
+      "size": 3318,
+      "sha256": "5329fb26a8114fe50edcfeaa341a18fb08dee029b31fb1be25f1e6424e89221d"
+    },
+    {
+      "path": "tests/device-name.test.mjs",
+      "size": 1009,
+      "sha256": "529e52aa02e1f6a7fc2ba6c3efd78e30647487cd87697dc204122bf6a111b359"
+    },
+    {
+      "path": "tests/discovery-integration.mjs",
+      "size": 3046,
+      "sha256": "cd548d15ddf35c11a8012d8c6995d47506d751b80ba956a6f05ad64048393c27"
+    },
+    {
+      "path": "tests/features-1.10.test.mjs",
+      "size": 8970,
+      "sha256": "d846fccab7392679bd41d0569d3a6357ac2941398f9fef9936c05df86e06a8f0"
+    },
+    {
+      "path": "tests/folder-receive.test.mjs",
+      "size": 8834,
+      "sha256": "32bf5faa7de8322e082bfa0a70eca16369b4129c533e44944c86a832a058e84b"
+    },
+    {
+      "path": "tests/harness.test.mjs",
+      "size": 10652,
+      "sha256": "80677647d74e0331d7a1029b58e12365071eec098128fccd75f2cce8540c2fee"
+    },
+    {
+      "path": "tests/helpers/harness.mjs",
+      "size": 8205,
+      "sha256": "367a2253d7cc0060ed70553430251ffa7fbb2014fc21ffe22a0eb40fe4e77d98"
+    },
+    {
+      "path": "tests/http-integration.mjs",
+      "size": 5944,
+      "sha256": "53c77a4f28f96a7e4ab4fa8ada65323017ca9bfe07b81bf333b03e9c16700bbc"
+    },
+    {
+      "path": "tests/lan-discovery-integration.mjs",
+      "size": 6521,
+      "sha256": "6bc951362d538b41e20d823868c7927ceec11a75c08ef2229361c50ff1501d28"
+    },
+    {
+      "path": "tests/large-transfer-integration.mjs",
+      "size": 6823,
+      "sha256": "952f41f4b7cf5b44200ab423ebc7e80b1d3d894cf478694225cbe2512d409f4b"
+    },
+    {
+      "path": "tests/nsd-stubs/android/content/Context.java",
+      "size": 563,
+      "sha256": "303c23c1a8906f479d0d12e2b3d444a19e886fc5657ef2c1fdecbb3578016f3c"
+    },
+    {
+      "path": "tests/nsd-stubs/android/net/ConnectivityManager.java",
+      "size": 366,
+      "sha256": "35f6184592a0c720fdaf239f395e6c5aaa5130b81293c74878bea7a18bb9f21a"
+    },
+    {
+      "path": "tests/nsd-stubs/android/net/LinkProperties.java",
+      "size": 96,
+      "sha256": "0e497b0d9c1d8525bfc0a6d5234e3eca923fd99b59a0812d7890d33bbeb4caff"
+    },
+    {
+      "path": "tests/nsd-stubs/android/net/Network.java",
+      "size": 816,
+      "sha256": "2524cbefc2c7beeb98128b9b6017522528b0d7d67baab2946a1bc77ac163b0a2"
+    },
+    {
+      "path": "tests/nsd-stubs/android/net/NetworkCapabilities.java",
+      "size": 233,
+      "sha256": "3da5742128a333b95faaed2ad77f5f9b2fefe92aec9f67470c0c56f30f0f91b3"
+    },
+    {
+      "path": "tests/nsd-stubs/android/net/nsd/NsdManager.java",
+      "size": 1672,
+      "sha256": "67e899d63b754ff04ca0dd6116a1da9164acc8f32e4c507acf759158c73bbb37"
+    },
+    {
+      "path": "tests/nsd-stubs/android/net/nsd/NsdServiceInfo.java",
+      "size": 647,
+      "sha256": "eac117221a08ac25e8af88f609de6e2c5c016c102b3c705da96af517fcdbbf6e"
+    },
+    {
+      "path": "tests/nsd-stubs/android/net/wifi/WifiManager.java",
+      "size": 414,
+      "sha256": "c0259212866cb838a1a0075dc455905d6632626357bab8254ce26d966c125d4f"
+    },
+    {
+      "path": "tests/nsd-stubs/android/os/Build.java",
+      "size": 98,
+      "sha256": "718450fe45126c641fb479e93d2e758eba3ecab8604defad2e268b58005a1857"
+    },
+    {
+      "path": "tests/nsd-stubs/android/os/Handler.java",
+      "size": 964,
+      "sha256": "ffac420f402e0449721f824dbd1a0dee3aa7591f713f2c9d290263e7aa3fe129"
+    },
+    {
+      "path": "tests/nsd-stubs/android/os/Looper.java",
+      "size": 99,
+      "sha256": "be5df86b05ff28c54647483049f8cc1a02f48957e1e82c9c356f0b78ae78061b"
+    },
+    {
+      "path": "tests/nsd-stubs/app/flowdrop/mobile/HostService.java",
+      "size": 419,
+      "sha256": "0205fd528fbb9a292a59c6b0895b53df1915ffedbb904ca2f0153b52e3518261"
+    },
+    {
+      "path": "tests/peer-integration.mjs",
+      "size": 13854,
+      "sha256": "96f389e7b93e6ef78e2d23fa00682355c7fa5945704d110555512d0b7d57d326"
+    },
+    {
+      "path": "tests/security-integration.mjs",
+      "size": 4347,
+      "sha256": "03ed5bf829f7d63a07d1a7cc96cdd1274292b7f507d8884613ab4e48afb1f2f8"
+    },
+    {
+      "path": "tests/security.test.mjs",
+      "size": 2060,
+      "sha256": "14c8fcf12f587ea76dd7d5d6698088141fa5227a29cb341c35fc2c9cc834acf6"
+    },
+    {
+      "path": "tests/transfer.test.mjs",
+      "size": 4793,
+      "sha256": "939cd81478674063131abc6ae5163301da0b721f08dffc7a058b58cc6b7d45f6"
+    },
+    {
+      "path": "tests/update-choice.test.mjs",
+      "size": 2834,
+      "sha256": "8b03a07eee8ad2285a00b8e4c851f4860f1302a20397a73388760b580e0e287e"
+    },
+    {
+      "path": "tests/windows-native-smoke.cpp",
+      "size": 16926,
+      "sha256": "3c4402b3f190255944cf49fc964e4235dae4bce0d44d635152e3e2c343c97f5c"
+    },
+    {
+      "path": "tests/windows-peer-fixture.mjs",
+      "size": 3482,
+      "sha256": "4f09bab4928facd6f56568882ded155637de10ecc6e720bf301dd6e3d1e7cf28"
+    },
+    {
+      "path": "tests/windows-shell-smoke.cpp",
+      "size": 6590,
+      "sha256": "c76616ca9b54581440c0c452dafb006080e53422d42f9c2c0d72e0dcb9e013df"
+    },
+    {
+      "path": "web/app.js",
+      "size": 23370,
+      "sha256": "9ebfb5bd114d531386f44bc187db53a32ab971b8496cdd65e5faf871d86d6e5c"
+    },
+    {
+      "path": "web/assets/fonts/BeVietnamPro-Bold.ttf",
+      "size": 140300,
+      "sha256": "7f738fe5c43c8872807b20e2d30d42163618de8a4daf7f48a939adac32c16847"
+    },
+    {
+      "path": "web/assets/fonts/BeVietnamPro-Medium.ttf",
+      "size": 135980,
+      "sha256": "b60832bfa0fcd015158112c64d7e3fdad3b0c6287d1823f85a3103636e845268"
+    },
+    {
+      "path": "web/assets/fonts/BeVietnamPro-Regular.ttf",
+      "size": 132948,
+      "sha256": "cd1ef6e9d7db28ad5cdb88a65ccbe693870e60d340b791f349d248342b4fe4c3"
+    },
+    {
+      "path": "web/assets/fonts/OFL.txt",
+      "size": 4397,
+      "sha256": "6b7f8f73609a25ea78c891e34cf37b06f8a676b7ea986e941e43b009110f2a85"
+    },
+    {
+      "path": "web/assets/fonts/manifest.json",
+      "size": 584,
+      "sha256": "150b3b220978afc45bae87121edc9def57fe40aa7deb91ddba6673a327fbbc2b"
+    },
+    {
+      "path": "web/index.html",
+      "size": 14468,
+      "sha256": "9b1de2983200f128e2de94290c0c3f6a66373383e4df6844af18c6720d36d624"
+    },
+    {
+      "path": "web/style.css",
+      "size": 18083,
+      "sha256": "d8d4b34d474d4d09e5608c55ff027404970c4aac1dab17aacf27f62e890348f0"
+    },
+    {
+      "path": "worker/index.js",
+      "size": 9985,
+      "sha256": "8224d5590e08b5656d2eea05e1f3fca3afbefcd5021538bfef3d486da608a7ef"
+    }
+  ]
+}
