@@ -1,0 +1,14 @@
+{
+  "passed": true,
+  "sdk": 35,
+  "checks": [
+    {
+      "sdk": 35,
+      "dialogObserved": true,
+      "granted": false,
+      "method": "native request method + Android permissioncontroller accessibility action",
+      "id": "notification-permission-deny",
+      "passed": true
+    }
+  ]
+}

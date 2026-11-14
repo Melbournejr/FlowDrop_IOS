@@ -1,0 +1,23 @@
+{
+  "scope": "Java8 compile only; not Android runtime",
+  "exit_code": 0,
+  "command": [
+    "/workspace/flowdrop-build/flowdrop-runtime-2d1/work/android-local-build/jdk/bin/java",
+    "-m",
+    "jdk.compiler/com.sun.tools.javac.Main",
+    "-source",
+    "8",
+    "-target",
+    "8",
+    "-encoding",
+    "UTF-8",
+    "-bootclasspath",
+    "/workspace/flowdrop-build/flowdrop-runtime-2d1/work/android-local-build/tools/sdk/build-tools/android-15/core-lambda-stubs.jar:/workspace/flowdrop-build/flowdrop-runtime-2d1/work/android-local-build/tools/sdk/platforms/android-35/android.jar",
+    "-classpath",
+    "/workspace/flowdrop-build/flowdrop-runtime-2d1/work/android-local-build/tools/sdk/platforms/android-35/android.jar:/workspace/flowdrop-build/flowdrop-runtime-2d1/work/android-local-build/source/android/build/classes",
+    "-d",
+    "/workspace/flowdrop-build/flowdrop-runtime-2d1/work/java-final-proof-classes",
+    "/workspace/flowdrop-build/flowdrop-runtime-2d1/repository/tests/android-runtime/NativeRuntimeSmoke.java"
+  ],
+  "output": "warning: [options] source value 8 is obsolete and will be removed in a future release\nwarning: [options] target value 8 is obsolete and will be removed in a future release\nwarning: [options] To suppress warnings about obsolete options, use -Xlint:-options.\n3 warnings\n"
+}

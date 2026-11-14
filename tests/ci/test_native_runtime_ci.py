@@ -15,13 +15,23 @@ ROOT = Path(__file__).resolve().parents[2]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 from scripts.native_runtime_ci.common import Blocked, Recorder, child, own_root, sanitize
-from scripts.native_runtime_ci.android import instrumentation_result, forwarded_config
+from scripts.native_runtime_ci.android import instrumentation_result, forwarded_config, activity_window_ready
 from scripts.native_runtime_ci.sdk import extract_runtime_zip, host_libraries, official_ubuntu_mirrors, installed_metadata, selected_rows
 from scripts.native_runtime_ci.finish import export
 from scripts.native_runtime_ci.test_sources import windows_driver
 
 
 class NativeRuntimeHarnessTests(unittest.TestCase):
+    def test_activity_focus_under_visible_splash_is_not_rendered_ui_proof(self):
+        # Reduced fields from actual API35/29 dumps: focus can precede splash removal.
+        focused = 'mCurrentFocus=Window{1 u0 app.flowdrop.mobile/app.flowdrop.mobile.MainActivity}\n'
+        splash = '  Window #0 Window{2 u0 Splash Screen app.flowdrop.mobile}:\n    isVisible=true\n'
+        main = '  Window #1 Window{1 u0 app.flowdrop.mobile/app.flowdrop.mobile.MainActivity}:\n    mHasSurface=true\n    isVisible=true\n'
+        self.assertFalse(activity_window_ready(focused + splash + main))
+        self.assertTrue(activity_window_ready(focused + splash.replace('isVisible=true', 'isVisible=false') + main))
+        self.assertFalse(activity_window_ready(focused + main.replace('mHasSurface=true', 'mHasSurface=false')))
+        self.assertFalse(activity_window_ready(main))
+
     def test_adb_http_bridge_preserves_origin_host_without_weakening_server_check(self):
         import http.client
         from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer

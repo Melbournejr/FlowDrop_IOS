@@ -1,0 +1,4 @@
+INSTRUMENTATION_STATUS: stage=isolated-update-settings
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_RESULT: result={"passed":true,"sdk":35,"checks":[{"automatic":false,"id":"isolated-update-settings","passed":true}]}
+INSTRUMENTATION_CODE: -1

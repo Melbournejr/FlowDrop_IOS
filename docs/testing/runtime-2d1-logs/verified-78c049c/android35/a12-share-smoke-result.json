@@ -1,0 +1,18 @@
+{
+  "passed": true,
+  "sdk": 35,
+  "sharesheetSendAndMultiple": true,
+  "photoVideoPdfMimeResolution": true,
+  "separateSenderUid": true,
+  "coldActivityShare": true,
+  "warmActivityReuse": true,
+  "deduplicate": true,
+  "originalNames": true,
+  "noAutomaticSend": true,
+  "unsafeUrisRejected": true,
+  "missingGrantRejected": true,
+  "localUploadCapabilityRequired": true,
+  "nativeSendService": true,
+  "recipientConsent": true,
+  "exactBytes": true
+}

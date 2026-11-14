@@ -1,0 +1,600 @@
+{
+  "status": "PASS",
+  "exit_code": 0,
+  "role": "android",
+  "source": {
+    "base_commit": "c502c2f8793839e7f10289bf051df06dd1c466a0",
+    "protected_files_checked": 262,
+    "production_source_equivalence": "PASS",
+    "snapshot_files": 543,
+    "checkout_commit": "b94d50fa27880b04bbaed6b194c4c0ed4646c7c8",
+    "uncommitted_paths": []
+  },
+  "app_java8_classes": 69,
+  "instrumentation_java8_classes": 14,
+  "derived_test_harness": {
+    "original_tests_retained": 4,
+    "additional_runner": "app.flowdrop.mobile.test.NativeRuntimeSmoke",
+    "manifest_sha256": "5f65b1691fb7fc12eabcb8368fc5de8a440d14e885295b4d14e28a3b8b24d25c",
+    "sources": [
+      {
+        "source": "tests/android-native-smoke/NativeFolderSmoke.java",
+        "original_sha256": "3aeeccac8b0b751d2e902dfc647d428c8c35e5b510db79a773613e5a1a08bb75",
+        "compiled_test_source_sha256": "3aeeccac8b0b751d2e902dfc647d428c8c35e5b510db79a773613e5a1a08bb75",
+        "selector_only_adaptation": false
+      },
+      {
+        "source": "tests/android-native-smoke/NativeServiceSmoke.java",
+        "original_sha256": "f24394978ed128771041eac33da7f850ae80f21df48fa68bb458e30a4fad40ac",
+        "compiled_test_source_sha256": "f24394978ed128771041eac33da7f850ae80f21df48fa68bb458e30a4fad40ac",
+        "selector_only_adaptation": false
+      },
+      {
+        "source": "tests/android-native-smoke/NativeShareSmoke.java",
+        "original_sha256": "b7cd82e321f619b58542dc432eaa0f54b91d69516820bc45b9743e039097ae47",
+        "compiled_test_source_sha256": "b7cd82e321f619b58542dc432eaa0f54b91d69516820bc45b9743e039097ae47",
+        "selector_only_adaptation": false
+      },
+      {
+        "source": "tests/android-native-smoke/NativeSmoke.java",
+        "original_sha256": "55c44ff385ddd99a60464d62dce0e11960b772ec449205c6f9e4299321189f83",
+        "compiled_test_source_sha256": "8390bfde0ada87f24abf7d7b6d82954d6a578fa61ddb6bb0cc755c74b85f9117",
+        "selector_only_adaptation": true
+      },
+      {
+        "source": "tests/android-native-smoke/ShareSenderActivity.java",
+        "original_sha256": "5cc17417fe2e12a02df9811ced8a11bd1c6ea9b3c381b7b48ce9c0ce11344942",
+        "compiled_test_source_sha256": "5cc17417fe2e12a02df9811ced8a11bd1c6ea9b3c381b7b48ce9c0ce11344942",
+        "selector_only_adaptation": false
+      },
+      {
+        "source": "tests/android-native-smoke/ShareSourceProvider.java",
+        "original_sha256": "8db1630c599c2531b8e7d4d637e4a9c1034ac41dea57877e6ad088fb81b8c076",
+        "compiled_test_source_sha256": "8db1630c599c2531b8e7d4d637e4a9c1034ac41dea57877e6ad088fb81b8c076",
+        "selector_only_adaptation": false
+      },
+      {
+        "source": "tests/android-runtime/NativeRuntimeSmoke.java",
+        "original_sha256": "c2c61fc8ae83e8b8d94fe3105e4fda3686cfaf9ce4043143e4eeb9d061c792a7",
+        "compiled_test_source_sha256": "c2c61fc8ae83e8b8d94fe3105e4fda3686cfaf9ce4043143e4eeb9d061c792a7",
+        "selector_only_adaptation": false
+      }
+    ],
+    "java8_classes": 14
+  },
+  "original_instrumentation": {
+    "status": "PASS",
+    "type": "instrumentation",
+    "identity": {
+      "package": "app.flowdrop.mobile.test",
+      "version_code": "",
+      "version_name": "",
+      "min_sdk": 29,
+      "target_sdk": 35,
+      "permissions": []
+    },
+    "test_certificate_sha256": "2760ec172c49ef423d17ac346e7216dddd2dc8b49c113ccdcae362db1c962672",
+    "production_signing_equivalence": "NOT VERIFIED; intentionally different test certificate",
+    "size": 33171,
+    "sha256": "b76c2e9db4cd3f18310e290d9f7201379a168edd8d9b05f13c1523427217239c",
+    "inventory": [
+      {
+        "path": "AndroidManifest.xml",
+        "size": 2920,
+        "sha256": "bb1cbc8cb40166255b38eae8b9980dc60bb2fd60e061c3dca8f372a5c29ceaa2"
+      },
+      {
+        "path": "resources.arsc",
+        "size": 40,
+        "sha256": "1fa3cb291285348ec1b33c85e7317d989467707f4791c4e5302f2d312d1e18c8"
+      },
+      {
+        "path": "classes.dex",
+        "size": 48524,
+        "sha256": "69a7d8ecb911f5f5e9d1190d4bbf58f0bf76025bcef8d410d984f27683a0334b"
+      },
+      {
+        "path": "META-INF/FLOWDROP.SF",
+        "size": 412,
+        "sha256": "be87d0c00e1de56816f8843a1e109a39737425935bea6f8f830ff1b70da86d87"
+      },
+      {
+        "path": "META-INF/FLOWDROP.RSA",
+        "size": 1537,
+        "sha256": "44a33ddde2cd120b659a423a7607755a79d5892a2bbec972973f6e16aa967fa0"
+      },
+      {
+        "path": "META-INF/MANIFEST.MF",
+        "size": 285,
+        "sha256": "aadf9fc785e5ee8f9020089a0b644898091e92e1411f9683cfc8e26bc559db4a"
+      }
+    ]
+  },
+  "android": {
+    "status": "PASS",
+    "type": "app",
+    "identity": {
+      "package": "app.flowdrop.mobile",
+      "version_code": "14",
+      "version_name": "1.13.0",
+      "min_sdk": 29,
+      "target_sdk": 35,
+      "permissions": [
+        "android.permission.ACCESS_NETWORK_STATE",
+        "android.permission.ACCESS_WIFI_STATE",
+        "android.permission.CHANGE_WIFI_MULTICAST_STATE",
+        "android.permission.FOREGROUND_SERVICE",
+        "android.permission.FOREGROUND_SERVICE_DATA_SYNC",
+        "android.permission.HIDE_OVERLAY_WINDOWS",
+        "android.permission.INTERNET",
+        "android.permission.POST_NOTIFICATIONS",
+        "android.permission.RECEIVE_BOOT_COMPLETED",
+        "android.permission.REQUEST_INSTALL_PACKAGES",
+        "android.permission.UPDATE_PACKAGES_WITHOUT_USER_ACTION"
+      ]
+    },
+    "test_certificate_sha256": "2760ec172c49ef423d17ac346e7216dddd2dc8b49c113ccdcae362db1c962672",
+    "production_signing_equivalence": "NOT VERIFIED; intentionally different test certificate",
+    "size": 279316,
+    "sha256": "83977b0465f52a65f7210eda4789ca309e91219b2cd542c5da7f852ec03fd55f",
+    "inventory": [
+      {
+        "path": "AndroidManifest.xml",
+        "size": 5920,
+        "sha256": "2e2822afa8b71ec18fd74ce8ee36bf98f22cef4741a78ddf0b8390e5d2650174"
+      },
+      {
+        "path": "res/drawable/ic_launcher.xml",
+        "size": 920,
+        "sha256": "3dd6826fdc1568a9362f1ef4583895de34794bc3990c04ae4f4be639546ce3df"
+      },
+      {
+        "path": "resources.arsc",
+        "size": 588,
+        "sha256": "26d21f44a6a168bf74c8f8f8b941a4124dcc17bde859e72d7b308c5e51f1293e"
+      },
+      {
+        "path": "classes.dex",
+        "size": 223912,
+        "sha256": "a312214ea359072a7663f33904b2712e947b1121f45ec6a78ce02d2ac964aebd"
+      },
+      {
+        "path": "assets/fonts/BeVietnamPro-Regular.ttf",
+        "size": 132948,
+        "sha256": "cd1ef6e9d7db28ad5cdb88a65ccbe693870e60d340b791f349d248342b4fe4c3"
+      },
+      {
+        "path": "assets/fonts/BeVietnamPro-Medium.ttf",
+        "size": 135980,
+        "sha256": "b60832bfa0fcd015158112c64d7e3fdad3b0c6287d1823f85a3103636e845268"
+      },
+      {
+        "path": "assets/fonts/BeVietnamPro-Bold.ttf",
+        "size": 140300,
+        "sha256": "7f738fe5c43c8872807b20e2d30d42163618de8a4daf7f48a939adac32c16847"
+      },
+      {
+        "path": "assets/fonts/OFL.txt",
+        "size": 4397,
+        "sha256": "6b7f8f73609a25ea78c891e34cf37b06f8a676b7ea986e941e43b009110f2a85"
+      },
+      {
+        "path": "META-INF/FLOWDROP.SF",
+        "size": 927,
+        "sha256": "51285c7be744b6c70a1c92941bb787116265f7b5f4c3eaaed0291caaa03d9656"
+      },
+      {
+        "path": "META-INF/FLOWDROP.RSA",
+        "size": 1537,
+        "sha256": "d01818ce44531099c60a63e051dccb95de75047a3979512316d7d3b78eae7176"
+      },
+      {
+        "path": "META-INF/MANIFEST.MF",
+        "size": 800,
+        "sha256": "d0610458cac0997a1553659a9c734d27bd442eefda9d2f5550a87e0213f14b7f"
+      }
+    ]
+  },
+  "instrumentation": {
+    "status": "PASS",
+    "type": "instrumentation",
+    "identity": {
+      "package": "app.flowdrop.mobile.test",
+      "version_code": "",
+      "version_name": "",
+      "min_sdk": 29,
+      "target_sdk": 35,
+      "permissions": []
+    },
+    "test_certificate_sha256": "2760ec172c49ef423d17ac346e7216dddd2dc8b49c113ccdcae362db1c962672",
+    "production_signing_equivalence": "NOT VERIFIED; intentionally different test certificate",
+    "size": 41363,
+    "sha256": "49e0eaea70f8e6518edac08717566a0853695537a78c854db70270dcf0b103b5",
+    "inventory": [
+      {
+        "path": "AndroidManifest.xml",
+        "size": 3216,
+        "sha256": "9a6436328c853a243fa7e5662a428947db3ab919e8ce84935e0d820c1a146756"
+      },
+      {
+        "path": "resources.arsc",
+        "size": 40,
+        "sha256": "1fa3cb291285348ec1b33c85e7317d989467707f4791c4e5302f2d312d1e18c8"
+      },
+      {
+        "path": "classes.dex",
+        "size": 70276,
+        "sha256": "5c5635f050a81d57f8157846119b2a34cb14d31acf38cf56042abdc4cd8ef373"
+      },
+      {
+        "path": "META-INF/FLOWDROP.SF",
+        "size": 412,
+        "sha256": "f3f729e6796f44e0b1fbdb617277a034fef3f6d7c62229a0fa6e64257f260e14"
+      },
+      {
+        "path": "META-INF/FLOWDROP.RSA",
+        "size": 1537,
+        "sha256": "adf781450a7701bcac32132bf46e1af58e252fda2a7486763e823c5a3f37e934"
+      },
+      {
+        "path": "META-INF/MANIFEST.MF",
+        "size": 285,
+        "sha256": "8eec6fac6acc74e03a84e42bfc7f212fc996e3f56660d01a5562e237659b8fd3"
+      }
+    ]
+  },
+  "builder_steps": [
+    {
+      "command": [
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/tools/sdk/build-tools/android-15/aapt2",
+        "compile",
+        "--dir",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/source/android/res",
+        "-o",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/source/android/build/resources.zip"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "wall_seconds": 0.003
+    },
+    {
+      "command": [
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/tools/sdk/build-tools/android-15/aapt2",
+        "link",
+        "-o",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/source/android/build/resources.apk",
+        "-I",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/tools/sdk/platforms/android-35/android.jar",
+        "--manifest",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/source/android/AndroidManifest.xml",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/source/android/build/resources.zip"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "wall_seconds": 0.078
+    },
+    {
+      "command": [
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/jdk/bin/java",
+        "-m",
+        "jdk.compiler/com.sun.tools.javac.Main",
+        "-source",
+        "8",
+        "-target",
+        "8",
+        "-encoding",
+        "UTF-8",
+        "-bootclasspath",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/tools/sdk/build-tools/android-15/core-lambda-stubs.jar:/home/runner/work/_temp/flowdrop-2d1-build-android/tools/sdk/platforms/android-35/android.jar",
+        "-classpath",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/tools/sdk/platforms/android-35/android.jar",
+        "-d",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/source/android/build/classes",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/source/android/src/app/flowdrop/mobile/FlowArtwork.java",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/source/android/src/app/flowdrop/mobile/DeviceLabel.java",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/source/android/src/app/flowdrop/mobile/LanDiscovery.java",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/source/android/src/app/flowdrop/mobile/FolderArchive.java",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/source/android/src/app/flowdrop/mobile/UpdateJobService.java",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/source/android/src/app/flowdrop/mobile/UpdateInstallReceiver.java",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/source/android/src/app/flowdrop/mobile/WifiNetwork.java",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/source/android/src/app/flowdrop/mobile/FolderReceive.java",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/source/android/src/app/flowdrop/mobile/DeviceDiscovery.java",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/source/android/src/app/flowdrop/mobile/ReleaseConfig.java",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/source/android/src/app/flowdrop/mobile/ReceiveFiles.java",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/source/android/src/app/flowdrop/mobile/AppUpdates.java",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/source/android/src/app/flowdrop/mobile/TransferServer.java",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/source/android/src/app/flowdrop/mobile/CodeLookup.java",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/source/android/src/app/flowdrop/mobile/MainActivity.java",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/source/android/src/app/flowdrop/mobile/SharedFiles.java",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/source/android/src/app/flowdrop/mobile/TransferHistory.java",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/source/android/src/app/flowdrop/mobile/HostService.java",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/source/android/src/app/flowdrop/mobile/UpdateManifest.java",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/source/android/src/app/flowdrop/mobile/ReceiveService.java",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/source/android/src/app/flowdrop/mobile/TransferClient.java",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/source/android/src/app/flowdrop/mobile/SendService.java",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/source/android/src/app/flowdrop/mobile/RequestSecurity.java",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/source/android/src/app/flowdrop/mobile/FolderPackage.java"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "wall_seconds": 1.416
+    },
+    {
+      "command": [
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/jdk/bin/java",
+        "-cp",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/tools/sdk/build-tools/android-15/lib/d8.jar",
+        "com.android.tools.r8.D8",
+        "--release",
+        "--min-api",
+        "29",
+        "--lib",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/tools/sdk/platforms/android-35/android.jar",
+        "--output",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/source/android/build/dex",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/source/android/build/classes/app/flowdrop/mobile/TransferServer$Assets.class",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/source/android/build/classes/app/flowdrop/mobile/FolderPackage$Result.class",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/source/android/build/classes/app/flowdrop/mobile/RequestSecurity.class",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/source/android/build/classes/app/flowdrop/mobile/CodeLookup$Found.class",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/source/android/build/classes/app/flowdrop/mobile/FolderPackage$Progress.class",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/source/android/build/classes/app/flowdrop/mobile/ReleaseConfig.class",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/source/android/build/classes/app/flowdrop/mobile/HostService.class",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/source/android/build/classes/app/flowdrop/mobile/LanDiscovery.class",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/source/android/build/classes/app/flowdrop/mobile/FolderArchive$Result.class",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/source/android/build/classes/app/flowdrop/mobile/TransferClient$Source.class",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/source/android/build/classes/app/flowdrop/mobile/SendService$Listener.class",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/source/android/build/classes/app/flowdrop/mobile/DeviceDiscovery$1.class",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/source/android/build/classes/app/flowdrop/mobile/LanDiscovery$Peer.class",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/source/android/build/classes/app/flowdrop/mobile/MainActivity$4.class",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/source/android/build/classes/app/flowdrop/mobile/FlowArtwork.class",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/source/android/build/classes/app/flowdrop/mobile/ReceiveService.class",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/source/android/build/classes/app/flowdrop/mobile/TransferClient$Opener.class",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/source/android/build/classes/app/flowdrop/mobile/CodeLookup$Connections.class",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/source/android/build/classes/app/flowdrop/mobile/DeviceDiscovery$Peer.class",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/source/android/build/classes/app/flowdrop/mobile/MainActivity$5.class",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/source/android/build/classes/app/flowdrop/mobile/TransferServer$Chunked.class",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/source/android/build/classes/app/flowdrop/mobile/FolderPackage.class",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/source/android/build/classes/app/flowdrop/mobile/HostService$2.class",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/source/android/build/classes/app/flowdrop/mobile/DeviceLabel.class",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/source/android/build/classes/app/flowdrop/mobile/TransferServer.class",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/source/android/build/classes/app/flowdrop/mobile/DeviceDiscovery$Listener.class",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/source/android/build/classes/app/flowdrop/mobile/TransferServer$Limited.class",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/source/android/build/classes/app/flowdrop/mobile/TransferServer$1.class",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/source/android/build/classes/app/flowdrop/mobile/ReceiveFiles$Route.class",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/source/android/build/classes/app/flowdrop/mobile/CodeLookup.class",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/source/android/build/classes/app/flowdrop/mobile/ReceiveFiles.class",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/source/android/build/classes/app/flowdrop/mobile/TransferServer$2.class",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/source/android/build/classes/app/flowdrop/mobile/TransferServer$HttpError.class",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/source/android/build/classes/app/flowdrop/mobile/TransferServer$Connections.class",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/source/android/build/classes/app/flowdrop/mobile/DeviceDiscovery.class",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/source/android/build/classes/app/flowdrop/mobile/FolderArchive.class",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/source/android/build/classes/app/flowdrop/mobile/ReceiveService$Batch.class",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/source/android/build/classes/app/flowdrop/mobile/MainActivity.class",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/source/android/build/classes/app/flowdrop/mobile/UpdateJobService.class",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/source/android/build/classes/app/flowdrop/mobile/MainActivity$SessionViews.class",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/source/android/build/classes/app/flowdrop/mobile/TransferClient$Cancellation.class",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/source/android/build/classes/app/flowdrop/mobile/DeviceDiscovery$2.class",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/source/android/build/classes/app/flowdrop/mobile/LanDiscovery$Adapter.class",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/source/android/build/classes/app/flowdrop/mobile/HostService$1.class",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/source/android/build/classes/app/flowdrop/mobile/ReceiveService$Listener.class",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/source/android/build/classes/app/flowdrop/mobile/UpdateInstallReceiver.class",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/source/android/build/classes/app/flowdrop/mobile/TransferClient$Progress.class",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/source/android/build/classes/app/flowdrop/mobile/AppUpdates.class",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/source/android/build/classes/app/flowdrop/mobile/MainActivity$3.class",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/source/android/build/classes/app/flowdrop/mobile/DeviceDiscovery$3.class",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/source/android/build/classes/app/flowdrop/mobile/MainActivity$1.class",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/source/android/build/classes/app/flowdrop/mobile/SharedFiles.class",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/source/android/build/classes/app/flowdrop/mobile/HostService$3.class",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/source/android/build/classes/app/flowdrop/mobile/FolderPackage$Sink.class",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/source/android/build/classes/app/flowdrop/mobile/UpdateManifest.class",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/source/android/build/classes/app/flowdrop/mobile/HostService$LocalBinder.class",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/source/android/build/classes/app/flowdrop/mobile/TransferClient$Connections.class",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/source/android/build/classes/app/flowdrop/mobile/SendService.class",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/source/android/build/classes/app/flowdrop/mobile/FolderReceive.class",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/source/android/build/classes/app/flowdrop/mobile/TransferClient.class",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/source/android/build/classes/app/flowdrop/mobile/HostService$Listener.class",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/source/android/build/classes/app/flowdrop/mobile/TransferServer$Request.class",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/source/android/build/classes/app/flowdrop/mobile/UpdateManifest$Entry.class",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/source/android/build/classes/app/flowdrop/mobile/WifiNetwork.class",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/source/android/build/classes/app/flowdrop/mobile/FolderArchive$Progress.class",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/source/android/build/classes/app/flowdrop/mobile/MainActivity$2.class",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/source/android/build/classes/app/flowdrop/mobile/DeviceDiscovery$4.class",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/source/android/build/classes/app/flowdrop/mobile/TransferServer$HeaderInput.class",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/source/android/build/classes/app/flowdrop/mobile/TransferHistory.class"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "wall_seconds": 2.23
+    },
+    {
+      "command": [
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/tools/sdk/build-tools/android-15/zipalign",
+        "-f",
+        "-p",
+        "4",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/source/android/build/unsigned.apk",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/source/android/build/aligned.apk"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "wall_seconds": 0.002
+    },
+    {
+      "command": [
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/jdk/bin/java",
+        "-jar",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/tools/sdk/build-tools/android-15/lib/apksigner.jar",
+        "sign",
+        "--ks",
+        "[REDACTED]",
+        "--ks-key-alias",
+        "flowdrop",
+        "--ks-pass",
+        "env:FLOWDROP_ANDROID_STORE_PASSWORD",
+        "--key-pass",
+        "env:FLOWDROP_ANDROID_KEY_PASSWORD",
+        "--v1-signing-enabled",
+        "true",
+        "--v2-signing-enabled",
+        "true",
+        "--v3-signing-enabled",
+        "true",
+        "--out",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/source/artifacts/FlowDrop-1.13.0-Android.apk",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/source/android/build/aligned.apk"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "wall_seconds": 0.295
+    },
+    {
+      "command": [
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/jdk/bin/java",
+        "-jar",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/tools/sdk/build-tools/android-15/lib/apksigner.jar",
+        "verify",
+        "--verbose",
+        "--print-certs",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/source/artifacts/FlowDrop-1.13.0-Android.apk"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "wall_seconds": 0.146
+    },
+    {
+      "command": [
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/tools/sdk/build-tools/android-15/zipalign",
+        "-c",
+        "-p",
+        "4",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/source/artifacts/FlowDrop-1.13.0-Android.apk"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "wall_seconds": 0.002
+    },
+    {
+      "command": [
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/tools/sdk/build-tools/android-15/aapt2",
+        "dump",
+        "badging",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/source/artifacts/FlowDrop-1.13.0-Android.apk"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "wall_seconds": 0.002
+    },
+    {
+      "command": [
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/tools/sdk/build-tools/android-15/aapt2",
+        "link",
+        "-o",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/tools/native-instrumentation/resources.apk",
+        "-I",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/tools/sdk/platforms/android-35/android.jar",
+        "--manifest",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/source/tests/android-native-smoke/AndroidManifest.xml"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "wall_seconds": 0.079
+    },
+    {
+      "command": [
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/jdk/bin/java",
+        "-m",
+        "jdk.compiler/com.sun.tools.javac.Main",
+        "-source",
+        "8",
+        "-target",
+        "8",
+        "-encoding",
+        "UTF-8",
+        "-bootclasspath",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/tools/sdk/build-tools/android-15/core-lambda-stubs.jar:/home/runner/work/_temp/flowdrop-2d1-build-android/tools/sdk/platforms/android-35/android.jar",
+        "-classpath",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/tools/sdk/platforms/android-35/android.jar:/home/runner/work/_temp/flowdrop-2d1-build-android/source/android/build/classes",
+        "-d",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/tools/native-instrumentation/classes",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/source/tests/android-native-smoke/ShareSourceProvider.java",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/source/tests/android-native-smoke/NativeShareSmoke.java",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/source/tests/android-native-smoke/NativeServiceSmoke.java",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/source/tests/android-native-smoke/NativeSmoke.java",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/source/tests/android-native-smoke/NativeFolderSmoke.java",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/source/tests/android-native-smoke/ShareSenderActivity.java"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "wall_seconds": 0.865
+    },
+    {
+      "command": [
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/jdk/bin/java",
+        "-cp",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/tools/sdk/build-tools/android-15/lib/d8.jar",
+        "com.android.tools.r8.D8",
+        "--release",
+        "--min-api",
+        "29",
+        "--lib",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/tools/sdk/platforms/android-35/android.jar",
+        "--classpath",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/source/android/build/classes",
+        "--output",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/tools/native-instrumentation/dex",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/tools/native-instrumentation/classes/app/flowdrop/mobile/test/ShareSourceProvider.class",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/tools/native-instrumentation/classes/app/flowdrop/mobile/test/NativeFolderSmoke$1.class",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/tools/native-instrumentation/classes/app/flowdrop/mobile/test/NativeServiceSmoke$1.class",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/tools/native-instrumentation/classes/app/flowdrop/mobile/test/NativeShareSmoke$Check.class",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/tools/native-instrumentation/classes/app/flowdrop/mobile/test/ShareSenderActivity.class",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/tools/native-instrumentation/classes/app/flowdrop/mobile/test/NativeSmoke.class",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/tools/native-instrumentation/classes/app/flowdrop/mobile/test/NativeFolderSmoke$Condition.class",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/tools/native-instrumentation/classes/app/flowdrop/mobile/test/NativeServiceSmoke$Condition.class",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/tools/native-instrumentation/classes/app/flowdrop/mobile/test/NativeFolderSmoke.class",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/tools/native-instrumentation/classes/app/flowdrop/mobile/test/NativeShareSmoke.class",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/tools/native-instrumentation/classes/app/flowdrop/mobile/test/NativeServiceSmoke.class",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/tools/native-instrumentation/classes/app/flowdrop/mobile/test/NativeSmoke$Condition.class"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "wall_seconds": 1.384
+    },
+    {
+      "command": [
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/tools/sdk/build-tools/android-15/zipalign",
+        "-f",
+        "-p",
+        "4",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/tools/native-instrumentation/unsigned.apk",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/tools/native-instrumentation/aligned.apk"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "wall_seconds": 0.002
+    },
+    {
+      "command": [
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/jdk/bin/java",
+        "-jar",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/tools/sdk/build-tools/android-15/lib/apksigner.jar",
+        "sign",
+        "--ks",
+        "[REDACTED]",
+        "--ks-key-alias",
+        "flowdrop",
+        "--ks-pass",
+        "env:FLOWDROP_ANDROID_STORE_PASSWORD",
+        "--key-pass",
+        "env:FLOWDROP_ANDROID_KEY_PASSWORD",
+        "--out",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/tools/native-instrumentation/FlowDrop-native-tests.apk",
+        "/home/runner/work/_temp/flowdrop-2d1-build-android/tools/native-instrumentation/aligned.apk"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "wall_seconds": 0.276
+    }
+  ],
+  "production_signing_equivalence": "NOT VERIFIED",
+  "os_runtime": "NOT VERIFIED; build job only"
+}

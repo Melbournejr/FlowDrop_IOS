@@ -1,0 +1,98 @@
+ACTIVITY MANAGER SERVICES (dumpsys activity services)
+  User 0 active services:
+  * ServiceRecord{3a4636d u0 app.flowdrop.mobile/.HostService c:app.flowdrop.mobile}
+    intent={cmp=app.flowdrop.mobile/.HostService}
+    packageName=app.flowdrop.mobile
+    processName=app.flowdrop.mobile
+    targetSdkVersion=35
+    baseDir=/data/app/~~smOxzsEaNessSCfFXNSkeg==/app.flowdrop.mobile-1VnnfO3HYfuv-cB2-vDVOQ==/base.apk
+    dataDir=/data/user/0/app.flowdrop.mobile
+    app=ProcessRecord{7195aaf 2945:app.flowdrop.mobile/u0a148}
+    useNewWiuLogic_forCapabilities()=true
+    useNewWiuLogic_forStart()=true
+    useNewBfslLogic()=true
+    mAllowWiu_noBinding=PROC_STATE_TOP
+    mAllowWiu_inBindService=PROC_STATE_TOP
+    mAllowWiu_byBindings=PROC_STATE_TOP
+    getFgsAllowWiu_legacy=PROC_STATE_TOP
+    getFgsAllowWiu_new=PROC_STATE_TOP
+    getFgsAllowWiu_forStart=PROC_STATE_TOP
+    getFgsAllowWiu_forCapabilities=PROC_STATE_TOP
+    allowUiJobScheduling=true
+    recentCallingPackage=app.flowdrop.mobile
+    recentCallingUid=10148
+    mAllowStart_noBinding=PROC_STATE_TOP
+    mAllowStart_inBindService=DENIED
+    mAllowStart_byBindings=PROC_STATE_TOP
+    getFgsAllowStart_legacy=PROC_STATE_TOP
+    getFgsAllowStart_new=PROC_STATE_TOP
+    getFgsAllowStart=PROC_STATE_TOP
+    startForegroundCount=1
+    infoAllowStartForeground=[callingPackage: app.flowdrop.mobile; callingUid: 10148; uidState: TOP ; uidBFSL: [BFSL]; intent: Intent { cmp=app.flowdrop.mobile/.HostService }; code:"[REDACTED]"; tempAllowListReason:<null>; targetSdkVersion:35; callerTargetSdkVersion:35; startForegroundCount:0; bindFromPackage:null: isBindService:false]
+    isForeground=true foregroundId=120 types=0x00000001 foregroundNoti=Notification(channel=flowdrop-sharing shortcut=null contentView=null vibrate=null sound=null defaults=0 flags=ONGOING_EVENT|NO_CLEAR|FOREGROUND_SERVICE color=0x00000000 actions=1 vis=PRIVATE)
+    createTime=-2s693ms startingBgTimeout=--
+    lastActivity=-2s682ms restartTime=-2s692ms createdFromFg=true
+    startRequested=true delayedStop=false stopIfKilled=true callStart=true lastStartId=1
+ startCommandResult=2
+    Bindings:
+    * IntentBindRecord{3c7d3e3 CREATE}:
+      intent={cmp=app.flowdrop.mobile/.HostService}
+      binder=android.os.BinderProxy@33691e0
+      requested=true received=true hasBound=true doRebind=false
+      * Client AppBindRecord{1ee8c99 ProcessRecord{7195aaf 2945:app.flowdrop.mobile/u0a148}}
+        Per-process Connections:
+          ConnectionRecord{b127033 u0 CR app.flowdrop.mobile/.HostService:@697bba2 flags=0x1}
+    All Connections:
+      ConnectionRecord{b127033 u0 CR app.flowdrop.mobile/.HostService:@697bba2 flags=0x1}
+
+  * ServiceRecord{bf91cfa u0 app.flowdrop.mobile/.UpdateJobService c:android}
+    intent={cmp=app.flowdrop.mobile/.UpdateJobService}
+    packageName=app.flowdrop.mobile
+    processName=app.flowdrop.mobile
+    targetSdkVersion=35
+    permission=android.permission.BIND_JOB_SERVICE
+    baseDir=/data/app/~~smOxzsEaNessSCfFXNSkeg==/app.flowdrop.mobile-1VnnfO3HYfuv-cB2-vDVOQ==/base.apk
+    dataDir=/data/user/0/app.flowdrop.mobile
+    app=ProcessRecord{7195aaf 2945:app.flowdrop.mobile/u0a148}
+    useNewWiuLogic_forCapabilities()=true
+    useNewWiuLogic_forStart()=true
+    useNewBfslLogic()=true
+    mAllowWiu_noBinding=DENIED
+    mAllowWiu_inBindService=PROC_STATE_PERSISTENT
+    mAllowWiu_byBindings=DENIED
+    getFgsAllowWiu_legacy=PROC_STATE_PERSISTENT
+    getFgsAllowWiu_new=DENIED
+    getFgsAllowWiu_forStart=DENIED
+    getFgsAllowWiu_forCapabilities=DENIED
+    allowUiJobScheduling=false
+    recentCallingPackage=android
+    recentCallingUid=1000
+    mAllowStart_noBinding=DENIED
+    mAllowStart_inBindService=PROC_STATE_PERSISTENT
+    mAllowStart_byBindings=DENIED
+    getFgsAllowStart_legacy=PROC_STATE_PERSISTENT
+    getFgsAllowStart_new=DENIED
+    getFgsAllowStart=DENIED
+    startForegroundCount=0
+    infoAllowStartForeground=[callingPackage: android; callingUid: 1000; uidState: PER ; uidBFSL: [BFSL]; intent: Intent { flg=0x4 cmp=app.flowdrop.mobile/.UpdateJobService }; code:"[REDACTED]"; tempAllowListReason:<null>; targetSdkVersion:35; callerTargetSdkVersion:35; startForegroundCount:0; bindFromPackage:null: isBindService:true]
+    createTime=-2s666ms startingBgTimeout=--
+    lastActivity=-2s666ms restartTime=-2s666ms createdFromFg=true
+    Bindings:
+    * IntentBindRecord{8beab5e CREATE}:
+      intent={flg=0x4 cmp=app.flowdrop.mobile/.UpdateJobService}
+      binder=android.os.BinderProxy@a19cb3f
+      requested=true received=true hasBound=true doRebind=false
+      * Client AppBindRecord{aa2ec0c ProcessRecord{a6c44d9 542:system/1000}}
+        Per-process Connections:
+          ConnectionRecord{39325 u0 CR !FG !PRCP app.flowdrop.mobile/.UpdateJobService:@1b0ab1c flags=0x8105}
+    All Connections:
+      ConnectionRecord{39325 u0 CR !FG !PRCP app.flowdrop.mobile/.UpdateJobService:@1b0ab1c flags=0x8105}
+
+  Connection bindings to services:
+  * ConnectionRecord{39325 u0 CR !FG !PRCP app.flowdrop.mobile/.UpdateJobService:@1b0ab1c flags=0x8105}
+    binding=AppBindRecord{aa2ec0c app.flowdrop.mobile/.UpdateJobService:system}
+    conn=android.app.LoadedApk$ServiceDispatcher$InnerConnection@1b0ab1c flags=0x8105
+  * ConnectionRecord{b127033 u0 CR app.flowdrop.mobile/.HostService:@697bba2 flags=0x1}
+    binding=AppBindRecord{1ee8c99 app.flowdrop.mobile/.HostService:app.flowdrop.mobile}
+    activity=ActivityRecord{8e04c53 u0 app.flowdrop.mobile/.MainActivity t17}
+    conn=android.os.BinderProxy@697bba2 flags=0x1

@@ -1,0 +1,113 @@
+{
+  "passed": true,
+  "sdk": 35,
+  "checks": [
+    {
+      "sdk": 35,
+      "version": "1.13.0",
+      "id": "live-native-backend",
+      "passed": true
+    },
+    {
+      "hostReady": true,
+      "notificationId": 120,
+      "id": "foreground-notification",
+      "passed": true
+    },
+    {
+      "systemPickerObserved": true,
+      "selectionPreserved": true,
+      "id": "system-picker-cancel",
+      "passed": true
+    },
+    {
+      "files": [
+        {
+          "round": 0,
+          "name": "small 1794643286446.bin",
+          "originalName": "small 1794643286446.bin",
+          "size": 131089,
+          "expectedSha256": "1ec3437cee3cccf3647e130524ade52848571960a3340ae33573beef17d330b3",
+          "actualSha256": "1ec3437cee3cccf3647e130524ade52848571960a3340ae33573beef17d330b3"
+        },
+        {
+          "round": 0,
+          "name": "Tệp Unicode có khoảng trắng 1794643286446.txt",
+          "originalName": "Tệp Unicode có khoảng trắng 1794643286446.txt",
+          "size": 52,
+          "expectedSha256": "2931a4a8ade4d083cd5411782df718ce317afe3ccf94b28ddcb6e4645a9e8cf4",
+          "actualSha256": "2931a4a8ade4d083cd5411782df718ce317afe3ccf94b28ddcb6e4645a9e8cf4"
+        },
+        {
+          "round": 0,
+          "name": "Rỗng 1794643286446.bin",
+          "originalName": "Rỗng 1794643286446.bin",
+          "size": 0,
+          "expectedSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "actualSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "round": 1,
+          "name": "small 1794643286446 (1).bin",
+          "originalName": "small 1794643286446.bin",
+          "size": 131089,
+          "expectedSha256": "1ec3437cee3cccf3647e130524ade52848571960a3340ae33573beef17d330b3",
+          "actualSha256": "1ec3437cee3cccf3647e130524ade52848571960a3340ae33573beef17d330b3"
+        },
+        {
+          "round": 1,
+          "name": "Tệp Unicode có khoảng trắng 1794643286446 (1).txt",
+          "originalName": "Tệp Unicode có khoảng trắng 1794643286446.txt",
+          "size": 52,
+          "expectedSha256": "2931a4a8ade4d083cd5411782df718ce317afe3ccf94b28ddcb6e4645a9e8cf4",
+          "actualSha256": "2931a4a8ade4d083cd5411782df718ce317afe3ccf94b28ddcb6e4645a9e8cf4"
+        },
+        {
+          "round": 1,
+          "name": "Rỗng 1794643286446 (1).bin",
+          "originalName": "Rỗng 1794643286446.bin",
+          "size": 0,
+          "expectedSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "actualSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      ],
+      "id": "native-transfer-and-collision-sha256",
+      "passed": true
+    },
+    {
+      "cancelled": true,
+      "id": "cancel-active-http",
+      "passed": true
+    },
+    {
+      "declaredBytes": 65536,
+      "sentBytes": 3,
+      "id": "tcp-disconnect-no-partial-publication",
+      "passed": true
+    },
+    {
+      "missingCapability": 403,
+      "incorrectCapability": 403,
+      "invalidMetadata": 400,
+      "id": "auth-and-invalid-request",
+      "passed": true
+    },
+    {
+      "state": "rejected",
+      "scope": "same-emulator loopback; not physical LAN",
+      "id": "recipient-rejection",
+      "passed": true
+    },
+    {
+      "httpAliveInBackground": true,
+      "id": "background-and-reopen",
+      "passed": true
+    },
+    {
+      "filesVerified": 6,
+      "deviceIdentityPreserved": true,
+      "id": "stop-restart-data-preserved",
+      "passed": true
+    }
+  ]
+}

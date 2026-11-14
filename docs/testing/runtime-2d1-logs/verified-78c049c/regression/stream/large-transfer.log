@@ -1,0 +1,30 @@
+desktop: missing, wrong and wrong-kind local capabilities rejected; token absent from config.
+desktop: 101 files uploaded, finalized and downloaded.
+android: missing, wrong and wrong-kind local capabilities rejected; token absent from config.
+android: 101 files uploaded, finalized and downloaded.
+[
+  {
+    "host": "desktop",
+    "files": 101,
+    "passed": true
+  },
+  {
+    "host": "android",
+    "files": 101,
+    "passed": true
+  },
+  {
+    "directions": [
+      "Desktop → Android",
+      "Android → Desktop"
+    ],
+    "size": 402653201,
+    "sha256": "4bdcb708f8ca8ffe5e86325e3621e6cc501da14e3285ec680fb417c8bae95a0f",
+    "permanentSave": true,
+    "peakRssBytes": {
+      "desktop": 163549184,
+      "android": 122683392
+    },
+    "passed": true
+  }
+]

@@ -1,0 +1,957 @@
+11-14 08:00:30.604  1723  1723 I ServiceManagement: Registered android.hardware.wifi@1.3::IWifi/default (start delay of 221ms)
+11-14 08:00:30.604  1723  1723 I ServiceManagement: Removing namespace from process name android.hardware.wifi@1.0-service to wifi@1.0-service.
+11-14 08:00:30.655  1684  1684 D AndroidRuntime: >>>>>> START com.android.internal.os.ZygoteInit uid 0 <<<<<<
+11-14 08:00:30.676  1704  1704 D EmulatedCamera_QemuClient: Emulated camera list:
+11-14 08:00:30.676  1704  1704 I EmulatedCamera_FakeCamera3: Constructing emulated fake camera 3: ID 0, facing back
+11-14 08:00:30.676  1704  1704 I EmulatedCamera_FakeCamera3: Camera 0 capabilities:
+11-14 08:00:30.676  1704  1704 I EmulatedCamera_FakeCamera3:   BACKWARD_COMPATIBLE
+11-14 08:00:30.676  1704  1704 I EmulatedCamera_FakeCamera3:   MANUAL_SENSOR
+11-14 08:00:30.676  1704  1704 I EmulatedCamera_FakeCamera3:   MANUAL_POST_PROCESSING
+11-14 08:00:30.676  1704  1704 I EmulatedCamera_FakeCamera3:   READ_SENSOR_SETTINGS
+11-14 08:00:30.723  1774  1774 D LibBpfLoader: New bpf core prog_load for /system/etc/bpf/clatd.o (schedcls_ingress_clat_rawip) returned: 25
+11-14 08:00:30.723  1774  1774 I bpfloader: Attempted load object: /system/etc/bpf/clatd.o, ret: Success
+11-14 08:00:30.727  1684  1684 I AndroidRuntime: Using default boot image
+11-14 08:00:30.727  1684  1684 I AndroidRuntime: Leaving lock profiling enabled
+11-14 08:00:30.730  1684  1684 I zygote64: option[0]=-Xzygote
+11-14 08:00:30.730  1684  1684 I zygote64: option[1]=exit
+11-14 08:00:30.730  1684  1684 I zygote64: option[2]=vfprintf
+11-14 08:00:30.730  1684  1684 I zygote64: option[3]=sensitiveThread
+11-14 08:00:30.730  1684  1684 I zygote64: option[4]=-verbose:gc
+11-14 08:00:30.730  1684  1684 I zygote64: option[5]=-Xms4m
+11-14 08:00:30.730  1684  1684 I zygote64: option[6]=-Xmx512m
+11-14 08:00:30.897  1800  1800 W /system/bin/mediaextractor: libminijail[1800]: allowing syscall: fcntl
+11-14 08:00:30.897  1800  1800 W /system/bin/mediaextractor: libminijail[1800]: allowing syscall: writev
+11-14 08:00:30.901  1685  1685 D AndroidRuntime: >>>>>> START com.android.internal.os.ZygoteInit uid 0 <<<<<<
+11-14 08:00:30.903  1800  1800 W /system/bin/mediaextractor: libminijail[1800]: logging seccomp filter failures
+11-14 08:00:30.934  1733  1733 D libEGL  : loaded /vendor/lib64/egl/libEGL_emulation.so
+11-14 08:00:30.934  1733  1733 D libEGL  : loaded /vendor/lib64/egl/libGLESv1_CM_emulation.so
+11-14 08:00:30.935  1733  1733 D libEGL  : loaded /vendor/lib64/egl/libGLESv2_emulation.so
+11-14 08:00:30.939  1733  1733 D HostConnection: HostConnection::get() New Host Connection established 0x7bdd48f995a0, tid 1733
+11-14 08:00:30.943  1733  1733 D HostConnection: HostComposition ext ANDROID_EMU_CHECKSUM_HELPER_v1 ANDROID_EMU_native_sync_v2 ANDROID_EMU_dma_v1 ANDROID_EMU_direct_mem ANDROID_EMU_host_composition_v1 ANDROID_EMU_host_composition_v2 ANDROID_EMU_vulkan ANDROID_EMU_deferred_vulkan_commands ANDROID_EMU_vulkan_create_resources_with_requirements ANDROID_EMU_vulkan_free_memory_sync ANDROID_EMU_vulkan_shader_float16_int8 ANDROID_EMU_vulkan_async_queue_submit ANDROID_EMU_sync_buffer_data ANDROID_EMU_vulkan_async_qsri ANDROID_EMU_hwc_color_transform GL_OES_EGL_image_external_essl3 GL_OES_vertex_array_object GL_KHR_texture_compression_astc_ldr ANDROID_EMU_host_side_tracing ANDROID_EMU_gles_max_version_3_0
+11-14 08:00:30.944  1809  1809 I ServiceManagement: Registered android.frameworks.stats@1.0::IStats/default (start delay of 152ms)
+11-14 08:00:31.031  1775  1775 I CameraService: CameraService process starting
+11-14 08:00:31.034  1775  1775 W BatteryNotifier: batterystats service unavailable!
+11-14 08:00:31.035  1685  1685 I AndroidRuntime: Using default boot image
+11-14 08:00:31.035  1685  1685 I AndroidRuntime: Leaving lock profiling enabled
+11-14 08:00:31.038  1775  1775 W BatteryNotifier: batterystats service unavailable!
+11-14 08:00:31.040  1822  1822 D android.hardware.biometrics.fingerprint@2.1-service: Opening fingerprint hal library...
+11-14 08:00:31.043  1822  1822 D FingerprintHal: ----------------> fingerprint_open ----------------->
+11-14 08:00:31.043  1822  1822 D FingerprintHal: ----------------> set_notify_callback ----------------->
+11-14 08:00:31.043  1822  1822 D FingerprintHal: fingerprint callback notification set
+11-14 08:00:31.044  1822  1822 I ServiceManagement: Registered android.hardware.biometrics.fingerprint@2.1::IBiometricsFingerprint/default (start delay of 122ms)
+11-14 08:00:31.044  1822  1822 I ServiceManagement: Removing namespace from process name android.hardware.biometrics.fingerprint@2.1-service to fingerprint@2.1-service.
+11-14 08:00:33.963  2206  2206 W id.networkstac: Unexpected CPU variant for X86 using defaults: x86_64
+11-14 08:00:33.964  2170  2170 I WebViewLoader-: System.exit called, status: 0
+11-14 08:00:33.964  2170  2170 I AndroidRuntime: VM exiting with result code 0, cleanup skipped.
+11-14 08:00:33.966  1685  1685 I Zygote  : Process 2170 exited cleanly (0)
+11-14 08:00:33.976  1812  1812 W wificond: No pno scan started
+11-14 08:00:33.976  1812  1812 E wificond: Receive ERROR message in response to 'stop scheduled scan' request: Operation not supported on transport endpoint
+11-14 08:00:33.976  1936  2047 I chatty  : uid=1000(system) ClientModeImpl expire 62 lines
+11-14 08:00:33.976  1723  1723 W android.hardware.wifi@1.0-service: No active wlan interfaces in use! Using default
+11-14 08:00:33.977  1812  1812 I wificond: Unsubscribe scan result for interface with index: 3
+11-14 08:00:33.980  1723  1723 I android.hardware.wifi@1.0-service: Legacy HAL stop complete callback received
+11-14 08:00:34.052  2088  2233 I vol.Events: writeEvent external_ringer_mode_changed normal
+11-14 08:00:34.053  2178  2178 I WebViewLoader-: System.exit called, status: 0
+11-14 08:00:34.053  2178  2178 I AndroidRuntime: VM exiting with result code 0, cleanup skipped.
+11-14 08:00:34.054  2088  2233 I vol.Events: writeEvent zen_mode_config_changed [disallowAlarms=false disallowMedia=false disallowSystem=true disallowRinger=false]
+11-14 08:00:34.060  1733  1973 E SurfaceFlinger: ro.sf.lcd_density must be defined as a build property
+11-14 08:00:34.067  2088  2088 D SystemUIBootTiming: StartServicescom.android.systemui.stackdivider.Divider took to complete: 25ms
+11-14 08:00:34.061  1733  1973 E SurfaceFlinger: ro.sf.lcd_density must be defined as a build property
+11-14 08:00:34.068  1684  1684 I Zygote  : Process 2178 exited cleanly (0)
+11-14 08:00:34.068  1936  2272 I ActivityManager: Process WebViewLoader-x86_64 (pid 2178) has died: psvc PER
+11-14 08:00:34.072  1599  1604 D vold    : Remounting 1000 as mode full
+11-14 08:00:36.772  2088  2088 V KeyguardUpdateMonitor: onSubscriptionInfoChanged()
+11-14 08:00:36.772  1936  1963 W ActivityManager: Slow operation: 229ms so far, now at startProcess: asking zygote to start proc
+11-14 08:00:36.775  2662  2662 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+11-14 08:00:36.782  2088  2088 V KeyguardUpdateMonitor: SubInfo:{id=1, iccId=89014103211118510720 simSlotIndex=0 carrierId=1 displayName=T-Mobile carrierName=Android nameSource=3 iconTint=-16746133 mNumber=+15555215554 dataRoaming=0 iconBitmap=android.graphics.Bitmap@6456402 mcc 310 mnc 260mCountryIso=us isEmbedded false accessRules null cardString=89014103211118510720 cardId=-1 isOpportunistic false mGroupUUID=null mIsGroupDisabled=false profileClass=-1 ehplmns = null hplmns = null subscriptionType=0 mGroupOwner=null}
+11-14 08:00:36.791  1936  1957 D HostConnection: createUnique: call
+11-14 08:00:36.792  1936  1957 D HostConnection: HostConnection::get() New Host Connection established 0x7a09e856d440, tid 1957
+11-14 08:00:36.797  1936  1957 D HostConnection: HostComposition ext ANDROID_EMU_CHECKSUM_HELPER_v1 ANDROID_EMU_native_sync_v2 ANDROID_EMU_dma_v1 ANDROID_EMU_direct_mem ANDROID_EMU_host_composition_v1 ANDROID_EMU_host_composition_v2 ANDROID_EMU_vulkan ANDROID_EMU_deferred_vulkan_commands ANDROID_EMU_vulkan_create_resources_with_requirements ANDROID_EMU_vulkan_free_memory_sync ANDROID_EMU_vulkan_shader_float16_int8 ANDROID_EMU_vulkan_async_queue_submit ANDROID_EMU_sync_buffer_data ANDROID_EMU_vulkan_async_qsri ANDROID_EMU_hwc_color_transform GL_OES_EGL_image_external_essl3 GL_OES_vertex_array_object GL_KHR_texture_compression_astc_ldr ANDROID_EMU_host_side_tracing ANDROID_EMU_gles_max_version_3_0
+11-14 08:00:36.797  1936  1957 D eglCodecCommon: allocate: Ask for block of size 0x1000
+11-14 08:00:36.797  1936  1957 D eglCodecCommon: allocate: ioctl allocate returned offset 0x3ffff4000 size 0x2000
+11-14 08:00:36.804  2695  2695 I rcs     : [RcsStackAdaptor] mPublishingState=1 publishState=1
+11-14 08:00:36.945  2088  2291 D EGL_emulation: eglMakeCurrent: 0x7a0a3984b3a0: ver 3 0 (tinfo 0x7a0a398f25a0)
+11-14 08:00:36.949  2662  2662 E libc    : Access denied finding property "persist.device_config.runtime_native_boot.enable_apex_image"
+11-14 08:00:36.949  2662  2662 I AndroidRuntime: Using default boot image
+11-14 08:00:36.949  2662  2662 E libc    : Access denied finding property "persist.device_config.runtime_native_boot.disable_lock_profiling"
+11-14 08:00:36.949  2662  2662 I AndroidRuntime: Leaving lock profiling enabled
+11-14 08:00:36.949  2662  2662 E libc    : Access denied finding property "persist.device_config.runtime_native_boot.enable_generational_cc"
+11-14 08:00:36.950  2662  2662 I app_process: Core platform API reporting enabled, enforcing=false
+11-14 08:00:36.958  2088  2291 D EGL_emulation: eglMakeCurrent: 0x7a0a3984b3a0: ver 3 0 (tinfo 0x7a0a398f25a0)
+11-14 08:00:36.958  1733  1796 E SurfaceFlinger: ro.sf.lcd_density must be defined as a build property
+11-14 08:00:36.959  1733  1796 E SurfaceFlinger: ro.sf.lcd_density must be defined as a build property
+11-14 08:00:36.967  1684  1684 D Zygote  : Forked child process 2828
+11-14 08:00:36.968  1936  1963 W ActivityManager: Slow operation: 86ms so far, now at startProcess: returned from zygote!
+11-14 08:00:37.128  1936  1963 W ActivityManager: Slow operation: 245ms so far, now at startProcess: done updating pids map
+11-14 08:00:37.136  2662  2662 W app_process: JNI RegisterNativeMethods: attempt to register 0 native methods for android.media.AudioAttributes
+11-14 08:00:37.138  2662  2662 D AndroidRuntime: Calling main entry com.android.commands.input.Input
+11-14 08:00:36.932  2662  2662 W app_process: type=1400 audit(0.0:6): avc: denied { read } for name="u:object_r:device_config_runtime_native_boot_prop:s0" dev="tmpfs" ino=170 scontext=u:r:shell:s0 tcontext=u:object_r:device_config_runtime_native_boot_prop:s0 tclass=file permissive=0
+11-14 08:00:37.141  1936  2031 W WindowManager: Failed looking up window callers=com.android.server.wm.InputManagerCallback.interceptKeyBeforeDispatching:182 com.android.server.input.InputManagerService.interceptKeyBeforeDispatching:1839 <bottom of call stack>
+11-14 08:00:37.155  1936  2065 I BackupManagerService: isBackupEnabled() => false due to absent settings file
+11-14 08:00:37.155  1936  2065 I BackupManagerService: Backup enabled => false
+11-14 08:00:36.932  2662  2662 I chatty  : uid=2000(shell) app_process identical 1 line
+11-14 08:00:36.932  2662  2662 W app_process: type=1400 audit(0.0:8): avc: denied { read } for name="u:object_r:device_config_runtime_native_boot_prop:s0" dev="tmpfs" ino=170 scontext=u:r:shell:s0 tcontext=u:object_r:device_config_runtime_native_boot_prop:s0 tclass=file permissive=0
+11-14 08:00:37.158  1713  1713 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 8298496
+11-14 08:00:37.372  1936  1951 W InputManager: Input event injection from pid 2662 failed.
+11-14 08:00:37.372  1936  2031 I InputDispatcher: Dropping event because there is no focused window or focused application in display 0.
+11-14 08:00:37.373  2662  2662 D AndroidRuntime: Shutting down VM
+11-14 08:00:37.414  2330  2330 D TelephonyProvider: subIdString = 1 subId = 1
+11-14 08:00:37.414  2330  2330 D TelephonyProvider: getPreferredApnIdFromApn: for subId 1
+11-14 08:00:37.420  2828  2828 D ExternalStorage: After updating volumes, found 2 active roots
+11-14 08:00:37.422  1684  1684 I Zygote  : Process 2783 exited due to signal 9 (Killed)
+11-14 08:00:37.450  1936  1975 W InputReader: Device has associated, but no associated display id.
+11-14 08:00:37.450  1936  1975 I chatty  : uid=1000(system) PackageManager identical 8 lines
+11-14 08:00:37.450  1936  1975 W InputReader: Device has associated, but no associated display id.
+11-14 08:00:39.756  1936  1975 I PackageManager: Un-granting permission android.permission.CONNECTIVITY_USE_RESTRICTED_NETWORKS from package com.android.captiveportallogin (protectionLevel=18 flags=0x38c8be45)
+11-14 08:00:39.756  1936  1975 I PackageManager: Un-granting permission android.permission.NETWORK_BYPASS_PRIVATE_DNS from package com.android.captiveportallogin (protectionLevel=2 flags=0x38c8be45)
+11-14 08:00:39.756  1936  1975 I PackageManager: Un-granting permission android.permission.REQUEST_INSTALL_PACKAGES from package app.flowdrop.mobile (protectionLevel=66 flags=0x38483e44)
+11-14 08:00:39.132  1936  1936 I chatty  : uid=1000 system_server identical 1 line
+11-14 08:00:39.132  1936  1936 W Binder:1936_C: type=1400 audit(0.0:14): avc: denied { getopt } for scontext=u:r:system_server:s0 tcontext=u:r:shell:s0 tclass=unix_stream_socket permissive=0
+11-14 08:00:39.152  1767  1767 W adbd    : type=1400 audit(0.0:15): avc: denied { shutdown } for scontext=u:r:adbd:s0 tcontext=u:r:shell:s0 tclass=unix_stream_socket permissive=0
+11-14 08:00:39.252  1936  1936 W Binder:1936_C: type=1400 audit(0.0:16): avc: denied { getopt } for scontext=u:r:system_server:s0 tcontext=u:r:shell:s0 tclass=unix_stream_socket permissive=0
+11-14 08:00:39.844  1936  1975 D PackageManager: Instant App installer not found with android.intent.action.INSTALL_INSTANT_APP_PACKAGE
+11-14 08:00:39.844  1936  1975 D PackageManager: Clear ephemeral installer activity
+11-14 08:00:39.844  1936  2313 W system_server: Long monitor contention with owner PackageManager (1975) at void com.android.server.pm.PackageManagerService.installPackagesLI(java.util.List)(PackageManagerService.java:17017) waiters=0 in java.lang.String com.android.server.pm.PackageManagerService.getInstantAppPackageName(int) for 249ms
+11-14 08:00:39.845  1936  1954 W system_server: Long monitor contention with owner PackageManager (1975) at void com.android.server.pm.PackageManagerService.installPackagesLI(java.util.List)(PackageManagerService.java:17017) waiters=1 in java.lang.String com.android.server.pm.PackageManagerService.getInstantAppPackageName(int) for 249ms
+11-14 08:00:39.845  1936  1954 W Looper  : Slow dispatch took 250ms android.ui h=com.android.server.am.PreBootBroadcaster$1 c=null m=1
+11-14 08:00:39.854  1936  1975 I PackageManager.DexOptimizer: Running dexopt (dexoptNeeded=1) on: /data/app/app.flowdrop.mobile-O4A3zOfbJuLHrx4VQJgvDg==/base.apk pkg=app.flowdrop.mobile isa=x86_64 dexoptFlags=boot_complete,profile_guided,public,enable_hidden_api_checks targetFilter=speed-profile oatDir=/data/app/app.flowdrop.mobile-O4A3zOfbJuLHrx4VQJgvDg==/oat classLoaderContext=PCL[]
+11-14 08:00:39.854  1786  1786 V installd: DexInv: --- BEGIN '/data/app/app.flowdrop.mobile-O4A3zOfbJuLHrx4VQJgvDg==/base.apk' ---
+11-14 08:00:39.894  1936  2205 D CountryDetector: The first listener is added
+11-14 08:00:39.895  2618  2618 I ContactsDatabaseHelper: updateUseStrictPhoneNumberComparison: US
+11-14 08:00:39.895  2618  2618 I ContactsUpgradeReceiver: Creating or opening contacts database
+11-14 08:00:39.917  2618  2618 I ContactsDatabaseHelper: Bootstrapping database contacts2.db version: 1400
+11-14 08:00:39.930  1684  1684 D Zygote  : Forked child process 3093
+11-14 08:00:39.936  1936  1963 I ActivityManager: Start proc 3093:com.android.localtransport/1000 for service {com.android.localtransport/com.android.localtransport.LocalTransportService}
+11-14 08:00:39.946  3093  3093 W .localtranspor: Unexpected CPU variant for X86 using defaults: x86_64
+11-14 08:00:40.468  1726  1726 I qemu-props: tell the host boot completed
+11-14 08:00:40.611  3090  3090 W dex2oat : Unexpected CPU variant for X86 using defaults: x86_64
+11-14 08:00:40.611  3090  3090 I dex2oat : /apex/com.android.runtime/bin/dex2oat --input-vdex-fd=-1 --output-vdex-fd=10 --resolve-startup-const-strings=true --max-image-block-size=524288 --compiler-filter=speed-profile --classpath-dir=/data/app/app.flowdrop.mobile-O4A3zOfbJuLHrx4VQJgvDg== --class-loader-context=PCL[] --generate-mini-debug-info --compact-dex-level=none --compilation-reason=install
+11-14 08:00:40.650  3090  3090 I dex2oat : setting boot class path to /apex/com.android.runtime/javalib/core-oj.jar:/apex/com.android.runtime/javalib/core-libart.jar:/apex/com.android.runtime/javalib/okhttp.jar:/apex/com.android.runtime/javalib/bouncycastle.jar:/apex/com.android.runtime/javalib/apache-xml.jar:/system/framework/framework.jar:/system/framework/ext.jar:/system/framework/telephony-common.jar:/system/framework/voip-common.jar:/system/framework/ims-common.jar:/system/framework/android.test.base.jar
+11-14 08:00:40.674  1936  1936 V SettingsProvider: Notifying for 0: content://settings/system/screen_off_timeout
+11-14 08:00:40.743  2618  2618 I CallLogDatabaseHelper: Migrating from old tables...
+11-14 08:00:40.743  2618  2618 I CallLogDatabaseHelper: Source tables don't exist.
+11-14 08:00:40.755  2862  2997 E SQLiteLog: (1) no such table: audio_genres
+11-14 08:00:40.756  2618  2618 I ContactsProvider: Locale has changed from null to [en_US]
+11-14 08:00:40.757  2618  2618 I ContactsDatabaseHelper: Switching to locale [en_US] (ICU v63.2.0.0)
+11-14 08:00:41.428  1936  3218 W ActivityManager: Unable to start service Intent { act=com.android.email.EXCHANGE_INTENT pkg=com.android.exchange } U=0: not found
+11-14 08:00:41.430  1936  2522 W ActivityManager: Unable to start service Intent { act=com.android.email.EXCHANGE_INTENT pkg=com.android.exchange } U=0: not found
+11-14 08:00:41.457  1786  1786 V installd: DexInv: --- END '/data/app/app.flowdrop.mobile-O4A3zOfbJuLHrx4VQJgvDg==/base.apk' (success) ---
+11-14 08:00:41.458  1936  1975 W PackageManager: Cannot whitelist unknown permission: android.permission.HIDE_OVERLAY_WINDOWS
+11-14 08:00:41.458  1936  1975 W PackageManager: Cannot whitelist unknown permission: android.permission.FOREGROUND_SERVICE_DATA_SYNC
+11-14 08:00:41.458  1936  1975 W PackageManager: Cannot whitelist unknown permission: android.permission.POST_NOTIFICATIONS
+11-14 08:00:41.458  1936  1975 W PackageManager: Cannot whitelist unknown permission: android.permission.UPDATE_PACKAGES_WITHOUT_USER_ACTION
+11-14 08:00:41.459  1683  1911 I netd    : trafficSetNetPermForUids(4, [10116]) <0.02ms>
+11-14 08:00:41.462  2103  2148 E BackupHelper: Could not parse delayed permissions
+11-14 08:00:41.462  2103  2148 E BackupHelper: java.io.FileNotFoundException: /data/user_de/0/com.android.permissioncontroller/files/delayed_restore_permissions.xml: open failed: ENOENT (No such file or directory)
+11-14 08:00:41.492  1767  1767 W adbd    : type=1400 audit(0.0:21): avc: denied { shutdown } for scontext=u:r:adbd:s0 tcontext=u:r:shell:s0 tclass=unix_stream_socket permissive=0
+11-14 08:00:41.761  1936  1975 I PackageManager: Un-granting permission android.permission.GLOBAL_SEARCH from package com.android.quicksearchbox (protectionLevel=18 flags=0x3088be45)
+11-14 08:00:41.762  1936  1975 I PackageManager: Un-granting permission android.permission.REQUEST_INSTALL_PACKAGES from package app.flowdrop.mobile (protectionLevel=66 flags=0x38483e44)
+11-14 08:00:41.762  1936  1975 I PackageManager: Un-granting permission android.permission.BIND_WALLPAPER from package com.android.camera2 (protectionLevel=18 flags=0x20d8bc45)
+11-14 08:00:41.763  3287  3287 I droid.messagin: The ClassLoaderContext is a special shared library.
+11-14 08:00:41.764  1936  1975 I PackageManager: Un-granting permission android.permission.CONNECTIVITY_USE_RESTRICTED_NETWORKS from package com.android.captiveportallogin (protectionLevel=18 flags=0x38c8be45)
+11-14 08:00:41.764  1936  1975 I PackageManager: Un-granting permission android.permission.NETWORK_BYPASS_PRIVATE_DNS from package com.android.captiveportallogin (protectionLevel=2 flags=0x38c8be45)
+11-14 08:00:41.542  1936  1936 W Binder:1936_5: type=1400 audit(0.0:22): avc: denied { getopt } for scontext=u:r:system_server:s0 tcontext=u:r:shell:s0 tclass=unix_stream_socket permissive=0
+11-14 08:00:41.784  1936  1975 D PackageManager: Instant App installer not found with android.intent.action.INSTALL_INSTANT_APP_PACKAGE
+11-14 08:00:41.784  1936  1975 D PackageManager: Clear ephemeral installer activity
+11-14 08:00:41.542  1936  1936 I chatty  : uid=1000 system_server identical 1 line
+11-14 08:00:41.542  1936  1936 W Binder:1936_5: type=1400 audit(0.0:24): avc: denied { getopt } for scontext=u:r:system_server:s0 tcontext=u:r:shell:s0 tclass=unix_stream_socket permissive=0
+11-14 08:00:41.786  1936  1975 I PackageManager.DexOptimizer: Running dexopt (dexoptNeeded=1) on: /data/app/app.flowdrop.mobile.test-b_V-eSMfYmVOoEXBFaCv_A==/base.apk pkg=app.flowdrop.mobile.test isa=x86_64 dexoptFlags=boot_complete,profile_guided,public,enable_hidden_api_checks targetFilter=speed-profile oatDir=/data/app/app.flowdrop.mobile.test-b_V-eSMfYmVOoEXBFaCv_A==/oat classLoaderContext=PCL[]
+11-14 08:00:41.787  1786  1807 V installd: DexInv: --- BEGIN '/data/app/app.flowdrop.mobile.test-b_V-eSMfYmVOoEXBFaCv_A==/base.apk' ---
+11-14 08:00:41.790  1936  2205 D PackageManager: Instant App installer not found with android.intent.action.INSTALL_INSTANT_APP_PACKAGE
+11-14 08:00:41.790  1936  2205 D PackageManager: Clear ephemeral installer activity
+11-14 08:00:41.790  1936  2205 D PackageManager: Instant App installer not found with android.intent.action.INSTALL_INSTANT_APP_PACKAGE
+11-14 08:00:41.790  1936  2205 D PackageManager: Clear ephemeral installer activity
+11-14 08:00:41.790  1936  2205 D PackageManager: Instant App installer not found with android.intent.action.INSTALL_INSTANT_APP_PACKAGE
+11-14 08:00:41.790  1936  2205 D PackageManager: Clear ephemeral installer activity
+11-14 08:00:41.790  1936  2205 D PackageManager: Instant App installer not found with android.intent.action.INSTALL_INSTANT_APP_PACKAGE
+11-14 08:00:41.836  3287  3312 I MessagingApp: Carrier configs loaded: Bundle[{httpSocketTimeout=60000, aliasMinChars=2, smsToMmsTextThreshold=-1, enableSMSDeliveryReports=true, maxMessageTextSize=-1, supportMmsContentDisposition=true, enabledTransID=false, aliasEnabled=false, supportHttpCharsetHeader=false, allowAttachAudio=true, smsToMmsTextLengthThreshold=-1, recipientLimit=2147483647, uaProfTagName=x-wap-profile, aliasMaxChars=48, maxImageHeight=1944, enableMMSDeliveryReports=false, userAgent=, mmsCloseConnection=true, config_cellBroadcastAppLinks=true, maxSubjectLength=40, httpParams=, enableGroupMms=true, emailGatewayNumber=, maxMessageSize=1048576, naiSuffix=, enableMMSReadReports=false, maxImageWidth=2592, uaProfUrl=, enabledMMS=false, enabledNotifyWapMMSC=false, sendMultipartSmsAsSeparateMessages=false, enableMultipartSMS=true}] from resources+system for subId=1
+11-14 08:00:41.839  3305  3305 W dex2oat : Unexpected CPU variant for X86 using defaults: x86_64
+11-14 08:00:41.839  3305  3305 I dex2oat : /apex/com.android.runtime/bin/dex2oat --input-vdex-fd=-1 --output-vdex-fd=10 --resolve-startup-const-strings=true --max-image-block-size=524288 --compiler-filter=speed-profile --classpath-dir=/data/app/app.flowdrop.mobile.test-b_V-eSMfYmVOoEXBFaCv_A== --class-loader-context=PCL[] --generate-mini-debug-info --compact-dex-level=none --compilation-reason=install
+11-14 08:00:41.840  3287  3310 W MessagingApp: canonicalizeMccMnc: invalid mccmnc:null ,null
+11-14 08:00:41.840  3287  3313 I MessagingAppDataModel: Fixup: Send failed - 0 Download failed - 0
+11-14 08:00:41.840  2330  2499 D MmsService: getCarrierConfigValues
+11-14 08:00:41.840  2330  2499 I MmsService: mms config for sub 1: Bundle[{httpSocketTimeout=60000, aliasMinChars=2, smsToMmsTextThreshold=-1, enableSMSDeliveryReports=true, maxMessageTextSize=-1, supportMmsContentDisposition=true, enabledTransID=false, aliasEnabled=false, supportHttpCharsetHeader=false, allowAttachAudio=true, smsToMmsTextLengthThreshold=-1, recipientLimit=2147483647, uaProfTagName=x-wap-profile, aliasMaxChars=48, maxImageHeight=1944, enableMMSDeliveryReports=false, userAgent=, mmsCloseConnection=true, config_cellBroadcastAppLinks=true, maxSubjectLength=40, httpParams=, enableGroupMms=true, emailGatewayNumber=, maxMessageSize=1048576, naiSuffix=, enableMMSReadReports=false, maxImageWidth=2592, uaProfUrl=, enabledMMS=false, enabledNotifyWapMMSC=false, sendMultipartSmsAsSeparateMessages=false, enableMultipartSMS=true}]
+11-14 08:00:41.840  3287  3310 I MessagingApp: Carrier configs loaded: Bundle[{httpSocketTimeout=60000, aliasMinChars=2, smsToMmsTextThreshold=-1, enableSMSDeliveryReports=true, maxMessageTextSize=-1, supportMmsContentDisposition=true, enabledTransID=false, aliasEnabled=false, supportHttpCharsetHeader=false, allowAttachAudio=true, smsToMmsTextLengthThreshold=-1, recipientLimit=2147483647, uaProfTagName=x-wap-profile, aliasMaxChars=48, maxImageHeight=1944, enableMMSDeliveryReports=false, userAgent=, mmsCloseConnection=true, config_cellBroadcastAppLinks=true, maxSubjectLength=40, httpParams=, enableGroupMms=true, emailGatewayNumber=, maxMessageSize=1048576, naiSuffix=, enableMMSReadReports=false, maxImageWidth=2592, uaProfUrl=, enabledMMS=false, enabledNotifyWapMMSC=false, sendMultipartSmsAsSeparateMessages=false, enableMultipartSMS=true}] from resources+system for subId=1
+11-14 08:00:41.841  3314  3314 I com.android.nf: The ClassLoaderContext is a special shared library.
+11-14 08:00:41.845  2862  2997 E SQLiteLog: (1) no such table: audio_genres
+11-14 08:00:42.762  1936  1936 V SettingsProvider: Notifying for 0: content://settings/secure/sysui_qs_tiles
+11-14 08:00:42.771  2560  2560 I Dialer  : TaskSchedulerJobService - starting 0
+11-14 08:00:42.774  1936  2694 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.PACKAGE_ADDED dat=package:app.flowdrop.mobile flg=0x4000010 (has extras) } to com.android.packageinstaller/.PackageInstalledReceiver
+11-14 08:00:42.774  1936  1962 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.PACKAGE_ADDED dat=package:app.flowdrop.mobile flg=0x4000010 (has extras) } to com.android.gallery3d/.app.PackagesMonitor
+11-14 08:00:42.774  1936  1962 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.PACKAGE_ADDED dat=package:app.flowdrop.mobile flg=0x4000010 (has extras) } to com.android.musicfx/.Compatibility$Receiver
+11-14 08:00:42.776  1936  2041 W BroadcastQueue: Background execution not allowed: receiving Intent { act=com.android.Bugle.intent.action.ACTION_NOTIFY_CONVERSATIONS_CHANGED flg=0x10 } to com.android.messaging/.widget.BugleWidgetProvider
+11-14 08:00:42.781  2560  2560 I Dialer  : VvmTaskExecutor - onStartJob
+11-14 08:00:42.781  2560  2560 I Dialer  : Task.createTask - create task:com.android.voicemail.impl.ActivationTask
+11-14 08:00:42.782  2560  3445 I Dialer  : VvmTaskExecutor - executing task com.android.voicemail.impl.ActivationTask@2ce2e15
+11-14 08:00:42.782  2560  3445 I Dialer  : PreOMigrationHandler - migrating ComponentInfo{com.android.phone/com.android.services.telephony.TelephonyConnectionService}, ***, UserHandle{0}
+11-14 08:00:42.782  2560  3445 I Dialer  : PreOMigrationHandler.migrateSettings - migrating settings
+11-14 08:00:42.787  2618  2618 I ContactsPerf: VoicemailContentProvider.onCreate start
+11-14 08:00:42.838  1936  1956 W InputReader: Device has associated, but no associated display id.
+11-14 08:00:42.839  3305  3305 I dex2oat : dex2oat took 1.027s (71.263ms cpu) (threads: 2) arena alloc=2040B (2040B) java alloc=16KB (16808B) native alloc=1500KB (1536832B) free=419KB (429248B)
+11-14 08:00:42.842  1786  1807 V installd: DexInv: --- END '/data/app/app.flowdrop.mobile.test-b_V-eSMfYmVOoEXBFaCv_A==/base.apk' (success) ---
+11-14 08:00:42.852  1936  1975 V BackupManagerService: restoreAtInstall pkg=app.flowdrop.mobile.test token="[REDACTED]" restoreSet=0
+11-14 08:00:42.855  1936  1975 V BackupManagerService: Finishing install immediately
+11-14 08:00:42.860  1936  1975 I ActivityManager: Killing 3314:com.android.nfc/1027 (adj 935): change com.android.nfc
+11-14 08:00:42.871  1936  1936 I RoleManagerService: Granting default permissions...
+11-14 08:00:42.877  2330  2330 D CarrierSvcBindHelper: No carrier app for: 0
+11-14 08:00:42.889  1936  2032 I InputReader: Reconfiguring input devices.  changes=0x00000010
+11-14 08:00:42.915  1684  1684 I Zygote  : Process 3314 exited due to signal 9 (Killed)
+11-14 08:00:42.921  2862  2997 I MediaProvider: End Intent { act=android.intent.action.MEDIA_MOUNTED dat=file:///storage/emulated/0 flg=0x5000010 cmp=com.android.providers.media/.MediaService (has extras) }
+11-14 08:00:42.942  1936  1936 W Binder:1936_9: type=1400 audit(0.0:29): avc: denied { getopt } for scontext=u:r:system_server:s0 tcontext=u:r:shell:s0 tclass=unix_stream_socket permissive=0
+11-14 08:00:42.968  1936  2032 I InputReader: Reconfiguring input devices.  changes=0x00000010
+11-14 08:00:42.968  1936  2926 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.PACKAGE_ADDED dat=package:app.flowdrop.mobile.test flg=0x4000010 (has extras) } to com.android.packageinstaller/.PackageInstalledReceiver
+11-14 08:00:42.968  1936  1962 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.PACKAGE_ADDED dat=package:app.flowdrop.mobile.test flg=0x4000010 (has extras) } to com.android.gallery3d/.app.PackagesMonitor
+11-14 08:00:42.968  1936  1962 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.PACKAGE_ADDED dat=package:app.flowdrop.mobile.test flg=0x4000010 (has extras) } to com.android.musicfx/.Compatibility$Receiver
+11-14 08:00:42.979  2330  2330 D CarrierSvcBindHelper: No carrier app for: 0
+11-14 08:00:42.980  2330  2330 D CarrierConfigLoader: mHandler: 9 phoneId: 0
+11-14 08:00:42.987  1936  1961 W VoiceInteractionManagerService: no available voice interaction services found for user 0
+11-14 08:00:43.004  1936  1936 I Telecom : DefaultDialerCache: Refreshing default dialer for user 0: now com.android.dialer: CM.CCCR->CM.UECNT->CM.CCCR->CM.UECNT@ADc
+11-14 08:00:43.010  1936  1936 V BackupManagerConstants: getFullBackupIntervalMilliseconds(...) returns 86400000
+11-14 08:00:43.011  1936  1961 W VoiceInteractionManagerService: no available voice recognition services found for user 0
+11-14 08:00:43.016  1936  1936 V BackupManagerConstants: getFullBackupRequiredNetworkType(...) returns 2
+11-14 08:00:43.016  1936  1936 V BackupManagerConstants: getFullBackupRequireCharging(...) returns true
+11-14 08:00:43.017  1936  2935 I ActivityManager: Force stopping app.flowdrop.mobile appid=10116 user=0: from pid 3461
+11-14 08:00:43.019  2330  2330 D CarrierSvcBindHelper: No carrier app for: 0
+11-14 08:00:43.075  1936  1947 I system_server: Background concurrent copying GC freed 57783(3620KB) AllocSpace objects, 26(2112KB) LOS objects, 42% free, 6723KB/11MB, paused 23us total 135.539ms
+11-14 08:00:42.942  1767  1767 W adbd    : type=1400 audit(0.0:30): avc: denied { shutdown } for scontext=u:r:adbd:s0 tcontext=u:r:shell:s0 tclass=unix_stream_socket permissive=0
+11-14 08:00:43.139  3464  3464 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+11-14 08:00:43.146  3464  3464 E libc    : Access denied finding property "persist.device_config.runtime_native_boot.enable_apex_image"
+11-14 08:00:43.146  3464  3464 I AndroidRuntime: Using default boot image
+11-14 08:00:43.149  3464  3464 E libc    : Access denied finding property "persist.device_config.runtime_native_boot.disable_lock_profiling"
+11-14 08:00:43.149  3464  3464 I AndroidRuntime: Leaving lock profiling enabled
+11-14 08:00:43.149  3464  3464 E libc    : Access denied finding property "persist.device_config.runtime_native_boot.enable_generational_cc"
+11-14 08:00:43.122  3464  3464 W app_process: type=1400 audit(0.0:31): avc: denied { read } for name="u:object_r:device_config_runtime_native_boot_prop:s0" dev="tmpfs" ino=170 scontext=u:r:shell:s0 tcontext=u:object_r:device_config_runtime_native_boot_prop:s0 tclass=file permissive=0
+11-14 08:00:43.157  3464  3464 I app_process: Core platform API reporting enabled, enforcing=false
+11-14 08:00:43.197  3464  3464 D ICU     : Time zone APEX file found: /apex/com.android.tzdata/etc/icu/icu_tzdata.dat
+11-14 08:00:43.200  3464  3464 W app_process: Unexpected CPU variant for X86 using defaults: x86_64
+11-14 08:00:43.203  3464  3464 I app_process: The ClassLoaderContext is a special shared library.
+11-14 08:00:43.209  3464  3464 W app_process: JNI RegisterNativeMethods: attempt to register 0 native methods for android.media.AudioAttributes
+11-14 08:00:43.211  3464  3464 D AndroidRuntime: Calling main entry com.android.commands.am.Am
+11-14 08:00:43.212  1936  2694 I ActivityManager: Force stopping app.flowdrop.mobile appid=10116 user=0: start instr
+11-14 08:00:43.219  1684  1684 D Zygote  : Forked child process 3476
+11-14 08:00:43.223  1936  1963 I ActivityManager: Start proc 3476:app.flowdrop.mobile/u0a116 for added application app.flowdrop.mobile
+11-14 08:00:43.224  3476  3476 W flowdrop.mobil: Unexpected CPU variant for X86 using defaults: x86_64
+11-14 08:00:43.241  3476  3476 W flowdrop.mobil: ClassLoaderContext classpath size mismatch. expected=0, found=1 (PCL[] | PCL[/data/app/app.flowdrop.mobile.test-b_V-eSMfYmVOoEXBFaCv_A==/base.apk*2103929649])
+11-14 08:00:43.241  3476  3476 I flowdrop.mobil: Failed to add image file Rejecting application image due to class loader mismatch: 'Mismatch in dex files'
+11-14 08:00:43.244  3476  3476 W flowdrop.mobil: ClassLoaderContext parent mismatch.  (PCL[] | PCL[];PCL[/data/app/app.flowdrop.mobile.test-b_V-eSMfYmVOoEXBFaCv_A==/base.apk*2103929649:/data/app/app.flowdrop.mobile-O4A3zOfbJuLHrx4VQJgvDg==/base.apk*1729153150])
+11-14 08:00:43.244  3476  3476 W flowdrop.mobil: Found duplicate classes, falling back to extracting from APK : /data/app/app.flowdrop.mobile.test-b_V-eSMfYmVOoEXBFaCv_A==/base.apk
+11-14 08:00:43.244  3476  3476 W flowdrop.mobil: NOTE: This wastes RAM and hurts startup performance.
+11-14 08:00:43.244  3476  3476 W flowdrop.mobil: Found duplicated class when checking oat files: 'Lapp/flowdrop/mobile/test/NativeFolderSmoke$$ExternalSyntheticLambda0;' in /data/app/app.flowdrop.mobile.test-b_V-eSMfYmVOoEXBFaCv_A==/base.apk and /data/app/app.flowdrop.mobile.test-b_V-eSMfYmVOoEXBFaCv_A==/base.apk
+11-14 08:00:43.244  3476  3476 W flowdrop.mobil:
+11-14 08:00:43.245  3476  3476 W flowdrop.mobil: ClassLoaderContext classpath size mismatch. expected=0, found=1 (PCL[] | PCL[/data/app/app.flowdrop.mobile.test-b_V-eSMfYmVOoEXBFaCv_A==/base.apk*2103929649];PCL[/data/app/app.flowdrop.mobile.test-b_V-eSMfYmVOoEXBFaCv_A==/base.apk*2103929649:/data/app/app.flowdrop.mobile-O4A3zOfbJuLHrx4VQJgvDg==/base.apk*1729153150])
+11-14 08:00:43.245  3476  3476 W flowdrop.mobil: Found duplicate classes, falling back to extracting from APK : /data/app/app.flowdrop.mobile-O4A3zOfbJuLHrx4VQJgvDg==/base.apk
+11-14 08:00:43.245  3476  3476 W flowdrop.mobil: NOTE: This wastes RAM and hurts startup performance.
+11-14 08:00:43.245  3476  3476 W flowdrop.mobil: Found duplicated class when checking oat files: 'Lapp/flowdrop/mobile/AppUpdates$$ExternalSyntheticLambda0;' in /data/app/app.flowdrop.mobile-O4A3zOfbJuLHrx4VQJgvDg==/base.apk and /data/app/app.flowdrop.mobile-O4A3zOfbJuLHrx4VQJgvDg==/base.apk
+11-14 08:00:43.245  3476  3476 W flowdrop.mobil:
+11-14 08:00:43.254  1936  1961 I RoleUserState: Wrote roles.xml successfully
+11-14 08:00:43.264  1936  3402 I ActivityManager: Force stopping app.flowdrop.mobile appid=10116 user=0: finished inst
+11-14 08:00:43.264  1936  3402 I ActivityManager: Killing 3476:app.flowdrop.mobile/u0a116 (adj 0): stop app.flowdrop.mobile
+11-14 08:00:43.266  1936  3497 W Binder  : Outgoing transactions from this process must be FLAG_ONEWAY
+11-14 08:00:43.266  1936  3497 W Binder  : java.lang.Throwable
+11-14 08:00:43.266  1936  3497 W Binder  : 	at android.os.BinderProxy.transact(BinderProxy.java:480)
+11-14 08:00:43.266  1936  3497 W Binder  : 	at android.app.IInstrumentationWatcher$Stub$Proxy.instrumentationFinished(IInstrumentationWatcher.java:205)
+11-14 08:00:43.266  1936  3497 W Binder  : 	at com.android.server.am.InstrumentationReporter$MyThread.run(InstrumentationReporter.java:86)
+11-14 08:00:43.266  3464  3464 D AndroidRuntime: Shutting down VM
+11-14 08:00:43.313  1684  1684 I Zygote  : Process 3476 exited due to signal 9 (Killed)
+11-14 08:00:43.321  1936  3402 I ActivityTaskManager: START u0 {flg=0x10000000 cmp=app.flowdrop.mobile/.MainActivity} from uid 2000
+11-14 08:00:43.334  1936  1957 E system_server: Invalid ID 0x00000000.
+11-14 08:00:43.339  1936  2935 W InputReader: Device has associated, but no associated display id.
+11-14 08:00:43.339  1936  2935 I chatty  : uid=1000(system) Binder:1936_D identical 8 lines
+11-14 08:00:43.339  1936  2935 W InputReader: Device has associated, but no associated display id.
+11-14 08:00:43.359  1936  1964 I libprocessgroup: Successfully killed process cgroup uid 10116 pid 3476 in 94ms
+11-14 08:00:43.394  1713  1713 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 8298496
+11-14 08:00:43.452  1684  1684 D Zygote  : Forked child process 3503
+11-14 08:00:43.453  1936  1963 W ActivityManager: Slow operation: 109ms so far, now at startProcess: done updating battery stats
+11-14 08:00:43.453  1936  1963 W ActivityManager: Slow operation: 109ms so far, now at startProcess: building log message
+11-14 08:00:43.453  1936  1963 I ActivityManager: Start proc 3503:app.flowdrop.mobile/u0a116 for activity {app.flowdrop.mobile/app.flowdrop.mobile.MainActivity}
+11-14 08:00:43.453  1936  1963 W ActivityManager: Slow operation: 109ms so far, now at startProcess: starting to update pids map
+11-14 08:00:43.453  1936  1963 W ActivityManager: Slow operation: 109ms so far, now at startProcess: done updating pids map
+11-14 08:00:43.455  3503  3503 W flowdrop.mobil: Unexpected CPU variant for X86 using defaults: x86_64
+11-14 08:00:43.460  1936  2926 W InputReader: Device has associated, but no associated display id.
+11-14 08:00:43.462  1936  2926 I chatty  : uid=1000(system) Binder:1936_C identical 28 lines
+11-14 08:00:43.462  1936  2926 W InputReader: Device has associated, but no associated display id.
+11-14 08:00:43.479  3503  3503 W flowdrop.mobil: Accessing hidden method Landroid/view/WindowInsets$Type;->systemBars()I (blacklist, linking, denied)
+11-14 08:00:44.557  1683  1912 D MDnsDS  : Going to poll with pollCount 3
+11-14 08:00:44.557  1936  2052 D NsdService: Register 2 3
+11-14 08:00:44.583  1936  1961 I ActivityTaskManager: Displayed app.flowdrop.mobile/.MainActivity: +1s212ms
+11-14 08:00:44.607  3503  3521 I OpenGLRenderer: Davey! duration=932ms; Flags=0, IntendedVsync=19961292416, Vsync=20827959048, OldestInputEvent=9223372036854775807, NewestInputEvent=0, HandleInputStart=20837236595, AnimationStart=20837262924, PerformTraversalsStart=20837268078, DrawStart=20837458052, SyncQueued=20837707636, SyncStart=20849196633, IssueDrawCommandsStart=20849498664, SwapBuffers=20865691516, FrameCompleted=20904898808, DequeueBufferDuration=364000, QueueBufferDuration=13870000,
+11-14 08:00:44.634  1936  1947 I system_server: Background concurrent copying GC freed 20308(1611KB) AllocSpace objects, 37(2996KB) LOS objects, 42% free, 7216KB/12MB, paused 23us total 164.840ms
+11-14 08:00:44.814  1713  1713 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 8298496
+11-14 08:00:44.948  1590  1590 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@3.0::IMapper/default in either framework or device manifest.
+11-14 08:00:44.948  3546  3546 W Gralloc3: mapper 3.x is not supported
+11-14 08:00:44.954  3546  3546 D HostConnection: createUnique: call
+11-14 08:00:44.955  3546  3546 D HostConnection: HostConnection::get() New Host Connection established 0x77582caf85a0, tid 3546
+11-14 08:00:45.138  1936  1955 I chatty  : uid=1000(system) android.io identical 8 lines
+11-14 08:00:45.139  1936  1955 I DropBoxManagerService: add tag=system_server_strictmode isTagEnabled=true flags=0x2
+11-14 08:00:45.155  1936  2694 I ActivityManager: Force stopping app.flowdrop.mobile appid=10116 user=0: from pid 3559
+11-14 08:00:45.155  1936  2694 I ActivityManager: Killing 3503:app.flowdrop.mobile/u0a116 (adj 0): stop app.flowdrop.mobile
+11-14 08:00:45.156  1936  2694 W ActivityManager: Scheduling restart of crashed service app.flowdrop.mobile/.HostService in 1000ms
+11-14 08:00:45.159  1936  2694 W ActivityTaskManager: Force removing ActivityRecord{292db0d u0 app.flowdrop.mobile/.MainActivity t6 f}: app died, no saved state
+11-14 08:00:45.165  1936  2694 W InputReader: Device has associated, but no associated display id.
+11-14 08:00:45.168  1936  2694 I chatty  : uid=1000(system) Binder:1936_A identical 18 lines
+11-14 08:00:45.168  1936  2694 W InputReader: Device has associated, but no associated display id.
+11-14 08:00:45.171  2330  2330 D CarrierSvcBindHelper: No carrier app for: 0
+11-14 08:00:45.178  1936  3402 E WifiMulticastLockManager: Multicaster binderDied
+11-14 08:00:45.178  1936  2884 D ConnectivityService: ConnectivityService NetworkRequestInfo binderDied(NetworkRequest [ LISTEN id=16, [ Transports: WIFI Capabilities: NOT_RESTRICTED&TRUSTED&NOT_VPN&FOREGROUND Uid: 10116] ], android.os.BinderProxy@20ab6bd)
+11-14 08:00:45.179  1936  2052 D NsdService: Client disconnected
+11-14 08:00:45.230  1713  1713 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 8298496
+11-14 08:00:45.230  2735  2966 D EGL_emulation: eglMakeCurrent: 0x7a09ee005da0: ver 3 0 (tinfo 0x7a09edffccc0)
+11-14 08:00:45.319  3563  3563 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+11-14 08:00:45.320  3563  3563 E libc    : Access denied finding property "persist.device_config.runtime_native_boot.enable_apex_image"
+11-14 08:00:45.320  3563  3563 I AndroidRuntime: Using default boot image
+11-14 08:00:45.320  3563  3563 E libc    : Access denied finding property "persist.device_config.runtime_native_boot.disable_lock_profiling"
+11-14 08:00:45.320  3563  3563 I AndroidRuntime: Leaving lock profiling enabled
+11-14 08:00:45.302  3563  3563 W app_process: type=1400 audit(0.0:35): avc: denied { read } for name="u:object_r:device_config_runtime_native_boot_prop:s0" dev="tmpfs" ino=170 scontext=u:r:shell:s0 tcontext=u:object_r:device_config_runtime_native_boot_prop:s0 tclass=file permissive=0
+11-14 08:00:45.302  3563  3563 I chatty  : uid=2000(shell) app_process identical 1 line
+11-14 08:00:45.302  3563  3563 W app_process: type=1400 audit(0.0:37): avc: denied { read } for name="u:object_r:device_config_runtime_native_boot_prop:s0" dev="tmpfs" ino=170 scontext=u:r:shell:s0 tcontext=u:object_r:device_config_runtime_native_boot_prop:s0 tclass=file permissive=0
+11-14 08:00:45.320  3563  3563 E libc    : Access denied finding property "persist.device_config.runtime_native_boot.enable_generational_cc"
+11-14 08:00:45.321  3563  3563 I app_process: Core platform API reporting enabled, enforcing=false
+11-14 08:00:45.384  3563  3563 D ICU     : Time zone APEX file found: /apex/com.android.tzdata/etc/icu/icu_tzdata.dat
+11-14 08:00:45.386  3563  3563 W app_process: Unexpected CPU variant for X86 using defaults: x86_64
+11-14 08:00:45.387  3563  3563 I app_process: The ClassLoaderContext is a special shared library.
+11-14 08:00:45.394  3563  3563 W app_process: JNI RegisterNativeMethods: attempt to register 0 native methods for android.media.AudioAttributes
+11-14 08:00:45.396  3563  3563 D AndroidRuntime: Calling main entry com.android.commands.am.Am
+11-14 08:00:45.397  1936  1952 I ActivityManager: Force stopping app.flowdrop.mobile appid=10116 user=0: start instr
+11-14 08:00:45.404  1684  1684 D Zygote  : Forked child process 3574
+11-14 08:00:45.409  1936  1963 I ActivityManager: Start proc 3574:app.flowdrop.mobile/u0a116 for added application app.flowdrop.mobile
+11-14 08:00:45.409  3574  3574 W flowdrop.mobil: Unexpected CPU variant for X86 using defaults: x86_64
+11-14 08:00:45.437  3574  3574 W flowdrop.mobil: ClassLoaderContext classpath size mismatch. expected=0, found=1 (PCL[] | PCL[/data/app/app.flowdrop.mobile.test-b_V-eSMfYmVOoEXBFaCv_A==/base.apk*2103929649])
+11-14 08:00:45.437  3574  3574 I flowdrop.mobil: Failed to add image file Rejecting application image due to class loader mismatch: 'Mismatch in dex files'
+11-14 08:00:45.441  3574  3574 W flowdrop.mobil: ClassLoaderContext parent mismatch.  (PCL[] | PCL[];PCL[/data/app/app.flowdrop.mobile.test-b_V-eSMfYmVOoEXBFaCv_A==/base.apk*2103929649:/data/app/app.flowdrop.mobile-O4A3zOfbJuLHrx4VQJgvDg==/base.apk*1729153150])
+11-14 08:00:45.441  3574  3574 W flowdrop.mobil: Found duplicate classes, falling back to extracting from APK : /data/app/app.flowdrop.mobile.test-b_V-eSMfYmVOoEXBFaCv_A==/base.apk
+11-14 08:00:45.441  3574  3574 W flowdrop.mobil: NOTE: This wastes RAM and hurts startup performance.
+11-14 08:00:45.441  3574  3574 W flowdrop.mobil: Found duplicated class when checking oat files: 'Lapp/flowdrop/mobile/test/NativeFolderSmoke$$ExternalSyntheticLambda0;' in /data/app/app.flowdrop.mobile.test-b_V-eSMfYmVOoEXBFaCv_A==/base.apk and /data/app/app.flowdrop.mobile.test-b_V-eSMfYmVOoEXBFaCv_A==/base.apk
+11-14 08:00:45.441  3574  3574 W flowdrop.mobil:
+11-14 08:00:45.442  3574  3574 W flowdrop.mobil: ClassLoaderContext classpath size mismatch. expected=0, found=1 (PCL[] | PCL[/data/app/app.flowdrop.mobile.test-b_V-eSMfYmVOoEXBFaCv_A==/base.apk*2103929649];PCL[/data/app/app.flowdrop.mobile.test-b_V-eSMfYmVOoEXBFaCv_A==/base.apk*2103929649:/data/app/app.flowdrop.mobile-O4A3zOfbJuLHrx4VQJgvDg==/base.apk*1729153150])
+11-14 08:00:45.442  3574  3574 W flowdrop.mobil: Found duplicate classes, falling back to extracting from APK : /data/app/app.flowdrop.mobile-O4A3zOfbJuLHrx4VQJgvDg==/base.apk
+11-14 08:00:45.442  3574  3574 W flowdrop.mobil: NOTE: This wastes RAM and hurts startup performance.
+11-14 08:00:45.442  3574  3574 W flowdrop.mobil: Found duplicated class when checking oat files: 'Lapp/flowdrop/mobile/AppUpdates$$ExternalSyntheticLambda0;' in /data/app/app.flowdrop.mobile-O4A3zOfbJuLHrx4VQJgvDg==/base.apk and /data/app/app.flowdrop.mobile-O4A3zOfbJuLHrx4VQJgvDg==/base.apk
+11-14 08:00:45.442  3574  3574 W flowdrop.mobil:
+11-14 08:00:45.448  1936  2691 I ActivityTaskManager: START u0 {act=android.intent.action.MAIN flg=0x10000000 cmp=app.flowdrop.mobile/.MainActivity} from uid 10116
+11-14 08:00:45.472  1936  2691 W InputReader: Device has associated, but no associated display id.
+11-14 08:00:45.473  1936  2691 I chatty  : uid=1000(system) Binder:1936_9 identical 38 lines
+11-14 08:00:45.473  1936  2691 W InputReader: Device has associated, but no associated display id.
+11-14 08:00:45.475  3574  3574 W ActivityThread: handleWindowVisibility: no activity for token android.os.BinderProxy@3eef896
+11-14 08:00:45.480  1713  1713 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 8298496
+11-14 08:00:45.483  1733  1973 E SurfaceFlinger: ro.sf.lcd_density must be defined as a build property
+11-14 08:00:45.483  1733  1973 E SurfaceFlinger: ro.sf.lcd_density must be defined as a build property
+11-14 08:00:45.525  3574  3597 D libEGL  : loaded /vendor/lib64/egl/libGLESv2_emulation.so
+11-14 08:00:45.527  3574  3574 W flowdrop.mobil: Accessing hidden method Landroid/view/WindowInsets$Type;->systemBars()I (blacklist, linking, denied)
+11-14 08:00:45.462  3574  3574 W RenderThread: type=1400 audit(0.0:38): avc: denied { write } for name="property_service" dev="tmpfs" ino=264 scontext=u:r:untrusted_app:s0:c116,c256,c512,c768 tcontext=u:object_r:property_socket:s0 tclass=sock_file permissive=0 app=app.flowdrop.mobile
+11-14 08:00:45.583  1936  2052 D NsdService: mdnssd [start-service]
+11-14 08:00:45.583  1683  1913 D MDnsDS  : Starting MDNSD
+11-14 08:00:45.613  1936  1957 W InputReader: Device has associated, but no associated display id.
+11-14 08:00:45.633  1936  1936 V SettingsProvider: Notifying for 0: content://settings/secure/accessibility_enabled
+11-14 08:00:45.692  1936  1955 I DropBoxManagerService: add tag=system_app_strictmode isTagEnabled=true flags=0x2
+11-14 08:00:45.728  1936  1955 I chatty  : uid=1000(system) android.io identical 3 lines
+11-14 08:00:45.729  1936  1955 I DropBoxManagerService: add tag=system_app_strictmode isTagEnabled=true flags=0x2
+11-14 08:00:46.576  1683  1912 D MDnsDS  : Going to poll with pollCount 3
+11-14 08:00:46.576  1936  2052 D NsdService: Register 2 5
+11-14 08:00:46.578  1936  1961 I ActivityTaskManager: Displayed app.flowdrop.mobile/.MainActivity: +1s125ms
+11-14 08:00:46.580  3574  3574 I Choreographer: Skipped 36 frames!  The application may be doing too much work on its main thread.
+11-14 08:00:46.740  1936  2926 W WindowManager: removeWindowToken: Attempted to remove non-existing token: "[REDACTED]"
+11-14 08:00:46.740  1936  1936 V SettingsProvider: Notifying for 0: content://settings/secure/accessibility_enabled
+11-14 08:00:46.741  1936  1936 V SettingsProvider: Notifying for 0: content://settings/system/accelerometer_rotation
+11-14 08:00:46.746  1936  3562 I ActivityManager: Force stopping app.flowdrop.mobile appid=10116 user=0: finished inst
+11-14 08:00:46.753  1936  3497 W Binder  : Outgoing transactions from this process must be FLAG_ONEWAY
+11-14 08:00:46.753  1936  3497 W Binder  : java.lang.Throwable
+11-14 08:00:46.753  1936  3497 W Binder  : 	at android.os.BinderProxy.transact(BinderProxy.java:480)
+11-14 08:00:46.753  1936  3497 W Binder  : 	at android.app.IInstrumentationWatcher$Stub$Proxy.instrumentationFinished(IInstrumentationWatcher.java:205)
+11-14 08:00:46.753  1936  3497 W Binder  : 	at com.android.server.am.InstrumentationReporter$MyThread.run(InstrumentationReporter.java:86)
+11-14 08:00:46.764  1936  3562 I ActivityManager: Killing 3574:app.flowdrop.mobile/u0a116 (adj 0): stop app.flowdrop.mobile
+11-14 08:00:46.764  1936  3562 W ActivityManager: Scheduling restart of crashed service app.flowdrop.mobile/.HostService in 1000ms
+11-14 08:00:46.769  1936  3562 W ActivityTaskManager: Force removing ActivityRecord{6433bac u0 app.flowdrop.mobile/.MainActivity t7 f}: app died, no saved state
+11-14 08:00:46.769  3563  3563 D AndroidRuntime: Shutting down VM
+11-14 08:00:46.775  1936  3562 W InputReader: Device has associated, but no associated display id.
+11-14 08:00:46.808  1936  3562 I chatty  : uid=1000(system) Binder:1936_10 identical 18 lines
+11-14 08:00:46.808  1936  3562 W InputReader: Device has associated, but no associated display id.
+11-14 08:00:46.833  1713  1713 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 8298496
+11-14 08:00:46.834  1713  1713 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 8298496
+11-14 08:00:46.835  2735  2966 D EGL_emulation: eglMakeCurrent: 0x7a09ee005da0: ver 3 0 (tinfo 0x7a09edffccc0)
+11-14 08:00:46.856  1713  1713 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 8298496
+11-14 08:00:46.872  1936  3562 W InputMethodManagerService: Got RemoteException sending setActive(false) notification to pid 3574 uid 10116
+11-14 08:00:46.901  1936  3562 I ActivityTaskManager: START u0 {flg=0x10000000 cmp=app.flowdrop.mobile/.MainActivity} from uid 2000
+11-14 08:00:46.919  1936  2052 D NsdService: Client disconnected
+11-14 08:00:46.919  1936  2052 D NsdService: Terminating client-ID 2 global-ID 4 type 393217
+11-14 08:00:46.919  1936  2052 D NsdService: mdnssd [stop-discover, 4]
+11-14 08:00:46.919  1936  1952 E WifiMulticastLockManager: Multicaster binderDied
+11-14 08:00:46.921  1683  1913 D MDnsDS  : Stopping discover with ref 0x75083580af70
+11-14 08:00:46.921  1683  1913 D MDnsDS  : freeServiceRef 4
+11-14 08:00:46.921  1683  1913 D MDnsDS  : triggering rescan
+11-14 08:00:46.941  1936  2926 W InputReader: Device has associated, but no associated display id.
+11-14 08:00:46.961  1684  1684 D Zygote  : Forked child process 3620
+11-14 08:00:46.963  1936  1963 I ActivityManager: Start proc 3620:app.flowdrop.mobile/u0a116 for activity {app.flowdrop.mobile/app.flowdrop.mobile.MainActivity}
+11-14 08:00:46.963  1713  1713 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 8298496
+11-14 08:00:46.966  3620  3620 W flowdrop.mobil: Unexpected CPU variant for X86 using defaults: x86_64
+11-14 08:00:46.969  1936  2926 W InputReader: Device has associated, but no associated display id.
+11-14 08:00:46.971  1936  2926 I chatty  : uid=1000(system) Binder:1936_C identical 28 lines
+11-14 08:00:46.971  1936  2926 W InputReader: Device has associated, but no associated display id.
+11-14 08:00:47.022  3620  3620 W RenderThread: type=1400 audit(0.0:39): avc: denied { write } for name="property_service" dev="tmpfs" ino=264 scontext=u:r:untrusted_app:s0:c116,c256,c512,c768 tcontext=u:object_r:property_socket:s0 tclass=sock_file permissive=0 app=app.flowdrop.mobile
+11-14 08:00:47.040  1733  1784 E SurfaceFlinger: ro.sf.lcd_density must be defined as a build property
+11-14 08:00:47.040  1733  1784 E SurfaceFlinger: ro.sf.lcd_density must be defined as a build property
+11-14 08:00:47.040  3620  3640 D libEGL  : Emulator has host GPU support, qemu.gles is set to 1.
+11-14 08:00:47.041  3620  3640 W libc    : Unable to set property "qemu.gles" to "1": connection failed; errno=13 (Permission denied)
+11-14 08:00:47.044  3620  3620 W flowdrop.mobil: Accessing hidden method Landroid/view/WindowInsets$Type;->systemBars()I (blacklist, linking, denied)
+11-14 08:00:47.062  3620  3640 D libEGL  : loaded /vendor/lib64/egl/libEGL_emulation.so
+11-14 08:00:47.063  3620  3640 D libEGL  : loaded /vendor/lib64/egl/libGLESv1_CM_emulation.so
+11-14 08:00:47.496  1713  1713 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 8298496
+11-14 08:00:47.497  3620  3638 D EGL_emulation: eglMakeCurrent: 0x7a0a3984a4a0: ver 3 0 (tinfo 0x7a0a39818e00)
+11-14 08:00:48.034  1936  1961 I ActivityTaskManager: Displayed app.flowdrop.mobile/.MainActivity: +1s129ms
+11-14 08:00:48.035  1936  2052 D NsdService: New client listening to asynchronous messages
+11-14 08:00:48.035  1936  2052 D NsdService: New client, channel: com.android.internal.util.AsyncChannel@19b7eb7 messenger: android.os.Messenger@85ae624
+11-14 08:00:48.036  3620  3620 I Choreographer: Skipped 37 frames!  The application may be doing too much work on its main thread.
+11-14 08:00:48.037  1936  2052 D NsdService: Register service
+11-14 08:00:48.037  1936  2052 D NsdService: registerService: 7 name: FlowDrop - Android SDK built for x86_64 · F8CC, type: _flowdrop._tcp., host: null, port: 5173, txtRecord: direct=1
+11-14 08:00:48.037  1936  2052 D NsdService: protocol=1'id=5b3e810b-6a0d-4225-a2a6-5402218cd598
+app=flowdrop*label=Android SDK built for x86_64 · F8CCversion=1.13.0platform=android
+11-14 08:00:48.040  1936  2052 D NsdService: Register 2 7
+11-14 08:00:48.115  3620  3638 I OpenGLRenderer: Davey! duration=705ms; Flags=0, IntendedVsync=23706983507, Vsync=24323650149, OldestInputEvent=9223372036854775807, NewestInputEvent=0, HandleInputStart=24334551951, AnimationStart=24334559668, PerformTraversalsStart=24334564028, DrawStart=24334786066, SyncQueued=24334977428, SyncStart=24336160768, IssueDrawCommandsStart=24336217046, SwapBuffers=24357324345, FrameCompleted=24413662493, DequeueBufferDuration=22000, QueueBufferDuration=28383000,
+11-14 08:00:48.149  1936  3562 I ActivityManager: Force stopping app.flowdrop.mobile appid=10116 user=0: from pid 3662
+11-14 08:00:48.149  1936  3562 I ActivityManager: Killing 3620:app.flowdrop.mobile/u0a116 (adj 0): stop app.flowdrop.mobile
+11-14 08:00:48.157  1936  3562 W ActivityManager: Scheduling restart of crashed service app.flowdrop.mobile/.HostService in 1000ms
+11-14 08:00:48.158  1936  3562 W ActivityTaskManager: Force removing ActivityRecord{c8f6715 u0 app.flowdrop.mobile/.MainActivity t8 f}: app died, no saved state
+11-14 08:00:48.164  1936  3562 W InputReader: Device has associated, but no associated display id.
+11-14 08:00:48.166  1936  3562 I chatty  : uid=1000(system) Binder:1936_10 identical 18 lines
+11-14 08:00:48.166  1936  3562 W InputReader: Device has associated, but no associated display id.
+11-14 08:00:48.217  1936  2031 W InputDispatcher: channel '63dc763 app.flowdrop.mobile/app.flowdrop.mobile.MainActivity (server)' ~ Consumer closed input channel or an error occurred.  events=0x9
+11-14 08:00:48.217  1936  2031 E InputDispatcher: channel '63dc763 app.flowdrop.mobile/app.flowdrop.mobile.MainActivity (server)' ~ Channel is unrecoverably broken and will be disposed!
+11-14 08:00:48.217  1684  1684 I Zygote  : Process 3620 exited due to signal 9 (Killed)
+11-14 08:00:48.219  1936  2313 E WifiMulticastLockManager: Multicaster binderDied
+11-14 08:00:48.220  1936  2052 D NsdService: Client disconnected
+11-14 08:00:48.220  1936  2052 D NsdService: Terminating client-ID 2 global-ID 7 type 393225
+11-14 08:00:48.220  1936  2052 D NsdService: mdnssd [stop-register, 7]
+11-14 08:00:48.222  1683  1913 D MDnsDS  : Stopping register with ref 0x75083580b0f0
+11-14 08:00:48.222  1683  1913 D MDnsDS  : freeServiceRef 7
+11-14 08:00:48.233  1936  1957 I chatty  : uid=1000(system) android.anim identical 8 lines
+11-14 08:00:48.233  1936  1957 W InputReader: Device has associated, but no associated display id.
+11-14 08:00:48.233  1936  1957 W InputDispatcher: Attempted to unregister already unregistered input channel '63dc763 app.flowdrop.mobile/app.flowdrop.mobile.MainActivity (server)'
+11-14 08:00:48.233  2330  2330 D CarrierSvcBindHelper: No carrier app for: 0
+11-14 08:00:48.235  1936  2522 W WindowManager: Failed looking up window callers=com.android.server.wm.WindowManagerService.windowForClientLocked:5281 com.android.server.wm.WindowState$DeathRecipient.binderDied:2491 android.os.BinderProxy.sendDeathNotice:620
+11-14 08:00:48.235  1936  2522 I WindowManager: WIN DEATH: null
+11-14 08:00:48.235  1936  1964 I libprocessgroup: Successfully killed process cgroup uid 10116 pid 3620 in 78ms
+11-14 08:00:48.237  1936  1956 W ActivityManager: setHasOverlayUi called on unknown pid: 3620
+11-14 08:00:48.240  1713  1713 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 8298496
+11-14 08:00:48.242  1713  1713 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 8298496
+11-14 08:00:48.244  2735  2966 D EGL_emulation: eglMakeCurrent: 0x7a09ee005da0: ver 3 0 (tinfo 0x7a09edffccc0)
+11-14 08:00:48.248  1713  1713 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 8298496
+11-14 08:00:48.402  3666  3666 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+11-14 08:00:48.426  3666  3666 E libc    : Access denied finding property "persist.device_config.runtime_native_boot.enable_apex_image"
+11-14 08:00:48.426  3666  3666 I AndroidRuntime: Using default boot image
+11-14 08:00:48.426  3666  3666 E libc    : Access denied finding property "persist.device_config.runtime_native_boot.disable_lock_profiling"
+11-14 08:00:48.426  3666  3666 I AndroidRuntime: Leaving lock profiling enabled
+11-14 08:00:48.426  3666  3666 E libc    : Access denied finding property "persist.device_config.runtime_native_boot.enable_generational_cc"
+11-14 08:00:48.428  3666  3666 I app_process: Core platform API reporting enabled, enforcing=false
+11-14 08:00:48.487  3666  3666 D ICU     : Time zone APEX file found: /apex/com.android.tzdata/etc/icu/icu_tzdata.dat
+11-14 08:00:48.510  3666  3666 W app_process: Unexpected CPU variant for X86 using defaults: x86_64
+11-14 08:00:48.511  3666  3666 I app_process: The ClassLoaderContext is a special shared library.
+11-14 08:00:48.520  3666  3666 W app_process: JNI RegisterNativeMethods: attempt to register 0 native methods for android.media.AudioAttributes
+11-14 08:00:48.526  3666  3666 D AndroidRuntime: Calling main entry com.android.commands.am.Am
+11-14 08:00:48.530  1936  3665 I ActivityManager: Force stopping app.flowdrop.mobile appid=10116 user=0: start instr
+11-14 08:00:48.402  3666  3666 W app_process: type=1400 audit(0.0:40): avc: denied { read } for name="u:object_r:device_config_runtime_native_boot_prop:s0" dev="tmpfs" ino=170 scontext=u:r:shell:s0 tcontext=u:object_r:device_config_runtime_native_boot_prop:s0 tclass=file permissive=0
+11-14 08:00:48.412  3666  3666 I chatty  : uid=2000(shell) app_process identical 1 line
+11-14 08:00:48.412  3666  3666 W app_process: type=1400 audit(0.0:42): avc: denied { read } for name="u:object_r:device_config_runtime_native_boot_prop:s0" dev="tmpfs" ino=170 scontext=u:r:shell:s0 tcontext=u:object_r:device_config_runtime_native_boot_prop:s0 tclass=file permissive=0
+11-14 08:00:48.566  1684  1684 D Zygote  : Forked child process 3678
+11-14 08:00:48.567  1936  1963 I ActivityManager: Start proc 3678:app.flowdrop.mobile/u0a116 for added application app.flowdrop.mobile
+11-14 08:00:48.570  3678  3678 W flowdrop.mobil: Unexpected CPU variant for X86 using defaults: x86_64
+11-14 08:00:48.600  3678  3678 W flowdrop.mobil: ClassLoaderContext classpath size mismatch. expected=0, found=1 (PCL[] | PCL[/data/app/app.flowdrop.mobile.test-b_V-eSMfYmVOoEXBFaCv_A==/base.apk*2103929649])
+11-14 08:00:48.600  3678  3678 I flowdrop.mobil: Failed to add image file Rejecting application image due to class loader mismatch: 'Mismatch in dex files'
+11-14 08:00:48.611  3678  3678 W flowdrop.mobil: ClassLoaderContext parent mismatch.  (PCL[] | PCL[];PCL[/data/app/app.flowdrop.mobile.test-b_V-eSMfYmVOoEXBFaCv_A==/base.apk*2103929649:/data/app/app.flowdrop.mobile-O4A3zOfbJuLHrx4VQJgvDg==/base.apk*1729153150])
+11-14 08:00:48.611  3678  3678 W flowdrop.mobil: Found duplicate classes, falling back to extracting from APK : /data/app/app.flowdrop.mobile.test-b_V-eSMfYmVOoEXBFaCv_A==/base.apk
+11-14 08:00:48.611  3678  3678 W flowdrop.mobil: NOTE: This wastes RAM and hurts startup performance.
+11-14 08:00:48.611  3678  3678 W flowdrop.mobil: Found duplicated class when checking oat files: 'Lapp/flowdrop/mobile/test/NativeFolderSmoke$$ExternalSyntheticLambda0;' in /data/app/app.flowdrop.mobile.test-b_V-eSMfYmVOoEXBFaCv_A==/base.apk and /data/app/app.flowdrop.mobile.test-b_V-eSMfYmVOoEXBFaCv_A==/base.apk
+11-14 08:00:48.611  3678  3678 W flowdrop.mobil:
+11-14 08:00:48.646  3678  3678 W flowdrop.mobil: ClassLoaderContext classpath size mismatch. expected=0, found=1 (PCL[] | PCL[/data/app/app.flowdrop.mobile.test-b_V-eSMfYmVOoEXBFaCv_A==/base.apk*2103929649];PCL[/data/app/app.flowdrop.mobile.test-b_V-eSMfYmVOoEXBFaCv_A==/base.apk*2103929649:/data/app/app.flowdrop.mobile-O4A3zOfbJuLHrx4VQJgvDg==/base.apk*1729153150])
+11-14 08:00:48.646  3678  3678 W flowdrop.mobil: Found duplicate classes, falling back to extracting from APK : /data/app/app.flowdrop.mobile-O4A3zOfbJuLHrx4VQJgvDg==/base.apk
+11-14 08:00:48.646  3678  3678 W flowdrop.mobil: NOTE: This wastes RAM and hurts startup performance.
+11-14 08:00:48.646  3678  3678 W flowdrop.mobil: Found duplicated class when checking oat files: 'Lapp/flowdrop/mobile/AppUpdates$$ExternalSyntheticLambda0;' in /data/app/app.flowdrop.mobile-O4A3zOfbJuLHrx4VQJgvDg==/base.apk and /data/app/app.flowdrop.mobile-O4A3zOfbJuLHrx4VQJgvDg==/base.apk
+11-14 08:00:48.646  3678  3678 W flowdrop.mobil:
+11-14 08:00:48.667  1936  3665 I ActivityTaskManager: START u0 {act=android.intent.action.MAIN flg=0x10000000 cmp=app.flowdrop.mobile/.MainActivity} from uid 10116
+11-14 08:00:48.688  1936  2313 W InputReader: Device has associated, but no associated display id.
+11-14 08:00:48.690  1936  2313 I chatty  : uid=1000(system) Binder:1936_7 identical 28 lines
+11-14 08:00:48.690  1936  2313 W InputReader: Device has associated, but no associated display id.
+11-14 08:00:48.690  3678  3678 W ActivityThread: handleWindowVisibility: no activity for token android.os.BinderProxy@3eef896
+11-14 08:00:48.690  1936  2313 W InputReader: Device has associated, but no associated display id.
+11-14 08:00:48.690  1936  2313 I chatty  : uid=1000(system) Binder:1936_7 identical 8 lines
+11-14 08:00:48.690  1936  2313 W InputReader: Device has associated, but no associated display id.
+11-14 08:00:48.784  3678  3700 D libEGL  : loaded /vendor/lib64/egl/libGLESv1_CM_emulation.so
+11-14 08:00:48.784  3678  3700 D libEGL  : loaded /vendor/lib64/egl/libGLESv2_emulation.so
+11-14 08:00:48.732  3678  3678 W RenderThread: type=1400 audit(0.0:43): avc: denied { write } for name="property_service" dev="tmpfs" ino=264 scontext=u:r:untrusted_app:s0:c116,c256,c512,c768 tcontext=u:object_r:property_socket:s0 tclass=sock_file permissive=0 app=app.flowdrop.mobile
+11-14 08:00:48.840  1936  1957 W InputReader: Device has associated, but no associated display id.
+11-14 08:00:48.860  1936  2052 D NsdService: mdnssd [start-service]
+11-14 08:00:48.840  1936  1957 I chatty  : uid=1000(system) android.anim identical 8 lines
+11-14 08:00:48.840  1936  1957 W InputReader: Device has associated, but no associated display id.
+11-14 08:00:48.860  1683  1913 D MDnsDS  : Starting MDNSD
+11-14 08:00:49.076  1936  2052 D NsdService: New client listening to asynchronous messages
+11-14 08:00:49.076  1936  2052 D NsdService: New client, channel: com.android.internal.util.AsyncChannel@56b7f38 messenger: android.os.Messenger@cd86b11
+11-14 08:00:49.744  1683  1912 D MDnsDS  : Going to poll with pollCount 3
+11-14 08:00:49.744  1936  2052 D NsdService: Register 2 9
+11-14 08:00:49.750  1936  1961 I ActivityTaskManager: Displayed app.flowdrop.mobile/.MainActivity: +1s74ms
+11-14 08:00:49.789  1936  1936 V SettingsProvider: Notifying for 0: content://settings/secure/accessibility_enabled
+11-14 08:00:49.791  1733  1784 D PermissionCache: checking android.permission.READ_FRAME_BUFFER for uid=2000 => granted (255 us)
+11-14 08:00:49.791  1713  1713 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 8298496
+11-14 08:00:49.803  1590  1590 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@3.0::IMapper/default in either framework or device manifest.
+11-14 08:00:49.803  3666  3677 W Gralloc3: mapper 3.x is not supported
+11-14 08:00:49.808  3666  3677 D HostConnection: createUnique: call
+11-14 08:00:49.809  3666  3677 D HostConnection: HostConnection::get() New Host Connection established 0x7aaaa2a851c0, tid 3677
+11-14 08:00:50.388  1936  2052 D NsdService: Native daemon message SERVICE_REGISTERED: 606 9 "FlowDrop - Android SDK built for x86_64 · F8CC"
+11-14 08:00:50.411  3678  3723 D NetworkSecurityConfig: No Network Security Config specified, using platform default
+11-14 08:00:50.551  1936  1936 I NotificationService: Cannot find enqueued record for key: 0|app.flowdrop.mobile|140|null|10116
+11-14 08:00:50.608  1713  1713 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 8298496
+11-14 08:00:50.757  1936  2935 I WifiService: acquireMulticastLock uid=10116
+11-14 08:00:50.592  1936  1936 I NotificationService: Cannot find enqueued record for key: 0|app.flowdrop.mobile|140|null|10116
+11-14 08:00:50.758  1936  2052 D NsdService: Discover services
+11-14 08:00:50.758  1936  2052 D NsdService: mdnssd [discover, 10, _flowdrop._tcp.]
+11-14 08:00:50.758  1683  1913 D MDnsDS  : discover((null), _flowdrop._tcp., (null), 10, 0)
+11-14 08:00:50.758  1683  1913 D MDnsDS  : using ref 0x75083580b120
+11-14 08:00:50.763  1683  1913 D MDnsDS  : startMonitoring 10
+11-14 08:00:50.763  1683  1913 D MDnsDS  : triggering rescan
+11-14 08:00:50.763  1683  1913 D MDnsDS  : discover successful
+11-14 08:00:51.670  2862  2881 W ExifInterface: 	at android.os.Binder.execTransactInternal(Binder.java:1021)
+11-14 08:00:51.670  2862  2881 W ExifInterface: 	at android.os.Binder.execTransact(Binder.java:994)
+11-14 08:00:51.788  1936  1936 I NotificationService: Cannot find enqueued record for key: 0|app.flowdrop.mobile|130|null|10116
+11-14 08:00:51.841  1713  1713 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 8298496
+11-14 08:00:52.148  1936  2522 W WindowManager: removeWindowToken: Attempted to remove non-existing token: "[REDACTED]"
+11-14 08:00:52.149  1936  1936 V SettingsProvider: Notifying for 0: content://settings/secure/accessibility_enabled
+11-14 08:00:52.150  1936  2522 I ActivityManager: Force stopping app.flowdrop.mobile appid=10116 user=0: finished inst
+11-14 08:00:52.150  1936  2522 I ActivityManager: Killing 3678:app.flowdrop.mobile/u0a116 (adj 0): stop app.flowdrop.mobile
+11-14 08:00:52.151  1936  2522 W ActivityManager: Scheduling restart of crashed service app.flowdrop.mobile/.HostService in 1000ms
+11-14 08:00:52.151  1936  2522 W ActivityTaskManager: Force removing ActivityRecord{3e525ec u0 app.flowdrop.mobile/.MainActivity t9 f}: app died, no saved state
+11-14 08:00:52.002  1713  1713 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 8298496
+11-14 08:00:52.151  1936  3497 W Binder  : Outgoing transactions from this process must be FLAG_ONEWAY
+11-14 08:00:52.151  1936  3497 W Binder  : java.lang.Throwable
+11-14 08:00:52.151  1936  3497 W Binder  : 	at android.os.BinderProxy.transact(BinderProxy.java:480)
+11-14 08:00:52.151  1936  3497 W Binder  : 	at android.app.IInstrumentationWatcher$Stub$Proxy.instrumentationFinished(IInstrumentationWatcher.java:205)
+11-14 08:00:52.151  1936  3497 W Binder  : 	at com.android.server.am.InstrumentationReporter$MyThread.run(InstrumentationReporter.java:86)
+11-14 08:00:52.152  3666  3666 D AndroidRuntime: Shutting down VM
+11-14 08:00:52.152  1936  2522 W InputReader: Device has associated, but no associated display id.
+11-14 08:00:52.154  1936  2522 I chatty  : uid=1000(system) Binder:1936_8 identical 18 lines
+11-14 08:00:52.154  1936  2522 W InputReader: Device has associated, but no associated display id.
+11-14 08:00:52.181  1713  1713 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 8298496
+11-14 08:00:52.183  1713  1713 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 8298496
+11-14 08:00:52.184  2735  2966 D EGL_emulation: eglMakeCurrent: 0x7a09ee005da0: ver 3 0 (tinfo 0x7a09edffccc0)
+11-14 08:00:52.192  1713  1713 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 8298496
+11-14 08:00:52.274  1683  1913 D MDnsDS  : Stopping MDNSD
+11-14 08:00:52.282  1936  1964 I libprocessgroup: Successfully killed process cgroup uid 10116 pid 3678 in 130ms
+11-14 08:00:52.484  1936  2522 I ActivityManager: Force stopping app.flowdrop.mobile appid=10116 user=0: from pid 3743
+11-14 08:00:52.492  2330  2330 D CarrierSvcBindHelper: No carrier app for: 0
+11-14 08:00:52.670  3747  3747 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+11-14 08:00:52.683  3747  3747 E libc    : Access denied finding property "persist.device_config.runtime_native_boot.enable_apex_image"
+11-14 08:00:52.683  3747  3747 I AndroidRuntime: Using default boot image
+11-14 08:00:52.684  3747  3747 E libc    : Access denied finding property "persist.device_config.runtime_native_boot.disable_lock_profiling"
+11-14 08:00:52.684  3747  3747 I AndroidRuntime: Leaving lock profiling enabled
+11-14 08:00:52.684  3747  3747 E libc    : Access denied finding property "persist.device_config.runtime_native_boot.enable_generational_cc"
+11-14 08:00:52.685  3747  3747 I app_process: Core platform API reporting enabled, enforcing=false
+11-14 08:00:52.672  3747  3747 W app_process: type=1400 audit(0.0:44): avc: denied { read } for name="u:object_r:device_config_runtime_native_boot_prop:s0" dev="tmpfs" ino=170 scontext=u:r:shell:s0 tcontext=u:object_r:device_config_runtime_native_boot_prop:s0 tclass=file permissive=0
+11-14 08:00:52.682  3747  3747 I chatty  : uid=2000(shell) app_process identical 1 line
+11-14 08:00:52.682  3747  3747 W app_process: type=1400 audit(0.0:46): avc: denied { read } for name="u:object_r:device_config_runtime_native_boot_prop:s0" dev="tmpfs" ino=170 scontext=u:r:shell:s0 tcontext=u:object_r:device_config_runtime_native_boot_prop:s0 tclass=file permissive=0
+11-14 08:00:52.720  3747  3747 D ICU     : Time zone APEX file found: /apex/com.android.tzdata/etc/icu/icu_tzdata.dat
+11-14 08:00:52.723  3747  3747 W app_process: Unexpected CPU variant for X86 using defaults: x86_64
+11-14 08:00:52.724  3747  3747 I app_process: The ClassLoaderContext is a special shared library.
+11-14 08:00:52.730  3747  3747 W app_process: JNI RegisterNativeMethods: attempt to register 0 native methods for android.media.AudioAttributes
+11-14 08:00:52.731  3747  3747 D AndroidRuntime: Calling main entry com.android.commands.am.Am
+11-14 08:00:52.734  1936  2522 I ActivityManager: Force stopping app.flowdrop.mobile appid=10116 user=0: start instr
+11-14 08:00:52.740  1684  1684 D Zygote  : Forked child process 3759
+11-14 08:00:52.742  3759  3759 W flowdrop.mobil: Unexpected CPU variant for X86 using defaults: x86_64
+11-14 08:00:52.745  1936  1963 I ActivityManager: Start proc 3759:app.flowdrop.mobile/u0a116 for added application app.flowdrop.mobile
+11-14 08:00:52.753  3759  3759 W flowdrop.mobil: ClassLoaderContext classpath size mismatch. expected=0, found=1 (PCL[] | PCL[/data/app/app.flowdrop.mobile.test-b_V-eSMfYmVOoEXBFaCv_A==/base.apk*2103929649])
+11-14 08:00:52.753  3759  3759 I flowdrop.mobil: Failed to add image file Rejecting application image due to class loader mismatch: 'Mismatch in dex files'
+11-14 08:00:52.755  3759  3759 W flowdrop.mobil: ClassLoaderContext parent mismatch.  (PCL[] | PCL[];PCL[/data/app/app.flowdrop.mobile.test-b_V-eSMfYmVOoEXBFaCv_A==/base.apk*2103929649:/data/app/app.flowdrop.mobile-O4A3zOfbJuLHrx4VQJgvDg==/base.apk*1729153150])
+11-14 08:00:52.755  3759  3759 W flowdrop.mobil: Found duplicate classes, falling back to extracting from APK : /data/app/app.flowdrop.mobile.test-b_V-eSMfYmVOoEXBFaCv_A==/base.apk
+11-14 08:00:52.755  3759  3759 W flowdrop.mobil: NOTE: This wastes RAM and hurts startup performance.
+11-14 08:00:52.755  3759  3759 W flowdrop.mobil: Found duplicated class when checking oat files: 'Lapp/flowdrop/mobile/test/NativeFolderSmoke$$ExternalSyntheticLambda0;' in /data/app/app.flowdrop.mobile.test-b_V-eSMfYmVOoEXBFaCv_A==/base.apk and /data/app/app.flowdrop.mobile.test-b_V-eSMfYmVOoEXBFaCv_A==/base.apk
+11-14 08:00:52.755  3759  3759 W flowdrop.mobil:
+11-14 08:00:52.756  3759  3759 W flowdrop.mobil: ClassLoaderContext classpath size mismatch. expected=0, found=1 (PCL[] | PCL[/data/app/app.flowdrop.mobile.test-b_V-eSMfYmVOoEXBFaCv_A==/base.apk*2103929649];PCL[/data/app/app.flowdrop.mobile.test-b_V-eSMfYmVOoEXBFaCv_A==/base.apk*2103929649:/data/app/app.flowdrop.mobile-O4A3zOfbJuLHrx4VQJgvDg==/base.apk*1729153150])
+11-14 08:00:52.756  3759  3759 W flowdrop.mobil: Found duplicate classes, falling back to extracting from APK : /data/app/app.flowdrop.mobile-O4A3zOfbJuLHrx4VQJgvDg==/base.apk
+11-14 08:00:52.756  3759  3759 W flowdrop.mobil: NOTE: This wastes RAM and hurts startup performance.
+11-14 08:00:52.756  3759  3759 W flowdrop.mobil: Found duplicated class when checking oat files: 'Lapp/flowdrop/mobile/AppUpdates$$ExternalSyntheticLambda0;' in /data/app/app.flowdrop.mobile-O4A3zOfbJuLHrx4VQJgvDg==/base.apk and /data/app/app.flowdrop.mobile-O4A3zOfbJuLHrx4VQJgvDg==/base.apk
+11-14 08:00:52.756  3759  3759 W flowdrop.mobil:
+11-14 08:00:52.776  1936  2052 D NsdService: mdnssd [start-service]
+11-14 08:00:52.776  1683  1913 D MDnsDS  : Starting MDNSD
+11-14 08:00:52.981  1936  2052 D NsdService: New client listening to asynchronous messages
+11-14 08:00:52.981  1936  2052 D NsdService: New client, channel: com.android.internal.util.AsyncChannel@dd5952a messenger: android.os.Messenger@fdf7f1b
+11-14 08:00:52.988  1936  2052 D NsdService: Register service
+11-14 08:00:52.988  1936  2052 D NsdService: registerService: 11 name: FlowDrop - Android SDK built for x86_64 · F8CC, type: _flowdrop._tcp., host: null, port: 5173, txtRecord: direct=1
+11-14 08:00:53.190  3759  3789 D NetworkSecurityConfig: No Network Security Config specified, using platform default
+11-14 08:00:53.263  1691  3720 W audio_hw_generic: Hardware backing HAL too slow, could only write 0 of 661 frames
+11-14 08:00:53.274  1936  1936 I NotificationService: Cannot find enqueued record for key: 0|app.flowdrop.mobile|140|null|10116
+11-14 08:00:53.323  1936  1947 I system_server: Background concurrent copying GC freed 72670(3947KB) AllocSpace objects, 35(1340KB) LOS objects, 42% free, 7202KB/12MB, paused 29us total 103.993ms
+11-14 08:00:53.487  2862  3020 W ExifInterface: Invalid image: ExifInterface got an unsupported image format file(ExifInterface supports JPEG and some RAW image formats only) or a corrupted JPEG file to ExifInterface.
+11-14 08:00:53.487  2862  3020 W ExifInterface: java.io.IOException: Invalid byte order: ffff8950
+11-14 08:00:53.487  2862  3020 W ExifInterface: 	at android.media.ExifInterface.readByteOrder(ExifInterface.java:3121)
+11-14 08:00:53.487  2862  3020 W ExifInterface: 	at android.media.ExifInterface.isOrfFormat(ExifInterface.java:2437)
+11-14 08:00:53.487  2862  3020 W ExifInterface: 	at android.media.ExifInterface.getMimeType(ExifInterface.java:2315)
+11-14 08:00:53.487  2862  3020 W ExifInterface: 	at android.media.ExifInterface.loadAttributes(ExifInterface.java:1753)
+11-14 08:00:53.487  2862  3020 W ExifInterface: 	at android.os.Binder.execTransact(Binder.java:994)
+11-14 08:00:53.317  1936  1936 I chatty  : uid=1000 system_server identical 1 line
+11-14 08:00:53.332  1936  1936 I NotificationService: Cannot find enqueued record for key: 0|app.flowdrop.mobile|140|null|10116
+11-14 08:00:53.490  1936  1936 I NotificationService: Cannot find enqueued record for key: 0|app.flowdrop.mobile|130|null|10116
+11-14 08:00:53.588  1936  1936 I chatty  : uid=1000 system_server identical 2 lines
+11-14 08:00:53.592  1936  1936 I NotificationService: Cannot find enqueued record for key: 0|app.flowdrop.mobile|130|null|10116
+11-14 08:00:53.678  1936  2313 I ActivityManager: Force stopping app.flowdrop.mobile appid=10116 user=0: finished inst
+11-14 08:00:53.678  1936  2313 I ActivityManager: Killing 3759:app.flowdrop.mobile/u0a116 (adj 200): stop app.flowdrop.mobile
+11-14 08:00:53.678  1936  2313 W ActivityManager: Scheduling restart of crashed service app.flowdrop.mobile/.HostService in 1000ms
+11-14 08:00:53.678  1936  3497 W Binder  : Outgoing transactions from this process must be FLAG_ONEWAY
+11-14 08:00:53.678  1936  3497 W Binder  : java.lang.Throwable
+11-14 08:00:53.678  1936  3497 W Binder  : 	at android.os.BinderProxy.transact(BinderProxy.java:480)
+11-14 08:00:53.678  1936  3497 W Binder  : 	at android.app.IInstrumentationWatcher$Stub$Proxy.instrumentationFinished(IInstrumentationWatcher.java:205)
+11-14 08:00:53.678  1936  3497 W Binder  : 	at com.android.server.am.InstrumentationReporter$MyThread.run(InstrumentationReporter.java:86)
+11-14 08:00:53.679  3747  3747 D AndroidRuntime: Shutting down VM
+11-14 08:00:53.772  1936  2522 D ConnectivityService: ConnectivityService NetworkRequestInfo binderDied(NetworkRequest [ LISTEN id=20, [ Transports: WIFI Capabilities: NOT_RESTRICTED&TRUSTED&NOT_VPN&FOREGROUND Uid: 10116] ], android.os.BinderProxy@ec89439)
+11-14 08:00:53.776  1936  2052 D NsdService: Client disconnected
+11-14 08:00:53.776  1936  2052 D NsdService: Terminating client-ID 2 global-ID 11 type 393225
+11-14 08:00:53.776  1936  2052 D NsdService: mdnssd [stop-register, 11]
+11-14 08:00:53.776  1683  1913 D MDnsDS  : Stopping register with ref 0x75083580b1b0
+11-14 08:00:53.776  1683  1913 D MDnsDS  : freeServiceRef 11
+11-14 08:00:53.776  1683  1913 D MDnsDS  : triggering rescan
+11-14 08:00:53.793  1684  1684 I Zygote  : Process 3759 exited due to signal 9 (Killed)
+11-14 08:00:53.814  1936  1964 I libprocessgroup: Successfully killed process cgroup uid 10116 pid 3759 in 134ms
+11-14 08:00:53.971  1936  3402 I ActivityManager: Force stopping app.flowdrop.mobile appid=10116 user=0: from pid 3807
+11-14 08:00:53.985  2330  2330 D CarrierSvcBindHelper: No carrier app for: 0
+11-14 08:00:54.207  3810  3810 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+11-14 08:00:54.192  3810  3810 W app_process: type=1400 audit(0.0:47): avc: denied { read } for name="u:object_r:device_config_runtime_native_boot_prop:s0" dev="tmpfs" ino=170 scontext=u:r:shell:s0 tcontext=u:object_r:device_config_runtime_native_boot_prop:s0 tclass=file permissive=0
+11-14 08:00:54.210  3810  3810 E libc    : Access denied finding property "persist.device_config.runtime_native_boot.enable_apex_image"
+11-14 08:00:54.210  3810  3810 I AndroidRuntime: Using default boot image
+11-14 08:00:54.192  3810  3810 W app_process: type=1400 audit(0.0:48): avc: denied { read } for name="u:object_r:device_config_runtime_native_boot_prop:s0" dev="tmpfs" ino=170 scontext=u:r:shell:s0 tcontext=u:object_r:device_config_runtime_native_boot_prop:s0 tclass=file permissive=0
+11-14 08:00:54.210  3810  3810 E libc    : Access denied finding property "persist.device_config.runtime_native_boot.disable_lock_profiling"
+11-14 08:00:54.210  3810  3810 I AndroidRuntime: Leaving lock profiling enabled
+11-14 08:00:54.192  3810  3810 W app_process: type=1400 audit(0.0:49): avc: denied { read } for name="u:object_r:device_config_runtime_native_boot_prop:s0" dev="tmpfs" ino=170 scontext=u:r:shell:s0 tcontext=u:object_r:device_config_runtime_native_boot_prop:s0 tclass=file permissive=0
+11-14 08:00:54.211  3810  3810 E libc    : Access denied finding property "persist.device_config.runtime_native_boot.enable_generational_cc"
+11-14 08:00:54.212  3810  3810 I app_process: Core platform API reporting enabled, enforcing=false
+11-14 08:00:54.250  3810  3810 D ICU     : Time zone APEX file found: /apex/com.android.tzdata/etc/icu/icu_tzdata.dat
+11-14 08:00:54.253  3810  3810 W app_process: Unexpected CPU variant for X86 using defaults: x86_64
+11-14 08:00:54.255  3810  3810 I app_process: The ClassLoaderContext is a special shared library.
+11-14 08:00:54.260  3810  3810 W app_process: JNI RegisterNativeMethods: attempt to register 0 native methods for android.media.AudioAttributes
+11-14 08:00:54.262  3810  3810 D AndroidRuntime: Calling main entry com.android.commands.am.Am
+11-14 08:00:54.264  1936  3402 I ActivityManager: Force stopping app.flowdrop.mobile appid=10116 user=0: start instr
+11-14 08:00:54.270  1684  1684 D Zygote  : Forked child process 3822
+11-14 08:00:54.273  3822  3822 W flowdrop.mobil: Unexpected CPU variant for X86 using defaults: x86_64
+11-14 08:00:54.275  1936  1963 I ActivityManager: Start proc 3822:app.flowdrop.mobile/u0a116 for added application app.flowdrop.mobile
+11-14 08:00:54.284  3822  3822 W flowdrop.mobil: ClassLoaderContext classpath size mismatch. expected=0, found=1 (PCL[] | PCL[/data/app/app.flowdrop.mobile.test-b_V-eSMfYmVOoEXBFaCv_A==/base.apk*2103929649])
+11-14 08:00:54.284  3822  3822 I flowdrop.mobil: Failed to add image file Rejecting application image due to class loader mismatch: 'Mismatch in dex files'
+11-14 08:00:54.287  3822  3822 W flowdrop.mobil: ClassLoaderContext parent mismatch.  (PCL[] | PCL[];PCL[/data/app/app.flowdrop.mobile.test-b_V-eSMfYmVOoEXBFaCv_A==/base.apk*2103929649:/data/app/app.flowdrop.mobile-O4A3zOfbJuLHrx4VQJgvDg==/base.apk*1729153150])
+11-14 08:00:54.287  3822  3822 W flowdrop.mobil: Found duplicate classes, falling back to extracting from APK : /data/app/app.flowdrop.mobile.test-b_V-eSMfYmVOoEXBFaCv_A==/base.apk
+11-14 08:00:54.287  3822  3822 W flowdrop.mobil: NOTE: This wastes RAM and hurts startup performance.
+11-14 08:00:54.287  3822  3822 W flowdrop.mobil: Found duplicated class when checking oat files: 'Lapp/flowdrop/mobile/test/NativeFolderSmoke$$ExternalSyntheticLambda0;' in /data/app/app.flowdrop.mobile.test-b_V-eSMfYmVOoEXBFaCv_A==/base.apk and /data/app/app.flowdrop.mobile.test-b_V-eSMfYmVOoEXBFaCv_A==/base.apk
+11-14 08:00:54.287  3822  3822 W flowdrop.mobil:
+11-14 08:00:54.288  3822  3822 W flowdrop.mobil: ClassLoaderContext classpath size mismatch. expected=0, found=1 (PCL[] | PCL[/data/app/app.flowdrop.mobile.test-b_V-eSMfYmVOoEXBFaCv_A==/base.apk*2103929649];PCL[/data/app/app.flowdrop.mobile.test-b_V-eSMfYmVOoEXBFaCv_A==/base.apk*2103929649:/data/app/app.flowdrop.mobile-O4A3zOfbJuLHrx4VQJgvDg==/base.apk*1729153150])
+11-14 08:00:54.288  3822  3822 W flowdrop.mobil: Found duplicate classes, falling back to extracting from APK : /data/app/app.flowdrop.mobile-O4A3zOfbJuLHrx4VQJgvDg==/base.apk
+11-14 08:00:54.288  3822  3822 W flowdrop.mobil: NOTE: This wastes RAM and hurts startup performance.
+11-14 08:00:54.288  3822  3822 W flowdrop.mobil: Found duplicated class when checking oat files: 'Lapp/flowdrop/mobile/AppUpdates$$ExternalSyntheticLambda0;' in /data/app/app.flowdrop.mobile-O4A3zOfbJuLHrx4VQJgvDg==/base.apk and /data/app/app.flowdrop.mobile-O4A3zOfbJuLHrx4VQJgvDg==/base.apk
+11-14 08:00:54.288  3822  3822 W flowdrop.mobil:
+11-14 08:00:54.344  2862  3806 W ExifInterface: Invalid image: ExifInterface got an unsupported image format file(ExifInterface supports JPEG and some RAW image formats only) or a corrupted JPEG file to ExifInterface.
+11-14 08:00:54.344  2862  3806 W ExifInterface: java.io.IOException: Invalid byte order: ffff8950
+11-14 08:00:54.344  2862  3806 W ExifInterface: 	at android.media.ExifInterface.readByteOrder(ExifInterface.java:3121)
+11-14 08:00:54.344  2862  3806 W ExifInterface: 	at android.media.ExifInterface.isOrfFormat(ExifInterface.java:2437)
+11-14 08:00:54.344  2862  3806 W ExifInterface: 	at android.media.ExifInterface.getMimeType(ExifInterface.java:2315)
+11-14 08:00:54.344  2862  3806 W ExifInterface: 	at android.media.ExifInterface.loadAttributes(ExifInterface.java:1753)
+11-14 08:00:55.001  2862  2881 W ExifInterface: 	at android.os.Binder.execTransactInternal(Binder.java:1021)
+11-14 08:00:55.001  2862  2881 W ExifInterface: 	at android.os.Binder.execTransact(Binder.java:994)
+11-14 08:00:55.075  1936  1936 I NotificationService: Cannot find enqueued record for key: 0|app.flowdrop.mobile|130|null|10116
+11-14 08:00:55.090  1936  3562 D AlarmManagerService: Kernel timezone updated to 0 minutes west of GMT
+11-14 08:00:55.114  1936  1936 I NotificationService: Cannot find enqueued record for key: 0|app.flowdrop.mobile|130|null|10116
+11-14 08:00:55.126  1936  3402 I ActivityManager: Force stopping app.flowdrop.mobile appid=10116 user=0: finished inst
+11-14 08:00:55.126  1936  3402 I ActivityManager: Killing 3822:app.flowdrop.mobile/u0a116 (adj 200): stop app.flowdrop.mobile
+11-14 08:00:55.127  1936  3497 W Binder  : Outgoing transactions from this process must be FLAG_ONEWAY
+11-14 08:00:55.127  1936  3497 W Binder  : java.lang.Throwable
+11-14 08:00:55.127  1936  3497 W Binder  : 	at android.os.BinderProxy.transact(BinderProxy.java:480)
+11-14 08:00:55.127  1936  3497 W Binder  : 	at android.app.IInstrumentationWatcher$Stub$Proxy.instrumentationFinished(IInstrumentationWatcher.java:205)
+11-14 08:00:55.127  1936  3497 W Binder  : 	at com.android.server.am.InstrumentationReporter$MyThread.run(InstrumentationReporter.java:86)
+11-14 08:00:55.127  1936  3402 W ActivityManager: Scheduling restart of crashed service app.flowdrop.mobile/.HostService in 1000ms
+11-14 08:00:55.134  1691  1691 W audio_hw_generic: Not supplying enough data to HAL, expected position 429696 , only wrote 215486
+11-14 08:00:55.134  3810  3810 D AndroidRuntime: Shutting down VM
+11-14 08:00:55.159  1936  3402 D ConnectivityService: ConnectivityService NetworkRequestInfo binderDied(NetworkRequest [ LISTEN id=21, [ Transports: WIFI Capabilities: NOT_RESTRICTED&TRUSTED&NOT_VPN&FOREGROUND Uid: 10116] ], android.os.BinderProxy@b84fa9e)
+11-14 08:00:55.166  1936  2052 D NsdService: Client disconnected
+11-14 08:00:55.166  1936  2052 D NsdService: Terminating client-ID 2 global-ID 12 type 393225
+11-14 08:00:55.166  1936  2052 D NsdService: mdnssd [stop-register, 12]
+11-14 08:00:55.166  1683  1913 D MDnsDS  : Stopping register with ref 0x75083580b1e0
+11-14 08:00:55.166  1683  1913 D MDnsDS  : freeServiceRef 12
+11-14 08:00:55.166  1683  1913 D MDnsDS  : triggering rescan
+11-14 08:00:55.212  1936  1964 I libprocessgroup: Successfully killed process cgroup uid 10116 pid 3822 in 85ms
+11-14 08:00:55.230  1936  2658 E TaskPersister: File error accessing recents directory (directory doesn't exist?).
+11-14 08:00:55.242  1936  3402 I ActivityManager: Force stopping app.flowdrop.mobile appid=10116 user=0: from pid 3867
+11-14 08:00:55.247  2330  2330 D CarrierSvcBindHelper: No carrier app for: 0
+11-14 08:00:55.358  3870  3870 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+11-14 08:00:55.352  3870  3870 W app_process: type=1400 audit(0.0:50): avc: denied { read } for name="u:object_r:device_config_runtime_native_boot_prop:s0" dev="tmpfs" ino=170 scontext=u:r:shell:s0 tcontext=u:object_r:device_config_runtime_native_boot_prop:s0 tclass=file permissive=0
+11-14 08:00:55.370  3870  3870 E libc    : Access denied finding property "persist.device_config.runtime_native_boot.enable_apex_image"
+11-14 08:00:55.370  3870  3870 I AndroidRuntime: Using default boot image
+11-14 08:00:55.352  3870  3870 W app_process: type=1400 audit(0.0:51): avc: denied { read } for name="u:object_r:device_config_runtime_native_boot_prop:s0" dev="tmpfs" ino=170 scontext=u:r:shell:s0 tcontext=u:object_r:device_config_runtime_native_boot_prop:s0 tclass=file permissive=0
+11-14 08:00:55.370  3870  3870 E libc    : Access denied finding property "persist.device_config.runtime_native_boot.disable_lock_profiling"
+11-14 08:00:55.370  3870  3870 I AndroidRuntime: Leaving lock profiling enabled
+11-14 08:00:55.352  3870  3870 W app_process: type=1400 audit(0.0:52): avc: denied { read } for name="u:object_r:device_config_runtime_native_boot_prop:s0" dev="tmpfs" ino=170 scontext=u:r:shell:s0 tcontext=u:object_r:device_config_runtime_native_boot_prop:s0 tclass=file permissive=0
+11-14 08:00:55.370  3870  3870 E libc    : Access denied finding property "persist.device_config.runtime_native_boot.enable_generational_cc"
+11-14 08:00:55.371  3870  3870 I app_process: Core platform API reporting enabled, enforcing=false
+11-14 08:00:55.431  3870  3870 D ICU     : Time zone APEX file found: /apex/com.android.tzdata/etc/icu/icu_tzdata.dat
+11-14 08:00:55.433  3870  3870 W app_process: Unexpected CPU variant for X86 using defaults: x86_64
+11-14 08:00:55.434  3870  3870 I app_process: The ClassLoaderContext is a special shared library.
+11-14 08:00:55.440  3870  3870 W app_process: JNI RegisterNativeMethods: attempt to register 0 native methods for android.media.AudioAttributes
+11-14 08:00:55.442  3870  3870 D AndroidRuntime: Calling main entry com.android.commands.am.Am
+11-14 08:00:55.443  1936  2884 I ActivityManager: Force stopping app.flowdrop.mobile appid=10116 user=0: start instr
+11-14 08:00:55.451  1684  1684 D Zygote  : Forked child process 3882
+11-14 08:00:55.455  1936  1963 I ActivityManager: Start proc 3882:app.flowdrop.mobile/u0a116 for added application app.flowdrop.mobile
+11-14 08:00:55.456  3882  3882 W flowdrop.mobil: Unexpected CPU variant for X86 using defaults: x86_64
+11-14 08:00:55.475  3882  3882 W flowdrop.mobil: ClassLoaderContext classpath size mismatch. expected=0, found=1 (PCL[] | PCL[/data/app/app.flowdrop.mobile.test-b_V-eSMfYmVOoEXBFaCv_A==/base.apk*2103929649])
+11-14 08:00:55.476  3882  3882 I flowdrop.mobil: Failed to add image file Rejecting application image due to class loader mismatch: 'Mismatch in dex files'
+11-14 08:00:55.478  3882  3882 W flowdrop.mobil: ClassLoaderContext parent mismatch.  (PCL[] | PCL[];PCL[/data/app/app.flowdrop.mobile.test-b_V-eSMfYmVOoEXBFaCv_A==/base.apk*2103929649:/data/app/app.flowdrop.mobile-O4A3zOfbJuLHrx4VQJgvDg==/base.apk*1729153150])
+11-14 08:00:55.480  3882  3882 W flowdrop.mobil: Found duplicate classes, falling back to extracting from APK : /data/app/app.flowdrop.mobile.test-b_V-eSMfYmVOoEXBFaCv_A==/base.apk
+11-14 08:00:55.480  3882  3882 W flowdrop.mobil: NOTE: This wastes RAM and hurts startup performance.
+11-14 08:00:55.480  3882  3882 W flowdrop.mobil: Found duplicated class when checking oat files: 'Lapp/flowdrop/mobile/test/NativeFolderSmoke$$ExternalSyntheticLambda0;' in /data/app/app.flowdrop.mobile.test-b_V-eSMfYmVOoEXBFaCv_A==/base.apk and /data/app/app.flowdrop.mobile.test-b_V-eSMfYmVOoEXBFaCv_A==/base.apk
+11-14 08:00:55.480  3882  3882 W flowdrop.mobil:
+11-14 08:00:55.482  3882  3882 W flowdrop.mobil: ClassLoaderContext classpath size mismatch. expected=0, found=1 (PCL[] | PCL[/data/app/app.flowdrop.mobile.test-b_V-eSMfYmVOoEXBFaCv_A==/base.apk*2103929649];PCL[/data/app/app.flowdrop.mobile.test-b_V-eSMfYmVOoEXBFaCv_A==/base.apk*2103929649:/data/app/app.flowdrop.mobile-O4A3zOfbJuLHrx4VQJgvDg==/base.apk*1729153150])
+11-14 08:00:55.482  3882  3882 W flowdrop.mobil: Found duplicate classes, falling back to extracting from APK : /data/app/app.flowdrop.mobile-O4A3zOfbJuLHrx4VQJgvDg==/base.apk
+11-14 08:00:55.482  3882  3882 W flowdrop.mobil: NOTE: This wastes RAM and hurts startup performance.
+11-14 08:00:55.482  3882  3882 W flowdrop.mobil: Found duplicated class when checking oat files: 'Lapp/flowdrop/mobile/AppUpdates$$ExternalSyntheticLambda0;' in /data/app/app.flowdrop.mobile-O4A3zOfbJuLHrx4VQJgvDg==/base.apk and /data/app/app.flowdrop.mobile-O4A3zOfbJuLHrx4VQJgvDg==/base.apk
+11-14 08:00:55.482  3882  3882 W flowdrop.mobil:
+11-14 08:00:55.489  1936  2884 I ActivityTaskManager: START u0 {flg=0x10000000 cmp=app.flowdrop.mobile.test/.ShareSenderActivity (has extras)} from uid 10116
+11-14 08:00:55.493  1936  1952 W InputReader: Device has associated, but no associated display id.
+11-14 08:00:55.493  1936  1952 I chatty  : uid=1000(system) Binder:1936_2 identical 8 lines
+11-14 08:00:55.493  1936  1952 W InputReader: Device has associated, but no associated display id.
+11-14 08:00:55.498  1936  1957 E system_server: Invalid ID 0x00000000.
+11-14 08:00:55.524  1713  1713 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 8298496
+11-14 08:00:55.562  1684  1684 D Zygote  : Forked child process 3901
+11-14 08:00:55.568  1936  1963 W ActivityManager: Slow operation: 65ms so far, now at startProcess: returned from zygote!
+11-14 08:00:55.569  1936  1963 W ActivityManager: Slow operation: 65ms so far, now at startProcess: done updating battery stats
+11-14 08:00:55.569  1936  1963 W ActivityManager: Slow operation: 65ms so far, now at startProcess: building log message
+11-14 08:00:55.569  1936  1963 I ActivityManager: Start proc 3901:app.flowdrop.mobile.test/u0a117 for activity {app.flowdrop.mobile.test/app.flowdrop.mobile.test.ShareSenderActivity}
+11-14 08:00:55.569  1936  1963 W ActivityManager: Slow operation: 65ms so far, now at startProcess: starting to update pids map
+11-14 08:00:55.569  1936  1963 W ActivityManager: Slow operation: 65ms so far, now at startProcess: done updating pids map
+11-14 08:00:55.574  3901  3901 W rop.mobile.tes: Unexpected CPU variant for X86 using defaults: x86_64
+11-14 08:00:55.617  1936  2884 W InputReader: Device has associated, but no associated display id.
+11-14 08:00:55.619  1936  2884 I chatty  : uid=1000(system) Binder:1936_B identical 28 lines
+11-14 08:00:55.619  1936  2884 W InputReader: Device has associated, but no associated display id.
+11-14 08:00:55.649  1936  1957 W InputReader: Device has associated, but no associated display id.
+11-14 08:00:55.675  1733  2647 E SurfaceFlinger: ro.sf.lcd_density must be defined as a build property
+11-14 08:00:55.708  3901  3922 D libEGL  : Emulator has host GPU support, qemu.gles is set to 1.
+11-14 08:00:55.723  1936  1952 I ActivityTaskManager: START u0 {act=android.intent.action.SEND typ=image/png flg=0x10000001 cmp=app.flowdrop.mobile/.MainActivity clip={text/uri-list U:content://app.flowdrop.sharetests.files/%E1%BA%A2nh%20chia%20s%E1%BA%BB.png} (has extras)} from uid 10117
+11-14 08:00:55.754  3901  3922 W libc    : Unable to set property "qemu.gles" to "1": connection failed; errno=13 (Permission denied)
+11-14 08:00:55.758  1936  1957 E system_server: Invalid ID 0x00000000.
+11-14 08:00:55.768  3901  3922 D libEGL  : loaded /vendor/lib64/egl/libEGL_emulation.so
+11-14 08:00:55.768  3901  3922 D libEGL  : loaded /vendor/lib64/egl/libGLESv1_CM_emulation.so
+11-14 08:00:55.780  3901  3922 D libEGL  : loaded /vendor/lib64/egl/libGLESv2_emulation.so
+11-14 08:00:55.692  3901  3901 W RenderThread: type=1400 audit(0.0:53): avc: denied { write } for name="property_service" dev="tmpfs" ino=264 scontext=u:r:untrusted_app:s0:c117,c256,c512,c768 tcontext=u:object_r:property_socket:s0 tclass=sock_file permissive=0 app=app.flowdrop.mobile.test
+11-14 08:00:55.820  1713  1713 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 8298496
+11-14 08:00:55.882  1683  1911 I netd    : trafficSwapActiveStatsMap() <46.24ms>
+11-14 08:00:55.888  1683  1911 I netd    : tetherGetStats() <0.50ms>
+11-14 08:00:55.932  1683  1911 I netd    : bandwidthSetGlobalAlert(2097152) <0.16ms>
+11-14 08:00:55.935  1936  1952 W InputReader: Device has associated, but no associated display id.
+11-14 08:00:55.936  1936  1952 I chatty  : uid=1000(system) Binder:1936_2 identical 48 lines
+11-14 08:00:55.936  1936  1952 W InputReader: Device has associated, but no associated display id.
+11-14 08:00:55.964  3882  3925 D libEGL  : loaded /vendor/lib64/egl/libGLESv1_CM_emulation.so
+11-14 08:00:55.964  3882  3925 D libEGL  : loaded /vendor/lib64/egl/libGLESv2_emulation.so
+11-14 08:00:55.932  3882  3882 W RenderThread: type=1400 audit(0.0:54): avc: denied { write } for name="property_service" dev="tmpfs" ino=264 scontext=u:r:untrusted_app:s0:c116,c256,c512,c768 tcontext=u:object_r:property_socket:s0 tclass=sock_file permissive=0 app=app.flowdrop.mobile
+11-14 08:00:56.020  1936  1961 E memtrack: Couldn't load memtrack module
+11-14 08:00:56.020  1936  1961 W android.os.Debug: failed to get memory consumption info: -1
+11-14 08:00:56.036  1713  1713 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 8298496
+11-14 08:00:56.055  3882  3882 W flowdrop.mobil: Accessing hidden method Landroid/view/WindowInsets$Type;->systemBars()I (blacklist, linking, denied)
+11-14 08:00:56.064  1936  1961 E memtrack: Couldn't load memtrack module
+11-14 08:00:56.065  1936  1961 W android.os.Debug: failed to get memory consumption info: -1
+11-14 08:00:56.122  2735  2966 D EGL_emulation: eglMakeCurrent: 0x7a09ee005da0: ver 3 0 (tinfo 0x7a09edffccc0)
+11-14 08:00:57.220  1683  1912 D MDnsDS  : Going to poll with pollCount 3
+11-14 08:00:57.220  1936  2052 D NsdService: Register 2 14
+11-14 08:00:57.254  1936  2313 I ActivityTaskManager: START u0 {flg=0x10000000 cmp=app.flowdrop.mobile.test/.ShareSenderActivity (has extras)} from uid 10116
+11-14 08:00:57.264  3882  3924 I OpenGLRenderer: Davey! duration=820ms; Flags=0, IntendedVsync=32740117783, Vsync=33506784419, OldestInputEvent=9223372036854775807, NewestInputEvent=0, HandleInputStart=33516866715, AnimationStart=33516880275, PerformTraversalsStart=33516885730, DrawStart=33517104041, SyncQueued=33517328326, SyncStart=33518711150, IssueDrawCommandsStart=33518926287, SwapBuffers=33532077349, FrameCompleted=33561740430, DequeueBufferDuration=15000, QueueBufferDuration=68000,
+11-14 08:00:57.370  1936  1961 I ActivityTaskManager: Displayed app.flowdrop.mobile/.MainActivity: +1s729ms
+11-14 08:00:57.371  1936  1961 E memtrack: Couldn't load memtrack module
+11-14 08:00:57.371  1936  1961 W android.os.Debug: failed to get memory consumption info: -1
+11-14 08:00:57.376  1936  2313 W InputReader: Device has associated, but no associated display id.
+11-14 08:00:57.377  1936  2313 I chatty  : uid=1000(system) Binder:1936_7 identical 48 lines
+11-14 08:00:57.377  1936  2313 W InputReader: Device has associated, but no associated display id.
+11-14 08:00:57.384  3901  3901 W ActivityThread: handleWindowVisibility: no activity for token android.os.BinderProxy@c5b152b
+11-14 08:00:57.403  1713  1713 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 8298496
+11-14 08:00:57.409  1936  2313 I ActivityTaskManager: START u0 {act=android.intent.action.SEND_MULTIPLE typ=*/* flg=0x10000001 cmp=app.flowdrop.mobile/.MainActivity clip={text/uri-list U:content://app.flowdrop.sharetests.files/%E1%BA%A2nh%20chia%20s%E1%BA%BB.png ...} (has extras)} from uid 10117
+11-14 08:00:57.418  1936  3934 I WifiService: releaseMulticastLock uid=10116
+11-14 08:00:57.422  1936  2052 D NsdService: Stop service discovery
+11-14 08:00:57.422  1936  2052 D NsdService: mdnssd [stop-discover, 13]
+11-14 08:00:57.426  1683  1913 D MDnsDS  : Stopping discover with ref 0x75083580b180
+11-14 08:00:57.426  1683  1913 D MDnsDS  : freeServiceRef 13
+11-14 08:00:57.426  1683  1913 D MDnsDS  : triggering rescan
+11-14 08:00:57.426  1683  1912 D MDnsDS  : Monitor poll got data pollCount = 3, 2
+11-14 08:00:57.975  1683  1912 D MDnsDS  : Going to poll with pollCount 2
+11-14 08:00:57.975  1936  2052 D NsdService: Native daemon message SERVICE_REGISTERED: 606 14 "FlowDrop - Android SDK built for x86_64 · F8CC"
+11-14 08:00:58.079  1936  2041 I ActivityManager: Force stopping app.flowdrop.mobile appid=10116 user=0: finished inst
+11-14 08:00:58.079  1936  3497 W Binder  : Outgoing transactions from this process must be FLAG_ONEWAY
+11-14 08:00:58.079  1936  3497 W Binder  : java.lang.Throwable
+11-14 08:00:58.079  1936  3497 W Binder  : 	at android.os.BinderProxy.transact(BinderProxy.java:480)
+11-14 08:00:58.079  1936  3497 W Binder  : 	at android.app.IInstrumentationWatcher$Stub$Proxy.instrumentationFinished(IInstrumentationWatcher.java:205)
+11-14 08:00:58.079  1936  3497 W Binder  : 	at com.android.server.am.InstrumentationReporter$MyThread.run(InstrumentationReporter.java:86)
+11-14 08:00:58.079  3870  3870 D AndroidRuntime: Shutting down VM
+11-14 08:00:58.083  1936  2041 I ActivityManager: Killing 3882:app.flowdrop.mobile/u0a116 (adj 0): stop app.flowdrop.mobile
+11-14 08:00:58.083  1936  2041 W ActivityManager: Scheduling restart of crashed service app.flowdrop.mobile/.HostService in 1000ms
+11-14 08:00:58.083  1936  2041 W ActivityTaskManager: Force removing ActivityRecord{2c30d6 u0 app.flowdrop.mobile/.MainActivity t11 f}: app died, no saved state
+11-14 08:00:58.089  1936  2041 W InputReader: Device has associated, but no associated display id.
+11-14 08:00:58.108  1936  2041 I ActivityManager: Killing 2511:com.android.cellbroadcastreceiver/u0a63 (adj 985): empty #17
+11-14 08:00:58.091  1936  2041 I chatty  : uid=1000(system) Binder:1936_4 identical 18 lines
+11-14 08:00:58.091  1936  2041 W InputReader: Device has associated, but no associated display id.
+11-14 08:00:58.139  1936  1957 W InputReader: Device has associated, but no associated display id.
+11-14 08:00:58.139  1936  1957 I chatty  : uid=1000(system) android.anim identical 8 lines
+11-14 08:00:58.139  1936  1957 W InputReader: Device has associated, but no associated display id.
+11-14 08:00:58.142  3870  3971 E app_process: Thread attaching to non-existent runtime: Binder:3870_3
+11-14 08:00:58.142  3870  3971 I AndroidRuntime: NOTE: attach of thread 'Binder:3870_3' failed
+11-14 08:00:58.152  1684  1684 I Zygote  : Process 2511 exited due to signal 9 (Killed)
+11-14 08:00:58.166  1936  1964 I libprocessgroup: Successfully killed process cgroup uid 10116 pid 3882 in 82ms
+11-14 08:00:58.166  1936  1964 I libprocessgroup: Successfully killed process cgroup uid 10063 pid 2511 in 0ms
+11-14 08:00:58.167  1684  1684 I Zygote  : Process 3882 exited due to signal 9 (Killed)
+11-14 08:00:58.170  1936  3218 D ConnectivityService: ConnectivityService NetworkRequestInfo binderDied(NetworkRequest [ LISTEN id=22, [ Transports: WIFI Capabilities: NOT_RESTRICTED&TRUSTED&NOT_VPN&FOREGROUND Uid: 10116] ], android.os.BinderProxy@6c42832)
+11-14 08:00:58.172  1936  2052 D NsdService: Client disconnected
+11-14 08:00:58.172  1936  2052 D NsdService: Terminating client-ID 2 global-ID 14 type 393225
+11-14 08:00:58.186  2735  2966 D EGL_emulation: eglMakeCurrent: 0x7a09ee005da0: ver 3 0 (tinfo 0x7a09edffccc0)
+11-14 08:00:58.187  1713  1713 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 8298496
+11-14 08:00:58.286  1936  2041 I ActivityManager: Force stopping app.flowdrop.mobile appid=10116 user=0: from pid 3974
+11-14 08:00:58.291  2330  2330 D CarrierSvcBindHelper: No carrier app for: 0
+11-14 08:00:58.433  3977  3977 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+11-14 08:00:58.442  3977  3977 E libc    : Access denied finding property "persist.device_config.runtime_native_boot.enable_apex_image"
+11-14 08:00:58.442  3977  3977 I AndroidRuntime: Using default boot image
+11-14 08:00:58.442  3977  3977 E libc    : Access denied finding property "persist.device_config.runtime_native_boot.disable_lock_profiling"
+11-14 08:00:58.442  3977  3977 I AndroidRuntime: Leaving lock profiling enabled
+11-14 08:00:58.443  3977  3977 E libc    : Access denied finding property "persist.device_config.runtime_native_boot.enable_generational_cc"
+11-14 08:00:58.444  3977  3977 I app_process: Core platform API reporting enabled, enforcing=false
+11-14 08:00:58.422  3977  3977 W app_process: type=1400 audit(0.0:55): avc: denied { read } for name="u:object_r:device_config_runtime_native_boot_prop:s0" dev="tmpfs" ino=170 scontext=u:r:shell:s0 tcontext=u:object_r:device_config_runtime_native_boot_prop:s0 tclass=file permissive=0
+11-14 08:00:58.442  3977  3977 I chatty  : uid=2000(shell) app_process identical 1 line
+11-14 08:00:58.442  3977  3977 W app_process: type=1400 audit(0.0:57): avc: denied { read } for name="u:object_r:device_config_runtime_native_boot_prop:s0" dev="tmpfs" ino=170 scontext=u:r:shell:s0 tcontext=u:object_r:device_config_runtime_native_boot_prop:s0 tclass=file permissive=0
+11-14 08:00:58.539  3977  3977 D ICU     : Time zone APEX file found: /apex/com.android.tzdata/etc/icu/icu_tzdata.dat
+11-14 08:00:58.547  3977  3977 W app_process: Unexpected CPU variant for X86 using defaults: x86_64
+11-14 08:00:58.558  1936  1955 I DropBoxManagerService: add tag=system_app_strictmode isTagEnabled=true flags=0x2
+11-14 08:00:58.585  3977  3977 W app_process: JNI RegisterNativeMethods: attempt to register 0 native methods for android.media.AudioAttributes
+11-14 08:00:58.590  3977  3977 D AndroidRuntime: Calling main entry com.android.commands.am.Am
+11-14 08:00:58.565  1936  1955 I chatty  : uid=1000(system) android.io identical 1 line
+11-14 08:00:58.598  1936  1955 I DropBoxManagerService: add tag=system_app_strictmode isTagEnabled=true flags=0x2
+11-14 08:00:58.602  1936  2926 I ActivityManager: Force stopping app.flowdrop.mobile appid=10116 user=0: start instr
+11-14 08:00:58.605  1936  1961 E memtrack: Couldn't load memtrack module
+11-14 08:00:58.605  1936  1961 W android.os.Debug: failed to get memory consumption info: -1
+11-14 08:00:58.610  1936  1955 I DropBoxManagerService: add tag=system_app_strictmode isTagEnabled=true flags=0x2
+11-14 08:00:58.614  1684  1684 D Zygote  : Forked child process 3989
+11-14 08:00:58.617  1936  1963 I ActivityManager: Start proc 3989:app.flowdrop.mobile/u0a116 for added application app.flowdrop.mobile
+11-14 08:00:58.618  1936  1955 I DropBoxManagerService: add tag=system_app_strictmode isTagEnabled=true flags=0x2
+11-14 08:00:58.627  3989  3989 W flowdrop.mobil: Unexpected CPU variant for X86 using defaults: x86_64
+11-14 08:00:58.648  3989  3989 W flowdrop.mobil: ClassLoaderContext classpath size mismatch. expected=0, found=1 (PCL[] | PCL[/data/app/app.flowdrop.mobile.test-b_V-eSMfYmVOoEXBFaCv_A==/base.apk*2103929649])
+11-14 08:00:58.648  3989  3989 I flowdrop.mobil: Failed to add image file Rejecting application image due to class loader mismatch: 'Mismatch in dex files'
+11-14 08:00:58.650  3989  3989 W flowdrop.mobil: ClassLoaderContext parent mismatch.  (PCL[] | PCL[];PCL[/data/app/app.flowdrop.mobile.test-b_V-eSMfYmVOoEXBFaCv_A==/base.apk*2103929649:/data/app/app.flowdrop.mobile-O4A3zOfbJuLHrx4VQJgvDg==/base.apk*1729153150])
+11-14 08:00:58.650  3989  3989 W flowdrop.mobil: Found duplicate classes, falling back to extracting from APK : /data/app/app.flowdrop.mobile.test-b_V-eSMfYmVOoEXBFaCv_A==/base.apk
+11-14 08:00:58.650  3989  3989 W flowdrop.mobil: NOTE: This wastes RAM and hurts startup performance.
+11-14 08:00:58.650  3989  3989 W flowdrop.mobil: Found duplicated class when checking oat files: 'Lapp/flowdrop/mobile/test/NativeFolderSmoke$$ExternalSyntheticLambda0;' in /data/app/app.flowdrop.mobile.test-b_V-eSMfYmVOoEXBFaCv_A==/base.apk and /data/app/app.flowdrop.mobile.test-b_V-eSMfYmVOoEXBFaCv_A==/base.apk
+11-14 08:00:58.650  3989  3989 W flowdrop.mobil:
+11-14 08:00:58.651  3989  3989 W flowdrop.mobil: ClassLoaderContext classpath size mismatch. expected=0, found=1 (PCL[] | PCL[/data/app/app.flowdrop.mobile.test-b_V-eSMfYmVOoEXBFaCv_A==/base.apk*2103929649];PCL[/data/app/app.flowdrop.mobile.test-b_V-eSMfYmVOoEXBFaCv_A==/base.apk*2103929649:/data/app/app.flowdrop.mobile-O4A3zOfbJuLHrx4VQJgvDg==/base.apk*1729153150])
+11-14 08:00:58.651  3989  3989 W flowdrop.mobil: Found duplicate classes, falling back to extracting from APK : /data/app/app.flowdrop.mobile-O4A3zOfbJuLHrx4VQJgvDg==/base.apk
+11-14 08:00:58.651  3989  3989 W flowdrop.mobil: NOTE: This wastes RAM and hurts startup performance.
+11-14 08:00:58.651  3989  3989 W flowdrop.mobil: Found duplicated class when checking oat files: 'Lapp/flowdrop/mobile/AppUpdates$$ExternalSyntheticLambda0;' in /data/app/app.flowdrop.mobile-O4A3zOfbJuLHrx4VQJgvDg==/base.apk and /data/app/app.flowdrop.mobile-O4A3zOfbJuLHrx4VQJgvDg==/base.apk
+11-14 08:00:58.651  3989  3989 W flowdrop.mobil:
+11-14 08:00:58.656  1936  2926 I ActivityTaskManager: START u0 {act=android.intent.action.MAIN flg=0x10000000 cmp=app.flowdrop.mobile/.MainActivity} from uid 10116
+11-14 08:00:58.675  1936  2313 W InputReader: Device has associated, but no associated display id.
+11-14 08:00:58.675  1936  2313 I chatty  : uid=1000(system) Binder:1936_7 identical 38 lines
+11-14 08:00:58.675  1936  2313 W InputReader: Device has associated, but no associated display id.
+11-14 08:00:58.676  3989  3989 W ActivityThread: handleWindowVisibility: no activity for token android.os.BinderProxy@3eef896
+11-14 08:00:58.694  1733  2647 E SurfaceFlinger: ro.sf.lcd_density must be defined as a build property
+11-14 08:00:58.694  1733  2647 E SurfaceFlinger: ro.sf.lcd_density must be defined as a build property
+11-14 08:00:58.695  1713  1713 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 8298496
+11-14 08:00:58.713  3989  4010 D libEGL  : loaded /vendor/lib64/egl/libGLESv1_CM_emulation.so
+11-14 08:00:58.714  3989  4010 D libEGL  : loaded /vendor/lib64/egl/libGLESv2_emulation.so
+11-14 08:00:58.692  3989  3989 W RenderThread: type=1400 audit(0.0:58): avc: denied { write } for name="property_service" dev="tmpfs" ino=264 scontext=u:r:untrusted_app:s0:c116,c256,c512,c768 tcontext=u:object_r:property_socket:s0 tclass=sock_file permissive=0 app=app.flowdrop.mobile
+11-14 08:00:58.767  1936  2052 D NsdService: mdnssd [start-service]
+11-14 08:00:58.767  1683  1913 D MDnsDS  : Starting MDNSD
+11-14 08:00:58.785  1936  1957 W InputReader: Device has associated, but no associated display id.
+11-14 08:00:58.823  1936  1936 V SettingsProvider: Notifying for 0: content://settings/secure/accessibility_enabled
+11-14 08:00:58.982  1936  2052 D NsdService: New client listening to asynchronous messages
+11-14 08:00:58.982  1936  2052 D NsdService: New client, channel: com.android.internal.util.AsyncChannel@90ef03e messenger: android.os.Messenger@6835e9f
+11-14 08:00:58.785  1936  1957 I chatty  : uid=1000(system) android.anim identical 8 lines
+11-14 08:00:59.768  1683  1912 D MDnsDS  : Going to poll with pollCount 3
+11-14 08:00:59.768  1936  2052 D NsdService: Register 2 17
+11-14 08:00:59.772  1936  1961 I ActivityTaskManager: Displayed app.flowdrop.mobile/.MainActivity: +1s108ms
+11-14 08:00:59.823  1936  1961 E memtrack: Couldn't load memtrack module
+11-14 08:00:59.823  1936  1961 W android.os.Debug: failed to get memory consumption info: -1
+11-14 08:00:59.894  3989  4008 D NetworkSecurityConfig: No Network Security Config specified, using platform default
+11-14 08:00:59.903  1936  2041 D WificondControl: Scan result ready event
+11-14 08:00:59.919  1936  2047 D WifiClientModeImpl: CMD_START_CONNECT sup state UninitializedState my state DisconnectedState nid=0 roam=false
+11-14 08:00:59.923  1936  2047 I WifiClientModeImpl: Connecting with 02:15:b2:00:00:00 as the mac address
+11-14 08:00:59.923  1812  1812 W wificond: Scan is not started. Ignore abort request
+11-14 08:01:01.923  1936  1961 W android.os.Debug: failed to get memory consumption info: -1
+11-14 08:01:01.944  1936  1964 I libprocessgroup: Successfully killed process cgroup uid 10106 pid 3131 in 85ms
+11-14 08:01:02.054  1936  1936 I NotificationService: Cannot find enqueued record for key: 0|app.flowdrop.mobile|130|null|10116
+11-14 08:01:02.063  2088  2291 D EGL_emulation: eglMakeCurrent: 0x7a0a3984b3a0: ver 3 0 (tinfo 0x7a0a398f25a0)
+11-14 08:01:02.172  1936  1961 E memtrack: Couldn't load memtrack module
+11-14 08:01:02.172  1936  1961 W android.os.Debug: failed to get memory consumption info: -1
+11-14 08:01:02.434  1936  1961 E memtrack: Couldn't load memtrack module
+11-14 08:01:02.434  1936  1961 W android.os.Debug: failed to get memory consumption info: -1
+11-14 08:01:02.451  1936  1961 E memtrack: Couldn't load memtrack module
+11-14 08:01:02.451  1936  1961 W android.os.Debug: failed to get memory consumption info: -1
+11-14 08:01:03.102  1691  1691 W audio_hw_generic: Not supplying enough data to HAL, expected position 694260 , only wrote 455429
+11-14 08:01:02.087  1936  1936 I chatty  : uid=1000 system_server identical 3 lines
+11-14 08:01:02.589  1936  1936 I NotificationService: Cannot find enqueued record for key: 0|app.flowdrop.mobile|130|null|10116
+11-14 08:01:03.355  1936  1953 D AutofillManagerService: Close system dialogs
+11-14 08:01:03.355  2088  2088 V StatusBar: mStatusBarWindow: com.android.systemui.statusbar.phone.StatusBarWindowView{42ef6f2 V.E...... ........ 0,0-1080,63} canPanelBeCollapsed(): false
+11-14 08:01:03.356  1936  1954 I ActivityTaskManager: START u0 {act=android.intent.action.MAIN cat=[android.intent.category.HOME] flg=0x10000100 cmp=com.android.launcher3/.Launcher (has extras)} from uid 0
+11-14 08:01:03.357  1936  1954 W InputReader: Device has associated, but no associated display id.
+11-14 08:01:03.357  1936  1954 I chatty  : uid=1000(system) android.ui identical 18 lines
+11-14 08:01:03.357  1936  1954 W InputReader: Device has associated, but no associated display id.
+11-14 08:01:03.370  1936  1961 E memtrack: Couldn't load memtrack module
+11-14 08:01:04.083  1733  1733 E Layer   : [Surface(name=AppWindowToken{b5315af token="[REDACTED]" ActivityRecord{b11d589 u0 com.android.launcher3/.Launcher t5}}})/@0x1211532 - animation-leash#0] No local sync point found
+11-14 08:01:04.083  1733  1733 E Layer   : [Surface(name=AppWindowToken{b5315af token="[REDACTED]" ActivityRecord{b11d589 u0 com.android.launcher3/.Launcher t5}}})/@0x1211532 - animation-leash#0] No local sync point found
+11-14 08:01:04.083  1733  1733 E Layer   : [Surface(name=AppWindowToken{4ddc91d token="[REDACTED]" ActivityRecord{67af3c7 u0 app.flowdrop.mobile/.MainActivity t13}}})/@0xdede1a7 - animation-leash#0] No local sync point found
+11-14 08:01:04.083  1733  1733 E Layer   : [Surface(name=AppWindowToken{4ddc91d token="[REDACTED]" ActivityRecord{67af3c7 u0 app.flowdrop.mobile/.MainActivity t13}}})/@0xdede1a7 - animation-leash#0] No local sync point found
+11-14 08:01:04.105  1684  1684 I Zygote  : Process 3155 exited due to signal 9 (Killed)
+11-14 08:01:04.106  1936  3942 D HostConnection: HostConnection::get() New Host Connection established 0x7a09e095bcc0, tid 3942
+11-14 08:01:04.107  1936  1964 I libprocessgroup: Successfully killed process cgroup uid 10110 pid 3155 in 44ms
+11-14 08:01:04.110  1936  3942 D HostConnection: HostComposition ext ANDROID_EMU_CHECKSUM_HELPER_v1 ANDROID_EMU_native_sync_v2 ANDROID_EMU_dma_v1 ANDROID_EMU_direct_mem ANDROID_EMU_host_composition_v1 ANDROID_EMU_host_composition_v2 ANDROID_EMU_vulkan ANDROID_EMU_deferred_vulkan_commands ANDROID_EMU_vulkan_create_resources_with_requirements ANDROID_EMU_vulkan_free_memory_sync ANDROID_EMU_vulkan_shader_float16_int8 ANDROID_EMU_vulkan_async_queue_submit ANDROID_EMU_sync_buffer_data ANDROID_EMU_vulkan_async_qsri ANDROID_EMU_hwc_color_transform GL_OES_EGL_image_external_essl3 GL_OES_vertex_array_object GL_KHR_texture_compression_astc_ldr ANDROID_EMU_host_side_tracing ANDROID_EMU_gles_max_version_3_0
+11-14 08:01:04.124  1936  3942 D EGL_emulation: eglCreateContext: 0x7a09e095c1c0: maj 3 min 0 rcv 3
+11-14 08:01:04.125  1936  3942 D EGL_emulation: eglMakeCurrent: 0x7a09e095c1c0: ver 3 0 (tinfo 0x7a09e4a56b40)
+11-14 08:01:04.328  1684  1684 D Zygote  : Forked child process 4105
+11-14 08:01:04.343  4105  4105 I ndroid.keychai: The ClassLoaderContext is a special shared library.
+11-14 08:01:04.349  1936  3562 I ActivityManager: Killing 3176:com.android.contacts/u0a95 (adj 985): empty #17
+11-14 08:01:04.368  1936  3934 I ActivityTaskManager: START u0 {act=android.intent.action.MAIN flg=0x10000000 cmp=app.flowdrop.mobile/.MainActivity} from uid 10116
+11-14 08:01:04.368  1936  3934 W ActivityTaskManager: Activity start request from 10116 stopped
+11-14 08:01:04.390  1684  1684 I Zygote  : Process 3176 exited due to signal 9 (Killed)
+11-14 08:01:04.393  1936  1964 I libprocessgroup: Successfully killed process cgroup uid 10095 pid 3176 in 43ms
+11-14 08:01:05.008  1936  2658 E TaskPersister: File error accessing recents directory (directory doesn't exist?).
+11-14 08:01:08.361  1936  3934 W InputReader: Device has associated, but no associated display id.
+11-14 08:01:08.362  1936  3934 I chatty  : uid=1000(system) Binder:1936_12 identical 28 lines
+11-14 08:01:08.362  1936  3934 W InputReader: Device has associated, but no associated display id.
+11-14 08:01:09.115  1936  3665 W WindowManager: removeWindowToken: Attempted to remove non-existing token: "[REDACTED]"
+11-14 08:01:09.115  1936  1936 V SettingsProvider: Notifying for 0: content://settings/secure/accessibility_enabled
+11-14 08:01:09.120  1936  3665 I ActivityManager: Force stopping app.flowdrop.mobile appid=10116 user=0: finished inst
+11-14 08:01:09.120  1936  3665 I ActivityManager: Killing 3989:app.flowdrop.mobile/u0a116 (adj 0): stop app.flowdrop.mobile
+11-14 08:01:09.120  1936  3665 W ActivityManager: Scheduling restart of crashed service app.flowdrop.mobile/.HostService in 1000ms
+11-14 08:01:09.120  1936  3665 W ActivityTaskManager: Force removing ActivityRecord{67af3c7 u0 app.flowdrop.mobile/.MainActivity t13 f}: app died, no saved state
+11-14 08:01:09.121  1936  4142 W Binder  : Outgoing transactions from this process must be FLAG_ONEWAY
+11-14 08:01:09.121  1936  4142 W Binder  : java.lang.Throwable
+11-14 08:01:09.121  1936  4142 W Binder  : 	at android.os.BinderProxy.transact(BinderProxy.java:480)
+11-14 08:01:09.121  1936  4142 W Binder  : 	at android.app.IInstrumentationWatcher$Stub$Proxy.instrumentationFinished(IInstrumentationWatcher.java:205)
+11-14 08:01:09.121  1936  4142 W Binder  : 	at com.android.server.am.InstrumentationReporter$MyThread.run(InstrumentationReporter.java:86)
+11-14 08:01:09.121  3977  3977 D AndroidRuntime: Shutting down VM
+11-14 08:01:09.139  1936  3665 W InputReader: Device has associated, but no associated display id.
+11-14 08:01:09.142  1936  3665 I chatty  : uid=1000(system) Binder:1936_11 identical 18 lines
+11-14 08:01:09.142  1936  3665 W InputReader: Device has associated, but no associated display id.
+11-14 08:01:09.157  1936  2031 W InputDispatcher: channel '83bb011 Toast (server)' ~ Consumer closed input channel or an error occurred.  events=0x9
+11-14 08:01:09.157  1936  2031 E InputDispatcher: channel '83bb011 Toast (server)' ~ Channel is unrecoverably broken and will be disposed!
+11-14 08:01:09.164  1684  1684 I Zygote  : Process 3989 exited due to signal 9 (Killed)
+11-14 08:01:09.164  1936  1964 I libprocessgroup: Successfully killed process cgroup uid 10116 pid 3989 in 43ms
+11-14 08:01:09.204  1936  3934 I WindowManager: WIN DEATH: Window{83bb011 u0 Toast}
+11-14 08:01:09.204  1936  3934 W InputDispatcher: Attempted to unregister already unregistered input channel '83bb011 Toast (server)'
+11-14 08:01:09.259  1936  3934 I ActivityManager: Force stopping app.flowdrop.mobile appid=10116 user=0: from pid 4145
+11-14 08:01:09.265  2330  2330 D CarrierSvcBindHelper: No carrier app for: 0
+11-14 08:01:09.363  1936  2926 I ActivityTaskManager: START u0 {flg=0x10000000 cmp=app.flowdrop.mobile/.MainActivity} from uid 2000
+11-14 08:01:09.367  1936  3934 W InputReader: Device has associated, but no associated display id.
+11-14 08:01:09.367  1936  3934 I chatty  : uid=1000(system) Binder:1936_12 identical 8 lines
+11-14 08:01:09.367  1936  3934 W InputReader: Device has associated, but no associated display id.
+11-14 08:01:09.374  1684  1684 D Zygote  : Forked child process 4155
+11-14 08:01:09.378  1936  1963 I ActivityManager: Start proc 4155:app.flowdrop.mobile/u0a116 for activity {app.flowdrop.mobile/app.flowdrop.mobile.MainActivity}
+11-14 08:01:09.379  4155  4155 W flowdrop.mobil: Unexpected CPU variant for X86 using defaults: x86_64
+11-14 08:01:09.382  1936  1957 E system_server: Invalid ID 0x00000000.
+11-14 08:01:09.388  1936  3934 W InputReader: Device has associated, but no associated display id.
+11-14 08:01:09.390  1936  3934 I chatty  : uid=1000(system) Binder:1936_12 identical 28 lines
+11-14 08:01:09.390  1936  3934 W InputReader: Device has associated, but no associated display id.
+11-14 08:01:09.452  4155  4155 W RenderThread: type=1400 audit(0.0:59): avc: denied { write } for name="property_service" dev="tmpfs" ino=264 scontext=u:r:untrusted_app:s0:c116,c256,c512,c768 tcontext=u:object_r:property_socket:s0 tclass=sock_file permissive=0 app=app.flowdrop.mobile
+11-14 08:01:09.415  1713  1713 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 8298496
+11-14 08:01:09.437  4155  4155 W flowdrop.mobil: Accessing hidden method Landroid/view/WindowInsets$Type;->systemBars()I (blacklist, linking, denied)
+11-14 08:01:09.460  1733  2400 E SurfaceFlinger: ro.sf.lcd_density must be defined as a build property
+11-14 08:01:09.460  1733  2400 E SurfaceFlinger: ro.sf.lcd_density must be defined as a build property
+11-14 08:01:09.460  4155  4180 D libEGL  : Emulator has host GPU support, qemu.gles is set to 1.
+11-14 08:01:09.460  4155  4180 W libc    : Unable to set property "qemu.gles" to "1": connection failed; errno=13 (Permission denied)
+11-14 08:01:09.465  4155  4180 D libEGL  : loaded /vendor/lib64/egl/libEGL_emulation.so
+11-14 08:01:09.965  1713  1713 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 8298496
+11-14 08:01:09.969  4155  4175 D EGL_emulation: eglMakeCurrent: 0x7a09ee61faa0: ver 3 0 (tinfo 0x7a0a37b5c5a0)
+11-14 08:01:10.534  1936  1961 I ActivityTaskManager: Displayed app.flowdrop.mobile/.MainActivity: +1s168ms
+11-14 08:01:10.547  4155  4190 D NetworkSecurityConfig: No Network Security Config specified, using platform default
+11-14 08:01:10.549  1936  2052 D NsdService: New client listening to asynchronous messages
+11-14 08:01:10.549  1936  2052 D NsdService: New client, channel: com.android.internal.util.AsyncChannel@d58bba3 messenger: android.os.Messenger@b05bea0
+11-14 08:01:10.550  1936  3665 I WifiService: acquireMulticastLock uid=10116
+11-14 08:01:10.550  1936  2052 D NsdService: Register service
+11-14 08:01:10.550  1936  2052 D NsdService: registerService: 24 name: FlowDrop - Android SDK built for x86_64 · F8CC, type: _flowdrop._tcp., host: null, port: 5173, txtRecord: direct=1
+11-14 08:01:10.550  1936  2052 D NsdService: protocol=1'id=5b3e810b-6a0d-4225-a2a6-5402218cd598

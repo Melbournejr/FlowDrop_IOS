@@ -1,9 +1,2107 @@
 {
   "phase": "2D.1",
-  "base": "9171e7f1ffbc0143d6e11374e3f6c847853341fe",
-  "status": "NOT VERIFIED",
-  "artifacts": [],
-  "production_signing": "NOT VERIFIED",
-  "physical_devices": "NOT VERIFIED",
-  "cross_platform_lan": "NOT VERIFIED"
+  "source_commit": "78c049cc0a9bfba47d0bd8b4cab4f5657cb80ddf",
+  "checkout_commit": "b94d50fa27880b04bbaed6b194c4c0ed4646c7c8",
+  "status": "PASS",
+  "final_head_evidence_policy": "Embedded evidence snapshot is commit-bound to 78c049cc0a9bfba47d0bd8b4cab4f5657cb80ddf. Final PR head is verified after committing reports; PR #10 body links exact final SHA/runs and their authoritative same-head runtime matrices/artifact manifests. No test is declared PASS merely by this document.",
+  "production_certificate_pin_unchanged": "65cbed4feb375d2c3c2eb94e668bd7aaee7ce5b24f436887873a6fa11719f97f",
+  "test_only": true,
+  "production_signing_equivalence": "NOT VERIFIED",
+  "reproducible_binary": "NOT VERIFIED",
+  "runs": {
+    "native_runtime": 43573559009,
+    "native_build": 43573559041,
+    "native_regression": 43573559007
+  },
+  "runtime": [
+    {
+      "platform": "windows",
+      "status": "PASS",
+      "groups": 21,
+      "artifact_id": 14104794520,
+      "source": {
+        "base": "9171e7f1ffbc0143d6e11374e3f6c847853341fe",
+        "protected_files": 440,
+        "checkout": "b94d50fa27880b04bbaed6b194c4c0ed4646c7c8",
+        "reviewed_head": "78c049cc0a9bfba47d0bd8b4cab4f5657cb80ddf"
+      },
+      "artifacts": {
+        "installer": "930146616a740af150ccbc0f92594cd88f456788b4f79f5d72a1c269b562d277"
+      }
+    },
+    {
+      "platform": "android-api-35",
+      "status": "PASS",
+      "groups": 16,
+      "artifact_id": 14105521482,
+      "source": {
+        "base": "9171e7f1ffbc0143d6e11374e3f6c847853341fe",
+        "protected_files": 440,
+        "checkout": "b94d50fa27880b04bbaed6b194c4c0ed4646c7c8",
+        "reviewed_head": "78c049cc0a9bfba47d0bd8b4cab4f5657cb80ddf"
+      },
+      "artifacts": {
+        "app": "83977b0465f52a65f7210eda4789ca309e91219b2cd542c5da7f852ec03fd55f",
+        "instrumentation": "49e0eaea70f8e6518edac08717566a0853695537a78c854db70270dcf0b103b5"
+      }
+    },
+    {
+      "platform": "android-api-29",
+      "status": "PASS",
+      "groups": 16,
+      "artifact_id": 14105336890,
+      "source": {
+        "base": "9171e7f1ffbc0143d6e11374e3f6c847853341fe",
+        "protected_files": 440,
+        "checkout": "b94d50fa27880b04bbaed6b194c4c0ed4646c7c8",
+        "reviewed_head": "78c049cc0a9bfba47d0bd8b4cab4f5657cb80ddf"
+      },
+      "artifacts": {
+        "app": "83977b0465f52a65f7210eda4789ca309e91219b2cd542c5da7f852ec03fd55f",
+        "instrumentation": "49e0eaea70f8e6518edac08717566a0853695537a78c854db70270dcf0b103b5"
+      }
+    }
+  ],
+  "products": [
+    {
+      "name": "FlowDrop-1.13.0-Android-TEST-ONLY.apk",
+      "role": "android",
+      "sha256": "83977b0465f52a65f7210eda4789ca309e91219b2cd542c5da7f852ec03fd55f",
+      "size": 279316,
+      "identity": {
+        "package": "app.flowdrop.mobile",
+        "version_code": "14",
+        "version_name": "1.13.0",
+        "min_sdk": 29,
+        "target_sdk": 35,
+        "permissions": [
+          "android.permission.ACCESS_NETWORK_STATE",
+          "android.permission.ACCESS_WIFI_STATE",
+          "android.permission.CHANGE_WIFI_MULTICAST_STATE",
+          "android.permission.FOREGROUND_SERVICE",
+          "android.permission.FOREGROUND_SERVICE_DATA_SYNC",
+          "android.permission.HIDE_OVERLAY_WINDOWS",
+          "android.permission.INTERNET",
+          "android.permission.POST_NOTIFICATIONS",
+          "android.permission.RECEIVE_BOOT_COMPLETED",
+          "android.permission.REQUEST_INSTALL_PACKAGES",
+          "android.permission.UPDATE_PACKAGES_WITHOUT_USER_ACTION"
+        ]
+      },
+      "test_certificate_sha256": "2760ec172c49ef423d17ac346e7216dddd2dc8b49c113ccdcae362db1c962672",
+      "source_commit": "78c049cc0a9bfba47d0bd8b4cab4f5657cb80ddf",
+      "build_artifact_id": 14105805528
+    },
+    {
+      "name": "FlowDrop-1.13.0-Android-Instrumentation-TEST-ONLY.apk",
+      "role": "instrumentation",
+      "sha256": "49e0eaea70f8e6518edac08717566a0853695537a78c854db70270dcf0b103b5",
+      "size": 41363,
+      "identity": {
+        "package": "app.flowdrop.mobile.test",
+        "version_code": "",
+        "version_name": "",
+        "min_sdk": 29,
+        "target_sdk": 35,
+        "permissions": []
+      },
+      "test_certificate_sha256": "2760ec172c49ef423d17ac346e7216dddd2dc8b49c113ccdcae362db1c962672",
+      "source_commit": "78c049cc0a9bfba47d0bd8b4cab4f5657cb80ddf",
+      "build_artifact_id": 14105805528
+    },
+    {
+      "name": "FlowDrop-Setup-1.13.0-Windows-x64-TEST-ONLY.exe",
+      "role": "windows-installer",
+      "sha256": "930146616a740af150ccbc0f92594cd88f456788b4f79f5d72a1c269b562d277",
+      "size": 24520292,
+      "source_commit": "78c049cc0a9bfba47d0bd8b4cab4f5657cb80ddf",
+      "build_artifact_id": 14105158573
+    },
+    {
+      "name": "FlowDrop-windows-native-smoke-TEST-ONLY.exe",
+      "sha256": "7885508282f7a17775565e916eedfb4b52d7a6a597e551fd93b1d51a85034e05",
+      "size": 1327616,
+      "source": "tests/windows-native-smoke.cpp",
+      "source_sha256": "3c4402b3f190255944cf49fc964e4235dae4bce0d44d635152e3e2c343c97f5c",
+      "compiled_test_source_sha256": "93425ad7f741492f012898ebed9d519e172bd97e6ba7b9936993bff3056ac0a2",
+      "test_only_adaptation": "Wait for initialized real OS dialog, verify input readback, invoke actual button; existing assertions/timeouts retained",
+      "common_controls_v6_manifest_sha256": "dfae8c217e50f5d2948985fb45c55687c34157718a5f05bc31d4c392fc6e85e0",
+      "role": "windows-test-helper",
+      "source_commit": "78c049cc0a9bfba47d0bd8b4cab4f5657cb80ddf",
+      "build_artifact_id": 14104844284
+    },
+    {
+      "name": "FlowDrop-windows-shell-smoke-TEST-ONLY.exe",
+      "sha256": "30c02966f117d724bab4f0d945ca63afa17615e1ee4827195beb1bbcedad18c9",
+      "size": 1513472,
+      "source": "tests/windows-shell-smoke.cpp",
+      "source_sha256": "c76616ca9b54581440c0c452dafb006080e53422d42f9c2c0d72e0dcb9e013df",
+      "compiled_test_source_sha256": "b821dc79f4484220fb47c19c8ac90e6338d71484808f43cf9c6958baf895eaac",
+      "test_only_adaptation": "Wait for initialized real OS dialog, verify input readback, invoke actual button; existing assertions/timeouts retained",
+      "common_controls_v6_manifest_sha256": "dfae8c217e50f5d2948985fb45c55687c34157718a5f05bc31d4c392fc6e85e0",
+      "role": "windows-test-helper",
+      "source_commit": "78c049cc0a9bfba47d0bd8b4cab4f5657cb80ddf",
+      "build_artifact_id": 14104844284
+    }
+  ],
+  "github_archives": [
+    {
+      "id": 14105805528,
+      "name": "FlowDrop-2D1-Build-android-43573559009-1",
+      "size_in_bytes": 332754,
+      "url": "https://api.github.com/repos/Melbournejr/FlowDrop_IOS/actions/artifacts/14105805528",
+      "archive_download_url": "https://api.github.com/repos/Melbournejr/FlowDrop_IOS/actions/artifacts/14105805528/zip",
+      "expired": false,
+      "created_at": "2026-11-14T07:59:19Z",
+      "expires_at": "2026-11-21T07:59:18Z",
+      "updated_at": "2026-11-14T07:59:19Z",
+      "digest": "sha256:07165eae36a507e7313513a26b3296b196493b23c8ac8ebc1bf2863ca906f010",
+      "workflow_run": {
+        "id": 43573559009,
+        "repository_id": 1431935346,
+        "head_repository_id": 1431935346,
+        "head_branch": "test/native-runtime-verification-2d1",
+        "head_sha": "78c049cc0a9bfba47d0bd8b4cab4f5657cb80ddf"
+      },
+      "download_url": "https://github.com/Melbournejr/FlowDrop_IOS/actions/runs/43573559009/artifacts/14105805528"
+    },
+    {
+      "id": 14105521482,
+      "name": "FlowDrop-2D1-Runtime-35-43573559009-1",
+      "size_in_bytes": 188852,
+      "url": "https://api.github.com/repos/Melbournejr/FlowDrop_IOS/actions/artifacts/14105521482",
+      "archive_download_url": "https://api.github.com/repos/Melbournejr/FlowDrop_IOS/actions/artifacts/14105521482/zip",
+      "expired": false,
+      "created_at": "2026-11-14T08:01:36Z",
+      "expires_at": "2026-11-21T08:01:35Z",
+      "updated_at": "2026-11-14T08:01:36Z",
+      "digest": "sha256:842db48810fcd0389ce2e35710d0edd0b33869eaa85b83b42198484616241ee1",
+      "workflow_run": {
+        "id": 43573559009,
+        "repository_id": 1431935346,
+        "head_repository_id": 1431935346,
+        "head_branch": "test/native-runtime-verification-2d1",
+        "head_sha": "78c049cc0a9bfba47d0bd8b4cab4f5657cb80ddf"
+      },
+      "download_url": "https://github.com/Melbournejr/FlowDrop_IOS/actions/runs/43573559009/artifacts/14105521482"
+    },
+    {
+      "id": 14105336890,
+      "name": "FlowDrop-2D1-Runtime-29-43573559009-1",
+      "size_in_bytes": 221702,
+      "url": "https://api.github.com/repos/Melbournejr/FlowDrop_IOS/actions/artifacts/14105336890",
+      "archive_download_url": "https://api.github.com/repos/Melbournejr/FlowDrop_IOS/actions/artifacts/14105336890/zip",
+      "expired": false,
+      "created_at": "2026-11-14T08:01:14Z",
+      "expires_at": "2026-11-21T08:01:13Z",
+      "updated_at": "2026-11-14T08:01:14Z",
+      "digest": "sha256:a718a521828dd9b515470b8d0854cb3d2ce17a754afb5a85f88048c2d51892f5",
+      "workflow_run": {
+        "id": 43573559009,
+        "repository_id": 1431935346,
+        "head_repository_id": 1431935346,
+        "head_branch": "test/native-runtime-verification-2d1",
+        "head_sha": "78c049cc0a9bfba47d0bd8b4cab4f5657cb80ddf"
+      },
+      "download_url": "https://github.com/Melbournejr/FlowDrop_IOS/actions/runs/43573559009/artifacts/14105336890"
+    },
+    {
+      "id": 14105158573,
+      "name": "FlowDrop-2D1-Build-windows-43573559009-1",
+      "size_in_bytes": 24513528,
+      "url": "https://api.github.com/repos/Melbournejr/FlowDrop_IOS/actions/artifacts/14105158573",
+      "archive_download_url": "https://api.github.com/repos/Melbournejr/FlowDrop_IOS/actions/artifacts/14105158573/zip",
+      "expired": false,
+      "created_at": "2026-11-14T08:00:09Z",
+      "expires_at": "2026-11-21T08:00:07Z",
+      "updated_at": "2026-11-14T08:00:09Z",
+      "digest": "sha256:4e2a589026a8bef9fd1774dff78b42cc68083aef2a3b812251cf1fa434838ee3",
+      "workflow_run": {
+        "id": 43573559009,
+        "repository_id": 1431935346,
+        "head_repository_id": 1431935346,
+        "head_branch": "test/native-runtime-verification-2d1",
+        "head_sha": "78c049cc0a9bfba47d0bd8b4cab4f5657cb80ddf"
+      },
+      "download_url": "https://github.com/Melbournejr/FlowDrop_IOS/actions/runs/43573559009/artifacts/14105158573"
+    },
+    {
+      "id": 14104844284,
+      "name": "FlowDrop-2D1-Windows-Helpers-43573559009-1",
+      "size_in_bytes": 1118649,
+      "url": "https://api.github.com/repos/Melbournejr/FlowDrop_IOS/actions/artifacts/14104844284",
+      "archive_download_url": "https://api.github.com/repos/Melbournejr/FlowDrop_IOS/actions/artifacts/14104844284/zip",
+      "expired": false,
+      "created_at": "2026-11-14T08:00:09Z",
+      "expires_at": "2026-11-21T08:00:09Z",
+      "updated_at": "2026-11-14T08:00:09Z",
+      "digest": "sha256:01ca6afc677fb369fadf1016862ac760960f7b7d700b4f32c843d5f2f909234f",
+      "workflow_run": {
+        "id": 43573559009,
+        "repository_id": 1431935346,
+        "head_repository_id": 1431935346,
+        "head_branch": "test/native-runtime-verification-2d1",
+        "head_sha": "78c049cc0a9bfba47d0bd8b4cab4f5657cb80ddf"
+      },
+      "download_url": "https://github.com/Melbournejr/FlowDrop_IOS/actions/runs/43573559009/artifacts/14104844284"
+    },
+    {
+      "id": 14104794520,
+      "name": "FlowDrop-2D1-Runtime-windows-43573559009-1",
+      "size_in_bytes": 16178,
+      "url": "https://api.github.com/repos/Melbournejr/FlowDrop_IOS/actions/artifacts/14104794520",
+      "archive_download_url": "https://api.github.com/repos/Melbournejr/FlowDrop_IOS/actions/artifacts/14104794520/zip",
+      "expired": false,
+      "created_at": "2026-11-14T08:01:17Z",
+      "expires_at": "2026-11-21T08:01:16Z",
+      "updated_at": "2026-11-14T08:01:17Z",
+      "digest": "sha256:446fd90316b29f234de124f17931458a5440e126e726637459d1d9ef9bf208b0",
+      "workflow_run": {
+        "id": 43573559009,
+        "repository_id": 1431935346,
+        "head_repository_id": 1431935346,
+        "head_branch": "test/native-runtime-verification-2d1",
+        "head_sha": "78c049cc0a9bfba47d0bd8b4cab4f5657cb80ddf"
+      },
+      "download_url": "https://github.com/Melbournejr/FlowDrop_IOS/actions/runs/43573559009/artifacts/14104794520"
+    },
+    {
+      "id": 14105213447,
+      "name": "FlowDrop-Native-integration-43573559007-1",
+      "size_in_bytes": 4685,
+      "url": "https://api.github.com/repos/Melbournejr/FlowDrop_IOS/actions/artifacts/14105213447",
+      "archive_download_url": "https://api.github.com/repos/Melbournejr/FlowDrop_IOS/actions/artifacts/14105213447/zip",
+      "expired": false,
+      "created_at": "2026-11-14T07:59:48Z",
+      "expires_at": "2026-11-21T07:59:47Z",
+      "updated_at": "2026-11-14T07:59:48Z",
+      "digest": "sha256:894241e1969cb31449b6a39e5ecd2d0acf9d9e3fb05d8b2638cca25f0713805f",
+      "workflow_run": {
+        "id": 43573559007,
+        "repository_id": 1431935346,
+        "head_repository_id": 1431935346,
+        "head_branch": "test/native-runtime-verification-2d1",
+        "head_sha": "78c049cc0a9bfba47d0bd8b4cab4f5657cb80ddf"
+      },
+      "download_url": "https://github.com/Melbournejr/FlowDrop_IOS/actions/runs/43573559007/artifacts/14105213447"
+    },
+    {
+      "id": 14105193194,
+      "name": "FlowDrop-Native-fast-43573559007-1",
+      "size_in_bytes": 6305,
+      "url": "https://api.github.com/repos/Melbournejr/FlowDrop_IOS/actions/artifacts/14105193194",
+      "archive_download_url": "https://api.github.com/repos/Melbournejr/FlowDrop_IOS/actions/artifacts/14105193194/zip",
+      "expired": false,
+      "created_at": "2026-11-14T07:58:40Z",
+      "expires_at": "2026-11-21T07:58:39Z",
+      "updated_at": "2026-11-14T07:58:40Z",
+      "digest": "sha256:7db48c48f43e901487dde66a3553acb0aa66d8b92ded48072e742552b8291c58",
+      "workflow_run": {
+        "id": 43573559007,
+        "repository_id": 1431935346,
+        "head_repository_id": 1431935346,
+        "head_branch": "test/native-runtime-verification-2d1",
+        "head_sha": "78c049cc0a9bfba47d0bd8b4cab4f5657cb80ddf"
+      },
+      "download_url": "https://github.com/Melbournejr/FlowDrop_IOS/actions/runs/43573559007/artifacts/14105193194"
+    },
+    {
+      "id": 14104824096,
+      "name": "FlowDrop-Native-stream-43573559007-1",
+      "size_in_bytes": 2486,
+      "url": "https://api.github.com/repos/Melbournejr/FlowDrop_IOS/actions/artifacts/14104824096",
+      "archive_download_url": "https://api.github.com/repos/Melbournejr/FlowDrop_IOS/actions/artifacts/14104824096/zip",
+      "expired": false,
+      "created_at": "2026-11-14T07:59:07Z",
+      "expires_at": "2026-11-21T07:59:07Z",
+      "updated_at": "2026-11-14T07:59:07Z",
+      "digest": "sha256:f69a4e4297cb8121e0c11b573c767c9736a1bba0a78da79684c422b081e984d4",
+      "workflow_run": {
+        "id": 43573559007,
+        "repository_id": 1431935346,
+        "head_repository_id": 1431935346,
+        "head_branch": "test/native-runtime-verification-2d1",
+        "head_sha": "78c049cc0a9bfba47d0bd8b4cab4f5657cb80ddf"
+      },
+      "download_url": "https://github.com/Melbournejr/FlowDrop_IOS/actions/runs/43573559007/artifacts/14104824096"
+    },
+    {
+      "id": 14104769589,
+      "name": "FlowDrop-Native-zip64-43573559007-1",
+      "size_in_bytes": 3529,
+      "url": "https://api.github.com/repos/Melbournejr/FlowDrop_IOS/actions/artifacts/14104769589",
+      "archive_download_url": "https://api.github.com/repos/Melbournejr/FlowDrop_IOS/actions/artifacts/14104769589/zip",
+      "expired": false,
+      "created_at": "2026-11-14T08:00:06Z",
+      "expires_at": "2026-11-21T08:00:05Z",
+      "updated_at": "2026-11-14T08:00:06Z",
+      "digest": "sha256:960207d2f58ff70afb81b5c1370857a65bffc66332762941b19bd00f8e3d5127",
+      "workflow_run": {
+        "id": 43573559007,
+        "repository_id": 1431935346,
+        "head_repository_id": 1431935346,
+        "head_branch": "test/native-runtime-verification-2d1",
+        "head_sha": "78c049cc0a9bfba47d0bd8b4cab4f5657cb80ddf"
+      },
+      "download_url": "https://github.com/Melbournejr/FlowDrop_IOS/actions/runs/43573559007/artifacts/14104769589"
+    },
+    {
+      "id": 14105188491,
+      "name": "FlowDrop-2C2-Toolchain-43573559041-1",
+      "size_in_bytes": 9198,
+      "url": "https://api.github.com/repos/Melbournejr/FlowDrop_IOS/actions/artifacts/14105188491",
+      "archive_download_url": "https://api.github.com/repos/Melbournejr/FlowDrop_IOS/actions/artifacts/14105188491/zip",
+      "expired": false,
+      "created_at": "2026-11-14T07:58:58Z",
+      "expires_at": "2026-11-21T07:58:57Z",
+      "updated_at": "2026-11-14T07:58:58Z",
+      "digest": "sha256:edd58fee891a03bf5007a69e48cba4d8286800bc50cf944aeab7de2164608203",
+      "workflow_run": {
+        "id": 43573559041,
+        "repository_id": 1431935346,
+        "head_repository_id": 1431935346,
+        "head_branch": "test/native-runtime-verification-2d1",
+        "head_sha": "78c049cc0a9bfba47d0bd8b4cab4f5657cb80ddf"
+      },
+      "download_url": "https://github.com/Melbournejr/FlowDrop_IOS/actions/runs/43573559041/artifacts/14105188491"
+    },
+    {
+      "id": 14104969115,
+      "name": "FlowDrop-2C2-Independent-Verification-43573559041-1",
+      "size_in_bytes": 25728,
+      "url": "https://api.github.com/repos/Melbournejr/FlowDrop_IOS/actions/artifacts/14104969115",
+      "archive_download_url": "https://api.github.com/repos/Melbournejr/FlowDrop_IOS/actions/artifacts/14104969115/zip",
+      "expired": false,
+      "created_at": "2026-11-14T08:00:53Z",
+      "expires_at": "2026-11-21T08:00:52Z",
+      "updated_at": "2026-11-14T08:00:53Z",
+      "digest": "sha256:77d1a2fbd7b9b7c1738df6fb4294fbf81d41e189ade923892bac57c650e0ff19",
+      "workflow_run": {
+        "id": 43573559041,
+        "repository_id": 1431935346,
+        "head_repository_id": 1431935346,
+        "head_branch": "test/native-runtime-verification-2d1",
+        "head_sha": "78c049cc0a9bfba47d0bd8b4cab4f5657cb80ddf"
+      },
+      "download_url": "https://github.com/Melbournejr/FlowDrop_IOS/actions/runs/43573559041/artifacts/14104969115"
+    }
+  ],
+  "imported_evidence": [
+    {
+      "source_artifact_file": "14104794520/nsis-install.log",
+      "source_file_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/windows/nsis-install.log",
+      "git_file_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "size": 1
+    },
+    {
+      "source_artifact_file": "14104794520/desktop-capability.log",
+      "source_file_sha256": "e203152486f2e180b5a318850ef3202114d2dcc0dee1ba598153b7e61dad9ab7",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/windows/desktop-capability.log",
+      "git_file_sha256": "e203152486f2e180b5a318850ef3202114d2dcc0dee1ba598153b7e61dad9ab7",
+      "size": 7
+    },
+    {
+      "source_artifact_file": "14104794520/sendto-shortcut.log",
+      "source_file_sha256": "03758ea39183cbbec16f4622afb1865fbd4af10d68a13e4f68d2be76d26e85a4",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/windows/sendto-shortcut.log",
+      "git_file_sha256": "03758ea39183cbbec16f4622afb1865fbd4af10d68a13e4f68d2be76d26e85a4",
+      "size": 132
+    },
+    {
+      "source_artifact_file": "14104794520/windows-shell-smoke.log",
+      "source_file_sha256": "1f93f73f24bdd8e3bb619631ce9bbfb41633d1c769e3dd9cb8d4337e468eeab4",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/windows/windows-shell-smoke.log",
+      "git_file_sha256": "1f93f73f24bdd8e3bb619631ce9bbfb41633d1c769e3dd9cb8d4337e468eeab4",
+      "size": 225
+    },
+    {
+      "source_artifact_file": "14104794520/commands.json",
+      "source_file_sha256": "55e592d321bfbae0548188013d8656f17e17a02f4501a88253476dbadd325c41",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/windows/commands.json",
+      "git_file_sha256": "55e592d321bfbae0548188013d8656f17e17a02f4501a88253476dbadd325c41",
+      "size": 7922
+    },
+    {
+      "source_artifact_file": "14104794520/confirm-no-owned-processes-after-uninstall.log",
+      "source_file_sha256": "2ba33ca0557f1bb5b7ba88d67f9d0093c7185a36ec51fe2b7bd9372d3e001d6d",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/windows/confirm-no-owned-processes-after-uninstall.log",
+      "git_file_sha256": "2ba33ca0557f1bb5b7ba88d67f9d0093c7185a36ec51fe2b7bd9372d3e001d6d",
+      "size": 5
+    },
+    {
+      "source_artifact_file": "14104794520/app-backend-processes.log",
+      "source_file_sha256": "f9fee2779fa670c4ad59e83b3c2b4e54defa556a14b16c6992fd755b1d52854f",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/windows/app-backend-processes.log",
+      "git_file_sha256": "f9fee2779fa670c4ad59e83b3c2b4e54defa556a14b16c6992fd755b1d52854f",
+      "size": 362
+    },
+    {
+      "source_artifact_file": "14104794520/windows-shell-smoke-dialogs.json",
+      "source_file_sha256": "a445214c5804aa4ac0a5ab8b6c58b08849d910167f8141ee3376f5d31788948f",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/windows/windows-shell-smoke-dialogs.json",
+      "git_file_sha256": "a445214c5804aa4ac0a5ab8b6c58b08849d910167f8141ee3376f5d31788948f",
+      "size": 1429
+    },
+    {
+      "source_artifact_file": "14104794520/native-shutdown-14.log",
+      "source_file_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/windows/native-shutdown-14.log",
+      "git_file_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "size": 1
+    },
+    {
+      "source_artifact_file": "14104794520/native-shutdown-13.log",
+      "source_file_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/windows/native-shutdown-13.log",
+      "git_file_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "size": 1
+    },
+    {
+      "source_artifact_file": "14104794520/known-folders.log",
+      "source_file_sha256": "a8944e4041d2ee235d207a77dc957e7299fcb06151e1f8aa67e2f833e467d56b",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/windows/known-folders.log",
+      "git_file_sha256": "a8944e4041d2ee235d207a77dc957e7299fcb06151e1f8aa67e2f833e467d56b",
+      "size": 198
+    },
+    {
+      "source_artifact_file": "14104794520/nsis-uninstall.log",
+      "source_file_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/windows/nsis-uninstall.log",
+      "git_file_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "size": 1
+    },
+    {
+      "source_artifact_file": "14104794520/windows-os-version.log",
+      "source_file_sha256": "4095f0705ecbc6188f6c1ca7f27e389742affcb1134fb2601ffbd67c33031ccb",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/windows/windows-os-version.log",
+      "git_file_sha256": "4095f0705ecbc6188f6c1ca7f27e389742affcb1134fb2601ffbd67c33031ccb",
+      "size": 155
+    },
+    {
+      "source_artifact_file": "14104794520/windows-native-smoke.log",
+      "source_file_sha256": "719d5328733b2abae6c0ad9b82086a8a91a0e03795c28479cf5f228c9dfc58ae",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/windows/windows-native-smoke.log",
+      "git_file_sha256": "719d5328733b2abae6c0ad9b82086a8a91a0e03795c28479cf5f228c9dfc58ae",
+      "size": 534
+    },
+    {
+      "source_artifact_file": "14104794520/second-native-instance.log",
+      "source_file_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/windows/second-native-instance.log",
+      "git_file_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "size": 1
+    },
+    {
+      "source_artifact_file": "14104794520/stop-after-windows-shell-smoke.log",
+      "source_file_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/windows/stop-after-windows-shell-smoke.log",
+      "git_file_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "size": 1
+    },
+    {
+      "source_artifact_file": "14104794520/stop-only-owned-backend.log",
+      "source_file_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/windows/stop-only-owned-backend.log",
+      "git_file_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "size": 1
+    },
+    {
+      "source_artifact_file": "14104794520/stop-after-windows-native-smoke.log",
+      "source_file_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/windows/stop-after-windows-native-smoke.log",
+      "git_file_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "size": 1
+    },
+    {
+      "source_artifact_file": "14104794520/windows-native-smoke-dialogs.json",
+      "source_file_sha256": "41e26dc76d8d5e7f0c01b4ba28497f0771b33ce9295054cd7f0e316bd3c6c769",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/windows/windows-native-smoke-dialogs.json",
+      "git_file_sha256": "41e26dc76d8d5e7f0c01b4ba28497f0771b33ce9295054cd7f0e316bd3c6c769",
+      "size": 16911
+    },
+    {
+      "source_artifact_file": "14104794520/native-shutdown-7.log",
+      "source_file_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/windows/native-shutdown-7.log",
+      "git_file_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "size": 1
+    },
+    {
+      "source_artifact_file": "14104794520/results.json",
+      "source_file_sha256": "716ab6f8abf324030cbe38429e69083b63dec8208ce30d16849b9830106d3d1f",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/windows/results.json",
+      "git_file_sha256": "716ab6f8abf324030cbe38429e69083b63dec8208ce30d16849b9830106d3d1f",
+      "size": 24916
+    },
+    {
+      "source_artifact_file": "14104794520/native-close-before-uninstall.log",
+      "source_file_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/windows/native-close-before-uninstall.log",
+      "git_file_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "size": 1
+    },
+    {
+      "source_artifact_file": "14105521482/force-stop-app-lifecycle.log",
+      "source_file_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android35/force-stop-app-lifecycle.log",
+      "git_file_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "size": 1
+    },
+    {
+      "source_artifact_file": "14105521482/ubuntu-libpulse-observed.log",
+      "source_file_sha256": "9f680e4612f9e510e6a1733f7801fb7ffcbacbb0eeb55917200f2c7821f03a15",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android35/ubuntu-libpulse-observed.log",
+      "git_file_sha256": "9f680e4612f9e510e6a1733f7801fb7ffcbacbb0eeb55917200f2c7821f03a15",
+      "size": 41
+    },
+    {
+      "source_artifact_file": "14105521482/initial-window-focus-0.log",
+      "source_file_sha256": "63030d7f889b4957c2be3e53a5db3afc94574407348680ac085df9becb2b4338",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android35/initial-window-focus-0.log",
+      "git_file_sha256": "59c27aef73a6e330ec2ab9f9a7be8bfeb474db53092417603a2ff22cd3d8505c",
+      "size": 52923
+    },
+    {
+      "source_artifact_file": "14105521482/confirm-test-removed.log",
+      "source_file_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android35/confirm-test-removed.log",
+      "git_file_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "size": 1
+    },
+    {
+      "source_artifact_file": "14105521482/device-release.log",
+      "source_file_sha256": "238903180cc104ec2c5d8b3f20c5bc61b389ec0a967df8cc208cdc7cd454174f",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android35/device-release.log",
+      "git_file_sha256": "238903180cc104ec2c5d8b3f20c5bc61b389ec0a967df8cc208cdc7cd454174f",
+      "size": 3
+    },
+    {
+      "source_artifact_file": "14105521482/stop-owned-adb-server.log",
+      "source_file_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android35/stop-owned-adb-server.log",
+      "git_file_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "size": 1
+    },
+    {
+      "source_artifact_file": "14105521482/instrumentation-manifest-tree.log",
+      "source_file_sha256": "befd9315588fb06538f5e3849a0a85cc2d3eb7659c7b8aabc9de7daa5ea91dfa",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android35/instrumentation-manifest-tree.log",
+      "git_file_sha256": "befd9315588fb06538f5e3849a0a85cc2d3eb7659c7b8aabc9de7daa5ea91dfa",
+      "size": 3965
+    },
+    {
+      "source_artifact_file": "14105521482/commands.json",
+      "source_file_sha256": "b7a3c99a384ad792964bd1efa3786ae65d33129e9a7c6657fa9b147486b47ce0",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android35/commands.json",
+      "git_file_sha256": "b7a3c99a384ad792964bd1efa3786ae65d33129e9a7c6657fa9b147486b47ce0",
+      "size": 39261
+    },
+    {
+      "source_artifact_file": "14105521482/device-fingerprint.log",
+      "source_file_sha256": "e07fd7d414c3b262449a1a48ec96db76edc31b2273ac896fc04f4f44870e7426",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android35/device-fingerprint.log",
+      "git_file_sha256": "e07fd7d414c3b262449a1a48ec96db76edc31b2273ac896fc04f4f44870e7426",
+      "size": 82
+    },
+    {
+      "source_artifact_file": "14105521482/notification-ui-deny-result.json",
+      "source_file_sha256": "d30346a53d5a50ad00ed40de56ab283cad426dc97746c5154fb73870669eb3f7",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android35/notification-ui-deny-result.json",
+      "git_file_sha256": "d30346a53d5a50ad00ed40de56ab283cad426dc97746c5154fb73870669eb3f7",
+      "size": 294
+    },
+    {
+      "source_artifact_file": "14105521482/instrumentation-zipalign.log",
+      "source_file_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android35/instrumentation-zipalign.log",
+      "git_file_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "size": 1
+    },
+    {
+      "source_artifact_file": "14105521482/allow-owned-runner-kvm.log",
+      "source_file_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android35/allow-owned-runner-kvm.log",
+      "git_file_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "size": 1
+    },
+    {
+      "source_artifact_file": "14105521482/instrumentation-signature.log",
+      "source_file_sha256": "ffe4c00079d91111817b66ec05d0531f51f3e5bc23e6d3c83a6a16783f7a505e",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android35/instrumentation-signature.log",
+      "git_file_sha256": "ffe4c00079d91111817b66ec05d0531f51f3e5bc23e6d3c83a6a16783f7a505e",
+      "size": 947
+    },
+    {
+      "source_artifact_file": "14105521482/adb-ephemeral-key.log",
+      "source_file_sha256": "34099f2007486f443a7e5ad316806b0eae5a8cf53b0831919f4632c61cd18819",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android35/adb-ephemeral-key.log",
+      "git_file_sha256": "34099f2007486f443a7e5ad316806b0eae5a8cf53b0831919f4632c61cd18819",
+      "size": 136
+    },
+    {
+      "source_artifact_file": "14105521482/force-stop-before-a13-runtime-smoke.log",
+      "source_file_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android35/force-stop-before-a13-runtime-smoke.log",
+      "git_file_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "size": 1
+    },
+    {
+      "source_artifact_file": "14105521482/final-service-state.log",
+      "source_file_sha256": "25c03b30a1190f878dbff1750e88b9f8c2de6218ab152ef848f16e87f8bc97d9",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android35/final-service-state.log",
+      "git_file_sha256": "25c03b30a1190f878dbff1750e88b9f8c2de6218ab152ef848f16e87f8bc97d9",
+      "size": 5498
+    },
+    {
+      "source_artifact_file": "14105521482/a10-service-smoke-result.json",
+      "source_file_sha256": "3b1ce3b2c87c753a03a0be3b08cd763225dac65ae0e3910ffe8ef599847286d9",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android35/a10-service-smoke-result.json",
+      "git_file_sha256": "3b1ce3b2c87c753a03a0be3b08cd763225dac65ae0e3910ffe8ef599847286d9",
+      "size": 258
+    },
+    {
+      "source_artifact_file": "14105521482/kvm-acceleration-check.log",
+      "source_file_sha256": "4484bdd6d5e16c817d4dfc5cda05334055c86428c861c1d22e8cf67ce42fee49",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android35/kvm-acceleration-check.log",
+      "git_file_sha256": "4484bdd6d5e16c817d4dfc5cda05334055c86428c861c1d22e8cf67ce42fee49",
+      "size": 57
+    },
+    {
+      "source_artifact_file": "14105521482/a12-share-smoke.log",
+      "source_file_sha256": "c2252c612ed0d1984f26e32ca59501ea29d87dbbbb3d549bc2c6714f553dccb7",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android35/a12-share-smoke.log",
+      "git_file_sha256": "c2252c612ed0d1984f26e32ca59501ea29d87dbbbb3d549bc2c6714f553dccb7",
+      "size": 725
+    },
+    {
+      "source_artifact_file": "14105521482/forward-loopback-backend.log",
+      "source_file_sha256": "b564b059944f629bcbf30aa0f9b3180367aee2a0d0bbc8461e8784d542e77cbe",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android35/forward-loopback-backend.log",
+      "git_file_sha256": "b564b059944f629bcbf30aa0f9b3180367aee2a0d0bbc8461e8784d542e77cbe",
+      "size": 6
+    },
+    {
+      "source_artifact_file": "14105521482/check-no-existing-app.flowdrop.mobile.test.log",
+      "source_file_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android35/check-no-existing-app.flowdrop.mobile.test.log",
+      "git_file_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "size": 1
+    },
+    {
+      "source_artifact_file": "14105521482/app-zipalign.log",
+      "source_file_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android35/app-zipalign.log",
+      "git_file_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "size": 1
+    },
+    {
+      "source_artifact_file": "14105521482/prepare-isolated-application-settings.log",
+      "source_file_sha256": "a35373d49dc4e373b832d2a17b0acdd5203f7466a3a6e391d4039f45365d855d",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android35/prepare-isolated-application-settings.log",
+      "git_file_sha256": "a35373d49dc4e373b832d2a17b0acdd5203f7466a3a6e391d4039f45365d855d",
+      "size": 244
+    },
+    {
+      "source_artifact_file": "14105521482/a12-share-smoke-result.json",
+      "source_file_sha256": "db89c7f2f127ea033e92378c9c0824c372875e519e5a06e9a573afdd9f193931",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android35/a12-share-smoke-result.json",
+      "git_file_sha256": "db89c7f2f127ea033e92378c9c0824c372875e519e5a06e9a573afdd9f193931",
+      "size": 454
+    },
+    {
+      "source_artifact_file": "14105521482/remove-owned-forward.log",
+      "source_file_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android35/remove-owned-forward.log",
+      "git_file_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "size": 1
+    },
+    {
+      "source_artifact_file": "14105521482/emulator-version.log",
+      "source_file_sha256": "1a523c9091747b7bf48a755396278f2eca455352b40c281336f1c3e075607b54",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android35/emulator-version.log",
+      "git_file_sha256": "ebb87d088b5a29923b5be274beba060f53a55a4e5c269d461e918a0093b0131f",
+      "size": 654
+    },
+    {
+      "source_artifact_file": "14105521482/a11-folder-smoke-result.json",
+      "source_file_sha256": "bf4efdf74e0de3dfea9740da923a6aee4cba573e5d3e748b6ea1cc6328e5792d",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android35/a11-folder-smoke-result.json",
+      "git_file_sha256": "bf4efdf74e0de3dfea9740da923a6aee4cba573e5d3e748b6ea1cc6328e5792d",
+      "size": 274
+    },
+    {
+      "source_artifact_file": "14105521482/launch-for-http.log",
+      "source_file_sha256": "f9bdf491340db06a2f21639e6635b833c6b0c71542ca8d83c399cf2b7dbfd170",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android35/launch-for-http.log",
+      "git_file_sha256": "f9bdf491340db06a2f21639e6635b833c6b0c71542ca8d83c399cf2b7dbfd170",
+      "size": 172
+    },
+    {
+      "source_artifact_file": "14105521482/uninstall-app.log",
+      "source_file_sha256": "7fc0023a6402c7bd7abd98bb3e580968de4833eed07d88d1cc8d70819d69c7a0",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android35/uninstall-app.log",
+      "git_file_sha256": "7fc0023a6402c7bd7abd98bb3e580968de4833eed07d88d1cc8d70819d69c7a0",
+      "size": 8
+    },
+    {
+      "source_artifact_file": "14105521482/ubuntu-official-mirrors.log",
+      "source_file_sha256": "e0d6b0af979e4662d16357a27ae456cc6f21e26da031540f4df8706ebed1d583",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android35/ubuntu-official-mirrors.log",
+      "git_file_sha256": "e0d6b0af979e4662d16357a27ae456cc6f21e26da031540f4df8706ebed1d583",
+      "size": 144
+    },
+    {
+      "source_artifact_file": "14105521482/emulator-host-ldd-after.log",
+      "source_file_sha256": "1392a1acf707cfff4cf648ffec513ae4be60d4495a97341c42bcf6eecf8901fc",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android35/emulator-host-ldd-after.log",
+      "git_file_sha256": "1392a1acf707cfff4cf648ffec513ae4be60d4495a97341c42bcf6eecf8901fc",
+      "size": 9467
+    },
+    {
+      "source_artifact_file": "14105521482/initial-screenshot-device.log",
+      "source_file_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android35/initial-screenshot-device.log",
+      "git_file_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "size": 1
+    },
+    {
+      "source_artifact_file": "14105521482/a09-native-smoke.log",
+      "source_file_sha256": "5a5c78ab6995d3d9344cfafff77c385ae39041e95cb1969493bcaafb911599c4",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android35/a09-native-smoke.log",
+      "git_file_sha256": "5a5c78ab6995d3d9344cfafff77c385ae39041e95cb1969493bcaafb911599c4",
+      "size": 933
+    },
+    {
+      "source_artifact_file": "14105521482/force-stop-before-a12-share-smoke.log",
+      "source_file_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android35/force-stop-before-a12-share-smoke.log",
+      "git_file_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "size": 1
+    },
+    {
+      "source_artifact_file": "14105521482/install-app.log",
+      "source_file_sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android35/install-app.log",
+      "git_file_sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7",
+      "size": 36
+    },
+    {
+      "source_artifact_file": "14105521482/adb-version.log",
+      "source_file_sha256": "15db5f11d20aaff661c1822c24e24eea580ab2bd9c2197bcffa1079c9da43437",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android35/adb-version.log",
+      "git_file_sha256": "15db5f11d20aaff661c1822c24e24eea580ab2bd9c2197bcffa1079c9da43437",
+      "size": 199
+    },
+    {
+      "source_artifact_file": "14105521482/app-signature.log",
+      "source_file_sha256": "ffe4c00079d91111817b66ec05d0531f51f3e5bc23e6d3c83a6a16783f7a505e",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android35/app-signature.log",
+      "git_file_sha256": "ffe4c00079d91111817b66ec05d0531f51f3e5bc23e6d3c83a6a16783f7a505e",
+      "size": 947
+    },
+    {
+      "source_artifact_file": "14105521482/force-stop-before-a11-folder-smoke.log",
+      "source_file_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android35/force-stop-before-a11-folder-smoke.log",
+      "git_file_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "size": 1
+    },
+    {
+      "source_artifact_file": "14105521482/ubuntu-libpulse-install.log",
+      "source_file_sha256": "88ad0b899cb606c7f5b842c8b9f62875be9745e59bbb458f7deb60ce0067fc2c",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android35/ubuntu-libpulse-install.log",
+      "git_file_sha256": "838895b4a1429d5bc7dc29224abb7d0f4b40feb4d298c18e73f46b79b00b5df7",
+      "size": 4316
+    },
+    {
+      "source_artifact_file": "14105521482/app-badging.log",
+      "source_file_sha256": "0a1d95428c084dc1a8a568351453e5abd5c0b668fa4be9b0d4e680f7ccbeee65",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android35/app-badging.log",
+      "git_file_sha256": "0a1d95428c084dc1a8a568351453e5abd5c0b668fa4be9b0d4e680f7ccbeee65",
+      "size": 1767
+    },
+    {
+      "source_artifact_file": "14105521482/device-abi.log",
+      "source_file_sha256": "aaf631698ae5160ceb04a97681a14887fdcab47cd6e0f163c87485b3b1340b62",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android35/device-abi.log",
+      "git_file_sha256": "aaf631698ae5160ceb04a97681a14887fdcab47cd6e0f163c87485b3b1340b62",
+      "size": 7
+    },
+    {
+      "source_artifact_file": "14105521482/notification-ui-grant-result.json",
+      "source_file_sha256": "680fcb5796111edf95b3cc92d25c92d34fa52dec14e6d5a9be4a48cdc57dac4c",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android35/notification-ui-grant-result.json",
+      "git_file_sha256": "680fcb5796111edf95b3cc92d25c92d34fa52dec14e6d5a9be4a48cdc57dac4c",
+      "size": 294
+    },
+    {
+      "source_artifact_file": "14105521482/uninstall-test.log",
+      "source_file_sha256": "7fc0023a6402c7bd7abd98bb3e580968de4833eed07d88d1cc8d70819d69c7a0",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android35/uninstall-test.log",
+      "git_file_sha256": "7fc0023a6402c7bd7abd98bb3e580968de4833eed07d88d1cc8d70819d69c7a0",
+      "size": 8
+    },
+    {
+      "source_artifact_file": "14105521482/a13-runtime-smoke-result.json",
+      "source_file_sha256": "67dd18843c396e689c4e0bcf0b924b92c2c8291af529f38f0dbadff640ede0e4",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android35/a13-runtime-smoke-result.json",
+      "git_file_sha256": "67dd18843c396e689c4e0bcf0b924b92c2c8291af529f38f0dbadff640ede0e4",
+      "size": 3600
+    },
+    {
+      "source_artifact_file": "14105521482/installed-sdk-packages.json",
+      "source_file_sha256": "d1699a68f76810b2ff20bd97a9759a1a4e7ad3d8881a2d02b02c8e1761f88a5d",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android35/installed-sdk-packages.json",
+      "git_file_sha256": "d1699a68f76810b2ff20bd97a9759a1a4e7ad3d8881a2d02b02c8e1761f88a5d",
+      "size": 986
+    },
+    {
+      "source_artifact_file": "14105521482/launch-main-activity.log",
+      "source_file_sha256": "f49c3f9132bd1dbd63d48b199dc47668a759d66c0b672e11ee5cf075d88dfd81",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android35/launch-main-activity.log",
+      "git_file_sha256": "f49c3f9132bd1dbd63d48b199dc47668a759d66c0b672e11ee5cf075d88dfd81",
+      "size": 172
+    },
+    {
+      "source_artifact_file": "14105521482/force-stop-before-prepare-isolated-application-settings.log",
+      "source_file_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android35/force-stop-before-prepare-isolated-application-settings.log",
+      "git_file_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "size": 1
+    },
+    {
+      "source_artifact_file": "14105521482/pid-after-force-stop.log",
+      "source_file_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android35/pid-after-force-stop.log",
+      "git_file_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "size": 1
+    },
+    {
+      "source_artifact_file": "14105521482/wait-for-owned-device.log",
+      "source_file_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android35/wait-for-owned-device.log",
+      "git_file_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "size": 1
+    },
+    {
+      "source_artifact_file": "14105521482/notification-ui-deny.log",
+      "source_file_sha256": "19633c6e89f14383b0e558ffdbf5dcc300c4df33c66625dc786dd8604607474c",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android35/notification-ui-deny.log",
+      "git_file_sha256": "19633c6e89f14383b0e558ffdbf5dcc300c4df33c66625dc786dd8604607474c",
+      "size": 366
+    },
+    {
+      "source_artifact_file": "14105521482/check-no-existing-app.flowdrop.mobile.log",
+      "source_file_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android35/check-no-existing-app.flowdrop.mobile.log",
+      "git_file_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "size": 1
+    },
+    {
+      "source_artifact_file": "14105521482/stop-owned-emulator.log",
+      "source_file_sha256": "e2d4238ce853e3f4c1ba7b36adf25ff824d93c36a0b94db50cb96dc047aac6d3",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android35/stop-owned-emulator.log",
+      "git_file_sha256": "e2d4238ce853e3f4c1ba7b36adf25ff824d93c36a0b94db50cb96dc047aac6d3",
+      "size": 33
+    },
+    {
+      "source_artifact_file": "14105521482/instrumentation-badging.log",
+      "source_file_sha256": "a85331ff0e09011afea9b815901790b4c37b1e8875165defc3ec37df73dc212d",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android35/instrumentation-badging.log",
+      "git_file_sha256": "a85331ff0e09011afea9b815901790b4c37b1e8875165defc3ec37df73dc212d",
+      "size": 565
+    },
+    {
+      "source_artifact_file": "14105521482/android-api.log",
+      "source_file_sha256": "90d7ec0f0acef104d8b6252794295f661a0149634868d02a1ae0c358099638f5",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android35/android-api.log",
+      "git_file_sha256": "90d7ec0f0acef104d8b6252794295f661a0149634868d02a1ae0c358099638f5",
+      "size": 3
+    },
+    {
+      "source_artifact_file": "14105521482/emulator-host-ldd-before.log",
+      "source_file_sha256": "703aa851e110696e045652e6fc2423aa02ce9e857260ceb9b996137a0ba1601c",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android35/emulator-host-ldd-before.log",
+      "git_file_sha256": "703aa851e110696e045652e6fc2423aa02ce9e857260ceb9b996137a0ba1601c",
+      "size": 8395
+    },
+    {
+      "source_artifact_file": "14105521482/final-activity-state.log",
+      "source_file_sha256": "2917d9cdfe3696012fd0f209fb11e3ea80a08f8acbab971959d0ff046040e507",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android35/final-activity-state.log",
+      "git_file_sha256": "ee44c443d59322fee594fb85a034642b1fb028e93c2d4f1137e71a4558337309",
+      "size": 30688
+    },
+    {
+      "source_artifact_file": "14105521482/create-owned-avd.log",
+      "source_file_sha256": "09d3a6e7eec0499bdd6f8ae186c848c3eb48a0f378a8785d2b4ceb3900cee503",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android35/create-owned-avd.log",
+      "git_file_sha256": "7d5f036d5831a67643352787ab5ea0c633f5d820ddcf138fc51c8fc8eddca4c7",
+      "size": 542
+    },
+    {
+      "source_artifact_file": "14105521482/ubuntu-signed-package-index.log",
+      "source_file_sha256": "05fa287f3589765fcdf5520db8de1c96520f111a92de4b4dc0e327930ecda0c9",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android35/ubuntu-signed-package-index.log",
+      "git_file_sha256": "05fa287f3589765fcdf5520db8de1c96520f111a92de4b4dc0e327930ecda0c9",
+      "size": 1887
+    },
+    {
+      "source_artifact_file": "14105521482/install-instrumentation.log",
+      "source_file_sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android35/install-instrumentation.log",
+      "git_file_sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7",
+      "size": 36
+    },
+    {
+      "source_artifact_file": "14105521482/a09-native-smoke-result.json",
+      "source_file_sha256": "c65da8eaa9b073a761a8cbd1dd48d3c49b114549d369f7c4feae1d826f31c9d3",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android35/a09-native-smoke-result.json",
+      "git_file_sha256": "c65da8eaa9b073a761a8cbd1dd48d3c49b114549d369f7c4feae1d826f31c9d3",
+      "size": 341
+    },
+    {
+      "source_artifact_file": "14105521482/wake-emulator.log",
+      "source_file_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android35/wake-emulator.log",
+      "git_file_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "size": 1
+    },
+    {
+      "source_artifact_file": "14105521482/a11-folder-smoke.log",
+      "source_file_sha256": "7a0c01f93f172ad60cffbb13f0edf08b38e6ced70c60c8200f3f1fd41c5c3abb",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android35/a11-folder-smoke.log",
+      "git_file_sha256": "7a0c01f93f172ad60cffbb13f0edf08b38e6ced70c60c8200f3f1fd41c5c3abb",
+      "size": 405
+    },
+    {
+      "source_artifact_file": "14105521482/restart-app-lifecycle.log",
+      "source_file_sha256": "bb1f90adbc6d070a751595b4852bb590c5bc68021d9d8d4b1465f30c78ad844c",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android35/restart-app-lifecycle.log",
+      "git_file_sha256": "bb1f90adbc6d070a751595b4852bb590c5bc68021d9d8d4b1465f30c78ad844c",
+      "size": 172
+    },
+    {
+      "source_artifact_file": "14105521482/force-stop-before-notification-ui-grant.log",
+      "source_file_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android35/force-stop-before-notification-ui-grant.log",
+      "git_file_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "size": 1
+    },
+    {
+      "source_artifact_file": "14105521482/ubuntu-libpulse-policy.log",
+      "source_file_sha256": "773d3deb4587d673fd60be8c238bfb3f50c75451fc783e40a56db515d91d0b4a",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android35/ubuntu-libpulse-policy.log",
+      "git_file_sha256": "773d3deb4587d673fd60be8c238bfb3f50c75451fc783e40a56db515d91d0b4a",
+      "size": 310
+    },
+    {
+      "source_artifact_file": "14105521482/force-stop-before-notification-ui-deny.log",
+      "source_file_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android35/force-stop-before-notification-ui-deny.log",
+      "git_file_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "size": 1
+    },
+    {
+      "source_artifact_file": "14105521482/app-manifest-tree.log",
+      "source_file_sha256": "8d9224be114265efe6006e5e2d8201d52b60c72bed4c95b690d09530e9cc0378",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android35/app-manifest-tree.log",
+      "git_file_sha256": "8d9224be114265efe6006e5e2d8201d52b60c72bed4c95b690d09530e9cc0378",
+      "size": 7063
+    },
+    {
+      "source_artifact_file": "14105521482/start-dedicated-adb.log",
+      "source_file_sha256": "b1f9e0ad50868b8a2844f6629f0a083113808b20e744bba266bcf4f6efb24b84",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android35/start-dedicated-adb.log",
+      "git_file_sha256": "b1f9e0ad50868b8a2844f6629f0a083113808b20e744bba266bcf4f6efb24b84",
+      "size": 77
+    },
+    {
+      "source_artifact_file": "14105521482/force-stop-before-a09-native-smoke.log",
+      "source_file_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android35/force-stop-before-a09-native-smoke.log",
+      "git_file_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "size": 1
+    },
+    {
+      "source_artifact_file": "14105521482/a13-runtime-smoke.log",
+      "source_file_sha256": "cf38a8fdfa5079f1ad025d5a061a698247b7f5bff6216b140cfd447c3a8d46cd",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android35/a13-runtime-smoke.log",
+      "git_file_sha256": "cf38a8fdfa5079f1ad025d5a061a698247b7f5bff6216b140cfd447c3a8d46cd",
+      "size": 3553
+    },
+    {
+      "source_artifact_file": "14105521482/force-stop-before-a10-service-smoke.log",
+      "source_file_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android35/force-stop-before-a10-service-smoke.log",
+      "git_file_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "size": 1
+    },
+    {
+      "source_artifact_file": "14105521482/android-app-logcat.log",
+      "source_file_sha256": "7c7afa298c70076569fde1b3c61b0197bd4bbfed722be9c2c9fa0ac537247aaa",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android35/android-app-logcat.log",
+      "git_file_sha256": "d34f428421e71b43cddb691b96f7f93427ea33fa77251b352e8c764e9bb25c15",
+      "size": 559851
+    },
+    {
+      "source_artifact_file": "14105521482/notification-ui-grant.log",
+      "source_file_sha256": "12d508bb6a07ac6e87891e5e8dcbc0b5e2ae0428989263ca6d813e6fed64d029",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android35/notification-ui-grant.log",
+      "git_file_sha256": "12d508bb6a07ac6e87891e5e8dcbc0b5e2ae0428989263ca6d813e6fed64d029",
+      "size": 367
+    },
+    {
+      "source_artifact_file": "14105521482/initial-activity-state.log",
+      "source_file_sha256": "965cb179588d6ac06b0b2b68dd7dd586c546b77ac585b17f37403e2d077219cd",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android35/initial-activity-state.log",
+      "git_file_sha256": "b7368844c95c368636fec946c19d3c14dcf83f745642785ce96d64ba2efb9688",
+      "size": 29979
+    },
+    {
+      "source_artifact_file": "14105521482/emulator-boot.log",
+      "source_file_sha256": "b915d24ec4e9b5215e6eb910b65cdce65869056f71548c8ae5556998ba4b54bd",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android35/emulator-boot.log",
+      "git_file_sha256": "8ef9291920c6351d8305d301c40fd4c384a3eeb1d067aed12b902cb0e554cc21",
+      "size": 10524
+    },
+    {
+      "source_artifact_file": "14105521482/a10-service-smoke.log",
+      "source_file_sha256": "b7e82e934cef9987ea50d7e11c5146905898ad2329fae6787785079cb8c01f8b",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android35/a10-service-smoke.log",
+      "git_file_sha256": "b7e82e934cef9987ea50d7e11c5146905898ad2329fae6787785079cb8c01f8b",
+      "size": 605
+    },
+    {
+      "source_artifact_file": "14105521482/results.json",
+      "source_file_sha256": "e3565df307630b3516423abac567f8ca21ed0fa0d91b74eb194c99fd1e9fa916",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android35/results.json",
+      "git_file_sha256": "e3565df307630b3516423abac567f8ca21ed0fa0d91b74eb194c99fd1e9fa916",
+      "size": 25238
+    },
+    {
+      "source_artifact_file": "14105521482/prepare-isolated-application-settings-result.json",
+      "source_file_sha256": "0f9546056b4ae97a4fd23eda1873decb8213e9941e959bdf2954d62b30617649",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android35/prepare-isolated-application-settings-result.json",
+      "git_file_sha256": "0f9546056b4ae97a4fd23eda1873decb8213e9941e959bdf2954d62b30617649",
+      "size": 152
+    },
+    {
+      "source_artifact_file": "14105521482/avdmanager-list.log",
+      "source_file_sha256": "58f5ed49aa7f975b589bce8f938217ca5e5f05ed8dfcde1d9b8c133b72b5d499",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android35/avdmanager-list.log",
+      "git_file_sha256": "58f5ed49aa7f975b589bce8f938217ca5e5f05ed8dfcde1d9b8c133b72b5d499",
+      "size": 7043
+    },
+    {
+      "source_artifact_file": "14105521482/initial-screenshot-pull.log",
+      "source_file_sha256": "7b4a36bf79ccbd8e40dcbdd7ab067843167e2963bdd9f89f1c32c5be9e2e4309",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android35/initial-screenshot-pull.log",
+      "git_file_sha256": "7b4a36bf79ccbd8e40dcbdd7ab067843167e2963bdd9f89f1c32c5be9e2e4309",
+      "size": 98
+    },
+    {
+      "source_artifact_file": "14105521482/confirm-app-removed.log",
+      "source_file_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android35/confirm-app-removed.log",
+      "git_file_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "size": 1
+    },
+    {
+      "source_artifact_file": "14105336890/force-stop-app-lifecycle.log",
+      "source_file_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android29/force-stop-app-lifecycle.log",
+      "git_file_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "size": 1
+    },
+    {
+      "source_artifact_file": "14105336890/ubuntu-libpulse-observed.log",
+      "source_file_sha256": "9f680e4612f9e510e6a1733f7801fb7ffcbacbb0eeb55917200f2c7821f03a15",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android29/ubuntu-libpulse-observed.log",
+      "git_file_sha256": "9f680e4612f9e510e6a1733f7801fb7ffcbacbb0eeb55917200f2c7821f03a15",
+      "size": 41
+    },
+    {
+      "source_artifact_file": "14105336890/initial-window-focus-0.log",
+      "source_file_sha256": "ee4d858e9173c59760bc6d84e05c5840de3dcb7007c5b78e54d48d7c4ffd82c9",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android29/initial-window-focus-0.log",
+      "git_file_sha256": "ee4d858e9173c59760bc6d84e05c5840de3dcb7007c5b78e54d48d7c4ffd82c9",
+      "size": 22644
+    },
+    {
+      "source_artifact_file": "14105336890/notification-api-policy-result.json",
+      "source_file_sha256": "2da461898c23155b1cd4e523a2c3647e5dc1bf07e116a0d73a2627165044f32a",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android29/notification-api-policy-result.json",
+      "git_file_sha256": "2da461898c23155b1cd4e523a2c3647e5dc1bf07e116a0d73a2627165044f32a",
+      "size": 184
+    },
+    {
+      "source_artifact_file": "14105336890/confirm-test-removed.log",
+      "source_file_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android29/confirm-test-removed.log",
+      "git_file_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "size": 1
+    },
+    {
+      "source_artifact_file": "14105336890/device-release.log",
+      "source_file_sha256": "917df3320d778ddbaa5c5c7742bc4046bf803c36ed2b050f30844ed206783469",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android29/device-release.log",
+      "git_file_sha256": "917df3320d778ddbaa5c5c7742bc4046bf803c36ed2b050f30844ed206783469",
+      "size": 3
+    },
+    {
+      "source_artifact_file": "14105336890/stop-owned-adb-server.log",
+      "source_file_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android29/stop-owned-adb-server.log",
+      "git_file_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "size": 1
+    },
+    {
+      "source_artifact_file": "14105336890/instrumentation-manifest-tree.log",
+      "source_file_sha256": "befd9315588fb06538f5e3849a0a85cc2d3eb7659c7b8aabc9de7daa5ea91dfa",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android29/instrumentation-manifest-tree.log",
+      "git_file_sha256": "befd9315588fb06538f5e3849a0a85cc2d3eb7659c7b8aabc9de7daa5ea91dfa",
+      "size": 3965
+    },
+    {
+      "source_artifact_file": "14105336890/commands.json",
+      "source_file_sha256": "e2e06b43008437c50d308b6e0f6264e104ed9286671193294d6584783d879a4f",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android29/commands.json",
+      "git_file_sha256": "e2e06b43008437c50d308b6e0f6264e104ed9286671193294d6584783d879a4f",
+      "size": 34690
+    },
+    {
+      "source_artifact_file": "14105336890/device-fingerprint.log",
+      "source_file_sha256": "6ae65e4e6a95d74db8a522b1941f25805a3cfd4c5828470d6f5ea1afd1c0a003",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android29/device-fingerprint.log",
+      "git_file_sha256": "6ae65e4e6a95d74db8a522b1941f25805a3cfd4c5828470d6f5ea1afd1c0a003",
+      "size": 87
+    },
+    {
+      "source_artifact_file": "14105336890/instrumentation-zipalign.log",
+      "source_file_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android29/instrumentation-zipalign.log",
+      "git_file_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "size": 1
+    },
+    {
+      "source_artifact_file": "14105336890/allow-owned-runner-kvm.log",
+      "source_file_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android29/allow-owned-runner-kvm.log",
+      "git_file_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "size": 1
+    },
+    {
+      "source_artifact_file": "14105336890/instrumentation-signature.log",
+      "source_file_sha256": "ffe4c00079d91111817b66ec05d0531f51f3e5bc23e6d3c83a6a16783f7a505e",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android29/instrumentation-signature.log",
+      "git_file_sha256": "ffe4c00079d91111817b66ec05d0531f51f3e5bc23e6d3c83a6a16783f7a505e",
+      "size": 947
+    },
+    {
+      "source_artifact_file": "14105336890/adb-ephemeral-key.log",
+      "source_file_sha256": "f6cd4f722f6a628bb7079ff5a4571754211d73949c327b715bd716516a138914",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android29/adb-ephemeral-key.log",
+      "git_file_sha256": "f6cd4f722f6a628bb7079ff5a4571754211d73949c327b715bd716516a138914",
+      "size": 136
+    },
+    {
+      "source_artifact_file": "14105336890/force-stop-before-a13-runtime-smoke.log",
+      "source_file_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android29/force-stop-before-a13-runtime-smoke.log",
+      "git_file_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "size": 1
+    },
+    {
+      "source_artifact_file": "14105336890/final-service-state.log",
+      "source_file_sha256": "5e37347acd42baeaa909bdc8e8d165f2599b2f373a67728d098e0614a2ca2f0e",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android29/final-service-state.log",
+      "git_file_sha256": "5e37347acd42baeaa909bdc8e8d165f2599b2f373a67728d098e0614a2ca2f0e",
+      "size": 1705
+    },
+    {
+      "source_artifact_file": "14105336890/a10-service-smoke-result.json",
+      "source_file_sha256": "6daffaadf5beb46ca938b8ee2f45499875c05e192d046fa627a867e7a45ab7f9",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android29/a10-service-smoke-result.json",
+      "git_file_sha256": "6daffaadf5beb46ca938b8ee2f45499875c05e192d046fa627a867e7a45ab7f9",
+      "size": 258
+    },
+    {
+      "source_artifact_file": "14105336890/kvm-acceleration-check.log",
+      "source_file_sha256": "4484bdd6d5e16c817d4dfc5cda05334055c86428c861c1d22e8cf67ce42fee49",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android29/kvm-acceleration-check.log",
+      "git_file_sha256": "4484bdd6d5e16c817d4dfc5cda05334055c86428c861c1d22e8cf67ce42fee49",
+      "size": 57
+    },
+    {
+      "source_artifact_file": "14105336890/a12-share-smoke.log",
+      "source_file_sha256": "5d32ded017aceb6c91288f847d6cc2f78a2150a636a31881a65dcf78cdbf551e",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android29/a12-share-smoke.log",
+      "git_file_sha256": "5d32ded017aceb6c91288f847d6cc2f78a2150a636a31881a65dcf78cdbf551e",
+      "size": 725
+    },
+    {
+      "source_artifact_file": "14105336890/forward-loopback-backend.log",
+      "source_file_sha256": "5614ef4cee6a39ca78b9d8b455c1a8d8b5163f28e93d85bc321ecb5758103484",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android29/forward-loopback-backend.log",
+      "git_file_sha256": "5614ef4cee6a39ca78b9d8b455c1a8d8b5163f28e93d85bc321ecb5758103484",
+      "size": 6
+    },
+    {
+      "source_artifact_file": "14105336890/check-no-existing-app.flowdrop.mobile.test.log",
+      "source_file_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android29/check-no-existing-app.flowdrop.mobile.test.log",
+      "git_file_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "size": 1
+    },
+    {
+      "source_artifact_file": "14105336890/app-zipalign.log",
+      "source_file_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android29/app-zipalign.log",
+      "git_file_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "size": 1
+    },
+    {
+      "source_artifact_file": "14105336890/prepare-isolated-application-settings.log",
+      "source_file_sha256": "cf5891395ac11c93c548b31f1298079f8679be96d2e6512b4dd4e8a70899d396",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android29/prepare-isolated-application-settings.log",
+      "git_file_sha256": "cf5891395ac11c93c548b31f1298079f8679be96d2e6512b4dd4e8a70899d396",
+      "size": 244
+    },
+    {
+      "source_artifact_file": "14105336890/a12-share-smoke-result.json",
+      "source_file_sha256": "06aea62c764e64f4b47341e193341fcb4c3a9b1065e84e4971b76a1d09aea36b",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android29/a12-share-smoke-result.json",
+      "git_file_sha256": "06aea62c764e64f4b47341e193341fcb4c3a9b1065e84e4971b76a1d09aea36b",
+      "size": 454
+    },
+    {
+      "source_artifact_file": "14105336890/remove-owned-forward.log",
+      "source_file_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android29/remove-owned-forward.log",
+      "git_file_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "size": 1
+    },
+    {
+      "source_artifact_file": "14105336890/emulator-version.log",
+      "source_file_sha256": "1a523c9091747b7bf48a755396278f2eca455352b40c281336f1c3e075607b54",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android29/emulator-version.log",
+      "git_file_sha256": "ebb87d088b5a29923b5be274beba060f53a55a4e5c269d461e918a0093b0131f",
+      "size": 654
+    },
+    {
+      "source_artifact_file": "14105336890/notification-api-policy.log",
+      "source_file_sha256": "3057a8fc75036fa90c20c77db2711fc49b95c3221ff4d6a1d524736dba8001ad",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android29/notification-api-policy.log",
+      "git_file_sha256": "3057a8fc75036fa90c20c77db2711fc49b95c3221ff4d6a1d524736dba8001ad",
+      "size": 267
+    },
+    {
+      "source_artifact_file": "14105336890/a11-folder-smoke-result.json",
+      "source_file_sha256": "72e0bd1b6ef6c3d27df3e3a85d23dfbe117fe4bdf20c2bcbf2f3f5941bf8ad33",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android29/a11-folder-smoke-result.json",
+      "git_file_sha256": "72e0bd1b6ef6c3d27df3e3a85d23dfbe117fe4bdf20c2bcbf2f3f5941bf8ad33",
+      "size": 274
+    },
+    {
+      "source_artifact_file": "14105336890/launch-for-http.log",
+      "source_file_sha256": "c57088fbc0d22cdb96b7372b97bdb68cb8a7d2685da5f0a0dc127d6fcff4195d",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android29/launch-for-http.log",
+      "git_file_sha256": "c57088fbc0d22cdb96b7372b97bdb68cb8a7d2685da5f0a0dc127d6fcff4195d",
+      "size": 172
+    },
+    {
+      "source_artifact_file": "14105336890/uninstall-app.log",
+      "source_file_sha256": "7fc0023a6402c7bd7abd98bb3e580968de4833eed07d88d1cc8d70819d69c7a0",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android29/uninstall-app.log",
+      "git_file_sha256": "7fc0023a6402c7bd7abd98bb3e580968de4833eed07d88d1cc8d70819d69c7a0",
+      "size": 8
+    },
+    {
+      "source_artifact_file": "14105336890/ubuntu-official-mirrors.log",
+      "source_file_sha256": "e0d6b0af979e4662d16357a27ae456cc6f21e26da031540f4df8706ebed1d583",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android29/ubuntu-official-mirrors.log",
+      "git_file_sha256": "e0d6b0af979e4662d16357a27ae456cc6f21e26da031540f4df8706ebed1d583",
+      "size": 144
+    },
+    {
+      "source_artifact_file": "14105336890/emulator-host-ldd-after.log",
+      "source_file_sha256": "1d9ae99e7d104a5d6cef738a66b27c17e86c9db793fa17da060fe9bc7ba14e1c",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android29/emulator-host-ldd-after.log",
+      "git_file_sha256": "1d9ae99e7d104a5d6cef738a66b27c17e86c9db793fa17da060fe9bc7ba14e1c",
+      "size": 9467
+    },
+    {
+      "source_artifact_file": "14105336890/initial-screenshot-device.log",
+      "source_file_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android29/initial-screenshot-device.log",
+      "git_file_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "size": 1
+    },
+    {
+      "source_artifact_file": "14105336890/a09-native-smoke.log",
+      "source_file_sha256": "e99e13c288f9a0712b4a3fff15d25edc0766f1b59ec7541054f4bf6d6005bc67",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android29/a09-native-smoke.log",
+      "git_file_sha256": "e99e13c288f9a0712b4a3fff15d25edc0766f1b59ec7541054f4bf6d6005bc67",
+      "size": 933
+    },
+    {
+      "source_artifact_file": "14105336890/force-stop-before-a12-share-smoke.log",
+      "source_file_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android29/force-stop-before-a12-share-smoke.log",
+      "git_file_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "size": 1
+    },
+    {
+      "source_artifact_file": "14105336890/install-app.log",
+      "source_file_sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android29/install-app.log",
+      "git_file_sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7",
+      "size": 36
+    },
+    {
+      "source_artifact_file": "14105336890/adb-version.log",
+      "source_file_sha256": "1d732c8fdd78f6caf8c454774717030c434e6d64e40969a7a46f4a65be962b78",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android29/adb-version.log",
+      "git_file_sha256": "1d732c8fdd78f6caf8c454774717030c434e6d64e40969a7a46f4a65be962b78",
+      "size": 199
+    },
+    {
+      "source_artifact_file": "14105336890/app-signature.log",
+      "source_file_sha256": "ffe4c00079d91111817b66ec05d0531f51f3e5bc23e6d3c83a6a16783f7a505e",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android29/app-signature.log",
+      "git_file_sha256": "ffe4c00079d91111817b66ec05d0531f51f3e5bc23e6d3c83a6a16783f7a505e",
+      "size": 947
+    },
+    {
+      "source_artifact_file": "14105336890/force-stop-before-a11-folder-smoke.log",
+      "source_file_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android29/force-stop-before-a11-folder-smoke.log",
+      "git_file_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "size": 1
+    },
+    {
+      "source_artifact_file": "14105336890/ubuntu-libpulse-install.log",
+      "source_file_sha256": "a71fb670de06abd4e2cca8d445156c0756362e6850b93c3ae20a6aee082083b3",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android29/ubuntu-libpulse-install.log",
+      "git_file_sha256": "1e3ff1e584ce601b6461ac9cc548fb00774b3e5d2ca21eb959b8cef9253e09ee",
+      "size": 4316
+    },
+    {
+      "source_artifact_file": "14105336890/app-badging.log",
+      "source_file_sha256": "0a1d95428c084dc1a8a568351453e5abd5c0b668fa4be9b0d4e680f7ccbeee65",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android29/app-badging.log",
+      "git_file_sha256": "0a1d95428c084dc1a8a568351453e5abd5c0b668fa4be9b0d4e680f7ccbeee65",
+      "size": 1767
+    },
+    {
+      "source_artifact_file": "14105336890/device-abi.log",
+      "source_file_sha256": "aaf631698ae5160ceb04a97681a14887fdcab47cd6e0f163c87485b3b1340b62",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android29/device-abi.log",
+      "git_file_sha256": "aaf631698ae5160ceb04a97681a14887fdcab47cd6e0f163c87485b3b1340b62",
+      "size": 7
+    },
+    {
+      "source_artifact_file": "14105336890/uninstall-test.log",
+      "source_file_sha256": "7fc0023a6402c7bd7abd98bb3e580968de4833eed07d88d1cc8d70819d69c7a0",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android29/uninstall-test.log",
+      "git_file_sha256": "7fc0023a6402c7bd7abd98bb3e580968de4833eed07d88d1cc8d70819d69c7a0",
+      "size": 8
+    },
+    {
+      "source_artifact_file": "14105336890/a13-runtime-smoke-result.json",
+      "source_file_sha256": "c9623b693f354ba1a7587c1212e55ce4ce400df5cb5d9b0ff6302c711e5bcba2",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android29/a13-runtime-smoke-result.json",
+      "git_file_sha256": "c9623b693f354ba1a7587c1212e55ce4ce400df5cb5d9b0ff6302c711e5bcba2",
+      "size": 3600
+    },
+    {
+      "source_artifact_file": "14105336890/installed-sdk-packages.json",
+      "source_file_sha256": "3ac55dc770d0b31105cdc5a2e77c7df89338d9b912463fea3f5e1c8d39e070bd",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android29/installed-sdk-packages.json",
+      "git_file_sha256": "3ac55dc770d0b31105cdc5a2e77c7df89338d9b912463fea3f5e1c8d39e070bd",
+      "size": 986
+    },
+    {
+      "source_artifact_file": "14105336890/launch-main-activity.log",
+      "source_file_sha256": "11744a8733e3df455bf452c076a3da983562f6a325ef51a3f0df6e4e022377b2",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android29/launch-main-activity.log",
+      "git_file_sha256": "11744a8733e3df455bf452c076a3da983562f6a325ef51a3f0df6e4e022377b2",
+      "size": 172
+    },
+    {
+      "source_artifact_file": "14105336890/force-stop-before-prepare-isolated-application-settings.log",
+      "source_file_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android29/force-stop-before-prepare-isolated-application-settings.log",
+      "git_file_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "size": 1
+    },
+    {
+      "source_artifact_file": "14105336890/pid-after-force-stop.log",
+      "source_file_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android29/pid-after-force-stop.log",
+      "git_file_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "size": 1
+    },
+    {
+      "source_artifact_file": "14105336890/wait-for-owned-device.log",
+      "source_file_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android29/wait-for-owned-device.log",
+      "git_file_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "size": 1
+    },
+    {
+      "source_artifact_file": "14105336890/check-no-existing-app.flowdrop.mobile.log",
+      "source_file_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android29/check-no-existing-app.flowdrop.mobile.log",
+      "git_file_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "size": 1
+    },
+    {
+      "source_artifact_file": "14105336890/initial-activity.png",
+      "source_file_sha256": "59f2672caed37ab451582af5d285e0dd3f3ceba0cdfd94a35554cc3be6ab7319",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android29/initial-activity.png",
+      "git_file_sha256": "59f2672caed37ab451582af5d285e0dd3f3ceba0cdfd94a35554cc3be6ab7319",
+      "size": 151471
+    },
+    {
+      "source_artifact_file": "14105336890/stop-owned-emulator.log",
+      "source_file_sha256": "e2d4238ce853e3f4c1ba7b36adf25ff824d93c36a0b94db50cb96dc047aac6d3",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android29/stop-owned-emulator.log",
+      "git_file_sha256": "e2d4238ce853e3f4c1ba7b36adf25ff824d93c36a0b94db50cb96dc047aac6d3",
+      "size": 33
+    },
+    {
+      "source_artifact_file": "14105336890/instrumentation-badging.log",
+      "source_file_sha256": "a85331ff0e09011afea9b815901790b4c37b1e8875165defc3ec37df73dc212d",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android29/instrumentation-badging.log",
+      "git_file_sha256": "a85331ff0e09011afea9b815901790b4c37b1e8875165defc3ec37df73dc212d",
+      "size": 565
+    },
+    {
+      "source_artifact_file": "14105336890/android-api.log",
+      "source_file_sha256": "3840bc236ee03aacbb1ef7d5108ddfa347c59f10b68d4174affbb53140f31273",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android29/android-api.log",
+      "git_file_sha256": "3840bc236ee03aacbb1ef7d5108ddfa347c59f10b68d4174affbb53140f31273",
+      "size": 3
+    },
+    {
+      "source_artifact_file": "14105336890/emulator-host-ldd-before.log",
+      "source_file_sha256": "4ce141c0870dfef2d3b366386e97f49bd40fb14397c8861b6ba2b65fb6565ee3",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android29/emulator-host-ldd-before.log",
+      "git_file_sha256": "4ce141c0870dfef2d3b366386e97f49bd40fb14397c8861b6ba2b65fb6565ee3",
+      "size": 8395
+    },
+    {
+      "source_artifact_file": "14105336890/final-activity-state.log",
+      "source_file_sha256": "3c5de2c2968dd63b1117eff5076a026b8441eaecdcb9bd813c9c0bc5e55e2d7c",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android29/final-activity-state.log",
+      "git_file_sha256": "3c5de2c2968dd63b1117eff5076a026b8441eaecdcb9bd813c9c0bc5e55e2d7c",
+      "size": 10138
+    },
+    {
+      "source_artifact_file": "14105336890/create-owned-avd.log",
+      "source_file_sha256": "915bc8b4eaad31cd31230312b6f1839def8d6649889e6cd9d643f9a32e82e406",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android29/create-owned-avd.log",
+      "git_file_sha256": "3f867ed6742176b6f833430f045bcbce5ff1376ae4ad57af9fcbf276ad6da193",
+      "size": 542
+    },
+    {
+      "source_artifact_file": "14105336890/ubuntu-signed-package-index.log",
+      "source_file_sha256": "407f5b887178c0e0b20777f8b2c4f79e24fcdbf1743ede5198f1a3bce6862e41",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android29/ubuntu-signed-package-index.log",
+      "git_file_sha256": "407f5b887178c0e0b20777f8b2c4f79e24fcdbf1743ede5198f1a3bce6862e41",
+      "size": 1887
+    },
+    {
+      "source_artifact_file": "14105336890/install-instrumentation.log",
+      "source_file_sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android29/install-instrumentation.log",
+      "git_file_sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7",
+      "size": 36
+    },
+    {
+      "source_artifact_file": "14105336890/a09-native-smoke-result.json",
+      "source_file_sha256": "042564a4c36454a4e1184e2f17200f7d1db83a3c26b0893e497bcc6e166ef331",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android29/a09-native-smoke-result.json",
+      "git_file_sha256": "042564a4c36454a4e1184e2f17200f7d1db83a3c26b0893e497bcc6e166ef331",
+      "size": 341
+    },
+    {
+      "source_artifact_file": "14105336890/wake-emulator.log",
+      "source_file_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android29/wake-emulator.log",
+      "git_file_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "size": 1
+    },
+    {
+      "source_artifact_file": "14105336890/a11-folder-smoke.log",
+      "source_file_sha256": "d7ad2c046cf4fbcd9c2bbe15c3478a6e8ec717f1bac023848462295a73c671da",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android29/a11-folder-smoke.log",
+      "git_file_sha256": "d7ad2c046cf4fbcd9c2bbe15c3478a6e8ec717f1bac023848462295a73c671da",
+      "size": 405
+    },
+    {
+      "source_artifact_file": "14105336890/restart-app-lifecycle.log",
+      "source_file_sha256": "02bdb360398e36de326d5bb8cb864bf61ae4ce92f3c9f00cd3e2995800e7052d",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android29/restart-app-lifecycle.log",
+      "git_file_sha256": "02bdb360398e36de326d5bb8cb864bf61ae4ce92f3c9f00cd3e2995800e7052d",
+      "size": 172
+    },
+    {
+      "source_artifact_file": "14105336890/ubuntu-libpulse-policy.log",
+      "source_file_sha256": "773d3deb4587d673fd60be8c238bfb3f50c75451fc783e40a56db515d91d0b4a",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android29/ubuntu-libpulse-policy.log",
+      "git_file_sha256": "773d3deb4587d673fd60be8c238bfb3f50c75451fc783e40a56db515d91d0b4a",
+      "size": 310
+    },
+    {
+      "source_artifact_file": "14105336890/app-manifest-tree.log",
+      "source_file_sha256": "8d9224be114265efe6006e5e2d8201d52b60c72bed4c95b690d09530e9cc0378",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android29/app-manifest-tree.log",
+      "git_file_sha256": "8d9224be114265efe6006e5e2d8201d52b60c72bed4c95b690d09530e9cc0378",
+      "size": 7063
+    },
+    {
+      "source_artifact_file": "14105336890/start-dedicated-adb.log",
+      "source_file_sha256": "b1f9e0ad50868b8a2844f6629f0a083113808b20e744bba266bcf4f6efb24b84",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android29/start-dedicated-adb.log",
+      "git_file_sha256": "b1f9e0ad50868b8a2844f6629f0a083113808b20e744bba266bcf4f6efb24b84",
+      "size": 77
+    },
+    {
+      "source_artifact_file": "14105336890/force-stop-before-a09-native-smoke.log",
+      "source_file_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android29/force-stop-before-a09-native-smoke.log",
+      "git_file_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "size": 1
+    },
+    {
+      "source_artifact_file": "14105336890/a13-runtime-smoke.log",
+      "source_file_sha256": "748dd9f39bfc89e4a9f04ef65118a65ae51da7a63630049d363a37b598541f59",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android29/a13-runtime-smoke.log",
+      "git_file_sha256": "748dd9f39bfc89e4a9f04ef65118a65ae51da7a63630049d363a37b598541f59",
+      "size": 3553
+    },
+    {
+      "source_artifact_file": "14105336890/force-stop-before-a10-service-smoke.log",
+      "source_file_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android29/force-stop-before-a10-service-smoke.log",
+      "git_file_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "size": 1
+    },
+    {
+      "source_artifact_file": "14105336890/android-app-logcat.log",
+      "source_file_sha256": "450fa73a382fcaecf14d1a68ce46eee5cb0baf5c6ca05365229da3df49763d1b",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android29/android-app-logcat.log",
+      "git_file_sha256": "cbff72272e35cf8dac538da11dec904c532d7fe2c045142a7602a8541552e953",
+      "size": 124122
+    },
+    {
+      "source_artifact_file": "14105336890/initial-activity-state.log",
+      "source_file_sha256": "1ceb5ec04417a1427b679905834034296b085ea6d69cb4fa95dc20f9055d3140",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android29/initial-activity-state.log",
+      "git_file_sha256": "1ceb5ec04417a1427b679905834034296b085ea6d69cb4fa95dc20f9055d3140",
+      "size": 10283
+    },
+    {
+      "source_artifact_file": "14105336890/emulator-boot.log",
+      "source_file_sha256": "4cba1d80a8e76c1bf203b721197eab13c948d1f44ddd47755f5ef445b2dd3ba3",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android29/emulator-boot.log",
+      "git_file_sha256": "42cc405d16656197bae487f22ed442e6aa3807279180b6da928ef73a1ddebdb9",
+      "size": 8120
+    },
+    {
+      "source_artifact_file": "14105336890/a10-service-smoke.log",
+      "source_file_sha256": "83c4730f53702452075f9c422bec736c9f006cc38ce2e8b8543b119a709063df",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android29/a10-service-smoke.log",
+      "git_file_sha256": "83c4730f53702452075f9c422bec736c9f006cc38ce2e8b8543b119a709063df",
+      "size": 605
+    },
+    {
+      "source_artifact_file": "14105336890/results.json",
+      "source_file_sha256": "54eeafde32ba263e15dbbc2cff9722d760a237b653d1374dfb00be30befb619e",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android29/results.json",
+      "git_file_sha256": "54eeafde32ba263e15dbbc2cff9722d760a237b653d1374dfb00be30befb619e",
+      "size": 24721
+    },
+    {
+      "source_artifact_file": "14105336890/prepare-isolated-application-settings-result.json",
+      "source_file_sha256": "dc82d91e7b9d7db504af0fbef24d6d0da60e52ec6ba368d2bf08c4c085953400",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android29/prepare-isolated-application-settings-result.json",
+      "git_file_sha256": "dc82d91e7b9d7db504af0fbef24d6d0da60e52ec6ba368d2bf08c4c085953400",
+      "size": 152
+    },
+    {
+      "source_artifact_file": "14105336890/avdmanager-list.log",
+      "source_file_sha256": "58f5ed49aa7f975b589bce8f938217ca5e5f05ed8dfcde1d9b8c133b72b5d499",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android29/avdmanager-list.log",
+      "git_file_sha256": "58f5ed49aa7f975b589bce8f938217ca5e5f05ed8dfcde1d9b8c133b72b5d499",
+      "size": 7043
+    },
+    {
+      "source_artifact_file": "14105336890/force-stop-before-notification-api-policy.log",
+      "source_file_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android29/force-stop-before-notification-api-policy.log",
+      "git_file_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "size": 1
+    },
+    {
+      "source_artifact_file": "14105336890/initial-screenshot-pull.log",
+      "source_file_sha256": "4c6a8e57a9bf5f0c74c78141d386b31fee2eb5a5119ba1ed35a9d04dda7eadd3",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android29/initial-screenshot-pull.log",
+      "git_file_sha256": "4c6a8e57a9bf5f0c74c78141d386b31fee2eb5a5119ba1ed35a9d04dda7eadd3",
+      "size": 98
+    },
+    {
+      "source_artifact_file": "14105336890/confirm-app-removed.log",
+      "source_file_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android29/confirm-app-removed.log",
+      "git_file_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "size": 1
+    },
+    {
+      "source_artifact_file": "14105805528/artifact-manifest.json",
+      "source_file_sha256": "11e64119586d1734241ffda520172d25df2f376ed16b3968e41e5a27ac4a1869",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/android-build-manifest.json",
+      "git_file_sha256": "11e64119586d1734241ffda520172d25df2f376ed16b3968e41e5a27ac4a1869",
+      "size": 32676
+    },
+    {
+      "source_artifact_file": "14105158573/artifact-manifest.json",
+      "source_file_sha256": "76ee99d0ab6c16ac18e9426a94855fb5934b2f104d35b043be4482d9d316ee09",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/windows-build-manifest.json",
+      "git_file_sha256": "76ee99d0ab6c16ac18e9426a94855fb5934b2f104d35b043be4482d9d316ee09",
+      "size": 27193
+    },
+    {
+      "source_artifact_file": "14104844284/helper-manifest.json",
+      "source_file_sha256": "70be874348761504e64b7cbf123bfe18637b1c5781ee7fa84423777ec27c3064",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/windows-helper-manifest.json",
+      "git_file_sha256": "70be874348761504e64b7cbf123bfe18637b1c5781ee7fa84423777ec27c3064",
+      "size": 5200
+    },
+    {
+      "source_artifact_file": "14105193194/node-version.log",
+      "source_file_sha256": "6a0cec2e157365c1a8ac6d1715733b7c3321a7c5565862a701ca71ef00359d04",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/regression/fast/node-version.log",
+      "git_file_sha256": "6a0cec2e157365c1a8ac6d1715733b7c3321a7c5565862a701ca71ef00359d04",
+      "size": 9
+    },
+    {
+      "source_artifact_file": "14105193194/npm-ci.log",
+      "source_file_sha256": "829dbc0cd1c03d78cfed218cea77e5e0d62991392cafd04d8bf260056a1d7abd",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/regression/fast/npm-ci.log",
+      "git_file_sha256": "829dbc0cd1c03d78cfed218cea77e5e0d62991392cafd04d8bf260056a1d7abd",
+      "size": 24
+    },
+    {
+      "source_artifact_file": "14105193194/harness-unit.log",
+      "source_file_sha256": "92e1430f4eae5363c0881703e3b532a255a3f13f66aa0ba83f408788c44f2669",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/regression/fast/harness-unit.log",
+      "git_file_sha256": "92e1430f4eae5363c0881703e3b532a255a3f13f66aa0ba83f408788c44f2669",
+      "size": 1664
+    },
+    {
+      "source_artifact_file": "14105193194/asset-integrity.log",
+      "source_file_sha256": "bf87e9bf53dc1bf1b3a2cacb7732f76269d0dd1445c5a09603997718fa43e4f1",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/regression/fast/asset-integrity.log",
+      "git_file_sha256": "bf87e9bf53dc1bf1b3a2cacb7732f76269d0dd1445c5a09603997718fa43e4f1",
+      "size": 198
+    },
+    {
+      "source_artifact_file": "14105193194/python-version.log",
+      "source_file_sha256": "9d0ae83e540febd225949f3df4aba97c7a9f79fcf745d6c835780f52a57b50cf",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/regression/fast/python-version.log",
+      "git_file_sha256": "9d0ae83e540febd225949f3df4aba97c7a9f79fcf745d6c835780f52a57b50cf",
+      "size": 15
+    },
+    {
+      "source_artifact_file": "14105193194/unit.log",
+      "source_file_sha256": "d555f848bdef11b663756488dbb2923f2aec712497ebd994e3503d03dd3b3541",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/regression/fast/unit.log",
+      "git_file_sha256": "d555f848bdef11b663756488dbb2923f2aec712497ebd994e3503d03dd3b3541",
+      "size": 1257
+    },
+    {
+      "source_artifact_file": "14105193194/ci-runner-tests.log",
+      "source_file_sha256": "adc686b58708fb7d2d7152f3c240566255953ac63db6800571224a903a7ebe1a",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/regression/fast/ci-runner-tests.log",
+      "git_file_sha256": "adc686b58708fb7d2d7152f3c240566255953ac63db6800571224a903a7ebe1a",
+      "size": 10105
+    },
+    {
+      "source_artifact_file": "14105193194/setup.json",
+      "source_file_sha256": "7e6cf6ead6d64ce4e41b4d42aac5c011c5da480b9808ecb13ffb8d6df68fa50d",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/regression/fast/setup.json",
+      "git_file_sha256": "7e6cf6ead6d64ce4e41b4d42aac5c011c5da480b9808ecb13ffb8d6df68fa50d",
+      "size": 2192
+    },
+    {
+      "source_artifact_file": "14105193194/jar-download.log",
+      "source_file_sha256": "8992e563103c212a19c850df9af37a32259f32a884f2514c32c4e247b894ad4a",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/regression/fast/jar-download.log",
+      "git_file_sha256": "8992e563103c212a19c850df9af37a32259f32a884f2514c32c4e247b894ad4a",
+      "size": 317
+    },
+    {
+      "source_artifact_file": "14105193194/java-version.log",
+      "source_file_sha256": "477d64a6b08c9a9dd143deae108edf7929a93b40434d87285d41addc8fba509f",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/regression/fast/java-version.log",
+      "git_file_sha256": "477d64a6b08c9a9dd143deae108edf7929a93b40434d87285d41addc8fba509f",
+      "size": 195
+    },
+    {
+      "source_artifact_file": "14105193194/results.json",
+      "source_file_sha256": "d4bd176548083142f68b6607fcb25a67cf4d4e41b0a870a2df10835ecec5c3b0",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/regression/fast/results.json",
+      "git_file_sha256": "d4bd176548083142f68b6607fcb25a67cf4d4e41b0a870a2df10835ecec5c3b0",
+      "size": 2359
+    },
+    {
+      "source_artifact_file": "14105213447/node-version.log",
+      "source_file_sha256": "6a0cec2e157365c1a8ac6d1715733b7c3321a7c5565862a701ca71ef00359d04",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/regression/integration/node-version.log",
+      "git_file_sha256": "6a0cec2e157365c1a8ac6d1715733b7c3321a7c5565862a701ca71ef00359d04",
+      "size": 9
+    },
+    {
+      "source_artifact_file": "14105213447/npm-ci.log",
+      "source_file_sha256": "96257ee724afbdad43552ebf0379999a1234a2aa2f715848980d813a7d66dea1",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/regression/integration/npm-ci.log",
+      "git_file_sha256": "96257ee724afbdad43552ebf0379999a1234a2aa2f715848980d813a7d66dea1",
+      "size": 24
+    },
+    {
+      "source_artifact_file": "14105213447/discovery.log",
+      "source_file_sha256": "f0ff039b14283a41a7d5d6a62ae0f0263f7c75d6f6b377756423c37ae64dc2e0",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/regression/integration/discovery.log",
+      "git_file_sha256": "f0ff039b14283a41a7d5d6a62ae0f0263f7c75d6f6b377756423c37ae64dc2e0",
+      "size": 111
+    },
+    {
+      "source_artifact_file": "14105213447/peer.log",
+      "source_file_sha256": "f4bc2c7066deb23c476cd6a22ab6324bd64a1ce86f22de9cd8fb95f52a3ddf8c",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/regression/integration/peer.log",
+      "git_file_sha256": "f4bc2c7066deb23c476cd6a22ab6324bd64a1ce86f22de9cd8fb95f52a3ddf8c",
+      "size": 1923
+    },
+    {
+      "source_artifact_file": "14105213447/python-version.log",
+      "source_file_sha256": "9d0ae83e540febd225949f3df4aba97c7a9f79fcf745d6c835780f52a57b50cf",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/regression/integration/python-version.log",
+      "git_file_sha256": "9d0ae83e540febd225949f3df4aba97c7a9f79fcf745d6c835780f52a57b50cf",
+      "size": 15
+    },
+    {
+      "source_artifact_file": "14105213447/android-discovery.log",
+      "source_file_sha256": "dc1586377a185cae74038c3017e1de4a95c245d62352b31ff7c675c668134872",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/regression/integration/android-discovery.log",
+      "git_file_sha256": "dc1586377a185cae74038c3017e1de4a95c245d62352b31ff7c675c668134872",
+      "size": 289
+    },
+    {
+      "source_artifact_file": "14105213447/security.log",
+      "source_file_sha256": "46a3addd4f91382464ae04eab635a19f2715258c75910d92c94722ea9aefb2d3",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/regression/integration/security.log",
+      "git_file_sha256": "46a3addd4f91382464ae04eab635a19f2715258c75910d92c94722ea9aefb2d3",
+      "size": 375
+    },
+    {
+      "source_artifact_file": "14105213447/setup.json",
+      "source_file_sha256": "2f954d8c4c4becef4c6c00ca6853c20911d859584d085af87066fdc3a6fed98c",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/regression/integration/setup.json",
+      "git_file_sha256": "2f954d8c4c4becef4c6c00ca6853c20911d859584d085af87066fdc3a6fed98c",
+      "size": 2206
+    },
+    {
+      "source_artifact_file": "14105213447/jar-download.log",
+      "source_file_sha256": "c88562ae83a646974302f03f363630ded734824b4947495306310e43ece582cd",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/regression/integration/jar-download.log",
+      "git_file_sha256": "c88562ae83a646974302f03f363630ded734824b4947495306310e43ece582cd",
+      "size": 317
+    },
+    {
+      "source_artifact_file": "14105213447/lan-discovery.log",
+      "source_file_sha256": "559eae9c60c906c2b5eac6aa96d7f15053437806516c98273fccfc4c78d7fa4f",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/regression/integration/lan-discovery.log",
+      "git_file_sha256": "559eae9c60c906c2b5eac6aa96d7f15053437806516c98273fccfc4c78d7fa4f",
+      "size": 506
+    },
+    {
+      "source_artifact_file": "14105213447/http.log",
+      "source_file_sha256": "2bc1b387cd4eaa7afa4d284b102c994a68491440a23612f9e29a91dbb9545fab",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/regression/integration/http.log",
+      "git_file_sha256": "2bc1b387cd4eaa7afa4d284b102c994a68491440a23612f9e29a91dbb9545fab",
+      "size": 175
+    },
+    {
+      "source_artifact_file": "14105213447/java-version.log",
+      "source_file_sha256": "477d64a6b08c9a9dd143deae108edf7929a93b40434d87285d41addc8fba509f",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/regression/integration/java-version.log",
+      "git_file_sha256": "477d64a6b08c9a9dd143deae108edf7929a93b40434d87285d41addc8fba509f",
+      "size": 195
+    },
+    {
+      "source_artifact_file": "14105213447/android-host.log",
+      "source_file_sha256": "e56466c85b3f9c61e7e627b94d4e5ffbc84653132b007fa4781d31783369925a",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/regression/integration/android-host.log",
+      "git_file_sha256": "e56466c85b3f9c61e7e627b94d4e5ffbc84653132b007fa4781d31783369925a",
+      "size": 373
+    },
+    {
+      "source_artifact_file": "14105213447/results.json",
+      "source_file_sha256": "0633a5a0b89d189159a66332d89650435b59fca163df6009e72f9552e998d55a",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/regression/integration/results.json",
+      "git_file_sha256": "0633a5a0b89d189159a66332d89650435b59fca163df6009e72f9552e998d55a",
+      "size": 3793
+    },
+    {
+      "source_artifact_file": "14104824096/node-version.log",
+      "source_file_sha256": "6a0cec2e157365c1a8ac6d1715733b7c3321a7c5565862a701ca71ef00359d04",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/regression/stream/node-version.log",
+      "git_file_sha256": "6a0cec2e157365c1a8ac6d1715733b7c3321a7c5565862a701ca71ef00359d04",
+      "size": 9
+    },
+    {
+      "source_artifact_file": "14104824096/large-transfer.log",
+      "source_file_sha256": "5a51202ca0ec63b9f7790ac6a94a0b26560ffa172318230e4203e3bc46333d77",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/regression/stream/large-transfer.log",
+      "git_file_sha256": "5a51202ca0ec63b9f7790ac6a94a0b26560ffa172318230e4203e3bc46333d77",
+      "size": 767
+    },
+    {
+      "source_artifact_file": "14104824096/npm-ci.log",
+      "source_file_sha256": "829dbc0cd1c03d78cfed218cea77e5e0d62991392cafd04d8bf260056a1d7abd",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/regression/stream/npm-ci.log",
+      "git_file_sha256": "829dbc0cd1c03d78cfed218cea77e5e0d62991392cafd04d8bf260056a1d7abd",
+      "size": 24
+    },
+    {
+      "source_artifact_file": "14104824096/python-version.log",
+      "source_file_sha256": "9d0ae83e540febd225949f3df4aba97c7a9f79fcf745d6c835780f52a57b50cf",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/regression/stream/python-version.log",
+      "git_file_sha256": "9d0ae83e540febd225949f3df4aba97c7a9f79fcf745d6c835780f52a57b50cf",
+      "size": 15
+    },
+    {
+      "source_artifact_file": "14104824096/setup.json",
+      "source_file_sha256": "b2735ae111eedfc5388ac27ac4dc64fa97f3cbe39b704c3821d7787bc44b7798",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/regression/stream/setup.json",
+      "git_file_sha256": "b2735ae111eedfc5388ac27ac4dc64fa97f3cbe39b704c3821d7787bc44b7798",
+      "size": 2196
+    },
+    {
+      "source_artifact_file": "14104824096/jar-download.log",
+      "source_file_sha256": "9f826a621a657b44fed275d84430d1ae748147538793e0b87b53c77dbe69d1d6",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/regression/stream/jar-download.log",
+      "git_file_sha256": "9f826a621a657b44fed275d84430d1ae748147538793e0b87b53c77dbe69d1d6",
+      "size": 317
+    },
+    {
+      "source_artifact_file": "14104824096/java-version.log",
+      "source_file_sha256": "477d64a6b08c9a9dd143deae108edf7929a93b40434d87285d41addc8fba509f",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/regression/stream/java-version.log",
+      "git_file_sha256": "477d64a6b08c9a9dd143deae108edf7929a93b40434d87285d41addc8fba509f",
+      "size": 195
+    },
+    {
+      "source_artifact_file": "14104824096/results.json",
+      "source_file_sha256": "f68c93ff854cdfe43b566c0eabd8db017cc7db9027270a58e910e65eed665692",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/regression/stream/results.json",
+      "git_file_sha256": "f68c93ff854cdfe43b566c0eabd8db017cc7db9027270a58e910e65eed665692",
+      "size": 621
+    },
+    {
+      "source_artifact_file": "14104769589/node-version.log",
+      "source_file_sha256": "6a0cec2e157365c1a8ac6d1715733b7c3321a7c5565862a701ca71ef00359d04",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/regression/zip64/node-version.log",
+      "git_file_sha256": "6a0cec2e157365c1a8ac6d1715733b7c3321a7c5565862a701ca71ef00359d04",
+      "size": 9
+    },
+    {
+      "source_artifact_file": "14104769589/npm-ci.log",
+      "source_file_sha256": "829dbc0cd1c03d78cfed218cea77e5e0d62991392cafd04d8bf260056a1d7abd",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/regression/zip64/npm-ci.log",
+      "git_file_sha256": "829dbc0cd1c03d78cfed218cea77e5e0d62991392cafd04d8bf260056a1d7abd",
+      "size": 24
+    },
+    {
+      "source_artifact_file": "14104769589/features.log",
+      "source_file_sha256": "468cd62b1905a1076948a919022a601b87583d1bbba3617589eb5a3cfbc9298a",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/regression/zip64/features.log",
+      "git_file_sha256": "468cd62b1905a1076948a919022a601b87583d1bbba3617589eb5a3cfbc9298a",
+      "size": 530
+    },
+    {
+      "source_artifact_file": "14104769589/native-client.log",
+      "source_file_sha256": "1f90070842ae5fb4e18b08cca2ab071ed97f2f4cb980f04b81dec60de563fc7d",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/regression/zip64/native-client.log",
+      "git_file_sha256": "1f90070842ae5fb4e18b08cca2ab071ed97f2f4cb980f04b81dec60de563fc7d",
+      "size": 602
+    },
+    {
+      "source_artifact_file": "14104769589/folders.log",
+      "source_file_sha256": "acc4d885af1c3ff10d7acbe74bd42493eef4c28c8e3e9f201d15c525c42f7fe9",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/regression/zip64/folders.log",
+      "git_file_sha256": "acc4d885af1c3ff10d7acbe74bd42493eef4c28c8e3e9f201d15c525c42f7fe9",
+      "size": 660
+    },
+    {
+      "source_artifact_file": "14104769589/python-version.log",
+      "source_file_sha256": "9d0ae83e540febd225949f3df4aba97c7a9f79fcf745d6c835780f52a57b50cf",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/regression/zip64/python-version.log",
+      "git_file_sha256": "9d0ae83e540febd225949f3df4aba97c7a9f79fcf745d6c835780f52a57b50cf",
+      "size": 15
+    },
+    {
+      "source_artifact_file": "14104769589/setup.json",
+      "source_file_sha256": "b1b9b88358a2a2108bd2b296fec6f823ed8730a3232a41ca383969d4243f9173",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/regression/zip64/setup.json",
+      "git_file_sha256": "b1b9b88358a2a2108bd2b296fec6f823ed8730a3232a41ca383969d4243f9173",
+      "size": 2194
+    },
+    {
+      "source_artifact_file": "14104769589/jar-download.log",
+      "source_file_sha256": "0464ef7c6fa8f4f035bdfdd806fc229d652986bdc6ec5facd29bea599a27bf66",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/regression/zip64/jar-download.log",
+      "git_file_sha256": "0464ef7c6fa8f4f035bdfdd806fc229d652986bdc6ec5facd29bea599a27bf66",
+      "size": 317
+    },
+    {
+      "source_artifact_file": "14104769589/java-version.log",
+      "source_file_sha256": "477d64a6b08c9a9dd143deae108edf7929a93b40434d87285d41addc8fba509f",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/regression/zip64/java-version.log",
+      "git_file_sha256": "477d64a6b08c9a9dd143deae108edf7929a93b40434d87285d41addc8fba509f",
+      "size": 195
+    },
+    {
+      "source_artifact_file": "14104769589/results.json",
+      "source_file_sha256": "8dca0d526f3fd2ef637497dc38d6c7695b4eaf8575c7d7de1745870acfaf385b",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/regression/zip64/results.json",
+      "git_file_sha256": "8dca0d526f3fd2ef637497dc38d6c7695b4eaf8575c7d7de1745870acfaf385b",
+      "size": 1709
+    },
+    {
+      "source_artifact_file": "14105188491/toolchain.json",
+      "source_file_sha256": "6163a37ec2fd08bd34accb683dec289c1502e10329698e388f1b83053df2a361",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/build-toolchain/toolchain.json",
+      "git_file_sha256": "6163a37ec2fd08bd34accb683dec289c1502e10329698e388f1b83053df2a361",
+      "size": 19946
+    },
+    {
+      "source_artifact_file": "14105188491/toolchain-probes.json",
+      "source_file_sha256": "47b7a619cc7c5210b5ecb1c7c2c44db45150035cae9390feb4b30e634298e012",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/build-toolchain/toolchain-probes.json",
+      "git_file_sha256": "47b7a619cc7c5210b5ecb1c7c2c44db45150035cae9390feb4b30e634298e012",
+      "size": 9105
+    },
+    {
+      "source_artifact_file": "14104969115/toolchain.json",
+      "source_file_sha256": "b1f179a412863613c04505863e9fc4193a42a25f39824731bc679bd3dc3ec4b0",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/independent-build-verification/toolchain.json",
+      "git_file_sha256": "b1f179a412863613c04505863e9fc4193a42a25f39824731bc679bd3dc3ec4b0",
+      "size": 14940
+    },
+    {
+      "source_artifact_file": "14104969115/instrumentation-manifest-tree.log",
+      "source_file_sha256": "069ff59647d00b9a1f6700fc069d8679b7b624b48cae86e010546d53ef2731eb",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/independent-build-verification/instrumentation-manifest-tree.log",
+      "git_file_sha256": "069ff59647d00b9a1f6700fc069d8679b7b624b48cae86e010546d53ef2731eb",
+      "size": 3469
+    },
+    {
+      "source_artifact_file": "14104969115/commands.json",
+      "source_file_sha256": "5ba60fd37fa45a9190987ad3dde219a3ff1d9f0d7a2abc87858f415781c43ce3",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/independent-build-verification/commands.json",
+      "git_file_sha256": "5ba60fd37fa45a9190987ad3dde219a3ff1d9f0d7a2abc87858f415781c43ce3",
+      "size": 5190
+    },
+    {
+      "source_artifact_file": "14104969115/instrumentation-zipalign.log",
+      "source_file_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/independent-build-verification/instrumentation-zipalign.log",
+      "git_file_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "size": 1
+    },
+    {
+      "source_artifact_file": "14104969115/instrumentation-signature.log",
+      "source_file_sha256": "6ded08f81e8f2182b4b5d17504944b9284bdc074f6fe158ac5c83af713bc26ba",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/independent-build-verification/instrumentation-signature.log",
+      "git_file_sha256": "6ded08f81e8f2182b4b5d17504944b9284bdc074f6fe158ac5c83af713bc26ba",
+      "size": 947
+    },
+    {
+      "source_artifact_file": "14104969115/app-zipalign.log",
+      "source_file_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/independent-build-verification/app-zipalign.log",
+      "git_file_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "size": 1
+    },
+    {
+      "source_artifact_file": "14104969115/toolchain-probes.json",
+      "source_file_sha256": "bdfb1976bbe85dac67db0f9983928093ea329e9826946fad94f3006a2a169fbc",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/independent-build-verification/toolchain-probes.json",
+      "git_file_sha256": "bdfb1976bbe85dac67db0f9983928093ea329e9826946fad94f3006a2a169fbc",
+      "size": 7586
+    },
+    {
+      "source_artifact_file": "14104969115/nsis-list.log",
+      "source_file_sha256": "aca1ed60a107ff4207340551bafd4a2bfd919be0deec69b5eac823c4a8ce2262",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/independent-build-verification/nsis-list.log",
+      "git_file_sha256": "5651bca3b0437319446b94d34fc15049659324889ab1ecad73b6102e3ec3d04e",
+      "size": 22488
+    },
+    {
+      "source_artifact_file": "14104969115/independent-verification.json",
+      "source_file_sha256": "b5c3e72e5e9ef2fecef1f07b849fcc2b3076f253f13b2068d4a56d7ad949fa34",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/independent-build-verification/independent-verification.json",
+      "git_file_sha256": "b5c3e72e5e9ef2fecef1f07b849fcc2b3076f253f13b2068d4a56d7ad949fa34",
+      "size": 29589
+    },
+    {
+      "source_artifact_file": "14104969115/app-signature.log",
+      "source_file_sha256": "6ded08f81e8f2182b4b5d17504944b9284bdc074f6fe158ac5c83af713bc26ba",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/independent-build-verification/app-signature.log",
+      "git_file_sha256": "6ded08f81e8f2182b4b5d17504944b9284bdc074f6fe158ac5c83af713bc26ba",
+      "size": 947
+    },
+    {
+      "source_artifact_file": "14104969115/app-badging.log",
+      "source_file_sha256": "0a1d95428c084dc1a8a568351453e5abd5c0b668fa4be9b0d4e680f7ccbeee65",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/independent-build-verification/app-badging.log",
+      "git_file_sha256": "0a1d95428c084dc1a8a568351453e5abd5c0b668fa4be9b0d4e680f7ccbeee65",
+      "size": 1767
+    },
+    {
+      "source_artifact_file": "14104969115/instrumentation-badging.log",
+      "source_file_sha256": "a85331ff0e09011afea9b815901790b4c37b1e8875165defc3ec37df73dc212d",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/independent-build-verification/instrumentation-badging.log",
+      "git_file_sha256": "a85331ff0e09011afea9b815901790b4c37b1e8875165defc3ec37df73dc212d",
+      "size": 565
+    },
+    {
+      "source_artifact_file": "14104969115/nsis-extract.log",
+      "source_file_sha256": "58c6e06cbfa7fd0d5a93a256b6c7eddd8e4293414f6c2635e84f989faf35c9a7",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/independent-build-verification/nsis-extract.log",
+      "git_file_sha256": "58c6e06cbfa7fd0d5a93a256b6c7eddd8e4293414f6c2635e84f989faf35c9a7",
+      "size": 646
+    },
+    {
+      "source_artifact_file": "14104969115/app-manifest-tree.log",
+      "source_file_sha256": "8d9224be114265efe6006e5e2d8201d52b60c72bed4c95b690d09530e9cc0378",
+      "git_file": "docs/testing/runtime-2d1-logs/verified-78c049c/independent-build-verification/app-manifest-tree.log",
+      "git_file_sha256": "8d9224be114265efe6006e5e2d8201d52b60c72bed4c95b690d09530e9cc0378",
+      "size": 7063
+    }
+  ],
+  "local_validation": {
+    "python_units": 59,
+    "exit_code": 0,
+    "scope": "Local unit/HTTP fixture, not OS proof",
+    "log": "docs/testing/runtime-2d1-logs/unit-final-proof.log",
+    "java8_compile_exit_code": 0,
+    "java8_compile_log": "docs/testing/runtime-2d1-logs/java-final-proof-compile.json"
+  }
 }

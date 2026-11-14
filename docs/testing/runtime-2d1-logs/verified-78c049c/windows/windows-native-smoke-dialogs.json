@@ -1,0 +1,763 @@
+{
+  "scope": "Actual Windows file-dialog diagnostics; no UI operations",
+  "observations": [
+    {
+      "utc": "2026-11-14T08:00:49Z",
+      "dialogs": []
+    },
+    {
+      "utc": "2026-11-14T08:00:50Z",
+      "dialogs": [
+        {
+          "title": "Chọn file để gửi",
+          "controls": [
+            {
+              "class": "DUIViewWndClassName",
+              "id": 0,
+              "text": "",
+              "rect": [
+                40,
+                189,
+                649,
+                494
+              ]
+            },
+            {
+              "class": "DirectUIHWND",
+              "id": 0,
+              "text": "",
+              "rect": [
+                40,
+                189,
+                649,
+                494
+              ]
+            },
+            {
+              "class": "CtrlNotifySink",
+              "id": 0,
+              "text": "",
+              "rect": [
+                42,
+                220,
+                196,
+                494
+              ]
+            },
+            {
+              "class": "NamespaceTreeControl",
+              "id": 0,
+              "text": "Namespace Tree Control",
+              "rect": [
+                42,
+                220,
+                196,
+                494
+              ]
+            },
+            {
+              "class": "SysTreeView32",
+              "id": 100,
+              "text": "Navigation Pane",
+              "rect": [
+                42,
+                220,
+                196,
+                494
+              ]
+            },
+            {
+              "class": "CtrlNotifySink",
+              "id": 0,
+              "text": "",
+              "rect": [
+                200,
+                220,
+                649,
+                494
+              ]
+            },
+            {
+              "class": "SHELLDLL_DefView",
+              "id": 1121,
+              "text": "ShellView",
+              "rect": [
+                200,
+                220,
+                649,
+                494
+              ]
+            },
+            {
+              "class": "DirectUIHWND",
+              "id": 0,
+              "text": "",
+              "rect": [
+                200,
+                220,
+                649,
+                494
+              ]
+            },
+            {
+              "class": "CtrlNotifySink",
+              "id": 0,
+              "text": "",
+              "rect": [
+                200,
+                477,
+                649,
+                494
+              ]
+            },
+            {
+              "class": "ScrollBar",
+              "id": 0,
+              "text": "",
+              "rect": [
+                200,
+                477,
+                649,
+                494
+              ]
+            },
+            {
+              "class": "Static",
+              "id": 1090,
+              "text": "File &name:",
+              "rect": [
+                170,
+                507,
+                224,
+                522
+              ]
+            },
+            {
+              "class": "ComboBoxEx32",
+              "id": 1148,
+              "text": "",
+              "rect": [
+                229,
+                503,
+                632,
+                527
+              ]
+            },
+            {
+              "class": "ComboBox",
+              "id": 1148,
+              "text": "",
+              "rect": [
+                229,
+                503,
+                632,
+                527
+              ]
+            },
+            {
+              "class": "Edit",
+              "id": 1148,
+              "text": "",
+              "rect": [
+                233,
+                508,
+                612,
+                523
+              ]
+            },
+            {
+              "class": "Button",
+              "id": 1,
+              "text": "&Open",
+              "rect": [
+                444,
+                532,
+                532,
+                558
+              ]
+            },
+            {
+              "class": "Button",
+              "id": 2,
+              "text": "Cancel",
+              "rect": [
+                544,
+                532,
+                632,
+                558
+              ]
+            },
+            {
+              "class": "ScrollBar",
+              "id": -1,
+              "text": "",
+              "rect": [
+                632,
+                558,
+                649,
+                575
+              ]
+            },
+            {
+              "class": "WorkerW",
+              "id": 0,
+              "text": "",
+              "rect": [
+                40,
+                134,
+                649,
+                189
+              ]
+            },
+            {
+              "class": "ReBarWindow32",
+              "id": 40965,
+              "text": "",
+              "rect": [
+                40,
+                134,
+                649,
+                189
+              ]
+            },
+            {
+              "class": "TravelBand",
+              "id": 0,
+              "text": "",
+              "rect": [
+                40,
+                143,
+                140,
+                177
+              ]
+            },
+            {
+              "class": "ToolbarWindow32",
+              "id": 0,
+              "text": "Navigation buttons",
+              "rect": [
+                44,
+                145,
+                140,
+                177
+              ]
+            },
+            {
+              "class": "UpBand",
+              "id": 0,
+              "text": "",
+              "rect": [
+                140,
+                142,
+                176,
+                178
+              ]
+            },
+            {
+              "class": "ToolbarWindow32",
+              "id": 0,
+              "text": "Up band",
+              "rect": [
+                140,
+                145,
+                176,
+                181
+              ]
+            },
+            {
+              "class": "Address Band Root",
+              "id": 41477,
+              "text": "",
+              "rect": [
+                176,
+                134,
+                424,
+                186
+              ]
+            },
+            {
+              "class": "msctls_progress32",
+              "id": 0,
+              "text": "",
+              "rect": [
+                178,
+                144,
+                422,
+                178
+              ]
+            },
+            {
+              "class": "Breadcrumb Parent",
+              "id": 0,
+              "text": "",
+              "rect": [
+                178,
+                144,
+                354,
+                178
+              ]
+            },
+            {
+              "class": "ToolbarWindow32",
+              "id": 1001,
+              "text": "Address: Documents",
+              "rect": [
+                184,
+                144,
+                354,
+                178
+              ]
+            },
+            {
+              "class": "ToolbarWindow32",
+              "id": 0,
+              "text": "Address band",
+              "rect": [
+                354,
+                144,
+                422,
+                178
+              ]
+            },
+            {
+              "class": "SeparatorBand",
+              "id": 0,
+              "text": "",
+              "rect": [
+                428,
+                159,
+                434,
+                160
+              ]
+            },
+            {
+              "class": "UniversalSearchBand",
+              "id": 0,
+              "text": "",
+              "rect": [
+                434,
+                140,
+                638,
+                180
+              ]
+            },
+            {
+              "class": "Search Box",
+              "id": 0,
+              "text": "",
+              "rect": [
+                434,
+                143,
+                638,
+                179
+              ]
+            },
+            {
+              "class": "SearchEditBoxWrapperClass",
+              "id": 0,
+              "text": "",
+              "rect": [
+                439,
+                143,
+                633,
+                179
+              ]
+            },
+            {
+              "class": "DirectUIHWND",
+              "id": 0,
+              "text": "",
+              "rect": [
+                439,
+                143,
+                633,
+                179
+              ]
+            },
+            {
+              "class": "SeparatorBand",
+              "id": 0,
+              "text": "",
+              "rect": [
+                642,
+                159,
+                649,
+                160
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "utc": "2026-11-14T08:00:51Z",
+      "dialogs": []
+    },
+    {
+      "utc": "2026-11-14T08:00:53Z",
+      "dialogs": [
+        {
+          "title": "Chọn thư mục để gửi",
+          "controls": [
+            {
+              "class": "DUIViewWndClassName",
+              "id": 0,
+              "text": "",
+              "rect": [
+                40,
+                189,
+                649,
+                495
+              ]
+            },
+            {
+              "class": "DirectUIHWND",
+              "id": 0,
+              "text": "",
+              "rect": [
+                40,
+                189,
+                649,
+                495
+              ]
+            },
+            {
+              "class": "CtrlNotifySink",
+              "id": 0,
+              "text": "",
+              "rect": [
+                42,
+                220,
+                196,
+                495
+              ]
+            },
+            {
+              "class": "NamespaceTreeControl",
+              "id": 0,
+              "text": "Namespace Tree Control",
+              "rect": [
+                42,
+                220,
+                196,
+                495
+              ]
+            },
+            {
+              "class": "SysTreeView32",
+              "id": 100,
+              "text": "Navigation Pane",
+              "rect": [
+                42,
+                220,
+                196,
+                495
+              ]
+            },
+            {
+              "class": "CtrlNotifySink",
+              "id": 0,
+              "text": "",
+              "rect": [
+                200,
+                220,
+                649,
+                495
+              ]
+            },
+            {
+              "class": "SHELLDLL_DefView",
+              "id": 1121,
+              "text": "ShellView",
+              "rect": [
+                200,
+                220,
+                649,
+                495
+              ]
+            },
+            {
+              "class": "DirectUIHWND",
+              "id": 0,
+              "text": "",
+              "rect": [
+                200,
+                220,
+                649,
+                495
+              ]
+            },
+            {
+              "class": "CtrlNotifySink",
+              "id": 0,
+              "text": "",
+              "rect": [
+                200,
+                478,
+                649,
+                495
+              ]
+            },
+            {
+              "class": "ScrollBar",
+              "id": 0,
+              "text": "",
+              "rect": [
+                200,
+                478,
+                649,
+                495
+              ]
+            },
+            {
+              "class": "Static",
+              "id": 1090,
+              "text": "Folder:",
+              "rect": [
+                170,
+                508,
+                206,
+                523
+              ]
+            },
+            {
+              "class": "Edit",
+              "id": 1152,
+              "text": "",
+              "rect": [
+                211,
+                504,
+                632,
+                527
+              ]
+            },
+            {
+              "class": "Button",
+              "id": 1,
+              "text": "Select Folder",
+              "rect": [
+                425,
+                532,
+                532,
+                558
+              ]
+            },
+            {
+              "class": "Button",
+              "id": 2,
+              "text": "Cancel",
+              "rect": [
+                544,
+                532,
+                632,
+                558
+              ]
+            },
+            {
+              "class": "ScrollBar",
+              "id": -1,
+              "text": "",
+              "rect": [
+                632,
+                558,
+                649,
+                575
+              ]
+            },
+            {
+              "class": "WorkerW",
+              "id": 0,
+              "text": "",
+              "rect": [
+                40,
+                134,
+                649,
+                189
+              ]
+            },
+            {
+              "class": "ReBarWindow32",
+              "id": 40965,
+              "text": "",
+              "rect": [
+                40,
+                134,
+                649,
+                189
+              ]
+            },
+            {
+              "class": "TravelBand",
+              "id": 0,
+              "text": "",
+              "rect": [
+                40,
+                143,
+                140,
+                177
+              ]
+            },
+            {
+              "class": "ToolbarWindow32",
+              "id": 0,
+              "text": "Navigation buttons",
+              "rect": [
+                44,
+                145,
+                140,
+                177
+              ]
+            },
+            {
+              "class": "UpBand",
+              "id": 0,
+              "text": "",
+              "rect": [
+                140,
+                142,
+                176,
+                178
+              ]
+            },
+            {
+              "class": "ToolbarWindow32",
+              "id": 0,
+              "text": "Up band",
+              "rect": [
+                140,
+                145,
+                176,
+                181
+              ]
+            },
+            {
+              "class": "Address Band Root",
+              "id": 41477,
+              "text": "",
+              "rect": [
+                176,
+                134,
+                424,
+                186
+              ]
+            },
+            {
+              "class": "msctls_progress32",
+              "id": 0,
+              "text": "",
+              "rect": [
+                178,
+                144,
+                422,
+                178
+              ]
+            },
+            {
+              "class": "Breadcrumb Parent",
+              "id": 0,
+              "text": "",
+              "rect": [
+                178,
+                144,
+                354,
+                178
+              ]
+            },
+            {
+              "class": "ToolbarWindow32",
+              "id": 1001,
+              "text": "Address: C:\\Users\\runneradmin\\AppData\\Local\\Programs\\FlowDrop\\native-smoke",
+              "rect": [
+                184,
+                144,
+                354,
+                178
+              ]
+            },
+            {
+              "class": "ToolbarWindow32",
+              "id": 0,
+              "text": "Address band",
+              "rect": [
+                354,
+                144,
+                422,
+                178
+              ]
+            },
+            {
+              "class": "SeparatorBand",
+              "id": 0,
+              "text": "",
+              "rect": [
+                428,
+                159,
+                434,
+                160
+              ]
+            },
+            {
+              "class": "UniversalSearchBand",
+              "id": 0,
+              "text": "",
+              "rect": [
+                434,
+                140,
+                638,
+                180
+              ]
+            },
+            {
+              "class": "Search Box",
+              "id": 0,
+              "text": "",
+              "rect": [
+                434,
+                143,
+                638,
+                179
+              ]
+            },
+            {
+              "class": "SearchEditBoxWrapperClass",
+              "id": 0,
+              "text": "",
+              "rect": [
+                439,
+                143,
+                633,
+                179
+              ]
+            },
+            {
+              "class": "DirectUIHWND",
+              "id": 0,
+              "text": "",
+              "rect": [
+                439,
+                143,
+                633,
+                179
+              ]
+            },
+            {
+              "class": "SeparatorBand",
+              "id": 0,
+              "text": "",
+              "rect": [
+                642,
+                159,
+                649,
+                160
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "utc": "2026-11-14T08:00:54Z",
+      "dialogs": []
+    }
+  ]
+}

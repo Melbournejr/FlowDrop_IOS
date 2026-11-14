@@ -46,6 +46,24 @@ def forwarded_config(port):
         connection.close()
 
 
+def activity_window_ready(output):
+    """A focused Activity may still be covered by Android's starting splash."""
+    if not re.search(r'mCurrentFocus=.*app\.flowdrop\.mobile/', output):
+        return False
+    blocks = re.split(r'\n\s*Window #\d+ ', output)[1:]
+    main = False
+    for block in blocks:
+        header = block.splitlines()[0]
+        if 'app.flowdrop.mobile' not in header:
+            continue
+        visible = 'isVisible=true' in block
+        if ('Splash Screen' in header or 'Starting ' in header) and visible:
+            return False
+        if 'MainActivity' in header and visible and 'mHasSurface=true' in block:
+            main = True
+    return main
+
+
 def run(root, artifact, api):
     source = protected_source()
     rec = Recorder(root, 'android-api-' + str(api), source)
@@ -155,10 +173,11 @@ def run(root, artifact, api):
             focused = False
             for attempt in range(60):
                 windows, _ = adb('initial-window-focus-' + str(attempt), 'shell', 'dumpsys', 'window')
-                if re.search(r'mCurrentFocus=.*app\.flowdrop\.mobile/', windows):
+                if activity_window_ready(windows):
                     focused = True; break
                 time.sleep(.5)
             assert focused, 'App Activity does not own the focused Android window'
+            time.sleep(.5)  # Allow the compositor to present the verified non-splash window.
             adb('initial-screenshot-device', 'shell', 'screencap', '-p', '/sdcard/flowdrop-runtime-initial.png')
             adb('initial-screenshot-pull', 'pull', '/sdcard/flowdrop-runtime-initial.png', rec.root / 'logs/initial-activity.png')
             row.update(exit_code=0, actual={'main_activity_resumed': True, 'screenshot': 'logs/initial-activity.png'})

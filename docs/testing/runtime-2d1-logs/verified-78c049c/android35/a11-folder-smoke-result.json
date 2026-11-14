@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "sdk": 35,
+  "originalFolderName": true,
+  "nestedDirectories": true,
+  "emptyDirectories": true,
+  "exactOriginalFilenamesAndBytes": true,
+  "folderCollisionKeepsFilesUnchanged": true,
+  "nativeReceiveService": true,
+  "completionAfterImport": true
+}

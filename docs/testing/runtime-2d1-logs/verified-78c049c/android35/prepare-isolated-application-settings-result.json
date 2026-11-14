@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "sdk": 35,
+  "checks": [
+    {
+      "automatic": false,
+      "id": "isolated-update-settings",
+      "passed": true
+    }
+  ]
+}

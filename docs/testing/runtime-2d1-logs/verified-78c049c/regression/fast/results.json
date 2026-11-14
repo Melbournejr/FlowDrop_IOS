@@ -1,0 +1,100 @@
+{
+  "group": "fast",
+  "status": "PASS",
+  "exit_code": 0,
+  "results": [
+    {
+      "name": "ci-runner-tests",
+      "command": [
+        "/opt/hostedtoolcache/Python/3.12.16/x64/bin/python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests/ci",
+        "-p",
+        "test_*.py",
+        "-v"
+      ],
+      "status": "PASS",
+      "executed": true,
+      "exit_code": 0,
+      "raw_returncode": 0,
+      "timeout": false,
+      "timeout_seconds": 90,
+      "wall_seconds": 1.639,
+      "resources": {
+        "supported": true,
+        "free_disk_bytes": 91469225984,
+        "memory_limit_bytes": 16760344576,
+        "minimum_disk_bytes": 536870912,
+        "minimum_memory_bytes": 2147483648
+      }
+    },
+    {
+      "name": "asset-integrity",
+      "command": [
+        "sha256sum",
+        "--check",
+        "docs/assets/FONT-RESTORATION-SHA256SUMS.txt"
+      ],
+      "status": "PASS",
+      "executed": true,
+      "exit_code": 0,
+      "raw_returncode": 0,
+      "timeout": false,
+      "timeout_seconds": 30,
+      "wall_seconds": 0.003,
+      "resources": {
+        "supported": true,
+        "free_disk_bytes": 91468853248,
+        "memory_limit_bytes": 16760344576,
+        "minimum_disk_bytes": 536870912,
+        "minimum_memory_bytes": 2147483648
+      }
+    },
+    {
+      "name": "unit",
+      "command": [
+        "npm",
+        "test"
+      ],
+      "status": "PASS",
+      "executed": true,
+      "exit_code": 0,
+      "raw_returncode": 0,
+      "timeout": false,
+      "timeout_seconds": 90,
+      "wall_seconds": 0.346,
+      "resources": {
+        "supported": true,
+        "free_disk_bytes": 91468849152,
+        "memory_limit_bytes": 16760344576,
+        "minimum_disk_bytes": 536870912,
+        "minimum_memory_bytes": 2147483648
+      }
+    },
+    {
+      "name": "harness-unit",
+      "command": [
+        "node",
+        "--test",
+        "tests/harness.test.mjs"
+      ],
+      "status": "PASS",
+      "executed": true,
+      "exit_code": 0,
+      "raw_returncode": 0,
+      "timeout": false,
+      "timeout_seconds": 90,
+      "wall_seconds": 0.381,
+      "resources": {
+        "supported": true,
+        "free_disk_bytes": 91468832768,
+        "memory_limit_bytes": 16760344576,
+        "minimum_disk_bytes": 536870912,
+        "minimum_memory_bytes": 2147483648
+      }
+    }
+  ]
+}

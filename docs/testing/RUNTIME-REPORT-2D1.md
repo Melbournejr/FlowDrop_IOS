@@ -1,125 +1,144 @@
 # FlowDrop Phase 2D.1 — Native Runtime Verification
 
-Ngày: 14/11/2026. **Trạng thái: NOT VERIFIED — đang xây dựng và chạy pipeline; không phải nghiệm thu runtime.**
+Ngày báo cáo: 14/11/2026 (Asia/Saigon). PR bàn giao: [Draft #10](https://github.com/Melbournejr/FlowDrop_IOS/pull/10).
 
-## Baseline và phạm vi
+**Mốc bằng chứng đã kiểm: 53/53 nhóm runtime và 20/20 subcheck native bổ sung PASS; Native Build Verification và Native Regression đầy đủ, gồm ZIP64, PASS.** Đây là kiểm thử trên Windows Server 2025 và Android Emulator 35/29, không phải chứng nhận thiết bị vật lý hoặc ký production.
 
-PR #9 đã merge đúng `9171e7f1ffbc0143d6e11374e3f6c847853341fe`, đồng thời là main mới nhất lúc bắt đầu. Nhánh riêng `test/native-runtime-verification-2d1`; remote được kiểm chưa tồn tại trước khi tạo. `protectMain`27172303 vẫn Active, áp dụng `~DEFAULT_BRANCH`, strict required `Coverage / explicit verification status` integration15368; không đổi settings/bypass. Chỉ PR #1 đang mở, head2ccf9248ed6de184a200a950e1d37dd1e5b11741; không sửa và không trùng workflow mới.
+## Commit và cách đối chiếu HEAD cuối
 
-Đã đọc AGENTS (root duy nhất), các tài liệu audit/architecture/features/protocol/regression/release và toàn bộ báo cáo/manifest/README2C.2; byte khớp mốc đã review. [Baseline440 file](RUNTIME-SOURCE-BASELINE-2D1.json) được kiểm SHA trước build/runtime. Không sửa bất kỳ file baseline nào, không sửa production/iOS/pin/package/version/UI/dependency/oldworkflow.
+- Main/base và merge PR #9: `9171e7f1ffbc0143d6e11374e3f6c847853341fe`.
+- Nhánh riêng: `test/native-runtime-verification-2d1`; không push main hoặc force push.
+- Snapshot bằng chứng được nhập Git: head `78c049cc0a9bfba47d0bd8b4cab4f5657cb80ddf`.
+- Checkout GitHub PR merge revision của snapshot: `b94d50fa27880b04bbaed6b194c4c0ed4646c7c8`. Đây là checkout chung của builder/runtime, khác SHA head được review; không nhầm hai giá trị này.
+- Sau snapshot, harness tăng điều kiện chờ Activity hết splash và ghi package đang foreground khi app ở nền. Python unit local 59/59, Java 8 compiler exit 0. Các điều kiện mới phải được chạy lại trên commit bàn giao.
+- **HEAD bàn giao và các run cuối được ghi trong PR body sau khi commit báo cáo và chờ CI kết thúc.** Mỗi artifact runtime của run cuối chứa source/reviewed_head, checkout_commit, matrix, command exit và checksum của chính HEAD đó. Các JSON snapshot trong Git giữ nguyên SHA đã thực chạy ở trên, không được đổi nhãn thành HEAD mới. Quy trình này tránh vòng lặp đưa SHA của chính commit vào nội dung commit.
 
-## Phân biệt bằng chứng
+`protectMain` ruleset 27172303 được đọc lại: Active, áp dụng `~DEFAULT_BRANCH`, strict required `Coverage / explicit verification status` integration 15368; không sửa/bypass. PR #1 vẫn mở, head `2ccf9248ed6de184a200a950e1d37dd1e5b11741`, không sửa và không trùng workflow mới. PR #10 vẫn Draft, chưa merge.
 
-- Build/structural verification2C.2 đã có bằng chứng lịch sử; không suy ra OS runtime.
-- Unit49/49 thực chạy local exit0, gồm41 case cũ và8 guard mới; **không phải** Android/Windows OS proof.
-- App/original instrumentation/extended instrumentation đã build bằng SDK35/JDK21 tại local; không chạy APK trên Android local, không chạy EXE bằng Wine.
-- Windows runtime, Android API35/API29 emulator và các CI trên HEAD mới: **NOT VERIFIED tại lần ghi này**.
-- Physical device, Wi-Fi multicast/OEM battery, cross-platform physical LAN, production signing: **NOT VERIFIED**, không thuộc tuyên bố runtime loopback.
+## Kết quả thực thi và phạm vi bằng chứng
 
-## Thiết kế kiểm chứng
+| Lớp kiểm chứng | Kết quả snapshot | Bằng chứng |
+|---|---|---|
+| Bảo toàn nguồn | 440 file baseline đúng SHA-256; không file cũ bị sửa | [Baseline](RUNTIME-SOURCE-BASELINE-2D1.json), kiểm trước build/runtime và trước commit |
+| Unit/harness local | 59/59 exit 0; có HTTP fixture, không phải OS proof | [Log](runtime-2d1-logs/unit-final-proof.log) |
+| Compile local | App/instrumentation, helper C++ và Java 8 đã compile; không suy ra OS runtime | Log điều tra và java-final-proof-compile.json |
+| Build và structural CI | PASS, mọi child build/verify exit 0 | [Native Build run](https://github.com/Melbournejr/FlowDrop_IOS/actions/runs/43573559041) |
+| Windows OS | 21/21 nhóm PASS | [Runtime run](https://github.com/Melbournejr/FlowDrop_IOS/actions/runs/43573559009), verified-78c049c/windows |
+| Android API 35 | 16/16 nhóm, 4 runner cũ và 1 runner bổ sung PASS | verified-78c049c/android35 |
+| Android API 29 | 16/16 nhóm, 4 runner cũ và 1 runner bổ sung PASS | verified-78c049c/android29 |
+| Native regression | 15 command entries thực chạy exit 0, đủ 13 suite Node/JVM gốc và hai CI guards; Coverage PASS | [Regression run](https://github.com/Melbournejr/FlowDrop_IOS/actions/runs/43573559007) |
+| Thiết bị thật/OEM/Wi-Fi multicast/LAN vật lý liên nền tảng | NOT VERIFIED | Không dùng emulator/JVM để thay bằng chứng này |
+| Production signing hoặc reproducible binary | NOT VERIFIED | Chỉ certificate thử nghiệm; không sử dụng production key |
 
-Workflow mới `.github/workflows/native-runtime-verification.yml`, opt-in `ci-native-runtime` hoặc workflow_dispatch, contents:read, fullSHA Action pins tái sử dụng pin đã xác minh2C.2. Không pull_request_target/secrets/write/release/publisher. Checkout revision cụ thể; kiểm ancestry baseline và440 hash.
+[Ma trận](RUNTIME-TEST-MATRIX-2D1.json) giữ platform, OS/API, source/checkout, artifact SHA, precondition, method, expected/actual, exit nếu có, timing, evidence và status cho 53 nhóm. Thêm 20 subcheck từ hai runner NativeRuntimeSmoke; thời gian subcheck ghi rõ dùng chung duration instrumentation, không bịa timing riêng. [Manifest](RUNTIME-ARTIFACT-MANIFEST-2D1.json) ghi archive API digest/size/head, binary SHA/size và ánh xạ source/imported log hash. [SHA log](RUNTIME-LOG-SHA256SUMS-2D1.txt) áp dụng byte đã lọc và chuẩn hóa whitespace trong Git.
 
-Các build jobs mới tái sử dụng builder/provisioning2C.2 nguyên byte, tạo APK/EXE TEST ONLY từ chính checkout của runtime jobs. Android cùng app/test cert tạm khác production, aliasflowdrop, mật khẩu env-only, xóa key trước export/finally. Build app và instrumentation gốc vẫn được thực thi. APK instrumentation mở rộng thêm NativeRuntimeSmoke và giữ đủ bốn runner gốc/provider/activity; không đổi app manifest. Test manifest/source phát sinh trong owned build output, không ghi đè baseline trong Git. Metadata ghi SHA source test gốc/đã compile; không báo test-source tương đương byte khi có adaptation.
+## Windows đã kiểm trên OS thật
 
-Windows compile hai test C++ có sẵn bằng chính compiler đã pin, consolePE x64 riêng, có manifest/hash/source provenance. Windows runtime nhận installer và helper của cùng run, kiểm checkoutSHA/inventory trước execution; không cài đè FlowDrop/data/shortcut/registry đã có. Chạy trên windows-2025 và ghi OS build thực, không giả định interactive desktop. Transfer loopback thực qua Node backend do FlowDrop.exe khởi động, dùng desktop capability đọc nội bộ từ state trong profile thử; không ghi token/state vào artifact. SHA file rỗng/nhỏ/nhiều/Unicode/trùng tên; abort/cancel/auth/stop/restart; uninstall/shortcuts/registry/data preservation. C++ smoke giữ mọi assertion, mặc định1MiB; không bật flag runtime>4GiB, vì regression lớn riêng vẫn chạy đủ.
+Windows Server 2025 Datacenter, 10.0.26100, build 26100, x64; interactive session 2 thực đo được, HWND native visible. Không dùng Wine làm bằng chứng.
 
-Android dùng official Emulator37.2.13 stable, platform-tools37.0.1 stable, cmdline-tools19.0, AOSP default/x86_64 API35r02/API29r08, được tải/đối chiếu publishedSHA1/size trước ghiSHA256. Google không cung cấp chữ ký SHA256 độc lập cho các archive này; không gọi hash tự tính là independent source proof. [Lock](RUNTIME-TOOLCHAIN-LOCK-2D1.json) và metadata gốc lưu provenance; archive/image/SDK/AVD không commit hoặc upload. Không silent chọn latest/canary/beta; filename cmdline có `_latest` nhưng buildID13114758/version19/hash cố định.
+- Guard từ chối program/profile/shortcut/uninstall registry FlowDrop có sẵn trước cài.
+- NSIS `/S` exit 0, đúng LocalAppData/Programs/FlowDrop; kiểm 128 file payload SHA, PE AMD64 GUI và Node runtime đúng pin.
+- FlowDrop.exe và child Node thực chạy; desktop capability lấy nội bộ từ profile thử, không export token. HTTP config version 1.13.0, Windows/local đúng.
+- Second invocation, Send To cold/warm IPC, dedup, Unicode path, relative-path rejection, native rename và identity qua restart đã chạy.
+- Hai lượt transfer độc lập: file rỗng, UTF-8 nhỏ, pattern 1 MiB + 17 byte, tên Unicode/khoảng trắng. Sáu file đích có SHA chính xác; lượt hai sinh tên riêng và giữ nguyên file lượt một.
+- Revoke, TCP disconnect giữa upload, partial file không public, thiếu/sai capability, invalid metadata đều đạt. ZIP có thành phần `Con` bị chặn đúng 400 và không để dữ liệu dở.
+- Hai C++ smoke giữ assertion cũ: native file/folder picker, upload/download, automatic permanent receive, folder root collision, tên/cấu trúc/thư mục rỗng, update preference binding, và Explorer window visible.
+- Dừng chỉ backend PID thuộc test, đóng app/backend, restart giữ device ID và SHA, NSIS uninstall thực tế. Kiểm không còn app/Node PID, shortcut và registry; marker AppData và sáu file đã nhận ngoài installation vẫn giữ SHA trước cleanup synthetic data.
 
-Runtime dùng KVM thực, device ACL chỉ cho runner nếu cần, không đổi firewall/SELinux. AVD/Android-user/ADB keys/serverport/serial riêng, chỉ emulator-5554, không đụng điện thoại vật lý. Boot/getprop/ADB kiểm thật; thiếu KVM/boot/APK/provenance phải BLOCKED/FAIL. Cài APK sạch sau apksigner/zipalign/badging; chạy bốn instrumentation cũ và runner bổ sung serial. Parse cả process exit và INSTRUMENTATION_CODE/result: am instrument exit0 không tự là testPASS. Permission denial/grant dùng Android dialog thật qua native instrumentation/UiAutomation; API29 ghi policy không cần runtime POST_NOTIFICATIONS. Picker contract cũ dùng ActivityMonitor, được phân biệt với bài mở/cancel DocumentsUI thật mới. ReceiveService/MediaStore/SHA, notification/background/restart/force-stop/auth/abort được kiểm trên Android, không dùng JVM thay thế.
+## Android đã kiểm trên emulator thật
 
-## Harness tồn tại và phát hiện tĩnh
+Emulator 37.2.13, hardware KVM thực, ABI x86_64:
 
-- `tests/windows-native-smoke.cpp`: native HWND/backend/picker/upload/receive/folder/Explorer/updateprefs/close, optional large/peer flags không bật ở runtime smoke này.
-- `tests/windows-shell-smoke.cpp`: realapp cold/warm SendTo, IPC/dedup/Unicode/rename/identity/auth/revoke/restart.
-- NativeSmoke: Activity/no-renderer/picker-contract/services/MediaStore/history.
-- NativeServiceSmoke: realservices và MediaStore.
-- NativeFolderSmoke: folders/names/emptydirs/collision/realReceiveService.
-- NativeShareSmoke: actual separate sender UID/provider/grants/share intents/warmreuse/consent/exact bytes.
+| API | OS/fingerprint quan sát |
+|---|---|
+| 35 | Android 15; Android/sdk_phone64_x86_64/emu64x:15/AE3A.240806.019/12368160:userdebug/test-keys |
+| 29 | Android 10; Android/sdk_phone_x86_64/generic_x86_64:10/QSR1.210820.001/7663313:userdebug/test-keys |
 
-**Đã thấy selector cũ trong NativeSmoke:** literal “Tạo phiên trên điện thoại này” không tồn tại trong MainActivity1.13; button ready hiện là “● Điện thoại đang hiển thị trong Wi-Fi”. Đây mới là bằng chứng source, chưa phải kết quả test. Lượt đầu phải chạy nguyên selector để ghi nhận lỗi thực. Nếu xác nhận lỗi harness, chỉ đổi hai literal selector trong bản sao test đã compile, giữ toàn bộ assertion và nguồn baseline; ghi SHA adaptation trong artifact. Không sửa UI hoặc skip bài để làm xanh.
+App và instrumentation cùng run, cùng test certificate `2760ec172c49ef423d17ac346e7216dddd2dc8b49c113ccdcae362db1c962672`, khác production pin. Cài sạch cả hai APK, app vẫn `app.flowdrop.mobile`, 1.13.0/code 14, min 29/target 35, đủ 11 permission gốc, font/resource/dex và signature/zipalign thực kiểm. App Java 8 bytecode gồm 69 class; không đổi manifest production.
 
-## Coverage và trạng thái bắt buộc
+Bốn runner gốc đều thực chạy trên cả API:
 
-[Ma trận](RUNTIME-TEST-MATRIX-2D1.json) có21 nhóm Windows và16 nhóm cho mỗi API, tổng53 nhóm bắt buộc; runner mới còn ghi các subcheck SHA/permission/picker/lifecycle. Mỗi case ghi platform, OS/API, source/checkout commit, artifactSHA, preconditions, method, expected/actual, exit nếu có, timing, evidence và status. Missing case NOT VERIFIED; FAIL/BLOCKED/NOT VERIFIED/SKIPPED không thànhPASS. Summary yêu cầu cả ba runtime và build jobs thành công; không dùng exit của log collector thay test.
+- NativeSmoke: native Activity/widgets, không embedded renderer, picker contract, Send/ReceiveService, MediaStore exact bytes, Album/Download, pending/history/revoke.
+- NativeServiceSmoke: foreground host và service thật, saved bytes/routing/history/pending.
+- NativeFolderSmoke: original folder name, nested/empty directories, names/bytes, collision và completion sau import.
+- NativeShareSmoke: separate sender UID/provider, ACTION_SEND/MULTIPLE, URI grants, cold/warm Activity, dedup/MIME, từ chối URI nguy hiểm hoặc thiếu grant, không tự gửi, recipient consent và exact bytes.
 
-Thêm `ci-native-build` và `ci-zip64` vào Draft PR để workflow2C.2 và Native Regression hiện có chạy riêng, đầy đủ101files/384MiB+17/RSS/ZIP64>4GiB. Không đổi kích thước/assertion/timeout/oldtests. Các workflow trước giữ nguyên.
+Runner mới thực chạy đủ 10 subcheck mỗi API: backend native; foreground notification; system DocumentsUI mở/cancel; sáu file hai code độc lập với SHA/Unicode/trùng tên/URI riêng; hủy active HTTP; TCP abort không public partial; auth/invalid request; recipient rejection; backend sống khi HOME rồi mở lại; stop/restart giữ identity và sáu SHA. ADB force-stop/restart và uninstall hai package cũng thực chạy, logcat không crash/ANR ở run đạt.
 
-## Evidence, bảo mật và cleanup
+API 35 deny/grant POST_NOTIFICATIONS đi qua dialog Android thật và kiểm permission state; API 29 xác nhận policy không yêu cầu runtime notification permission. HTTP qua ADB giữ Host của app để không làm yếu allowedHost. Picker contract bị ActivityMonitor chặn của runner cũ được phân biệt với system DocumentsUI thật ở runner mới.
 
-Log và JSON được lọc token/capability/password/code trước upload; không env dump, desktop-state, private key, adb key, cache, userdata hoặc image. Chỉ screenshot đầu phiên chưa tạo code, không sửa ảnh hay dùng ảnh giả. Export chuẩn bị sau screening toàn bộ, có manifest/SHA, uploader chỉ chạy khi screening success; retention7ngày. Root ownership/path guards từ chối outside/symlink/stale export. Windows không xóa profile có trước; chỉ cleanup synthetic profile có marker được tạo sau empty-profile guard. Android finally uninstall/stop scoped emulator/server; workflow always cleanup image/key/workspace.
+Snapshot ảnh API 29 đã xem, là UI native thực. Snapshot đầu API 35 tại mốc trên còn splash dù Activity nhận focus; không dùng ảnh này chứng minh UI đã hết splash. Harness bàn giao bổ sung guard hết starting-window và screenshot sau compositor; ảnh và package-background mới phải đối chiếu trong artifact HEAD cuối. Không sửa/ghép ảnh hoặc thay UI production.
 
-## Rủi ro tạm thời và xử lý
+## Toolchain, authenticity và cô lập
 
-- P0: chưa có phát hiện mới; không có tuyên bố production đã được kiểm toàn diện.
-- P1: chưa OS runtime đầy đủ trên HEAD mới; mọi claim runtime còn NOT VERIFIED đến khi đọc evidence thật. Không cài test lên production.
-- P2: selector cũ cần thực nghiệm; khả năng desktop/KVM/emulator/image provisioning phải quan sát thực. Nếu lỗi production thì giữFAIL, ghi tái hiện/ảnh hưởng và đề xuất PR riêng, không sửa production ở2D.1.
-- P3: evidence tạm7ngày; report lưu mốc đã chạy, PR body ghi head/run cuối để tránh self-SHA recursion.
+Builder/provisioning/verification 2C.2 giữ nguyên byte, không nâng app dependency, không Gradle/AGP. JDK Temurin 21.0.13+9, SDK 35/build tools 35.0.0, aapt2 2.19-11948202, D8 8.6.2-dev, apksigner 0.9; MinGW-w64 POSIX x64/windres/NSIS theo lock đã duyệt. Compiler probe ghi đúng giá trị quan sát `14-posix`, không đổi nhãn thành kết quả đo numeric khác. Node Windows 24.22.2 với SHA exe `1c331340fa6cac5e4294725959070a143fa0507195a78ad77eed7943f719aac9`. Regression quan sát Node 24.22.2/Java 21.0.13/Python 3.12.16. Windows harness dùng Python 3.12.10 vì 3.12.16 không có distribution Windows tương ứng.
 
-Rollback bằng PR revert các file harness/workflow/docs thêm của2D.1, giữ main/Ruleset, app/data/key/Release. Không merge, publish, nâng version hoặc triển khai2D.2/3. Khi có môi trường blocker, báo PARTIAL và đưa hướng dẫn Windows VM/emulator/thiết bị thử cụ thể thay vì báoPASS.
+[Runtime lock](RUNTIME-TOOLCHAIN-LOCK-2D1.json): cmdline-tools 19.0, platform-tools 37.0.1, emulator 37.2.13 stable, AOSP default x86_64 API35r02/API29r08. Pin archive URL/build ID/version; so published SHA-1/size trong official HTTPS metadata rồi SHA-256 cố định. Google metadata không cung cấp independent signed SHA-256; không gọi hash tự tính là chứng thực nguồn độc lập. Metadata gốc và license được giữ nguyên. APT host libpulse0 quan sát 1:16.1+dfsg1-2ubuntu10.1, signed Ubuntu Noble index và root-owned official mirror list; candidate cố định vào install argv và version được log, không coi package index động là immutable archive pin.
 
-## CI lần đầu và sửa hạ tầng (chưa nghiệm thu runtime)
+- Work root/marker riêng, không dùng dữ liệu cá nhân hoặc production signing cache; kiểm paths/symlink/traversal trước cleanup/extract.
+- System image có entry trên 512 MiB nên dùng extractor riêng 8 GiB/entry, 10 GiB/tổng; không giảm giới hạn extractor build cũ.
+- Không giả SDK: command-line tools đặt đúng versioned layout, package.xml chỉ đăng ký exact authenticated package metadata/license/dependency, không thay image bytes.
+- AVD, emulator prefs, XDG runtime, ADB keys và server port 5039 riêng; chỉ serial emulator-5554. KVM ACL chỉ cấp cho runner, không tắt firewall/SELinux/Defender.
+- App/test APK ký cùng key tạm ngoài checkout, alias flowdrop; env-only password, không argv/GITHUB_ENV/cache/artifact, xóa trước export/finally. Không đọc production private key.
+- Guard hash/provenance trước execute; no stale output. Windows mọi child app test disable automatic update; Android disable trong isolated test preferences, không động update feed.
+- Workflow mới contents:read, full verified SHA Action pins, không pull_request_target/write/secrets/publisher/main-push/tag trigger. Log collector thành công không thay exit của test; summary yêu cầu từng required job và runtime status PASS. Opt-out ghi SKIPPED rõ ràng.
+- Chỉ upload evidence đã screen, manifest/SHA; chỉ initial screenshot chưa có code. Mask capability/token/password/PAT/private-key material và ephemeral ADB public key. Không upload userdata/AVD/cache/keys/environment dump. Retention 7 ngày.
 
-Draft PR #10; head đầu `97dccd7bb214f574d30727a6e889a561e6ceb73f`. Run [43551446591](https://github.com/Melbournejr/FlowDrop_IOS/actions/runs/43551446591) đã build app/instrumentation/Windows/helper thành công từ source checkout sạch. Hai API xác nhận KVM read/write, khoảng94.85GB đĩa nhưng `emulator -version` exit127: thiếu `libpulse.so.0`. Chưa boot/install nên không suy ra lỗi sản phẩm. Archive evidence được đối chiếu digest/size GitHub, CRC/paths và manifest file SHA trước nhập log đã lọc.
+## Lỗi trước/sau và cách tái hiện
 
-Sửa provisioning trong harness mới: `ldd` chỉ chấp nhận missing `libpulse.so.0` đã quan sát, giới hạn Ubuntu24.04, APT signed index và official Noble origin, candidate version được cố định vào argv install và ghi observed dpkg version; unresolved library khác vẫn BLOCKED. Không thay SDK/emulator hoặc production. Host APT dependency không phải archive pin bất biến; report ghi version thực từ runner. Thêm negative/unit guard không tự cài package chưa review.
+Mỗi lỗi có log trước sửa trong runtime-2d1-logs; kết quả sau sửa ở verified-78c049c hoặc HEAD cuối được nêu rõ. Không sửa production để ép test.
 
-Job Windows dừng trước runtime: `actions/setup-python` không có3.12.16 Windows2025. Chỉ job Windows đổi sang3.12.10 có file win32-x64 được xác minh trong manifest chính thức actions/python-versions (blobSHA trong log provenance). Các job Linux/build cũ không đổi. Không gọi lỗi setup là lỗi app.
+| ID | Tái hiện/kết quả trước | Sửa trong harness | Kết quả |
+|---|---|---|---|
+| H01 | Emulator version exit127 thiếu libpulse.so.0 | ldd với bundled libraries; signed APT official Ubuntu | emulator/KVM/boot thực PASS |
+| H02 | setup-python 3.12.16 không có Windows2025 distribution | chỉ Windows dùng verified 3.12.10 | Windows runtime PASS |
+| H03 | Windows autocrlf làm lệch protected SHA | Git command config autocrlf=false, không normalize hash sai | 440-file guard PASS |
+| H04 | Flat cmdline-tools không nhận image; thiếu emulator registration | versioned layout/package.xml từ metadata đã hash | local avdmanager exit0; hai emulator boot PASS |
+| H05 | A04 NameError verify_export | import đúng, unit symbol-table guard | APK verify/install PASS |
+| H06 | C++ shell helper exit0xC0000139 trước main | RT_MANIFEST Common Controls v6, kiểm bytes PE | helper chạy và PASS |
+| H07 | Cross-process edit vẫn rỗng/tên cũ | WM_SETTEXT trực tiếp, return/error/readback, actual button | picker/code/rename PASS |
+| H08 | C++ fixture Con bị Windows reserved-name guard từ chối | chỉ copied fixture đổi Con hợp lệ; thêm negative live ZIP Con | folder positive và reserved-name rejection cùng PASS |
+| H09 | NativeSmoke timeout120s ở literal UI cũ | hai selector trong compiled test copy, giữ assertion/UI gốc | bốn runner cũ PASS cả API |
+| H10 | Host header dùng tunnel port bị 403 | preserve app Host qua ADB; HTTP fixture đúng200/sai403 | A08/A14 PASS |
+| H11 | FATAL chỉ vào NativeRuntimeSmoke.click→widget→nested runOnMainSync | helper dispatch main một lần | no-crash gate và A13 PASS |
+| H12 | Collision history phải ghi actual MediaStore destination name | map receipt file ID; kiểm first name/stem/extension/URI/displayName/pending/SHA | sáu SHA/unique URI PASS mỗi API |
+| H13 | Picker BACK không quay lại app; inject chưa kiểm return/time/source | KeyEvent uptime/keyboard source, check cả down/up | picker cancel và full A13 PASS |
+| H14 | Activity focus có thể còn splash overlay | gate visible surface và hết starting window; unit tái hiện | bổ sung ở commit bàn giao; xem CI HEAD cuối |
+| H15 | BG evidence cần package foreground cụ thể | kiểm active package khác app trước backend probe, app active sau reopen | bổ sung ở commit bàn giao; xem CI HEAD cuối |
 
-Unit sau sửa:51/51 thực chạy local, exit0; xem `unit-host-library-fix.log`. Test selector NativeSmoke vẫn chưa chạy trên Android, chưa bật adaptation. Các lần đầu/label event hủy bởi concurrency không được tính PASS. CI đầy đủ sẽ được kiểm lại trên head cuối.
+Bản gốc Windows/Android tests trong baseline vẫn nguyên byte. Helper copies ghi original/compiled source SHA, selector/driver/fixture adaptation; không tuyên bố test source byte-identical. Không xóa/skip hoặc giảm assertion, test size, RSS hay timeout cũ. First local HTTP fixture bị sandbox chặn loopback exit1; chạy lại nguyên suite với network permission đạt58, sau guard splash đạt59; cả log lỗi và log thực đạt được giữ, không biến môi trường lỗi thành PASS.
 
-Lượt tiếp theo [43551949371](https://github.com/Melbournejr/FlowDrop_IOS/actions/runs/43551949371), head `b8db11fe32d5a689e8d17fc2f1d628e1de1981ff`: precondition/builds PASS; runtime vẫn dừng trước install. Phát hiện guard `ldd` gọi qemu trực tiếp thiếu đường dẫn thư viện bundled do launcher chính thức thiết lập; guard từ chối đúng chứ không cài bừa Qt/Android library. Sửa phép đo `ldd` với đúng hai directory Google đã đối chiếu SHA, chỉ áp dụng env riêng của probe, không đưa vào APT. Không thay emulator hoặc bỏ check missing library. Unit kiểm rằng APT không nhận LD_LIBRARY_PATH này.
+## Regression cũ được bảo toàn
 
-Windows checkout mặc định chuyển LF→CRLF; protected-source dừng ở `.github/actions/native-test-setup/action.yml`, trước execution. Cấu hình `core.autocrlf=false` qua Git command environment riêng job để checkout đúng byte blob; không normalize hoặc chấp nhận hash sai. Baseline guard440 vẫn nguyên và bắt buộc. Đây là lỗi portability harness, không phải thay đổi source.
+Native Regression chạy fast, serial integration/discovery, stream và ZIP64; không đổi workflow cũ. 101 files, 384 MiB + 17 byte, RSS bounds, ZIP64 feature/folder/native-client trên 4 GiB, SHA/CRC và timeout cũ giữ nguyên. Resource preflight thực có trên 90 GB đĩa và khoảng16 GiB RAM cho ZIP64; cả ba bài nặng thực exit0, không bị skip.
 
-## Windows OS execution đã xác minh lần đầu
+Node/JVM HTTP/discovery/peer/security/large regressions là bằng chứng lớp riêng. Không gọi chúng là Android/Windows OS tests hoặc physical cross-platform LAN. Native runtime smoke dùng tải vừa để kiểm UI/lifecycle, không thay các bài trên4GiB bằng tải nhỏ.
 
-Run43552367620 / head `f20e71494445fdfd2b579630cfc1c564528dfabf`: cài TEST ONLY bằng NSIS exit0 trên Windows Server2025 Datacenter10.0.26100 x64, kiểm128 file payload/Node pin, chạy FlowDrop.exe và Node child thật, liveHTTP1.13/windows, HWND visible/interactive session2, single-instance/SendTo/shortcut/registry. Truyền6 file thuộc2code độc lập gồm rỗng/Unicode/1MiB+17; SHA trùng, collision tạo `(1)` giữ file gốc. Revoke/abortTCP/invalid403/400/stop-backend/restart/preserve/uninstall đều thực chạy. **19/21 nhóm PASS,2 nhóm FAIL, không nghiệm thu đầy đủ.**
+## File và diff
 
-W15 old native helper exit1: “Native file picker did not select files”. Chưa đủ bằng chứng phân loại lỗi app hay UI driver; giữ nguyên assertion/FAIL và bổ sung quan sát OS dialog controls trong harness mới, không điều khiển/che kết quả. W16 shell helper loader exit3221225785 (`0xC0000139` ENTRYPOINT_NOT_FOUND), không có test stdout. StaticPE thực chứng import COMCTL32 TaskDialogIndirect trong helper nhưng thiếu manifest activationCommonControlsV6; app có manifestV6 và chạy được. Chỉ link resource manifest baseline vào test helper, kiểm resource bytes trong PE, không sửa app hoặc test source/assertions. Sẽ thực chạy lại để xác nhận nguyên nhân.
+Chỉ thêm workflow mới, harness/test và tài liệu/evidence. Không sửa/xóa bất kỳ file baseline nào: app Windows/Android/Node/shared, protocol, UI/assets, version, signing pins, lock/dependency, iOS và ba workflow cũ đều nguyên byte. Không thêm APK/EXE/keystore vào Git.
 
-Android vẫn trước boot do policyAPT `mirror+file:/etc/apt/apt-mirrors.txt` thay URL trực tiếp. Signed index thực tải archiveUbuntu Noble và candidate1:16.1+dfsg1-2ubuntu10.1. Harness xác minh system mirror file/root ownership, chỉ official Ubuntu archive regional URLs, từ chối host/path giả; không bỏ APT signature checks. Local unit52/52 exit0 trước thay đổi observer.
+- .github/workflows/native-runtime-verification.yml.
+- scripts/native_runtime_ci/: __init__.py, common.py, definitions.py, build.py, sdk.py, android.py, windows.py, http_probe.py, test_sources.py, finish.py.
+- tests/android-runtime/NativeRuntimeSmoke.java; tests/ci/test_native_runtime_ci.py.
+- docs/testing/RUNTIME-REPORT-2D1.md, RUNTIME-TEST-MATRIX-2D1.json, RUNTIME-ARTIFACT-MANIFEST-2D1.json, RUNTIME-LOG-SHA256SUMS-2D1.txt, RUNTIME-SOURCE-BASELINE-2D1.json, RUNTIME-TOOLCHAIN-LOCK-2D1.json, NATIVE-RUNTIME-2D1.md.
+- runtime-2d1-provenance/: hai official metadata snapshots; runtime-2d1-logs/: historical before/after và authenticated CI snapshot. Exact paths/SHA của log nằm trong SHA256SUMS, full diff ở Files changed của PR.
 
-## Sửa provisioning và UI driver có bằng chứng
+## Rủi ro và điều chưa xác minh
 
-Head `740dd001e120b06c88a2d18982ae5da1a01fd4bf`, run43568850232: host library provisioning thực cài libpulse0 `1:16.1+dfsg1-2ubuntu10.1` từ signedAPT/official mirrors. adb37.0.1 và emulator37.2.13 actual probes exit0. AVD create exit1: package path invalid; chưa cài/chạy APK.
+| Mức | Nội dung/thực trạng | Quyết định hoặc việc tiếp theo |
+|---|---|---|
+| P0 | Không phát hiện mới trong phạm vi đã chạy; không phải bảo đảm không có lỗi | Giữ Draft để review độc lập |
+| P1 | LAN HTTP plaintext là baseline hiện có; OS PASS không sửa rủi ro nghe lén LAN | Chỉ thiết kế đổi protocol khi được phê duyệt ở nhiệm vụ riêng |
+| P2 | Windows Server2025 x64 và AOSP x86_64 không đại diện Win10/11 máy thật, Android16/OEM/ARM, Wi-Fi multicast hoặc pin nền | Chọn VM/điện thoại thử riêng cho Phase2D.2; chưa triển khai |
+| P2 | Production signing/update-install end-to-end, Authenticode và reproducible binary chưa xác minh | Nhiệm vụ riêng nếu được giao; không dùng hoặc đổi production key ở đây |
+| P3 | Google published checksum là SHA1/HTTPS; host package index/runner image có phần động | Giữ lock/provenance/observed versions, không tự đổi pin |
+| P3 | Actions artifacts 7 ngày; Git logs đã lọc/whitespace-normalized khác raw bytes | Manifest giữ cả original/import hashes; tải evidence khi còn hạn |
 
-Tái hiện local bằng đúng archive đã kiểm SHA, không boot emulator: flat `cmdline-tools/bin` làm avdmanager suy ra saiSDK root; chuyển đúng `cmdline-tools/19.0/bin` nhận image nhưng báo thiếu package emulator mặc dù binary có. Đăng ký `package.xml` từ official metadata snapshot đã kiểmSHA (giữ type/revision/license/dependencies, bỏ field remote-download/channel), avdmanager create35 thực exit0. Không sửa image, không thay phiên bản, không dùng việc tạo AVD làm bằng chứng Android runtime. Harness mới áp dụng layout/registration này trong work root, metadata có receiptSHA, từ chối ghi đè.
+## Rollback và bàn giao
 
-Windows lượt này đã sửa loader: shell helper chạy vào assertion thay vì0xC0000139. Hai helper vẫn FAIL ở UI input: native picker không chọn file; shell báo config chưa có tên mới dù native UI báo lưu. OS dialog observations cho thấy control tạo theo nhiều đợt, filename edit1148 vẫn rỗng. Sửa driver trong bản sao test disposable: chờ dialog/primarybutton visible+enabled, nhập và kiểm text readback, invoke button BM_CLICK thật; giữ mọi fixture/assertion/timeout gốc, không chọc biến chọn file hoặc đổi app. Original440 file vẫn nguyên; ghi SHA nguồn gốc/nguồn test compile riêng. Unit chống source drift và giữ literal/assertion; hai bản sao C++ compile với manifest thực exit0, **không phải OS PASS**. Chờ rerun native.
+PR vẫn Draft; chưa merge nên main/Release và máy production không bị thay đổi. Nếu chủ dự án sau này merge, rollback bằng PR revert commit merge của #10, giữ protectMain và required checks; không reset/force-push main hoặc xóa dữ liệu người dùng. Workspaces CI đã uninstall test app/installer và cleanup owned emulator/keys. Không yêu cầu người dùng gỡ production để thử.
 
-Python unit hiện55/55 local, exit0; không thay/skip test cũ.
+Chủ dự án cần quyết định review/merge Draft PR, danh sách máy/OS/Wi-Fi riêng để kiểm tiếp và phạm vi signed-update/physical interoperability tương lai. Không cần production password hoặc key cho phần đã làm. Không tự triển khai Phase2D.2/3, tạo tag/Release, publish update feed hoặc nâng version.
 
-Log nhập Git được lọc bí mật và chuẩn hóa trailing whitespace/newline; checksum trong báo cáo áp dụng byte sau chuẩn hóa. ZIP evidence gốc và manifest hash của producer được kiểm độc lập trước bước này, không gọi bản đã lọc là raw log nguyên byte.
-
-## Emulator boot thực và cross-process UI input
-
-Run43570158444 / head `e253d3805be5f1bfafdbff472429627ee7e507e5`: cả API35(Android15, fingerprint Android/sdk_phone64_x86_64/emu64x:15/AE3A.240806.019/12368160:userdebug/test-keys) và API29(Android10, Android/sdk_phone_x86_64/generic_x86_64:10/QSR1.210820.001/7663313:userdebug/test-keys) boot x86_64/KVM thật thành công. A01/A02/A03 PASS. A04 dừng NameError do import `verify_export` bị thiếu, trước install APK; giữ FAIL/NOT VERIFIED cho các bước sau. Sửa đúng import và thêm unit static symbol-table guard, không cài thêm dependency lint hoặc sửa production.
-
-Đã lọc thêm ephemeralADB **public** key khỏi boot log (không có private key); privateADBkey chưa từng export. Đặt ANDROID_EMULATOR_HOME/XDG_RUNTIME_DIR vào owned work root để prefs/cache/JWT runtime của emulator cũng được cô lập.
-
-Windows vẫn19/21: các readback mới cho thấy thao tác setter của helper không thay actual edit text, không phải tên đã nhập rồi mất qua backend. Microsoft Win32 docs xác nhận SetWindowText không dùng đổi control của process khác; cần gửi WM_SETTEXT trực tiếp (blob/path/excerpt trong win32-settext-provenance.json). Driver test-only mới dùng SendMessageTimeout(WM_SETTEXT) có kiểm return/GetLastError/readback cho filename, receive code và rename; giữ mọi assertion cũ. Console diagnostic native chuyển sang UTF-8 để không trộn wide/narrow stdout gây mất dòng PASS, không đổi UI app. Chưa gọi đây là Windows PASS cho tới rerun.
-
-Local unit57/57 exit0; actual NativeBuild43570158448 và fullNativeRegression43570158449/Coverage PASS tại head trên; vẫn cần lặp lại trên head cuối. Android oldselector chưa chạy, adaptation vẫn tắt.
-
-## Instrumentation thực đã chạy / sửa lỗi harness tiếp theo
-
-Run43571092761 / head `2fd451dd609cec594d31248d3fb7ad0c7dbaeabf`: Android35/29 đều xác minh APK thực, testcertificate chung `466f72e2a023d9c21ee582b8736890c543988ad188e291a8d5eaf0fb4cc39023` khác production, cài app+test thành công. Các runner gốc NativeServiceSmoke/NativeFolderSmoke/NativeShareSmoke đều PASS ở cả hai API: real Send/ReceiveService, MediaStore bytes/routing/pending/history, folders/collision/emptydirs, Share Intent separate senderUID/grants/consent/exactbytes. Permission dialog deny+grant thật API35 PASS; API29 policy PASS. **Mỗi API10/16 nhóm PASS,6 FAIL; không nghiệm thu.**
-
-NativeSmoke gốc thực timeout120s với “Native connect screen not ready” do literal nút cũ. Nay mới bật adaptation hai literal trong bản sao test; không đổi UI/assertion/gốc Git. A06 lấy `dumpsys window windows` không chứa header mCurrentFocus trên hai API dù surfaceMainActivity visible; đổi sang full dumpsys window và chờ focused app thật, vẫn assertion không chấp nhận Splash. A08/A14 tunneledHTTP dùng Host là ephemeral host-side port bị production allowedHost chặn đúng; harness phải preserve Host `127.0.0.1:5173` trong ADB TCP tunnel. Unit HTTP fixture xác nhận host đúng200/host sai403, không tắt/bớt bảo vệ app.
-
-A13 crash và A15 phát hiện đúng crash. Stack trên cả API chỉ vào helper NativeRuntimeSmoke.click→widget gọi runOnMainSync từ main thread. Sửa helper để tìm view trước dispatch rồi click một lần trên main; không sửa production/không loại crash khỏi evidence. Test mới đối chiếu collision theo file ID và displayName MediaStore thực (production history ghi tên đích đã thêm hậu tố), đồng thời giữ stem/extension, distinctURI, first-name exact, IS_PENDING0 và mọi SHA. Java8 helper compile thực exit0.
-
-Windows20/21 PASS; SendTo/rename shell helper nay PASS. Native helper đã qua picker/upload/receive/folderarchive/updateprefs, còn FAIL nhậnfolder vì fixture `Con` trùng Windows reservedCON. Source folder-receive.mjs chặn rõ CON theo thiết kế, không được nới regex. Chỉ đổi5 đường dẫn fixture trong bản sao sang `Con hợp lệ`, giữ structure/Unicode/emptydirs/collision/assertion; thêm probe live Windows gửi ZIP có Con và bắt buộc400/fullmessage/no-leftovers để kiểm bảo vệ vẫn hoạt động. Windows naming docs/blob được lưu. Mọi childapp do helper khởi động cũng nhận test-env disable-updates, không chạm update feed.
-
-Unit mới có socket fixture nên lần local sandbox mặc định exit1 PermissionError bind loopback; chạy lại nguyên58 test với network sandbox permission hỗ trợ loopback đạt58/58 exit0, không skip. Đây là unit/harness, không OS proof. NativeBuild43571092705 và fullRegression43571092770 PASS ở head trên; sẽ rerun ở head mới.
-
-## Mốc Windows21/21 và Android15/16
-
-Run43572621465 / head `afc3a3b679524c99f86b8d8d9eb93c5268fa1254`: Windows runtime **21/21 PASS**, bao gồm hai C++ helper, native realfile/folderpicker, exact folder structure/names/emptydirs/collision và Explorer window visible. Live reserved-name ZIP probe trả đúng400 “Windows không hỗ trợ tên: Con”, không để file lại; không sửa guard app. Uninstall xác nhận0ownedapp/backendprocess còn lại và dữ liệu synthetic ngoài installation giữSHA.
-
-Cả hai Android **15/16 nhóm PASS**: bốn old instrumentation đầy đủ đã thực chạy thành công sau test-onlyselectorfix; Activityfocus/screenshot/liveADBHTTP/force-stop/restart/no-crash cũng PASS. Chỉ A13 mới còn FAIL ở “Picker cancel did not return to app”; các subcase A13 phía sau chưa chạy nên không gọi toàn bộ transfer/fault smoke bổ sung PASS.
-
-Sửa input helper mới: tạo BACK/HOME KeyEvent với down/event uptime hiện hành, virtual keyboard source/flags rõ ràng và bắt buộc cả hai inject trảtrue; cặp sự kiện cũ không thiết lập time/source và không kiểm return. Giữ45s chờ actual appreturn, không thay bằng direct Activity launch để bỏ qua cancel. launch cũng phải thấy active accessibility window thuộcMainActivity cả khi mở lại từ nền. Java8 helper compile exit0; Android runtime kết quả chờ rerun.
-
-NativeBuild43572621478 và fullRegression43572621491/Coverage PASS tại mốc trên; sẽ xác minh lại head cuối.
+[Hướng dẫn chạy/đọc CI](NATIVE-RUNTIME-2D1.md). Khi bàn giao, đối chiếu PR body: đúng HEAD cuối, đủ ba workflow PASS, Coverage PASS, runtime53/53 và các artifact mang đúng head. Nếu bất kỳ gate cuối chưa đạt thì chưa nghiệm thu đầy đủ, bất kể snapshot trước đã xanh.
