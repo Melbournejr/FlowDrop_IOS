@@ -1,0 +1,22 @@
+
+> flowdrop@1.13.0 test
+> node --test --test-isolation=none tests/transfer.test.mjs tests/desktop-storage.test.mjs tests/device-name.test.mjs tests/update-choice.test.mjs tests/security.test.mjs
+
+✔ receiver preserves data, folder settings, duplicate names and already saved files (87.060845ms)
+✔ receiver never exposes partial files and handles unsafe or long filenames (2.221792ms)
+✔ device labels persist Unicode names, validate codepoints and serialize writes (1.628763ms)
+✔ reject untrusted metadata before opening any file body or destination (2.862283ms)
+✔ capabilities compare full bytes, and browser cross-origin requests are rejected (0.222313ms)
+✔ send, finalize, receive original bytes, and revoke across clients (14.495752ms)
+✔ upload and revoke require uploader token; foreign origin blocked (1.023235ms)
+✔ invalid names, protocol bounds, byte mismatch and missing codes rejected (2.4397ms)
+✔ expiry blocks access; empty files transfer; finalized uploads immutable (1.504507ms)
+✔ manual and scheduled checks report results; Later never downloads; explicit acceptance waits for active transfers (7.416034ms)
+ℹ tests 10
+ℹ suites 0
+ℹ pass 10
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 191.258693

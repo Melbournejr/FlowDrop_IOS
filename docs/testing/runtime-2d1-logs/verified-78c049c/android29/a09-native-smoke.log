@@ -1,0 +1,16 @@
+INSTRUMENTATION_STATUS: stage=launching_native_activity
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: stage=native_activity_created
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: stage=native_connect_screen
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: stage=native_phone_host_ready
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: stage=native_picker_result
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: stage=native_send_complete
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: stage=native_receive_complete
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_RESULT: result={"passed":true,"sdk":29,"nativeWidgets":true,"embeddedRenderer":false,"nativePickerContract":true,"files":3,"nativeSendService":true,"automaticReceiveService":true,"mediaStoreExactBytes":true,"albumAndDownloads":true,"partialFilesHidden":true,"revokeKeepsSavedFiles":true,"history":true}
+INSTRUMENTATION_CODE: -1

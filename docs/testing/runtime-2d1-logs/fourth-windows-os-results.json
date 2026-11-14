@@ -1,0 +1,552 @@
+{
+  "status": "FAIL",
+  "exit_code": 1,
+  "platform": "windows",
+  "tests": [
+    {
+      "test_id": "W01-environment",
+      "platform": "windows",
+      "os_api": "{\n    \"Caption\":  \"Microsoft Windows Server 2025 Datacenter\",\n    \"Version\":  \"10.0.26100\",\n    \"BuildNumber\":  \"26100\",\n    \"OSArchitecture\":  \"64-bit\"\n}",
+      "source_commit": "2fd451dd609cec594d31248d3fb7ad0c7dbaeabf",
+      "checkout_commit": "ce49bca5f0515f6aa3dee5c1472133cef716f081",
+      "artifact_sha256": {
+        "installer": "ae5c50ebafcfcbcf2daffa3bc67b401adbdd6452c3da43667eddba10727f1abb"
+      },
+      "preconditions": "Owned isolated environment and verified artifact",
+      "command_or_method": "W01-environment",
+      "expected": "Real isolated Windows GitHub-hosted runner; no existing FlowDrop/profile/shortcuts/registry",
+      "actual": {
+        "os": {
+          "Caption": "Microsoft Windows Server 2025 Datacenter",
+          "Version": "10.0.26100",
+          "BuildNumber": "26100",
+          "OSArchitecture": "64-bit"
+        },
+        "preexisting_flowdrop": false
+      },
+      "exit_code": null,
+      "time_started_utc": "2026-11-14T07:28:41Z",
+      "wall_seconds": 2.969,
+      "evidence_path": "logs/test-matrix.json",
+      "required": true,
+      "status": "PASS"
+    },
+    {
+      "test_id": "W02-provenance",
+      "platform": "windows",
+      "os_api": "{\n    \"Caption\":  \"Microsoft Windows Server 2025 Datacenter\",\n    \"Version\":  \"10.0.26100\",\n    \"BuildNumber\":  \"26100\",\n    \"OSArchitecture\":  \"64-bit\"\n}",
+      "source_commit": "2fd451dd609cec594d31248d3fb7ad0c7dbaeabf",
+      "checkout_commit": "ce49bca5f0515f6aa3dee5c1472133cef716f081",
+      "artifact_sha256": {
+        "installer": "ae5c50ebafcfcbcf2daffa3bc67b401adbdd6452c3da43667eddba10727f1abb"
+      },
+      "preconditions": "Owned isolated environment and verified artifact",
+      "command_or_method": "W02-provenance",
+      "expected": "Same-checkout TEST ONLY installer and helpers with verified SHA-256 inventory",
+      "actual": {
+        "installer_sha256": "ae5c50ebafcfcbcf2daffa3bc67b401adbdd6452c3da43667eddba10727f1abb",
+        "helper_files_verified": 2
+      },
+      "exit_code": null,
+      "time_started_utc": "2026-11-14T07:28:44Z",
+      "wall_seconds": 0.265,
+      "evidence_path": "logs/test-matrix.json",
+      "required": true,
+      "status": "PASS"
+    },
+    {
+      "test_id": "W03-install",
+      "platform": "windows",
+      "os_api": "{\n    \"Caption\":  \"Microsoft Windows Server 2025 Datacenter\",\n    \"Version\":  \"10.0.26100\",\n    \"BuildNumber\":  \"26100\",\n    \"OSArchitecture\":  \"64-bit\"\n}",
+      "source_commit": "2fd451dd609cec594d31248d3fb7ad0c7dbaeabf",
+      "checkout_commit": "ce49bca5f0515f6aa3dee5c1472133cef716f081",
+      "artifact_sha256": {
+        "installer": "ae5c50ebafcfcbcf2daffa3bc67b401adbdd6452c3da43667eddba10727f1abb"
+      },
+      "preconditions": "Owned isolated environment and verified artifact",
+      "command_or_method": "Verified TEST ONLY NSIS installer /S",
+      "expected": "NSIS /S exits zero and baseline install directory exists",
+      "actual": {
+        "install_directory": "C:\\Users\\runneradmin\\AppData\\Local\\Programs\\FlowDrop"
+      },
+      "exit_code": 0,
+      "time_started_utc": "2026-11-14T07:28:44Z",
+      "wall_seconds": 3.954,
+      "evidence_path": "logs/test-matrix.json",
+      "required": true,
+      "status": "PASS"
+    },
+    {
+      "test_id": "W04-payload",
+      "platform": "windows",
+      "os_api": "{\n    \"Caption\":  \"Microsoft Windows Server 2025 Datacenter\",\n    \"Version\":  \"10.0.26100\",\n    \"BuildNumber\":  \"26100\",\n    \"OSArchitecture\":  \"64-bit\"\n}",
+      "source_commit": "2fd451dd609cec594d31248d3fb7ad0c7dbaeabf",
+      "checkout_commit": "ce49bca5f0515f6aa3dee5c1472133cef716f081",
+      "artifact_sha256": {
+        "installer": "ae5c50ebafcfcbcf2daffa3bc67b401adbdd6452c3da43667eddba10727f1abb"
+      },
+      "preconditions": "Owned isolated environment and verified artifact",
+      "command_or_method": "W04-payload",
+      "expected": "Installed payload SHA, Node pin, x64 PE and version match producer inventory",
+      "actual": {
+        "payload_files": 128,
+        "machine": "AMD64",
+        "subsystem": "WINDOWS_GUI",
+        "node_sha256": "1c331340fa6cac5e4294725959070a143fa0507195a78ad77eed7943f719aac9"
+      },
+      "exit_code": null,
+      "time_started_utc": "2026-11-14T07:28:48Z",
+      "wall_seconds": 0.375,
+      "evidence_path": "logs/test-matrix.json",
+      "required": true,
+      "status": "PASS"
+    },
+    {
+      "test_id": "W05-start",
+      "platform": "windows",
+      "os_api": "{\n    \"Caption\":  \"Microsoft Windows Server 2025 Datacenter\",\n    \"Version\":  \"10.0.26100\",\n    \"BuildNumber\":  \"26100\",\n    \"OSArchitecture\":  \"64-bit\"\n}",
+      "source_commit": "2fd451dd609cec594d31248d3fb7ad0c7dbaeabf",
+      "checkout_commit": "ce49bca5f0515f6aa3dee5c1472133cef716f081",
+      "artifact_sha256": {
+        "installer": "ae5c50ebafcfcbcf2daffa3bc67b401adbdd6452c3da43667eddba10727f1abb"
+      },
+      "preconditions": "Owned isolated environment and verified artifact",
+      "command_or_method": "W05-start",
+      "expected": "Real FlowDrop.exe process and its real Node backend start",
+      "actual": {
+        "processes": [
+          {
+            "ProcessId": 6044,
+            "ParentProcessId": 7452,
+            "ExecutablePath": "C:\\Users\\runneradmin\\AppData\\Local\\Programs\\FlowDrop\\FlowDrop.exe"
+          },
+          {
+            "ProcessId": 9892,
+            "ParentProcessId": 6044,
+            "ExecutablePath": "C:\\Users\\runneradmin\\AppData\\Local\\Programs\\FlowDrop\\runtime\\node.exe"
+          }
+        ],
+        "app_pid": 6044,
+        "backend_pid": 9892
+      },
+      "exit_code": null,
+      "time_started_utc": "2026-11-14T07:28:49Z",
+      "wall_seconds": 1.218,
+      "evidence_path": "logs/test-matrix.json",
+      "required": true,
+      "status": "PASS"
+    },
+    {
+      "test_id": "W06-http",
+      "platform": "windows",
+      "os_api": "{\n    \"Caption\":  \"Microsoft Windows Server 2025 Datacenter\",\n    \"Version\":  \"10.0.26100\",\n    \"BuildNumber\":  \"26100\",\n    \"OSArchitecture\":  \"64-bit\"\n}",
+      "source_commit": "2fd451dd609cec594d31248d3fb7ad0c7dbaeabf",
+      "checkout_commit": "ce49bca5f0515f6aa3dee5c1472133cef716f081",
+      "artifact_sha256": {
+        "installer": "ae5c50ebafcfcbcf2daffa3bc67b401adbdd6452c3da43667eddba10727f1abb"
+      },
+      "preconditions": "Owned isolated environment and verified artifact",
+      "command_or_method": "W06-http",
+      "expected": "Live native backend config version1.13.0, Windows mode and authorization boundary",
+      "actual": {
+        "name": "FlowDrop",
+        "version": "1.13.0",
+        "platform": "windows",
+        "mode": "local"
+      },
+      "exit_code": null,
+      "time_started_utc": "2026-11-14T07:28:50Z",
+      "wall_seconds": 0.0,
+      "evidence_path": "logs/test-matrix.json",
+      "required": true,
+      "status": "PASS"
+    },
+    {
+      "test_id": "W07-window",
+      "platform": "windows",
+      "os_api": "{\n    \"Caption\":  \"Microsoft Windows Server 2025 Datacenter\",\n    \"Version\":  \"10.0.26100\",\n    \"BuildNumber\":  \"26100\",\n    \"OSArchitecture\":  \"64-bit\"\n}",
+      "source_commit": "2fd451dd609cec594d31248d3fb7ad0c7dbaeabf",
+      "checkout_commit": "ce49bca5f0515f6aa3dee5c1472133cef716f081",
+      "artifact_sha256": {
+        "installer": "ae5c50ebafcfcbcf2daffa3bc67b401adbdd6452c3da43667eddba10727f1abb"
+      },
+      "preconditions": "Owned isolated environment and verified artifact",
+      "command_or_method": "W07-window",
+      "expected": "FlowDrop native HWND created; interactive capability measured separately",
+      "actual": {
+        "native_hwnd_created": true,
+        "is_window_visible": true,
+        "interactive_desktop": "True\n2",
+        "scope": "Actual HWND; legacy native test separately checks visible Explorer and native dialogs"
+      },
+      "exit_code": null,
+      "time_started_utc": "2026-11-14T07:28:50Z",
+      "wall_seconds": 0.25,
+      "evidence_path": "logs/test-matrix.json",
+      "required": true,
+      "status": "PASS"
+    },
+    {
+      "test_id": "W08-single-instance",
+      "platform": "windows",
+      "os_api": "{\n    \"Caption\":  \"Microsoft Windows Server 2025 Datacenter\",\n    \"Version\":  \"10.0.26100\",\n    \"BuildNumber\":  \"26100\",\n    \"OSArchitecture\":  \"64-bit\"\n}",
+      "source_commit": "2fd451dd609cec594d31248d3fb7ad0c7dbaeabf",
+      "checkout_commit": "ce49bca5f0515f6aa3dee5c1472133cef716f081",
+      "artifact_sha256": {
+        "installer": "ae5c50ebafcfcbcf2daffa3bc67b401adbdd6452c3da43667eddba10727f1abb"
+      },
+      "preconditions": "Owned isolated environment and verified artifact",
+      "command_or_method": "W08-single-instance",
+      "expected": "Second native invocation exits and original process survives",
+      "actual": {
+        "original_pid_preserved": true
+      },
+      "exit_code": 0,
+      "time_started_utc": "2026-11-14T07:28:50Z",
+      "wall_seconds": 0.016,
+      "evidence_path": "logs/test-matrix.json",
+      "required": true,
+      "status": "PASS"
+    },
+    {
+      "test_id": "W09-shortcuts",
+      "platform": "windows",
+      "os_api": "{\n    \"Caption\":  \"Microsoft Windows Server 2025 Datacenter\",\n    \"Version\":  \"10.0.26100\",\n    \"BuildNumber\":  \"26100\",\n    \"OSArchitecture\":  \"64-bit\"\n}",
+      "source_commit": "2fd451dd609cec594d31248d3fb7ad0c7dbaeabf",
+      "checkout_commit": "ce49bca5f0515f6aa3dee5c1472133cef716f081",
+      "artifact_sha256": {
+        "installer": "ae5c50ebafcfcbcf2daffa3bc67b401adbdd6452c3da43667eddba10727f1abb"
+      },
+      "preconditions": "Owned isolated environment and verified artifact",
+      "command_or_method": "W09-shortcuts",
+      "expected": "Send To/Desktop/Start Menu shortcut targets and registry match installer design",
+      "actual": {
+        "sendto": {
+          "Arguments": "--send-files",
+          "TargetPath": "C:\\Users\\runneradmin\\AppData\\Local\\Programs\\FlowDrop\\FlowDrop.exe"
+        },
+        "desktop_and_startmenu": true,
+        "uninstall_registry": true
+      },
+      "exit_code": null,
+      "time_started_utc": "2026-11-14T07:28:50Z",
+      "wall_seconds": 0.375,
+      "evidence_path": "logs/test-matrix.json",
+      "required": true,
+      "status": "PASS"
+    },
+    {
+      "test_id": "W10-transfer-sha",
+      "platform": "windows",
+      "os_api": "{\n    \"Caption\":  \"Microsoft Windows Server 2025 Datacenter\",\n    \"Version\":  \"10.0.26100\",\n    \"BuildNumber\":  \"26100\",\n    \"OSArchitecture\":  \"64-bit\"\n}",
+      "source_commit": "2fd451dd609cec594d31248d3fb7ad0c7dbaeabf",
+      "checkout_commit": "ce49bca5f0515f6aa3dee5c1472133cef716f081",
+      "artifact_sha256": {
+        "installer": "ae5c50ebafcfcbcf2daffa3bc67b401adbdd6452c3da43667eddba10727f1abb"
+      },
+      "preconditions": "Owned isolated environment and verified artifact",
+      "command_or_method": "W10-transfer-sha",
+      "expected": "Empty/small/multiple/Unicode filenames stream over live HTTP and save with exact SHA-256",
+      "actual": [
+        {
+          "round": 1,
+          "name": "Tài liệu có khoảng trắng.txt",
+          "size": 35,
+          "sha256": "94b6089d926657b2f4da5557d3327f45b2319f0fcc8e9fd6f4d6246d21842e70"
+        },
+        {
+          "round": 1,
+          "name": "pattern.bin",
+          "size": 1048593,
+          "sha256": "f4bf9b8dec6e3e28b2ec33266145d244fe97a6bce1ec054ace053bab67d2ef9a"
+        },
+        {
+          "round": 1,
+          "name": "Rỗng.bin",
+          "size": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      ],
+      "exit_code": null,
+      "time_started_utc": "2026-11-14T07:28:51Z",
+      "wall_seconds": 1.438,
+      "evidence_path": "logs/test-matrix.json",
+      "required": true,
+      "status": "PASS"
+    },
+    {
+      "test_id": "W11-collision",
+      "platform": "windows",
+      "os_api": "{\n    \"Caption\":  \"Microsoft Windows Server 2025 Datacenter\",\n    \"Version\":  \"10.0.26100\",\n    \"BuildNumber\":  \"26100\",\n    \"OSArchitecture\":  \"64-bit\"\n}",
+      "source_commit": "2fd451dd609cec594d31248d3fb7ad0c7dbaeabf",
+      "checkout_commit": "ce49bca5f0515f6aa3dee5c1472133cef716f081",
+      "artifact_sha256": {
+        "installer": "ae5c50ebafcfcbcf2daffa3bc67b401adbdd6452c3da43667eddba10727f1abb"
+      },
+      "preconditions": "Owned isolated environment and verified artifact",
+      "command_or_method": "W11-collision",
+      "expected": "Second independent transfer with same names creates separate files and preserves originals",
+      "actual": [
+        {
+          "round": 2,
+          "name": "Rỗng (1).bin",
+          "size": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "round": 2,
+          "name": "Tài liệu có khoảng trắng (1).txt",
+          "size": 35,
+          "sha256": "94b6089d926657b2f4da5557d3327f45b2319f0fcc8e9fd6f4d6246d21842e70"
+        },
+        {
+          "round": 2,
+          "name": "pattern (1).bin",
+          "size": 1048593,
+          "sha256": "f4bf9b8dec6e3e28b2ec33266145d244fe97a6bce1ec054ace053bab67d2ef9a"
+        }
+      ],
+      "exit_code": null,
+      "time_started_utc": "2026-11-14T07:28:52Z",
+      "wall_seconds": 1.5,
+      "evidence_path": "logs/test-matrix.json",
+      "required": true,
+      "status": "PASS"
+    },
+    {
+      "test_id": "W12-cancel",
+      "platform": "windows",
+      "os_api": "{\n    \"Caption\":  \"Microsoft Windows Server 2025 Datacenter\",\n    \"Version\":  \"10.0.26100\",\n    \"BuildNumber\":  \"26100\",\n    \"OSArchitecture\":  \"64-bit\"\n}",
+      "source_commit": "2fd451dd609cec594d31248d3fb7ad0c7dbaeabf",
+      "checkout_commit": "ce49bca5f0515f6aa3dee5c1472133cef716f081",
+      "artifact_sha256": {
+        "installer": "ae5c50ebafcfcbcf2daffa3bc67b401adbdd6452c3da43667eddba10727f1abb"
+      },
+      "preconditions": "Owned isolated environment and verified artifact",
+      "command_or_method": "W12-cancel",
+      "expected": "Authenticated revoke cancels staged transfer and never publishes it",
+      "actual": {
+        "revoked": true,
+        "metadata_after_cancel": 404
+      },
+      "exit_code": null,
+      "time_started_utc": "2026-11-14T07:28:54Z",
+      "wall_seconds": 0.062,
+      "evidence_path": "logs/test-matrix.json",
+      "required": true,
+      "status": "PASS"
+    },
+    {
+      "test_id": "W13-disconnect",
+      "platform": "windows",
+      "os_api": "{\n    \"Caption\":  \"Microsoft Windows Server 2025 Datacenter\",\n    \"Version\":  \"10.0.26100\",\n    \"BuildNumber\":  \"26100\",\n    \"OSArchitecture\":  \"64-bit\"\n}",
+      "source_commit": "2fd451dd609cec594d31248d3fb7ad0c7dbaeabf",
+      "checkout_commit": "ce49bca5f0515f6aa3dee5c1472133cef716f081",
+      "artifact_sha256": {
+        "installer": "ae5c50ebafcfcbcf2daffa3bc67b401adbdd6452c3da43667eddba10727f1abb"
+      },
+      "preconditions": "Owned isolated environment and verified artifact",
+      "command_or_method": "W13-disconnect",
+      "expected": "Actual TCP abort cannot publish a partial file; live backend remains healthy",
+      "actual": {
+        "declared_bytes": 65536,
+        "sent_bytes": 3,
+        "complete_status": 409,
+        "partial_file_status": 409
+      },
+      "exit_code": null,
+      "time_started_utc": "2026-11-14T07:28:54Z",
+      "wall_seconds": 0.61,
+      "evidence_path": "logs/test-matrix.json",
+      "required": true,
+      "status": "PASS"
+    },
+    {
+      "test_id": "W14-invalid",
+      "platform": "windows",
+      "os_api": "{\n    \"Caption\":  \"Microsoft Windows Server 2025 Datacenter\",\n    \"Version\":  \"10.0.26100\",\n    \"BuildNumber\":  \"26100\",\n    \"OSArchitecture\":  \"64-bit\"\n}",
+      "source_commit": "2fd451dd609cec594d31248d3fb7ad0c7dbaeabf",
+      "checkout_commit": "ce49bca5f0515f6aa3dee5c1472133cef716f081",
+      "artifact_sha256": {
+        "installer": "ae5c50ebafcfcbcf2daffa3bc67b401adbdd6452c3da43667eddba10727f1abb"
+      },
+      "preconditions": "Owned isolated environment and verified artifact",
+      "command_or_method": "W14-invalid",
+      "expected": "Missing/incorrect capability and invalid metadata requests are rejected",
+      "actual": {
+        "missing_capability": 403,
+        "incorrect_capability": 403,
+        "invalid_metadata": 400,
+        "protected_settings": 403
+      },
+      "exit_code": null,
+      "time_started_utc": "2026-11-14T07:28:54Z",
+      "wall_seconds": 0.062,
+      "evidence_path": "logs/test-matrix.json",
+      "required": true,
+      "status": "PASS"
+    },
+    {
+      "test_id": "W15-legacy-native",
+      "platform": "windows",
+      "os_api": "{\n    \"Caption\":  \"Microsoft Windows Server 2025 Datacenter\",\n    \"Version\":  \"10.0.26100\",\n    \"BuildNumber\":  \"26100\",\n    \"OSArchitecture\":  \"64-bit\"\n}",
+      "source_commit": "2fd451dd609cec594d31248d3fb7ad0c7dbaeabf",
+      "checkout_commit": "ce49bca5f0515f6aa3dee5c1472133cef716f081",
+      "artifact_sha256": {
+        "installer": "ae5c50ebafcfcbcf2daffa3bc67b401adbdd6452c3da43667eddba10727f1abb"
+      },
+      "preconditions": "Owned isolated environment and verified artifact",
+      "command_or_method": "W15-legacy-native",
+      "expected": "Existing C++ native smoke completes original assertions on Windows",
+      "actual": "AssertionError: windows-native-smoke exit=1; see sanitized log",
+      "exit_code": null,
+      "time_started_utc": "2026-11-14T07:28:57Z",
+      "wall_seconds": 46.406,
+      "evidence_path": "logs/test-matrix.json",
+      "required": true,
+      "status": "FAIL"
+    },
+    {
+      "test_id": "W16-legacy-shell",
+      "platform": "windows",
+      "os_api": "{\n    \"Caption\":  \"Microsoft Windows Server 2025 Datacenter\",\n    \"Version\":  \"10.0.26100\",\n    \"BuildNumber\":  \"26100\",\n    \"OSArchitecture\":  \"64-bit\"\n}",
+      "source_commit": "2fd451dd609cec594d31248d3fb7ad0c7dbaeabf",
+      "checkout_commit": "ce49bca5f0515f6aa3dee5c1472133cef716f081",
+      "artifact_sha256": {
+        "installer": "ae5c50ebafcfcbcf2daffa3bc67b401adbdd6452c3da43667eddba10727f1abb"
+      },
+      "preconditions": "Owned isolated environment and verified artifact",
+      "command_or_method": "W16-legacy-shell",
+      "expected": "Existing C++ SendTo/single-instance/Unicode/rename smoke completes original assertions",
+      "actual": "Original compiled C++ smoke ran on Windows and completed all assertions",
+      "exit_code": 0,
+      "time_started_utc": "2026-11-14T07:29:45Z",
+      "wall_seconds": 2.938,
+      "evidence_path": "logs/windows-shell-smoke.log",
+      "required": true,
+      "status": "PASS"
+    },
+    {
+      "test_id": "W17-backend-failure",
+      "platform": "windows",
+      "os_api": "{\n    \"Caption\":  \"Microsoft Windows Server 2025 Datacenter\",\n    \"Version\":  \"10.0.26100\",\n    \"BuildNumber\":  \"26100\",\n    \"OSArchitecture\":  \"64-bit\"\n}",
+      "source_commit": "2fd451dd609cec594d31248d3fb7ad0c7dbaeabf",
+      "checkout_commit": "ce49bca5f0515f6aa3dee5c1472133cef716f081",
+      "artifact_sha256": {
+        "installer": "ae5c50ebafcfcbcf2daffa3bc67b401adbdd6452c3da43667eddba10727f1abb"
+      },
+      "preconditions": "Owned isolated environment and verified artifact",
+      "command_or_method": "W17-backend-failure",
+      "expected": "Stopping only the owned backend process makes HTTP unavailable",
+      "actual": {
+        "owned_backend_pid": 5300,
+        "http_unavailable": true
+      },
+      "exit_code": null,
+      "time_started_utc": "2026-11-14T07:29:48Z",
+      "wall_seconds": 4.469,
+      "evidence_path": "logs/test-matrix.json",
+      "required": true,
+      "status": "PASS"
+    },
+    {
+      "test_id": "W18-close",
+      "platform": "windows",
+      "os_api": "{\n    \"Caption\":  \"Microsoft Windows Server 2025 Datacenter\",\n    \"Version\":  \"10.0.26100\",\n    \"BuildNumber\":  \"26100\",\n    \"OSArchitecture\":  \"64-bit\"\n}",
+      "source_commit": "2fd451dd609cec594d31248d3fb7ad0c7dbaeabf",
+      "checkout_commit": "ce49bca5f0515f6aa3dee5c1472133cef716f081",
+      "artifact_sha256": {
+        "installer": "ae5c50ebafcfcbcf2daffa3bc67b401adbdd6452c3da43667eddba10727f1abb"
+      },
+      "preconditions": "Owned isolated environment and verified artifact",
+      "command_or_method": "W18-close",
+      "expected": "Native --shutdown stops owned application and backend",
+      "actual": {
+        "native_and_backend_stopped": true
+      },
+      "exit_code": 0,
+      "time_started_utc": "2026-11-14T07:29:53Z",
+      "wall_seconds": 2.078,
+      "evidence_path": "logs/test-matrix.json",
+      "required": true,
+      "status": "PASS"
+    },
+    {
+      "test_id": "W19-restart",
+      "platform": "windows",
+      "os_api": "{\n    \"Caption\":  \"Microsoft Windows Server 2025 Datacenter\",\n    \"Version\":  \"10.0.26100\",\n    \"BuildNumber\":  \"26100\",\n    \"OSArchitecture\":  \"64-bit\"\n}",
+      "source_commit": "2fd451dd609cec594d31248d3fb7ad0c7dbaeabf",
+      "checkout_commit": "ce49bca5f0515f6aa3dee5c1472133cef716f081",
+      "artifact_sha256": {
+        "installer": "ae5c50ebafcfcbcf2daffa3bc67b401adbdd6452c3da43667eddba10727f1abb"
+      },
+      "preconditions": "Owned isolated environment and verified artifact",
+      "command_or_method": "W19-restart",
+      "expected": "Application/backend restart and synthetic received files retain SHA-256",
+      "actual": {
+        "app_and_backend_restarted": true,
+        "persistent_device_id": true,
+        "synthetic_user_data_sha256": "a9b05ae4bd13d2fbab6f0e53647617e581ed4dd83e5421ef88ffe6df62c11b29",
+        "received_files_reverified": 6
+      },
+      "exit_code": null,
+      "time_started_utc": "2026-11-14T07:29:55Z",
+      "wall_seconds": 4.688,
+      "evidence_path": "logs/test-matrix.json",
+      "required": true,
+      "status": "PASS"
+    },
+    {
+      "test_id": "W20-uninstall",
+      "platform": "windows",
+      "os_api": "{\n    \"Caption\":  \"Microsoft Windows Server 2025 Datacenter\",\n    \"Version\":  \"10.0.26100\",\n    \"BuildNumber\":  \"26100\",\n    \"OSArchitecture\":  \"64-bit\"\n}",
+      "source_commit": "2fd451dd609cec594d31248d3fb7ad0c7dbaeabf",
+      "checkout_commit": "ce49bca5f0515f6aa3dee5c1472133cef716f081",
+      "artifact_sha256": {
+        "installer": "ae5c50ebafcfcbcf2daffa3bc67b401adbdd6452c3da43667eddba10727f1abb"
+      },
+      "preconditions": "Owned isolated environment and verified artifact",
+      "command_or_method": "W20-uninstall",
+      "expected": "NSIS uninstall actually removes app, processes, owned shortcuts and uninstall registry",
+      "actual": {
+        "install_removed": true,
+        "shortcuts_removed": true,
+        "registry_removed": true,
+        "owned_processes_remaining": 0
+      },
+      "exit_code": 0,
+      "time_started_utc": "2026-11-14T07:30:00Z",
+      "wall_seconds": 1.218,
+      "evidence_path": "logs/test-matrix.json",
+      "required": true,
+      "status": "PASS"
+    },
+    {
+      "test_id": "W21-preserve-data",
+      "platform": "windows",
+      "os_api": "{\n    \"Caption\":  \"Microsoft Windows Server 2025 Datacenter\",\n    \"Version\":  \"10.0.26100\",\n    \"BuildNumber\":  \"26100\",\n    \"OSArchitecture\":  \"64-bit\"\n}",
+      "source_commit": "2fd451dd609cec594d31248d3fb7ad0c7dbaeabf",
+      "checkout_commit": "ce49bca5f0515f6aa3dee5c1472133cef716f081",
+      "artifact_sha256": {
+        "installer": "ae5c50ebafcfcbcf2daffa3bc67b401adbdd6452c3da43667eddba10727f1abb"
+      },
+      "preconditions": "Owned isolated environment and verified artifact",
+      "command_or_method": "W21-preserve-data",
+      "expected": "Uninstall preserves synthetic user data according to baseline NSIS design",
+      "actual": {
+        "synthetic_data_preserved": true,
+        "sha256": "a9b05ae4bd13d2fbab6f0e53647617e581ed4dd83e5421ef88ffe6df62c11b29",
+        "received_files_reverified": 6
+      },
+      "exit_code": null,
+      "time_started_utc": "2026-11-14T07:30:01Z",
+      "wall_seconds": 0.0,
+      "evidence_path": "logs/test-matrix.json",
+      "required": true,
+      "status": "PASS"
+    }
+  ],
+  "production_signing": "NOT VERIFIED",
+  "physical_devices": "NOT VERIFIED",
+  "cross_platform_lan": "NOT VERIFIED"
+}

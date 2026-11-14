@@ -1,0 +1,67 @@
+{
+  "repository": "Melbournejr/FlowDrop_IOS",
+  "baseline": "9171e7f1ffbc0143d6e11374e3f6c847853341fe",
+  "pr9_merged": true,
+  "reviewed_snapshot_head": "78c049cc0a9bfba47d0bd8b4cab4f5657cb80ddf",
+  "pr10": {
+    "number": 10,
+    "draft": true,
+    "merged": false,
+    "base": "9171e7f1ffbc0143d6e11374e3f6c847853341fe"
+  },
+  "pr1": {
+    "number": 1,
+    "head": "2ccf9248ed6de184a200a950e1d37dd1e5b11741",
+    "merged": false,
+    "not_modified_by_task": true
+  },
+  "ruleset": {
+    "conditions": {
+      "ref_name": {
+        "exclude": [],
+        "include": [
+          "~DEFAULT_BRANCH"
+        ]
+      }
+    },
+    "enforcement": "active",
+    "id": 27172303,
+    "name": "protectMain",
+    "rules": [
+      {
+        "type": "deletion"
+      },
+      {
+        "type": "non_fast_forward"
+      },
+      {
+        "parameters": {
+          "allowed_merge_methods": [
+            "squash"
+          ],
+          "dismiss_stale_reviews_on_push": false,
+          "require_code_owner_review": false,
+          "require_extra_approval_for_unattributed_changes": false,
+          "require_last_push_approval": false,
+          "required_approving_review_count": 0,
+          "required_review_thread_resolution": true,
+          "required_reviewers": []
+        },
+        "type": "pull_request"
+      },
+      {
+        "parameters": {
+          "do_not_enforce_on_create": false,
+          "required_status_checks": [
+            {
+              "context": "Coverage / explicit verification status",
+              "integration_id": 15368
+            }
+          ],
+          "strict_required_status_checks_policy": true
+        },
+        "type": "required_status_checks"
+      }
+    ]
+  }
+}

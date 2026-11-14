@@ -1,0 +1,28 @@
+{
+  "group": "stream",
+  "status": "PASS",
+  "exit_code": 0,
+  "results": [
+    {
+      "name": "large-transfer",
+      "command": [
+        "node",
+        "tests/large-transfer-integration.mjs"
+      ],
+      "status": "PASS",
+      "executed": true,
+      "exit_code": 0,
+      "raw_returncode": 0,
+      "timeout": false,
+      "timeout_seconds": 300,
+      "wall_seconds": 7.698,
+      "resources": {
+        "supported": true,
+        "free_disk_bytes": 94917083136,
+        "memory_limit_bytes": 16464306176,
+        "minimum_disk_bytes": 2147483648,
+        "minimum_memory_bytes": 2147483648
+      }
+    }
+  ]
+}

@@ -1,0 +1,488 @@
+{
+  "status": "FAIL",
+  "exit_code": 1,
+  "platform": "android-api-35",
+  "tests": [
+    {
+      "test_id": "A01-environment",
+      "platform": "android-api-35",
+      "os_api": "Linux-7.0.0-1017-azure-x86_64-with-glibc2.39",
+      "source_commit": "afc3a3b679524c99f86b8d8d9eb93c5268fa1254",
+      "checkout_commit": "f6072c3522081bfe0aa0ceef42bf328a55c82d6a",
+      "artifact_sha256": {
+        "app": "9ad1f658b9baa7ccaa4cbff88f0c50b7f22de3d2eb32808b4e0e7f2d78e472e5",
+        "instrumentation": "9ea5fb50dba55569bb56ea1e2b07a0bf42f6c5ad13b691fc53071a810bf51e88"
+      },
+      "preconditions": "Owned isolated environment and verified artifact",
+      "command_or_method": "A01-environment",
+      "expected": "Linux hardware acceleration/owned emulator requirements available",
+      "actual": {
+        "kvm_read_write": true,
+        "free_disk_bytes": 91407003648,
+        "requested_api": 35
+      },
+      "exit_code": null,
+      "time_started_utc": "2026-11-14T07:47:08Z",
+      "wall_seconds": 0.027,
+      "evidence_path": "logs/test-matrix.json",
+      "required": true,
+      "status": "PASS"
+    },
+    {
+      "test_id": "A02-provision",
+      "platform": "android-api-35",
+      "os_api": "Linux-7.0.0-1017-azure-x86_64-with-glibc2.39",
+      "source_commit": "afc3a3b679524c99f86b8d8d9eb93c5268fa1254",
+      "checkout_commit": "f6072c3522081bfe0aa0ceef42bf328a55c82d6a",
+      "artifact_sha256": {
+        "app": "9ad1f658b9baa7ccaa4cbff88f0c50b7f22de3d2eb32808b4e0e7f2d78e472e5",
+        "instrumentation": "9ea5fb50dba55569bb56ea1e2b07a0bf42f6c5ad13b691fc53071a810bf51e88"
+      },
+      "preconditions": "Owned isolated environment and verified artifact",
+      "command_or_method": "A02-provision",
+      "expected": "Pinned official SDK/runtime tools pass checksum checks and version probes",
+      "actual": {
+        "acceleration": "accel:\n0\nKVM (version 12) is installed and usable.\naccel",
+        "toolchain_pins": "RUNTIME-TOOLCHAIN-LOCK-2D1.json"
+      },
+      "exit_code": 0,
+      "time_started_utc": "2026-11-14T07:47:08Z",
+      "wall_seconds": 49.726,
+      "evidence_path": "logs/test-matrix.json",
+      "required": true,
+      "status": "PASS"
+    },
+    {
+      "test_id": "A03-boot",
+      "platform": "android-api-35",
+      "os_api": "Android API35 15 / Android/sdk_phone64_x86_64/emu64x:15/AE3A.240806.019/12368160:userdebug/test-keys",
+      "source_commit": "afc3a3b679524c99f86b8d8d9eb93c5268fa1254",
+      "checkout_commit": "f6072c3522081bfe0aa0ceef42bf328a55c82d6a",
+      "artifact_sha256": {
+        "app": "9ad1f658b9baa7ccaa4cbff88f0c50b7f22de3d2eb32808b4e0e7f2d78e472e5",
+        "instrumentation": "9ea5fb50dba55569bb56ea1e2b07a0bf42f6c5ad13b691fc53071a810bf51e88"
+      },
+      "preconditions": "Owned isolated environment and verified artifact",
+      "command_or_method": "A03-boot",
+      "expected": "Clean Android emulator boots, adb transport ready and exact requested API observed",
+      "actual": {
+        "api": 35,
+        "serial": "emulator-5554",
+        "device": {
+          "release": "15",
+          "fingerprint": "Android/sdk_phone64_x86_64/emu64x:15/AE3A.240806.019/12368160:userdebug/test-keys",
+          "abi": "x86_64"
+        },
+        "boot_completed": true
+      },
+      "exit_code": 0,
+      "time_started_utc": "2026-11-14T07:47:58Z",
+      "wall_seconds": 27.659,
+      "evidence_path": "logs/test-matrix.json",
+      "required": true,
+      "status": "PASS"
+    },
+    {
+      "test_id": "A04-provenance",
+      "platform": "android-api-35",
+      "os_api": "Android API35 15 / Android/sdk_phone64_x86_64/emu64x:15/AE3A.240806.019/12368160:userdebug/test-keys",
+      "source_commit": "afc3a3b679524c99f86b8d8d9eb93c5268fa1254",
+      "checkout_commit": "f6072c3522081bfe0aa0ceef42bf328a55c82d6a",
+      "artifact_sha256": {
+        "app": "9ad1f658b9baa7ccaa4cbff88f0c50b7f22de3d2eb32808b4e0e7f2d78e472e5",
+        "instrumentation": "9ea5fb50dba55569bb56ea1e2b07a0bf42f6c5ad13b691fc53071a810bf51e88"
+      },
+      "preconditions": "Owned isolated environment and verified artifact",
+      "command_or_method": "A04-provenance",
+      "expected": "App/instrumentation match source checkout, SHA-256, package/version/SDK and same test certificate",
+      "actual": {
+        "app": {
+          "package": "app.flowdrop.mobile",
+          "version_code": "14",
+          "version_name": "1.13.0",
+          "min_sdk": 29,
+          "target_sdk": 35,
+          "permissions": [
+            "android.permission.ACCESS_NETWORK_STATE",
+            "android.permission.ACCESS_WIFI_STATE",
+            "android.permission.CHANGE_WIFI_MULTICAST_STATE",
+            "android.permission.FOREGROUND_SERVICE",
+            "android.permission.FOREGROUND_SERVICE_DATA_SYNC",
+            "android.permission.HIDE_OVERLAY_WINDOWS",
+            "android.permission.INTERNET",
+            "android.permission.POST_NOTIFICATIONS",
+            "android.permission.RECEIVE_BOOT_COMPLETED",
+            "android.permission.REQUEST_INSTALL_PACKAGES",
+            "android.permission.UPDATE_PACKAGES_WITHOUT_USER_ACTION"
+          ]
+        },
+        "test_package": "app.flowdrop.mobile.test",
+        "same_test_certificate_sha256": "ee31671e4971b00e07d4f38736f5ace79c980500a594332bf028115b19cee88a"
+      },
+      "exit_code": 0,
+      "time_started_utc": "2026-11-14T07:48:26Z",
+      "wall_seconds": 0.712,
+      "evidence_path": "logs/test-matrix.json",
+      "required": true,
+      "status": "PASS"
+    },
+    {
+      "test_id": "A05-install",
+      "platform": "android-api-35",
+      "os_api": "Android API35 15 / Android/sdk_phone64_x86_64/emu64x:15/AE3A.240806.019/12368160:userdebug/test-keys",
+      "source_commit": "afc3a3b679524c99f86b8d8d9eb93c5268fa1254",
+      "checkout_commit": "f6072c3522081bfe0aa0ceef42bf328a55c82d6a",
+      "artifact_sha256": {
+        "app": "9ad1f658b9baa7ccaa4cbff88f0c50b7f22de3d2eb32808b4e0e7f2d78e472e5",
+        "instrumentation": "9ea5fb50dba55569bb56ea1e2b07a0bf42f6c5ad13b691fc53071a810bf51e88"
+      },
+      "preconditions": "Owned isolated environment and verified artifact",
+      "command_or_method": "A05-install",
+      "expected": "Both TEST ONLY APKs install on clean emulator without replacing existing production",
+      "actual": {
+        "app_installed": true,
+        "test_installed": true,
+        "production_not_replaced": true
+      },
+      "exit_code": 0,
+      "time_started_utc": "2026-11-14T07:48:27Z",
+      "wall_seconds": 1.366,
+      "evidence_path": "logs/test-matrix.json",
+      "required": true,
+      "status": "PASS"
+    },
+    {
+      "test_id": "A06-activity",
+      "platform": "android-api-35",
+      "os_api": "Android API35 15 / Android/sdk_phone64_x86_64/emu64x:15/AE3A.240806.019/12368160:userdebug/test-keys",
+      "source_commit": "afc3a3b679524c99f86b8d8d9eb93c5268fa1254",
+      "checkout_commit": "f6072c3522081bfe0aa0ceef42bf328a55c82d6a",
+      "artifact_sha256": {
+        "app": "9ad1f658b9baa7ccaa4cbff88f0c50b7f22de3d2eb32808b4e0e7f2d78e472e5",
+        "instrumentation": "9ea5fb50dba55569bb56ea1e2b07a0bf42f6c5ad13b691fc53071a810bf51e88"
+      },
+      "preconditions": "Owned isolated environment and verified artifact",
+      "command_or_method": "A06-activity",
+      "expected": "Real app Activity launches and becomes resumed on Android",
+      "actual": {
+        "main_activity_resumed": true,
+        "screenshot": "logs/initial-activity.png"
+      },
+      "exit_code": 0,
+      "time_started_utc": "2026-11-14T07:48:28Z",
+      "wall_seconds": 2.247,
+      "evidence_path": "logs/test-matrix.json",
+      "required": true,
+      "status": "PASS"
+    },
+    {
+      "test_id": "A07-permissions",
+      "platform": "android-api-35",
+      "os_api": "Android API35 15 / Android/sdk_phone64_x86_64/emu64x:15/AE3A.240806.019/12368160:userdebug/test-keys",
+      "source_commit": "afc3a3b679524c99f86b8d8d9eb93c5268fa1254",
+      "checkout_commit": "f6072c3522081bfe0aa0ceef42bf328a55c82d6a",
+      "artifact_sha256": {
+        "app": "9ad1f658b9baa7ccaa4cbff88f0c50b7f22de3d2eb32808b4e0e7f2d78e472e5",
+        "instrumentation": "9ea5fb50dba55569bb56ea1e2b07a0bf42f6c5ad13b691fc53071a810bf51e88"
+      },
+      "preconditions": "Owned isolated environment and verified artifact",
+      "command_or_method": "A07-permissions",
+      "expected": "Actual API-specific notification permission flow and state are measured",
+      "actual": {
+        "deny": {
+          "passed": true,
+          "sdk": 35,
+          "checks": [
+            {
+              "sdk": 35,
+              "dialogObserved": true,
+              "granted": false,
+              "method": "native request method + Android permissioncontroller accessibility action",
+              "id": "notification-permission-deny",
+              "passed": true
+            }
+          ]
+        },
+        "grant": {
+          "passed": true,
+          "sdk": 35,
+          "checks": [
+            {
+              "sdk": 35,
+              "dialogObserved": true,
+              "granted": true,
+              "method": "native request method + Android permissioncontroller accessibility action",
+              "id": "notification-permission-grant",
+              "passed": true
+            }
+          ]
+        }
+      },
+      "exit_code": 0,
+      "time_started_utc": "2026-11-14T07:48:30Z",
+      "wall_seconds": 6.707,
+      "evidence_path": "logs/test-matrix.json",
+      "required": true,
+      "status": "PASS"
+    },
+    {
+      "test_id": "A08-http",
+      "platform": "android-api-35",
+      "os_api": "Android API35 15 / Android/sdk_phone64_x86_64/emu64x:15/AE3A.240806.019/12368160:userdebug/test-keys",
+      "source_commit": "afc3a3b679524c99f86b8d8d9eb93c5268fa1254",
+      "checkout_commit": "f6072c3522081bfe0aa0ceef42bf328a55c82d6a",
+      "artifact_sha256": {
+        "app": "9ad1f658b9baa7ccaa4cbff88f0c50b7f22de3d2eb32808b4e0e7f2d78e472e5",
+        "instrumentation": "9ea5fb50dba55569bb56ea1e2b07a0bf42f6c5ad13b691fc53071a810bf51e88"
+      },
+      "preconditions": "Owned isolated environment and verified artifact",
+      "command_or_method": "A08-http",
+      "expected": "Live HTTP config from the app process is reachable through scoped adb forwarding",
+      "actual": {
+        "name": "FlowDrop",
+        "version": "1.13.0",
+        "platform": "android",
+        "mode": "local",
+        "tunnel_preserves_host": "127.0.0.1:5173"
+      },
+      "exit_code": null,
+      "time_started_utc": "2026-11-14T07:48:37Z",
+      "wall_seconds": 1.962,
+      "evidence_path": "logs/test-matrix.json",
+      "required": true,
+      "status": "PASS"
+    },
+    {
+      "test_id": "A09-native-smoke",
+      "platform": "android-api-35",
+      "os_api": "Android API35 15 / Android/sdk_phone64_x86_64/emu64x:15/AE3A.240806.019/12368160:userdebug/test-keys",
+      "source_commit": "afc3a3b679524c99f86b8d8d9eb93c5268fa1254",
+      "checkout_commit": "f6072c3522081bfe0aa0ceef42bf328a55c82d6a",
+      "artifact_sha256": {
+        "app": "9ad1f658b9baa7ccaa4cbff88f0c50b7f22de3d2eb32808b4e0e7f2d78e472e5",
+        "instrumentation": "9ea5fb50dba55569bb56ea1e2b07a0bf42f6c5ad13b691fc53071a810bf51e88"
+      },
+      "preconditions": "Owned isolated environment and verified artifact",
+      "command_or_method": "adb shell am instrument -w -r app.flowdrop.mobile.test/app.flowdrop.mobile.test.NativeSmoke",
+      "expected": "Original Activity/picker/services/storage/history instrumentation completes",
+      "actual": {
+        "passed": true,
+        "sdk": 35,
+        "nativeWidgets": true,
+        "embeddedRenderer": false,
+        "nativePickerContract": true,
+        "files": 3,
+        "nativeSendService": true,
+        "automaticReceiveService": true,
+        "mediaStoreExactBytes": true,
+        "albumAndDownloads": true,
+        "partialFilesHidden": true,
+        "revokeKeepsSavedFiles": true,
+        "history": true
+      },
+      "exit_code": 0,
+      "time_started_utc": "2026-11-14T07:48:39Z",
+      "wall_seconds": 4.479,
+      "evidence_path": "logs/a09-native-smoke.log",
+      "required": true,
+      "status": "PASS"
+    },
+    {
+      "test_id": "A10-service-smoke",
+      "platform": "android-api-35",
+      "os_api": "Android API35 15 / Android/sdk_phone64_x86_64/emu64x:15/AE3A.240806.019/12368160:userdebug/test-keys",
+      "source_commit": "afc3a3b679524c99f86b8d8d9eb93c5268fa1254",
+      "checkout_commit": "f6072c3522081bfe0aa0ceef42bf328a55c82d6a",
+      "artifact_sha256": {
+        "app": "9ad1f658b9baa7ccaa4cbff88f0c50b7f22de3d2eb32808b4e0e7f2d78e472e5",
+        "instrumentation": "9ea5fb50dba55569bb56ea1e2b07a0bf42f6c5ad13b691fc53071a810bf51e88"
+      },
+      "preconditions": "Owned isolated environment and verified artifact",
+      "command_or_method": "adb shell am instrument -w -r app.flowdrop.mobile.test/app.flowdrop.mobile.test.NativeServiceSmoke",
+      "expected": "Original native service/MediaStore instrumentation completes",
+      "actual": {
+        "passed": true,
+        "sdk": 35,
+        "nativeSendService": true,
+        "nativeReceiveService": true,
+        "files": 3,
+        "mediaStoreExactBytes": true,
+        "albumAndDownloads": true,
+        "partialFilesHidden": true,
+        "nativeHistory": true,
+        "revokeKeepsSavedFiles": true
+      },
+      "exit_code": 0,
+      "time_started_utc": "2026-11-14T07:48:43Z",
+      "wall_seconds": 1.79,
+      "evidence_path": "logs/a10-service-smoke.log",
+      "required": true,
+      "status": "PASS"
+    },
+    {
+      "test_id": "A11-folder-smoke",
+      "platform": "android-api-35",
+      "os_api": "Android API35 15 / Android/sdk_phone64_x86_64/emu64x:15/AE3A.240806.019/12368160:userdebug/test-keys",
+      "source_commit": "afc3a3b679524c99f86b8d8d9eb93c5268fa1254",
+      "checkout_commit": "f6072c3522081bfe0aa0ceef42bf328a55c82d6a",
+      "artifact_sha256": {
+        "app": "9ad1f658b9baa7ccaa4cbff88f0c50b7f22de3d2eb32808b4e0e7f2d78e472e5",
+        "instrumentation": "9ea5fb50dba55569bb56ea1e2b07a0bf42f6c5ad13b691fc53071a810bf51e88"
+      },
+      "preconditions": "Owned isolated environment and verified artifact",
+      "command_or_method": "adb shell am instrument -w -r app.flowdrop.mobile.test/app.flowdrop.mobile.test.NativeFolderSmoke",
+      "expected": "Original folder/collision/exact names/native receipt instrumentation completes",
+      "actual": {
+        "passed": true,
+        "sdk": 35,
+        "originalFolderName": true,
+        "nestedDirectories": true,
+        "emptyDirectories": true,
+        "exactOriginalFilenamesAndBytes": true,
+        "folderCollisionKeepsFilesUnchanged": true,
+        "nativeReceiveService": true,
+        "completionAfterImport": true
+      },
+      "exit_code": 0,
+      "time_started_utc": "2026-11-14T07:48:45Z",
+      "wall_seconds": 0.952,
+      "evidence_path": "logs/a11-folder-smoke.log",
+      "required": true,
+      "status": "PASS"
+    },
+    {
+      "test_id": "A12-share-smoke",
+      "platform": "android-api-35",
+      "os_api": "Android API35 15 / Android/sdk_phone64_x86_64/emu64x:15/AE3A.240806.019/12368160:userdebug/test-keys",
+      "source_commit": "afc3a3b679524c99f86b8d8d9eb93c5268fa1254",
+      "checkout_commit": "f6072c3522081bfe0aa0ceef42bf328a55c82d6a",
+      "artifact_sha256": {
+        "app": "9ad1f658b9baa7ccaa4cbff88f0c50b7f22de3d2eb32808b4e0e7f2d78e472e5",
+        "instrumentation": "9ea5fb50dba55569bb56ea1e2b07a0bf42f6c5ad13b691fc53071a810bf51e88"
+      },
+      "preconditions": "Owned isolated environment and verified artifact",
+      "command_or_method": "adb shell am instrument -w -r app.flowdrop.mobile.test/app.flowdrop.mobile.test.NativeShareSmoke",
+      "expected": "Original Android sharesheet/grants/recipient consent instrumentation completes",
+      "actual": {
+        "passed": true,
+        "sdk": 35,
+        "sharesheetSendAndMultiple": true,
+        "photoVideoPdfMimeResolution": true,
+        "separateSenderUid": true,
+        "coldActivityShare": true,
+        "warmActivityReuse": true,
+        "deduplicate": true,
+        "originalNames": true,
+        "noAutomaticSend": true,
+        "unsafeUrisRejected": true,
+        "missingGrantRejected": true,
+        "localUploadCapabilityRequired": true,
+        "nativeSendService": true,
+        "recipientConsent": true,
+        "exactBytes": true
+      },
+      "exit_code": 0,
+      "time_started_utc": "2026-11-14T07:48:46Z",
+      "wall_seconds": 3.142,
+      "evidence_path": "logs/a12-share-smoke.log",
+      "required": true,
+      "status": "PASS"
+    },
+    {
+      "test_id": "A13-runtime-smoke",
+      "platform": "android-api-35",
+      "os_api": "Android API35 15 / Android/sdk_phone64_x86_64/emu64x:15/AE3A.240806.019/12368160:userdebug/test-keys",
+      "source_commit": "afc3a3b679524c99f86b8d8d9eb93c5268fa1254",
+      "checkout_commit": "f6072c3522081bfe0aa0ceef42bf328a55c82d6a",
+      "artifact_sha256": {
+        "app": "9ad1f658b9baa7ccaa4cbff88f0c50b7f22de3d2eb32808b4e0e7f2d78e472e5",
+        "instrumentation": "9ea5fb50dba55569bb56ea1e2b07a0bf42f6c5ad13b691fc53071a810bf51e88"
+      },
+      "preconditions": "Owned isolated environment and verified artifact",
+      "command_or_method": "A13-runtime-smoke",
+      "expected": "Additional native SHA/empty/multiple/Unicode/collision/cancel/disconnect/invalid/picker/background/stop smoke completes",
+      "actual": "AssertionError: Instrumentation did not finish successfully (process exit=0, result=['0'])",
+      "exit_code": null,
+      "time_started_utc": "2026-11-14T07:48:49Z",
+      "wall_seconds": 49.296,
+      "evidence_path": "logs/test-matrix.json",
+      "required": true,
+      "status": "FAIL"
+    },
+    {
+      "test_id": "A14-force-stop",
+      "platform": "android-api-35",
+      "os_api": "Android API35 15 / Android/sdk_phone64_x86_64/emu64x:15/AE3A.240806.019/12368160:userdebug/test-keys",
+      "source_commit": "afc3a3b679524c99f86b8d8d9eb93c5268fa1254",
+      "checkout_commit": "f6072c3522081bfe0aa0ceef42bf328a55c82d6a",
+      "artifact_sha256": {
+        "app": "9ad1f658b9baa7ccaa4cbff88f0c50b7f22de3d2eb32808b4e0e7f2d78e472e5",
+        "instrumentation": "9ea5fb50dba55569bb56ea1e2b07a0bf42f6c5ad13b691fc53071a810bf51e88"
+      },
+      "preconditions": "Owned isolated environment and verified artifact",
+      "command_or_method": "A14-force-stop",
+      "expected": "Force-stop removes app backend, restart resumes Activity and backend without a crash",
+      "actual": {
+        "force_stop_observed": true,
+        "real_backend_restarted": true
+      },
+      "exit_code": 0,
+      "time_started_utc": "2026-11-14T07:49:38Z",
+      "wall_seconds": 1.588,
+      "evidence_path": "logs/test-matrix.json",
+      "required": true,
+      "status": "PASS"
+    },
+    {
+      "test_id": "A15-crash-anr",
+      "platform": "android-api-35",
+      "os_api": "Android API35 15 / Android/sdk_phone64_x86_64/emu64x:15/AE3A.240806.019/12368160:userdebug/test-keys",
+      "source_commit": "afc3a3b679524c99f86b8d8d9eb93c5268fa1254",
+      "checkout_commit": "f6072c3522081bfe0aa0ceef42bf328a55c82d6a",
+      "artifact_sha256": {
+        "app": "9ad1f658b9baa7ccaa4cbff88f0c50b7f22de3d2eb32808b4e0e7f2d78e472e5",
+        "instrumentation": "9ea5fb50dba55569bb56ea1e2b07a0bf42f6c5ad13b691fc53071a810bf51e88"
+      },
+      "preconditions": "Owned isolated environment and verified artifact",
+      "command_or_method": "A15-crash-anr",
+      "expected": "App-specific logcat and Activity/service state contain no crash or ANR",
+      "actual": {
+        "app_crash": false,
+        "app_anr": false
+      },
+      "exit_code": 0,
+      "time_started_utc": "2026-11-14T07:49:40Z",
+      "wall_seconds": 0.859,
+      "evidence_path": "logs/android-app-logcat.log",
+      "required": true,
+      "status": "PASS"
+    },
+    {
+      "test_id": "A16-uninstall",
+      "platform": "android-api-35",
+      "os_api": "Android API35 15 / Android/sdk_phone64_x86_64/emu64x:15/AE3A.240806.019/12368160:userdebug/test-keys",
+      "source_commit": "afc3a3b679524c99f86b8d8d9eb93c5268fa1254",
+      "checkout_commit": "f6072c3522081bfe0aa0ceef42bf328a55c82d6a",
+      "artifact_sha256": {
+        "app": "9ad1f658b9baa7ccaa4cbff88f0c50b7f22de3d2eb32808b4e0e7f2d78e472e5",
+        "instrumentation": "9ea5fb50dba55569bb56ea1e2b07a0bf42f6c5ad13b691fc53071a810bf51e88"
+      },
+      "preconditions": "Owned isolated environment and verified artifact",
+      "command_or_method": "A16-uninstall",
+      "expected": "App/test package actually removed and only owned emulator/adb processes cleaned",
+      "actual": {
+        "test_app_removed": true,
+        "target_app_removed": true
+      },
+      "exit_code": 0,
+      "time_started_utc": "2026-11-14T07:49:41Z",
+      "wall_seconds": 0.792,
+      "evidence_path": "logs/test-matrix.json",
+      "required": true,
+      "status": "PASS"
+    }
+  ],
+  "production_signing": "NOT VERIFIED",
+  "physical_devices": "NOT VERIFIED",
+  "cross_platform_lan": "NOT VERIFIED"
+}

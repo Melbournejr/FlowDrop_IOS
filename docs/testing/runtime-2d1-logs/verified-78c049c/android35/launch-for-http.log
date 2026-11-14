@@ -1,0 +1,7 @@
+Starting: Intent { cmp=app.flowdrop.mobile/.MainActivity }
+Status: ok
+LaunchState: COLD
+Activity: app.flowdrop.mobile/.MainActivity
+TotalTime: 1909
+WaitTime: 2007
+Complete

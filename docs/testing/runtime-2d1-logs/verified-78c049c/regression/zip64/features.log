@@ -1,0 +1,12 @@
+✔ ZIP preserves Unicode, nested/empty folders, empty files; refuses links and cancellation (39.389937ms)
+✔ ZIP64 streams a file above 4 GiB and validates independently with Python (10777.275184ms)
+✔ Windows and Android verify the same signed release; tampering/invalid URLs rejected (709.421951ms)
+✔ Java/Node resolve codes across multiple hosts, reject ambiguity, wrong and revoked shares (523.565865ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 4
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 14042.002345

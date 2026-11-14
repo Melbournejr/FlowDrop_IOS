@@ -1,0 +1,128 @@
+{
+  "status": "PASS",
+  "purpose": "TEST ONLY native OS smoke helpers",
+  "source": {
+    "base_commit": "c502c2f8793839e7f10289bf051df06dd1c466a0",
+    "protected_files_checked": 262,
+    "production_source_equivalence": "PASS",
+    "snapshot_files": 543,
+    "checkout_commit": "b94d50fa27880b04bbaed6b194c4c0ed4646c7c8",
+    "uncommitted_paths": []
+  },
+  "compiler_commands": [
+    {
+      "name": "compile-helper-activation-manifest",
+      "command": [
+        "/home/runner/work/_temp/flowdrop-2d1-build-windows/tools/mingw/usr/bin/x86_64-w64-mingw32-windres",
+        "--preprocessor=/home/runner/work/_temp/flowdrop-2d1-build-windows/tools/mingw/usr/bin/x86_64-w64-mingw32-gcc-posix",
+        "--preprocessor-arg=-E",
+        "--preprocessor-arg=-xc",
+        "--preprocessor-arg=-DRC_INVOKED",
+        "-I",
+        "/home/runner/work/_temp/flowdrop-2d1-build-windows/source/desktop/windows",
+        "/home/runner/work/_temp/flowdrop-2d1-build-windows/helper-build/helper.rc",
+        "-O",
+        "coff",
+        "-o",
+        "/home/runner/work/_temp/flowdrop-2d1-build-windows/helper-build/helper-manifest.o"
+      ],
+      "status": "PASS",
+      "exit_code": 0,
+      "raw_returncode": 0,
+      "wall_seconds": 0.009,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "compile-windows-native-smoke",
+      "command": [
+        "/home/runner/work/_temp/flowdrop-2d1-build-windows/tools/mingw/usr/bin/x86_64-w64-mingw32-g++-posix",
+        "-std=c++17",
+        "-O2",
+        "-s",
+        "-municode",
+        "-static",
+        "-static-libgcc",
+        "-static-libstdc++",
+        "-I",
+        "/home/runner/work/_temp/flowdrop-2d1-build-windows/source/desktop/windows/vendor",
+        "-I",
+        "/home/runner/work/_temp/flowdrop-2d1-build-windows/source/tests",
+        "/home/runner/work/_temp/flowdrop-2d1-build-windows/helper-build/windows-native-smoke.cpp",
+        "/home/runner/work/_temp/flowdrop-2d1-build-windows/helper-build/helper-manifest.o",
+        "-o",
+        "/home/runner/work/_temp/flowdrop-2d1-build-windows/helper-build/FlowDrop-windows-native-smoke-TEST-ONLY.exe",
+        "-lwinhttp",
+        "-lcomctl32",
+        "-lole32",
+        "-luuid",
+        "-lshell32",
+        "-luxtheme",
+        "-lgdi32",
+        "-luser32",
+        "-ladvapi32"
+      ],
+      "status": "PASS",
+      "exit_code": 0,
+      "raw_returncode": 0,
+      "wall_seconds": 5.791,
+      "log_sha256": "23367fa204d0bc6c52fec5884a3c3c73ce05dde4549f008cd5bf4c125200ae0e"
+    },
+    {
+      "name": "compile-windows-shell-smoke",
+      "command": [
+        "/home/runner/work/_temp/flowdrop-2d1-build-windows/tools/mingw/usr/bin/x86_64-w64-mingw32-g++-posix",
+        "-std=c++17",
+        "-O2",
+        "-s",
+        "-municode",
+        "-static",
+        "-static-libgcc",
+        "-static-libstdc++",
+        "-I",
+        "/home/runner/work/_temp/flowdrop-2d1-build-windows/source/desktop/windows/vendor",
+        "-I",
+        "/home/runner/work/_temp/flowdrop-2d1-build-windows/source/tests",
+        "/home/runner/work/_temp/flowdrop-2d1-build-windows/helper-build/windows-shell-smoke.cpp",
+        "/home/runner/work/_temp/flowdrop-2d1-build-windows/helper-build/helper-manifest.o",
+        "-o",
+        "/home/runner/work/_temp/flowdrop-2d1-build-windows/helper-build/FlowDrop-windows-shell-smoke-TEST-ONLY.exe",
+        "-lwinhttp",
+        "-lcomctl32",
+        "-lole32",
+        "-luuid",
+        "-lshell32",
+        "-luxtheme",
+        "-lgdi32",
+        "-luser32",
+        "-ladvapi32"
+      ],
+      "status": "PASS",
+      "exit_code": 0,
+      "raw_returncode": 0,
+      "wall_seconds": 9.096,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "files": [
+    {
+      "name": "FlowDrop-windows-native-smoke-TEST-ONLY.exe",
+      "sha256": "7885508282f7a17775565e916eedfb4b52d7a6a597e551fd93b1d51a85034e05",
+      "size": 1327616,
+      "source": "tests/windows-native-smoke.cpp",
+      "source_sha256": "3c4402b3f190255944cf49fc964e4235dae4bce0d44d635152e3e2c343c97f5c",
+      "compiled_test_source_sha256": "93425ad7f741492f012898ebed9d519e172bd97e6ba7b9936993bff3056ac0a2",
+      "test_only_adaptation": "Wait for initialized real OS dialog, verify input readback, invoke actual button; existing assertions/timeouts retained",
+      "common_controls_v6_manifest_sha256": "dfae8c217e50f5d2948985fb45c55687c34157718a5f05bc31d4c392fc6e85e0"
+    },
+    {
+      "name": "FlowDrop-windows-shell-smoke-TEST-ONLY.exe",
+      "sha256": "30c02966f117d724bab4f0d945ca63afa17615e1ee4827195beb1bbcedad18c9",
+      "size": 1513472,
+      "source": "tests/windows-shell-smoke.cpp",
+      "source_sha256": "c76616ca9b54581440c0c452dafb006080e53422d42f9c2c0d72e0dcb9e013df",
+      "compiled_test_source_sha256": "b821dc79f4484220fb47c19c8ac90e6338d71484808f43cf9c6958baf895eaac",
+      "test_only_adaptation": "Wait for initialized real OS dialog, verify input readback, invoke actual button; existing assertions/timeouts retained",
+      "common_controls_v6_manifest_sha256": "dfae8c217e50f5d2948985fb45c55687c34157718a5f05bc31d4c392fc6e85e0"
+    }
+  ]
+}

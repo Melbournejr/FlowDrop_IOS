@@ -1,0 +1,849 @@
+{
+  "status": "PASS",
+  "exit_code": 0,
+  "source": {
+    "base_commit": "c502c2f8793839e7f10289bf051df06dd1c466a0",
+    "protected_files_checked": 262,
+    "production_source_equivalence": "PASS",
+    "snapshot_files": 543,
+    "checkout_commit": "b94d50fa27880b04bbaed6b194c4c0ed4646c7c8",
+    "uncommitted_paths": []
+  },
+  "android": {
+    "status": "PASS",
+    "type": "app",
+    "identity": {
+      "package": "app.flowdrop.mobile",
+      "version_code": "14",
+      "version_name": "1.13.0",
+      "min_sdk": 29,
+      "target_sdk": 35,
+      "permissions": [
+        "android.permission.ACCESS_NETWORK_STATE",
+        "android.permission.ACCESS_WIFI_STATE",
+        "android.permission.CHANGE_WIFI_MULTICAST_STATE",
+        "android.permission.FOREGROUND_SERVICE",
+        "android.permission.FOREGROUND_SERVICE_DATA_SYNC",
+        "android.permission.HIDE_OVERLAY_WINDOWS",
+        "android.permission.INTERNET",
+        "android.permission.POST_NOTIFICATIONS",
+        "android.permission.RECEIVE_BOOT_COMPLETED",
+        "android.permission.REQUEST_INSTALL_PACKAGES",
+        "android.permission.UPDATE_PACKAGES_WITHOUT_USER_ACTION"
+      ]
+    },
+    "test_certificate_sha256": "cea894d677e1b6a34ed359b3f218613ef483cff02bf9b6d71b5317770f1d56d5",
+    "production_signing_equivalence": "NOT VERIFIED; intentionally different test certificate",
+    "size": 279316,
+    "sha256": "27737b700a91b42ad9bd77fb8f637258994b07f58b1246ae3a5200ea3270c8e6",
+    "inventory": [
+      {
+        "path": "AndroidManifest.xml",
+        "size": 5920,
+        "sha256": "2e2822afa8b71ec18fd74ce8ee36bf98f22cef4741a78ddf0b8390e5d2650174"
+      },
+      {
+        "path": "res/drawable/ic_launcher.xml",
+        "size": 920,
+        "sha256": "3dd6826fdc1568a9362f1ef4583895de34794bc3990c04ae4f4be639546ce3df"
+      },
+      {
+        "path": "resources.arsc",
+        "size": 588,
+        "sha256": "26d21f44a6a168bf74c8f8f8b941a4124dcc17bde859e72d7b308c5e51f1293e"
+      },
+      {
+        "path": "classes.dex",
+        "size": 223912,
+        "sha256": "a312214ea359072a7663f33904b2712e947b1121f45ec6a78ce02d2ac964aebd"
+      },
+      {
+        "path": "assets/fonts/BeVietnamPro-Medium.ttf",
+        "size": 135980,
+        "sha256": "b60832bfa0fcd015158112c64d7e3fdad3b0c6287d1823f85a3103636e845268"
+      },
+      {
+        "path": "assets/fonts/OFL.txt",
+        "size": 4397,
+        "sha256": "6b7f8f73609a25ea78c891e34cf37b06f8a676b7ea986e941e43b009110f2a85"
+      },
+      {
+        "path": "assets/fonts/BeVietnamPro-Bold.ttf",
+        "size": 140300,
+        "sha256": "7f738fe5c43c8872807b20e2d30d42163618de8a4daf7f48a939adac32c16847"
+      },
+      {
+        "path": "assets/fonts/BeVietnamPro-Regular.ttf",
+        "size": 132948,
+        "sha256": "cd1ef6e9d7db28ad5cdb88a65ccbe693870e60d340b791f349d248342b4fe4c3"
+      },
+      {
+        "path": "META-INF/FLOWDROP.SF",
+        "size": 927,
+        "sha256": "51285c7be744b6c70a1c92941bb787116265f7b5f4c3eaaed0291caaa03d9656"
+      },
+      {
+        "path": "META-INF/FLOWDROP.RSA",
+        "size": 1537,
+        "sha256": "3a1f880b7e45021201b7a9da44a6e9243157d57e4fd2fd0a7e8121f3f58a8934"
+      },
+      {
+        "path": "META-INF/MANIFEST.MF",
+        "size": 800,
+        "sha256": "d0610458cac0997a1553659a9c734d27bd442eefda9d2f5550a87e0213f14b7f"
+      }
+    ]
+  },
+  "instrumentation": {
+    "status": "PASS",
+    "type": "instrumentation",
+    "identity": {
+      "package": "app.flowdrop.mobile.test",
+      "version_code": "",
+      "version_name": "",
+      "min_sdk": 29,
+      "target_sdk": 35,
+      "permissions": []
+    },
+    "test_certificate_sha256": "cea894d677e1b6a34ed359b3f218613ef483cff02bf9b6d71b5317770f1d56d5",
+    "production_signing_equivalence": "NOT VERIFIED; intentionally different test certificate",
+    "size": 33171,
+    "sha256": "0d3498a92eaba11c4c0e68927a427850ecab519d1fb86482112e3bc53530eb74",
+    "inventory": [
+      {
+        "path": "AndroidManifest.xml",
+        "size": 2920,
+        "sha256": "bb1cbc8cb40166255b38eae8b9980dc60bb2fd60e061c3dca8f372a5c29ceaa2"
+      },
+      {
+        "path": "resources.arsc",
+        "size": 40,
+        "sha256": "1fa3cb291285348ec1b33c85e7317d989467707f4791c4e5302f2d312d1e18c8"
+      },
+      {
+        "path": "classes.dex",
+        "size": 48524,
+        "sha256": "69a7d8ecb911f5f5e9d1190d4bbf58f0bf76025bcef8d410d984f27683a0334b"
+      },
+      {
+        "path": "META-INF/FLOWDROP.SF",
+        "size": 412,
+        "sha256": "be87d0c00e1de56816f8843a1e109a39737425935bea6f8f830ff1b70da86d87"
+      },
+      {
+        "path": "META-INF/FLOWDROP.RSA",
+        "size": 1537,
+        "sha256": "c4a8963b9b848bf1c92d2b8761f0004ee004c8351b018b003cf6234b72e28128"
+      },
+      {
+        "path": "META-INF/MANIFEST.MF",
+        "size": 285,
+        "sha256": "aadf9fc785e5ee8f9020089a0b644898091e92e1411f9683cfc8e26bc559db4a"
+      }
+    ]
+  },
+  "windows_installer": {
+    "status": "PASS",
+    "nsis_bootstrap_machine": "I386 (baseline)",
+    "installed_application_machine": "AMD64",
+    "size": 24516720,
+    "sha256": "e9a605b02055d429ecee19bc1ff5e4bdbdf1b90e26dc0aa8457280c3bf64dba7",
+    "payload_files_verified": 128
+  },
+  "windows_payload": {
+    "status": "PASS",
+    "machine": "AMD64",
+    "subsystem": "WINDOWS_GUI",
+    "version": "1.13.0.0",
+    "icon_png_count": 6,
+    "node_version": "24.22.2",
+    "node_sha256": "1c331340fa6cac5e4294725959070a143fa0507195a78ad77eed7943f719aac9",
+    "npm_packages": [
+      {
+        "name": "@leichtgewicht/ip-codec",
+        "version": "2.0.5",
+        "license": "MIT"
+      },
+      {
+        "name": "bonjour-service",
+        "version": "1.3.0",
+        "license": "MIT"
+      },
+      {
+        "name": "dns-packet",
+        "version": "5.6.1",
+        "license": "MIT"
+      },
+      {
+        "name": "fast-deep-equal",
+        "version": "3.1.3",
+        "license": "MIT"
+      },
+      {
+        "name": "multicast-dns",
+        "version": "7.2.5",
+        "license": "MIT"
+      },
+      {
+        "name": "pend",
+        "version": "1.2.0",
+        "license": "MIT"
+      },
+      {
+        "name": "thunky",
+        "version": "1.1.0",
+        "license": "MIT"
+      },
+      {
+        "name": "yauzl",
+        "version": "3.4.0",
+        "license": "MIT"
+      }
+    ],
+    "inventory": [
+      {
+        "path": "Allow-LAN.ps1",
+        "size": 710,
+        "sha256": "340067b5aaa2724f7f06da53677d8d0b042da1e251f1449021148199b0969832"
+      },
+      {
+        "path": "FlowDrop.exe",
+        "size": 1477632,
+        "sha256": "cb1dde8d13574e494f22dd30d8d737e63e8e3ce067acad7ba71745e38a8c4c70"
+      },
+      {
+        "path": "FlowDrop.vbs",
+        "size": 288,
+        "sha256": "500d2d01c794e3d751914d61d6747f2ef49288e669faec9f473b2c75dc83f9a7"
+      },
+      {
+        "path": "Huong-dan.md",
+        "size": 11474,
+        "sha256": "9f17fe44ff9680cf12e2dbc314baaec5c76b1e2daafe4ad180f15f6f532664e7"
+      },
+      {
+        "path": "Stop-FlowDrop.vbs",
+        "size": 470,
+        "sha256": "28ec9bdcb7b325a96ef68e7da2578f68c66f04b367ca9747a017c49b6b4c851e"
+      },
+      {
+        "path": "nlohmann-json-license-and-source.hpp",
+        "size": 919975,
+        "sha256": "9bea4c8066ef4a1c206b2be5a36302f8926f7fdc6087af5d20b417d0cf103ea6"
+      },
+      {
+        "path": "node_modules/.bin/multicast-dns",
+        "size": 1403,
+        "sha256": "c01be6d90fbcb4970cbd9704a6e837ec94c1117f1f6a2a7433731e5c389834a0"
+      },
+      {
+        "path": "node_modules/.package-lock.json",
+        "size": 2932,
+        "sha256": "0a20c516ce2b04f2535dd17770bceb3a9183f06533b6ea166b4c39bd8f005058"
+      },
+      {
+        "path": "node_modules/@leichtgewicht/ip-codec/LICENSE",
+        "size": 1073,
+        "sha256": "09fd9784b65e00b09b6366845098a2cb6d6f559e84d292528f1e462c9e4acb62"
+      },
+      {
+        "path": "node_modules/@leichtgewicht/ip-codec/Readme.md",
+        "size": 1437,
+        "sha256": "afc1243f6917b518b22829dcefedd3ce5b21ce8a8d3da768bce78e63b6da6edf"
+      },
+      {
+        "path": "node_modules/@leichtgewicht/ip-codec/index.cjs",
+        "size": 7160,
+        "sha256": "3f1857adf781b6d951efc5d43a623259c09f842f222d83cc1639d08d65340e81"
+      },
+      {
+        "path": "node_modules/@leichtgewicht/ip-codec/index.mjs",
+        "size": 6000,
+        "sha256": "7a19ea21e5405c92afb0dd54c4c986384a9241ccc98d48865868f1b73190ca10"
+      },
+      {
+        "path": "node_modules/@leichtgewicht/ip-codec/package.json",
+        "size": 1231,
+        "sha256": "9b979a9047cf7d7676b4616ed180315826c38d5932fb541f49ac318e704a3db1"
+      },
+      {
+        "path": "node_modules/@leichtgewicht/ip-codec/types/index.d.ts",
+        "size": 809,
+        "sha256": "ab252c8ea0e7e82924d437fbde6090ecbff7e7eb04a7327065a1d792ae5663f9"
+      },
+      {
+        "path": "node_modules/bonjour-service/LICENSE",
+        "size": 1225,
+        "sha256": "82a4526b2777826043d2ca0e282f7428c2bd1762b13ef70b4fb4a57a48303d73"
+      },
+      {
+        "path": "node_modules/bonjour-service/README.md",
+        "size": 5763,
+        "sha256": "9a9aa653fd2c2b01133269422ab9a2661cb7d5ea3d02aaba19b30f7be65cb18c"
+      },
+      {
+        "path": "node_modules/bonjour-service/dist/index.d.ts",
+        "size": 725,
+        "sha256": "2cf4aa5376dbf24f140844d01f6c43bd183e0e0df692b6bae5457d84171fd966"
+      },
+      {
+        "path": "node_modules/bonjour-service/dist/index.js",
+        "size": 1794,
+        "sha256": "2c343fad759c7fa0f3f6d4a67353f0b3258e996a490994c9e4146548dec62d33"
+      },
+      {
+        "path": "node_modules/bonjour-service/dist/index.js.map",
+        "size": 1434,
+        "sha256": "39eab680596f2f05aa996f0e80436c96adf46beb7fb29fbbadc952f513cc0cd4"
+      },
+      {
+        "path": "node_modules/bonjour-service/dist/lib/KeyValue.d.ts",
+        "size": 70,
+        "sha256": "743c8570cd33d1f7ea68f15b2d08c00aff25ba50fddea536a035480bbdb1b737"
+      },
+      {
+        "path": "node_modules/bonjour-service/dist/lib/KeyValue.js",
+        "size": 113,
+        "sha256": "3b149026bda73247c359a22e9e00009f8fe5e11fb49f1303679e37dbaa6d2335"
+      },
+      {
+        "path": "node_modules/bonjour-service/dist/lib/KeyValue.js.map",
+        "size": 115,
+        "sha256": "c2881ae84d25c95fdb2adc1b977982bec8582a5af9134e1be78cc9ec5ba90212"
+      },
+      {
+        "path": "node_modules/bonjour-service/dist/lib/browser.d.ts",
+        "size": 863,
+        "sha256": "19b5a2f264f136f2d54227fa97481cfbaed57fe37e75699839396472471e867a"
+      },
+      {
+        "path": "node_modules/bonjour-service/dist/lib/browser.js",
+        "size": 7063,
+        "sha256": "c6cb68ea2e290a574e68fdc7957ccc91f2fcbb44c26a8c3939139abf898ce8d4"
+      },
+      {
+        "path": "node_modules/bonjour-service/dist/lib/browser.js.map",
+        "size": 7211,
+        "sha256": "a1919be67304ddb2d1fc8771dd4dc7611735016c66e763dd488a67523e9aae61"
+      },
+      {
+        "path": "node_modules/bonjour-service/dist/lib/dns-txt.d.ts",
+        "size": 269,
+        "sha256": "75d92153dbaf2b3eb7b5bb9a2affe8c0fe44de0cd0c5b6cc2466ed47559c95c8"
+      },
+      {
+        "path": "node_modules/bonjour-service/dist/lib/dns-txt.js",
+        "size": 1145,
+        "sha256": "15bd5717ec7f6af0a985da21e3d5a011f9e71146bd889cd04807a69da03082cb"
+      },
+      {
+        "path": "node_modules/bonjour-service/dist/lib/dns-txt.js.map",
+        "size": 1417,
+        "sha256": "98d2c50610fd738b6657af78dc1a46e9f713370407dc4bd907c8e6c2670499d3"
+      },
+      {
+        "path": "node_modules/bonjour-service/dist/lib/mdns-server.d.ts",
+        "size": 501,
+        "sha256": "784dd9273d75ade54f7598f6c96f4aced34f427eebe1416ddb41c861d6fc09c2"
+      },
+      {
+        "path": "node_modules/bonjour-service/dist/lib/mdns-server.js",
+        "size": 4220,
+        "sha256": "a25a258e31d19353960f2ead973f5685cba68d6b7f1427e1b568adea2f3bee21"
+      },
+      {
+        "path": "node_modules/bonjour-service/dist/lib/mdns-server.js.map",
+        "size": 4089,
+        "sha256": "548ed0affc732320dd68e926c8bcb1acdedfc9fca0f2f78ccaa7a292a5f270e3"
+      },
+      {
+        "path": "node_modules/bonjour-service/dist/lib/registry.d.ts",
+        "size": 415,
+        "sha256": "989a18ca70be2399c71f0df1c1fa879b0668afa3a7869406ca123b534a679b59"
+      },
+      {
+        "path": "node_modules/bonjour-service/dist/lib/registry.js",
+        "size": 5235,
+        "sha256": "53951cc196c8a94e7af29c888b25d33e5ededbdd4b6565f91d048413a9a30b0c"
+      },
+      {
+        "path": "node_modules/bonjour-service/dist/lib/registry.js.map",
+        "size": 4967,
+        "sha256": "683da9522ec9d6c495c274d85c88e133adece1a18e2ec92293339351c176602f"
+      },
+      {
+        "path": "node_modules/bonjour-service/dist/lib/service-types.d.ts",
+        "size": 265,
+        "sha256": "6aaad3654a116bd66ede15fccd46e7d35136fc762c965de8b6c53b0a0b3b90d8"
+      },
+      {
+        "path": "node_modules/bonjour-service/dist/lib/service-types.js",
+        "size": 1406,
+        "sha256": "e2010aa45669e84e93a143e9326591f2906e68105a5c90c1245dd8b35b09c91b"
+      },
+      {
+        "path": "node_modules/bonjour-service/dist/lib/service-types.js.map",
+        "size": 1761,
+        "sha256": "911c97466c73ff2aa635a7439debf2fa3d2b19de74309f30fece3a367f5fa344"
+      },
+      {
+        "path": "node_modules/bonjour-service/dist/lib/service.d.ts",
+        "size": 1329,
+        "sha256": "aa2239a3fec2f648d474d3cca05d12bab2f1446f9bd8adc2b487048245daf9d8"
+      },
+      {
+        "path": "node_modules/bonjour-service/dist/lib/service.js",
+        "size": 3767,
+        "sha256": "c570bd500063d312d30372dc053cbd5615077cbd91f32eb8e76454b59aa5f437"
+      },
+      {
+        "path": "node_modules/bonjour-service/dist/lib/service.js.map",
+        "size": 3340,
+        "sha256": "8f206907ce2b995fd035b6893569d2d8146400aab26d2fc2145ecb31486a0983"
+      },
+      {
+        "path": "node_modules/bonjour-service/dist/lib/utils/dns-equal.d.ts",
+        "size": 65,
+        "sha256": "ab57aab70744755d74fbe33095ca59cfa55ccbce627ff6ded1b2abfe7b14a5dd"
+      },
+      {
+        "path": "node_modules/bonjour-service/dist/lib/utils/dns-equal.js",
+        "size": 443,
+        "sha256": "c236f15ef5071a59bf7fc7980a0d0b46818ab7938a8d5ead4a86fef07f6b645f"
+      },
+      {
+        "path": "node_modules/bonjour-service/dist/lib/utils/dns-equal.js.map",
+        "size": 457,
+        "sha256": "b2c10d2482aca58073f09ee3a6eda600db8be23aeb96c2c501498fa48ff1e597"
+      },
+      {
+        "path": "node_modules/bonjour-service/dist/lib/utils/equal-txt.d.ts",
+        "size": 97,
+        "sha256": "bf538d99d36cc2b74e5455db03311ef5318f182588d4f335726b8d8a439d0943"
+      },
+      {
+        "path": "node_modules/bonjour-service/dist/lib/utils/equal-txt.js",
+        "size": 468,
+        "sha256": "a9937df5a373ca9675a75f30b46a9616991c72c8b2658a6ef6a390fe82948a04"
+      },
+      {
+        "path": "node_modules/bonjour-service/dist/lib/utils/equal-txt.js.map",
+        "size": 578,
+        "sha256": "3042035d3bb8f2c967ac424f5e840396b3c5541e1bc9070be4d4a87442fffbb0"
+      },
+      {
+        "path": "node_modules/bonjour-service/dist/lib/utils/filter-service.d.ts",
+        "size": 182,
+        "sha256": "69011e0615c1d566e8cab044ab26719485fa246d78409b59786a69ba9a53c0b2"
+      },
+      {
+        "path": "node_modules/bonjour-service/dist/lib/utils/filter-service.js",
+        "size": 638,
+        "sha256": "732801e976b0b8b63c49a40a08c7161a8cfeadba0c4d8b1b1d2b61904ebd278e"
+      },
+      {
+        "path": "node_modules/bonjour-service/dist/lib/utils/filter-service.js.map",
+        "size": 705,
+        "sha256": "ab633f2f79b519b1f7b2ee36718bd434cc7634fc8ee9247befbeb09e05f5d63e"
+      },
+      {
+        "path": "node_modules/bonjour-service/dist/lib/utils/filter-txt.d.ts",
+        "size": 109,
+        "sha256": "a12bf0936f1e573dbec789a4a8c5641d7d9b87e8823644ab8cf82c17b429a4f3"
+      },
+      {
+        "path": "node_modules/bonjour-service/dist/lib/utils/filter-txt.js",
+        "size": 292,
+        "sha256": "311c59c686ba9f17ae1e4d1c2cc979dbffb308e5f1bd8075acc93fcf6087ce44"
+      },
+      {
+        "path": "node_modules/bonjour-service/dist/lib/utils/filter-txt.js.map",
+        "size": 452,
+        "sha256": "31a73497214b1f7a09a2595069c07601a2246bdb3a4f19a114ce06fa896d93f7"
+      },
+      {
+        "path": "node_modules/bonjour-service/package.json",
+        "size": 1487,
+        "sha256": "0f360337b2b6d8215f10ae69f733569d111f39f5409d276f1687d9f1ebb1f4a8"
+      },
+      {
+        "path": "node_modules/bonjour-service/types/multicast-dns.d.ts",
+        "size": 100,
+        "sha256": "602822deb8fa04d9c28947ea1bbe8419084f58f07d94028768e5e77a82968224"
+      },
+      {
+        "path": "node_modules/dns-packet/LICENSE",
+        "size": 1079,
+        "sha256": "6a134e51aa31496c15a741592fc5d782b2dbf8d8b6b8524e15c8520ae0cd6374"
+      },
+      {
+        "path": "node_modules/dns-packet/README.md",
+        "size": 7109,
+        "sha256": "2b62f0bcc18dc8bbdd2cf3ffbac170ca6fe3d302e68acf0747ff31270fd9d1cd"
+      },
+      {
+        "path": "node_modules/dns-packet/classes.js",
+        "size": 437,
+        "sha256": "adc3ba96a6d030294f9356f03cc215e2c53de13ed6dee94fda54ee0d4f5f00ef"
+      },
+      {
+        "path": "node_modules/dns-packet/index.js",
+        "size": 44599,
+        "sha256": "dd9d08eac52a0dc5f8214ab188b661bb66b20acaa02e1e812e0400d588aaefd3"
+      },
+      {
+        "path": "node_modules/dns-packet/opcodes.js",
+        "size": 1315,
+        "sha256": "2c5ae21809c131194a7f8ee69c96eeb5b347b655b85c833313801e2d1674b8eb"
+      },
+      {
+        "path": "node_modules/dns-packet/optioncodes.js",
+        "size": 1398,
+        "sha256": "de965a8eaa8492718a41748a3c993806ca7cadede27185815f080451662071c8"
+      },
+      {
+        "path": "node_modules/dns-packet/package.json",
+        "size": 1115,
+        "sha256": "928c17d2ec39fab9d35ab67187005c55795a279f66cf42ba97679b1d41bf63dd"
+      },
+      {
+        "path": "node_modules/dns-packet/rcodes.js",
+        "size": 1284,
+        "sha256": "73d019a7d2cd5d8f2c8300182ebd454675f856f816fefd0295d65f89a2deb5b4"
+      },
+      {
+        "path": "node_modules/dns-packet/types.js",
+        "size": 2672,
+        "sha256": "389d908703cf3de1a94d8e3f08982b350a809a93abec6ac345d55389d24a5dca"
+      },
+      {
+        "path": "node_modules/fast-deep-equal/LICENSE",
+        "size": 1074,
+        "sha256": "7bf9b2de73a6b356761c948d0e9eeb4be6c1270bd04c79cd489c1e400ffdfc1a"
+      },
+      {
+        "path": "node_modules/fast-deep-equal/README.md",
+        "size": 3323,
+        "sha256": "ada32c1b53bd74640a22806e99b25c2b8ab2946eed338f325114be87bd5b9fce"
+      },
+      {
+        "path": "node_modules/fast-deep-equal/es6/index.d.ts",
+        "size": 66,
+        "sha256": "d979def17dea97ee491c975f3d3cb31957b7970a791c1d5a3854ea6cd4cce91e"
+      },
+      {
+        "path": "node_modules/fast-deep-equal/es6/index.js",
+        "size": 1935,
+        "sha256": "d7f027497048c75e17268dbc66b670579d4f70f2dc0e019cdc9edf5078c247d6"
+      },
+      {
+        "path": "node_modules/fast-deep-equal/es6/react.d.ts",
+        "size": 66,
+        "sha256": "d979def17dea97ee491c975f3d3cb31957b7970a791c1d5a3854ea6cd4cce91e"
+      },
+      {
+        "path": "node_modules/fast-deep-equal/es6/react.js",
+        "size": 2209,
+        "sha256": "366779cbb7821d26d18b9eaa12b6788cbb101cdbbabcae36f2919a5f48534ef0"
+      },
+      {
+        "path": "node_modules/fast-deep-equal/index.d.ts",
+        "size": 103,
+        "sha256": "37ffe3c12813b6a6d512f7c27b71f3388d03dafa10555ad5094cea393ed3d1f6"
+      },
+      {
+        "path": "node_modules/fast-deep-equal/index.js",
+        "size": 1177,
+        "sha256": "eb469e206280321a3878f2335ec98aa2104a155079d8ed83a23029098dccd215"
+      },
+      {
+        "path": "node_modules/fast-deep-equal/package.json",
+        "size": 1496,
+        "sha256": "a5c63940db0260739be9e2ac67f3aac268df4db5770420ee4e34e493152f97d2"
+      },
+      {
+        "path": "node_modules/fast-deep-equal/react.d.ts",
+        "size": 66,
+        "sha256": "d979def17dea97ee491c975f3d3cb31957b7970a791c1d5a3854ea6cd4cce91e"
+      },
+      {
+        "path": "node_modules/fast-deep-equal/react.js",
+        "size": 1451,
+        "sha256": "37cbd168dbd42c73119ce7326556bddef40b3a5fbd2e215cf81a7c78fb73ff9a"
+      },
+      {
+        "path": "node_modules/multicast-dns/.travis.yml",
+        "size": 62,
+        "sha256": "02a816565047a8058f1a68d470dd933fbfad33e64f54b3ccaa749fab8d93c8a4"
+      },
+      {
+        "path": "node_modules/multicast-dns/LICENSE",
+        "size": 1079,
+        "sha256": "0aa9add6a9158efad3e6649e3affd607c7e2629f6677af19f9988c8fbb0757b0"
+      },
+      {
+        "path": "node_modules/multicast-dns/README.md",
+        "size": 4246,
+        "sha256": "65209e897d1d2c9eca9030945d8fa83db80f0414c9555fc43e843dda729aeaad"
+      },
+      {
+        "path": "node_modules/multicast-dns/appveyor.yml",
+        "size": 397,
+        "sha256": "53fc8dd83a198ae0d9eea7a3cd36ee87d0e51612012b8c39b3018e6f87a3194c"
+      },
+      {
+        "path": "node_modules/multicast-dns/cli.js",
+        "size": 1403,
+        "sha256": "c01be6d90fbcb4970cbd9704a6e837ec94c1117f1f6a2a7433731e5c389834a0"
+      },
+      {
+        "path": "node_modules/multicast-dns/example.js",
+        "size": 788,
+        "sha256": "231f7769c95b25b5fa3f1e88a1f2934371aae58c36dd74a3c2ef38480a7cdbd1"
+      },
+      {
+        "path": "node_modules/multicast-dns/index.js",
+        "size": 5529,
+        "sha256": "165f89b9aedb95459f04124a62aaf8908f53096fc90571781037d05dde800b96"
+      },
+      {
+        "path": "node_modules/multicast-dns/package.json",
+        "size": 894,
+        "sha256": "36119c9323830dd57b8bb03ad7e0b7357a47ac4c4ef77915f741594243183376"
+      },
+      {
+        "path": "node_modules/multicast-dns/test.js",
+        "size": 7570,
+        "sha256": "b3b258d980acc5581e8ad009c0eccf190b5231e1d209fc5afba8a00d806c775c"
+      },
+      {
+        "path": "node_modules/pend/LICENSE",
+        "size": 1082,
+        "sha256": "7e64acffcb0d20d33f5a86949ffd4a99ae045b10c7332a9c3a58635876c16880"
+      },
+      {
+        "path": "node_modules/pend/README.md",
+        "size": 973,
+        "sha256": "4039da3645c082324060eb6e1168726f43e03a1090eeb788a5d469b7b60e0ddb"
+      },
+      {
+        "path": "node_modules/pend/index.js",
+        "size": 1101,
+        "sha256": "4b991290680d9027dd786493c6e816900355956d88afb6ae4d97b5ac5a3ee0f5"
+      },
+      {
+        "path": "node_modules/pend/package.json",
+        "size": 410,
+        "sha256": "1e4f01d39cc13c261f7ab81d0509d36bd98d8eceaf9ed75f2ab274286f3c3920"
+      },
+      {
+        "path": "node_modules/pend/test.js",
+        "size": 2449,
+        "sha256": "606527c6816c6adea3a586813203e9ee1980ce286ff8a485ad781fcc90912aad"
+      },
+      {
+        "path": "node_modules/thunky/.travis.yml",
+        "size": 69,
+        "sha256": "66c4690f8cbc2ee959ba558eb65be6d79ad124b2bd2b4db03971637b53d93923"
+      },
+      {
+        "path": "node_modules/thunky/LICENSE",
+        "size": 1079,
+        "sha256": "2281f2db407bdbb54f069eec38128b2dee2c0c952f52b786ef1faecb81767b3c"
+      },
+      {
+        "path": "node_modules/thunky/README.md",
+        "size": 2441,
+        "sha256": "bde4eb0f51e7c885e3f55ef6b34bd06497aa6b175137a751112873fda9db3775"
+      },
+      {
+        "path": "node_modules/thunky/index.js",
+        "size": 1057,
+        "sha256": "53bb4241793f909588dfe40caeaa8bb7b478c10ab45b8f1c726f140557488529"
+      },
+      {
+        "path": "node_modules/thunky/package.json",
+        "size": 709,
+        "sha256": "2e0f97d0ca8854986390dce5b2721325cce2260fd7800ad72426b820b39a05ba"
+      },
+      {
+        "path": "node_modules/thunky/promise.js",
+        "size": 344,
+        "sha256": "841f51818b64aca7ea0f95b0851ec7a2abb27bee0018ae2906a9805a451ed820"
+      },
+      {
+        "path": "node_modules/thunky/test.js",
+        "size": 2059,
+        "sha256": "666f3230e0cef73e24df6231fac03bf356f6e508b473bd53e7bcf157e4d04ce3"
+      },
+      {
+        "path": "node_modules/yauzl/LICENSE",
+        "size": 1077,
+        "sha256": "b303783d5eb7ca50b853ffa5f145e4e7998fab339831d848f507ca6cd970577a"
+      },
+      {
+        "path": "node_modules/yauzl/README.md",
+        "size": 56006,
+        "sha256": "cbfe7df2152699da24adf1bd60c690a8263929ddd45fc8b563e3c1f716c13efc"
+      },
+      {
+        "path": "node_modules/yauzl/crc32.js",
+        "size": 3434,
+        "sha256": "7bf6476c8e4984418943aa4eb6743c859d723d5e9a7278d61d34457d2554cec4"
+      },
+      {
+        "path": "node_modules/yauzl/fd-slicer.js",
+        "size": 5159,
+        "sha256": "fa8868a9879ce50db8cbec36d487424af112bd5b0c433831968441ec50d7616a"
+      },
+      {
+        "path": "node_modules/yauzl/index.js",
+        "size": 43463,
+        "sha256": "8cccdd25e8bb5516572c09072324876860c8de5898c0b8b7070f0e660b35a0ec"
+      },
+      {
+        "path": "node_modules/yauzl/package.json",
+        "size": 762,
+        "sha256": "d7d5418b74b185df4ad276b73cf1e36040dd417d22520354e609e2748a29fcbd"
+      },
+      {
+        "path": "package.json",
+        "size": 1184,
+        "sha256": "e7299d41f5d250355a2daf3a73394fb5a67b5cc33bdb26fcd24707aa639a1759"
+      },
+      {
+        "path": "runtime/LICENSE",
+        "size": 160555,
+        "sha256": "ed34dd8e3f0a78dbaf00d0444ce8e285b015b765379c2e17880455f70370f8e9"
+      },
+      {
+        "path": "runtime/node.exe",
+        "size": 93922624,
+        "sha256": "1c331340fa6cac5e4294725959070a143fa0507195a78ad77eed7943f719aac9"
+      },
+      {
+        "path": "scripts/code-lookup.mjs",
+        "size": 2517,
+        "sha256": "aa268d89a5ee692d77d3bd6e41211068db80876192d35e4f671ade239d6b4634"
+      },
+      {
+        "path": "scripts/desktop-storage.mjs",
+        "size": 9330,
+        "sha256": "ce0bfaf849ec0fa9188d06cefcfd1bab93f2cf5fab34e9baed55c4ecf4b47371"
+      },
+      {
+        "path": "scripts/dev.mjs",
+        "size": 15451,
+        "sha256": "169796ee26c116dd6a2d66836f6f4ed5356d3cda7e92d3507c65f1f7e2b83643"
+      },
+      {
+        "path": "scripts/device-name.mjs",
+        "size": 1093,
+        "sha256": "424d2213a3a0babee567dce6754a7f6f977b8767a2cd05a9620789292aa7ced4"
+      },
+      {
+        "path": "scripts/discovery.mjs",
+        "size": 4001,
+        "sha256": "66d420cfbef1b44ee4e27226e12507b4006f38b8eda30f8090b8b6617db3729d"
+      },
+      {
+        "path": "scripts/folder-jobs.mjs",
+        "size": 1714,
+        "sha256": "46d37a1b085d5fdecb72632350cdd5045218faab1283b5d713473598b5710772"
+      },
+      {
+        "path": "scripts/folder-receive.mjs",
+        "size": 4934,
+        "sha256": "fe16d9ed66784839618c6416b5c362bcdb6ba9f1090575ea865fe453557d6c52"
+      },
+      {
+        "path": "scripts/folder-zip.mjs",
+        "size": 6120,
+        "sha256": "a46898886986535ff7288fb8a45a88e5304760f0f02ab47ddeba0e4d0742e7c4"
+      },
+      {
+        "path": "scripts/lan-discovery.mjs",
+        "size": 5193,
+        "sha256": "795a36a601e88870b8d8a3f3ad54e7d4d90fae2f985a162133487f6600efefd2"
+      },
+      {
+        "path": "scripts/local-bucket.mjs",
+        "size": 2136,
+        "sha256": "a1b33bc56d3498614c2451b96c5594a9ebb1cf5813e71e5f2724edc7d42fb4f0"
+      },
+      {
+        "path": "scripts/peer-offers.mjs",
+        "size": 10890,
+        "sha256": "f1bfa02c12067bbbe02d2929c4c18d483af06e4a7aeb51422931eb3c17f75ac7"
+      },
+      {
+        "path": "scripts/release-config.mjs",
+        "size": 815,
+        "sha256": "693c18ebe0463c3ee3d4d306b2b2fd1544f2e34bb9ef1341eae23486901d93d7"
+      },
+      {
+        "path": "scripts/request-security.mjs",
+        "size": 1377,
+        "sha256": "4a468c6292d151bebcca51df4ce86f304e7b9a74a5116a7e5e2ad74ab8c52bc3"
+      },
+      {
+        "path": "scripts/secure-update.mjs",
+        "size": 8653,
+        "sha256": "c77046d018b095ec45444328cd1f8d16a615ce25a25d2fee356babc243fdc792"
+      },
+      {
+        "path": "scripts/stop.mjs",
+        "size": 642,
+        "sha256": "155647ca15eaae1b7e44dc70139c0eeb19bacffc6559501a8cea0a86895a2fb3"
+      },
+      {
+        "path": "web/app.js",
+        "size": 23370,
+        "sha256": "9ebfb5bd114d531386f44bc187db53a32ab971b8496cdd65e5faf871d86d6e5c"
+      },
+      {
+        "path": "web/assets/fonts/BeVietnamPro-Bold.ttf",
+        "size": 140300,
+        "sha256": "7f738fe5c43c8872807b20e2d30d42163618de8a4daf7f48a939adac32c16847"
+      },
+      {
+        "path": "web/assets/fonts/BeVietnamPro-Medium.ttf",
+        "size": 135980,
+        "sha256": "b60832bfa0fcd015158112c64d7e3fdad3b0c6287d1823f85a3103636e845268"
+      },
+      {
+        "path": "web/assets/fonts/BeVietnamPro-Regular.ttf",
+        "size": 132948,
+        "sha256": "cd1ef6e9d7db28ad5cdb88a65ccbe693870e60d340b791f349d248342b4fe4c3"
+      },
+      {
+        "path": "web/assets/fonts/OFL.txt",
+        "size": 4397,
+        "sha256": "6b7f8f73609a25ea78c891e34cf37b06f8a676b7ea986e941e43b009110f2a85"
+      },
+      {
+        "path": "web/assets/fonts/manifest.json",
+        "size": 584,
+        "sha256": "150b3b220978afc45bae87121edc9def57fe40aa7deb91ddba6673a327fbbc2b"
+      },
+      {
+        "path": "web/index.html",
+        "size": 14468,
+        "sha256": "9b1de2983200f128e2de94290c0c3f6a66373383e4df6844af18c6720d36d624"
+      },
+      {
+        "path": "web/style.css",
+        "size": 18083,
+        "sha256": "d8d4b34d474d4d09e5608c55ff027404970c4aac1dab17aacf27f62e890348f0"
+      },
+      {
+        "path": "worker/index.js",
+        "size": 9985,
+        "sha256": "8224d5590e08b5656d2eea05e1f3fca3afbefcd5021538bfef3d486da608a7ef"
+      }
+    ]
+  },
+  "runtime_equivalence": "NOT VERIFIED",
+  "production_signing_equivalence": "NOT VERIFIED",
+  "reproducible_binary": "NOT VERIFIED"
+}
