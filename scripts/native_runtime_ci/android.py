@@ -10,7 +10,7 @@ import time
 import urllib.request
 
 from scripts.native_build_ci.verify import verify_apk
-from .common import Blocked, Recorder, REPO, clean_env, json_file, protected_source, sanitize, sha256
+from .common import Blocked, Recorder, REPO, clean_env, json_file, protected_source, sanitize, sha256, verify_export
 from .definitions import ANDROID, INSTRUMENTATIONS
 from .sdk import prepare
 

@@ -91,3 +91,13 @@ Windows lượt này đã sửa loader: shell helper chạy vào assertion thay 
 Python unit hiện55/55 local, exit0; không thay/skip test cũ.
 
 Log nhập Git được lọc bí mật và chuẩn hóa trailing whitespace/newline; checksum trong báo cáo áp dụng byte sau chuẩn hóa. ZIP evidence gốc và manifest hash của producer được kiểm độc lập trước bước này, không gọi bản đã lọc là raw log nguyên byte.
+
+## Emulator boot thực và cross-process UI input
+
+Run43570158444 / head `e253d3805be5f1bfafdbff472429627ee7e507e5`: cả API35(Android15, fingerprint Android/sdk_phone64_x86_64/emu64x:15/AE3A.240806.019/12368160:userdebug/test-keys) và API29(Android10, Android/sdk_phone_x86_64/generic_x86_64:10/QSR1.210820.001/7663313:userdebug/test-keys) boot x86_64/KVM thật thành công. A01/A02/A03 PASS. A04 dừng NameError do import `verify_export` bị thiếu, trước install APK; giữ FAIL/NOT VERIFIED cho các bước sau. Sửa đúng import và thêm unit static symbol-table guard, không cài thêm dependency lint hoặc sửa production.
+
+Đã lọc thêm ephemeralADB **public** key khỏi boot log (không có private key); privateADBkey chưa từng export. Đặt ANDROID_EMULATOR_HOME/XDG_RUNTIME_DIR vào owned work root để prefs/cache/JWT runtime của emulator cũng được cô lập.
+
+Windows vẫn19/21: các readback mới cho thấy thao tác setter của helper không thay actual edit text, không phải tên đã nhập rồi mất qua backend. Microsoft Win32 docs xác nhận SetWindowText không dùng đổi control của process khác; cần gửi WM_SETTEXT trực tiếp (blob/path/excerpt trong win32-settext-provenance.json). Driver test-only mới dùng SendMessageTimeout(WM_SETTEXT) có kiểm return/GetLastError/readback cho filename, receive code và rename; giữ mọi assertion cũ. Console diagnostic native chuyển sang UTF-8 để không trộn wide/narrow stdout gây mất dòng PASS, không đổi UI app. Chưa gọi đây là Windows PASS cho tới rerun.
+
+Local unit57/57 exit0; actual NativeBuild43570158448 và fullNativeRegression43570158449/Coverage PASS tại head trên; vẫn cần lặp lại trên head cuối. Android oldselector chưa chạy, adaptation vẫn tắt.

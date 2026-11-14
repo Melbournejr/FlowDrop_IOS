@@ -22,6 +22,31 @@ from scripts.native_runtime_ci.test_sources import windows_driver
 
 
 class NativeRuntimeHarnessTests(unittest.TestCase):
+    def test_emulator_adb_public_key_is_omitted_from_exported_boot_log(self):
+        raw = 'INFO | androidboot.qemu.adb.pubkey=public-fixture-key runner@fixture\nINFO | Boot completed\n'
+        result = sanitize(raw)
+        self.assertNotIn('public-fixture-key', result)
+        self.assertIn('Boot completed', result)
+
+    def test_harness_has_no_unbound_global_helper_names(self):
+        import builtins
+        import symtable
+        def unbound(source, filename):
+            tree = symtable.symtable(source, filename, 'exec')
+            known = {s.get_name() for s in tree.get_symbols() if s.is_imported() or s.is_assigned() or s.is_namespace()}
+            known |= set(dir(builtins)) | {'__name__', '__file__', '__doc__', '__package__'}
+            missing = []
+            def walk(scope):
+                missing.extend(s.get_name() for s in scope.get_symbols()
+                               if s.is_global() and s.is_referenced() and s.get_name() not in known)
+                for child in scope.get_children():
+                    walk(child)
+            walk(tree)
+            return missing
+        self.assertEqual(unbound('def f(): return missing_fixture_helper()', 'fixture.py'), ['missing_fixture_helper'])
+        for path in (ROOT / 'scripts/native_runtime_ci').glob('*.py'):
+            self.assertEqual(unbound(path.read_text(encoding='utf-8'), str(path)), [], str(path))
+
     def test_sdk_registration_preserves_pinned_revision_license_and_refuses_overwrite(self):
         import xml.etree.ElementTree as ET
         row = next(row for row in selected_rows(35) if row['id'] == 'emulator')

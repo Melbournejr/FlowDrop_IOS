@@ -100,6 +100,7 @@ def sanitize(value, secrets=()):
     text = re.sub(r'(?is)-----BEGIN (?:[A-Z ]+ )?PRIVATE KEY-----.*?-----END (?:[A-Z ]+ )?PRIVATE KEY-----', '[REDACTED_PRIVATE_KEY]', text)
     text = re.sub(r'(?i)(?<![A-Za-z0-9_])(["\']?(?:token|statusToken|offerKey|localUploadCapability|authorization|password|code)["\']?\s*[:=]\s*)(?:["\'][^"\'\r\n]*["\']|[^\s,;}]+)', r'\1"[REDACTED]"', text)
     text = re.sub(r'(?i)Bearer\s+[A-Za-z0-9._~-]+', 'Bearer [REDACTED]', text)
+    text = re.sub(r'(?im)((?:androidboot\.)?qemu\.adb\.pubkey=)[^\r\n]+', r'\1[REDACTED_EPHEMERAL_ADB_PUBLIC_KEY]', text)
     text = re.sub(r'github_pat_[A-Za-z0-9_]{40,}|gh[pousr]_[A-Za-z0-9]{30,}', '[REDACTED_CREDENTIAL]', text)
     return text
 

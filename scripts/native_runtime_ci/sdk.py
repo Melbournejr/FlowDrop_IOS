@@ -201,9 +201,12 @@ def prepare(root, api, recorder):
     env = tool_env(tool)
     android_user = root / 'android-user'
     android_user.mkdir(mode=0o700)
+    emulator_user, xdg = android_user / 'emulator', android_user / 'xdg'
+    emulator_user.mkdir(mode=0o700); xdg.mkdir(mode=0o700)
     avds = root / 'avds'; avds.mkdir()
     env.update(ANDROID_SDK_ROOT=str(sdk), ANDROID_HOME=str(sdk), ANDROID_USER_HOME=str(android_user),
                ANDROID_AVD_HOME=str(avds), ADB_VENDOR_KEYS=str(android_user / 'adbkey'),
+               ANDROID_EMULATOR_HOME=str(emulator_user), XDG_RUNTIME_DIR=str(xdg),
                ADB_SERVER_PORT='5039', ANDROID_ADB_SERVER_PORT='5039', QT_QPA_PLATFORM='offscreen')
     adb = sdk / 'platform-tools/adb'
     recorder.run('adb-version', [adb, 'version'], env=env)
