@@ -54,7 +54,7 @@ def dialog_evidence(stop, destination, secrets):
             dialogs = []
             def window(hwnd, parameter):
                 title = text(hwnd)
-                if title not in ['Chọn file để gửi', 'Chọn thư mục để gửi']:
+                if title not in ['Chọn file để gửi', 'Chọn thư mục để gửi', 'Đổi tên thiết bị']:
                     return True
                 controls = []
                 def child_window(child, unused):

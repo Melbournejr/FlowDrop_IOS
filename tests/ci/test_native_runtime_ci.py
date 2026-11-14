@@ -16,11 +16,51 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 from scripts.native_runtime_ci.common import Blocked, Recorder, child, own_root, sanitize
 from scripts.native_runtime_ci.android import instrumentation_result
-from scripts.native_runtime_ci.sdk import extract_runtime_zip, host_libraries, official_ubuntu_mirrors
+from scripts.native_runtime_ci.sdk import extract_runtime_zip, host_libraries, official_ubuntu_mirrors, installed_metadata, selected_rows
 from scripts.native_runtime_ci.finish import export
+from scripts.native_runtime_ci.test_sources import windows_driver
 
 
 class NativeRuntimeHarnessTests(unittest.TestCase):
+    def test_sdk_registration_preserves_pinned_revision_license_and_refuses_overwrite(self):
+        import xml.etree.ElementTree as ET
+        row = next(row for row in selected_rows(35) if row['id'] == 'emulator')
+        with tempfile.TemporaryDirectory() as temp:
+            sdk = Path(temp); (sdk / 'emulator').mkdir()
+            (sdk / 'emulator/source.properties').write_text('Pkg.Revision=37.2.13\n')
+            receipt = installed_metadata(sdk, row)
+            package = sdk / 'emulator/package.xml'
+            raw = package.read_bytes(); document = ET.fromstring(raw)
+            local = document.find('localPackage')
+            self.assertEqual(local.get('path'), 'emulator')
+            self.assertEqual([local.findtext('revision/' + n) for n in ['major', 'minor', 'micro']], ['37', '2', '13'])
+            self.assertIsNone(local.find('archives'))
+            self.assertEqual(document.find('license').get('id'), local.find('uses-license').get('ref'))
+            self.assertEqual(receipt['official_metadata_sha256'], row['metadata_sha256'])
+            with self.assertRaises(FileExistsError):
+                installed_metadata(sdk, row)
+            self.assertEqual(package.read_bytes(), raw)
+            with self.assertRaises(Blocked):
+                installed_metadata(sdk, dict(row, metadata_sha256='0' * 64))
+
+    def test_real_dialog_driver_retains_original_assertions_and_fixtures(self):
+        import re
+        for name in ['windows-native-smoke', 'windows-shell-smoke']:
+            original = (ROOT / 'tests' / (name + '.cpp')).read_text(encoding='utf-8')
+            compiled = windows_driver(name, original)
+            self.assertIn('BM_CLICK', compiled)
+            # No original check/wait line or fixture literal may disappear.
+            for literal in re.findall(r'"([^"\n]+)"', original):
+                self.assertIn(literal, compiled)
+            self.assertGreaterEqual(compiled.count('check('), original.count('check('))
+            self.assertEqual((ROOT / 'tests' / (name + '.cpp')).read_text(encoding='utf-8'), original)
+
+    def test_dialog_driver_fails_closed_on_source_drift(self):
+        with self.assertRaises(Blocked):
+            windows_driver('windows-native-smoke', 'unreviewed new test source')
+        with self.assertRaises(Blocked):
+            windows_driver('other-helper', 'unreviewed test')
+
     def test_regional_official_mirrors_and_lookalike_rejection(self):
         valid = 'http://us-east-2.ec2.archive.ubuntu.com/ubuntu/\nhttp://azure.archive.ubuntu.com/ubuntu/\n'
         self.assertEqual(len(official_ubuntu_mirrors(valid)), 2)

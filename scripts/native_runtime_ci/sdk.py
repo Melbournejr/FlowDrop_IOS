@@ -1,5 +1,6 @@
 """Pinned official emulator tooling. No images, userdata or adb keys are artifacts."""
 import json
+import copy
 import os
 from pathlib import Path
 import re
@@ -9,10 +10,11 @@ import subprocess
 import urllib.parse
 import xml.etree.ElementTree as ET
 import zipfile
+from xml.sax.saxutils import quoteattr
 
 from scripts.native_build_ci.paths import archive_name, owned_root
 from scripts.native_build_ci.toolchain import fetch, provision, tool_env
-from .common import Blocked, REPO, sha256
+from .common import Blocked, REPO, sha256, json_file
 
 
 def extract_runtime_zip(path, destination):
@@ -72,6 +74,42 @@ def selected_rows(api):
         if len(matches) != 1 or not row['url'].startswith('https://dl.google.com/android/repository/'):
             raise Blocked('Runtime pin does not match official stable metadata')
     return selected
+
+
+def installed_metadata(sdk, row):
+    """Register the exact downloaded package, as sdkmanager normally would.
+
+    Direct ZIPs omit package.xml. New generic packages (notably emulator) are
+    otherwise invisible to avdmanager even though the executable is present.
+    Type, revision, dependencies and license are copied from authenticated
+    official metadata; no archive selection or binary bytes are changed.
+    """
+    metadata = REPO / 'docs/testing/runtime-2d1-provenance' / row['metadata']
+    if sha256(metadata) != row['metadata_sha256']:
+        raise Blocked('Installed package metadata provenance mismatch')
+    tree = ET.parse(metadata).getroot()
+    matches = [p for p in tree.findall('remotePackage') if p.get('path') == row['id'] and
+               any(c.findtext('url') == row['filename'] for c in p.findall('archives/archive/complete'))]
+    if len(matches) != 1:
+        raise Blocked('Installed package is not uniquely bound to downloaded archive')
+    package = ET.Element('localPackage', {'path': row['id'], 'obsolete': 'false'})
+    for element in matches[0]:
+        if element.tag not in ['archives', 'channelRef']:
+            package.append(copy.deepcopy(element))
+    namespaces = dict(data for _, data in ET.iterparse(metadata, events=['start-ns']))
+    declarations = ' '.join('xmlns:' + prefix + '=' + quoteattr(uri) for prefix, uri in namespaces.items() if prefix)
+    raw = ('<?xml version="1.0" encoding="UTF-8"?>\n'
+           '<localrepo:repository xmlns:localrepo="http://schemas.android.com/repository/android/common/02" ' + declarations + '>\n'
+           + '\n'.join(ET.tostring(license, encoding='unicode') for license in tree.findall('license'))
+           + ET.tostring(package, encoding='unicode') + '\n</localrepo:repository>\n')
+    ET.fromstring(raw)
+    directory = Path(sdk).joinpath(*row['id'].split(';'))
+    if not (directory / 'source.properties').is_file():
+        raise Blocked('Installed package directory/source.properties absent')
+    destination = directory / 'package.xml'
+    with destination.open('x', encoding='utf-8') as output:
+        output.write(raw)
+    return {'id': row['id'], 'official_metadata_sha256': row['metadata_sha256'], 'installed_package_xml_sha256': sha256(destination)}
 
 
 def official_ubuntu_mirrors(text):
@@ -143,6 +181,7 @@ def prepare(root, api, recorder):
     cache = tool / 'download-cache'
     provision(tool, cache, 'android')
     sdk = tool / 'tools/sdk'
+    package_receipts = []
     for row in selected_rows(api):
         path = fetch(row, cache)
         if row['id'].startswith('system-images;'):
@@ -150,6 +189,15 @@ def prepare(root, api, recorder):
         else:
             destination = sdk
         extract_runtime_zip(path, destination)
+        if row['id'] == 'cmdline-tools;19.0':
+            # avdmanager infers the SDK root from cmdline-tools/<version>/bin.
+            # A flat archive extraction incorrectly resolves one directory up.
+            flat, stage = sdk / 'cmdline-tools', sdk / 'cmdline-tools-layout-stage'
+            if stage.exists():
+                raise Blocked('Stale command-line tools layout stage')
+            flat.rename(stage); flat.mkdir(); stage.rename(flat / '19.0')
+        package_receipts.append(installed_metadata(sdk, row))
+    json_file(root / 'logs/installed-sdk-packages.json', package_receipts)
     env = tool_env(tool)
     android_user = root / 'android-user'
     android_user.mkdir(mode=0o700)
@@ -161,12 +209,12 @@ def prepare(root, api, recorder):
     recorder.run('adb-version', [adb, 'version'], env=env)
     host_libraries(sdk / 'emulator/emulator', recorder, env)
     recorder.run('emulator-version', [sdk / 'emulator/emulator', '-version'], env=env)
-    recorder.run('avdmanager-list', [sdk / 'cmdline-tools/bin/avdmanager', 'list', 'device'], env=env)
+    recorder.run('avdmanager-list', [sdk / 'cmdline-tools/19.0/bin/avdmanager', 'list', 'device'], env=env)
     recorder.run('adb-ephemeral-key', [adb, 'keygen', android_user / 'adbkey'], env=env)
     for file in android_user.glob('adbkey*'):
         file.chmod(0o600)
     name = 'FlowDrop_API_' + str(api)
-    recorder.run('create-owned-avd', [sdk / 'cmdline-tools/bin/avdmanager', 'create', 'avd', '--force', '--name', name,
+    recorder.run('create-owned-avd', [sdk / 'cmdline-tools/19.0/bin/avdmanager', 'create', 'avd', '--force', '--name', name,
         '--package', 'system-images;android-' + str(api) + ';default;x86_64', '--path', avds / (name + '.avd'), '--device', 'pixel_2'],
         env=env, input='no\n')
     config = avds / (name + '.avd/config.ini')

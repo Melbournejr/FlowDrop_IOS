@@ -14,6 +14,7 @@ from scripts.native_build_ci.paths import owned_root, fresh_child, remove_child,
 from scripts.native_build_ci.toolchain import provision, tool_env
 from scripts.native_build_ci.verify import verify_apk, pe_info, reject_secret_bytes
 from .common import protected_source
+from .test_sources import windows_driver
 
 
 def checksums(directory):
@@ -133,8 +134,11 @@ def windows(root, cache):
     files = []
     for name in ['windows-native-smoke', 'windows-shell-smoke']:
         output = helpers / ('FlowDrop-' + name + '-TEST-ONLY.exe')
+        original = source / 'tests' / (name + '.cpp')
+        compiled_source = helpers / (name + '.cpp')
+        compiled_source.write_text(windows_driver(name, original.read_text(encoding='utf-8')), encoding='utf-8')
         journal.run('compile-' + name, [compiler, '-std=c++17', '-O2', '-s', '-municode', '-static', '-static-libgcc', '-static-libstdc++',
-            '-I', source / 'desktop/windows/vendor', source / 'tests' / (name + '.cpp'), resource_object, '-o', output,
+            '-I', source / 'desktop/windows/vendor', '-I', source / 'tests', compiled_source, resource_object, '-o', output,
             '-lwinhttp', '-lcomctl32', '-lole32', '-luuid', '-lshell32', '-luxtheme', '-lgdi32', '-luser32', '-ladvapi32'], timeout=600)
         pe = pe_info(output.read_bytes())
         if pe['machine'] != 0x8664 or pe['subsystem'] != 3:
@@ -143,6 +147,8 @@ def windows(root, cache):
             raise RuntimeError('Helper activation manifest missing; TaskDialogIndirect requires Common Controls v6')
         files.append({'name': output.name, 'sha256': digest(output), 'size': output.stat().st_size,
                       'source': 'tests/' + name + '.cpp', 'source_sha256': digest(source / 'tests' / (name + '.cpp')),
+                      'compiled_test_source_sha256': digest(compiled_source),
+                      'test_only_adaptation': 'Wait for initialized real OS dialog, verify input readback, invoke actual button; existing assertions/timeouts retained',
                       'common_controls_v6_manifest_sha256': hashlib.sha256(manifest).hexdigest()})
     export = fresh_child(root, root / 'helper-export')
     for record in files:
