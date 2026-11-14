@@ -89,3 +89,5 @@ Tái hiện local bằng đúng archive đã kiểm SHA, không boot emulator: f
 Windows lượt này đã sửa loader: shell helper chạy vào assertion thay vì0xC0000139. Hai helper vẫn FAIL ở UI input: native picker không chọn file; shell báo config chưa có tên mới dù native UI báo lưu. OS dialog observations cho thấy control tạo theo nhiều đợt, filename edit1148 vẫn rỗng. Sửa driver trong bản sao test disposable: chờ dialog/primarybutton visible+enabled, nhập và kiểm text readback, invoke button BM_CLICK thật; giữ mọi fixture/assertion/timeout gốc, không chọc biến chọn file hoặc đổi app. Original440 file vẫn nguyên; ghi SHA nguồn gốc/nguồn test compile riêng. Unit chống source drift và giữ literal/assertion; hai bản sao C++ compile với manifest thực exit0, **không phải OS PASS**. Chờ rerun native.
 
 Python unit hiện55/55 local, exit0; không thay/skip test cũ.
+
+Log nhập Git được lọc bí mật và chuẩn hóa trailing whitespace/newline; checksum trong báo cáo áp dụng byte sau chuẩn hóa. ZIP evidence gốc và manifest hash của producer được kiểm độc lập trước bước này, không gọi bản đã lọc là raw log nguyên byte.

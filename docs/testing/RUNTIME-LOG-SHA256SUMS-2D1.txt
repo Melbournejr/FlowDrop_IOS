@@ -9,10 +9,10 @@ ab66d66b787b0682424b6fb9216cc8697537686a2752091e6bf8fee82aa98319  docs/testing/r
 38357f831c8e2a2aa1c97acc5fefa4905ac55fc1dfacad4ce082d169a6272890  docs/testing/runtime-2d1-logs/first-windows-os-commands.json
 3ea0dffcac5360d061a6cc9c9f534d68bebf4184963593ed8ee0f0aeef0b6a0a  docs/testing/runtime-2d1-logs/first-windows-os-results.json
 432e9c3090511badbf3b478039df3ca6651cbf0b3a90f9b289c09cf493fe7d1b  docs/testing/runtime-2d1-logs/first-windows-os-test-matrix.json
-8f4a674dd3ca03b3e61425f99b5d82337ae71adbd7469634fe9b4eb2f690ea64  docs/testing/runtime-2d1-logs/first-windows-os-windows-native-smoke.log
-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  docs/testing/runtime-2d1-logs/first-windows-os-windows-shell-smoke.log
-9e829b774d5247946a66ff57d0c3bdae7f80196961d59b7a553df3b6a1ebbfd0  docs/testing/runtime-2d1-logs/fourth-api35-create-owned-avd.log
-1a523c9091747b7bf48a755396278f2eca455352b40c281336f1c3e075607b54  docs/testing/runtime-2d1-logs/fourth-api35-emulator-version.log
+15ad84810d574c5296aa3d33d7616785b97b94acf10ae43dcc99c453b162c000  docs/testing/runtime-2d1-logs/first-windows-os-windows-native-smoke.log
+01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b  docs/testing/runtime-2d1-logs/first-windows-os-windows-shell-smoke.log
+446adc8e9b6dbee32329eea916fda3dc7414d4b3b3126cf7f8572dba63608009  docs/testing/runtime-2d1-logs/fourth-api35-create-owned-avd.log
+ebb87d088b5a29923b5be274beba060f53a55a4e5c269d461e918a0093b0131f  docs/testing/runtime-2d1-logs/fourth-api35-emulator-version.log
 b97c1e7d0fb8520446eb21e0e03ee224865cae14fdeabe1676e51b44cda18ec9  docs/testing/runtime-2d1-logs/fourth-api35-results.json
 9f680e4612f9e510e6a1733f7801fb7ffcbacbb0eeb55917200f2c7821f03a15  docs/testing/runtime-2d1-logs/fourth-api35-ubuntu-libpulse-observed.log
 b98604a1e99031acac4ad12ab86e216674aa8a8284b6e76ee63ede51541524ed  docs/testing/runtime-2d1-logs/local-derived-helper-compile.json
@@ -28,7 +28,7 @@ ab3b95f9ba41a80906be8a920200b0ea644fddb980c2620ce616d95dbcfb40b9  docs/testing/r
 61bb1f0c3ef7b2c39fcff4946c9cbaf4ebbf380af071d71067ab4c95ee1b6643  docs/testing/runtime-2d1-logs/second-api35-results.json
 f599865736c0dffd33ede3fa9c9447009e3965a6bfe010180192007034ac0a82  docs/testing/runtime-2d1-logs/second-windows-os-results.json
 3c423b52f13655b2e30e39e59c5f6e71a020a611260e08b8490fbbad0305439e  docs/testing/runtime-2d1-logs/second-windows-os-windows-native-smoke-dialogs.json
-8f4a674dd3ca03b3e61425f99b5d82337ae71adbd7469634fe9b4eb2f690ea64  docs/testing/runtime-2d1-logs/second-windows-os-windows-native-smoke.log
+15ad84810d574c5296aa3d33d7616785b97b94acf10ae43dcc99c453b162c000  docs/testing/runtime-2d1-logs/second-windows-os-windows-native-smoke.log
 71bb9fce64bf0a78edd1846b5c00a8429b1c372fce1a11f82bc23d1f66cdb1b2  docs/testing/runtime-2d1-logs/second-windows-os-windows-shell-smoke.log
 66cf151da59bcca1f41535a214300b69c222bb68a5cfd854a420ffd81e0af719  docs/testing/runtime-2d1-logs/third-api35-results.json
 773d3deb4587d673fd60be8c238bfb3f50c75451fc783e40a56db515d91d0b4a  docs/testing/runtime-2d1-logs/third-api35-ubuntu-libpulse-policy.log
