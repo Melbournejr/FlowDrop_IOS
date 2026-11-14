@@ -2,6 +2,7 @@
 import json
 import os
 from pathlib import Path
+import re
 import shutil
 import stat
 import subprocess
@@ -72,6 +73,40 @@ def selected_rows(api):
     return selected
 
 
+def host_libraries(emulator, recorder, env):
+    """Install only the missing library observed on the isolated Ubuntu 24.04 VM.
+
+    APT verifies distribution signatures; the selected candidate is fixed in the
+    install argv and its origin/version are recorded, rather than calling it a
+    pinned upstream emulator archive or silently swapping the emulator.
+    """
+    binary = emulator.parent / 'qemu/linux-x86_64/qemu-system-x86_64'
+    output, code = recorder.run('emulator-host-ldd-before', ['/usr/bin/ldd', binary], env=env, check=False)
+    missing = set(re.findall(r'^\s*(\S+) => not found$', output, re.M))
+    if not missing:
+        if code != 0:
+            raise Blocked('Could not inspect emulator host dependencies')
+        return
+    if missing != {'libpulse.so.0'}:
+        raise Blocked('Unreviewed missing emulator host libraries: ' + ', '.join(sorted(missing)))
+    os_release = Path('/etc/os-release').read_text()
+    if 'ID=ubuntu' not in os_release or 'VERSION_ID="24.04"' not in os_release:
+        raise Blocked('Library provisioning is restricted to the owned Ubuntu 24.04 hosted runner')
+    recorder.run('ubuntu-signed-package-index', ['sudo', '-n', '/usr/bin/apt-get', 'update'], env=env, timeout=180)
+    policy, _ = recorder.run('ubuntu-libpulse-policy', ['/usr/bin/apt-cache', 'policy', 'libpulse0'], env=env)
+    candidate = re.search(r'^\s*Candidate:\s*(\S+)$', policy, re.M)
+    if not candidate or not re.fullmatch(r'[0-9A-Za-z.+:~_-]+', candidate.group(1)) or candidate.group(1) == '(none)':
+        raise Blocked('No explicit libpulse0 distribution candidate')
+    if not re.search(r'https?://(?:azure\.archive|archive|security)\.ubuntu\.com/ubuntu\s+noble(?:-updates|-security)?/main', policy):
+        raise Blocked('libpulse0 origin is not an expected official Ubuntu Noble archive')
+    recorder.run('ubuntu-libpulse-install', ['sudo', '-n', '/usr/bin/apt-get', 'install', '--yes', '--no-install-recommends',
+                 'libpulse0=' + candidate.group(1)], env=env, timeout=180)
+    recorder.run('ubuntu-libpulse-observed', ['/usr/bin/dpkg-query', '-W', '-f=${Package} ${Version} ${Architecture}\n', 'libpulse0'], env=env)
+    after, code = recorder.run('emulator-host-ldd-after', ['/usr/bin/ldd', binary], env=env, check=False)
+    if code != 0 or '=> not found' in after:
+        raise Blocked('Emulator still has unresolved host libraries after scoped provisioning')
+
+
 def prepare(root, api, recorder):
     root = Path(root)
     if shutil.disk_usage(root).free < 15 * 2**30:
@@ -96,6 +131,7 @@ def prepare(root, api, recorder):
                ADB_SERVER_PORT='5039', ANDROID_ADB_SERVER_PORT='5039', QT_QPA_PLATFORM='offscreen')
     adb = sdk / 'platform-tools/adb'
     recorder.run('adb-version', [adb, 'version'], env=env)
+    host_libraries(sdk / 'emulator/emulator', recorder, env)
     recorder.run('emulator-version', [sdk / 'emulator/emulator', '-version'], env=env)
     recorder.run('avdmanager-list', [sdk / 'cmdline-tools/bin/avdmanager', 'list', 'device'], env=env)
     recorder.run('adb-ephemeral-key', [adb, 'keygen', android_user / 'adbkey'], env=env)

@@ -57,3 +57,13 @@ Log và JSON được lọc token/capability/password/code trước upload; khô
 - P3: evidence tạm7ngày; report lưu mốc đã chạy, PR body ghi head/run cuối để tránh self-SHA recursion.
 
 Rollback bằng PR revert các file harness/workflow/docs thêm của2D.1, giữ main/Ruleset, app/data/key/Release. Không merge, publish, nâng version hoặc triển khai2D.2/3. Khi có môi trường blocker, báo PARTIAL và đưa hướng dẫn Windows VM/emulator/thiết bị thử cụ thể thay vì báoPASS.
+
+## CI lần đầu và sửa hạ tầng (chưa nghiệm thu runtime)
+
+Draft PR #10; head đầu `97dccd7bb214f574d30727a6e889a561e6ceb73f`. Run [43551446591](https://github.com/Melbournejr/FlowDrop_IOS/actions/runs/43551446591) đã build app/instrumentation/Windows/helper thành công từ source checkout sạch. Hai API xác nhận KVM read/write, khoảng94.85GB đĩa nhưng `emulator -version` exit127: thiếu `libpulse.so.0`. Chưa boot/install nên không suy ra lỗi sản phẩm. Archive evidence được đối chiếu digest/size GitHub, CRC/paths và manifest file SHA trước nhập log đã lọc.
+
+Sửa provisioning trong harness mới: `ldd` chỉ chấp nhận missing `libpulse.so.0` đã quan sát, giới hạn Ubuntu24.04, APT signed index và official Noble origin, candidate version được cố định vào argv install và ghi observed dpkg version; unresolved library khác vẫn BLOCKED. Không thay SDK/emulator hoặc production. Host APT dependency không phải archive pin bất biến; report ghi version thực từ runner. Thêm negative/unit guard không tự cài package chưa review.
+
+Job Windows dừng trước runtime: `actions/setup-python` không có3.12.16 Windows2025. Chỉ job Windows đổi sang3.12.10 có file win32-x64 được xác minh trong manifest chính thức actions/python-versions (blobSHA trong log provenance). Các job Linux/build cũ không đổi. Không gọi lỗi setup là lỗi app.
+
+Unit sau sửa:51/51 thực chạy local, exit0; xem `unit-host-library-fix.log`. Test selector NativeSmoke vẫn chưa chạy trên Android, chưa bật adaptation. Các lần đầu/label event hủy bởi concurrency không được tính PASS. CI đầy đủ sẽ được kiểm lại trên head cuối.
