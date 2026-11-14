@@ -40,6 +40,9 @@ class NativeRuntimeHarnessTests(unittest.TestCase):
         command = recorder.run.call_args_list[3].args[1]
         self.assertIn('libpulse0=1:16.1+dfsg1-2ubuntu10', command)
         self.assertNotIn('--allow-unauthenticated', command)
+        self.assertEqual(recorder.run.call_args_list[0].kwargs['env']['LD_LIBRARY_PATH'],
+                         '/fixture/emulator/lib64' + os.pathsep + '/fixture/emulator/lib64/qt/lib')
+        self.assertNotIn('LD_LIBRARY_PATH', recorder.run.call_args_list[3].kwargs['env'])
 
     def test_am_instrument_zero_process_exit_is_not_a_test_pass(self):
         for output, code in [('INSTRUMENTATION_CODE: 0', 0), ('INSTRUMENTATION_FAILED: process crashed', 0),

@@ -81,7 +81,12 @@ def host_libraries(emulator, recorder, env):
     pinned upstream emulator archive or silently swapping the emulator.
     """
     binary = emulator.parent / 'qemu/linux-x86_64/qemu-system-x86_64'
-    output, code = recorder.run('emulator-host-ldd-before', ['/usr/bin/ldd', binary], env=env, check=False)
+    # The official launcher supplies these authenticated bundled libraries.
+    # Direct ldd without the launcher's paths falsely reports Qt/Android .so files
+    # as missing host packages. Scope the paths to dependency inspection only.
+    probe_env = dict(env)
+    probe_env['LD_LIBRARY_PATH'] = os.pathsep.join(str(emulator.parent / suffix) for suffix in ['lib64', 'lib64/qt/lib'])
+    output, code = recorder.run('emulator-host-ldd-before', ['/usr/bin/ldd', binary], env=probe_env, check=False)
     missing = set(re.findall(r'^\s*(\S+) => not found$', output, re.M))
     if not missing:
         if code != 0:
@@ -102,7 +107,7 @@ def host_libraries(emulator, recorder, env):
     recorder.run('ubuntu-libpulse-install', ['sudo', '-n', '/usr/bin/apt-get', 'install', '--yes', '--no-install-recommends',
                  'libpulse0=' + candidate.group(1)], env=env, timeout=180)
     recorder.run('ubuntu-libpulse-observed', ['/usr/bin/dpkg-query', '-W', '-f=${Package} ${Version} ${Architecture}\n', 'libpulse0'], env=env)
-    after, code = recorder.run('emulator-host-ldd-after', ['/usr/bin/ldd', binary], env=env, check=False)
+    after, code = recorder.run('emulator-host-ldd-after', ['/usr/bin/ldd', binary], env=probe_env, check=False)
     if code != 0 or '=> not found' in after:
         raise Blocked('Emulator still has unresolved host libraries after scoped provisioning')
 

@@ -151,6 +151,11 @@ jobs:
     needs:
     - build_windows
     runs-on: windows-2025
+    env:
+      # Preserve Git blob bytes; Windows autocrlf otherwise breaks SHA evidence.
+      GIT_CONFIG_COUNT: '1'
+      GIT_CONFIG_KEY_0: core.autocrlf
+      GIT_CONFIG_VALUE_0: 'false'
     timeout-minutes: 45
     outputs:
       runtime_status: ${{ steps.result.outputs.status }}

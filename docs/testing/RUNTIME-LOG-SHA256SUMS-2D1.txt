@@ -9,4 +9,6 @@ ab66d66b787b0682424b6fb9216cc8697537686a2752091e6bf8fee82aa98319  docs/testing/r
 7d1c673fb43e8010a90dc7bbc92b6c90f8655da34002cb645716cdacd2bd1c04  docs/testing/runtime-2d1-logs/local-unit.json
 9fda17b9341cea812015ce9c0751cef4b458fd8ddfc7e24f24c05e70b107bc22  docs/testing/runtime-2d1-logs/local-unit.log
 ab3b95f9ba41a80906be8a920200b0ea644fddb980c2620ce616d95dbcfb40b9  docs/testing/runtime-2d1-logs/python-windows-provenance.json
+0dd0ac4256b36ef7f855f0f6786235892f9f68d6889efd0d6ff6753463e306d4  docs/testing/runtime-2d1-logs/second-api35-emulator-host-ldd-before.log
+61bb1f0c3ef7b2c39fcff4946c9cbaf4ebbf380af071d71067ab4c95ee1b6643  docs/testing/runtime-2d1-logs/second-api35-results.json
 c4ba61af8e3350862e3c252aa603f448125e3d5b8538a93b00370166dba315fa  docs/testing/runtime-2d1-logs/unit-host-library-fix.log
