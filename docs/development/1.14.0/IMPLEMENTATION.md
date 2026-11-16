@@ -136,3 +136,13 @@ or authentication. Native tests continue requiring an actual successful TLS
 handshake and rejection of an unpaired request; a failure records only public
 exception classes/keywords and requested key types. It is not a simulated PASS.
 Previously created experimental transport keys are not silently replaced.
+
+Android logcat at `d4320d9` records **KeyStoreException: Incompatible padding
+mode** in Conscrypt `rsaSignDigestWithPrivateKey`. The [AOSP implementation](https://android.googlesource.com/platform/external/conscrypt/+/refs/heads/android10-release/common/src/main/java/org/conscrypt/CryptoUpcalls.java)
+uses `Cipher.ENCRYPT_MODE` with an already encoded RSA signature (including the
+`RSA_NO_PADDING` path). The new device key also permits this raw operation, while
+retaining SIGN/VERIFY purposes only. Conscrypt still performs the standard TLS
+RSA-PSS/PKCS1 scheme, handshake hashing and peer validation; this does not create
+an unpadded TLS signature algorithm. Actual OS probes require **both TLS1.2 and
+TLS1.3** plus unpaired-request rejection; neither version is disabled to hide the
+failure. New test profiles are fresh; no existing key is deleted or regenerated.

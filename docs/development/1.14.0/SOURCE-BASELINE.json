@@ -22,7 +22,7 @@
     {
       "path": "android/src/app/flowdrop/mobile/AndroidDeviceVault.java",
       "base_sha256": null,
-      "sha256": "53308a0b2c372e2e99069318a6d1d7613a77d97db2f1e28470efabda7bb92326"
+      "sha256": "0ce29628942cab57a33090232c90a9df1ea1584f407238268fc25c05e97cd4c3"
     },
     {
       "path": "android/src/app/flowdrop/mobile/CodeLookup.java",
@@ -237,7 +237,7 @@
     {
       "path": "tests/android-runtime/NativeRuntimeSmoke.java",
       "base_sha256": "1b66760dad004c1324c2dc3b5ce9ef019eff0c4d1264a43993d5d19d56a92899",
-      "sha256": "15601c2c4d43ada0aa089d2966f1b4419bac2a826333389ec0221212241a0f6f"
+      "sha256": "64f2a3f23107092503944cf9c9df37fdf531040fa4502e8fbc6d56752da7c47f"
     },
     {
       "path": "tests/ci/run.py",
@@ -292,7 +292,7 @@
     {
       "path": "tests/native-tls-probe.mjs",
       "base_sha256": null,
-      "sha256": "1a2fda1ea8fdb94d99511febb652a31e3b0fffe168fba1e9c9240ef7f8580d25"
+      "sha256": "37b9fe7ba9f60ad550de5e8af9fabba172af41aff7f79673ec1169c3bf2f89d7"
     },
     {
       "path": "tests/secure-cross-platform-114.mjs",
