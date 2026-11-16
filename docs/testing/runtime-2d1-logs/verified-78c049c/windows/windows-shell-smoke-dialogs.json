@@ -1,0 +1,67 @@
+{
+  "scope": "Actual Windows file-dialog diagnostics; no UI operations",
+  "observations": [
+    {
+      "utc": "2026-11-14T08:01:00Z",
+      "dialogs": []
+    },
+    {
+      "utc": "2026-11-14T08:01:00Z",
+      "dialogs": [
+        {
+          "title": "Đổi tên thiết bị",
+          "controls": [
+            {
+              "class": "Static",
+              "id": -1,
+              "text": "Tên hiển thị trong Wi-Fi · tối đa 50 ký tự",
+              "rect": [
+                56,
+                130,
+                504,
+                160
+              ]
+            },
+            {
+              "class": "Edit",
+              "id": 6002,
+              "text": "runnervmm7ud1",
+              "rect": [
+                56,
+                169,
+                504,
+                212
+              ]
+            },
+            {
+              "class": "Button",
+              "id": 1,
+              "text": "Lưu",
+              "rect": [
+                305,
+                234,
+                400,
+                272
+              ]
+            },
+            {
+              "class": "Button",
+              "id": 2,
+              "text": "Hủy",
+              "rect": [
+                410,
+                234,
+                505,
+                272
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "utc": "2026-11-14T08:01:01Z",
+      "dialogs": []
+    }
+  ]
+}

@@ -1,0 +1,94 @@
+{
+  "status": "PASS",
+  "jar_url": "https://repo.maven.apache.org/maven2/org/json/json/20240303/json-20240303.jar",
+  "jar_sha256": "3cf6cd6892e32e2b4c1c39e0f52f5248a2f5b37646fdfbb79a66b46b618414ed",
+  "steps": [
+    {
+      "name": "node-version",
+      "command": [
+        "node",
+        "--version"
+      ],
+      "status": "PASS",
+      "executed": true,
+      "exit_code": 0,
+      "raw_returncode": 0,
+      "timeout": false,
+      "timeout_seconds": 30,
+      "wall_seconds": 0.004
+    },
+    {
+      "name": "java-version",
+      "command": [
+        "java",
+        "-version"
+      ],
+      "status": "PASS",
+      "executed": true,
+      "exit_code": 0,
+      "raw_returncode": 0,
+      "timeout": false,
+      "timeout_seconds": 30,
+      "wall_seconds": 1.322
+    },
+    {
+      "name": "python-version",
+      "command": [
+        "/opt/hostedtoolcache/Python/3.12.16/x64/bin/python3",
+        "--version"
+      ],
+      "status": "PASS",
+      "executed": true,
+      "exit_code": 0,
+      "raw_returncode": 0,
+      "timeout": false,
+      "timeout_seconds": 30,
+      "wall_seconds": 0.002
+    },
+    {
+      "name": "jar-download",
+      "command": [
+        "curl",
+        "--fail",
+        "--location",
+        "--retry",
+        "3",
+        "--connect-timeout",
+        "15",
+        "--max-time",
+        "120",
+        "--proto",
+        "=https",
+        "https://repo.maven.apache.org/maven2/org/json/json/20240303/json-20240303.jar",
+        "-o",
+        "/home/runner/work/_temp/flowdrop-native-zip64/tools/json-20240303.jar"
+      ],
+      "status": "PASS",
+      "executed": true,
+      "exit_code": 0,
+      "raw_returncode": 0,
+      "timeout": false,
+      "timeout_seconds": 150,
+      "wall_seconds": 0.178
+    },
+    {
+      "name": "npm-ci",
+      "command": [
+        "npm",
+        "ci",
+        "--ignore-scripts",
+        "--no-audit",
+        "--no-fund",
+        "--cache",
+        "/home/runner/work/_temp/flowdrop-native-zip64/tools/npm-cache"
+      ],
+      "status": "PASS",
+      "executed": true,
+      "exit_code": 0,
+      "raw_returncode": 0,
+      "timeout": false,
+      "timeout_seconds": 300,
+      "wall_seconds": 1.377
+    }
+  ]
+}

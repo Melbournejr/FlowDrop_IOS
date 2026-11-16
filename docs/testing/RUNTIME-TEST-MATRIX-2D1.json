@@ -1,0 +1,2743 @@
+{
+  "phase": "2D.1",
+  "base": "9171e7f1ffbc0143d6e11374e3f6c847853341fe",
+  "source_commit": "78c049cc0a9bfba47d0bd8b4cab4f5657cb80ddf",
+  "checkout_commit": "b94d50fa27880b04bbaed6b194c4c0ed4646c7c8",
+  "status": "PASS",
+  "required_groups": 53,
+  "passed_groups": 53,
+  "additional_native_subchecks": 20,
+  "final_head_evidence_policy": "Embedded evidence snapshot is commit-bound to 78c049cc0a9bfba47d0bd8b4cab4f5657cb80ddf. Final PR head is verified after committing reports; PR #10 body links exact final SHA/runs and their authoritative same-head runtime matrices/artifact manifests. No test is declared PASS merely by this document.",
+  "tests": [
+    {
+      "test_id": "W01-environment",
+      "platform": "windows",
+      "os_api": "{\n    \"Caption\":  \"Microsoft Windows Server 2025 Datacenter\",\n    \"Version\":  \"10.0.26100\",\n    \"BuildNumber\":  \"26100\",\n    \"OSArchitecture\":  \"64-bit\"\n}",
+      "source_commit": "78c049cc0a9bfba47d0bd8b4cab4f5657cb80ddf",
+      "checkout_commit": "b94d50fa27880b04bbaed6b194c4c0ed4646c7c8",
+      "artifact_sha256": {
+        "installer": "930146616a740af150ccbc0f92594cd88f456788b4f79f5d72a1c269b562d277",
+        "FlowDrop-windows-native-smoke-TEST-ONLY.exe": "7885508282f7a17775565e916eedfb4b52d7a6a597e551fd93b1d51a85034e05",
+        "FlowDrop-windows-shell-smoke-TEST-ONLY.exe": "30c02966f117d724bab4f0d945ca63afa17615e1ee4827195beb1bbcedad18c9"
+      },
+      "preconditions": "Owned isolated environment and verified artifact",
+      "command_or_method": "scripts/native_runtime_ci/windows.py::run, case W01-environment; actual child commands/exit codes in sibling commands.json",
+      "expected": "Real isolated Windows GitHub-hosted runner; no existing FlowDrop/profile/shortcuts/registry",
+      "actual": {
+        "os": {
+          "Caption": "Microsoft Windows Server 2025 Datacenter",
+          "Version": "10.0.26100",
+          "BuildNumber": "26100",
+          "OSArchitecture": "64-bit"
+        },
+        "preexisting_flowdrop": false
+      },
+      "exit_code": null,
+      "time_started_utc": "2026-11-14T08:00:33Z",
+      "wall_seconds": 3.469,
+      "evidence_path": "docs/testing/runtime-2d1-logs/verified-78c049c/windows/results.json",
+      "required": true,
+      "status": "PASS"
+    },
+    {
+      "test_id": "W02-provenance",
+      "platform": "windows",
+      "os_api": "{\n    \"Caption\":  \"Microsoft Windows Server 2025 Datacenter\",\n    \"Version\":  \"10.0.26100\",\n    \"BuildNumber\":  \"26100\",\n    \"OSArchitecture\":  \"64-bit\"\n}",
+      "source_commit": "78c049cc0a9bfba47d0bd8b4cab4f5657cb80ddf",
+      "checkout_commit": "b94d50fa27880b04bbaed6b194c4c0ed4646c7c8",
+      "artifact_sha256": {
+        "installer": "930146616a740af150ccbc0f92594cd88f456788b4f79f5d72a1c269b562d277",
+        "FlowDrop-windows-native-smoke-TEST-ONLY.exe": "7885508282f7a17775565e916eedfb4b52d7a6a597e551fd93b1d51a85034e05",
+        "FlowDrop-windows-shell-smoke-TEST-ONLY.exe": "30c02966f117d724bab4f0d945ca63afa17615e1ee4827195beb1bbcedad18c9"
+      },
+      "preconditions": "Owned isolated environment and verified artifact",
+      "command_or_method": "scripts/native_runtime_ci/windows.py::run, case W02-provenance; actual child commands/exit codes in sibling commands.json",
+      "expected": "Same-checkout TEST ONLY installer and helpers with verified SHA-256 inventory",
+      "actual": {
+        "installer_sha256": "930146616a740af150ccbc0f92594cd88f456788b4f79f5d72a1c269b562d277",
+        "helper_files_verified": 2
+      },
+      "exit_code": null,
+      "time_started_utc": "2026-11-14T08:00:36Z",
+      "wall_seconds": 0.156,
+      "evidence_path": "docs/testing/runtime-2d1-logs/verified-78c049c/windows/results.json",
+      "required": true,
+      "status": "PASS"
+    },
+    {
+      "test_id": "W03-install",
+      "platform": "windows",
+      "os_api": "{\n    \"Caption\":  \"Microsoft Windows Server 2025 Datacenter\",\n    \"Version\":  \"10.0.26100\",\n    \"BuildNumber\":  \"26100\",\n    \"OSArchitecture\":  \"64-bit\"\n}",
+      "source_commit": "78c049cc0a9bfba47d0bd8b4cab4f5657cb80ddf",
+      "checkout_commit": "b94d50fa27880b04bbaed6b194c4c0ed4646c7c8",
+      "artifact_sha256": {
+        "installer": "930146616a740af150ccbc0f92594cd88f456788b4f79f5d72a1c269b562d277",
+        "FlowDrop-windows-native-smoke-TEST-ONLY.exe": "7885508282f7a17775565e916eedfb4b52d7a6a597e551fd93b1d51a85034e05",
+        "FlowDrop-windows-shell-smoke-TEST-ONLY.exe": "30c02966f117d724bab4f0d945ca63afa17615e1ee4827195beb1bbcedad18c9"
+      },
+      "preconditions": "Owned isolated environment and verified artifact",
+      "command_or_method": "Verified TEST ONLY NSIS installer /S",
+      "expected": "NSIS /S exits zero and baseline install directory exists",
+      "actual": {
+        "install_directory": "C:\\Users\\runneradmin\\AppData\\Local\\Programs\\FlowDrop"
+      },
+      "exit_code": 0,
+      "time_started_utc": "2026-11-14T08:00:37Z",
+      "wall_seconds": 2.625,
+      "evidence_path": "docs/testing/runtime-2d1-logs/verified-78c049c/windows/results.json",
+      "required": true,
+      "status": "PASS"
+    },
+    {
+      "test_id": "W04-payload",
+      "platform": "windows",
+      "os_api": "{\n    \"Caption\":  \"Microsoft Windows Server 2025 Datacenter\",\n    \"Version\":  \"10.0.26100\",\n    \"BuildNumber\":  \"26100\",\n    \"OSArchitecture\":  \"64-bit\"\n}",
+      "source_commit": "78c049cc0a9bfba47d0bd8b4cab4f5657cb80ddf",
+      "checkout_commit": "b94d50fa27880b04bbaed6b194c4c0ed4646c7c8",
+      "artifact_sha256": {
+        "installer": "930146616a740af150ccbc0f92594cd88f456788b4f79f5d72a1c269b562d277",
+        "FlowDrop-windows-native-smoke-TEST-ONLY.exe": "7885508282f7a17775565e916eedfb4b52d7a6a597e551fd93b1d51a85034e05",
+        "FlowDrop-windows-shell-smoke-TEST-ONLY.exe": "30c02966f117d724bab4f0d945ca63afa17615e1ee4827195beb1bbcedad18c9"
+      },
+      "preconditions": "Owned isolated environment and verified artifact",
+      "command_or_method": "scripts/native_runtime_ci/windows.py::run, case W04-payload; actual child commands/exit codes in sibling commands.json",
+      "expected": "Installed payload SHA, Node pin, x64 PE and version match producer inventory",
+      "actual": {
+        "payload_files": 128,
+        "machine": "AMD64",
+        "subsystem": "WINDOWS_GUI",
+        "node_sha256": "1c331340fa6cac5e4294725959070a143fa0507195a78ad77eed7943f719aac9"
+      },
+      "exit_code": null,
+      "time_started_utc": "2026-11-14T08:00:39Z",
+      "wall_seconds": 0.188,
+      "evidence_path": "docs/testing/runtime-2d1-logs/verified-78c049c/windows/results.json",
+      "required": true,
+      "status": "PASS"
+    },
+    {
+      "test_id": "W05-start",
+      "platform": "windows",
+      "os_api": "{\n    \"Caption\":  \"Microsoft Windows Server 2025 Datacenter\",\n    \"Version\":  \"10.0.26100\",\n    \"BuildNumber\":  \"26100\",\n    \"OSArchitecture\":  \"64-bit\"\n}",
+      "source_commit": "78c049cc0a9bfba47d0bd8b4cab4f5657cb80ddf",
+      "checkout_commit": "b94d50fa27880b04bbaed6b194c4c0ed4646c7c8",
+      "artifact_sha256": {
+        "installer": "930146616a740af150ccbc0f92594cd88f456788b4f79f5d72a1c269b562d277",
+        "FlowDrop-windows-native-smoke-TEST-ONLY.exe": "7885508282f7a17775565e916eedfb4b52d7a6a597e551fd93b1d51a85034e05",
+        "FlowDrop-windows-shell-smoke-TEST-ONLY.exe": "30c02966f117d724bab4f0d945ca63afa17615e1ee4827195beb1bbcedad18c9"
+      },
+      "preconditions": "Owned isolated environment and verified artifact",
+      "command_or_method": "scripts/native_runtime_ci/windows.py::run, case W05-start; actual child commands/exit codes in sibling commands.json",
+      "expected": "Real FlowDrop.exe process and its real Node backend start",
+      "actual": {
+        "processes": [
+          {
+            "ProcessId": 6136,
+            "ParentProcessId": 8852,
+            "ExecutablePath": "C:\\Users\\runneradmin\\AppData\\Local\\Programs\\FlowDrop\\FlowDrop.exe"
+          },
+          {
+            "ProcessId": 7888,
+            "ParentProcessId": 6136,
+            "ExecutablePath": "C:\\Users\\runneradmin\\AppData\\Local\\Programs\\FlowDrop\\runtime\\node.exe"
+          }
+        ],
+        "app_pid": 6136,
+        "backend_pid": 7888
+      },
+      "exit_code": null,
+      "time_started_utc": "2026-11-14T08:00:39Z",
+      "wall_seconds": 1.812,
+      "evidence_path": "docs/testing/runtime-2d1-logs/verified-78c049c/windows/results.json",
+      "required": true,
+      "status": "PASS"
+    },
+    {
+      "test_id": "W06-http",
+      "platform": "windows",
+      "os_api": "{\n    \"Caption\":  \"Microsoft Windows Server 2025 Datacenter\",\n    \"Version\":  \"10.0.26100\",\n    \"BuildNumber\":  \"26100\",\n    \"OSArchitecture\":  \"64-bit\"\n}",
+      "source_commit": "78c049cc0a9bfba47d0bd8b4cab4f5657cb80ddf",
+      "checkout_commit": "b94d50fa27880b04bbaed6b194c4c0ed4646c7c8",
+      "artifact_sha256": {
+        "installer": "930146616a740af150ccbc0f92594cd88f456788b4f79f5d72a1c269b562d277",
+        "FlowDrop-windows-native-smoke-TEST-ONLY.exe": "7885508282f7a17775565e916eedfb4b52d7a6a597e551fd93b1d51a85034e05",
+        "FlowDrop-windows-shell-smoke-TEST-ONLY.exe": "30c02966f117d724bab4f0d945ca63afa17615e1ee4827195beb1bbcedad18c9"
+      },
+      "preconditions": "Owned isolated environment and verified artifact",
+      "command_or_method": "scripts/native_runtime_ci/windows.py::run, case W06-http; actual child commands/exit codes in sibling commands.json",
+      "expected": "Live native backend config version1.13.0, Windows mode and authorization boundary",
+      "actual": {
+        "name": "FlowDrop",
+        "version": "1.13.0",
+        "platform": "windows",
+        "mode": "local"
+      },
+      "exit_code": null,
+      "time_started_utc": "2026-11-14T08:00:41Z",
+      "wall_seconds": 0.0,
+      "evidence_path": "docs/testing/runtime-2d1-logs/verified-78c049c/windows/results.json",
+      "required": true,
+      "status": "PASS"
+    },
+    {
+      "test_id": "W07-window",
+      "platform": "windows",
+      "os_api": "{\n    \"Caption\":  \"Microsoft Windows Server 2025 Datacenter\",\n    \"Version\":  \"10.0.26100\",\n    \"BuildNumber\":  \"26100\",\n    \"OSArchitecture\":  \"64-bit\"\n}",
+      "source_commit": "78c049cc0a9bfba47d0bd8b4cab4f5657cb80ddf",
+      "checkout_commit": "b94d50fa27880b04bbaed6b194c4c0ed4646c7c8",
+      "artifact_sha256": {
+        "installer": "930146616a740af150ccbc0f92594cd88f456788b4f79f5d72a1c269b562d277",
+        "FlowDrop-windows-native-smoke-TEST-ONLY.exe": "7885508282f7a17775565e916eedfb4b52d7a6a597e551fd93b1d51a85034e05",
+        "FlowDrop-windows-shell-smoke-TEST-ONLY.exe": "30c02966f117d724bab4f0d945ca63afa17615e1ee4827195beb1bbcedad18c9"
+      },
+      "preconditions": "Owned isolated environment and verified artifact",
+      "command_or_method": "scripts/native_runtime_ci/windows.py::run, case W07-window; actual child commands/exit codes in sibling commands.json",
+      "expected": "FlowDrop native HWND created; interactive capability measured separately",
+      "actual": {
+        "native_hwnd_created": true,
+        "is_window_visible": true,
+        "interactive_desktop": "True\n2",
+        "scope": "Actual HWND; legacy native test separately checks visible Explorer and native dialogs"
+      },
+      "exit_code": null,
+      "time_started_utc": "2026-11-14T08:00:41Z",
+      "wall_seconds": 0.219,
+      "evidence_path": "docs/testing/runtime-2d1-logs/verified-78c049c/windows/results.json",
+      "required": true,
+      "status": "PASS"
+    },
+    {
+      "test_id": "W08-single-instance",
+      "platform": "windows",
+      "os_api": "{\n    \"Caption\":  \"Microsoft Windows Server 2025 Datacenter\",\n    \"Version\":  \"10.0.26100\",\n    \"BuildNumber\":  \"26100\",\n    \"OSArchitecture\":  \"64-bit\"\n}",
+      "source_commit": "78c049cc0a9bfba47d0bd8b4cab4f5657cb80ddf",
+      "checkout_commit": "b94d50fa27880b04bbaed6b194c4c0ed4646c7c8",
+      "artifact_sha256": {
+        "installer": "930146616a740af150ccbc0f92594cd88f456788b4f79f5d72a1c269b562d277",
+        "FlowDrop-windows-native-smoke-TEST-ONLY.exe": "7885508282f7a17775565e916eedfb4b52d7a6a597e551fd93b1d51a85034e05",
+        "FlowDrop-windows-shell-smoke-TEST-ONLY.exe": "30c02966f117d724bab4f0d945ca63afa17615e1ee4827195beb1bbcedad18c9"
+      },
+      "preconditions": "Owned isolated environment and verified artifact",
+      "command_or_method": "scripts/native_runtime_ci/windows.py::run, case W08-single-instance; actual child commands/exit codes in sibling commands.json",
+      "expected": "Second native invocation exits and original process survives",
+      "actual": {
+        "original_pid_preserved": true
+      },
+      "exit_code": 0,
+      "time_started_utc": "2026-11-14T08:00:41Z",
+      "wall_seconds": 0.0,
+      "evidence_path": "docs/testing/runtime-2d1-logs/verified-78c049c/windows/results.json",
+      "required": true,
+      "status": "PASS"
+    },
+    {
+      "test_id": "W09-shortcuts",
+      "platform": "windows",
+      "os_api": "{\n    \"Caption\":  \"Microsoft Windows Server 2025 Datacenter\",\n    \"Version\":  \"10.0.26100\",\n    \"BuildNumber\":  \"26100\",\n    \"OSArchitecture\":  \"64-bit\"\n}",
+      "source_commit": "78c049cc0a9bfba47d0bd8b4cab4f5657cb80ddf",
+      "checkout_commit": "b94d50fa27880b04bbaed6b194c4c0ed4646c7c8",
+      "artifact_sha256": {
+        "installer": "930146616a740af150ccbc0f92594cd88f456788b4f79f5d72a1c269b562d277",
+        "FlowDrop-windows-native-smoke-TEST-ONLY.exe": "7885508282f7a17775565e916eedfb4b52d7a6a597e551fd93b1d51a85034e05",
+        "FlowDrop-windows-shell-smoke-TEST-ONLY.exe": "30c02966f117d724bab4f0d945ca63afa17615e1ee4827195beb1bbcedad18c9"
+      },
+      "preconditions": "Owned isolated environment and verified artifact",
+      "command_or_method": "scripts/native_runtime_ci/windows.py::run, case W09-shortcuts; actual child commands/exit codes in sibling commands.json",
+      "expected": "Send To/Desktop/Start Menu shortcut targets and registry match installer design",
+      "actual": {
+        "sendto": {
+          "Arguments": "--send-files",
+          "TargetPath": "C:\\Users\\runneradmin\\AppData\\Local\\Programs\\FlowDrop\\FlowDrop.exe"
+        },
+        "desktop_and_startmenu": true,
+        "uninstall_registry": true
+      },
+      "exit_code": null,
+      "time_started_utc": "2026-11-14T08:00:41Z",
+      "wall_seconds": 0.391,
+      "evidence_path": "docs/testing/runtime-2d1-logs/verified-78c049c/windows/results.json",
+      "required": true,
+      "status": "PASS"
+    },
+    {
+      "test_id": "W10-transfer-sha",
+      "platform": "windows",
+      "os_api": "{\n    \"Caption\":  \"Microsoft Windows Server 2025 Datacenter\",\n    \"Version\":  \"10.0.26100\",\n    \"BuildNumber\":  \"26100\",\n    \"OSArchitecture\":  \"64-bit\"\n}",
+      "source_commit": "78c049cc0a9bfba47d0bd8b4cab4f5657cb80ddf",
+      "checkout_commit": "b94d50fa27880b04bbaed6b194c4c0ed4646c7c8",
+      "artifact_sha256": {
+        "installer": "930146616a740af150ccbc0f92594cd88f456788b4f79f5d72a1c269b562d277",
+        "FlowDrop-windows-native-smoke-TEST-ONLY.exe": "7885508282f7a17775565e916eedfb4b52d7a6a597e551fd93b1d51a85034e05",
+        "FlowDrop-windows-shell-smoke-TEST-ONLY.exe": "30c02966f117d724bab4f0d945ca63afa17615e1ee4827195beb1bbcedad18c9"
+      },
+      "preconditions": "Owned isolated environment and verified artifact",
+      "command_or_method": "scripts/native_runtime_ci/windows.py::run, case W10-transfer-sha; actual child commands/exit codes in sibling commands.json",
+      "expected": "Empty/small/multiple/Unicode filenames stream over live HTTP and save with exact SHA-256",
+      "actual": [
+        {
+          "round": 1,
+          "name": "pattern.bin",
+          "size": 1048593,
+          "sha256": "f4bf9b8dec6e3e28b2ec33266145d244fe97a6bce1ec054ace053bab67d2ef9a"
+        },
+        {
+          "round": 1,
+          "name": "Tài liệu có khoảng trắng.txt",
+          "size": 35,
+          "sha256": "94b6089d926657b2f4da5557d3327f45b2319f0fcc8e9fd6f4d6246d21842e70"
+        },
+        {
+          "round": 1,
+          "name": "Rỗng.bin",
+          "size": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      ],
+      "exit_code": null,
+      "time_started_utc": "2026-11-14T08:00:42Z",
+      "wall_seconds": 1.438,
+      "evidence_path": "docs/testing/runtime-2d1-logs/verified-78c049c/windows/results.json",
+      "required": true,
+      "status": "PASS"
+    },
+    {
+      "test_id": "W11-collision",
+      "platform": "windows",
+      "os_api": "{\n    \"Caption\":  \"Microsoft Windows Server 2025 Datacenter\",\n    \"Version\":  \"10.0.26100\",\n    \"BuildNumber\":  \"26100\",\n    \"OSArchitecture\":  \"64-bit\"\n}",
+      "source_commit": "78c049cc0a9bfba47d0bd8b4cab4f5657cb80ddf",
+      "checkout_commit": "b94d50fa27880b04bbaed6b194c4c0ed4646c7c8",
+      "artifact_sha256": {
+        "installer": "930146616a740af150ccbc0f92594cd88f456788b4f79f5d72a1c269b562d277",
+        "FlowDrop-windows-native-smoke-TEST-ONLY.exe": "7885508282f7a17775565e916eedfb4b52d7a6a597e551fd93b1d51a85034e05",
+        "FlowDrop-windows-shell-smoke-TEST-ONLY.exe": "30c02966f117d724bab4f0d945ca63afa17615e1ee4827195beb1bbcedad18c9"
+      },
+      "preconditions": "Owned isolated environment and verified artifact",
+      "command_or_method": "scripts/native_runtime_ci/windows.py::run, case W11-collision; actual child commands/exit codes in sibling commands.json",
+      "expected": "Second independent transfer with same names creates separate files and preserves originals",
+      "actual": [
+        {
+          "round": 2,
+          "name": "Tài liệu có khoảng trắng (1).txt",
+          "size": 35,
+          "sha256": "94b6089d926657b2f4da5557d3327f45b2319f0fcc8e9fd6f4d6246d21842e70"
+        },
+        {
+          "round": 2,
+          "name": "pattern (1).bin",
+          "size": 1048593,
+          "sha256": "f4bf9b8dec6e3e28b2ec33266145d244fe97a6bce1ec054ace053bab67d2ef9a"
+        },
+        {
+          "round": 2,
+          "name": "Rỗng (1).bin",
+          "size": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      ],
+      "exit_code": null,
+      "time_started_utc": "2026-11-14T08:00:43Z",
+      "wall_seconds": 1.344,
+      "evidence_path": "docs/testing/runtime-2d1-logs/verified-78c049c/windows/results.json",
+      "required": true,
+      "status": "PASS"
+    },
+    {
+      "test_id": "W12-cancel",
+      "platform": "windows",
+      "os_api": "{\n    \"Caption\":  \"Microsoft Windows Server 2025 Datacenter\",\n    \"Version\":  \"10.0.26100\",\n    \"BuildNumber\":  \"26100\",\n    \"OSArchitecture\":  \"64-bit\"\n}",
+      "source_commit": "78c049cc0a9bfba47d0bd8b4cab4f5657cb80ddf",
+      "checkout_commit": "b94d50fa27880b04bbaed6b194c4c0ed4646c7c8",
+      "artifact_sha256": {
+        "installer": "930146616a740af150ccbc0f92594cd88f456788b4f79f5d72a1c269b562d277",
+        "FlowDrop-windows-native-smoke-TEST-ONLY.exe": "7885508282f7a17775565e916eedfb4b52d7a6a597e551fd93b1d51a85034e05",
+        "FlowDrop-windows-shell-smoke-TEST-ONLY.exe": "30c02966f117d724bab4f0d945ca63afa17615e1ee4827195beb1bbcedad18c9"
+      },
+      "preconditions": "Owned isolated environment and verified artifact",
+      "command_or_method": "scripts/native_runtime_ci/windows.py::run, case W12-cancel; actual child commands/exit codes in sibling commands.json",
+      "expected": "Authenticated revoke cancels staged transfer and never publishes it",
+      "actual": {
+        "revoked": true,
+        "metadata_after_cancel": 404
+      },
+      "exit_code": null,
+      "time_started_utc": "2026-11-14T08:00:45Z",
+      "wall_seconds": 0.015,
+      "evidence_path": "docs/testing/runtime-2d1-logs/verified-78c049c/windows/results.json",
+      "required": true,
+      "status": "PASS"
+    },
+    {
+      "test_id": "W13-disconnect",
+      "platform": "windows",
+      "os_api": "{\n    \"Caption\":  \"Microsoft Windows Server 2025 Datacenter\",\n    \"Version\":  \"10.0.26100\",\n    \"BuildNumber\":  \"26100\",\n    \"OSArchitecture\":  \"64-bit\"\n}",
+      "source_commit": "78c049cc0a9bfba47d0bd8b4cab4f5657cb80ddf",
+      "checkout_commit": "b94d50fa27880b04bbaed6b194c4c0ed4646c7c8",
+      "artifact_sha256": {
+        "installer": "930146616a740af150ccbc0f92594cd88f456788b4f79f5d72a1c269b562d277",
+        "FlowDrop-windows-native-smoke-TEST-ONLY.exe": "7885508282f7a17775565e916eedfb4b52d7a6a597e551fd93b1d51a85034e05",
+        "FlowDrop-windows-shell-smoke-TEST-ONLY.exe": "30c02966f117d724bab4f0d945ca63afa17615e1ee4827195beb1bbcedad18c9"
+      },
+      "preconditions": "Owned isolated environment and verified artifact",
+      "command_or_method": "scripts/native_runtime_ci/windows.py::run, case W13-disconnect; actual child commands/exit codes in sibling commands.json",
+      "expected": "Actual TCP abort cannot publish a partial file; live backend remains healthy",
+      "actual": {
+        "declared_bytes": 65536,
+        "sent_bytes": 3,
+        "complete_status": 409,
+        "partial_file_status": 409
+      },
+      "exit_code": null,
+      "time_started_utc": "2026-11-14T08:00:45Z",
+      "wall_seconds": 0.532,
+      "evidence_path": "docs/testing/runtime-2d1-logs/verified-78c049c/windows/results.json",
+      "required": true,
+      "status": "PASS"
+    },
+    {
+      "test_id": "W14-invalid",
+      "platform": "windows",
+      "os_api": "{\n    \"Caption\":  \"Microsoft Windows Server 2025 Datacenter\",\n    \"Version\":  \"10.0.26100\",\n    \"BuildNumber\":  \"26100\",\n    \"OSArchitecture\":  \"64-bit\"\n}",
+      "source_commit": "78c049cc0a9bfba47d0bd8b4cab4f5657cb80ddf",
+      "checkout_commit": "b94d50fa27880b04bbaed6b194c4c0ed4646c7c8",
+      "artifact_sha256": {
+        "installer": "930146616a740af150ccbc0f92594cd88f456788b4f79f5d72a1c269b562d277",
+        "FlowDrop-windows-native-smoke-TEST-ONLY.exe": "7885508282f7a17775565e916eedfb4b52d7a6a597e551fd93b1d51a85034e05",
+        "FlowDrop-windows-shell-smoke-TEST-ONLY.exe": "30c02966f117d724bab4f0d945ca63afa17615e1ee4827195beb1bbcedad18c9"
+      },
+      "preconditions": "Owned isolated environment and verified artifact",
+      "command_or_method": "scripts/native_runtime_ci/windows.py::run, case W14-invalid; actual child commands/exit codes in sibling commands.json",
+      "expected": "Missing/incorrect capability and invalid metadata requests are rejected",
+      "actual": {
+        "missing_capability": 403,
+        "incorrect_capability": 403,
+        "invalid_metadata": 400,
+        "protected_settings": 403,
+        "reserved_folder": {
+          "http_status": 400,
+          "error": "Windows không hỗ trợ tên: Con",
+          "synthetic_archive_sha256": "839e8614cebcae335a69933de7ed7d94f27b1b3dae53181e79059be286138d14",
+          "rejected_folder_left_no_files": true
+        }
+      },
+      "exit_code": null,
+      "time_started_utc": "2026-11-14T08:00:45Z",
+      "wall_seconds": 1.281,
+      "evidence_path": "docs/testing/runtime-2d1-logs/verified-78c049c/windows/results.json",
+      "required": true,
+      "status": "PASS"
+    },
+    {
+      "test_id": "W15-legacy-native",
+      "platform": "windows",
+      "os_api": "{\n    \"Caption\":  \"Microsoft Windows Server 2025 Datacenter\",\n    \"Version\":  \"10.0.26100\",\n    \"BuildNumber\":  \"26100\",\n    \"OSArchitecture\":  \"64-bit\"\n}",
+      "source_commit": "78c049cc0a9bfba47d0bd8b4cab4f5657cb80ddf",
+      "checkout_commit": "b94d50fa27880b04bbaed6b194c4c0ed4646c7c8",
+      "artifact_sha256": {
+        "installer": "930146616a740af150ccbc0f92594cd88f456788b4f79f5d72a1c269b562d277",
+        "FlowDrop-windows-native-smoke-TEST-ONLY.exe": "7885508282f7a17775565e916eedfb4b52d7a6a597e551fd93b1d51a85034e05",
+        "FlowDrop-windows-shell-smoke-TEST-ONLY.exe": "30c02966f117d724bab4f0d945ca63afa17615e1ee4827195beb1bbcedad18c9"
+      },
+      "preconditions": "Owned isolated environment and verified artifact",
+      "command_or_method": "scripts/native_runtime_ci/windows.py::run, case W15-legacy-native; actual child commands/exit codes in sibling commands.json",
+      "expected": "Existing C++ native smoke completes original assertions on Windows",
+      "actual": "Original compiled C++ smoke ran on Windows and completed all assertions",
+      "exit_code": 0,
+      "time_started_utc": "2026-11-14T08:00:49Z",
+      "wall_seconds": 9.828,
+      "evidence_path": "docs/testing/runtime-2d1-logs/verified-78c049c/windows/results.json",
+      "required": true,
+      "status": "PASS"
+    },
+    {
+      "test_id": "W16-legacy-shell",
+      "platform": "windows",
+      "os_api": "{\n    \"Caption\":  \"Microsoft Windows Server 2025 Datacenter\",\n    \"Version\":  \"10.0.26100\",\n    \"BuildNumber\":  \"26100\",\n    \"OSArchitecture\":  \"64-bit\"\n}",
+      "source_commit": "78c049cc0a9bfba47d0bd8b4cab4f5657cb80ddf",
+      "checkout_commit": "b94d50fa27880b04bbaed6b194c4c0ed4646c7c8",
+      "artifact_sha256": {
+        "installer": "930146616a740af150ccbc0f92594cd88f456788b4f79f5d72a1c269b562d277",
+        "FlowDrop-windows-native-smoke-TEST-ONLY.exe": "7885508282f7a17775565e916eedfb4b52d7a6a597e551fd93b1d51a85034e05",
+        "FlowDrop-windows-shell-smoke-TEST-ONLY.exe": "30c02966f117d724bab4f0d945ca63afa17615e1ee4827195beb1bbcedad18c9"
+      },
+      "preconditions": "Owned isolated environment and verified artifact",
+      "command_or_method": "scripts/native_runtime_ci/windows.py::run, case W16-legacy-shell; actual child commands/exit codes in sibling commands.json",
+      "expected": "Existing C++ SendTo/single-instance/Unicode/rename smoke completes original assertions",
+      "actual": "Original compiled C++ smoke ran on Windows and completed all assertions",
+      "exit_code": 0,
+      "time_started_utc": "2026-11-14T08:01:00Z",
+      "wall_seconds": 2.672,
+      "evidence_path": "docs/testing/runtime-2d1-logs/verified-78c049c/windows/results.json",
+      "required": true,
+      "status": "PASS"
+    },
+    {
+      "test_id": "W17-backend-failure",
+      "platform": "windows",
+      "os_api": "{\n    \"Caption\":  \"Microsoft Windows Server 2025 Datacenter\",\n    \"Version\":  \"10.0.26100\",\n    \"BuildNumber\":  \"26100\",\n    \"OSArchitecture\":  \"64-bit\"\n}",
+      "source_commit": "78c049cc0a9bfba47d0bd8b4cab4f5657cb80ddf",
+      "checkout_commit": "b94d50fa27880b04bbaed6b194c4c0ed4646c7c8",
+      "artifact_sha256": {
+        "installer": "930146616a740af150ccbc0f92594cd88f456788b4f79f5d72a1c269b562d277",
+        "FlowDrop-windows-native-smoke-TEST-ONLY.exe": "7885508282f7a17775565e916eedfb4b52d7a6a597e551fd93b1d51a85034e05",
+        "FlowDrop-windows-shell-smoke-TEST-ONLY.exe": "30c02966f117d724bab4f0d945ca63afa17615e1ee4827195beb1bbcedad18c9"
+      },
+      "preconditions": "Owned isolated environment and verified artifact",
+      "command_or_method": "scripts/native_runtime_ci/windows.py::run, case W17-backend-failure; actual child commands/exit codes in sibling commands.json",
+      "expected": "Stopping only the owned backend process makes HTTP unavailable",
+      "actual": {
+        "owned_backend_pid": 1184,
+        "http_unavailable": true
+      },
+      "exit_code": null,
+      "time_started_utc": "2026-11-14T08:01:03Z",
+      "wall_seconds": 4.422,
+      "evidence_path": "docs/testing/runtime-2d1-logs/verified-78c049c/windows/results.json",
+      "required": true,
+      "status": "PASS"
+    },
+    {
+      "test_id": "W18-close",
+      "platform": "windows",
+      "os_api": "{\n    \"Caption\":  \"Microsoft Windows Server 2025 Datacenter\",\n    \"Version\":  \"10.0.26100\",\n    \"BuildNumber\":  \"26100\",\n    \"OSArchitecture\":  \"64-bit\"\n}",
+      "source_commit": "78c049cc0a9bfba47d0bd8b4cab4f5657cb80ddf",
+      "checkout_commit": "b94d50fa27880b04bbaed6b194c4c0ed4646c7c8",
+      "artifact_sha256": {
+        "installer": "930146616a740af150ccbc0f92594cd88f456788b4f79f5d72a1c269b562d277",
+        "FlowDrop-windows-native-smoke-TEST-ONLY.exe": "7885508282f7a17775565e916eedfb4b52d7a6a597e551fd93b1d51a85034e05",
+        "FlowDrop-windows-shell-smoke-TEST-ONLY.exe": "30c02966f117d724bab4f0d945ca63afa17615e1ee4827195beb1bbcedad18c9"
+      },
+      "preconditions": "Owned isolated environment and verified artifact",
+      "command_or_method": "scripts/native_runtime_ci/windows.py::run, case W18-close; actual child commands/exit codes in sibling commands.json",
+      "expected": "Native --shutdown stops owned application and backend",
+      "actual": {
+        "native_and_backend_stopped": true
+      },
+      "exit_code": 0,
+      "time_started_utc": "2026-11-14T08:01:08Z",
+      "wall_seconds": 2.063,
+      "evidence_path": "docs/testing/runtime-2d1-logs/verified-78c049c/windows/results.json",
+      "required": true,
+      "status": "PASS"
+    },
+    {
+      "test_id": "W19-restart",
+      "platform": "windows",
+      "os_api": "{\n    \"Caption\":  \"Microsoft Windows Server 2025 Datacenter\",\n    \"Version\":  \"10.0.26100\",\n    \"BuildNumber\":  \"26100\",\n    \"OSArchitecture\":  \"64-bit\"\n}",
+      "source_commit": "78c049cc0a9bfba47d0bd8b4cab4f5657cb80ddf",
+      "checkout_commit": "b94d50fa27880b04bbaed6b194c4c0ed4646c7c8",
+      "artifact_sha256": {
+        "installer": "930146616a740af150ccbc0f92594cd88f456788b4f79f5d72a1c269b562d277",
+        "FlowDrop-windows-native-smoke-TEST-ONLY.exe": "7885508282f7a17775565e916eedfb4b52d7a6a597e551fd93b1d51a85034e05",
+        "FlowDrop-windows-shell-smoke-TEST-ONLY.exe": "30c02966f117d724bab4f0d945ca63afa17615e1ee4827195beb1bbcedad18c9"
+      },
+      "preconditions": "Owned isolated environment and verified artifact",
+      "command_or_method": "scripts/native_runtime_ci/windows.py::run, case W19-restart; actual child commands/exit codes in sibling commands.json",
+      "expected": "Application/backend restart and synthetic received files retain SHA-256",
+      "actual": {
+        "app_and_backend_restarted": true,
+        "persistent_device_id": true,
+        "synthetic_user_data_sha256": "a9b05ae4bd13d2fbab6f0e53647617e581ed4dd83e5421ef88ffe6df62c11b29",
+        "received_files_reverified": 6
+      },
+      "exit_code": null,
+      "time_started_utc": "2026-11-14T08:01:10Z",
+      "wall_seconds": 4.64,
+      "evidence_path": "docs/testing/runtime-2d1-logs/verified-78c049c/windows/results.json",
+      "required": true,
+      "status": "PASS"
+    },
+    {
+      "test_id": "W20-uninstall",
+      "platform": "windows",
+      "os_api": "{\n    \"Caption\":  \"Microsoft Windows Server 2025 Datacenter\",\n    \"Version\":  \"10.0.26100\",\n    \"BuildNumber\":  \"26100\",\n    \"OSArchitecture\":  \"64-bit\"\n}",
+      "source_commit": "78c049cc0a9bfba47d0bd8b4cab4f5657cb80ddf",
+      "checkout_commit": "b94d50fa27880b04bbaed6b194c4c0ed4646c7c8",
+      "artifact_sha256": {
+        "installer": "930146616a740af150ccbc0f92594cd88f456788b4f79f5d72a1c269b562d277",
+        "FlowDrop-windows-native-smoke-TEST-ONLY.exe": "7885508282f7a17775565e916eedfb4b52d7a6a597e551fd93b1d51a85034e05",
+        "FlowDrop-windows-shell-smoke-TEST-ONLY.exe": "30c02966f117d724bab4f0d945ca63afa17615e1ee4827195beb1bbcedad18c9"
+      },
+      "preconditions": "Owned isolated environment and verified artifact",
+      "command_or_method": "scripts/native_runtime_ci/windows.py::run, case W20-uninstall; actual child commands/exit codes in sibling commands.json",
+      "expected": "NSIS uninstall actually removes app, processes, owned shortcuts and uninstall registry",
+      "actual": {
+        "install_removed": true,
+        "shortcuts_removed": true,
+        "registry_removed": true,
+        "owned_processes_remaining": 0
+      },
+      "exit_code": 0,
+      "time_started_utc": "2026-11-14T08:01:15Z",
+      "wall_seconds": 0.922,
+      "evidence_path": "docs/testing/runtime-2d1-logs/verified-78c049c/windows/results.json",
+      "required": true,
+      "status": "PASS"
+    },
+    {
+      "test_id": "W21-preserve-data",
+      "platform": "windows",
+      "os_api": "{\n    \"Caption\":  \"Microsoft Windows Server 2025 Datacenter\",\n    \"Version\":  \"10.0.26100\",\n    \"BuildNumber\":  \"26100\",\n    \"OSArchitecture\":  \"64-bit\"\n}",
+      "source_commit": "78c049cc0a9bfba47d0bd8b4cab4f5657cb80ddf",
+      "checkout_commit": "b94d50fa27880b04bbaed6b194c4c0ed4646c7c8",
+      "artifact_sha256": {
+        "installer": "930146616a740af150ccbc0f92594cd88f456788b4f79f5d72a1c269b562d277",
+        "FlowDrop-windows-native-smoke-TEST-ONLY.exe": "7885508282f7a17775565e916eedfb4b52d7a6a597e551fd93b1d51a85034e05",
+        "FlowDrop-windows-shell-smoke-TEST-ONLY.exe": "30c02966f117d724bab4f0d945ca63afa17615e1ee4827195beb1bbcedad18c9"
+      },
+      "preconditions": "Owned isolated environment and verified artifact",
+      "command_or_method": "scripts/native_runtime_ci/windows.py::run, case W21-preserve-data; actual child commands/exit codes in sibling commands.json",
+      "expected": "Uninstall preserves synthetic user data according to baseline NSIS design",
+      "actual": {
+        "synthetic_data_preserved": true,
+        "sha256": "a9b05ae4bd13d2fbab6f0e53647617e581ed4dd83e5421ef88ffe6df62c11b29",
+        "received_files_reverified": 6
+      },
+      "exit_code": null,
+      "time_started_utc": "2026-11-14T08:01:15Z",
+      "wall_seconds": 0.0,
+      "evidence_path": "docs/testing/runtime-2d1-logs/verified-78c049c/windows/results.json",
+      "required": true,
+      "status": "PASS"
+    },
+    {
+      "test_id": "A01-environment",
+      "platform": "android-api-35",
+      "os_api": "Linux-7.0.0-1017-azure-x86_64-with-glibc2.39",
+      "source_commit": "78c049cc0a9bfba47d0bd8b4cab4f5657cb80ddf",
+      "checkout_commit": "b94d50fa27880b04bbaed6b194c4c0ed4646c7c8",
+      "artifact_sha256": {
+        "app": "83977b0465f52a65f7210eda4789ca309e91219b2cd542c5da7f852ec03fd55f",
+        "instrumentation": "49e0eaea70f8e6518edac08717566a0853695537a78c854db70270dcf0b103b5"
+      },
+      "preconditions": "Owned isolated environment and verified artifact",
+      "command_or_method": "scripts/native_runtime_ci/android.py::run, case A01-environment; actual child commands/exit codes in sibling commands.json",
+      "expected": "Linux hardware acceleration/owned emulator requirements available",
+      "actual": {
+        "kvm_read_write": true,
+        "free_disk_bytes": 91411931136,
+        "requested_api": 35
+      },
+      "exit_code": null,
+      "time_started_utc": "2026-11-14T07:59:33Z",
+      "wall_seconds": 0.017,
+      "evidence_path": "docs/testing/runtime-2d1-logs/verified-78c049c/android35/results.json",
+      "required": true,
+      "status": "PASS"
+    },
+    {
+      "test_id": "A02-provision",
+      "platform": "android-api-35",
+      "os_api": "Linux-7.0.0-1017-azure-x86_64-with-glibc2.39",
+      "source_commit": "78c049cc0a9bfba47d0bd8b4cab4f5657cb80ddf",
+      "checkout_commit": "b94d50fa27880b04bbaed6b194c4c0ed4646c7c8",
+      "artifact_sha256": {
+        "app": "83977b0465f52a65f7210eda4789ca309e91219b2cd542c5da7f852ec03fd55f",
+        "instrumentation": "49e0eaea70f8e6518edac08717566a0853695537a78c854db70270dcf0b103b5"
+      },
+      "preconditions": "Owned isolated environment and verified artifact",
+      "command_or_method": "scripts/native_runtime_ci/android.py::run, case A02-provision; actual child commands/exit codes in sibling commands.json",
+      "expected": "Pinned official SDK/runtime tools pass checksum checks and version probes",
+      "actual": {
+        "acceleration": "accel:\n0\nKVM (version 12) is installed and usable.\naccel",
+        "toolchain_pins": "RUNTIME-TOOLCHAIN-LOCK-2D1.json"
+      },
+      "exit_code": 0,
+      "time_started_utc": "2026-11-14T07:59:33Z",
+      "wall_seconds": 40.331,
+      "evidence_path": "docs/testing/runtime-2d1-logs/verified-78c049c/android35/results.json",
+      "required": true,
+      "status": "PASS"
+    },
+    {
+      "test_id": "A03-boot",
+      "platform": "android-api-35",
+      "os_api": "Android API35 15 / Android/sdk_phone64_x86_64/emu64x:15/AE3A.240806.019/12368160:userdebug/test-keys",
+      "source_commit": "78c049cc0a9bfba47d0bd8b4cab4f5657cb80ddf",
+      "checkout_commit": "b94d50fa27880b04bbaed6b194c4c0ed4646c7c8",
+      "artifact_sha256": {
+        "app": "83977b0465f52a65f7210eda4789ca309e91219b2cd542c5da7f852ec03fd55f",
+        "instrumentation": "49e0eaea70f8e6518edac08717566a0853695537a78c854db70270dcf0b103b5"
+      },
+      "preconditions": "Owned isolated environment and verified artifact",
+      "command_or_method": "scripts/native_runtime_ci/android.py::run, case A03-boot; actual child commands/exit codes in sibling commands.json",
+      "expected": "Clean Android emulator boots, adb transport ready and exact requested API observed",
+      "actual": {
+        "api": 35,
+        "serial": "emulator-5554",
+        "device": {
+          "release": "15",
+          "fingerprint": "Android/sdk_phone64_x86_64/emu64x:15/AE3A.240806.019/12368160:userdebug/test-keys",
+          "abi": "x86_64"
+        },
+        "boot_completed": true
+      },
+      "exit_code": 0,
+      "time_started_utc": "2026-11-14T08:00:14Z",
+      "wall_seconds": 31.041,
+      "evidence_path": "docs/testing/runtime-2d1-logs/verified-78c049c/android35/results.json",
+      "required": true,
+      "status": "PASS"
+    },
+    {
+      "test_id": "A04-provenance",
+      "platform": "android-api-35",
+      "os_api": "Android API35 15 / Android/sdk_phone64_x86_64/emu64x:15/AE3A.240806.019/12368160:userdebug/test-keys",
+      "source_commit": "78c049cc0a9bfba47d0bd8b4cab4f5657cb80ddf",
+      "checkout_commit": "b94d50fa27880b04bbaed6b194c4c0ed4646c7c8",
+      "artifact_sha256": {
+        "app": "83977b0465f52a65f7210eda4789ca309e91219b2cd542c5da7f852ec03fd55f",
+        "instrumentation": "49e0eaea70f8e6518edac08717566a0853695537a78c854db70270dcf0b103b5"
+      },
+      "preconditions": "Owned isolated environment and verified artifact",
+      "command_or_method": "scripts/native_runtime_ci/android.py::run, case A04-provenance; actual child commands/exit codes in sibling commands.json",
+      "expected": "App/instrumentation match source checkout, SHA-256, package/version/SDK and same test certificate",
+      "actual": {
+        "app": {
+          "package": "app.flowdrop.mobile",
+          "version_code": "14",
+          "version_name": "1.13.0",
+          "min_sdk": 29,
+          "target_sdk": 35,
+          "permissions": [
+            "android.permission.ACCESS_NETWORK_STATE",
+            "android.permission.ACCESS_WIFI_STATE",
+            "android.permission.CHANGE_WIFI_MULTICAST_STATE",
+            "android.permission.FOREGROUND_SERVICE",
+            "android.permission.FOREGROUND_SERVICE_DATA_SYNC",
+            "android.permission.HIDE_OVERLAY_WINDOWS",
+            "android.permission.INTERNET",
+            "android.permission.POST_NOTIFICATIONS",
+            "android.permission.RECEIVE_BOOT_COMPLETED",
+            "android.permission.REQUEST_INSTALL_PACKAGES",
+            "android.permission.UPDATE_PACKAGES_WITHOUT_USER_ACTION"
+          ]
+        },
+        "test_package": "app.flowdrop.mobile.test",
+        "same_test_certificate_sha256": "2760ec172c49ef423d17ac346e7216dddd2dc8b49c113ccdcae362db1c962672"
+      },
+      "exit_code": 0,
+      "time_started_utc": "2026-11-14T08:00:45Z",
+      "wall_seconds": 1.055,
+      "evidence_path": "docs/testing/runtime-2d1-logs/verified-78c049c/android35/results.json",
+      "required": true,
+      "status": "PASS"
+    },
+    {
+      "test_id": "A05-install",
+      "platform": "android-api-35",
+      "os_api": "Android API35 15 / Android/sdk_phone64_x86_64/emu64x:15/AE3A.240806.019/12368160:userdebug/test-keys",
+      "source_commit": "78c049cc0a9bfba47d0bd8b4cab4f5657cb80ddf",
+      "checkout_commit": "b94d50fa27880b04bbaed6b194c4c0ed4646c7c8",
+      "artifact_sha256": {
+        "app": "83977b0465f52a65f7210eda4789ca309e91219b2cd542c5da7f852ec03fd55f",
+        "instrumentation": "49e0eaea70f8e6518edac08717566a0853695537a78c854db70270dcf0b103b5"
+      },
+      "preconditions": "Owned isolated environment and verified artifact",
+      "command_or_method": "scripts/native_runtime_ci/android.py::run, case A05-install; actual child commands/exit codes in sibling commands.json",
+      "expected": "Both TEST ONLY APKs install on clean emulator without replacing existing production",
+      "actual": {
+        "app_installed": true,
+        "test_installed": true,
+        "production_not_replaced": true
+      },
+      "exit_code": 0,
+      "time_started_utc": "2026-11-14T08:00:46Z",
+      "wall_seconds": 2.912,
+      "evidence_path": "docs/testing/runtime-2d1-logs/verified-78c049c/android35/results.json",
+      "required": true,
+      "status": "PASS"
+    },
+    {
+      "test_id": "A06-activity",
+      "platform": "android-api-35",
+      "os_api": "Android API35 15 / Android/sdk_phone64_x86_64/emu64x:15/AE3A.240806.019/12368160:userdebug/test-keys",
+      "source_commit": "78c049cc0a9bfba47d0bd8b4cab4f5657cb80ddf",
+      "checkout_commit": "b94d50fa27880b04bbaed6b194c4c0ed4646c7c8",
+      "artifact_sha256": {
+        "app": "83977b0465f52a65f7210eda4789ca309e91219b2cd542c5da7f852ec03fd55f",
+        "instrumentation": "49e0eaea70f8e6518edac08717566a0853695537a78c854db70270dcf0b103b5"
+      },
+      "preconditions": "Owned isolated environment and verified artifact",
+      "command_or_method": "scripts/native_runtime_ci/android.py::run, case A06-activity; actual child commands/exit codes in sibling commands.json",
+      "expected": "Real app Activity launches and becomes resumed on Android",
+      "actual": {
+        "main_activity_resumed": true,
+        "screenshot": "logs/initial-activity.png"
+      },
+      "exit_code": 0,
+      "time_started_utc": "2026-11-14T08:00:49Z",
+      "wall_seconds": 4.195,
+      "evidence_path": "docs/testing/runtime-2d1-logs/verified-78c049c/android35/results.json",
+      "required": true,
+      "status": "PASS"
+    },
+    {
+      "test_id": "A07-permissions",
+      "platform": "android-api-35",
+      "os_api": "Android API35 15 / Android/sdk_phone64_x86_64/emu64x:15/AE3A.240806.019/12368160:userdebug/test-keys",
+      "source_commit": "78c049cc0a9bfba47d0bd8b4cab4f5657cb80ddf",
+      "checkout_commit": "b94d50fa27880b04bbaed6b194c4c0ed4646c7c8",
+      "artifact_sha256": {
+        "app": "83977b0465f52a65f7210eda4789ca309e91219b2cd542c5da7f852ec03fd55f",
+        "instrumentation": "49e0eaea70f8e6518edac08717566a0853695537a78c854db70270dcf0b103b5"
+      },
+      "preconditions": "Owned isolated environment and verified artifact",
+      "command_or_method": "scripts/native_runtime_ci/android.py::run, case A07-permissions; actual child commands/exit codes in sibling commands.json",
+      "expected": "Actual API-specific notification permission flow and state are measured",
+      "actual": {
+        "deny": {
+          "passed": true,
+          "sdk": 35,
+          "checks": [
+            {
+              "sdk": 35,
+              "dialogObserved": true,
+              "granted": false,
+              "method": "native request method + Android permissioncontroller accessibility action",
+              "id": "notification-permission-deny",
+              "passed": true
+            }
+          ]
+        },
+        "grant": {
+          "passed": true,
+          "sdk": 35,
+          "checks": [
+            {
+              "sdk": 35,
+              "dialogObserved": true,
+              "granted": true,
+              "method": "native request method + Android permissioncontroller accessibility action",
+              "id": "notification-permission-grant",
+              "passed": true
+            }
+          ]
+        }
+      },
+      "exit_code": 0,
+      "time_started_utc": "2026-11-14T08:00:53Z",
+      "wall_seconds": 10.896,
+      "evidence_path": "docs/testing/runtime-2d1-logs/verified-78c049c/android35/results.json",
+      "required": true,
+      "status": "PASS"
+    },
+    {
+      "test_id": "A08-http",
+      "platform": "android-api-35",
+      "os_api": "Android API35 15 / Android/sdk_phone64_x86_64/emu64x:15/AE3A.240806.019/12368160:userdebug/test-keys",
+      "source_commit": "78c049cc0a9bfba47d0bd8b4cab4f5657cb80ddf",
+      "checkout_commit": "b94d50fa27880b04bbaed6b194c4c0ed4646c7c8",
+      "artifact_sha256": {
+        "app": "83977b0465f52a65f7210eda4789ca309e91219b2cd542c5da7f852ec03fd55f",
+        "instrumentation": "49e0eaea70f8e6518edac08717566a0853695537a78c854db70270dcf0b103b5"
+      },
+      "preconditions": "Owned isolated environment and verified artifact",
+      "command_or_method": "scripts/native_runtime_ci/android.py::run, case A08-http; actual child commands/exit codes in sibling commands.json",
+      "expected": "Live HTTP config from the app process is reachable through scoped adb forwarding",
+      "actual": {
+        "name": "FlowDrop",
+        "version": "1.13.0",
+        "platform": "android",
+        "mode": "local",
+        "tunnel_preserves_host": "127.0.0.1:5173"
+      },
+      "exit_code": null,
+      "time_started_utc": "2026-11-14T08:01:04Z",
+      "wall_seconds": 2.229,
+      "evidence_path": "docs/testing/runtime-2d1-logs/verified-78c049c/android35/results.json",
+      "required": true,
+      "status": "PASS"
+    },
+    {
+      "test_id": "A09-native-smoke",
+      "platform": "android-api-35",
+      "os_api": "Android API35 15 / Android/sdk_phone64_x86_64/emu64x:15/AE3A.240806.019/12368160:userdebug/test-keys",
+      "source_commit": "78c049cc0a9bfba47d0bd8b4cab4f5657cb80ddf",
+      "checkout_commit": "b94d50fa27880b04bbaed6b194c4c0ed4646c7c8",
+      "artifact_sha256": {
+        "app": "83977b0465f52a65f7210eda4789ca309e91219b2cd542c5da7f852ec03fd55f",
+        "instrumentation": "49e0eaea70f8e6518edac08717566a0853695537a78c854db70270dcf0b103b5"
+      },
+      "preconditions": "Owned isolated environment and verified artifact",
+      "command_or_method": "adb shell am instrument -w -r app.flowdrop.mobile.test/app.flowdrop.mobile.test.NativeSmoke",
+      "expected": "Original Activity/picker/services/storage/history instrumentation completes",
+      "actual": {
+        "passed": true,
+        "sdk": 35,
+        "nativeWidgets": true,
+        "embeddedRenderer": false,
+        "nativePickerContract": true,
+        "files": 3,
+        "nativeSendService": true,
+        "automaticReceiveService": true,
+        "mediaStoreExactBytes": true,
+        "albumAndDownloads": true,
+        "partialFilesHidden": true,
+        "revokeKeepsSavedFiles": true,
+        "history": true
+      },
+      "exit_code": 0,
+      "time_started_utc": "2026-11-14T08:01:06Z",
+      "wall_seconds": 6.133,
+      "evidence_path": "docs/testing/runtime-2d1-logs/verified-78c049c/android35/results.json",
+      "required": true,
+      "status": "PASS"
+    },
+    {
+      "test_id": "A10-service-smoke",
+      "platform": "android-api-35",
+      "os_api": "Android API35 15 / Android/sdk_phone64_x86_64/emu64x:15/AE3A.240806.019/12368160:userdebug/test-keys",
+      "source_commit": "78c049cc0a9bfba47d0bd8b4cab4f5657cb80ddf",
+      "checkout_commit": "b94d50fa27880b04bbaed6b194c4c0ed4646c7c8",
+      "artifact_sha256": {
+        "app": "83977b0465f52a65f7210eda4789ca309e91219b2cd542c5da7f852ec03fd55f",
+        "instrumentation": "49e0eaea70f8e6518edac08717566a0853695537a78c854db70270dcf0b103b5"
+      },
+      "preconditions": "Owned isolated environment and verified artifact",
+      "command_or_method": "adb shell am instrument -w -r app.flowdrop.mobile.test/app.flowdrop.mobile.test.NativeServiceSmoke",
+      "expected": "Original native service/MediaStore instrumentation completes",
+      "actual": {
+        "passed": true,
+        "sdk": 35,
+        "nativeSendService": true,
+        "nativeReceiveService": true,
+        "files": 3,
+        "mediaStoreExactBytes": true,
+        "albumAndDownloads": true,
+        "partialFilesHidden": true,
+        "nativeHistory": true,
+        "revokeKeepsSavedFiles": true
+      },
+      "exit_code": 0,
+      "time_started_utc": "2026-11-14T08:01:12Z",
+      "wall_seconds": 1.813,
+      "evidence_path": "docs/testing/runtime-2d1-logs/verified-78c049c/android35/results.json",
+      "required": true,
+      "status": "PASS"
+    },
+    {
+      "test_id": "A11-folder-smoke",
+      "platform": "android-api-35",
+      "os_api": "Android API35 15 / Android/sdk_phone64_x86_64/emu64x:15/AE3A.240806.019/12368160:userdebug/test-keys",
+      "source_commit": "78c049cc0a9bfba47d0bd8b4cab4f5657cb80ddf",
+      "checkout_commit": "b94d50fa27880b04bbaed6b194c4c0ed4646c7c8",
+      "artifact_sha256": {
+        "app": "83977b0465f52a65f7210eda4789ca309e91219b2cd542c5da7f852ec03fd55f",
+        "instrumentation": "49e0eaea70f8e6518edac08717566a0853695537a78c854db70270dcf0b103b5"
+      },
+      "preconditions": "Owned isolated environment and verified artifact",
+      "command_or_method": "adb shell am instrument -w -r app.flowdrop.mobile.test/app.flowdrop.mobile.test.NativeFolderSmoke",
+      "expected": "Original folder/collision/exact names/native receipt instrumentation completes",
+      "actual": {
+        "passed": true,
+        "sdk": 35,
+        "originalFolderName": true,
+        "nestedDirectories": true,
+        "emptyDirectories": true,
+        "exactOriginalFilenamesAndBytes": true,
+        "folderCollisionKeepsFilesUnchanged": true,
+        "nativeReceiveService": true,
+        "completionAfterImport": true
+      },
+      "exit_code": 0,
+      "time_started_utc": "2026-11-14T08:01:14Z",
+      "wall_seconds": 1.346,
+      "evidence_path": "docs/testing/runtime-2d1-logs/verified-78c049c/android35/results.json",
+      "required": true,
+      "status": "PASS"
+    },
+    {
+      "test_id": "A12-share-smoke",
+      "platform": "android-api-35",
+      "os_api": "Android API35 15 / Android/sdk_phone64_x86_64/emu64x:15/AE3A.240806.019/12368160:userdebug/test-keys",
+      "source_commit": "78c049cc0a9bfba47d0bd8b4cab4f5657cb80ddf",
+      "checkout_commit": "b94d50fa27880b04bbaed6b194c4c0ed4646c7c8",
+      "artifact_sha256": {
+        "app": "83977b0465f52a65f7210eda4789ca309e91219b2cd542c5da7f852ec03fd55f",
+        "instrumentation": "49e0eaea70f8e6518edac08717566a0853695537a78c854db70270dcf0b103b5"
+      },
+      "preconditions": "Owned isolated environment and verified artifact",
+      "command_or_method": "adb shell am instrument -w -r app.flowdrop.mobile.test/app.flowdrop.mobile.test.NativeShareSmoke",
+      "expected": "Original Android sharesheet/grants/recipient consent instrumentation completes",
+      "actual": {
+        "passed": true,
+        "sdk": 35,
+        "sharesheetSendAndMultiple": true,
+        "photoVideoPdfMimeResolution": true,
+        "separateSenderUid": true,
+        "coldActivityShare": true,
+        "warmActivityReuse": true,
+        "deduplicate": true,
+        "originalNames": true,
+        "noAutomaticSend": true,
+        "unsafeUrisRejected": true,
+        "missingGrantRejected": true,
+        "localUploadCapabilityRequired": true,
+        "nativeSendService": true,
+        "recipientConsent": true,
+        "exactBytes": true
+      },
+      "exit_code": 0,
+      "time_started_utc": "2026-11-14T08:01:15Z",
+      "wall_seconds": 4.244,
+      "evidence_path": "docs/testing/runtime-2d1-logs/verified-78c049c/android35/results.json",
+      "required": true,
+      "status": "PASS"
+    },
+    {
+      "test_id": "A13-runtime-smoke",
+      "platform": "android-api-35",
+      "os_api": "Android API35 15 / Android/sdk_phone64_x86_64/emu64x:15/AE3A.240806.019/12368160:userdebug/test-keys",
+      "source_commit": "78c049cc0a9bfba47d0bd8b4cab4f5657cb80ddf",
+      "checkout_commit": "b94d50fa27880b04bbaed6b194c4c0ed4646c7c8",
+      "artifact_sha256": {
+        "app": "83977b0465f52a65f7210eda4789ca309e91219b2cd542c5da7f852ec03fd55f",
+        "instrumentation": "49e0eaea70f8e6518edac08717566a0853695537a78c854db70270dcf0b103b5"
+      },
+      "preconditions": "Owned isolated environment and verified artifact",
+      "command_or_method": "adb shell am instrument -w -r app.flowdrop.mobile.test/app.flowdrop.mobile.test.NativeRuntimeSmoke",
+      "expected": "Additional native SHA/empty/multiple/Unicode/collision/cancel/disconnect/invalid/picker/background/stop smoke completes",
+      "actual": {
+        "passed": true,
+        "sdk": 35,
+        "checks": [
+          {
+            "sdk": 35,
+            "version": "1.13.0",
+            "id": "live-native-backend",
+            "passed": true
+          },
+          {
+            "hostReady": true,
+            "notificationId": 120,
+            "id": "foreground-notification",
+            "passed": true
+          },
+          {
+            "systemPickerObserved": true,
+            "selectionPreserved": true,
+            "id": "system-picker-cancel",
+            "passed": true
+          },
+          {
+            "files": [
+              {
+                "round": 0,
+                "name": "small 1794643286446.bin",
+                "originalName": "small 1794643286446.bin",
+                "size": 131089,
+                "expectedSha256": "1ec3437cee3cccf3647e130524ade52848571960a3340ae33573beef17d330b3",
+                "actualSha256": "1ec3437cee3cccf3647e130524ade52848571960a3340ae33573beef17d330b3"
+              },
+              {
+                "round": 0,
+                "name": "Tệp Unicode có khoảng trắng 1794643286446.txt",
+                "originalName": "Tệp Unicode có khoảng trắng 1794643286446.txt",
+                "size": 52,
+                "expectedSha256": "2931a4a8ade4d083cd5411782df718ce317afe3ccf94b28ddcb6e4645a9e8cf4",
+                "actualSha256": "2931a4a8ade4d083cd5411782df718ce317afe3ccf94b28ddcb6e4645a9e8cf4"
+              },
+              {
+                "round": 0,
+                "name": "Rỗng 1794643286446.bin",
+                "originalName": "Rỗng 1794643286446.bin",
+                "size": 0,
+                "expectedSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                "actualSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              },
+              {
+                "round": 1,
+                "name": "small 1794643286446 (1).bin",
+                "originalName": "small 1794643286446.bin",
+                "size": 131089,
+                "expectedSha256": "1ec3437cee3cccf3647e130524ade52848571960a3340ae33573beef17d330b3",
+                "actualSha256": "1ec3437cee3cccf3647e130524ade52848571960a3340ae33573beef17d330b3"
+              },
+              {
+                "round": 1,
+                "name": "Tệp Unicode có khoảng trắng 1794643286446 (1).txt",
+                "originalName": "Tệp Unicode có khoảng trắng 1794643286446.txt",
+                "size": 52,
+                "expectedSha256": "2931a4a8ade4d083cd5411782df718ce317afe3ccf94b28ddcb6e4645a9e8cf4",
+                "actualSha256": "2931a4a8ade4d083cd5411782df718ce317afe3ccf94b28ddcb6e4645a9e8cf4"
+              },
+              {
+                "round": 1,
+                "name": "Rỗng 1794643286446 (1).bin",
+                "originalName": "Rỗng 1794643286446.bin",
+                "size": 0,
+                "expectedSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                "actualSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              }
+            ],
+            "id": "native-transfer-and-collision-sha256",
+            "passed": true
+          },
+          {
+            "cancelled": true,
+            "id": "cancel-active-http",
+            "passed": true
+          },
+          {
+            "declaredBytes": 65536,
+            "sentBytes": 3,
+            "id": "tcp-disconnect-no-partial-publication",
+            "passed": true
+          },
+          {
+            "missingCapability": 403,
+            "incorrectCapability": 403,
+            "invalidMetadata": 400,
+            "id": "auth-and-invalid-request",
+            "passed": true
+          },
+          {
+            "state": "rejected",
+            "scope": "same-emulator loopback; not physical LAN",
+            "id": "recipient-rejection",
+            "passed": true
+          },
+          {
+            "httpAliveInBackground": true,
+            "id": "background-and-reopen",
+            "passed": true
+          },
+          {
+            "filesVerified": 6,
+            "deviceIdentityPreserved": true,
+            "id": "stop-restart-data-preserved",
+            "passed": true
+          }
+        ]
+      },
+      "exit_code": 0,
+      "time_started_utc": "2026-11-14T08:01:20Z",
+      "wall_seconds": 9.874,
+      "evidence_path": "docs/testing/runtime-2d1-logs/verified-78c049c/android35/results.json",
+      "required": true,
+      "status": "PASS"
+    },
+    {
+      "test_id": "A14-force-stop",
+      "platform": "android-api-35",
+      "os_api": "Android API35 15 / Android/sdk_phone64_x86_64/emu64x:15/AE3A.240806.019/12368160:userdebug/test-keys",
+      "source_commit": "78c049cc0a9bfba47d0bd8b4cab4f5657cb80ddf",
+      "checkout_commit": "b94d50fa27880b04bbaed6b194c4c0ed4646c7c8",
+      "artifact_sha256": {
+        "app": "83977b0465f52a65f7210eda4789ca309e91219b2cd542c5da7f852ec03fd55f",
+        "instrumentation": "49e0eaea70f8e6518edac08717566a0853695537a78c854db70270dcf0b103b5"
+      },
+      "preconditions": "Owned isolated environment and verified artifact",
+      "command_or_method": "scripts/native_runtime_ci/android.py::run, case A14-force-stop; actual child commands/exit codes in sibling commands.json",
+      "expected": "Force-stop removes app backend, restart resumes Activity and backend without a crash",
+      "actual": {
+        "force_stop_observed": true,
+        "real_backend_restarted": true
+      },
+      "exit_code": 0,
+      "time_started_utc": "2026-11-14T08:01:30Z",
+      "wall_seconds": 2.107,
+      "evidence_path": "docs/testing/runtime-2d1-logs/verified-78c049c/android35/results.json",
+      "required": true,
+      "status": "PASS"
+    },
+    {
+      "test_id": "A15-crash-anr",
+      "platform": "android-api-35",
+      "os_api": "Android API35 15 / Android/sdk_phone64_x86_64/emu64x:15/AE3A.240806.019/12368160:userdebug/test-keys",
+      "source_commit": "78c049cc0a9bfba47d0bd8b4cab4f5657cb80ddf",
+      "checkout_commit": "b94d50fa27880b04bbaed6b194c4c0ed4646c7c8",
+      "artifact_sha256": {
+        "app": "83977b0465f52a65f7210eda4789ca309e91219b2cd542c5da7f852ec03fd55f",
+        "instrumentation": "49e0eaea70f8e6518edac08717566a0853695537a78c854db70270dcf0b103b5"
+      },
+      "preconditions": "Owned isolated environment and verified artifact",
+      "command_or_method": "scripts/native_runtime_ci/android.py::run, case A15-crash-anr; actual child commands/exit codes in sibling commands.json",
+      "expected": "App-specific logcat and Activity/service state contain no crash or ANR",
+      "actual": {
+        "app_crash": false,
+        "app_anr": false
+      },
+      "exit_code": 0,
+      "time_started_utc": "2026-11-14T08:01:32Z",
+      "wall_seconds": 1.431,
+      "evidence_path": "docs/testing/runtime-2d1-logs/verified-78c049c/android35/results.json",
+      "required": true,
+      "status": "PASS"
+    },
+    {
+      "test_id": "A16-uninstall",
+      "platform": "android-api-35",
+      "os_api": "Android API35 15 / Android/sdk_phone64_x86_64/emu64x:15/AE3A.240806.019/12368160:userdebug/test-keys",
+      "source_commit": "78c049cc0a9bfba47d0bd8b4cab4f5657cb80ddf",
+      "checkout_commit": "b94d50fa27880b04bbaed6b194c4c0ed4646c7c8",
+      "artifact_sha256": {
+        "app": "83977b0465f52a65f7210eda4789ca309e91219b2cd542c5da7f852ec03fd55f",
+        "instrumentation": "49e0eaea70f8e6518edac08717566a0853695537a78c854db70270dcf0b103b5"
+      },
+      "preconditions": "Owned isolated environment and verified artifact",
+      "command_or_method": "scripts/native_runtime_ci/android.py::run, case A16-uninstall; actual child commands/exit codes in sibling commands.json",
+      "expected": "App/test package actually removed and only owned emulator/adb processes cleaned",
+      "actual": {
+        "test_app_removed": true,
+        "target_app_removed": true
+      },
+      "exit_code": 0,
+      "time_started_utc": "2026-11-14T08:01:33Z",
+      "wall_seconds": 0.836,
+      "evidence_path": "docs/testing/runtime-2d1-logs/verified-78c049c/android35/results.json",
+      "required": true,
+      "status": "PASS"
+    },
+    {
+      "test_id": "A01-environment",
+      "platform": "android-api-29",
+      "os_api": "Linux-7.0.0-1017-azure-x86_64-with-glibc2.39",
+      "source_commit": "78c049cc0a9bfba47d0bd8b4cab4f5657cb80ddf",
+      "checkout_commit": "b94d50fa27880b04bbaed6b194c4c0ed4646c7c8",
+      "artifact_sha256": {
+        "app": "83977b0465f52a65f7210eda4789ca309e91219b2cd542c5da7f852ec03fd55f",
+        "instrumentation": "49e0eaea70f8e6518edac08717566a0853695537a78c854db70270dcf0b103b5"
+      },
+      "preconditions": "Owned isolated environment and verified artifact",
+      "command_or_method": "scripts/native_runtime_ci/android.py::run, case A01-environment; actual child commands/exit codes in sibling commands.json",
+      "expected": "Linux hardware acceleration/owned emulator requirements available",
+      "actual": {
+        "kvm_read_write": true,
+        "free_disk_bytes": 91411865600,
+        "requested_api": 29
+      },
+      "exit_code": null,
+      "time_started_utc": "2026-11-14T07:59:34Z",
+      "wall_seconds": 0.019,
+      "evidence_path": "docs/testing/runtime-2d1-logs/verified-78c049c/android29/results.json",
+      "required": true,
+      "status": "PASS"
+    },
+    {
+      "test_id": "A02-provision",
+      "platform": "android-api-29",
+      "os_api": "Linux-7.0.0-1017-azure-x86_64-with-glibc2.39",
+      "source_commit": "78c049cc0a9bfba47d0bd8b4cab4f5657cb80ddf",
+      "checkout_commit": "b94d50fa27880b04bbaed6b194c4c0ed4646c7c8",
+      "artifact_sha256": {
+        "app": "83977b0465f52a65f7210eda4789ca309e91219b2cd542c5da7f852ec03fd55f",
+        "instrumentation": "49e0eaea70f8e6518edac08717566a0853695537a78c854db70270dcf0b103b5"
+      },
+      "preconditions": "Owned isolated environment and verified artifact",
+      "command_or_method": "scripts/native_runtime_ci/android.py::run, case A02-provision; actual child commands/exit codes in sibling commands.json",
+      "expected": "Pinned official SDK/runtime tools pass checksum checks and version probes",
+      "actual": {
+        "acceleration": "accel:\n0\nKVM (version 12) is installed and usable.\naccel",
+        "toolchain_pins": "RUNTIME-TOOLCHAIN-LOCK-2D1.json"
+      },
+      "exit_code": 0,
+      "time_started_utc": "2026-11-14T07:59:34Z",
+      "wall_seconds": 48.247,
+      "evidence_path": "docs/testing/runtime-2d1-logs/verified-78c049c/android29/results.json",
+      "required": true,
+      "status": "PASS"
+    },
+    {
+      "test_id": "A03-boot",
+      "platform": "android-api-29",
+      "os_api": "Android API29 10 / Android/sdk_phone_x86_64/generic_x86_64:10/QSR1.210820.001/7663313:userdebug/test-keys",
+      "source_commit": "78c049cc0a9bfba47d0bd8b4cab4f5657cb80ddf",
+      "checkout_commit": "b94d50fa27880b04bbaed6b194c4c0ed4646c7c8",
+      "artifact_sha256": {
+        "app": "83977b0465f52a65f7210eda4789ca309e91219b2cd542c5da7f852ec03fd55f",
+        "instrumentation": "49e0eaea70f8e6518edac08717566a0853695537a78c854db70270dcf0b103b5"
+      },
+      "preconditions": "Owned isolated environment and verified artifact",
+      "command_or_method": "scripts/native_runtime_ci/android.py::run, case A03-boot; actual child commands/exit codes in sibling commands.json",
+      "expected": "Clean Android emulator boots, adb transport ready and exact requested API observed",
+      "actual": {
+        "api": 29,
+        "serial": "emulator-5554",
+        "device": {
+          "release": "10",
+          "fingerprint": "Android/sdk_phone_x86_64/generic_x86_64:10/QSR1.210820.001/7663313:userdebug/test-keys",
+          "abi": "x86_64"
+        },
+        "boot_completed": true
+      },
+      "exit_code": 0,
+      "time_started_utc": "2026-11-14T08:00:22Z",
+      "wall_seconds": 14.604,
+      "evidence_path": "docs/testing/runtime-2d1-logs/verified-78c049c/android29/results.json",
+      "required": true,
+      "status": "PASS"
+    },
+    {
+      "test_id": "A04-provenance",
+      "platform": "android-api-29",
+      "os_api": "Android API29 10 / Android/sdk_phone_x86_64/generic_x86_64:10/QSR1.210820.001/7663313:userdebug/test-keys",
+      "source_commit": "78c049cc0a9bfba47d0bd8b4cab4f5657cb80ddf",
+      "checkout_commit": "b94d50fa27880b04bbaed6b194c4c0ed4646c7c8",
+      "artifact_sha256": {
+        "app": "83977b0465f52a65f7210eda4789ca309e91219b2cd542c5da7f852ec03fd55f",
+        "instrumentation": "49e0eaea70f8e6518edac08717566a0853695537a78c854db70270dcf0b103b5"
+      },
+      "preconditions": "Owned isolated environment and verified artifact",
+      "command_or_method": "scripts/native_runtime_ci/android.py::run, case A04-provenance; actual child commands/exit codes in sibling commands.json",
+      "expected": "App/instrumentation match source checkout, SHA-256, package/version/SDK and same test certificate",
+      "actual": {
+        "app": {
+          "package": "app.flowdrop.mobile",
+          "version_code": "14",
+          "version_name": "1.13.0",
+          "min_sdk": 29,
+          "target_sdk": 35,
+          "permissions": [
+            "android.permission.ACCESS_NETWORK_STATE",
+            "android.permission.ACCESS_WIFI_STATE",
+            "android.permission.CHANGE_WIFI_MULTICAST_STATE",
+            "android.permission.FOREGROUND_SERVICE",
+            "android.permission.FOREGROUND_SERVICE_DATA_SYNC",
+            "android.permission.HIDE_OVERLAY_WINDOWS",
+            "android.permission.INTERNET",
+            "android.permission.POST_NOTIFICATIONS",
+            "android.permission.RECEIVE_BOOT_COMPLETED",
+            "android.permission.REQUEST_INSTALL_PACKAGES",
+            "android.permission.UPDATE_PACKAGES_WITHOUT_USER_ACTION"
+          ]
+        },
+        "test_package": "app.flowdrop.mobile.test",
+        "same_test_certificate_sha256": "2760ec172c49ef423d17ac346e7216dddd2dc8b49c113ccdcae362db1c962672"
+      },
+      "exit_code": 0,
+      "time_started_utc": "2026-11-14T08:00:37Z",
+      "wall_seconds": 0.826,
+      "evidence_path": "docs/testing/runtime-2d1-logs/verified-78c049c/android29/results.json",
+      "required": true,
+      "status": "PASS"
+    },
+    {
+      "test_id": "A05-install",
+      "platform": "android-api-29",
+      "os_api": "Android API29 10 / Android/sdk_phone_x86_64/generic_x86_64:10/QSR1.210820.001/7663313:userdebug/test-keys",
+      "source_commit": "78c049cc0a9bfba47d0bd8b4cab4f5657cb80ddf",
+      "checkout_commit": "b94d50fa27880b04bbaed6b194c4c0ed4646c7c8",
+      "artifact_sha256": {
+        "app": "83977b0465f52a65f7210eda4789ca309e91219b2cd542c5da7f852ec03fd55f",
+        "instrumentation": "49e0eaea70f8e6518edac08717566a0853695537a78c854db70270dcf0b103b5"
+      },
+      "preconditions": "Owned isolated environment and verified artifact",
+      "command_or_method": "scripts/native_runtime_ci/android.py::run, case A05-install; actual child commands/exit codes in sibling commands.json",
+      "expected": "Both TEST ONLY APKs install on clean emulator without replacing existing production",
+      "actual": {
+        "app_installed": true,
+        "test_installed": true,
+        "production_not_replaced": true
+      },
+      "exit_code": 0,
+      "time_started_utc": "2026-11-14T08:00:38Z",
+      "wall_seconds": 5.006,
+      "evidence_path": "docs/testing/runtime-2d1-logs/verified-78c049c/android29/results.json",
+      "required": true,
+      "status": "PASS"
+    },
+    {
+      "test_id": "A06-activity",
+      "platform": "android-api-29",
+      "os_api": "Android API29 10 / Android/sdk_phone_x86_64/generic_x86_64:10/QSR1.210820.001/7663313:userdebug/test-keys",
+      "source_commit": "78c049cc0a9bfba47d0bd8b4cab4f5657cb80ddf",
+      "checkout_commit": "b94d50fa27880b04bbaed6b194c4c0ed4646c7c8",
+      "artifact_sha256": {
+        "app": "83977b0465f52a65f7210eda4789ca309e91219b2cd542c5da7f852ec03fd55f",
+        "instrumentation": "49e0eaea70f8e6518edac08717566a0853695537a78c854db70270dcf0b103b5"
+      },
+      "preconditions": "Owned isolated environment and verified artifact",
+      "command_or_method": "scripts/native_runtime_ci/android.py::run, case A06-activity; actual child commands/exit codes in sibling commands.json",
+      "expected": "Real app Activity launches and becomes resumed on Android",
+      "actual": {
+        "main_activity_resumed": true,
+        "screenshot": "logs/initial-activity.png"
+      },
+      "exit_code": 0,
+      "time_started_utc": "2026-11-14T08:00:43Z",
+      "wall_seconds": 1.84,
+      "evidence_path": "docs/testing/runtime-2d1-logs/verified-78c049c/android29/results.json",
+      "required": true,
+      "status": "PASS"
+    },
+    {
+      "test_id": "A07-permissions",
+      "platform": "android-api-29",
+      "os_api": "Android API29 10 / Android/sdk_phone_x86_64/generic_x86_64:10/QSR1.210820.001/7663313:userdebug/test-keys",
+      "source_commit": "78c049cc0a9bfba47d0bd8b4cab4f5657cb80ddf",
+      "checkout_commit": "b94d50fa27880b04bbaed6b194c4c0ed4646c7c8",
+      "artifact_sha256": {
+        "app": "83977b0465f52a65f7210eda4789ca309e91219b2cd542c5da7f852ec03fd55f",
+        "instrumentation": "49e0eaea70f8e6518edac08717566a0853695537a78c854db70270dcf0b103b5"
+      },
+      "preconditions": "Owned isolated environment and verified artifact",
+      "command_or_method": "scripts/native_runtime_ci/android.py::run, case A07-permissions; actual child commands/exit codes in sibling commands.json",
+      "expected": "Actual API-specific notification permission flow and state are measured",
+      "actual": {
+        "passed": true,
+        "sdk": 29,
+        "checks": [
+          {
+            "sdk": 29,
+            "runtimePermissionRequired": false,
+            "id": "notification-api-policy",
+            "passed": true
+          }
+        ]
+      },
+      "exit_code": 0,
+      "time_started_utc": "2026-11-14T08:00:45Z",
+      "wall_seconds": 1.685,
+      "evidence_path": "docs/testing/runtime-2d1-logs/verified-78c049c/android29/results.json",
+      "required": true,
+      "status": "PASS"
+    },
+    {
+      "test_id": "A08-http",
+      "platform": "android-api-29",
+      "os_api": "Android API29 10 / Android/sdk_phone_x86_64/generic_x86_64:10/QSR1.210820.001/7663313:userdebug/test-keys",
+      "source_commit": "78c049cc0a9bfba47d0bd8b4cab4f5657cb80ddf",
+      "checkout_commit": "b94d50fa27880b04bbaed6b194c4c0ed4646c7c8",
+      "artifact_sha256": {
+        "app": "83977b0465f52a65f7210eda4789ca309e91219b2cd542c5da7f852ec03fd55f",
+        "instrumentation": "49e0eaea70f8e6518edac08717566a0853695537a78c854db70270dcf0b103b5"
+      },
+      "preconditions": "Owned isolated environment and verified artifact",
+      "command_or_method": "scripts/native_runtime_ci/android.py::run, case A08-http; actual child commands/exit codes in sibling commands.json",
+      "expected": "Live HTTP config from the app process is reachable through scoped adb forwarding",
+      "actual": {
+        "name": "FlowDrop",
+        "version": "1.13.0",
+        "platform": "android",
+        "mode": "local",
+        "tunnel_preserves_host": "127.0.0.1:5173"
+      },
+      "exit_code": null,
+      "time_started_utc": "2026-11-14T08:00:46Z",
+      "wall_seconds": 1.264,
+      "evidence_path": "docs/testing/runtime-2d1-logs/verified-78c049c/android29/results.json",
+      "required": true,
+      "status": "PASS"
+    },
+    {
+      "test_id": "A09-native-smoke",
+      "platform": "android-api-29",
+      "os_api": "Android API29 10 / Android/sdk_phone_x86_64/generic_x86_64:10/QSR1.210820.001/7663313:userdebug/test-keys",
+      "source_commit": "78c049cc0a9bfba47d0bd8b4cab4f5657cb80ddf",
+      "checkout_commit": "b94d50fa27880b04bbaed6b194c4c0ed4646c7c8",
+      "artifact_sha256": {
+        "app": "83977b0465f52a65f7210eda4789ca309e91219b2cd542c5da7f852ec03fd55f",
+        "instrumentation": "49e0eaea70f8e6518edac08717566a0853695537a78c854db70270dcf0b103b5"
+      },
+      "preconditions": "Owned isolated environment and verified artifact",
+      "command_or_method": "adb shell am instrument -w -r app.flowdrop.mobile.test/app.flowdrop.mobile.test.NativeSmoke",
+      "expected": "Original Activity/picker/services/storage/history instrumentation completes",
+      "actual": {
+        "passed": true,
+        "sdk": 29,
+        "nativeWidgets": true,
+        "embeddedRenderer": false,
+        "nativePickerContract": true,
+        "files": 3,
+        "nativeSendService": true,
+        "automaticReceiveService": true,
+        "mediaStoreExactBytes": true,
+        "albumAndDownloads": true,
+        "partialFilesHidden": true,
+        "revokeKeepsSavedFiles": true,
+        "history": true
+      },
+      "exit_code": 0,
+      "time_started_utc": "2026-11-14T08:00:48Z",
+      "wall_seconds": 4.327,
+      "evidence_path": "docs/testing/runtime-2d1-logs/verified-78c049c/android29/results.json",
+      "required": true,
+      "status": "PASS"
+    },
+    {
+      "test_id": "A10-service-smoke",
+      "platform": "android-api-29",
+      "os_api": "Android API29 10 / Android/sdk_phone_x86_64/generic_x86_64:10/QSR1.210820.001/7663313:userdebug/test-keys",
+      "source_commit": "78c049cc0a9bfba47d0bd8b4cab4f5657cb80ddf",
+      "checkout_commit": "b94d50fa27880b04bbaed6b194c4c0ed4646c7c8",
+      "artifact_sha256": {
+        "app": "83977b0465f52a65f7210eda4789ca309e91219b2cd542c5da7f852ec03fd55f",
+        "instrumentation": "49e0eaea70f8e6518edac08717566a0853695537a78c854db70270dcf0b103b5"
+      },
+      "preconditions": "Owned isolated environment and verified artifact",
+      "command_or_method": "adb shell am instrument -w -r app.flowdrop.mobile.test/app.flowdrop.mobile.test.NativeServiceSmoke",
+      "expected": "Original native service/MediaStore instrumentation completes",
+      "actual": {
+        "passed": true,
+        "sdk": 29,
+        "nativeSendService": true,
+        "nativeReceiveService": true,
+        "files": 3,
+        "mediaStoreExactBytes": true,
+        "albumAndDownloads": true,
+        "partialFilesHidden": true,
+        "nativeHistory": true,
+        "revokeKeepsSavedFiles": true
+      },
+      "exit_code": 0,
+      "time_started_utc": "2026-11-14T08:00:52Z",
+      "wall_seconds": 1.304,
+      "evidence_path": "docs/testing/runtime-2d1-logs/verified-78c049c/android29/results.json",
+      "required": true,
+      "status": "PASS"
+    },
+    {
+      "test_id": "A11-folder-smoke",
+      "platform": "android-api-29",
+      "os_api": "Android API29 10 / Android/sdk_phone_x86_64/generic_x86_64:10/QSR1.210820.001/7663313:userdebug/test-keys",
+      "source_commit": "78c049cc0a9bfba47d0bd8b4cab4f5657cb80ddf",
+      "checkout_commit": "b94d50fa27880b04bbaed6b194c4c0ed4646c7c8",
+      "artifact_sha256": {
+        "app": "83977b0465f52a65f7210eda4789ca309e91219b2cd542c5da7f852ec03fd55f",
+        "instrumentation": "49e0eaea70f8e6518edac08717566a0853695537a78c854db70270dcf0b103b5"
+      },
+      "preconditions": "Owned isolated environment and verified artifact",
+      "command_or_method": "adb shell am instrument -w -r app.flowdrop.mobile.test/app.flowdrop.mobile.test.NativeFolderSmoke",
+      "expected": "Original folder/collision/exact names/native receipt instrumentation completes",
+      "actual": {
+        "passed": true,
+        "sdk": 29,
+        "originalFolderName": true,
+        "nestedDirectories": true,
+        "emptyDirectories": true,
+        "exactOriginalFilenamesAndBytes": true,
+        "folderCollisionKeepsFilesUnchanged": true,
+        "nativeReceiveService": true,
+        "completionAfterImport": true
+      },
+      "exit_code": 0,
+      "time_started_utc": "2026-11-14T08:00:53Z",
+      "wall_seconds": 1.452,
+      "evidence_path": "docs/testing/runtime-2d1-logs/verified-78c049c/android29/results.json",
+      "required": true,
+      "status": "PASS"
+    },
+    {
+      "test_id": "A12-share-smoke",
+      "platform": "android-api-29",
+      "os_api": "Android API29 10 / Android/sdk_phone_x86_64/generic_x86_64:10/QSR1.210820.001/7663313:userdebug/test-keys",
+      "source_commit": "78c049cc0a9bfba47d0bd8b4cab4f5657cb80ddf",
+      "checkout_commit": "b94d50fa27880b04bbaed6b194c4c0ed4646c7c8",
+      "artifact_sha256": {
+        "app": "83977b0465f52a65f7210eda4789ca309e91219b2cd542c5da7f852ec03fd55f",
+        "instrumentation": "49e0eaea70f8e6518edac08717566a0853695537a78c854db70270dcf0b103b5"
+      },
+      "preconditions": "Owned isolated environment and verified artifact",
+      "command_or_method": "adb shell am instrument -w -r app.flowdrop.mobile.test/app.flowdrop.mobile.test.NativeShareSmoke",
+      "expected": "Original Android sharesheet/grants/recipient consent instrumentation completes",
+      "actual": {
+        "passed": true,
+        "sdk": 29,
+        "sharesheetSendAndMultiple": true,
+        "photoVideoPdfMimeResolution": true,
+        "separateSenderUid": true,
+        "coldActivityShare": true,
+        "warmActivityReuse": true,
+        "deduplicate": true,
+        "originalNames": true,
+        "noAutomaticSend": true,
+        "unsafeUrisRejected": true,
+        "missingGrantRejected": true,
+        "localUploadCapabilityRequired": true,
+        "nativeSendService": true,
+        "recipientConsent": true,
+        "exactBytes": true
+      },
+      "exit_code": 0,
+      "time_started_utc": "2026-11-14T08:00:55Z",
+      "wall_seconds": 3.009,
+      "evidence_path": "docs/testing/runtime-2d1-logs/verified-78c049c/android29/results.json",
+      "required": true,
+      "status": "PASS"
+    },
+    {
+      "test_id": "A13-runtime-smoke",
+      "platform": "android-api-29",
+      "os_api": "Android API29 10 / Android/sdk_phone_x86_64/generic_x86_64:10/QSR1.210820.001/7663313:userdebug/test-keys",
+      "source_commit": "78c049cc0a9bfba47d0bd8b4cab4f5657cb80ddf",
+      "checkout_commit": "b94d50fa27880b04bbaed6b194c4c0ed4646c7c8",
+      "artifact_sha256": {
+        "app": "83977b0465f52a65f7210eda4789ca309e91219b2cd542c5da7f852ec03fd55f",
+        "instrumentation": "49e0eaea70f8e6518edac08717566a0853695537a78c854db70270dcf0b103b5"
+      },
+      "preconditions": "Owned isolated environment and verified artifact",
+      "command_or_method": "adb shell am instrument -w -r app.flowdrop.mobile.test/app.flowdrop.mobile.test.NativeRuntimeSmoke",
+      "expected": "Additional native SHA/empty/multiple/Unicode/collision/cancel/disconnect/invalid/picker/background/stop smoke completes",
+      "actual": {
+        "passed": true,
+        "sdk": 29,
+        "checks": [
+          {
+            "sdk": 29,
+            "version": "1.13.0",
+            "id": "live-native-backend",
+            "passed": true
+          },
+          {
+            "hostReady": true,
+            "notificationId": 120,
+            "id": "foreground-notification",
+            "passed": true
+          },
+          {
+            "systemPickerObserved": true,
+            "selectionPreserved": true,
+            "id": "system-picker-cancel",
+            "passed": true
+          },
+          {
+            "files": [
+              {
+                "round": 0,
+                "name": "small 1794643261878.bin",
+                "originalName": "small 1794643261878.bin",
+                "size": 131089,
+                "expectedSha256": "1ec3437cee3cccf3647e130524ade52848571960a3340ae33573beef17d330b3",
+                "actualSha256": "1ec3437cee3cccf3647e130524ade52848571960a3340ae33573beef17d330b3"
+              },
+              {
+                "round": 0,
+                "name": "Tệp Unicode có khoảng trắng 1794643261878.txt",
+                "originalName": "Tệp Unicode có khoảng trắng 1794643261878.txt",
+                "size": 52,
+                "expectedSha256": "2931a4a8ade4d083cd5411782df718ce317afe3ccf94b28ddcb6e4645a9e8cf4",
+                "actualSha256": "2931a4a8ade4d083cd5411782df718ce317afe3ccf94b28ddcb6e4645a9e8cf4"
+              },
+              {
+                "round": 0,
+                "name": "Rỗng 1794643261878.bin",
+                "originalName": "Rỗng 1794643261878.bin",
+                "size": 0,
+                "expectedSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                "actualSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              },
+              {
+                "round": 1,
+                "name": "small 1794643261878 (1).bin",
+                "originalName": "small 1794643261878.bin",
+                "size": 131089,
+                "expectedSha256": "1ec3437cee3cccf3647e130524ade52848571960a3340ae33573beef17d330b3",
+                "actualSha256": "1ec3437cee3cccf3647e130524ade52848571960a3340ae33573beef17d330b3"
+              },
+              {
+                "round": 1,
+                "name": "Tệp Unicode có khoảng trắng 1794643261878 (1).txt",
+                "originalName": "Tệp Unicode có khoảng trắng 1794643261878.txt",
+                "size": 52,
+                "expectedSha256": "2931a4a8ade4d083cd5411782df718ce317afe3ccf94b28ddcb6e4645a9e8cf4",
+                "actualSha256": "2931a4a8ade4d083cd5411782df718ce317afe3ccf94b28ddcb6e4645a9e8cf4"
+              },
+              {
+                "round": 1,
+                "name": "Rỗng 1794643261878 (1).bin",
+                "originalName": "Rỗng 1794643261878.bin",
+                "size": 0,
+                "expectedSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                "actualSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              }
+            ],
+            "id": "native-transfer-and-collision-sha256",
+            "passed": true
+          },
+          {
+            "cancelled": true,
+            "id": "cancel-active-http",
+            "passed": true
+          },
+          {
+            "declaredBytes": 65536,
+            "sentBytes": 3,
+            "id": "tcp-disconnect-no-partial-publication",
+            "passed": true
+          },
+          {
+            "missingCapability": 403,
+            "incorrectCapability": 403,
+            "invalidMetadata": 400,
+            "id": "auth-and-invalid-request",
+            "passed": true
+          },
+          {
+            "state": "rejected",
+            "scope": "same-emulator loopback; not physical LAN",
+            "id": "recipient-rejection",
+            "passed": true
+          },
+          {
+            "httpAliveInBackground": true,
+            "id": "background-and-reopen",
+            "passed": true
+          },
+          {
+            "filesVerified": 6,
+            "deviceIdentityPreserved": true,
+            "id": "stop-restart-data-preserved",
+            "passed": true
+          }
+        ]
+      },
+      "exit_code": 0,
+      "time_started_utc": "2026-11-14T08:00:58Z",
+      "wall_seconds": 10.949,
+      "evidence_path": "docs/testing/runtime-2d1-logs/verified-78c049c/android29/results.json",
+      "required": true,
+      "status": "PASS"
+    },
+    {
+      "test_id": "A14-force-stop",
+      "platform": "android-api-29",
+      "os_api": "Android API29 10 / Android/sdk_phone_x86_64/generic_x86_64:10/QSR1.210820.001/7663313:userdebug/test-keys",
+      "source_commit": "78c049cc0a9bfba47d0bd8b4cab4f5657cb80ddf",
+      "checkout_commit": "b94d50fa27880b04bbaed6b194c4c0ed4646c7c8",
+      "artifact_sha256": {
+        "app": "83977b0465f52a65f7210eda4789ca309e91219b2cd542c5da7f852ec03fd55f",
+        "instrumentation": "49e0eaea70f8e6518edac08717566a0853695537a78c854db70270dcf0b103b5"
+      },
+      "preconditions": "Owned isolated environment and verified artifact",
+      "command_or_method": "scripts/native_runtime_ci/android.py::run, case A14-force-stop; actual child commands/exit codes in sibling commands.json",
+      "expected": "Force-stop removes app backend, restart resumes Activity and backend without a crash",
+      "actual": {
+        "force_stop_observed": true,
+        "real_backend_restarted": true
+      },
+      "exit_code": 0,
+      "time_started_utc": "2026-11-14T08:01:09Z",
+      "wall_seconds": 1.448,
+      "evidence_path": "docs/testing/runtime-2d1-logs/verified-78c049c/android29/results.json",
+      "required": true,
+      "status": "PASS"
+    },
+    {
+      "test_id": "A15-crash-anr",
+      "platform": "android-api-29",
+      "os_api": "Android API29 10 / Android/sdk_phone_x86_64/generic_x86_64:10/QSR1.210820.001/7663313:userdebug/test-keys",
+      "source_commit": "78c049cc0a9bfba47d0bd8b4cab4f5657cb80ddf",
+      "checkout_commit": "b94d50fa27880b04bbaed6b194c4c0ed4646c7c8",
+      "artifact_sha256": {
+        "app": "83977b0465f52a65f7210eda4789ca309e91219b2cd542c5da7f852ec03fd55f",
+        "instrumentation": "49e0eaea70f8e6518edac08717566a0853695537a78c854db70270dcf0b103b5"
+      },
+      "preconditions": "Owned isolated environment and verified artifact",
+      "command_or_method": "scripts/native_runtime_ci/android.py::run, case A15-crash-anr; actual child commands/exit codes in sibling commands.json",
+      "expected": "App-specific logcat and Activity/service state contain no crash or ANR",
+      "actual": {
+        "app_crash": false,
+        "app_anr": false
+      },
+      "exit_code": 0,
+      "time_started_utc": "2026-11-14T08:01:10Z",
+      "wall_seconds": 0.317,
+      "evidence_path": "docs/testing/runtime-2d1-logs/verified-78c049c/android29/results.json",
+      "required": true,
+      "status": "PASS"
+    },
+    {
+      "test_id": "A16-uninstall",
+      "platform": "android-api-29",
+      "os_api": "Android API29 10 / Android/sdk_phone_x86_64/generic_x86_64:10/QSR1.210820.001/7663313:userdebug/test-keys",
+      "source_commit": "78c049cc0a9bfba47d0bd8b4cab4f5657cb80ddf",
+      "checkout_commit": "b94d50fa27880b04bbaed6b194c4c0ed4646c7c8",
+      "artifact_sha256": {
+        "app": "83977b0465f52a65f7210eda4789ca309e91219b2cd542c5da7f852ec03fd55f",
+        "instrumentation": "49e0eaea70f8e6518edac08717566a0853695537a78c854db70270dcf0b103b5"
+      },
+      "preconditions": "Owned isolated environment and verified artifact",
+      "command_or_method": "scripts/native_runtime_ci/android.py::run, case A16-uninstall; actual child commands/exit codes in sibling commands.json",
+      "expected": "App/test package actually removed and only owned emulator/adb processes cleaned",
+      "actual": {
+        "test_app_removed": true,
+        "target_app_removed": true
+      },
+      "exit_code": 0,
+      "time_started_utc": "2026-11-14T08:01:10Z",
+      "wall_seconds": 0.64,
+      "evidence_path": "docs/testing/runtime-2d1-logs/verified-78c049c/android29/results.json",
+      "required": true,
+      "status": "PASS"
+    }
+  ],
+  "native_subchecks": [
+    {
+      "test_id": "android-api-35/live-native-backend",
+      "parent_test_id": "A13-runtime-smoke",
+      "platform": "android-api-35",
+      "os_api": "Android API35 15 / Android/sdk_phone64_x86_64/emu64x:15/AE3A.240806.019/12368160:userdebug/test-keys",
+      "source_commit": "78c049cc0a9bfba47d0bd8b4cab4f5657cb80ddf",
+      "artifact_sha256": {
+        "app": "83977b0465f52a65f7210eda4789ca309e91219b2cd542c5da7f852ec03fd55f",
+        "instrumentation": "49e0eaea70f8e6518edac08717566a0853695537a78c854db70270dcf0b103b5"
+      },
+      "preconditions": "Actual same-source APK pair installed on owned KVM emulator",
+      "command_or_method": "NativeRuntimeSmoke instrumentation::core / live-native-backend",
+      "expected": "Required native assertion succeeds",
+      "actual": {
+        "sdk": 35,
+        "version": "1.13.0",
+        "id": "live-native-backend",
+        "passed": true
+      },
+      "exit_code": 0,
+      "wall_seconds": 9.874,
+      "timing_scope": "Shared instrumentation duration; no invented per-subcheck timing",
+      "evidence_path": "docs/testing/runtime-2d1-logs/verified-78c049c/android35/a13-runtime-smoke.log",
+      "status": "PASS",
+      "required": true
+    },
+    {
+      "test_id": "android-api-35/foreground-notification",
+      "parent_test_id": "A13-runtime-smoke",
+      "platform": "android-api-35",
+      "os_api": "Android API35 15 / Android/sdk_phone64_x86_64/emu64x:15/AE3A.240806.019/12368160:userdebug/test-keys",
+      "source_commit": "78c049cc0a9bfba47d0bd8b4cab4f5657cb80ddf",
+      "artifact_sha256": {
+        "app": "83977b0465f52a65f7210eda4789ca309e91219b2cd542c5da7f852ec03fd55f",
+        "instrumentation": "49e0eaea70f8e6518edac08717566a0853695537a78c854db70270dcf0b103b5"
+      },
+      "preconditions": "Actual same-source APK pair installed on owned KVM emulator",
+      "command_or_method": "NativeRuntimeSmoke instrumentation::core / foreground-notification",
+      "expected": "Required native assertion succeeds",
+      "actual": {
+        "hostReady": true,
+        "notificationId": 120,
+        "id": "foreground-notification",
+        "passed": true
+      },
+      "exit_code": 0,
+      "wall_seconds": 9.874,
+      "timing_scope": "Shared instrumentation duration; no invented per-subcheck timing",
+      "evidence_path": "docs/testing/runtime-2d1-logs/verified-78c049c/android35/a13-runtime-smoke.log",
+      "status": "PASS",
+      "required": true
+    },
+    {
+      "test_id": "android-api-35/system-picker-cancel",
+      "parent_test_id": "A13-runtime-smoke",
+      "platform": "android-api-35",
+      "os_api": "Android API35 15 / Android/sdk_phone64_x86_64/emu64x:15/AE3A.240806.019/12368160:userdebug/test-keys",
+      "source_commit": "78c049cc0a9bfba47d0bd8b4cab4f5657cb80ddf",
+      "artifact_sha256": {
+        "app": "83977b0465f52a65f7210eda4789ca309e91219b2cd542c5da7f852ec03fd55f",
+        "instrumentation": "49e0eaea70f8e6518edac08717566a0853695537a78c854db70270dcf0b103b5"
+      },
+      "preconditions": "Actual same-source APK pair installed on owned KVM emulator",
+      "command_or_method": "NativeRuntimeSmoke instrumentation::core / system-picker-cancel",
+      "expected": "Required native assertion succeeds",
+      "actual": {
+        "systemPickerObserved": true,
+        "selectionPreserved": true,
+        "id": "system-picker-cancel",
+        "passed": true
+      },
+      "exit_code": 0,
+      "wall_seconds": 9.874,
+      "timing_scope": "Shared instrumentation duration; no invented per-subcheck timing",
+      "evidence_path": "docs/testing/runtime-2d1-logs/verified-78c049c/android35/a13-runtime-smoke.log",
+      "status": "PASS",
+      "required": true
+    },
+    {
+      "test_id": "android-api-35/native-transfer-and-collision-sha256",
+      "parent_test_id": "A13-runtime-smoke",
+      "platform": "android-api-35",
+      "os_api": "Android API35 15 / Android/sdk_phone64_x86_64/emu64x:15/AE3A.240806.019/12368160:userdebug/test-keys",
+      "source_commit": "78c049cc0a9bfba47d0bd8b4cab4f5657cb80ddf",
+      "artifact_sha256": {
+        "app": "83977b0465f52a65f7210eda4789ca309e91219b2cd542c5da7f852ec03fd55f",
+        "instrumentation": "49e0eaea70f8e6518edac08717566a0853695537a78c854db70270dcf0b103b5"
+      },
+      "preconditions": "Actual same-source APK pair installed on owned KVM emulator",
+      "command_or_method": "NativeRuntimeSmoke instrumentation::core / native-transfer-and-collision-sha256",
+      "expected": "Required native assertion succeeds",
+      "actual": {
+        "files": [
+          {
+            "round": 0,
+            "name": "small 1794643286446.bin",
+            "originalName": "small 1794643286446.bin",
+            "size": 131089,
+            "expectedSha256": "1ec3437cee3cccf3647e130524ade52848571960a3340ae33573beef17d330b3",
+            "actualSha256": "1ec3437cee3cccf3647e130524ade52848571960a3340ae33573beef17d330b3"
+          },
+          {
+            "round": 0,
+            "name": "Tệp Unicode có khoảng trắng 1794643286446.txt",
+            "originalName": "Tệp Unicode có khoảng trắng 1794643286446.txt",
+            "size": 52,
+            "expectedSha256": "2931a4a8ade4d083cd5411782df718ce317afe3ccf94b28ddcb6e4645a9e8cf4",
+            "actualSha256": "2931a4a8ade4d083cd5411782df718ce317afe3ccf94b28ddcb6e4645a9e8cf4"
+          },
+          {
+            "round": 0,
+            "name": "Rỗng 1794643286446.bin",
+            "originalName": "Rỗng 1794643286446.bin",
+            "size": 0,
+            "expectedSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "actualSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          {
+            "round": 1,
+            "name": "small 1794643286446 (1).bin",
+            "originalName": "small 1794643286446.bin",
+            "size": 131089,
+            "expectedSha256": "1ec3437cee3cccf3647e130524ade52848571960a3340ae33573beef17d330b3",
+            "actualSha256": "1ec3437cee3cccf3647e130524ade52848571960a3340ae33573beef17d330b3"
+          },
+          {
+            "round": 1,
+            "name": "Tệp Unicode có khoảng trắng 1794643286446 (1).txt",
+            "originalName": "Tệp Unicode có khoảng trắng 1794643286446.txt",
+            "size": 52,
+            "expectedSha256": "2931a4a8ade4d083cd5411782df718ce317afe3ccf94b28ddcb6e4645a9e8cf4",
+            "actualSha256": "2931a4a8ade4d083cd5411782df718ce317afe3ccf94b28ddcb6e4645a9e8cf4"
+          },
+          {
+            "round": 1,
+            "name": "Rỗng 1794643286446 (1).bin",
+            "originalName": "Rỗng 1794643286446.bin",
+            "size": 0,
+            "expectedSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "actualSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        ],
+        "id": "native-transfer-and-collision-sha256",
+        "passed": true
+      },
+      "exit_code": 0,
+      "wall_seconds": 9.874,
+      "timing_scope": "Shared instrumentation duration; no invented per-subcheck timing",
+      "evidence_path": "docs/testing/runtime-2d1-logs/verified-78c049c/android35/a13-runtime-smoke.log",
+      "status": "PASS",
+      "required": true
+    },
+    {
+      "test_id": "android-api-35/cancel-active-http",
+      "parent_test_id": "A13-runtime-smoke",
+      "platform": "android-api-35",
+      "os_api": "Android API35 15 / Android/sdk_phone64_x86_64/emu64x:15/AE3A.240806.019/12368160:userdebug/test-keys",
+      "source_commit": "78c049cc0a9bfba47d0bd8b4cab4f5657cb80ddf",
+      "artifact_sha256": {
+        "app": "83977b0465f52a65f7210eda4789ca309e91219b2cd542c5da7f852ec03fd55f",
+        "instrumentation": "49e0eaea70f8e6518edac08717566a0853695537a78c854db70270dcf0b103b5"
+      },
+      "preconditions": "Actual same-source APK pair installed on owned KVM emulator",
+      "command_or_method": "NativeRuntimeSmoke instrumentation::core / cancel-active-http",
+      "expected": "Required native assertion succeeds",
+      "actual": {
+        "cancelled": true,
+        "id": "cancel-active-http",
+        "passed": true
+      },
+      "exit_code": 0,
+      "wall_seconds": 9.874,
+      "timing_scope": "Shared instrumentation duration; no invented per-subcheck timing",
+      "evidence_path": "docs/testing/runtime-2d1-logs/verified-78c049c/android35/a13-runtime-smoke.log",
+      "status": "PASS",
+      "required": true
+    },
+    {
+      "test_id": "android-api-35/tcp-disconnect-no-partial-publication",
+      "parent_test_id": "A13-runtime-smoke",
+      "platform": "android-api-35",
+      "os_api": "Android API35 15 / Android/sdk_phone64_x86_64/emu64x:15/AE3A.240806.019/12368160:userdebug/test-keys",
+      "source_commit": "78c049cc0a9bfba47d0bd8b4cab4f5657cb80ddf",
+      "artifact_sha256": {
+        "app": "83977b0465f52a65f7210eda4789ca309e91219b2cd542c5da7f852ec03fd55f",
+        "instrumentation": "49e0eaea70f8e6518edac08717566a0853695537a78c854db70270dcf0b103b5"
+      },
+      "preconditions": "Actual same-source APK pair installed on owned KVM emulator",
+      "command_or_method": "NativeRuntimeSmoke instrumentation::core / tcp-disconnect-no-partial-publication",
+      "expected": "Required native assertion succeeds",
+      "actual": {
+        "declaredBytes": 65536,
+        "sentBytes": 3,
+        "id": "tcp-disconnect-no-partial-publication",
+        "passed": true
+      },
+      "exit_code": 0,
+      "wall_seconds": 9.874,
+      "timing_scope": "Shared instrumentation duration; no invented per-subcheck timing",
+      "evidence_path": "docs/testing/runtime-2d1-logs/verified-78c049c/android35/a13-runtime-smoke.log",
+      "status": "PASS",
+      "required": true
+    },
+    {
+      "test_id": "android-api-35/auth-and-invalid-request",
+      "parent_test_id": "A13-runtime-smoke",
+      "platform": "android-api-35",
+      "os_api": "Android API35 15 / Android/sdk_phone64_x86_64/emu64x:15/AE3A.240806.019/12368160:userdebug/test-keys",
+      "source_commit": "78c049cc0a9bfba47d0bd8b4cab4f5657cb80ddf",
+      "artifact_sha256": {
+        "app": "83977b0465f52a65f7210eda4789ca309e91219b2cd542c5da7f852ec03fd55f",
+        "instrumentation": "49e0eaea70f8e6518edac08717566a0853695537a78c854db70270dcf0b103b5"
+      },
+      "preconditions": "Actual same-source APK pair installed on owned KVM emulator",
+      "command_or_method": "NativeRuntimeSmoke instrumentation::core / auth-and-invalid-request",
+      "expected": "Required native assertion succeeds",
+      "actual": {
+        "missingCapability": 403,
+        "incorrectCapability": 403,
+        "invalidMetadata": 400,
+        "id": "auth-and-invalid-request",
+        "passed": true
+      },
+      "exit_code": 0,
+      "wall_seconds": 9.874,
+      "timing_scope": "Shared instrumentation duration; no invented per-subcheck timing",
+      "evidence_path": "docs/testing/runtime-2d1-logs/verified-78c049c/android35/a13-runtime-smoke.log",
+      "status": "PASS",
+      "required": true
+    },
+    {
+      "test_id": "android-api-35/recipient-rejection",
+      "parent_test_id": "A13-runtime-smoke",
+      "platform": "android-api-35",
+      "os_api": "Android API35 15 / Android/sdk_phone64_x86_64/emu64x:15/AE3A.240806.019/12368160:userdebug/test-keys",
+      "source_commit": "78c049cc0a9bfba47d0bd8b4cab4f5657cb80ddf",
+      "artifact_sha256": {
+        "app": "83977b0465f52a65f7210eda4789ca309e91219b2cd542c5da7f852ec03fd55f",
+        "instrumentation": "49e0eaea70f8e6518edac08717566a0853695537a78c854db70270dcf0b103b5"
+      },
+      "preconditions": "Actual same-source APK pair installed on owned KVM emulator",
+      "command_or_method": "NativeRuntimeSmoke instrumentation::core / recipient-rejection",
+      "expected": "Required native assertion succeeds",
+      "actual": {
+        "state": "rejected",
+        "scope": "same-emulator loopback; not physical LAN",
+        "id": "recipient-rejection",
+        "passed": true
+      },
+      "exit_code": 0,
+      "wall_seconds": 9.874,
+      "timing_scope": "Shared instrumentation duration; no invented per-subcheck timing",
+      "evidence_path": "docs/testing/runtime-2d1-logs/verified-78c049c/android35/a13-runtime-smoke.log",
+      "status": "PASS",
+      "required": true
+    },
+    {
+      "test_id": "android-api-35/background-and-reopen",
+      "parent_test_id": "A13-runtime-smoke",
+      "platform": "android-api-35",
+      "os_api": "Android API35 15 / Android/sdk_phone64_x86_64/emu64x:15/AE3A.240806.019/12368160:userdebug/test-keys",
+      "source_commit": "78c049cc0a9bfba47d0bd8b4cab4f5657cb80ddf",
+      "artifact_sha256": {
+        "app": "83977b0465f52a65f7210eda4789ca309e91219b2cd542c5da7f852ec03fd55f",
+        "instrumentation": "49e0eaea70f8e6518edac08717566a0853695537a78c854db70270dcf0b103b5"
+      },
+      "preconditions": "Actual same-source APK pair installed on owned KVM emulator",
+      "command_or_method": "NativeRuntimeSmoke instrumentation::core / background-and-reopen",
+      "expected": "Required native assertion succeeds",
+      "actual": {
+        "httpAliveInBackground": true,
+        "id": "background-and-reopen",
+        "passed": true
+      },
+      "exit_code": 0,
+      "wall_seconds": 9.874,
+      "timing_scope": "Shared instrumentation duration; no invented per-subcheck timing",
+      "evidence_path": "docs/testing/runtime-2d1-logs/verified-78c049c/android35/a13-runtime-smoke.log",
+      "status": "PASS",
+      "required": true
+    },
+    {
+      "test_id": "android-api-35/stop-restart-data-preserved",
+      "parent_test_id": "A13-runtime-smoke",
+      "platform": "android-api-35",
+      "os_api": "Android API35 15 / Android/sdk_phone64_x86_64/emu64x:15/AE3A.240806.019/12368160:userdebug/test-keys",
+      "source_commit": "78c049cc0a9bfba47d0bd8b4cab4f5657cb80ddf",
+      "artifact_sha256": {
+        "app": "83977b0465f52a65f7210eda4789ca309e91219b2cd542c5da7f852ec03fd55f",
+        "instrumentation": "49e0eaea70f8e6518edac08717566a0853695537a78c854db70270dcf0b103b5"
+      },
+      "preconditions": "Actual same-source APK pair installed on owned KVM emulator",
+      "command_or_method": "NativeRuntimeSmoke instrumentation::core / stop-restart-data-preserved",
+      "expected": "Required native assertion succeeds",
+      "actual": {
+        "filesVerified": 6,
+        "deviceIdentityPreserved": true,
+        "id": "stop-restart-data-preserved",
+        "passed": true
+      },
+      "exit_code": 0,
+      "wall_seconds": 9.874,
+      "timing_scope": "Shared instrumentation duration; no invented per-subcheck timing",
+      "evidence_path": "docs/testing/runtime-2d1-logs/verified-78c049c/android35/a13-runtime-smoke.log",
+      "status": "PASS",
+      "required": true
+    },
+    {
+      "test_id": "android-api-29/live-native-backend",
+      "parent_test_id": "A13-runtime-smoke",
+      "platform": "android-api-29",
+      "os_api": "Android API29 10 / Android/sdk_phone_x86_64/generic_x86_64:10/QSR1.210820.001/7663313:userdebug/test-keys",
+      "source_commit": "78c049cc0a9bfba47d0bd8b4cab4f5657cb80ddf",
+      "artifact_sha256": {
+        "app": "83977b0465f52a65f7210eda4789ca309e91219b2cd542c5da7f852ec03fd55f",
+        "instrumentation": "49e0eaea70f8e6518edac08717566a0853695537a78c854db70270dcf0b103b5"
+      },
+      "preconditions": "Actual same-source APK pair installed on owned KVM emulator",
+      "command_or_method": "NativeRuntimeSmoke instrumentation::core / live-native-backend",
+      "expected": "Required native assertion succeeds",
+      "actual": {
+        "sdk": 29,
+        "version": "1.13.0",
+        "id": "live-native-backend",
+        "passed": true
+      },
+      "exit_code": 0,
+      "wall_seconds": 10.949,
+      "timing_scope": "Shared instrumentation duration; no invented per-subcheck timing",
+      "evidence_path": "docs/testing/runtime-2d1-logs/verified-78c049c/android29/a13-runtime-smoke.log",
+      "status": "PASS",
+      "required": true
+    },
+    {
+      "test_id": "android-api-29/foreground-notification",
+      "parent_test_id": "A13-runtime-smoke",
+      "platform": "android-api-29",
+      "os_api": "Android API29 10 / Android/sdk_phone_x86_64/generic_x86_64:10/QSR1.210820.001/7663313:userdebug/test-keys",
+      "source_commit": "78c049cc0a9bfba47d0bd8b4cab4f5657cb80ddf",
+      "artifact_sha256": {
+        "app": "83977b0465f52a65f7210eda4789ca309e91219b2cd542c5da7f852ec03fd55f",
+        "instrumentation": "49e0eaea70f8e6518edac08717566a0853695537a78c854db70270dcf0b103b5"
+      },
+      "preconditions": "Actual same-source APK pair installed on owned KVM emulator",
+      "command_or_method": "NativeRuntimeSmoke instrumentation::core / foreground-notification",
+      "expected": "Required native assertion succeeds",
+      "actual": {
+        "hostReady": true,
+        "notificationId": 120,
+        "id": "foreground-notification",
+        "passed": true
+      },
+      "exit_code": 0,
+      "wall_seconds": 10.949,
+      "timing_scope": "Shared instrumentation duration; no invented per-subcheck timing",
+      "evidence_path": "docs/testing/runtime-2d1-logs/verified-78c049c/android29/a13-runtime-smoke.log",
+      "status": "PASS",
+      "required": true
+    },
+    {
+      "test_id": "android-api-29/system-picker-cancel",
+      "parent_test_id": "A13-runtime-smoke",
+      "platform": "android-api-29",
+      "os_api": "Android API29 10 / Android/sdk_phone_x86_64/generic_x86_64:10/QSR1.210820.001/7663313:userdebug/test-keys",
+      "source_commit": "78c049cc0a9bfba47d0bd8b4cab4f5657cb80ddf",
+      "artifact_sha256": {
+        "app": "83977b0465f52a65f7210eda4789ca309e91219b2cd542c5da7f852ec03fd55f",
+        "instrumentation": "49e0eaea70f8e6518edac08717566a0853695537a78c854db70270dcf0b103b5"
+      },
+      "preconditions": "Actual same-source APK pair installed on owned KVM emulator",
+      "command_or_method": "NativeRuntimeSmoke instrumentation::core / system-picker-cancel",
+      "expected": "Required native assertion succeeds",
+      "actual": {
+        "systemPickerObserved": true,
+        "selectionPreserved": true,
+        "id": "system-picker-cancel",
+        "passed": true
+      },
+      "exit_code": 0,
+      "wall_seconds": 10.949,
+      "timing_scope": "Shared instrumentation duration; no invented per-subcheck timing",
+      "evidence_path": "docs/testing/runtime-2d1-logs/verified-78c049c/android29/a13-runtime-smoke.log",
+      "status": "PASS",
+      "required": true
+    },
+    {
+      "test_id": "android-api-29/native-transfer-and-collision-sha256",
+      "parent_test_id": "A13-runtime-smoke",
+      "platform": "android-api-29",
+      "os_api": "Android API29 10 / Android/sdk_phone_x86_64/generic_x86_64:10/QSR1.210820.001/7663313:userdebug/test-keys",
+      "source_commit": "78c049cc0a9bfba47d0bd8b4cab4f5657cb80ddf",
+      "artifact_sha256": {
+        "app": "83977b0465f52a65f7210eda4789ca309e91219b2cd542c5da7f852ec03fd55f",
+        "instrumentation": "49e0eaea70f8e6518edac08717566a0853695537a78c854db70270dcf0b103b5"
+      },
+      "preconditions": "Actual same-source APK pair installed on owned KVM emulator",
+      "command_or_method": "NativeRuntimeSmoke instrumentation::core / native-transfer-and-collision-sha256",
+      "expected": "Required native assertion succeeds",
+      "actual": {
+        "files": [
+          {
+            "round": 0,
+            "name": "small 1794643261878.bin",
+            "originalName": "small 1794643261878.bin",
+            "size": 131089,
+            "expectedSha256": "1ec3437cee3cccf3647e130524ade52848571960a3340ae33573beef17d330b3",
+            "actualSha256": "1ec3437cee3cccf3647e130524ade52848571960a3340ae33573beef17d330b3"
+          },
+          {
+            "round": 0,
+            "name": "Tệp Unicode có khoảng trắng 1794643261878.txt",
+            "originalName": "Tệp Unicode có khoảng trắng 1794643261878.txt",
+            "size": 52,
+            "expectedSha256": "2931a4a8ade4d083cd5411782df718ce317afe3ccf94b28ddcb6e4645a9e8cf4",
+            "actualSha256": "2931a4a8ade4d083cd5411782df718ce317afe3ccf94b28ddcb6e4645a9e8cf4"
+          },
+          {
+            "round": 0,
+            "name": "Rỗng 1794643261878.bin",
+            "originalName": "Rỗng 1794643261878.bin",
+            "size": 0,
+            "expectedSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "actualSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          {
+            "round": 1,
+            "name": "small 1794643261878 (1).bin",
+            "originalName": "small 1794643261878.bin",
+            "size": 131089,
+            "expectedSha256": "1ec3437cee3cccf3647e130524ade52848571960a3340ae33573beef17d330b3",
+            "actualSha256": "1ec3437cee3cccf3647e130524ade52848571960a3340ae33573beef17d330b3"
+          },
+          {
+            "round": 1,
+            "name": "Tệp Unicode có khoảng trắng 1794643261878 (1).txt",
+            "originalName": "Tệp Unicode có khoảng trắng 1794643261878.txt",
+            "size": 52,
+            "expectedSha256": "2931a4a8ade4d083cd5411782df718ce317afe3ccf94b28ddcb6e4645a9e8cf4",
+            "actualSha256": "2931a4a8ade4d083cd5411782df718ce317afe3ccf94b28ddcb6e4645a9e8cf4"
+          },
+          {
+            "round": 1,
+            "name": "Rỗng 1794643261878 (1).bin",
+            "originalName": "Rỗng 1794643261878.bin",
+            "size": 0,
+            "expectedSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "actualSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        ],
+        "id": "native-transfer-and-collision-sha256",
+        "passed": true
+      },
+      "exit_code": 0,
+      "wall_seconds": 10.949,
+      "timing_scope": "Shared instrumentation duration; no invented per-subcheck timing",
+      "evidence_path": "docs/testing/runtime-2d1-logs/verified-78c049c/android29/a13-runtime-smoke.log",
+      "status": "PASS",
+      "required": true
+    },
+    {
+      "test_id": "android-api-29/cancel-active-http",
+      "parent_test_id": "A13-runtime-smoke",
+      "platform": "android-api-29",
+      "os_api": "Android API29 10 / Android/sdk_phone_x86_64/generic_x86_64:10/QSR1.210820.001/7663313:userdebug/test-keys",
+      "source_commit": "78c049cc0a9bfba47d0bd8b4cab4f5657cb80ddf",
+      "artifact_sha256": {
+        "app": "83977b0465f52a65f7210eda4789ca309e91219b2cd542c5da7f852ec03fd55f",
+        "instrumentation": "49e0eaea70f8e6518edac08717566a0853695537a78c854db70270dcf0b103b5"
+      },
+      "preconditions": "Actual same-source APK pair installed on owned KVM emulator",
+      "command_or_method": "NativeRuntimeSmoke instrumentation::core / cancel-active-http",
+      "expected": "Required native assertion succeeds",
+      "actual": {
+        "cancelled": true,
+        "id": "cancel-active-http",
+        "passed": true
+      },
+      "exit_code": 0,
+      "wall_seconds": 10.949,
+      "timing_scope": "Shared instrumentation duration; no invented per-subcheck timing",
+      "evidence_path": "docs/testing/runtime-2d1-logs/verified-78c049c/android29/a13-runtime-smoke.log",
+      "status": "PASS",
+      "required": true
+    },
+    {
+      "test_id": "android-api-29/tcp-disconnect-no-partial-publication",
+      "parent_test_id": "A13-runtime-smoke",
+      "platform": "android-api-29",
+      "os_api": "Android API29 10 / Android/sdk_phone_x86_64/generic_x86_64:10/QSR1.210820.001/7663313:userdebug/test-keys",
+      "source_commit": "78c049cc0a9bfba47d0bd8b4cab4f5657cb80ddf",
+      "artifact_sha256": {
+        "app": "83977b0465f52a65f7210eda4789ca309e91219b2cd542c5da7f852ec03fd55f",
+        "instrumentation": "49e0eaea70f8e6518edac08717566a0853695537a78c854db70270dcf0b103b5"
+      },
+      "preconditions": "Actual same-source APK pair installed on owned KVM emulator",
+      "command_or_method": "NativeRuntimeSmoke instrumentation::core / tcp-disconnect-no-partial-publication",
+      "expected": "Required native assertion succeeds",
+      "actual": {
+        "declaredBytes": 65536,
+        "sentBytes": 3,
+        "id": "tcp-disconnect-no-partial-publication",
+        "passed": true
+      },
+      "exit_code": 0,
+      "wall_seconds": 10.949,
+      "timing_scope": "Shared instrumentation duration; no invented per-subcheck timing",
+      "evidence_path": "docs/testing/runtime-2d1-logs/verified-78c049c/android29/a13-runtime-smoke.log",
+      "status": "PASS",
+      "required": true
+    },
+    {
+      "test_id": "android-api-29/auth-and-invalid-request",
+      "parent_test_id": "A13-runtime-smoke",
+      "platform": "android-api-29",
+      "os_api": "Android API29 10 / Android/sdk_phone_x86_64/generic_x86_64:10/QSR1.210820.001/7663313:userdebug/test-keys",
+      "source_commit": "78c049cc0a9bfba47d0bd8b4cab4f5657cb80ddf",
+      "artifact_sha256": {
+        "app": "83977b0465f52a65f7210eda4789ca309e91219b2cd542c5da7f852ec03fd55f",
+        "instrumentation": "49e0eaea70f8e6518edac08717566a0853695537a78c854db70270dcf0b103b5"
+      },
+      "preconditions": "Actual same-source APK pair installed on owned KVM emulator",
+      "command_or_method": "NativeRuntimeSmoke instrumentation::core / auth-and-invalid-request",
+      "expected": "Required native assertion succeeds",
+      "actual": {
+        "missingCapability": 403,
+        "incorrectCapability": 403,
+        "invalidMetadata": 400,
+        "id": "auth-and-invalid-request",
+        "passed": true
+      },
+      "exit_code": 0,
+      "wall_seconds": 10.949,
+      "timing_scope": "Shared instrumentation duration; no invented per-subcheck timing",
+      "evidence_path": "docs/testing/runtime-2d1-logs/verified-78c049c/android29/a13-runtime-smoke.log",
+      "status": "PASS",
+      "required": true
+    },
+    {
+      "test_id": "android-api-29/recipient-rejection",
+      "parent_test_id": "A13-runtime-smoke",
+      "platform": "android-api-29",
+      "os_api": "Android API29 10 / Android/sdk_phone_x86_64/generic_x86_64:10/QSR1.210820.001/7663313:userdebug/test-keys",
+      "source_commit": "78c049cc0a9bfba47d0bd8b4cab4f5657cb80ddf",
+      "artifact_sha256": {
+        "app": "83977b0465f52a65f7210eda4789ca309e91219b2cd542c5da7f852ec03fd55f",
+        "instrumentation": "49e0eaea70f8e6518edac08717566a0853695537a78c854db70270dcf0b103b5"
+      },
+      "preconditions": "Actual same-source APK pair installed on owned KVM emulator",
+      "command_or_method": "NativeRuntimeSmoke instrumentation::core / recipient-rejection",
+      "expected": "Required native assertion succeeds",
+      "actual": {
+        "state": "rejected",
+        "scope": "same-emulator loopback; not physical LAN",
+        "id": "recipient-rejection",
+        "passed": true
+      },
+      "exit_code": 0,
+      "wall_seconds": 10.949,
+      "timing_scope": "Shared instrumentation duration; no invented per-subcheck timing",
+      "evidence_path": "docs/testing/runtime-2d1-logs/verified-78c049c/android29/a13-runtime-smoke.log",
+      "status": "PASS",
+      "required": true
+    },
+    {
+      "test_id": "android-api-29/background-and-reopen",
+      "parent_test_id": "A13-runtime-smoke",
+      "platform": "android-api-29",
+      "os_api": "Android API29 10 / Android/sdk_phone_x86_64/generic_x86_64:10/QSR1.210820.001/7663313:userdebug/test-keys",
+      "source_commit": "78c049cc0a9bfba47d0bd8b4cab4f5657cb80ddf",
+      "artifact_sha256": {
+        "app": "83977b0465f52a65f7210eda4789ca309e91219b2cd542c5da7f852ec03fd55f",
+        "instrumentation": "49e0eaea70f8e6518edac08717566a0853695537a78c854db70270dcf0b103b5"
+      },
+      "preconditions": "Actual same-source APK pair installed on owned KVM emulator",
+      "command_or_method": "NativeRuntimeSmoke instrumentation::core / background-and-reopen",
+      "expected": "Required native assertion succeeds",
+      "actual": {
+        "httpAliveInBackground": true,
+        "id": "background-and-reopen",
+        "passed": true
+      },
+      "exit_code": 0,
+      "wall_seconds": 10.949,
+      "timing_scope": "Shared instrumentation duration; no invented per-subcheck timing",
+      "evidence_path": "docs/testing/runtime-2d1-logs/verified-78c049c/android29/a13-runtime-smoke.log",
+      "status": "PASS",
+      "required": true
+    },
+    {
+      "test_id": "android-api-29/stop-restart-data-preserved",
+      "parent_test_id": "A13-runtime-smoke",
+      "platform": "android-api-29",
+      "os_api": "Android API29 10 / Android/sdk_phone_x86_64/generic_x86_64:10/QSR1.210820.001/7663313:userdebug/test-keys",
+      "source_commit": "78c049cc0a9bfba47d0bd8b4cab4f5657cb80ddf",
+      "artifact_sha256": {
+        "app": "83977b0465f52a65f7210eda4789ca309e91219b2cd542c5da7f852ec03fd55f",
+        "instrumentation": "49e0eaea70f8e6518edac08717566a0853695537a78c854db70270dcf0b103b5"
+      },
+      "preconditions": "Actual same-source APK pair installed on owned KVM emulator",
+      "command_or_method": "NativeRuntimeSmoke instrumentation::core / stop-restart-data-preserved",
+      "expected": "Required native assertion succeeds",
+      "actual": {
+        "filesVerified": 6,
+        "deviceIdentityPreserved": true,
+        "id": "stop-restart-data-preserved",
+        "passed": true
+      },
+      "exit_code": 0,
+      "wall_seconds": 10.949,
+      "timing_scope": "Shared instrumentation duration; no invented per-subcheck timing",
+      "evidence_path": "docs/testing/runtime-2d1-logs/verified-78c049c/android29/a13-runtime-smoke.log",
+      "status": "PASS",
+      "required": true
+    }
+  ],
+  "native_regression": [
+    {
+      "group": "fast",
+      "status": "PASS",
+      "exit_code": 0,
+      "results": [
+        {
+          "name": "ci-runner-tests",
+          "command": [
+            "/opt/hostedtoolcache/Python/3.12.16/x64/bin/python3",
+            "-m",
+            "unittest",
+            "discover",
+            "-s",
+            "tests/ci",
+            "-p",
+            "test_*.py",
+            "-v"
+          ],
+          "status": "PASS",
+          "executed": true,
+          "exit_code": 0,
+          "raw_returncode": 0,
+          "timeout": false,
+          "timeout_seconds": 90,
+          "wall_seconds": 1.639,
+          "resources": {
+            "supported": true,
+            "free_disk_bytes": 91469225984,
+            "memory_limit_bytes": 16760344576,
+            "minimum_disk_bytes": 536870912,
+            "minimum_memory_bytes": 2147483648
+          }
+        },
+        {
+          "name": "asset-integrity",
+          "command": [
+            "sha256sum",
+            "--check",
+            "docs/assets/FONT-RESTORATION-SHA256SUMS.txt"
+          ],
+          "status": "PASS",
+          "executed": true,
+          "exit_code": 0,
+          "raw_returncode": 0,
+          "timeout": false,
+          "timeout_seconds": 30,
+          "wall_seconds": 0.003,
+          "resources": {
+            "supported": true,
+            "free_disk_bytes": 91468853248,
+            "memory_limit_bytes": 16760344576,
+            "minimum_disk_bytes": 536870912,
+            "minimum_memory_bytes": 2147483648
+          }
+        },
+        {
+          "name": "unit",
+          "command": [
+            "npm",
+            "test"
+          ],
+          "status": "PASS",
+          "executed": true,
+          "exit_code": 0,
+          "raw_returncode": 0,
+          "timeout": false,
+          "timeout_seconds": 90,
+          "wall_seconds": 0.346,
+          "resources": {
+            "supported": true,
+            "free_disk_bytes": 91468849152,
+            "memory_limit_bytes": 16760344576,
+            "minimum_disk_bytes": 536870912,
+            "minimum_memory_bytes": 2147483648
+          }
+        },
+        {
+          "name": "harness-unit",
+          "command": [
+            "node",
+            "--test",
+            "tests/harness.test.mjs"
+          ],
+          "status": "PASS",
+          "executed": true,
+          "exit_code": 0,
+          "raw_returncode": 0,
+          "timeout": false,
+          "timeout_seconds": 90,
+          "wall_seconds": 0.381,
+          "resources": {
+            "supported": true,
+            "free_disk_bytes": 91468832768,
+            "memory_limit_bytes": 16760344576,
+            "minimum_disk_bytes": 536870912,
+            "minimum_memory_bytes": 2147483648
+          }
+        }
+      ]
+    },
+    {
+      "group": "integration",
+      "status": "PASS",
+      "exit_code": 0,
+      "results": [
+        {
+          "name": "http",
+          "command": [
+            "node",
+            "tests/http-integration.mjs"
+          ],
+          "status": "PASS",
+          "executed": true,
+          "exit_code": 0,
+          "raw_returncode": 0,
+          "timeout": false,
+          "timeout_seconds": 120,
+          "wall_seconds": 1.731,
+          "resources": {
+            "supported": true,
+            "free_disk_bytes": 91469238272,
+            "memory_limit_bytes": 16759308288,
+            "minimum_disk_bytes": 536870912,
+            "minimum_memory_bytes": 2147483648
+          }
+        },
+        {
+          "name": "android-host",
+          "command": [
+            "node",
+            "tests/android-host-integration.mjs"
+          ],
+          "status": "PASS",
+          "executed": true,
+          "exit_code": 0,
+          "raw_returncode": 0,
+          "timeout": false,
+          "timeout_seconds": 120,
+          "wall_seconds": 4.289,
+          "resources": {
+            "supported": true,
+            "free_disk_bytes": 91469250560,
+            "memory_limit_bytes": 16759308288,
+            "minimum_disk_bytes": 536870912,
+            "minimum_memory_bytes": 2147483648
+          }
+        },
+        {
+          "name": "discovery",
+          "command": [
+            "node",
+            "tests/discovery-integration.mjs"
+          ],
+          "status": "PASS",
+          "executed": true,
+          "exit_code": 0,
+          "raw_returncode": 0,
+          "timeout": false,
+          "timeout_seconds": 120,
+          "wall_seconds": 2.861,
+          "resources": {
+            "supported": true,
+            "free_disk_bytes": 91469242368,
+            "memory_limit_bytes": 16759308288,
+            "minimum_disk_bytes": 536870912,
+            "minimum_memory_bytes": 2147483648
+          }
+        },
+        {
+          "name": "peer",
+          "command": [
+            "node",
+            "tests/peer-integration.mjs"
+          ],
+          "status": "PASS",
+          "executed": true,
+          "exit_code": 0,
+          "raw_returncode": 0,
+          "timeout": false,
+          "timeout_seconds": 240,
+          "wall_seconds": 8.622,
+          "resources": {
+            "supported": true,
+            "free_disk_bytes": 91469238272,
+            "memory_limit_bytes": 16759308288,
+            "minimum_disk_bytes": 536870912,
+            "minimum_memory_bytes": 2147483648
+          }
+        },
+        {
+          "name": "lan-discovery",
+          "command": [
+            "node",
+            "tests/lan-discovery-integration.mjs"
+          ],
+          "status": "PASS",
+          "executed": true,
+          "exit_code": 0,
+          "raw_returncode": 0,
+          "timeout": false,
+          "timeout_seconds": 240,
+          "wall_seconds": 17.444,
+          "resources": {
+            "supported": true,
+            "free_disk_bytes": 91469250560,
+            "memory_limit_bytes": 16759308288,
+            "minimum_disk_bytes": 536870912,
+            "minimum_memory_bytes": 2147483648
+          }
+        },
+        {
+          "name": "android-discovery",
+          "command": [
+            "node",
+            "tests/android-discovery-state.mjs"
+          ],
+          "status": "PASS",
+          "executed": true,
+          "exit_code": 0,
+          "raw_returncode": 0,
+          "timeout": false,
+          "timeout_seconds": 120,
+          "wall_seconds": 1.159,
+          "resources": {
+            "supported": true,
+            "free_disk_bytes": 91469246464,
+            "memory_limit_bytes": 16759308288,
+            "minimum_disk_bytes": 536870912,
+            "minimum_memory_bytes": 2147483648
+          }
+        },
+        {
+          "name": "security",
+          "command": [
+            "node",
+            "tests/security-integration.mjs"
+          ],
+          "status": "PASS",
+          "executed": true,
+          "exit_code": 0,
+          "raw_returncode": 0,
+          "timeout": false,
+          "timeout_seconds": 120,
+          "wall_seconds": 11.365,
+          "resources": {
+            "supported": true,
+            "free_disk_bytes": 91469242368,
+            "memory_limit_bytes": 16759308288,
+            "minimum_disk_bytes": 536870912,
+            "minimum_memory_bytes": 2147483648
+          }
+        }
+      ]
+    },
+    {
+      "group": "stream",
+      "status": "PASS",
+      "exit_code": 0,
+      "results": [
+        {
+          "name": "large-transfer",
+          "command": [
+            "node",
+            "tests/large-transfer-integration.mjs"
+          ],
+          "status": "PASS",
+          "executed": true,
+          "exit_code": 0,
+          "raw_returncode": 0,
+          "timeout": false,
+          "timeout_seconds": 300,
+          "wall_seconds": 7.698,
+          "resources": {
+            "supported": true,
+            "free_disk_bytes": 94917083136,
+            "memory_limit_bytes": 16464306176,
+            "minimum_disk_bytes": 2147483648,
+            "minimum_memory_bytes": 2147483648
+          }
+        }
+      ]
+    },
+    {
+      "group": "zip64",
+      "status": "PASS",
+      "exit_code": 0,
+      "results": [
+        {
+          "name": "features",
+          "command": [
+            "node",
+            "--test",
+            "tests/features-1.10.test.mjs"
+          ],
+          "status": "PASS",
+          "executed": true,
+          "exit_code": 0,
+          "raw_returncode": 0,
+          "timeout": false,
+          "timeout_seconds": 600,
+          "wall_seconds": 14.073,
+          "resources": {
+            "supported": true,
+            "free_disk_bytes": 91474329600,
+            "memory_limit_bytes": 16760344576,
+            "minimum_disk_bytes": 19327352832,
+            "minimum_memory_bytes": 2147483648
+          }
+        },
+        {
+          "name": "folders",
+          "command": [
+            "node",
+            "--test",
+            "tests/folder-receive.test.mjs"
+          ],
+          "status": "PASS",
+          "executed": true,
+          "exit_code": 0,
+          "raw_returncode": 0,
+          "timeout": false,
+          "timeout_seconds": 900,
+          "wall_seconds": 42.964,
+          "resources": {
+            "supported": true,
+            "free_disk_bytes": 91474341888,
+            "memory_limit_bytes": 16760344576,
+            "minimum_disk_bytes": 19327352832,
+            "minimum_memory_bytes": 2147483648
+          }
+        },
+        {
+          "name": "native-client",
+          "command": [
+            "node",
+            "tests/android-native-client.mjs"
+          ],
+          "status": "PASS",
+          "executed": true,
+          "exit_code": 0,
+          "raw_returncode": 0,
+          "timeout": false,
+          "timeout_seconds": 1500,
+          "wall_seconds": 15.549,
+          "resources": {
+            "supported": true,
+            "free_disk_bytes": 91474419712,
+            "memory_limit_bytes": 16760344576,
+            "minimum_disk_bytes": 19327352832,
+            "minimum_memory_bytes": 2147483648
+          }
+        }
+      ]
+    }
+  ],
+  "not_verified": [
+    "Physical devices/OEM battery behavior",
+    "Physical cross-platform LAN and Wi-Fi multicast",
+    "Production signing",
+    "Windows 10/11 desktop hardware and Android 16"
+  ]
+}

@@ -1,0 +1,22 @@
+[
+  {
+    "id": "cmdline-tools;19.0",
+    "official_metadata_sha256": "d670de8bce15cc4ecf5d1a135f2168137ccbb8402111dfc8efcf9cb6f3b2f28f",
+    "installed_package_xml_sha256": "5e0572d7e8d48392cffb8a93ec28edf0ecbf5dc8933b9afb271a8b2f1a7ea6c3"
+  },
+  {
+    "id": "platform-tools",
+    "official_metadata_sha256": "d670de8bce15cc4ecf5d1a135f2168137ccbb8402111dfc8efcf9cb6f3b2f28f",
+    "installed_package_xml_sha256": "7da48abb31ed9f14eb276013d2d46404ba495a31f6295bf0045e0db38ba98cfe"
+  },
+  {
+    "id": "emulator",
+    "official_metadata_sha256": "d670de8bce15cc4ecf5d1a135f2168137ccbb8402111dfc8efcf9cb6f3b2f28f",
+    "installed_package_xml_sha256": "e4e59f931e6d7c0b96eb298bcad9804cc8c83546bf972c71de66cd400f59e16a"
+  },
+  {
+    "id": "system-images;android-29;default;x86_64",
+    "official_metadata_sha256": "7b119fdc282a65432aab52e8bbc64546f7fb6ec74e79e235633c60d06564b111",
+    "installed_package_xml_sha256": "33555a63f64048d64be46da684e82ec7e815325dcad2cd59cbcd8fc1901906bb"
+  }
+]

@@ -1,0 +1,10 @@
+INSTRUMENTATION_STATUS: stage=starting_native_services
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: stage=native_host_ready
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: stage=native_send_complete
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: stage=native_receive_complete
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_RESULT: result={"passed":true,"sdk":35,"nativeSendService":true,"nativeReceiveService":true,"files":3,"mediaStoreExactBytes":true,"albumAndDownloads":true,"partialFilesHidden":true,"nativeHistory":true,"revokeKeepsSavedFiles":true}
+INSTRUMENTATION_CODE: -1

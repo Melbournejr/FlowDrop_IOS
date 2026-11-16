@@ -1,0 +1,17 @@
+Verifies
+Verified using v1 scheme (JAR signing): false
+Verified using v2 scheme (APK Signature Scheme v2): false
+Verified using v3 scheme (APK Signature Scheme v3): true
+Verified using v3.1 scheme (APK Signature Scheme v3.1): false
+Verified using v4 scheme (APK Signature Scheme v4): false
+Verified for SourceStamp: false
+Number of signers: 1
+Signer #1 certificate DN: CN=FlowDrop 2C2 TEST ONLY
+Signer #1 certificate SHA-256 digest: 2760ec172c49ef423d17ac346e7216dddd2dc8b49c113ccdcae362db1c962672
+Signer #1 certificate SHA-1 digest: e11dfa75c6af5b55adfaa712d057857c053d1545
+Signer #1 certificate MD5 digest: d9a502911cad6423b4c555f698a8b61d
+Signer #1 key algorithm: RSA
+Signer #1 key size (bits): 3072
+Signer #1 public key SHA-256 digest: 6f516b867782328683b34105577921fe2f8afa9a087d8ba6a4b4f9c958e5dba9
+Signer #1 public key SHA-1 digest: b2447f3143cff2db8ac20df02e3c31c0b80f5bd0
+Signer #1 public key MD5 digest: 7ac87e7f964dc1249863a4d4d212693e

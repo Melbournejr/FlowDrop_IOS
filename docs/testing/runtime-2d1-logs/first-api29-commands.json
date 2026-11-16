@@ -1,0 +1,42 @@
+[
+  {
+    "name": "allow-owned-runner-kvm",
+    "command": [
+      "sudo",
+      "-n",
+      "setfacl",
+      "-m",
+      "u:runner:rw",
+      "/dev/kvm"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 0.009,
+    "timeout_seconds": 120,
+    "log": "logs/allow-owned-runner-kvm.log",
+    "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "adb-version",
+    "command": [
+      "/home/runner/work/_temp/flowdrop-runtime-29/toolchain/tools/sdk/platform-tools/adb",
+      "version"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 0.002,
+    "timeout_seconds": 120,
+    "log": "logs/adb-version.log",
+    "log_sha256": "acb43d58a2ce6fe6dbe03db30ee8817be8be151e1021941ea8ef3b4f179009fb"
+  },
+  {
+    "name": "emulator-version",
+    "command": [
+      "/home/runner/work/_temp/flowdrop-runtime-29/toolchain/tools/sdk/emulator/emulator",
+      "-version"
+    ],
+    "exit_code": 127,
+    "wall_seconds": 0.01,
+    "timeout_seconds": 120,
+    "log": "logs/emulator-version.log",
+    "log_sha256": "26493ac81ff0d1f3606e83fa620242e30f18a89c6f0b6d69146f585b4e03d479"
+  }
+]

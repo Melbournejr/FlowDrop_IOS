@@ -1,0 +1,71 @@
+{
+  "schema": 1,
+  "google_authentication": "official HTTPS metadata publishes SHA-1 and size; SHA-256 recorded after that match, not independently signed SHA-256",
+  "artifacts": [
+    {
+      "id": "cmdline-tools;19.0",
+      "version": "19.0.0",
+      "filename": "commandlinetools-linux-13114758_latest.zip",
+      "url": "https://dl.google.com/android/repository/commandlinetools-linux-13114758_latest.zip",
+      "size": 164760899,
+      "published_sha1": "5fdcc763663eefb86a5b8879697aa6088b041e70",
+      "metadata": "sdk-metadata.xml",
+      "metadata_sha256": "d670de8bce15cc4ecf5d1a135f2168137ccbb8402111dfc8efcf9cb6f3b2f28f",
+      "channel": "stable-0",
+      "license": "Android SDK License / archive notices",
+      "sha256": "7ec965280a073311c339e571cd5de778b9975026cfcbe79f2b1cdcb1e15317ee"
+    },
+    {
+      "id": "platform-tools",
+      "version": "37.0.1",
+      "filename": "platform-tools_r37.0.1-linux.zip",
+      "url": "https://dl.google.com/android/repository/platform-tools_r37.0.1-linux.zip",
+      "size": 9054187,
+      "published_sha1": "477254aa5f903c15cf51001717bdf347fb6b53e0",
+      "metadata": "sdk-metadata.xml",
+      "metadata_sha256": "d670de8bce15cc4ecf5d1a135f2168137ccbb8402111dfc8efcf9cb6f3b2f28f",
+      "channel": "stable-0",
+      "license": "Android SDK License / archive notices",
+      "sha256": "d230f13842f60f782a8645f9c813f8f845bf36089ea7289f28c48f17979313f1"
+    },
+    {
+      "id": "emulator",
+      "version": "37.2.13",
+      "filename": "emulator-linux_x64-16740729.zip",
+      "url": "https://dl.google.com/android/repository/emulator-linux_x64-16740729.zip",
+      "size": 349658551,
+      "published_sha1": "f41f9e31eb5ca64926603c03265c50bbc0ff4172",
+      "metadata": "sdk-metadata.xml",
+      "metadata_sha256": "d670de8bce15cc4ecf5d1a135f2168137ccbb8402111dfc8efcf9cb6f3b2f28f",
+      "channel": "stable-0",
+      "license": "Android SDK License / archive notices",
+      "sha256": "cbc7c3cfb83220b8a0f9c513fdab557712e74d339ec19ddffa43f23350ae9bdd"
+    },
+    {
+      "id": "system-images;android-35;default;x86_64",
+      "version": "2.0.0",
+      "filename": "x86_64-35_r02.zip",
+      "url": "https://dl.google.com/android/repository/sys-img/android/x86_64-35_r02.zip",
+      "size": 782404023,
+      "published_sha1": "2d857d170c0d1b827149565da34b3383e5306f7f",
+      "metadata": "images-metadata.xml",
+      "metadata_sha256": "7b119fdc282a65432aab52e8bbc64546f7fb6ec74e79e235633c60d06564b111",
+      "channel": "stable-0",
+      "license": "Android SDK License / archive notices",
+      "sha256": "6dd7de33e63ef105cf2fabea6badda1dbe7665c96d8908e5f6e1407e63ff4556"
+    },
+    {
+      "id": "system-images;android-29;default;x86_64",
+      "version": "8.0.0",
+      "filename": "x86_64-29_r08-linux.zip",
+      "url": "https://dl.google.com/android/repository/sys-img/android/x86_64-29_r08-linux.zip",
+      "size": 689676765,
+      "published_sha1": "e4b798d6fcddff90d528d74ef22ce3dd4a2ca798",
+      "metadata": "images-metadata.xml",
+      "metadata_sha256": "7b119fdc282a65432aab52e8bbc64546f7fb6ec74e79e235633c60d06564b111",
+      "channel": "stable-0",
+      "license": "Android SDK License / archive notices",
+      "sha256": "b5c3fda1f4b4931c30518d342e4ad5f7464945e0cdced3538d4ff2e12f7bf201"
+    }
+  ]
+}

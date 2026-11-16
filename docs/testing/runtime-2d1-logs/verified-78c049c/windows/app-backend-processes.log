@@ -1,0 +1,12 @@
+[
+    {
+        "ProcessId":  6136,
+        "ParentProcessId":  8852,
+        "ExecutablePath":  "C:\\Users\\runneradmin\\AppData\\Local\\Programs\\FlowDrop\\FlowDrop.exe"
+    },
+    {
+        "ProcessId":  7888,
+        "ParentProcessId":  6136,
+        "ExecutablePath":  "C:\\Users\\runneradmin\\AppData\\Local\\Programs\\FlowDrop\\runtime\\node.exe"
+    }
+]

@@ -1,0 +1,15 @@
+{
+  "passed": true,
+  "sdk": 29,
+  "nativeWidgets": true,
+  "embeddedRenderer": false,
+  "nativePickerContract": true,
+  "files": 3,
+  "nativeSendService": true,
+  "automaticReceiveService": true,
+  "mediaStoreExactBytes": true,
+  "albumAndDownloads": true,
+  "partialFilesHidden": true,
+  "revokeKeepsSavedFiles": true,
+  "history": true
+}

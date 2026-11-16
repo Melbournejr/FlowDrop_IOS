@@ -1,0 +1,4 @@
+Native window ready; status: Sẵn sàng chuyển file lớn. Giữ ứng dụng mở và đảm bảo thiết bị còn đủ dung lượng trống.
+Native folder/update/LAN controls exist; Windows folder archive and persisted update toggle passed.
+Native folder picker, explicit folder transfer, exact structure/names, conflict [REDACTED] and visible Explorer window passed.
+PASS: native window, backend startup, file picker, 1 MiB or >4 GiB + empty upload, exact bytes, automatic permanent receive, no overwrite, revoke and close.

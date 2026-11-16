@@ -1,0 +1,12 @@
+{
+  "passed": true,
+  "sdk": 35,
+  "nativeSendService": true,
+  "nativeReceiveService": true,
+  "files": 3,
+  "mediaStoreExactBytes": true,
+  "albumAndDownloads": true,
+  "partialFilesHidden": true,
+  "nativeHistory": true,
+  "revokeKeepsSavedFiles": true
+}

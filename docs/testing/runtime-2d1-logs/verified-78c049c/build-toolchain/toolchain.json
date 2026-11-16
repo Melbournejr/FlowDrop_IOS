@@ -1,0 +1,327 @@
+{
+  "status": "PASS",
+  "group": "all",
+  "resources": {
+    "os": "Linux-7.0.0-1017-azure-x86_64-with-glibc2.39",
+    "architecture": "x86_64",
+    "free_disk_bytes": 91510898688,
+    "memory_bytes": 16760344576
+  },
+  "artifacts": [
+    {
+      "id": "platforms;android-35",
+      "url": "https://dl.google.com/android/repository/platform-35_r02.zip",
+      "sha256": "0988cacad01b38a18a47bac14a0695f246bc76c1b06c0eeb8eb0dc825ab0c8e0",
+      "size": 64273788,
+      "authentication": "Google official HTTPS repository metadata published SHA-1; SHA-256 recorded after independent published checksum match"
+    },
+    {
+      "id": "build-tools;35.0.0",
+      "url": "https://dl.google.com/android/repository/build-tools_r35_linux.zip",
+      "sha256": "bd3a4966912eb8b30ed0d00b0cda6b6543b949d5ffe00bea54c04c81e1561d88",
+      "size": 61958799,
+      "authentication": "Google official HTTPS repository metadata published SHA-1; SHA-256 recorded after independent published checksum match"
+    },
+    {
+      "id": "node-windows",
+      "url": "https://nodejs.org/dist/v24.22.2/node-v24.22.2-win-x64.zip",
+      "sha256": "ca1bff5d8ead13c9f2ea404a176db46bd430704d5b5113734049fa365e7799e2",
+      "size": 37754834,
+      "authentication": "Node.js release SHASUMS256 PGP signature verified; signer fingerprint in tagged official README"
+    },
+    {
+      "id": "node-linux",
+      "url": "https://nodejs.org/dist/v24.22.2/node-v24.22.2-linux-x64.tar.xz",
+      "sha256": "48cc0e21e048790e54c0cf5749c2725005313d652651c40b7a21feb9697aaf75",
+      "size": 32039312,
+      "authentication": "Node.js release SHASUMS256 PGP signature verified; signer fingerprint in tagged official README"
+    },
+    {
+      "id": "jdk",
+      "url": "https://github.com/adoptium/temurin21-binaries/releases/download/jdk-21.0.13%2B9/OpenJDK21U-jdk_x64_linux_hotspot_21.0.13_9.tar.gz",
+      "sha256": "d7f5d5cf865a2902b70ff549b97586a7d3f234e016f041ab447ea740c7d66d1c",
+      "size": 207858352,
+      "authentication": "Eclipse Adoptium detached PGP signature, published SHA-256 and GitHub asset digest verified"
+    },
+    {
+      "id": "binutils-mingw-w64-x86-64",
+      "url": "https://deb.debian.org/debian/pool/main/b/binutils-mingw-w64/binutils-mingw-w64-x86-64_2.44-3+12+b1_amd64.deb",
+      "sha256": "b53f4a091b16a0d0952b8e3bd6027931641386258f96b37db1f0c62c787221d3",
+      "size": 3473344,
+      "authentication": "Debian trixie signed InRelease -> Packages.xz SHA-256 -> versioned .deb SHA-256"
+    },
+    {
+      "id": "g++-mingw-w64-x86-64-posix",
+      "url": "https://deb.debian.org/debian/pool/main/g/gcc-mingw-w64/g++-mingw-w64-x86-64-posix_14.2.0-19+27+b1_amd64.deb",
+      "sha256": "cfa1773c2d0184819050138e587a81606d04a5f92e278b521b72b776d2c256c1",
+      "size": 15261820,
+      "authentication": "Debian trixie signed InRelease -> Packages.xz SHA-256 -> versioned .deb SHA-256"
+    },
+    {
+      "id": "gcc-mingw-w64-x86-64-posix",
+      "url": "https://deb.debian.org/debian/pool/main/g/gcc-mingw-w64/gcc-mingw-w64-x86-64-posix_14.2.0-19+27+b1_amd64.deb",
+      "sha256": "e32d24cfd1482394f16d9a84c1d0a9f5aa08ee826a79acc383c70cc8c23c4fe5",
+      "size": 37567656,
+      "authentication": "Debian trixie signed InRelease -> Packages.xz SHA-256 -> versioned .deb SHA-256"
+    },
+    {
+      "id": "gcc-mingw-w64-x86-64-posix-runtime",
+      "url": "https://deb.debian.org/debian/pool/main/g/gcc-mingw-w64/gcc-mingw-w64-x86-64-posix-runtime_14.2.0-19+27+b1_amd64.deb",
+      "sha256": "c898d96177574a8a7238564a1e799d8ddfed5a3d2ea005510305f9ad466a6f59",
+      "size": 13037152,
+      "authentication": "Debian trixie signed InRelease -> Packages.xz SHA-256 -> versioned .deb SHA-256"
+    },
+    {
+      "id": "gcc-mingw-w64-base",
+      "url": "https://deb.debian.org/debian/pool/main/g/gcc-mingw-w64/gcc-mingw-w64-base_14.2.0-19+27+b1_amd64.deb",
+      "sha256": "8d2c64b886ab4a435a78ddc4cd3b510f149b65fbd6be8472e8f460627562718a",
+      "size": 194268,
+      "authentication": "Debian trixie signed InRelease -> Packages.xz SHA-256 -> versioned .deb SHA-256"
+    },
+    {
+      "id": "mingw-w64-common",
+      "url": "https://deb.debian.org/debian/pool/main/m/mingw-w64/mingw-w64-common_12.0.0-5_all.deb",
+      "sha256": "97dce5d0d8aff1cade4786ad4ef5078345477a598829afcac2e7f2fbc5399990",
+      "size": 5792084,
+      "authentication": "Debian trixie signed InRelease -> Packages.xz SHA-256 -> versioned .deb SHA-256"
+    },
+    {
+      "id": "mingw-w64-x86-64-dev",
+      "url": "https://deb.debian.org/debian/pool/main/m/mingw-w64/mingw-w64-x86-64-dev_12.0.0-5_all.deb",
+      "sha256": "0bf89cf7454cccb49cd2a46a6f7b33896f6ae3a1a2fe33e02c40be6155bbb385",
+      "size": 4871860,
+      "authentication": "Debian trixie signed InRelease -> Packages.xz SHA-256 -> versioned .deb SHA-256"
+    },
+    {
+      "id": "nsis",
+      "url": "https://deb.debian.org/debian/pool/main/n/nsis/nsis_3.11-1_amd64.deb",
+      "sha256": "e6eb6ffb70f0df09e95dedb2d2cf55ad3c2679f7c2ae357d0c00cc4c83178690",
+      "size": 568816,
+      "authentication": "Debian trixie signed InRelease -> Packages.xz SHA-256 -> versioned .deb SHA-256"
+    },
+    {
+      "id": "nsis-common",
+      "url": "https://deb.debian.org/debian/pool/main/n/nsis/nsis-common_3.11-1_all.deb",
+      "sha256": "103a3284c1a5356efa0aba90fdfc391c3cde8e7df8726377cef0f98471584047",
+      "size": 1168188,
+      "authentication": "Debian trixie signed InRelease -> Packages.xz SHA-256 -> versioned .deb SHA-256"
+    },
+    {
+      "id": "libstdc++6",
+      "url": "https://deb.debian.org/debian/pool/main/g/gcc-14/libstdc++6_14.2.0-19_amd64.deb",
+      "sha256": "ab1fa05837aa7a92aae748fd07a18a35f7d18bb4a71c4724fe2bbf0e32089de0",
+      "size": 713628,
+      "authentication": "Debian trixie signed InRelease -> Packages.xz SHA-256 -> versioned .deb SHA-256"
+    },
+    {
+      "id": "libgcc-s1",
+      "url": "https://deb.debian.org/debian/pool/main/g/gcc-14/libgcc-s1_14.2.0-19_amd64.deb",
+      "sha256": "3c71917b490d1a17aed43196a2787a256ecf060526cdb20216a74bedc061b150",
+      "size": 72772,
+      "authentication": "Debian trixie signed InRelease -> Packages.xz SHA-256 -> versioned .deb SHA-256"
+    },
+    {
+      "id": "libzstd1",
+      "url": "https://deb.debian.org/debian/pool/main/libz/libzstd/libzstd1_1.5.7+dfsg-1_amd64.deb",
+      "sha256": "2f6a2aeacfc925eba8b00ac9139bc4bfccf8cacb09eb93de067074b26948eef9",
+      "size": 303836,
+      "authentication": "Debian trixie signed InRelease -> Packages.xz SHA-256 -> versioned .deb SHA-256"
+    },
+    {
+      "id": "libmpc3",
+      "url": "https://deb.debian.org/debian/pool/main/m/mpclib3/libmpc3_1.3.1-1+b3_amd64.deb",
+      "sha256": "2af0a5c128e03694a41c0b011bd8a958b7297436cdb3a15ddad7866dae8c300b",
+      "size": 52244,
+      "authentication": "Debian trixie signed InRelease -> Packages.xz SHA-256 -> versioned .deb SHA-256"
+    },
+    {
+      "id": "libmpfr6",
+      "url": "https://deb.debian.org/debian/pool/main/m/mpfr4/libmpfr6_4.2.2-1_amd64.deb",
+      "sha256": "75dddce11dabc7fc543712c33dc27b7f2ee66a111763eb5eac654d010b42cd92",
+      "size": 729320,
+      "authentication": "Debian trixie signed InRelease -> Packages.xz SHA-256 -> versioned .deb SHA-256"
+    },
+    {
+      "id": "libgmp10",
+      "url": "https://deb.debian.org/debian/pool/main/g/gmp/libgmp10_6.3.0+dfsg-3_amd64.deb",
+      "sha256": "d0d0265eb01770f17afd0f7c8c0622f80479dcfbbe13653a0debeec61464e622",
+      "size": 560220,
+      "authentication": "Debian trixie signed InRelease -> Packages.xz SHA-256 -> versioned .deb SHA-256"
+    },
+    {
+      "id": "libisl23",
+      "url": "https://deb.debian.org/debian/pool/main/i/isl/libisl23_0.27-1_amd64.deb",
+      "sha256": "ac8518042e81c00de1effb72bba7e88ac4ecd488f7ea8b9e3ebc63159cb53b35",
+      "size": 659152,
+      "authentication": "Debian trixie signed InRelease -> Packages.xz SHA-256 -> versioned .deb SHA-256"
+    },
+    {
+      "id": "7zip",
+      "url": "https://deb.debian.org/debian/pool/main/7/7zip/7zip_25.01+dfsg-1~deb13u2_amd64.deb",
+      "sha256": "b2cb210bee3be6a10230b38b8645d71846d19364b157f44fd08e1a54cae1652f",
+      "size": 1573700,
+      "authentication": "Debian trixie signed InRelease -> Packages.xz SHA-256 -> versioned .deb SHA-256"
+    },
+    {
+      "id": "binutils-common",
+      "url": "https://deb.debian.org/debian/pool/main/b/binutils/binutils-common_2.44-3_amd64.deb",
+      "sha256": "002da5d23f8757dee97a2c0a40e0e1d4d85a43da094488ee2ee7068d4d3691f9",
+      "size": 2508768,
+      "authentication": "Debian trixie signed InRelease -> Packages.xz SHA-256 -> versioned .deb SHA-256"
+    },
+    {
+      "id": "gcc-14-base",
+      "url": "https://deb.debian.org/debian/pool/main/g/gcc-14/gcc-14-base_14.2.0-19_amd64.deb",
+      "sha256": "5b6825de4263824b78c4c51f6476414f3b4e89c2ab63e81dc8b9b5501e867cf6",
+      "size": 49432,
+      "authentication": "Debian trixie signed InRelease -> Packages.xz SHA-256 -> versioned .deb SHA-256"
+    },
+    {
+      "id": "zlib1g",
+      "url": "https://deb.debian.org/debian/pool/main/z/zlib/zlib1g_1.3.dfsg+really1.3.1-1+b1_amd64.deb",
+      "sha256": "015be740d6236ad114582dea500c1d907f29e16d6db00566ca32fb68d71ac90d",
+      "size": 88892,
+      "authentication": "Debian trixie signed InRelease -> Packages.xz SHA-256 -> versioned .deb SHA-256"
+    }
+  ],
+  "signatures": [
+    {
+      "type": "debian",
+      "exit_code": 0,
+      "valid_signatures": [
+        "[GNUPG:] VALIDSIG 4CB50190207B4758A3F73A796ED0E7B82643E131 2026-09-12 1789199778 0 4 0 1 8 01 B8B80B5B623EAB6AD8775C45B7C5D7D6350947F8",
+        "[GNUPG:] VALIDSIG B8E5F13176D2A7A75220028078DBA3BC47EF2265 2026-09-12 1789199779 0 4 0 1 8 01 04B54C3CDCA79751B16BC6B5225629DF75B188BD",
+        "[GNUPG:] VALIDSIG 41587F7DB8C774BCCF131416762F67A0B2C39DE4 2026-09-12 1789199867 0 4 0 22 8 01 41587F7DB8C774BCCF131416762F67A0B2C39DE4"
+      ]
+    },
+    {
+      "type": "releases",
+      "exit_code": 0,
+      "valid_signatures": [
+        "[GNUPG:] VALIDSIG 5BE8A3F6C8A5C01D106C0AD820B1A390B168D356 2026-10-28 1793212588 0 4 0 22 8 01 5BE8A3F6C8A5C01D106C0AD820B1A390B168D356"
+      ]
+    },
+    {
+      "type": "releases",
+      "exit_code": 0,
+      "valid_signatures": [
+        "[GNUPG:] VALIDSIG 3B04D753C9050D9A5D343F39843C48A565F8F04B 2026-10-21 1792603596 0 4 0 1 10 00 3B04D753C9050D9A5D343F39843C48A565F8F04B"
+      ]
+    }
+  ],
+  "distribution_records": {
+    "status": "PASS",
+    "debian_index_checked": true,
+    "debian_index_sha256": "7778d3e3f303b7ddb8ce0fe7c8d57473a076c6bf2e8f241f75421d2396352498",
+    "google_publication": "official HTTPS SHA-1/size",
+    "node_signed_shasums_checked": true
+  },
+  "versions": [
+    {
+      "tool": "java",
+      "command": [
+        "/home/runner/work/_temp/flowdrop-2c2-toolchain/jdk/bin/java",
+        "-version"
+      ],
+      "exit_code": 0,
+      "observed": "openjdk version \"21.0.13\" 2026-10-20 LTS\nOpenJDK Runtime Environment Temurin-21.0.13+9 (build 21.0.13+9-LTS)\nOpenJDK 64-Bit Server VM Temurin-21.0.13+9 (build 21.0.13+9-LTS, mixed mode, sharing)",
+      "expected": "21.0.13"
+    },
+    {
+      "tool": "aapt2",
+      "command": [
+        "/home/runner/work/_temp/flowdrop-2c2-toolchain/tools/sdk/build-tools/android-15/aapt2",
+        "version"
+      ],
+      "exit_code": 0,
+      "observed": "Android Asset Packaging Tool (aapt) 2.19-11948202",
+      "expected": "2.19-11948202"
+    },
+    {
+      "tool": "d8",
+      "command": [
+        "/home/runner/work/_temp/flowdrop-2c2-toolchain/jdk/bin/java",
+        "-cp",
+        "/home/runner/work/_temp/flowdrop-2c2-toolchain/tools/sdk/build-tools/android-15/lib/d8.jar",
+        "com.android.tools.r8.D8",
+        "--version"
+      ],
+      "exit_code": 0,
+      "observed": "D8 8.6.2-dev (build abaab469b5ebd4dd2bb91ba0ed6f45277faae4ca from go/r8bot (luci-r8-custom-ci-archive-0-77gl))",
+      "expected": "8.6.2-dev"
+    },
+    {
+      "tool": "apksigner",
+      "command": [
+        "/home/runner/work/_temp/flowdrop-2c2-toolchain/jdk/bin/java",
+        "-jar",
+        "/home/runner/work/_temp/flowdrop-2c2-toolchain/tools/sdk/build-tools/android-15/lib/apksigner.jar",
+        "version"
+      ],
+      "exit_code": 0,
+      "observed": "0.9",
+      "expected": "0.9"
+    },
+    {
+      "tool": "gcc",
+      "command": [
+        "/home/runner/work/_temp/flowdrop-2c2-toolchain/tools/mingw/usr/bin/x86_64-w64-mingw32-g++-posix",
+        "-dumpfullversion"
+      ],
+      "exit_code": 0,
+      "observed": "14-posix",
+      "expected": "14-posix"
+    },
+    {
+      "tool": "gcc-target",
+      "command": [
+        "/home/runner/work/_temp/flowdrop-2c2-toolchain/tools/mingw/usr/bin/x86_64-w64-mingw32-g++-posix",
+        "-dumpmachine"
+      ],
+      "exit_code": 0,
+      "observed": "x86_64-w64-mingw32",
+      "expected": "x86_64-w64-mingw32"
+    },
+    {
+      "tool": "windres",
+      "command": [
+        "/home/runner/work/_temp/flowdrop-2c2-toolchain/tools/mingw/usr/bin/x86_64-w64-mingw32-windres",
+        "--version"
+      ],
+      "exit_code": 0,
+      "observed": "GNU windres (GNU Binutils) 2.44\nCopyright (C) 2025 Free Software Foundation, Inc.\nThis program is free software; you may redistribute it under the terms of\nthe GNU General Public License version 3 or (at your option) any later version.\nThis program has absolutely no warranty.",
+      "expected": "2.44"
+    },
+    {
+      "tool": "nsis",
+      "command": [
+        "/home/runner/work/_temp/flowdrop-2c2-toolchain/tools/nsis/usr/bin/makensis",
+        "-VERSION"
+      ],
+      "exit_code": 0,
+      "observed": "v3.11-1",
+      "expected": "3.11-1"
+    },
+    {
+      "tool": "node-linux",
+      "command": [
+        "/home/runner/work/_temp/flowdrop-2c2-toolchain/node-linux/bin/node",
+        "--version"
+      ],
+      "exit_code": 0,
+      "observed": "v24.22.2",
+      "expected": "v24.22.2"
+    },
+    {
+      "tool": "7zip",
+      "command": [
+        "/home/runner/work/_temp/flowdrop-2c2-toolchain/tools/mingw/usr/lib/7zip/7z",
+        "i"
+      ],
+      "exit_code": 0,
+      "observed": "7-Zip 25.01 (x64) : Copyright (c) 1999-2025 Igor Pavlov : 2025-08-03\n 64-bit locale=C.UTF-8 Threads:4 OPEN_MAX:65536, ASM\n\n\nLibs:\n 0 : 25.01 : /home/runner/work/_temp/flowdrop-2c2-toolchain/tools/mingw/usr/lib/7zip/7z.so\n\nFormats:\n 0 C...F..........c.a.m+.. w...0  7z       7z            7 z BC AF ' 1C\n 0  ......................  APFS     apfs img      offset=32 N X S B 00\n 0  ......................  APM      apm           E R\n 0  ......................  Ar       ar a deb udeb lib ! < a r c h > 0A\n 0  ......................  Arj      arj           ` EA\n 0  K.....O.....X.........  Base64   b64           \n 0  ......O...............  COFF     obj           \n 0  ...F..................  Cab      cab           M S C F 00 00 00 00\n 0  ......................  Chm      chm chi chq chw I T S F 03 00 00 00 ` 00 00 00\n 0  ......................  Compound msi msp doc xls ppt D0 CF 11 E0 A1 B1 1A E1\n 0  ....M.................  Cpio     cpio          0 7 0 7 0  ||  C7 q  ||  q C7\n 0  ......................  CramFS   cramfs        offset=16 C o m p r e s s e d 20 R O M F S\n 0  .....G..B.............  Dmg      dmg           k o l y 00 00 00 04 00 00 02 00\n 0  .........E............  ELF      elf            E L F\n 0  ......................  Ext      ext ext2 ext3 ext4 img offset=1080 S EF\n 0  ......................  FAT      fat img       offset=510 U AA\n 0  ......................  FLV      flv           F L V 01\n 0  ......................  GPT      gpt mbr       offset=512 E F I 20 P A R T 00 00 01 00\n 0  ....M.................  HFS      hfs hfsx      offset=1024 B D  ||  H + 00 04  ||  H X 00 05\n 0  ...F..................  Hxs      hxs hxi hxr hxq hxw lit I T O L I T L S 01 00 00 00 ( 00 00 00\n 0  ......O...............  IHex     ihex          \n 0  ......................  Iso      iso img       offset=32769 C D 0 0 1\n 0  ......................  LP       lpimg img     offset=4096 g D l a 4 00 00 00\n 0  ......................  Lzh      lzh lha       offset=2 - l h\n 0  .......P..............  MBR      mbr           \n 0  ....M....E............  MachO    macho         CE FA ED FE  ||  CF FA ED FE  ||  FE ED FA CE  ||  FE ED FA CF\n 0  ......................  MsLZ     mslz          S Z D D 88 F0 ' 3 A\n 0  ....M.................  Mub      mub           CA FE BA BE 00 00 00  ||  B9 FA F1 0E\n 0  ......................  NTFS     ntfs img      offset=3 N T F S 20 20 20 20 00\n 0  ...F.G................  Nsis     nsis          offset=4 EF BE AD DE N u l l s o f t I n s t\n 0  .........E............  PE       exe dll sys   M Z\n 0  ......................  Ppmd     pmd           8F AF AC 84\n 0  ......................  QCOW     qcow qcow2 qcow2c Q F I FB 00 00 00\n 0  ...F..................  Rar      rar r00       R a r ! 1A 07 00\n 0  ...F..................  Rar5     rar r00       R a r ! 1A 07 01 00\n 0  ......................  Rpm      rpm           ED AB EE DB\n 0  K.....................  SWF      swf           F W S\n 0  ....M.................  SWFc     swf (~.swf)   C W S  ||  Z W S\n 0  ......................  Sparse   simg img      : FF & ED 01 00\n 0  ......................  Split    001           \n 0  ....M.................  SquashFS squashfs      h s q s  ||  s q s h  ||  s h s q  ||  q s h s\n 0  .........E............  TE       te            V Z\n 0  ...FM.................  UEFIc    scap          BD 86 f ; v 0D 0 @ B7 0E B5 Q 9E / C5 A0  ||  8B A6 < J # w FB H 80 = W 8C C1 FE C4 M  ||  B9 82 91 S B5 AB 91 C B6 9A E3 A9 C F7 / CC\n 0  ...FM.................  UEFIf    uefif         offset=16 D9 T 93 z h 04 J D 81 CE 0B F6 17 D8 90 DF  ||  x E5 8C 8C = 8A 1C O 99 5 89 a 85 C3 - D3\n 0  ....M.O...............  Udf      udf iso img   offset=32768 00 B E A 0 1 01 00  ||  01 C D 0 0 1\n 0  ......................  VDI      vdi           offset=64  10 DA BE\n 0  .....G................  VHD      vhd           c o n e c t i x 00 00\n 0  ......................  VHDX     vhdx avhdx    v h d x f i l e\n 0  ......................  VMDK     vmdk          K D M V\n 0  ......................  Xar      xar pkg xip   x a r ! 00\n 0  ......................  Z        z taz (.tar)  1F 9D\n 0 CK.....................  bzip2    bz2 bzip2 tbz2 (.tar) tbz (.tar) B Z h\n 0 CK.................m+.. .u..1  gzip     gz gzip tgz (.tar) tpz (.tar) apk (.tar) 1F 8B 08\n 0  K.....O...............  lzma     lzma          \n 0  K.....................  lzma86   lzma86        \n 0 C......O...LH......m+.. wu.n1  tar      tar ova       offset=257 u s t a r\n 0 C.SN.......LH..c.a.m+.. w...0  wim      wim swm esd ppkg M S W I M 00 00 00\n 0 CK.....................  xz       xz txz (.tar) FD 7 z X Z 00\n 0 C...FMG........c.a.m+.. wud.0  zip      zip z01 zipx jar xpi odt ods docx xlsx epub ipa apk appx P K 03 04  ||  P K 05 06  ||  P K 06 06  ||  P K 07 08 P K  ||  P K 0 0 P K\n 0  K.....................  zstd     zst tzst (.tar) ( B5 / FD\n   CK.....O.....XC........  Hash     sha256 sha512 sha384 sha224 sha512-224 sha512-256 sha3-224 sha3-256 sha3-384 sha3-512 sha1 sha2 sha3 sha md5 blake2s blake2b blake2sp xxh64 crc32 crc64 cksum asc \n\nCodecs:\n 0 4ED   303011B BCJ2\n 0  EDF  3030103 BCJ\n 0  EDF  3030205 PPC\n 0  EDF  3030401 IA64\n 0  EDF  3030501 ARM\n 0  EDF  3030701 ARMT\n 0  EDF  3030805 SPARC\n 0  EDF        A ARM64\n 0  EDF        B RISCV\n 0  EDF    20302 Swap2\n 0  EDF    20304 Swap4\n 0  ED     40202 BZip2\n 0  ED         0 Copy\n 0  ED     40109 Deflate64\n 0  ED     40108 Deflate\n 0  EDF        3 Delta\n 0  ED        21 LZMA2\n 0  ED     30101 LZMA\n 0  ED     30401 PPMD\n 0  EDF  6F10701 7zAES\n 0  EDF  6F00181 AES256CBC\n\nHashers:\n      4        1 CRC32\n 0    4        1 CRC32\n 0   16      208 MD5\n 0   20      201 SHA1\n 0   32        A SHA256\n 0   32      231 SHA3-256\n 0   48      222 SHA384\n 0   64      223 SHA512\n 0    8      211 XXH64\n 0    8        4 CRC64\n 0   32      202 BLAKE2sp",
+      "expected": "25.01"
+    }
+  ],
+  "exit_code": 0
+}

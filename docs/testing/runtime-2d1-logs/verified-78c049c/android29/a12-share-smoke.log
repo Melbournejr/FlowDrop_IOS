@@ -1,0 +1,8 @@
+INSTRUMENTATION_STATUS: stage=single_share_imported
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: stage=multiple_share_imported_and_deduplicated
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: stage=native_send_preserved_exact_bytes
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_RESULT: result={"passed":true,"sdk":29,"sharesheetSendAndMultiple":true,"photoVideoPdfMimeResolution":true,"separateSenderUid":true,"coldActivityShare":true,"warmActivityReuse":true,"deduplicate":true,"originalNames":true,"noAutomaticSend":true,"unsafeUrisRejected":true,"missingGrantRejected":true,"localUploadCapabilityRequired":true,"nativeSendService":true,"recipientConsent":true,"exactBytes":true}
+INSTRUMENTATION_CODE: -1

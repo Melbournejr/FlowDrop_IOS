@@ -1,0 +1,12 @@
+{
+  "passed": true,
+  "sdk": 29,
+  "checks": [
+    {
+      "sdk": 29,
+      "runtimePermissionRequired": false,
+      "id": "notification-api-policy",
+      "passed": true
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "path": "actions/python-versions/versions-manifest.json",
+  "blob_sha": "8468b3406cb309a299b2ead4109d0a2b2467153b",
+  "version": "3.12.10",
+  "windows": [
+    {
+      "filename": "python-3.12.10-win32-x64.zip",
+      "arch": "x64",
+      "platform": "win32",
+      "download_url": "https://github.com/actions/python-versions/releases/download/3.12.10-14343898437/python-3.12.10-win32-x64.zip"
+    }
+  ]
+}

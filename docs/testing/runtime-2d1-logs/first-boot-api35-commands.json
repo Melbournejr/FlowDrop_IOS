@@ -1,0 +1,510 @@
+[
+  {
+    "name": "allow-owned-runner-kvm",
+    "command": [
+      "sudo",
+      "-n",
+      "setfacl",
+      "-m",
+      "u:runner:rw",
+      "/dev/kvm"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 0.018,
+    "timeout_seconds": 120,
+    "log": "logs/allow-owned-runner-kvm.log",
+    "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "adb-version",
+    "command": [
+      "/home/runner/work/_temp/flowdrop-runtime-35/toolchain/tools/sdk/platform-tools/adb",
+      "version"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 0.002,
+    "timeout_seconds": 120,
+    "log": "logs/adb-version.log",
+    "log_sha256": "15db5f11d20aaff661c1822c24e24eea580ab2bd9c2197bcffa1079c9da43437"
+  },
+  {
+    "name": "emulator-host-ldd-before",
+    "command": [
+      "/usr/bin/ldd",
+      "/home/runner/work/_temp/flowdrop-runtime-35/toolchain/tools/sdk/emulator/qemu/linux-x86_64/qemu-system-x86_64"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 0.016,
+    "timeout_seconds": 120,
+    "log": "logs/emulator-host-ldd-before.log",
+    "log_sha256": "31a75de5c925f57098aba37afc67f3af032f1fbb13b59027f9f12a71ff017bd7"
+  },
+  {
+    "name": "ubuntu-signed-package-index",
+    "command": [
+      "sudo",
+      "-n",
+      "/usr/bin/apt-get",
+      "update"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 7.814,
+    "timeout_seconds": 180,
+    "log": "logs/ubuntu-signed-package-index.log",
+    "log_sha256": "a9435bbbe5d622d476be9130ed3b648200ed4bd0492e15a9f8dd4b28b2d33c9d"
+  },
+  {
+    "name": "ubuntu-libpulse-policy",
+    "command": [
+      "/usr/bin/apt-cache",
+      "policy",
+      "libpulse0"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 0.05,
+    "timeout_seconds": 120,
+    "log": "logs/ubuntu-libpulse-policy.log",
+    "log_sha256": "773d3deb4587d673fd60be8c238bfb3f50c75451fc783e40a56db515d91d0b4a"
+  },
+  {
+    "name": "ubuntu-official-mirrors",
+    "command": [
+      "/usr/bin/cat",
+      "/etc/apt/apt-mirrors.txt"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 0.003,
+    "timeout_seconds": 120,
+    "log": "logs/ubuntu-official-mirrors.log",
+    "log_sha256": "e0d6b0af979e4662d16357a27ae456cc6f21e26da031540f4df8706ebed1d583"
+  },
+  {
+    "name": "ubuntu-libpulse-install",
+    "command": [
+      "sudo",
+      "-n",
+      "/usr/bin/apt-get",
+      "install",
+      "--yes",
+      "--no-install-recommends",
+      "libpulse0=1:16.1+dfsg1-2ubuntu10.1"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 4.478,
+    "timeout_seconds": 180,
+    "log": "logs/ubuntu-libpulse-install.log",
+    "log_sha256": "287afb28f2e8dbf7ef821cc728260c3b0f4dd7e6cc0a1635316ec6db958f0b08"
+  },
+  {
+    "name": "ubuntu-libpulse-observed",
+    "command": [
+      "/usr/bin/dpkg-query",
+      "-W",
+      "-f=${Package} ${Version} ${Architecture}\n",
+      "libpulse0"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 0.009,
+    "timeout_seconds": 120,
+    "log": "logs/ubuntu-libpulse-observed.log",
+    "log_sha256": "9f680e4612f9e510e6a1733f7801fb7ffcbacbb0eeb55917200f2c7821f03a15"
+  },
+  {
+    "name": "emulator-host-ldd-after",
+    "command": [
+      "/usr/bin/ldd",
+      "/home/runner/work/_temp/flowdrop-runtime-35/toolchain/tools/sdk/emulator/qemu/linux-x86_64/qemu-system-x86_64"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 0.011,
+    "timeout_seconds": 120,
+    "log": "logs/emulator-host-ldd-after.log",
+    "log_sha256": "8b230a331ca7e9b501ab435bdb192898d09cbd9d7792e49ec2cd791d3f6a19c9"
+  },
+  {
+    "name": "emulator-version",
+    "command": [
+      "/home/runner/work/_temp/flowdrop-runtime-35/toolchain/tools/sdk/emulator/emulator",
+      "-version"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 0.053,
+    "timeout_seconds": 120,
+    "log": "logs/emulator-version.log",
+    "log_sha256": "1a523c9091747b7bf48a755396278f2eca455352b40c281336f1c3e075607b54"
+  },
+  {
+    "name": "avdmanager-list",
+    "command": [
+      "/home/runner/work/_temp/flowdrop-runtime-35/toolchain/tools/sdk/cmdline-tools/19.0/bin/avdmanager",
+      "list",
+      "device"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 0.839,
+    "timeout_seconds": 120,
+    "log": "logs/avdmanager-list.log",
+    "log_sha256": "58f5ed49aa7f975b589bce8f938217ca5e5f05ed8dfcde1d9b8c133b72b5d499"
+  },
+  {
+    "name": "adb-ephemeral-key",
+    "command": [
+      "/home/runner/work/_temp/flowdrop-runtime-35/toolchain/tools/sdk/platform-tools/adb",
+      "keygen",
+      "/home/runner/work/_temp/flowdrop-runtime-35/android-user/adbkey"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 0.029,
+    "timeout_seconds": 120,
+    "log": "logs/adb-ephemeral-key.log",
+    "log_sha256": "8da14e76fbb5646d06a78e69d6ca878cc8ba4fa841e629a7d85b159adabdf6d7"
+  },
+  {
+    "name": "create-owned-avd",
+    "command": [
+      "/home/runner/work/_temp/flowdrop-runtime-35/toolchain/tools/sdk/cmdline-tools/19.0/bin/avdmanager",
+      "create",
+      "avd",
+      "--force",
+      "--name",
+      "FlowDrop_API_35",
+      "--package",
+      "system-images;android-35;default;x86_64",
+      "--path",
+      "/home/runner/work/_temp/flowdrop-runtime-35/avds/FlowDrop_API_35.avd",
+      "--device",
+      "pixel_2"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 0.831,
+    "timeout_seconds": 120,
+    "log": "logs/create-owned-avd.log",
+    "log_sha256": "09d3a6e7eec0499bdd6f8ae186c848c3eb48a0f378a8785d2b4ceb3900cee503"
+  },
+  {
+    "name": "kvm-acceleration-check",
+    "command": [
+      "/home/runner/work/_temp/flowdrop-runtime-35/toolchain/tools/sdk/emulator/emulator",
+      "-accel-check"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 0.025,
+    "timeout_seconds": 120,
+    "log": "logs/kvm-acceleration-check.log",
+    "log_sha256": "4484bdd6d5e16c817d4dfc5cda05334055c86428c861c1d22e8cf67ce42fee49"
+  },
+  {
+    "name": "start-dedicated-adb",
+    "command": [
+      "/home/runner/work/_temp/flowdrop-runtime-35/toolchain/tools/sdk/platform-tools/adb",
+      "-P",
+      "5039",
+      "start-server"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 0.033,
+    "timeout_seconds": 120,
+    "log": "logs/start-dedicated-adb.log",
+    "log_sha256": "b1f9e0ad50868b8a2844f6629f0a083113808b20e744bba266bcf4f6efb24b84"
+  },
+  {
+    "name": "wait-for-owned-device",
+    "command": [
+      "/home/runner/work/_temp/flowdrop-runtime-35/toolchain/tools/sdk/platform-tools/adb",
+      "-P",
+      "5039",
+      "-s",
+      "emulator-5554",
+      "wait-for-device"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 11.421,
+    "timeout_seconds": 180,
+    "log": "logs/wait-for-owned-device.log",
+    "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "boot-completed-0",
+    "command": [
+      "/home/runner/work/_temp/flowdrop-runtime-35/toolchain/tools/sdk/platform-tools/adb",
+      "-P",
+      "5039",
+      "-s",
+      "emulator-5554",
+      "shell",
+      "getprop",
+      "sys.boot_completed"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 0.077,
+    "timeout_seconds": 15,
+    "log": "logs/boot-completed-0.log",
+    "log_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+  },
+  {
+    "name": "boot-completed-1",
+    "command": [
+      "/home/runner/work/_temp/flowdrop-runtime-35/toolchain/tools/sdk/platform-tools/adb",
+      "-P",
+      "5039",
+      "-s",
+      "emulator-5554",
+      "shell",
+      "getprop",
+      "sys.boot_completed"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 0.026,
+    "timeout_seconds": 15,
+    "log": "logs/boot-completed-1.log",
+    "log_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+  },
+  {
+    "name": "boot-completed-2",
+    "command": [
+      "/home/runner/work/_temp/flowdrop-runtime-35/toolchain/tools/sdk/platform-tools/adb",
+      "-P",
+      "5039",
+      "-s",
+      "emulator-5554",
+      "shell",
+      "getprop",
+      "sys.boot_completed"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 0.045,
+    "timeout_seconds": 15,
+    "log": "logs/boot-completed-2.log",
+    "log_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+  },
+  {
+    "name": "boot-completed-3",
+    "command": [
+      "/home/runner/work/_temp/flowdrop-runtime-35/toolchain/tools/sdk/platform-tools/adb",
+      "-P",
+      "5039",
+      "-s",
+      "emulator-5554",
+      "shell",
+      "getprop",
+      "sys.boot_completed"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 0.043,
+    "timeout_seconds": 15,
+    "log": "logs/boot-completed-3.log",
+    "log_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+  },
+  {
+    "name": "boot-completed-4",
+    "command": [
+      "/home/runner/work/_temp/flowdrop-runtime-35/toolchain/tools/sdk/platform-tools/adb",
+      "-P",
+      "5039",
+      "-s",
+      "emulator-5554",
+      "shell",
+      "getprop",
+      "sys.boot_completed"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 0.018,
+    "timeout_seconds": 15,
+    "log": "logs/boot-completed-4.log",
+    "log_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+  },
+  {
+    "name": "boot-completed-5",
+    "command": [
+      "/home/runner/work/_temp/flowdrop-runtime-35/toolchain/tools/sdk/platform-tools/adb",
+      "-P",
+      "5039",
+      "-s",
+      "emulator-5554",
+      "shell",
+      "getprop",
+      "sys.boot_completed"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 0.027,
+    "timeout_seconds": 15,
+    "log": "logs/boot-completed-5.log",
+    "log_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+  },
+  {
+    "name": "boot-completed-6",
+    "command": [
+      "/home/runner/work/_temp/flowdrop-runtime-35/toolchain/tools/sdk/platform-tools/adb",
+      "-P",
+      "5039",
+      "-s",
+      "emulator-5554",
+      "shell",
+      "getprop",
+      "sys.boot_completed"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 0.016,
+    "timeout_seconds": 15,
+    "log": "logs/boot-completed-6.log",
+    "log_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+  },
+  {
+    "name": "boot-completed-7",
+    "command": [
+      "/home/runner/work/_temp/flowdrop-runtime-35/toolchain/tools/sdk/platform-tools/adb",
+      "-P",
+      "5039",
+      "-s",
+      "emulator-5554",
+      "shell",
+      "getprop",
+      "sys.boot_completed"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 0.016,
+    "timeout_seconds": 15,
+    "log": "logs/boot-completed-7.log",
+    "log_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+  },
+  {
+    "name": "boot-completed-8",
+    "command": [
+      "/home/runner/work/_temp/flowdrop-runtime-35/toolchain/tools/sdk/platform-tools/adb",
+      "-P",
+      "5039",
+      "-s",
+      "emulator-5554",
+      "shell",
+      "getprop",
+      "sys.boot_completed"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 0.018,
+    "timeout_seconds": 15,
+    "log": "logs/boot-completed-8.log",
+    "log_sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865"
+  },
+  {
+    "name": "android-api",
+    "command": [
+      "/home/runner/work/_temp/flowdrop-runtime-35/toolchain/tools/sdk/platform-tools/adb",
+      "-P",
+      "5039",
+      "-s",
+      "emulator-5554",
+      "shell",
+      "getprop",
+      "ro.build.version.sdk"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 0.037,
+    "timeout_seconds": 120,
+    "log": "logs/android-api.log",
+    "log_sha256": "90d7ec0f0acef104d8b6252794295f661a0149634868d02a1ae0c358099638f5"
+  },
+  {
+    "name": "device-release",
+    "command": [
+      "/home/runner/work/_temp/flowdrop-runtime-35/toolchain/tools/sdk/platform-tools/adb",
+      "-P",
+      "5039",
+      "-s",
+      "emulator-5554",
+      "shell",
+      "getprop",
+      "ro.build.version.release"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 0.028,
+    "timeout_seconds": 120,
+    "log": "logs/device-release.log",
+    "log_sha256": "238903180cc104ec2c5d8b3f20c5bc61b389ec0a967df8cc208cdc7cd454174f"
+  },
+  {
+    "name": "device-fingerprint",
+    "command": [
+      "/home/runner/work/_temp/flowdrop-runtime-35/toolchain/tools/sdk/platform-tools/adb",
+      "-P",
+      "5039",
+      "-s",
+      "emulator-5554",
+      "shell",
+      "getprop",
+      "ro.build.fingerprint"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 0.028,
+    "timeout_seconds": 120,
+    "log": "logs/device-fingerprint.log",
+    "log_sha256": "e07fd7d414c3b262449a1a48ec96db76edc31b2273ac896fc04f4f44870e7426"
+  },
+  {
+    "name": "device-abi",
+    "command": [
+      "/home/runner/work/_temp/flowdrop-runtime-35/toolchain/tools/sdk/platform-tools/adb",
+      "-P",
+      "5039",
+      "-s",
+      "emulator-5554",
+      "shell",
+      "getprop",
+      "ro.product.cpu.abi"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 0.18,
+    "timeout_seconds": 120,
+    "log": "logs/device-abi.log",
+    "log_sha256": "aaf631698ae5160ceb04a97681a14887fdcab47cd6e0f163c87485b3b1340b62"
+  },
+  {
+    "name": "wake-emulator",
+    "command": [
+      "/home/runner/work/_temp/flowdrop-runtime-35/toolchain/tools/sdk/platform-tools/adb",
+      "-P",
+      "5039",
+      "-s",
+      "emulator-5554",
+      "shell",
+      "input",
+      "keyevent",
+      "82"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 2.147,
+    "timeout_seconds": 120,
+    "log": "logs/wake-emulator.log",
+    "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "stop-owned-emulator",
+    "command": [
+      "/home/runner/work/_temp/flowdrop-runtime-35/toolchain/tools/sdk/platform-tools/adb",
+      "-P",
+      "5039",
+      "-s",
+      "emulator-5554",
+      "emu",
+      "kill"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 0.008,
+    "timeout_seconds": 30,
+    "log": "logs/stop-owned-emulator.log",
+    "log_sha256": "e2d4238ce853e3f4c1ba7b36adf25ff824d93c36a0b94db50cb96dc047aac6d3"
+  },
+  {
+    "name": "stop-owned-adb-server",
+    "command": [
+      "/home/runner/work/_temp/flowdrop-runtime-35/toolchain/tools/sdk/platform-tools/adb",
+      "-P",
+      "5039",
+      "kill-server"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 0.007,
+    "timeout_seconds": 120,
+    "log": "logs/stop-owned-adb-server.log",
+    "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+]

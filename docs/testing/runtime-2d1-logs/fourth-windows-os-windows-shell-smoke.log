@@ -1,0 +1,1 @@
+PASS: cold-start multi-file Send To, existing-instance IPC merge/dedup, Unicode paths, invalid-path rejection, native rename dialog, stable identity, persisted name, protected bootstrap, authenticated native send and revoke.

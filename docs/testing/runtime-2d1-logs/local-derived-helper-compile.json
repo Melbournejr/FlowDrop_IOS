@@ -1,0 +1,12 @@
+[
+  {
+    "name": "windows-native-smoke",
+    "exit_code": 0,
+    "scope": "Derived test-driver cross-compilation only; NOT Windows runtime"
+  },
+  {
+    "name": "windows-shell-smoke",
+    "exit_code": 0,
+    "scope": "Derived test-driver cross-compilation only; NOT Windows runtime"
+  }
+]

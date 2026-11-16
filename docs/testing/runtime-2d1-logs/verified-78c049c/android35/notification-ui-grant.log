@@ -1,0 +1,4 @@
+INSTRUMENTATION_STATUS: stage=notification-permission-grant
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_RESULT: result={"passed":true,"sdk":35,"checks":[{"sdk":35,"dialogObserved":true,"granted":true,"method":"native request method + Android permissioncontroller accessibility action","id":"notification-permission-grant","passed":true}]}
+INSTRUMENTATION_CODE: -1

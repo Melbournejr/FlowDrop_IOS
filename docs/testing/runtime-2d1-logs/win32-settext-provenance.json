@@ -1,0 +1,11 @@
+{
+  "repository": "MicrosoftDocs/sdk-api",
+  "path": "sdk-api-src/content/winuser/nf-winuser-setwindowtextw.md",
+  "blob_sha": "2e46c7c8b2e1b44392aee4d12abc04ce9836932b",
+  "url": "https://learn.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-setwindowtextw",
+  "excerpts": [
+    "description: Changes the text of the specified window's title bar (if it has one). If the specified window is a control, the text of the control is changed. However, SetWindowText cannot change the text of a control in another application. (Unicode)",
+    "Changes the text of the specified window's title bar (if it has one). If the specified window is a control, the text of the control is changed. However, <b>SetWindowText</b> cannot change the text of a control in another application.",
+    "To set the text of a control in another process, send the <a href=\"/windows/desktop/winmsg/wm-settext\">WM_SETTEXT</a> message directly instead of calling <b>SetWindowText</b>."
+  ]
+}

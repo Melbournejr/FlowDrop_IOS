@@ -1,0 +1,4 @@
+INSTRUMENTATION_STATUS: stage=notification-api-policy
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_RESULT: result={"passed":true,"sdk":29,"checks":[{"sdk":29,"runtimePermissionRequired":false,"id":"notification-api-policy","passed":true}]}
+INSTRUMENTATION_CODE: -1

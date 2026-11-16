@@ -1,0 +1,10 @@
+INSTRUMENTATION_STATUS: stage=launching_native_activity
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: stage=native_activity_created
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_RESULT: failure=java.lang.AssertionError: Native connect screen not ready; sender={}
+	at app.flowdrop.mobile.test.NativeSmoke.await(NativeSmoke.java:23)
+	at app.flowdrop.mobile.test.NativeSmoke.onStart(NativeSmoke.java:35)
+	at android.app.Instrumentation$InstrumentationThread.run(Instrumentation.java:2189)
+
+INSTRUMENTATION_CODE: 0
