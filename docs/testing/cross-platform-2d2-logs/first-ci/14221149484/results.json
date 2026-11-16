@@ -1,0 +1,69 @@
+{
+  "status": "FAIL",
+  "exit_code": 1,
+  "platform": "2d2-toolkit",
+  "tests": [
+    {
+      "test_id": "TOOLKIT-UNIT",
+      "platform": "2d2-toolkit",
+      "os_api": "Windows-2025Server-10.0.26100-SP0",
+      "source_commit": "ff75c81074ffce6c3bbed1083a04e46d390c3f58",
+      "checkout_commit": "b1d802ab6491ff26d08c56410b6114446d6989ea",
+      "artifact_sha256": {},
+      "preconditions": "Owned isolated environment and verified artifact",
+      "command_or_method": "TOOLKIT-UNIT",
+      "expected": "All original CI unit tests and new safety/honesty tests execute on this OS",
+      "actual": "AssertionError: toolkit-unit exit=1; see sanitized log",
+      "exit_code": null,
+      "time_started_utc": "2026-11-16T11:22:24Z",
+      "wall_seconds": 5.36,
+      "evidence_path": "logs/test-matrix.json",
+      "required": true,
+      "status": "FAIL"
+    },
+    {
+      "test_id": "TOOLKIT-CLI",
+      "platform": "2d2-toolkit",
+      "os_api": "Windows-2025Server-10.0.26100-SP0",
+      "source_commit": "ff75c81074ffce6c3bbed1083a04e46d390c3f58",
+      "checkout_commit": "b1d802ab6491ff26d08c56410b6114446d6989ea",
+      "artifact_sha256": {},
+      "preconditions": "Owned isolated environment and verified artifact",
+      "command_or_method": "TOOLKIT-CLI",
+      "expected": "Portable CLI runs prepare/hash/start/stop/compare/report and verifies exact synthetic file bytes",
+      "actual": "UnicodeDecodeError: 'charmap' codec can't decode byte 0x81 in position 1478: character maps to <undefined>",
+      "exit_code": null,
+      "time_started_utc": "2026-11-16T11:22:29Z",
+      "wall_seconds": 7.281,
+      "evidence_path": "logs/test-matrix.json",
+      "required": true,
+      "status": "FAIL"
+    },
+    {
+      "test_id": "TOOLKIT-BUNDLE",
+      "platform": "2d2-toolkit",
+      "os_api": "Windows-2025Server-10.0.26100-SP0",
+      "source_commit": "ff75c81074ffce6c3bbed1083a04e46d390c3f58",
+      "checkout_commit": "b1d802ab6491ff26d08c56410b6114446d6989ea",
+      "artifact_sha256": {},
+      "preconditions": "Owned isolated environment and verified artifact",
+      "command_or_method": "TOOLKIT-BUNDLE",
+      "expected": "Only source scripts/docs enter the downloadable toolkit, with SHA-256/provenance",
+      "actual": {
+        "manifest": "toolkit/toolkit-manifest.json"
+      },
+      "exit_code": 0,
+      "time_started_utc": "2026-11-16T11:22:37Z",
+      "wall_seconds": 0.469,
+      "evidence_path": "logs/test-matrix.json",
+      "required": true,
+      "status": "PASS"
+    }
+  ],
+  "production_signing": "NOT VERIFIED",
+  "physical_devices": "NOT VERIFIED",
+  "cross_platform_lan": "NOT VERIFIED",
+  "layer": "A: protocol/toolkit validation",
+  "native_cross_platform_e2e": "BLOCKED",
+  "physical_lan": "NOT VERIFIED"
+}

@@ -7,7 +7,7 @@ import time
 import unittest
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
-from scripts.cross_platform_ci.run import protocol_command
+from scripts.cross_platform_ci.run import protocol_command, read_result
 from scripts.native_runtime_ci.common import Recorder, clean_env
 
 
@@ -45,6 +45,12 @@ class CrossPlatformControlTests(unittest.TestCase):
         self.assertNotIn(secret, (self.rec.root / 'logs/protocol-command.log').read_text())
         self.assertNotIn(secret, str(self.rec.commands))
         self.assertEqual(self.rec.commands[-1]['exit_code'], 0)
+
+    def test_report_reader_uses_utf8_even_for_unicode_or_powershell_bom(self):
+        file = Path(self.temp.name) / 'report.json'
+        for encoding in ['utf-8', 'utf-8-sig']:
+            file.write_text('{"name":"Tiếng Việt 中文 😀"}', encoding=encoding)
+            self.assertEqual(read_result(file)['name'], 'Tiếng Việt 中文 😀')
 
 
 if __name__ == '__main__':

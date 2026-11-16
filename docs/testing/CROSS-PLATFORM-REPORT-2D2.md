@@ -61,7 +61,18 @@ Sau khi có CI, nhập snapshot bằng chứng đúng head đã thực chạy; s
 | P3 | Manual stopwatch gồm thao tác người dùng; localhost RSS/rate không là Wi-Fi benchmark | Ghi đúng method, đo CPU/read/write/discovery riêng nếu có |
 | P3 | Artifact7ngày; network collector có private IP; Google/host toolchain provenance theo giới hạn2C.2/2D.1 | Chỉ chia sẻ allowlisted evidence, che dữ liệu trước public và ghi hash bản che |
 
-Các lỗi hạ tầng mới/CI nếu phát hiện sẽ bổ sung command/exit/repro/fix và retest thực; không sửa production để ép xanh. Source hiện hỗ trợ consent/pull/receipt/folder/ZIP64 nhưng không có resume offset; không thêm yêu cầu resume hoặc gọi đây là regression.
+## Điều tra CI đầu và sửa toolkit
+
+Tại head `ff75c81074ffce6c3bbed1083a04e46d390c3f58`, [workflow mới43857110781](https://github.com/Melbournejr/FlowDrop_IOS/actions/runs/43857110781) thực chạy full engine36/36case PASS, Linux toolkit PASS; **Windows toolkit FAIL**, summary FAIL đúng thiết kế. Ba workflow cũ cùng head đạt PASS: Native Build43857110877, Native Runtime43857111028, Native Regression43857110805 (full ZIP64/Coverage). Đây không phải kết quả sau sửa toolkit.
+
+| Lỗi | Tái hiện và trước sửa | Thay đổi nhỏ trong test tools | Kiểm sau sửa |
+|---|---|---|---|
+| T01 / P2 toolkit | Windows3.12.10 đọc source-manifest.json UTF-8 bằng locale cp1252: UnicodeDecodeError ở TOOLKIT-CLI, command exit1 | read_result dùng UTF-8-sig tường minh, bao gồm BOM PowerShell; không đổi app | Fixture UTF-8/BOM và local suite84 PASS; Windows CI phải chạy lại |
+| T02 / P2 toolkit | Windows20unit có1error, stop ngay sau start cho interval0 với monotonic tick thô; guard đúng cách từ chối timing | perf_counter_ns độ phân giải cao/cùng clock giữa process trên Python được hỗ trợ; giữ chặn clock khác máy, interval≤0, drift>5s và stop/reset trùng | Unit tái hiện tick không đổi +84local PASS; Windows CI phải chạy lại |
+
+Artifact trước sửa14221149484 được tải và kiểm GitHub archive SHA-256/size/CRC rồi đối chiếu evidence-manifest. Log unit, test matrix và commands đã lọc được giữ trong cross-platform-2d2-logs/first-ci; không commit raw Actions credential/setup log. Local sau sửa `python3 -m scripts.cross_platform_ci.run toolkit ...` exit0,84unit; không gọi nó là Windows OS proof. Native app không đổi.
+
+Source hiện hỗ trợ consent/pull/receipt/folder/ZIP64 nhưng không có resume offset; không thêm yêu cầu resume hoặc gọi đây là regression.
 
 ## Rollback và bàn giao
 

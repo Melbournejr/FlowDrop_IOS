@@ -267,7 +267,8 @@ def start(root, direction, mode, network, artifact=None):
     record = {'run_id': doc['run_id'], 'direction': direction, 'mode': mode, 'network_operator_declared': network,
               'source_manifest_sha256': file_hash(root / 'source-manifest.json')['sha256'],
               'clock_origin_sha256': hashlib.sha256(platform.node().encode()).hexdigest(),
-              'started_epoch': time.time(), 'started_monotonic_ns': time.monotonic_ns(),
+              'started_epoch': time.time(), 'started_monotonic_ns': time.perf_counter_ns(),
+              'clock_method': 'High resolution perf_counter_ns; monotonic and process-shared on supported Python 3.12+',
               'artifact': product, 'artifact_provenance': 'locally measured SHA only; source commit NOT VERIFIED',
               'app_version': 'NOT VERIFIED; record actual UI/package evidence in checklist'}
     write_json(root / 'timing-start.json', record)
@@ -280,7 +281,7 @@ def stop(root):
         raise ValueError('Stop timing on the same control computer that started it')
     if (root / 'timing-stop.json').exists():
         raise ValueError('Stop evidence already exists')
-    seconds = (time.monotonic_ns() - record['started_monotonic_ns']) / 1e9
+    seconds = (time.perf_counter_ns() - record['started_monotonic_ns']) / 1e9
     wall = time.time() - record['started_epoch']
     if seconds <= 0 or abs(wall - seconds) > 5:
         raise ValueError('Clock/reboot inconsistency; timing not verified')

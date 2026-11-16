@@ -17,6 +17,11 @@ from scripts.native_runtime_ci.common import REPO, Recorder, clean_env, json_fil
 BASE = 'f9b5a43c5eae93b169717a72d19f5a426d913094'
 
 
+def read_result(path):
+    # Windows' locale encoding can be cp1252; tool reports are UTF-8, possibly BOM from PowerShell5.
+    return json.loads(Path(path).read_text(encoding='utf-8-sig'))
+
+
 def protocol_command(rec, argv, env, timeout=2700):
     """Bound one owned POSIX process group, including the Node/JVM hosts it spawns."""
     if os.name != 'posix':
@@ -56,7 +61,7 @@ def protocol_command(rec, argv, env, timeout=2700):
 
 
 def source_guard():
-    doc = json.loads((REPO / 'docs/testing/CROSS-PLATFORM-SOURCE-BASELINE-2D2.json').read_text())
+    doc = read_result(REPO / 'docs/testing/CROSS-PLATFORM-SOURCE-BASELINE-2D2.json')
     if doc['base'] != BASE or len(doc['files']) != 790:
         raise RuntimeError('Unexpected Phase 2D.2 baseline')
     tree = subprocess.check_output(['git', 'ls-tree', '-r', '-z', BASE], cwd=REPO)
@@ -144,7 +149,7 @@ def run(root, role, full, jar):
             with rec.case('A-PROTOCOL-MATRIX', 'All four production-engine directions, exact SHA/size, capability and 25/50/75% interrupted upload assertions') as row:
                 command = ['node', REPO / 'tests/cross-platform-protocol.mjs'] + (['--full'] if full else [])
                 code = protocol_command(rec, command, env, timeout=2700)
-                result = json.loads((rec.root / 'logs/protocol-matrix.json').read_text())
+                result = read_result(rec.root / 'logs/protocol-matrix.json')
                 expected = 36 if full else 24
                 if result['status'] != 'PASS' or result['exit_code'] != 0 or len(result['cases']) != expected or any(x['status'] != 'PASS' for x in result['cases']):
                     raise AssertionError('Incomplete/failed protocol matrix')
@@ -171,12 +176,12 @@ def run(root, role, full, jar):
                     rec.run('powershell-readonly-network', ['pwsh', '-NoProfile', '-File', REPO / 'tools/physical-lan/Collect-FlowDrop-Network.ps1', '-Root', generated], env=env)
                 for index, command in enumerate(commands):
                     rec.run('toolkit-cli-' + str(index), [sys.executable, '-X', 'utf8', tool, '--root', generated, *command], env=env)
-                manifest = json.loads((generated / 'source-manifest.json').read_text())
+                manifest = read_result(generated / 'source-manifest.json')
                 # Independent copy is a toolkit self-test, never labelled app transfer.
                 received = scratch / 'self-test-copy'; shutil.copytree(generated / manifest['payload_folder'], received)
                 rec.run('toolkit-compare', [sys.executable, '-X', 'utf8', tool, '--root', generated, 'compare', '--received-dir', received], env=env)
                 rec.run('toolkit-report', [sys.executable, '-X', 'utf8', tool, '--root', generated, 'report'], env=env)
-                report = json.loads((generated / 'report.json').read_text())
+                report = read_result(generated / 'report.json')
                 if report['file_integrity'] != 'PASS' or report['status'] != 'NOT VERIFIED' or report['native_e2e'] != 'NOT VERIFIED':
                     raise AssertionError('Toolkit falsely promoted a local copy into native/physical E2E PASS')
                 row.update(exit_code=0, actual={'files': manifest['file_count'], 'cli_integrity': 'PASS',
@@ -187,7 +192,7 @@ def run(root, role, full, jar):
     finally:
         clean_child(rec.root, scratch)
         rec.finish(['A-PROTOCOL-MATRIX'] if role == 'protocol' else ['TOOLKIT-UNIT', 'TOOLKIT-CLI', 'TOOLKIT-BUNDLE'])
-        result = json.loads((rec.root / 'logs/results.json').read_text())
+        result = read_result(rec.root / 'logs/results.json')
         result.update(layer='A: protocol/toolkit validation', native_cross_platform_e2e='BLOCKED', physical_lan='NOT VERIFIED')
         json_file(rec.root / 'logs/results.json', result)
         export_evidence(rec.root)

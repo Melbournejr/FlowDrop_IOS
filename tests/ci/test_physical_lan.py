@@ -186,6 +186,13 @@ class PhysicalLanTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             lan.report(self.root)
 
+    def test_high_resolution_timing_survives_an_unchanged_coarse_monotonic_tick(self):
+        self.create()
+        with patch.object(lan.time, 'monotonic_ns', return_value=1000):
+            lan.start(self.root, 'Windows-to-Windows', 'test-artifact', 'isolated-virtual')
+            result = lan.stop(self.root)
+        self.assertGreater(result['elapsed_seconds'], 0)
+
 
 if __name__ == '__main__':
     unittest.main()
