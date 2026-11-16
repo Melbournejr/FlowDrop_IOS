@@ -127,12 +127,12 @@
     {
       "path": "scripts/device-security.mjs",
       "base_sha256": null,
-      "sha256": "4975a86142c83ea7a8602b32f1edd0a46182687a51096ceaa5518a302126bbf0"
+      "sha256": "50cdbef7ff000bc389e56ec530128eb585c63a95864801294772bac0753fbdc9"
     },
     {
       "path": "scripts/device-vault.ps1",
       "base_sha256": null,
-      "sha256": "d3c218812421908f25094086edf646de814f5dcc0b70592378798ad445665a4b"
+      "sha256": "88ce2cd23772d2515bbd796f705e7aae56602a6069558fee8beb91bce136b0a9"
     },
     {
       "path": "scripts/discovery.mjs",

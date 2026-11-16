@@ -1,37 +1,40 @@
-# Private stdin/stdout pipe only. No signing/update production material is accessed.
+# Private one-line stdin/stdout pipe. No production APK/update signing material.
 $ErrorActionPreference = 'Stop'
 [Console]::InputEncoding = [System.Text.UTF8Encoding]::new($false)
 [Console]::OutputEncoding = [System.Text.UTF8Encoding]::new($false)
 try {
-Add-Type -AssemblyName System.Security
-# PKI cmdlets do not initialize Certificate provider drives in every clean host.
-Import-Module (Join-Path $PSHOME 'Modules\Microsoft.PowerShell.Security\Microsoft.PowerShell.Security.psd1') -ErrorAction Stop
-if (-not (Get-PSDrive -Name Cert -ErrorAction SilentlyContinue)) {
-  New-PSDrive -Name Cert -PSProvider Certificate -Root '\' -Scope Global -ErrorAction Stop | Out-Null
-}
-$inputData = [Console]::In.ReadToEnd() | ConvertFrom-Json
-$entropy = [Text.Encoding]::UTF8.GetBytes('FlowDrop device transport vault v1')
-if ($inputData.operation -eq 'seal') {
-  $raw = [Text.Encoding]::UTF8.GetBytes([string]$inputData.value)
-  [Console]::Out.Write([Convert]::ToBase64String([Security.Cryptography.ProtectedData]::Protect($raw,$entropy,[Security.Cryptography.DataProtectionScope]::CurrentUser)))
-} elseif ($inputData.operation -eq 'open') {
-  $raw = [Security.Cryptography.ProtectedData]::Unprotect([Convert]::FromBase64String($inputData.value),$entropy,[Security.Cryptography.DataProtectionScope]::CurrentUser)
-  [Console]::Out.Write([Text.Encoding]::UTF8.GetString($raw))
-} elseif ($inputData.operation -eq 'create') {
-  $certificate = $null
-  try {
-    $certificate = New-SelfSignedCertificate -DnsName $inputData.name -CertStoreLocation Cert:\CurrentUser\My -KeyAlgorithm RSA -KeyLength 2048 -HashAlgorithm SHA256 -KeyExportPolicy Exportable -NotAfter (Get-Date).AddYears(5) -Type SSLServerAuthentication
-    $rng = [Security.Cryptography.RandomNumberGenerator]::Create(); $bytes = New-Object byte[] 32; $rng.GetBytes($bytes); $rng.Dispose()
-    $password = [Convert]::ToBase64String($bytes)
-    $result = @{pfx=[Convert]::ToBase64String($certificate.Export([Security.Cryptography.X509Certificates.X509ContentType]::Pfx,$password));passphrase=$password;certificate=[Convert]::ToBase64String($certificate.RawData)}
-    [Console]::Out.Write(($result | ConvertTo-Json -Compress))
-  } finally {
-    if ($null -ne $certificate) { Remove-Item -LiteralPath ('Cert:\CurrentUser\My\'+$certificate.Thumbprint) -DeleteKey -Force }
-  }
-} else { throw 'Invalid vault operation' }
-
+  Add-Type -AssemblyName System.Security
+  $inputData = [Console]::In.ReadLine() | ConvertFrom-Json
+  $entropy = [Text.Encoding]::UTF8.GetBytes('FlowDrop device transport vault v1')
+  if ($inputData.operation -eq 'seal') {
+    $raw = [Text.Encoding]::UTF8.GetBytes([string]$inputData.value)
+    [Console]::Out.Write([Convert]::ToBase64String([Security.Cryptography.ProtectedData]::Protect($raw,$entropy,[Security.Cryptography.DataProtectionScope]::CurrentUser)))
+  } elseif ($inputData.operation -eq 'open') {
+    $raw = [Security.Cryptography.ProtectedData]::Unprotect([Convert]::FromBase64String($inputData.value),$entropy,[Security.Cryptography.DataProtectionScope]::CurrentUser)
+    [Console]::Out.Write([Text.Encoding]::UTF8.GetString($raw))
+  } elseif ($inputData.operation -eq 'create') {
+    # .NET 4.7.2+ CertificateRequest avoids Cert: provider/module initialization,
+    # certificate-store writes, private key files and interactive PKI cmdlets.
+    $rsa = $null; $certificate = $null
+    try {
+      $rsa = [Security.Cryptography.RSA]::Create(); $rsa.KeySize = 2048
+      if ($rsa -is [Security.Cryptography.RSACryptoServiceProvider]) { $rsa.PersistKeyInCsp = $false }
+      $subject = [Security.Cryptography.X509Certificates.X500DistinguishedName]::new('CN='+$inputData.name)
+      $request = [Security.Cryptography.X509Certificates.CertificateRequest]::new($subject,$rsa,[Security.Cryptography.HashAlgorithmName]::SHA256,[Security.Cryptography.RSASignaturePadding]::Pkcs1)
+      $request.CertificateExtensions.Add([Security.Cryptography.X509Certificates.X509BasicConstraintsExtension]::new($false,$false,0,$true))
+      $usage = [Security.Cryptography.X509Certificates.X509KeyUsageFlags]::DigitalSignature -bor [Security.Cryptography.X509Certificates.X509KeyUsageFlags]::KeyEncipherment
+      $request.CertificateExtensions.Add([Security.Cryptography.X509Certificates.X509KeyUsageExtension]::new($usage,$true))
+      $certificate = $request.CreateSelfSigned([DateTimeOffset]::Now.AddDays(-1),[DateTimeOffset]::Now.AddYears(5))
+      $rng = [Security.Cryptography.RandomNumberGenerator]::Create(); $bytes = New-Object byte[] 32; $rng.GetBytes($bytes); $rng.Dispose()
+      $password = [Convert]::ToBase64String($bytes)
+      $result = @{pfx=[Convert]::ToBase64String($certificate.Export([Security.Cryptography.X509Certificates.X509ContentType]::Pfx,$password));passphrase=$password;certificate=[Convert]::ToBase64String($certificate.RawData)}
+      [Console]::Out.Write(($result | ConvertTo-Json -Compress))
+    } finally {
+      if ($null -ne $certificate) { $certificate.Dispose() }
+      if ($null -ne $rsa) { $rsa.Dispose() }
+    }
+  } else { throw 'Invalid vault operation' }
 } catch {
-  # Only public exception class/identifier. Never dump arguments or private stdout.
   [Console]::Error.Write('FLOWDROP_VAULT_ERROR=' + $_.Exception.GetType().FullName + ':' + $_.FullyQualifiedErrorId)
   exit 1
 }

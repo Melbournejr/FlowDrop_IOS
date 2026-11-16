@@ -162,3 +162,12 @@ nonce/HMAC over pinned TLS. Java only replays GET or a fully captured control PO
 up to16KiB; file streams are not buffered/replayed. Revoked trust still rejects
 renewal. Node unit and real Node/Java GET/POST transfer tests passed after the fix;
 this is engine proof, not two-device OS reboot proof.
+
+At `7f31623` the Windows vault probe hit its90s timeout; it was recorded as FAIL,
+not converted to PASS. The final helper removes the Certificate provider/PKI
+cmdlet dependency entirely: .NET4.7.2+ `CertificateRequest` creates the RSA2048 /
+SHA-256 leaf in memory, with no certificate-store writes or private-key files.
+CurrentUser DPAPI storage and existing identity format remain the same. Private
+IPC reads exactly one newline-terminated JSON record rather than waiting for EOF.
+The Windows runner must still demonstrate real DPAPI, TLS and native assertions
+at the final head before this path can be considered verified.

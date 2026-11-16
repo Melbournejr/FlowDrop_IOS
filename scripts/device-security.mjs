@@ -24,7 +24,7 @@ function powershell(body){
  const executable=path.join(systemRoot,'System32','WindowsPowerShell','v1.0','powershell.exe');
  const vaultEnvironment={...process.env};for(const key of Object.keys(vaultEnvironment))if(['psmodulepath','psmoduleanalysiscachepath','windowspowershellmodulepath'].includes(key.toLowerCase()))delete vaultEnvironment[key];
  vaultEnvironment.PSModulePath=path.join(systemRoot,'System32','WindowsPowerShell','v1.0','Modules');
- const r=spawnSync(executable,['-NoProfile','-NonInteractive','-ExecutionPolicy','Bypass','-File',script],{env:vaultEnvironment,input:JSON.stringify(body),encoding:'utf8',windowsHide:true,maxBuffer:1024*1024,timeout:60000});
+ const r=spawnSync(executable,['-NoProfile','-NonInteractive','-ExecutionPolicy','Bypass','-File',script],{env:vaultEnvironment,input:JSON.stringify(body)+'\n',encoding:'utf8',windowsHide:true,maxBuffer:1024*1024,timeout:60000});
  if(r.status!==0){const code=r.stderr?.match(/FLOWDROP_VAULT_ERROR=([A-Za-z0-9_.,:-]{1,180})/)?.[1];throw Error('Không mở được kho danh tính thiết bị Windows.'+(code?' ['+code+']':''));}return r.stdout.trim();
 }
 export async function deviceVault(directory,id){
