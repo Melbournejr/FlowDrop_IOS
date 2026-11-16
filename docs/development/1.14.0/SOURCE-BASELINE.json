@@ -132,7 +132,7 @@
     {
       "path": "scripts/device-vault.ps1",
       "base_sha256": null,
-      "sha256": "4a3b32b6584c2eca98a48727a235601925a85cf0d604984af5c9e2b9872c6048"
+      "sha256": "ac919d456753d9644d4f86af239fa781a5dc858d16040c2425720d58f3a52899"
     },
     {
       "path": "scripts/discovery.mjs",

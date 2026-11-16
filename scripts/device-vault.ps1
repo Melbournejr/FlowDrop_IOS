@@ -5,9 +5,12 @@ $ErrorActionPreference = 'Stop'
 function Trace-Vault([string]$stage) { if ($env:FLOWDROP_VAULT_DIAGNOSTICS -eq '1') { [Console]::Error.WriteLine('FLOWDROP_VAULT_STAGE='+$stage) } }
 try {
   Trace-Vault 'assembly'
-  Add-Type -AssemblyName System.Security
+  [void][Reflection.Assembly]::Load('System.Security, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a')
+  [void][Reflection.Assembly]::Load('System.Web.Extensions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35')
+  $json = [System.Web.Script.Serialization.JavaScriptSerializer]::new()
+  $json.MaxJsonLength = 1048576
   Trace-Vault 'pipe-read'
-  $inputData = [Console]::In.ReadLine() | ConvertFrom-Json
+  $inputData = $json.DeserializeObject([Console]::In.ReadLine())
   Trace-Vault 'pipe-ready'
   $entropy = [Text.Encoding]::UTF8.GetBytes('FlowDrop device transport vault v1')
   if ($inputData.operation -eq 'seal') {
@@ -37,11 +40,11 @@ try {
       Trace-Vault 'self-sign'
       $certificate = $request.CreateSelfSigned([DateTimeOffset]::Now.AddDays(-1),[DateTimeOffset]::Now.AddYears(5))
       Trace-Vault 'self-signed'
-      $rng = [Security.Cryptography.RandomNumberGenerator]::Create(); $bytes = New-Object byte[] 32; $rng.GetBytes($bytes); $rng.Dispose()
+      $rng = [Security.Cryptography.RandomNumberGenerator]::Create(); $bytes = [byte[]]::new(32); $rng.GetBytes($bytes); $rng.Dispose()
       $password = [Convert]::ToBase64String($bytes)
       $result = @{pfx=[Convert]::ToBase64String($certificate.Export([Security.Cryptography.X509Certificates.X509ContentType]::Pfx,$password));passphrase=$password;certificate=[Convert]::ToBase64String($certificate.RawData)}
       Trace-Vault 'exported'
-      [Console]::Out.Write(($result | ConvertTo-Json -Compress))
+      [Console]::Out.Write($json.Serialize($result))
     } finally {
       if ($null -ne $certificate) { $certificate.Dispose() }
       if ($null -ne $rsa) { $rsa.Dispose() }

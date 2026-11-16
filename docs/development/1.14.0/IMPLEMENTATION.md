@@ -185,3 +185,11 @@ Manual physical regression: start Turbo, immediately stop the host or select LAN
 then verify no FlowDrop-owned group remains and another app's group is retained.
 This cancellation/driver test remains NOT VERIFIED without real Wi-Fi hardware.
 ETA is shown only after at least one byte has moved.
+
+The opt-in public stage trace at `9d88191` showed certificate generation/export
+and two DPAPI protects completed, then a later helper stalled at `Add-Type` before
+reading input. The helper now uses strongly named framework assembly loads and
+.NET JSON serialization directly: no Add-Type, ConvertFrom/To-Json, New-Object,
+Certificate provider or module autoload. Private JSON parse failures return a
+fixed message instead of echoing potentially secret stdout. Trace is opt-in in
+the isolated Windows probe, not enabled by the installed app.
