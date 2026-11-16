@@ -15,7 +15,7 @@ import {PeerOffers} from './peer-offers.mjs';
 import {localBucket} from './local-bucket.mjs';
 import {findCode} from './code-lookup.mjs';
 import {FolderJobs} from './folder-jobs.mjs';
-import {sameSecret,loopback,browserRequestAllowed} from './request-security.mjs';
+import {sameSecret,loopback,browserRequestAllowed,CodeGuessGuard} from './request-security.mjs';
 import {DeviceName} from './device-name.mjs';
 import {DesktopUpdater} from './secure-update.mjs';
 const root=fileURLToPath(new URL('../',import.meta.url)),data=process.env.FLOWDROP_DATA_DIR||path.join(root,'.local-data');await mkdir(data,{recursive:true,mode:0o700});
@@ -30,6 +30,7 @@ const bucket=await localBucket(data);
 const folders=new FolderJobs(data);folders.cleanup().catch(()=>{});
 const storage=new DesktopStorage({dataDirectory:data,getResponse:pathname=>worker.fetch(new Request('http://flowdrop.local'+pathname),{BUCKET:bucket},{})});
 const offers=new PeerOffers({deviceId,deviceName,port:()=>server.address().port,getPeers:discoveredPeers,storage});
+const codeGuesses=new CodeGuessGuard();
 let bulkRequests=0;
 const busy=()=>folders.busy()||bulkRequests>0||storage.pending>0||offers.sessions().some(s=>['pending','accepted','transferring'].includes(s.state));
 const updater=new DesktopUpdater({dataDirectory:data,busy,enabled:process.env.FLOWDROP_DISABLE_UPDATES!=='1'});
@@ -99,8 +100,11 @@ const server=http.createServer({maxHeaderSize:16384,headersTimeout:10000,request
    res.writeHead(200,{'Content-Type':'application/json'});res.end('{"ok":true}');setTimeout(()=>server.close(async()=>{updater.close();offers.close();lanDiscovery?.stop();await discovery?.stop();process.exit(0);}),100);return;
   }
   if(/^\/api\/transfers\//.test(url.pathname)&&(req.method==='PUT'||/\/files\//.test(url.pathname))){bulkRequests++;let done=false;const finish=()=>{if(!done){done=true;bulkRequests--;}};res.once('close',finish);res.once('finish',finish);}
+  const codeProbe=req.method==='GET'&&/^\/api\/transfers\/[A-Z2-9]{8}$/.test(url.pathname);
+  if(codeProbe&&!codeGuesses.allowed(req.socket.remoteAddress)){json(res,429,{error:'Quá nhiều mã sai. Chờ một phút rồi thử lại.'});return;}
   const request=new Request(url,{method:req.method,headers:req.headers,...(!['GET','HEAD'].includes(req.method)?{body:Readable.toWeb(req),duplex:'half'}:{})});
   const response=await worker.fetch(request,{BUCKET:bucket},{waitUntil:p=>p.catch(()=>{})});
+  if(codeProbe&&[400,404,410].includes(response.status))codeGuesses.failed(req.socket.remoteAddress);
   if(res.destroyed)return;
   if(response.status>=400)res.shouldKeepAlive=false;res.writeHead(response.status,Object.fromEntries(response.headers));if(response.body)await pipeline(Readable.fromWeb(response.body),res);else res.end();
  }catch(e){if(res.destroyed)return;if(res.headersSent){res.destroy();return;}console.error(e.message);res.writeHead(500);res.end('Chưa hoàn tất được yêu cầu.');}

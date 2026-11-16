@@ -165,7 +165,7 @@ void refreshEnabled() {
   EnableWindow(autoCheck,ready&&!updatingSettings);
   EnableWindow(updateButton,ready&&!applyingUpdate&&!checkingUpdate&&!updateState.value("accepted",false));EnableWindow(renameButton,ready&&!applyingUpdate&&!renamingDevice);EnableWindow(updateAutoCheck,ready&&!applyingUpdate);EnableWindow(lanButton,ready&&!applyingUpdate);
 }
-std::string normalizedCode(const std::wstring& input){std::string result;for(char c:utf8(input)){if(c==' '||c=='-'||c=='\t'||c=='\r'||c=='\n')continue;if(c>='a'&&c<='z')c-=32;result+=c;}return result;}
+std::string normalizedCode(const std::wstring& input){std::string result;for(wchar_t c:input){if(c==L'-'||(c>=9&&c<=13)||c==32||c==0x85||c==0xa0||c==0x1680||(c>=0x2000&&c<=0x200a)||c==0x2028||c==0x2029||c==0x202f||c==0x205f||c==0x3000||c==0xfeff)continue;if(c>=L'a'&&c<=L'z')c-=32;result+=c<=127?static_cast<char>(c):'?';}return result;}
 bool validCode(const std::string& code) {
   if(code.size()!=8) return false;
   for(char c:code) if(!(c>='A'&&c<='Z')&&!(c>='2'&&c<='9')) return false; return true;

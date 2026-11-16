@@ -1,0 +1,39 @@
+[
+  {
+    "command": [
+      "npm",
+      "test"
+    ],
+    "exit_code": 0
+  },
+  {
+    "command": [
+      "node",
+      "--test",
+      "--test-isolation=none",
+      "tests/code-114.test.mjs"
+    ],
+    "exit_code": 0
+  },
+  {
+    "command": [
+      "node",
+      "tests/code-receive-114.mjs"
+    ],
+    "exit_code": 0
+  },
+  {
+    "command": [
+      "node",
+      "tests/security-integration.mjs"
+    ],
+    "exit_code": 0
+  },
+  {
+    "command": [
+      "node",
+      "tests/peer-integration.mjs"
+    ],
+    "exit_code": 0
+  }
+]

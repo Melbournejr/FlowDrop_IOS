@@ -1,0 +1,38 @@
+{
+  "scope": "Real Node endpoint + production Java resolver, not physical device evidence",
+  "status": "PASS",
+  "cases": [
+    {
+      "id": "CODE-ANDROID-TO-WINDOWS-COLD",
+      "status": "PASS",
+      "http_status": 200,
+      "elapsed_ms": 3087,
+      "sha256": [
+        "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "7a1c91ef65923d4018467273b33cf7942ba7bbba635ea32748156b959ba5b965"
+      ],
+      "download_exact": true,
+      "peer_visible_after_lookup": true
+    },
+    {
+      "id": "CODE-WINDOWS-TO-ANDROID-COLD",
+      "status": "PASS",
+      "exit_code": 0,
+      "download_exact": true,
+      "sha256": [
+        "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "7a1c91ef65923d4018467273b33cf7942ba7bbba635ea32748156b959ba5b965"
+      ]
+    },
+    {
+      "id": "CODE-ANDROID-TO-ANDROID-COLD",
+      "status": "PASS",
+      "exit_code": 0,
+      "download_exact": true,
+      "sha256": [
+        "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "7a1c91ef65923d4018467273b33cf7942ba7bbba635ea32748156b959ba5b965"
+      ]
+    }
+  ]
+}

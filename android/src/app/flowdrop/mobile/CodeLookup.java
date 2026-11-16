@@ -5,17 +5,19 @@ import java.net.*;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
 import java.util.concurrent.*;
+import java.util.function.Supplier;
 import org.json.*;
 
 /** Resolve an eight-character share code across LAN hosts instead of one selected host. */
 public final class CodeLookup {
   public interface Connections {HttpURLConnection open(URL url)throws Exception;}
   public static final class Found {public final String origin;public final JSONObject metadata;Found(String origin,JSONObject metadata){this.origin=origin;this.metadata=metadata;}}
-  public static String normalize(String code){return code==null?"":code.replaceAll("[\\s-]","").toUpperCase(Locale.ROOT);}
+  public static String normalize(String code){return code==null?"":code.replaceAll("[\\p{javaWhitespace}\\p{Z}\\x{0085}\\x{FEFF}-]","").toUpperCase(Locale.ROOT);}
+  private static final class LookupFailure extends IOException{final int status;LookupFailure(int status){super("Mã không khả dụng.");this.status=status;}}
   private static JSONObject json(String origin,String route,Connections connections)throws Exception{
     HttpURLConnection connection=connections.open(new URL(origin+route));connection.setConnectTimeout(2000);connection.setReadTimeout(2500);connection.setInstanceFollowRedirects(false);
     try{
-      if(connection.getResponseCode()!=200)throw new IOException("Không có mã trên thiết bị này.");
+      int status=connection.getResponseCode();if(status!=200)throw new LookupFailure(status);
       try(InputStream in=connection.getInputStream();ByteArrayOutputStream out=new ByteArrayOutputStream()){
         byte[] buffer=new byte[8192];int count;while((count=in.read(buffer))!=-1){if(out.size()+count>8*1024*1024)throw new IOException("Phản hồi quá lớn.");out.write(buffer,0,count);}
         return new JSONObject(new String(out.toByteArray(),StandardCharsets.UTF_8));
@@ -23,24 +25,27 @@ public final class CodeLookup {
     }finally{connection.disconnect();}
   }
   public static Found find(String input,Collection<String> candidates,String preferred,Connections connections)throws Exception{
+    return find(input,()->candidates,preferred,connections);
+  }
+  public static Found find(String input,Supplier<? extends Collection<String>> candidates,String preferred,Connections connections)throws Exception{
     String code=normalize(input);if(!code.matches("[A-Z2-9]{8}"))throw new IOException("Nhập đủ mã nhận 8 ký tự.");
-    LinkedHashSet<String> origins=new LinkedHashSet<>();
-    for(String candidate:candidates)try{URI uri=new URI(candidate);if(("http".equals(uri.getScheme())||"https".equals(uri.getScheme()))&&uri.getHost()!=null&&uri.getUserInfo()==null&&uri.getPort()<=65535)origins.add(uri.getScheme()+"://"+uri.getRawAuthority());if(origins.size()>=64)break;}catch(Exception ignored){}
+    LinkedHashSet<String> origins=new LinkedHashSet<>();final java.util.concurrent.atomic.AtomicInteger verified=new java.util.concurrent.atomic.AtomicInteger();final java.util.concurrent.atomic.AtomicBoolean expired=new java.util.concurrent.atomic.AtomicBoolean();
     ExecutorService pool=Executors.newFixedThreadPool(4,r->{Thread thread=new Thread(r,"flowdrop-code-lookup");thread.setDaemon(true);return thread;});
     CompletionService<Found> completion=new ExecutorCompletionService<>(pool);ArrayList<Found> found=new ArrayList<>();
     try{
-      for(String origin:origins)completion.submit(()->{
-        JSONObject config=json(origin,"/api/config",connections);if(!"FlowDrop".equals(config.optString("name")))throw new IOException("Không phải FlowDrop.");
-        JSONObject metadata=json(origin,"/api/transfers/"+code,connections);validate(metadata,code);return new Found(origin+"/",metadata);
-      });
       long deadline=System.nanoTime()+TimeUnit.SECONDS.toNanos(7);
-      for(int i=0;i<origins.size();i++){
-        long remaining=deadline-System.nanoTime();if(remaining<=0)break;Future<Found> next=completion.poll(remaining,TimeUnit.NANOSECONDS);if(next==null)break;
-        try{found.add(next.get());}catch(ExecutionException ignored){}
+      int pending=0;
+      while(System.nanoTime()<deadline){
+        for(String candidate:candidates.get())try{URI uri=new URI(candidate);if(!Arrays.asList("http","https").contains(uri.getScheme())||uri.getHost()==null||uri.getUserInfo()!=null||uri.getPort()>65535)continue;String origin=uri.getScheme()+"://"+uri.getRawAuthority();if(origins.size()>=64||!origins.add(origin))continue;
+          completion.submit(()->{JSONObject config=json(origin,"/api/config",connections);if(!"FlowDrop".equals(config.optString("name")))throw new IOException("Không phải FlowDrop.");verified.incrementAndGet();try{JSONObject metadata=json(origin,"/api/transfers/"+code,connections);validate(metadata,code);return new Found(origin+"/",metadata);}catch(LookupFailure e){if(e.status==410)expired.set(true);throw e;}});pending++;
+        }catch(Exception ignored){}
+        if(pending==0&&!found.isEmpty())break;
+        Future<Found> next=completion.poll(Math.min(TimeUnit.MILLISECONDS.toNanos(200),Math.max(0,deadline-System.nanoTime())),TimeUnit.NANOSECONDS);
+        if(next!=null){pending--;try{found.add(next.get());}catch(ExecutionException ignored){}}
       }
     }finally{pool.shutdownNow();}
     if(found.size()>1){for(Found match:found)if(preferred!=null&&match.origin.equals(preferred.endsWith("/")?preferred:preferred+"/"))return match;throw new IOException("Nhiều thiết bị dùng cùng mã. Chọn đúng thiết bị gửi rồi nhận lại.");}
-    if(found.isEmpty())throw new IOException("Chưa tìm thấy mã trong Wi-Fi. Mở FlowDrop trên máy gửi, giữ mã còn hiệu lực rồi thử lại.");
+    if(found.isEmpty())throw new IOException(expired.get()?"Mã chia sẻ đã hết hạn. Tạo mã mới trên thiết bị gửi.":verified.get()>0?"Mã không tồn tại hoặc đã được thu hồi. Kiểm tra lại mã và máy gửi.":"Chưa tìm thấy thiết bị giữ mã trong Wi-Fi. Mở FlowDrop trên máy gửi rồi thử lại.");
     return found.get(0);
   }
   public static void validate(JSONObject metadata,String code)throws Exception{

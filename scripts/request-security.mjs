@@ -11,3 +11,10 @@ export function validateMetadata(value,code){
   return value;
 }
 export function browserRequestAllowed(headers,origin){return (!headers.origin||headers.origin===origin)&&(!headers['sec-fetch-site']||['same-origin','none'].includes(headers['sec-fetch-site']));}
+
+// Failed share-code probes only. Bounded per-address buckets cannot grow without limit.
+export class CodeGuessGuard {
+  constructor({limit=25,windowMs=60000,clock=Date.now}={}){Object.assign(this,{limit,windowMs,clock});this.items=new Map();}
+  allowed(key){const now=this.clock();for(const [k,v] of this.items)if(v.until<=now)this.items.delete(k);return (this.items.get(key)?.failures||0)<this.limit;}
+  failed(key){this.allowed(key);if(!this.items.has(key)){if(this.items.size>=512)this.items.delete(this.items.keys().next().value);this.items.set(key,{until:this.clock()+this.windowMs,failures:0});}this.items.get(key).failures++;}
+}

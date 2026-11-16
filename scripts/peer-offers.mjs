@@ -81,7 +81,7 @@ export class PeerOffers {
 export async function peerJson(origin,route,body,timeout=8000,signal){
   const response=await fetch(origin+route,{method:body?'POST':'GET',redirect:'error',headers:body?{'Content-Type':'application/json'}:{},body:body?JSON.stringify(body):undefined,signal:AbortSignal.any([AbortSignal.timeout(timeout),signal].filter(Boolean))});
   if(Number(response.headers.get('content-length'))>8*1024*1024){await response.body?.cancel();throw new Error('Phản hồi quá lớn.');}
-  let bytes=0,text='';const decoder=new TextDecoder();for await(const chunk of response.body){bytes+=chunk.length;if(bytes>8*1024*1024)throw new Error('Phản hồi quá lớn.');text+=decoder.decode(chunk,{stream:true});}text+=decoder.decode();const result=JSON.parse(text);if(!response.ok)throw new Error(String(result.error||'Không kết nối được thiết bị.').slice(0,500));return result;
+  let bytes=0,text='';const decoder=new TextDecoder();for await(const chunk of response.body){bytes+=chunk.length;if(bytes>8*1024*1024)throw new Error('Phản hồi quá lớn.');text+=decoder.decode(chunk,{stream:true});}text+=decoder.decode();const result=JSON.parse(text);if(!response.ok)throw Object.assign(new Error(String(result.error||'Không kết nối được thiết bị.').slice(0,500)),{status:response.status});return result;
 }
 
 // Only idle periods time out: a large, steadily downloading file has no total deadline.

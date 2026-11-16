@@ -26,6 +26,7 @@ public final class TransferServer implements Closeable {
   private final ServerSocket socket;
   private final ThreadPoolExecutor clients;
   private final ScheduledExecutorService cleanup;
+  private final RequestSecurity.CodeGuessGuard codeGuesses=new RequestSecurity.CodeGuessGuard();
   private final SecureRandom random=new SecureRandom();
   private final Object[] locks=new Object[64];
   private final Set<Socket> connections=Collections.newSetFromMap(new ConcurrentHashMap<Socket,Boolean>());
@@ -239,7 +240,9 @@ public final class TransferServer implements Closeable {
     if("/api/transfers".equals(path)&&"POST".equals(method)){create(request,output);return;}
     if(path.startsWith("/api/")){
       Matcher match=ROUTE.matcher(path);if(!match.matches())throw new HttpError(404,"Không tìm thấy đường dẫn.");
-      String code=match.group(1);synchronized(lock(code)){transfer(request,output,code,match.group(2),match.group(3));}return;
+      String code=match.group(1);boolean probe=method.equals("GET")&&match.group(2)==null;
+      if(probe&&!codeGuesses.allowed(remoteAddress))throw new HttpError(429,"Quá nhiều mã sai. Chờ một phút rồi thử lại.");
+      try{synchronized(lock(code)){transfer(request,output,code,match.group(2),match.group(3));}}catch(HttpError error){if(probe&&(error.status==400||error.status==404||error.status==410))codeGuesses.failed(remoteAddress);throw error;}return;
     }
     if(!"GET".equals(method)&&!"HEAD".equals(method))throw new HttpError(405,"Phương thức không được hỗ trợ.");
     if(assets==null){if("/".equals(path)){sendBytes(output,200,"text/plain; charset=utf-8","FlowDrop Native Android — mở ứng dụng FlowDrop để gửi và nhận file.".getBytes(StandardCharsets.UTF_8),"HEAD".equals(method));return;}throw new HttpError(404,"Ứng dụng Android dùng giao diện native.");}

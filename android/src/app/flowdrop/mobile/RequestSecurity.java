@@ -13,4 +13,9 @@ public final class RequestSecurity {
     }catch(Exception ignored){}return false;
   }
   public static boolean browserAllowed(Map<String,String> headers){String origin=headers.get("origin"),site=headers.get("sec-fetch-site");return (origin==null||origin.equals("http://"+headers.get("host")))&&(site==null||site.equals("same-origin")||site.equals("none"));}
+  public static final class CodeGuessGuard {
+    private final Map<String,long[]> items=new LinkedHashMap<>();
+    public synchronized boolean allowed(String key){long now=System.currentTimeMillis();items.values().removeIf(v->v[0]<=now);return !items.containsKey(key)||items.get(key)[1]<25;}
+    public synchronized void failed(String key){allowed(key);if(!items.containsKey(key)){if(items.size()>=512)items.remove(items.keySet().iterator().next());items.put(key,new long[]{System.currentTimeMillis()+60000,0});}items.get(key)[1]++;}
+  }
 }
