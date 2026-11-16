@@ -1,0 +1,1453 @@
+[
+  {
+    "name": "allow-owned-runner-kvm",
+    "command": [
+      "sudo",
+      "-n",
+      "setfacl",
+      "-m",
+      "u:runner:rw",
+      "/dev/kvm"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 0.012,
+    "timeout_seconds": 120,
+    "log": "logs/allow-owned-runner-kvm.log",
+    "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "adb-version",
+    "command": [
+      "/home/runner/work/_temp/flowdrop-runtime-35/toolchain/tools/sdk/platform-tools/adb",
+      "version"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 0.003,
+    "timeout_seconds": 120,
+    "log": "logs/adb-version.log",
+    "log_sha256": "15db5f11d20aaff661c1822c24e24eea580ab2bd9c2197bcffa1079c9da43437"
+  },
+  {
+    "name": "emulator-host-ldd-before",
+    "command": [
+      "/usr/bin/ldd",
+      "/home/runner/work/_temp/flowdrop-runtime-35/toolchain/tools/sdk/emulator/qemu/linux-x86_64/qemu-system-x86_64"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 0.019,
+    "timeout_seconds": 120,
+    "log": "logs/emulator-host-ldd-before.log",
+    "log_sha256": "d8d3694434fb503ae7e08e586ead0fd933f94fe2fde3522c862ec3ecd862de4e"
+  },
+  {
+    "name": "ubuntu-signed-package-index",
+    "command": [
+      "sudo",
+      "-n",
+      "/usr/bin/apt-get",
+      "update"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 5.206,
+    "timeout_seconds": 180,
+    "log": "logs/ubuntu-signed-package-index.log",
+    "log_sha256": "4eb8993239d5fa2418d3a7700e8f45d64c5434d08ac34ee79b38d70e64edbe9a"
+  },
+  {
+    "name": "ubuntu-libpulse-policy",
+    "command": [
+      "/usr/bin/apt-cache",
+      "policy",
+      "libpulse0"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 0.02,
+    "timeout_seconds": 120,
+    "log": "logs/ubuntu-libpulse-policy.log",
+    "log_sha256": "773d3deb4587d673fd60be8c238bfb3f50c75451fc783e40a56db515d91d0b4a"
+  },
+  {
+    "name": "ubuntu-official-mirrors",
+    "command": [
+      "/usr/bin/cat",
+      "/etc/apt/apt-mirrors.txt"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 0.003,
+    "timeout_seconds": 120,
+    "log": "logs/ubuntu-official-mirrors.log",
+    "log_sha256": "e0d6b0af979e4662d16357a27ae456cc6f21e26da031540f4df8706ebed1d583"
+  },
+  {
+    "name": "ubuntu-libpulse-install",
+    "command": [
+      "sudo",
+      "-n",
+      "/usr/bin/apt-get",
+      "install",
+      "--yes",
+      "--no-install-recommends",
+      "libpulse0=1:16.1+dfsg1-2ubuntu10.1"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 4.189,
+    "timeout_seconds": 180,
+    "log": "logs/ubuntu-libpulse-install.log",
+    "log_sha256": "492827e3f36a99686b21c4ec62be364d39d3de9fcaeba26dff6a2f94da82326f"
+  },
+  {
+    "name": "ubuntu-libpulse-observed",
+    "command": [
+      "/usr/bin/dpkg-query",
+      "-W",
+      "-f=${Package} ${Version} ${Architecture}\n",
+      "libpulse0"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 0.013,
+    "timeout_seconds": 120,
+    "log": "logs/ubuntu-libpulse-observed.log",
+    "log_sha256": "9f680e4612f9e510e6a1733f7801fb7ffcbacbb0eeb55917200f2c7821f03a15"
+  },
+  {
+    "name": "emulator-host-ldd-after",
+    "command": [
+      "/usr/bin/ldd",
+      "/home/runner/work/_temp/flowdrop-runtime-35/toolchain/tools/sdk/emulator/qemu/linux-x86_64/qemu-system-x86_64"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 0.016,
+    "timeout_seconds": 120,
+    "log": "logs/emulator-host-ldd-after.log",
+    "log_sha256": "bb6cc51844932005cc4b523c312aae0b4743e5ce9eb8ea87b3b6e1bb14fd892f"
+  },
+  {
+    "name": "emulator-version",
+    "command": [
+      "/home/runner/work/_temp/flowdrop-runtime-35/toolchain/tools/sdk/emulator/emulator",
+      "-version"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 0.067,
+    "timeout_seconds": 120,
+    "log": "logs/emulator-version.log",
+    "log_sha256": "1a523c9091747b7bf48a755396278f2eca455352b40c281336f1c3e075607b54"
+  },
+  {
+    "name": "avdmanager-list",
+    "command": [
+      "/home/runner/work/_temp/flowdrop-runtime-35/toolchain/tools/sdk/cmdline-tools/19.0/bin/avdmanager",
+      "list",
+      "device"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 1.238,
+    "timeout_seconds": 120,
+    "log": "logs/avdmanager-list.log",
+    "log_sha256": "58f5ed49aa7f975b589bce8f938217ca5e5f05ed8dfcde1d9b8c133b72b5d499"
+  },
+  {
+    "name": "adb-ephemeral-key",
+    "command": [
+      "/home/runner/work/_temp/flowdrop-runtime-35/toolchain/tools/sdk/platform-tools/adb",
+      "keygen",
+      "/home/runner/work/_temp/flowdrop-runtime-35/android-user/adbkey"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 0.128,
+    "timeout_seconds": 120,
+    "log": "logs/adb-ephemeral-key.log",
+    "log_sha256": "027d38ca4e445f42fd68f139bd964c5b89961ff022debd123842c5b0575e0cd3"
+  },
+  {
+    "name": "create-owned-avd",
+    "command": [
+      "/home/runner/work/_temp/flowdrop-runtime-35/toolchain/tools/sdk/cmdline-tools/19.0/bin/avdmanager",
+      "create",
+      "avd",
+      "--force",
+      "--name",
+      "FlowDrop_API_35",
+      "--package",
+      "system-images;android-35;default;x86_64",
+      "--path",
+      "/home/runner/work/_temp/flowdrop-runtime-35/avds/FlowDrop_API_35.avd",
+      "--device",
+      "pixel_2"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 1.145,
+    "timeout_seconds": 120,
+    "log": "logs/create-owned-avd.log",
+    "log_sha256": "09d3a6e7eec0499bdd6f8ae186c848c3eb48a0f378a8785d2b4ceb3900cee503"
+  },
+  {
+    "name": "kvm-acceleration-check",
+    "command": [
+      "/home/runner/work/_temp/flowdrop-runtime-35/toolchain/tools/sdk/emulator/emulator",
+      "-accel-check"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 0.03,
+    "timeout_seconds": 120,
+    "log": "logs/kvm-acceleration-check.log",
+    "log_sha256": "4484bdd6d5e16c817d4dfc5cda05334055c86428c861c1d22e8cf67ce42fee49"
+  },
+  {
+    "name": "start-dedicated-adb",
+    "command": [
+      "/home/runner/work/_temp/flowdrop-runtime-35/toolchain/tools/sdk/platform-tools/adb",
+      "-P",
+      "5039",
+      "start-server"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 0.069,
+    "timeout_seconds": 120,
+    "log": "logs/start-dedicated-adb.log",
+    "log_sha256": "b1f9e0ad50868b8a2844f6629f0a083113808b20e744bba266bcf4f6efb24b84"
+  },
+  {
+    "name": "wait-for-owned-device",
+    "command": [
+      "/home/runner/work/_temp/flowdrop-runtime-35/toolchain/tools/sdk/platform-tools/adb",
+      "-P",
+      "5039",
+      "-s",
+      "emulator-5554",
+      "wait-for-device"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 12.122,
+    "timeout_seconds": 180,
+    "log": "logs/wait-for-owned-device.log",
+    "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "boot-completed-0",
+    "command": [
+      "/home/runner/work/_temp/flowdrop-runtime-35/toolchain/tools/sdk/platform-tools/adb",
+      "-P",
+      "5039",
+      "-s",
+      "emulator-5554",
+      "shell",
+      "getprop",
+      "sys.boot_completed"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 0.048,
+    "timeout_seconds": 15,
+    "log": "logs/boot-completed-0.log",
+    "log_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+  },
+  {
+    "name": "boot-completed-1",
+    "command": [
+      "/home/runner/work/_temp/flowdrop-runtime-35/toolchain/tools/sdk/platform-tools/adb",
+      "-P",
+      "5039",
+      "-s",
+      "emulator-5554",
+      "shell",
+      "getprop",
+      "sys.boot_completed"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 0.032,
+    "timeout_seconds": 15,
+    "log": "logs/boot-completed-1.log",
+    "log_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+  },
+  {
+    "name": "boot-completed-2",
+    "command": [
+      "/home/runner/work/_temp/flowdrop-runtime-35/toolchain/tools/sdk/platform-tools/adb",
+      "-P",
+      "5039",
+      "-s",
+      "emulator-5554",
+      "shell",
+      "getprop",
+      "sys.boot_completed"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 0.029,
+    "timeout_seconds": 15,
+    "log": "logs/boot-completed-2.log",
+    "log_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+  },
+  {
+    "name": "boot-completed-3",
+    "command": [
+      "/home/runner/work/_temp/flowdrop-runtime-35/toolchain/tools/sdk/platform-tools/adb",
+      "-P",
+      "5039",
+      "-s",
+      "emulator-5554",
+      "shell",
+      "getprop",
+      "sys.boot_completed"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 0.056,
+    "timeout_seconds": 15,
+    "log": "logs/boot-completed-3.log",
+    "log_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+  },
+  {
+    "name": "boot-completed-4",
+    "command": [
+      "/home/runner/work/_temp/flowdrop-runtime-35/toolchain/tools/sdk/platform-tools/adb",
+      "-P",
+      "5039",
+      "-s",
+      "emulator-5554",
+      "shell",
+      "getprop",
+      "sys.boot_completed"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 0.034,
+    "timeout_seconds": 15,
+    "log": "logs/boot-completed-4.log",
+    "log_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+  },
+  {
+    "name": "boot-completed-5",
+    "command": [
+      "/home/runner/work/_temp/flowdrop-runtime-35/toolchain/tools/sdk/platform-tools/adb",
+      "-P",
+      "5039",
+      "-s",
+      "emulator-5554",
+      "shell",
+      "getprop",
+      "sys.boot_completed"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 0.029,
+    "timeout_seconds": 15,
+    "log": "logs/boot-completed-5.log",
+    "log_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+  },
+  {
+    "name": "boot-completed-6",
+    "command": [
+      "/home/runner/work/_temp/flowdrop-runtime-35/toolchain/tools/sdk/platform-tools/adb",
+      "-P",
+      "5039",
+      "-s",
+      "emulator-5554",
+      "shell",
+      "getprop",
+      "sys.boot_completed"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 0.046,
+    "timeout_seconds": 15,
+    "log": "logs/boot-completed-6.log",
+    "log_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+  },
+  {
+    "name": "boot-completed-7",
+    "command": [
+      "/home/runner/work/_temp/flowdrop-runtime-35/toolchain/tools/sdk/platform-tools/adb",
+      "-P",
+      "5039",
+      "-s",
+      "emulator-5554",
+      "shell",
+      "getprop",
+      "sys.boot_completed"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 0.027,
+    "timeout_seconds": 15,
+    "log": "logs/boot-completed-7.log",
+    "log_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+  },
+  {
+    "name": "boot-completed-8",
+    "command": [
+      "/home/runner/work/_temp/flowdrop-runtime-35/toolchain/tools/sdk/platform-tools/adb",
+      "-P",
+      "5039",
+      "-s",
+      "emulator-5554",
+      "shell",
+      "getprop",
+      "sys.boot_completed"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 0.026,
+    "timeout_seconds": 15,
+    "log": "logs/boot-completed-8.log",
+    "log_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+  },
+  {
+    "name": "boot-completed-9",
+    "command": [
+      "/home/runner/work/_temp/flowdrop-runtime-35/toolchain/tools/sdk/platform-tools/adb",
+      "-P",
+      "5039",
+      "-s",
+      "emulator-5554",
+      "shell",
+      "getprop",
+      "sys.boot_completed"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 0.032,
+    "timeout_seconds": 15,
+    "log": "logs/boot-completed-9.log",
+    "log_sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865"
+  },
+  {
+    "name": "android-api",
+    "command": [
+      "/home/runner/work/_temp/flowdrop-runtime-35/toolchain/tools/sdk/platform-tools/adb",
+      "-P",
+      "5039",
+      "-s",
+      "emulator-5554",
+      "shell",
+      "getprop",
+      "ro.build.version.sdk"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 0.041,
+    "timeout_seconds": 120,
+    "log": "logs/android-api.log",
+    "log_sha256": "90d7ec0f0acef104d8b6252794295f661a0149634868d02a1ae0c358099638f5"
+  },
+  {
+    "name": "device-release",
+    "command": [
+      "/home/runner/work/_temp/flowdrop-runtime-35/toolchain/tools/sdk/platform-tools/adb",
+      "-P",
+      "5039",
+      "-s",
+      "emulator-5554",
+      "shell",
+      "getprop",
+      "ro.build.version.release"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 0.044,
+    "timeout_seconds": 120,
+    "log": "logs/device-release.log",
+    "log_sha256": "238903180cc104ec2c5d8b3f20c5bc61b389ec0a967df8cc208cdc7cd454174f"
+  },
+  {
+    "name": "device-fingerprint",
+    "command": [
+      "/home/runner/work/_temp/flowdrop-runtime-35/toolchain/tools/sdk/platform-tools/adb",
+      "-P",
+      "5039",
+      "-s",
+      "emulator-5554",
+      "shell",
+      "getprop",
+      "ro.build.fingerprint"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 0.031,
+    "timeout_seconds": 120,
+    "log": "logs/device-fingerprint.log",
+    "log_sha256": "e07fd7d414c3b262449a1a48ec96db76edc31b2273ac896fc04f4f44870e7426"
+  },
+  {
+    "name": "device-abi",
+    "command": [
+      "/home/runner/work/_temp/flowdrop-runtime-35/toolchain/tools/sdk/platform-tools/adb",
+      "-P",
+      "5039",
+      "-s",
+      "emulator-5554",
+      "shell",
+      "getprop",
+      "ro.product.cpu.abi"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 0.042,
+    "timeout_seconds": 120,
+    "log": "logs/device-abi.log",
+    "log_sha256": "aaf631698ae5160ceb04a97681a14887fdcab47cd6e0f163c87485b3b1340b62"
+  },
+  {
+    "name": "wake-emulator",
+    "command": [
+      "/home/runner/work/_temp/flowdrop-runtime-35/toolchain/tools/sdk/platform-tools/adb",
+      "-P",
+      "5039",
+      "-s",
+      "emulator-5554",
+      "shell",
+      "input",
+      "keyevent",
+      "82"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 0.237,
+    "timeout_seconds": 120,
+    "log": "logs/wake-emulator.log",
+    "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "app-signature",
+    "command": [
+      "/home/runner/work/_temp/flowdrop-runtime-35/toolchain/jdk/bin/java",
+      "-jar",
+      "/home/runner/work/_temp/flowdrop-runtime-35/toolchain/tools/sdk/build-tools/android-15/lib/apksigner.jar",
+      "verify",
+      "--verbose",
+      "--print-certs",
+      "/home/runner/work/_temp/runtime-downloads/android/FlowDrop-1.13.0-Android-TEST-ONLY.apk"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 0.417,
+    "timeout_seconds": 120,
+    "log": "logs/app-signature.log",
+    "log_sha256": "61cb7bb8169543dbc7503afb61800ee6b437788eaf52fdb215fe840195234f64"
+  },
+  {
+    "name": "app-zipalign",
+    "command": [
+      "/home/runner/work/_temp/flowdrop-runtime-35/toolchain/tools/sdk/build-tools/android-15/zipalign",
+      "-c",
+      "-p",
+      "4",
+      "/home/runner/work/_temp/runtime-downloads/android/FlowDrop-1.13.0-Android-TEST-ONLY.apk"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 0.016,
+    "timeout_seconds": 120,
+    "log": "logs/app-zipalign.log",
+    "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "app-badging",
+    "command": [
+      "/home/runner/work/_temp/flowdrop-runtime-35/toolchain/tools/sdk/build-tools/android-15/aapt2",
+      "dump",
+      "badging",
+      "/home/runner/work/_temp/runtime-downloads/android/FlowDrop-1.13.0-Android-TEST-ONLY.apk"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 0.01,
+    "timeout_seconds": 120,
+    "log": "logs/app-badging.log",
+    "log_sha256": "0a1d95428c084dc1a8a568351453e5abd5c0b668fa4be9b0d4e680f7ccbeee65"
+  },
+  {
+    "name": "app-manifest-tree",
+    "command": [
+      "/home/runner/work/_temp/flowdrop-runtime-35/toolchain/tools/sdk/build-tools/android-15/aapt2",
+      "dump",
+      "xmltree",
+      "/home/runner/work/_temp/runtime-downloads/android/FlowDrop-1.13.0-Android-TEST-ONLY.apk",
+      "--file",
+      "AndroidManifest.xml"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 0.015,
+    "timeout_seconds": 120,
+    "log": "logs/app-manifest-tree.log",
+    "log_sha256": "8d9224be114265efe6006e5e2d8201d52b60c72bed4c95b690d09530e9cc0378"
+  },
+  {
+    "name": "instrumentation-signature",
+    "command": [
+      "/home/runner/work/_temp/flowdrop-runtime-35/toolchain/jdk/bin/java",
+      "-jar",
+      "/home/runner/work/_temp/flowdrop-runtime-35/toolchain/tools/sdk/build-tools/android-15/lib/apksigner.jar",
+      "verify",
+      "--verbose",
+      "--print-certs",
+      "/home/runner/work/_temp/runtime-downloads/android/FlowDrop-1.13.0-Android-Instrumentation-TEST-ONLY.apk"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 0.352,
+    "timeout_seconds": 120,
+    "log": "logs/instrumentation-signature.log",
+    "log_sha256": "61cb7bb8169543dbc7503afb61800ee6b437788eaf52fdb215fe840195234f64"
+  },
+  {
+    "name": "instrumentation-zipalign",
+    "command": [
+      "/home/runner/work/_temp/flowdrop-runtime-35/toolchain/tools/sdk/build-tools/android-15/zipalign",
+      "-c",
+      "-p",
+      "4",
+      "/home/runner/work/_temp/runtime-downloads/android/FlowDrop-1.13.0-Android-Instrumentation-TEST-ONLY.apk"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 0.006,
+    "timeout_seconds": 120,
+    "log": "logs/instrumentation-zipalign.log",
+    "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "instrumentation-badging",
+    "command": [
+      "/home/runner/work/_temp/flowdrop-runtime-35/toolchain/tools/sdk/build-tools/android-15/aapt2",
+      "dump",
+      "badging",
+      "/home/runner/work/_temp/runtime-downloads/android/FlowDrop-1.13.0-Android-Instrumentation-TEST-ONLY.apk"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 0.007,
+    "timeout_seconds": 120,
+    "log": "logs/instrumentation-badging.log",
+    "log_sha256": "a85331ff0e09011afea9b815901790b4c37b1e8875165defc3ec37df73dc212d"
+  },
+  {
+    "name": "instrumentation-manifest-tree",
+    "command": [
+      "/home/runner/work/_temp/flowdrop-runtime-35/toolchain/tools/sdk/build-tools/android-15/aapt2",
+      "dump",
+      "xmltree",
+      "/home/runner/work/_temp/runtime-downloads/android/FlowDrop-1.13.0-Android-Instrumentation-TEST-ONLY.apk",
+      "--file",
+      "AndroidManifest.xml"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 0.009,
+    "timeout_seconds": 120,
+    "log": "logs/instrumentation-manifest-tree.log",
+    "log_sha256": "befd9315588fb06538f5e3849a0a85cc2d3eb7659c7b8aabc9de7daa5ea91dfa"
+  },
+  {
+    "name": "check-no-existing-app.flowdrop.mobile",
+    "command": [
+      "/home/runner/work/_temp/flowdrop-runtime-35/toolchain/tools/sdk/platform-tools/adb",
+      "-P",
+      "5039",
+      "-s",
+      "emulator-5554",
+      "shell",
+      "pm",
+      "path",
+      "app.flowdrop.mobile"
+    ],
+    "exit_code": 1,
+    "wall_seconds": 0.047,
+    "timeout_seconds": 120,
+    "log": "logs/check-no-existing-app.flowdrop.mobile.log",
+    "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "check-no-existing-app.flowdrop.mobile.test",
+    "command": [
+      "/home/runner/work/_temp/flowdrop-runtime-35/toolchain/tools/sdk/platform-tools/adb",
+      "-P",
+      "5039",
+      "-s",
+      "emulator-5554",
+      "shell",
+      "pm",
+      "path",
+      "app.flowdrop.mobile.test"
+    ],
+    "exit_code": 1,
+    "wall_seconds": 0.051,
+    "timeout_seconds": 120,
+    "log": "logs/check-no-existing-app.flowdrop.mobile.test.log",
+    "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "install-app",
+    "command": [
+      "/home/runner/work/_temp/flowdrop-runtime-35/toolchain/tools/sdk/platform-tools/adb",
+      "-P",
+      "5039",
+      "-s",
+      "emulator-5554",
+      "install",
+      "/home/runner/work/_temp/runtime-downloads/android/FlowDrop-1.13.0-Android-TEST-ONLY.apk"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 1.101,
+    "timeout_seconds": 180,
+    "log": "logs/install-app.log",
+    "log_sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7"
+  },
+  {
+    "name": "install-instrumentation",
+    "command": [
+      "/home/runner/work/_temp/flowdrop-runtime-35/toolchain/tools/sdk/platform-tools/adb",
+      "-P",
+      "5039",
+      "-s",
+      "emulator-5554",
+      "install",
+      "/home/runner/work/_temp/runtime-downloads/android/FlowDrop-1.13.0-Android-Instrumentation-TEST-ONLY.apk"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 1.001,
+    "timeout_seconds": 180,
+    "log": "logs/install-instrumentation.log",
+    "log_sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7"
+  },
+  {
+    "name": "force-stop-before-prepare-isolated-application-settings",
+    "command": [
+      "/home/runner/work/_temp/flowdrop-runtime-35/toolchain/tools/sdk/platform-tools/adb",
+      "-P",
+      "5039",
+      "-s",
+      "emulator-5554",
+      "shell",
+      "am",
+      "force-stop",
+      "app.flowdrop.mobile"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 0.177,
+    "timeout_seconds": 120,
+    "log": "logs/force-stop-before-prepare-isolated-application-settings.log",
+    "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "prepare-isolated-application-settings",
+    "command": [
+      "/home/runner/work/_temp/flowdrop-runtime-35/toolchain/tools/sdk/platform-tools/adb",
+      "-P",
+      "5039",
+      "-s",
+      "emulator-5554",
+      "shell",
+      "am",
+      "instrument",
+      "-w",
+      "-r",
+      "-e",
+      "mode",
+      "prepare",
+      "app.flowdrop.mobile.test/app.flowdrop.mobile.test.NativeRuntimeSmoke"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 0.577,
+    "timeout_seconds": 660,
+    "log": "logs/prepare-isolated-application-settings.log",
+    "log_sha256": "a35373d49dc4e373b832d2a17b0acdd5203f7466a3a6e391d4039f45365d855d"
+  },
+  {
+    "name": "launch-main-activity",
+    "command": [
+      "/home/runner/work/_temp/flowdrop-runtime-35/toolchain/tools/sdk/platform-tools/adb",
+      "-P",
+      "5039",
+      "-s",
+      "emulator-5554",
+      "shell",
+      "am",
+      "start",
+      "-W",
+      "-n",
+      "app.flowdrop.mobile/.MainActivity"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 2.164,
+    "timeout_seconds": 120,
+    "log": "logs/launch-main-activity.log",
+    "log_sha256": "ab666d1af49049c7bb7f2b0b3fd974bf11d0f3ac5f553f86c5f7e788a9271554"
+  },
+  {
+    "name": "initial-activity-state",
+    "command": [
+      "/home/runner/work/_temp/flowdrop-runtime-35/toolchain/tools/sdk/platform-tools/adb",
+      "-P",
+      "5039",
+      "-s",
+      "emulator-5554",
+      "shell",
+      "dumpsys",
+      "activity",
+      "activities"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 0.079,
+    "timeout_seconds": 120,
+    "log": "logs/initial-activity-state.log",
+    "log_sha256": "ee233c1fc3cfae0b67b54c988c2dd3315e99b7212c03f5f51b49500041f181e9"
+  },
+  {
+    "name": "initial-window-focus-0",
+    "command": [
+      "/home/runner/work/_temp/flowdrop-runtime-35/toolchain/tools/sdk/platform-tools/adb",
+      "-P",
+      "5039",
+      "-s",
+      "emulator-5554",
+      "shell",
+      "dumpsys",
+      "window"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 0.151,
+    "timeout_seconds": 120,
+    "log": "logs/initial-window-focus-0.log",
+    "log_sha256": "28a658be123c62d1cb30b6d4081aa3c8ded179c9cb7a9eddace1bc0937e6a60e"
+  },
+  {
+    "name": "initial-window-focus-1",
+    "command": [
+      "/home/runner/work/_temp/flowdrop-runtime-35/toolchain/tools/sdk/platform-tools/adb",
+      "-P",
+      "5039",
+      "-s",
+      "emulator-5554",
+      "shell",
+      "dumpsys",
+      "window"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 0.315,
+    "timeout_seconds": 120,
+    "log": "logs/initial-window-focus-1.log",
+    "log_sha256": "0a8f729b524d622a36dcd3fc1654362fe16843ed07350c4bb6693823247e255a"
+  },
+  {
+    "name": "initial-window-focus-2",
+    "command": [
+      "/home/runner/work/_temp/flowdrop-runtime-35/toolchain/tools/sdk/platform-tools/adb",
+      "-P",
+      "5039",
+      "-s",
+      "emulator-5554",
+      "shell",
+      "dumpsys",
+      "window"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 0.21,
+    "timeout_seconds": 120,
+    "log": "logs/initial-window-focus-2.log",
+    "log_sha256": "7785d3559a9bcc76d7d8884dd52f200ec4a9ab4ac31ac9624c2862605e764b5e"
+  },
+  {
+    "name": "initial-window-focus-3",
+    "command": [
+      "/home/runner/work/_temp/flowdrop-runtime-35/toolchain/tools/sdk/platform-tools/adb",
+      "-P",
+      "5039",
+      "-s",
+      "emulator-5554",
+      "shell",
+      "dumpsys",
+      "window"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 0.195,
+    "timeout_seconds": 120,
+    "log": "logs/initial-window-focus-3.log",
+    "log_sha256": "f9722e211a7cb6a91b5b5c2718ea43aebac800e1df114310f8a38317c4d2d1f0"
+  },
+  {
+    "name": "initial-screenshot-device",
+    "command": [
+      "/home/runner/work/_temp/flowdrop-runtime-35/toolchain/tools/sdk/platform-tools/adb",
+      "-P",
+      "5039",
+      "-s",
+      "emulator-5554",
+      "shell",
+      "screencap",
+      "-p",
+      "/sdcard/flowdrop-runtime-initial.png"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 0.724,
+    "timeout_seconds": 120,
+    "log": "logs/initial-screenshot-device.log",
+    "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "initial-screenshot-pull",
+    "command": [
+      "/home/runner/work/_temp/flowdrop-runtime-35/toolchain/tools/sdk/platform-tools/adb",
+      "-P",
+      "5039",
+      "-s",
+      "emulator-5554",
+      "pull",
+      "/sdcard/flowdrop-runtime-initial.png",
+      "/home/runner/work/_temp/flowdrop-runtime-35/logs/initial-activity.png"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 0.02,
+    "timeout_seconds": 120,
+    "log": "logs/initial-screenshot-pull.log",
+    "log_sha256": "fefc73498f7572c09428e50ba8dedbb6bf86f22804b8430418646123cd742d05"
+  },
+  {
+    "name": "force-stop-before-notification-ui-deny",
+    "command": [
+      "/home/runner/work/_temp/flowdrop-runtime-35/toolchain/tools/sdk/platform-tools/adb",
+      "-P",
+      "5039",
+      "-s",
+      "emulator-5554",
+      "shell",
+      "am",
+      "force-stop",
+      "app.flowdrop.mobile"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 0.106,
+    "timeout_seconds": 120,
+    "log": "logs/force-stop-before-notification-ui-deny.log",
+    "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "notification-ui-deny",
+    "command": [
+      "/home/runner/work/_temp/flowdrop-runtime-35/toolchain/tools/sdk/platform-tools/adb",
+      "-P",
+      "5039",
+      "-s",
+      "emulator-5554",
+      "shell",
+      "am",
+      "instrument",
+      "-w",
+      "-r",
+      "-e",
+      "mode",
+      "permissions",
+      "-e",
+      "decision",
+      "deny",
+      "app.flowdrop.mobile.test/app.flowdrop.mobile.test.NativeRuntimeSmoke"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 5.175,
+    "timeout_seconds": 660,
+    "log": "logs/notification-ui-deny.log",
+    "log_sha256": "19633c6e89f14383b0e558ffdbf5dcc300c4df33c66625dc786dd8604607474c"
+  },
+  {
+    "name": "force-stop-before-notification-ui-grant",
+    "command": [
+      "/home/runner/work/_temp/flowdrop-runtime-35/toolchain/tools/sdk/platform-tools/adb",
+      "-P",
+      "5039",
+      "-s",
+      "emulator-5554",
+      "shell",
+      "am",
+      "force-stop",
+      "app.flowdrop.mobile"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 0.112,
+    "timeout_seconds": 120,
+    "log": "logs/force-stop-before-notification-ui-grant.log",
+    "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "notification-ui-grant",
+    "command": [
+      "/home/runner/work/_temp/flowdrop-runtime-35/toolchain/tools/sdk/platform-tools/adb",
+      "-P",
+      "5039",
+      "-s",
+      "emulator-5554",
+      "shell",
+      "am",
+      "instrument",
+      "-w",
+      "-r",
+      "-e",
+      "mode",
+      "permissions",
+      "-e",
+      "decision",
+      "grant",
+      "app.flowdrop.mobile.test/app.flowdrop.mobile.test.NativeRuntimeSmoke"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 3.759,
+    "timeout_seconds": 660,
+    "log": "logs/notification-ui-grant.log",
+    "log_sha256": "12d508bb6a07ac6e87891e5e8dcbc0b5e2ae0428989263ca6d813e6fed64d029"
+  },
+  {
+    "name": "launch-for-http",
+    "command": [
+      "/home/runner/work/_temp/flowdrop-runtime-35/toolchain/tools/sdk/platform-tools/adb",
+      "-P",
+      "5039",
+      "-s",
+      "emulator-5554",
+      "shell",
+      "am",
+      "start",
+      "-W",
+      "-n",
+      "app.flowdrop.mobile/.MainActivity"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 1.586,
+    "timeout_seconds": 120,
+    "log": "logs/launch-for-http.log",
+    "log_sha256": "73002a3d271bfc46efb69fdeaf391df459ba56e48bf8ba4f0f6c52a5a41d3289"
+  },
+  {
+    "name": "forward-loopback-backend",
+    "command": [
+      "/home/runner/work/_temp/flowdrop-runtime-35/toolchain/tools/sdk/platform-tools/adb",
+      "-P",
+      "5039",
+      "-s",
+      "emulator-5554",
+      "forward",
+      "tcp:0",
+      "tcp:5173"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 0.011,
+    "timeout_seconds": 120,
+    "log": "logs/forward-loopback-backend.log",
+    "log_sha256": "88a2ad3a49ccdc94f73e6eff9249e0c345259affbe064a8b274d51f397365b7f"
+  },
+  {
+    "name": "force-stop-before-a09-native-smoke",
+    "command": [
+      "/home/runner/work/_temp/flowdrop-runtime-35/toolchain/tools/sdk/platform-tools/adb",
+      "-P",
+      "5039",
+      "-s",
+      "emulator-5554",
+      "shell",
+      "am",
+      "force-stop",
+      "app.flowdrop.mobile"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 0.491,
+    "timeout_seconds": 120,
+    "log": "logs/force-stop-before-a09-native-smoke.log",
+    "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "a09-native-smoke",
+    "command": [
+      "/home/runner/work/_temp/flowdrop-runtime-35/toolchain/tools/sdk/platform-tools/adb",
+      "-P",
+      "5039",
+      "-s",
+      "emulator-5554",
+      "shell",
+      "am",
+      "instrument",
+      "-w",
+      "-r",
+      "app.flowdrop.mobile.test/app.flowdrop.mobile.test.NativeSmoke"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 5.271,
+    "timeout_seconds": 660,
+    "log": "logs/a09-native-smoke.log",
+    "log_sha256": "5a5c78ab6995d3d9344cfafff77c385ae39041e95cb1969493bcaafb911599c4"
+  },
+  {
+    "name": "force-stop-before-a10-service-smoke",
+    "command": [
+      "/home/runner/work/_temp/flowdrop-runtime-35/toolchain/tools/sdk/platform-tools/adb",
+      "-P",
+      "5039",
+      "-s",
+      "emulator-5554",
+      "shell",
+      "am",
+      "force-stop",
+      "app.flowdrop.mobile"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 0.084,
+    "timeout_seconds": 120,
+    "log": "logs/force-stop-before-a10-service-smoke.log",
+    "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "a10-service-smoke",
+    "command": [
+      "/home/runner/work/_temp/flowdrop-runtime-35/toolchain/tools/sdk/platform-tools/adb",
+      "-P",
+      "5039",
+      "-s",
+      "emulator-5554",
+      "shell",
+      "am",
+      "instrument",
+      "-w",
+      "-r",
+      "app.flowdrop.mobile.test/app.flowdrop.mobile.test.NativeServiceSmoke"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 2.252,
+    "timeout_seconds": 660,
+    "log": "logs/a10-service-smoke.log",
+    "log_sha256": "b7e82e934cef9987ea50d7e11c5146905898ad2329fae6787785079cb8c01f8b"
+  },
+  {
+    "name": "force-stop-before-a11-folder-smoke",
+    "command": [
+      "/home/runner/work/_temp/flowdrop-runtime-35/toolchain/tools/sdk/platform-tools/adb",
+      "-P",
+      "5039",
+      "-s",
+      "emulator-5554",
+      "shell",
+      "am",
+      "force-stop",
+      "app.flowdrop.mobile"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 0.03,
+    "timeout_seconds": 120,
+    "log": "logs/force-stop-before-a11-folder-smoke.log",
+    "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "a11-folder-smoke",
+    "command": [
+      "/home/runner/work/_temp/flowdrop-runtime-35/toolchain/tools/sdk/platform-tools/adb",
+      "-P",
+      "5039",
+      "-s",
+      "emulator-5554",
+      "shell",
+      "am",
+      "instrument",
+      "-w",
+      "-r",
+      "app.flowdrop.mobile.test/app.flowdrop.mobile.test.NativeFolderSmoke"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 1.183,
+    "timeout_seconds": 660,
+    "log": "logs/a11-folder-smoke.log",
+    "log_sha256": "7a0c01f93f172ad60cffbb13f0edf08b38e6ced70c60c8200f3f1fd41c5c3abb"
+  },
+  {
+    "name": "force-stop-before-a12-share-smoke",
+    "command": [
+      "/home/runner/work/_temp/flowdrop-runtime-35/toolchain/tools/sdk/platform-tools/adb",
+      "-P",
+      "5039",
+      "-s",
+      "emulator-5554",
+      "shell",
+      "am",
+      "force-stop",
+      "app.flowdrop.mobile"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 0.068,
+    "timeout_seconds": 120,
+    "log": "logs/force-stop-before-a12-share-smoke.log",
+    "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "a12-share-smoke",
+    "command": [
+      "/home/runner/work/_temp/flowdrop-runtime-35/toolchain/tools/sdk/platform-tools/adb",
+      "-P",
+      "5039",
+      "-s",
+      "emulator-5554",
+      "shell",
+      "am",
+      "instrument",
+      "-w",
+      "-r",
+      "app.flowdrop.mobile.test/app.flowdrop.mobile.test.NativeShareSmoke"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 3.955,
+    "timeout_seconds": 660,
+    "log": "logs/a12-share-smoke.log",
+    "log_sha256": "c2252c612ed0d1984f26e32ca59501ea29d87dbbbb3d549bc2c6714f553dccb7"
+  },
+  {
+    "name": "force-stop-before-a13-runtime-smoke",
+    "command": [
+      "/home/runner/work/_temp/flowdrop-runtime-35/toolchain/tools/sdk/platform-tools/adb",
+      "-P",
+      "5039",
+      "-s",
+      "emulator-5554",
+      "shell",
+      "am",
+      "force-stop",
+      "app.flowdrop.mobile"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 0.256,
+    "timeout_seconds": 120,
+    "log": "logs/force-stop-before-a13-runtime-smoke.log",
+    "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "a13-runtime-smoke",
+    "command": [
+      "/home/runner/work/_temp/flowdrop-runtime-35/toolchain/tools/sdk/platform-tools/adb",
+      "-P",
+      "5039",
+      "-s",
+      "emulator-5554",
+      "shell",
+      "am",
+      "instrument",
+      "-w",
+      "-r",
+      "app.flowdrop.mobile.test/app.flowdrop.mobile.test.NativeRuntimeSmoke"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 8.772,
+    "timeout_seconds": 660,
+    "log": "logs/a13-runtime-smoke.log",
+    "log_sha256": "2850feaaa3abec3d0cf01d77a97026de66342c19af5e68805f04d8c389a78ca7"
+  },
+  {
+    "name": "force-stop-app-lifecycle",
+    "command": [
+      "/home/runner/work/_temp/flowdrop-runtime-35/toolchain/tools/sdk/platform-tools/adb",
+      "-P",
+      "5039",
+      "-s",
+      "emulator-5554",
+      "shell",
+      "am",
+      "force-stop",
+      "app.flowdrop.mobile"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 0.172,
+    "timeout_seconds": 120,
+    "log": "logs/force-stop-app-lifecycle.log",
+    "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "pid-after-force-stop",
+    "command": [
+      "/home/runner/work/_temp/flowdrop-runtime-35/toolchain/tools/sdk/platform-tools/adb",
+      "-P",
+      "5039",
+      "-s",
+      "emulator-5554",
+      "shell",
+      "pidof",
+      "app.flowdrop.mobile"
+    ],
+    "exit_code": 1,
+    "wall_seconds": 0.2,
+    "timeout_seconds": 120,
+    "log": "logs/pid-after-force-stop.log",
+    "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "restart-app-lifecycle",
+    "command": [
+      "/home/runner/work/_temp/flowdrop-runtime-35/toolchain/tools/sdk/platform-tools/adb",
+      "-P",
+      "5039",
+      "-s",
+      "emulator-5554",
+      "shell",
+      "am",
+      "start",
+      "-W",
+      "-n",
+      "app.flowdrop.mobile/.MainActivity"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 1.822,
+    "timeout_seconds": 120,
+    "log": "logs/restart-app-lifecycle.log",
+    "log_sha256": "8b911e955b7a1f08b68d38056859e31d799803bb8553ac19716379b19176cc73"
+  },
+  {
+    "name": "app-logcat-source",
+    "command": [
+      "/home/runner/work/_temp/flowdrop-runtime-35/toolchain/tools/sdk/platform-tools/adb",
+      "-P",
+      "5039",
+      "-s",
+      "emulator-5554",
+      "logcat",
+      "-d",
+      "-v",
+      "threadtime"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 1.466,
+    "timeout_seconds": 60,
+    "log": "logs/app-logcat-source.log",
+    "log_sha256": "903d909b95848d6459693947419c809e90ed3c76de573b87198dba67abab576c"
+  },
+  {
+    "name": "final-activity-state",
+    "command": [
+      "/home/runner/work/_temp/flowdrop-runtime-35/toolchain/tools/sdk/platform-tools/adb",
+      "-P",
+      "5039",
+      "-s",
+      "emulator-5554",
+      "shell",
+      "dumpsys",
+      "activity",
+      "activities"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 0.023,
+    "timeout_seconds": 120,
+    "log": "logs/final-activity-state.log",
+    "log_sha256": "a5b23d47f8ec3fc19ed5252b86ec3d813f7e5d2e66edc533f8de958c50a6e4e9"
+  },
+  {
+    "name": "final-service-state",
+    "command": [
+      "/home/runner/work/_temp/flowdrop-runtime-35/toolchain/tools/sdk/platform-tools/adb",
+      "-P",
+      "5039",
+      "-s",
+      "emulator-5554",
+      "shell",
+      "dumpsys",
+      "activity",
+      "services",
+      "app.flowdrop.mobile"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 0.021,
+    "timeout_seconds": 120,
+    "log": "logs/final-service-state.log",
+    "log_sha256": "89e2e91b4c5ffc9621b23df88f04e180560dbb5438772b1007f0a13cc783d075"
+  },
+  {
+    "name": "uninstall-test",
+    "command": [
+      "/home/runner/work/_temp/flowdrop-runtime-35/toolchain/tools/sdk/platform-tools/adb",
+      "-P",
+      "5039",
+      "-s",
+      "emulator-5554",
+      "uninstall",
+      "app.flowdrop.mobile.test"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 0.086,
+    "timeout_seconds": 120,
+    "log": "logs/uninstall-test.log",
+    "log_sha256": "7fc0023a6402c7bd7abd98bb3e580968de4833eed07d88d1cc8d70819d69c7a0"
+  },
+  {
+    "name": "uninstall-app",
+    "command": [
+      "/home/runner/work/_temp/flowdrop-runtime-35/toolchain/tools/sdk/platform-tools/adb",
+      "-P",
+      "5039",
+      "-s",
+      "emulator-5554",
+      "uninstall",
+      "app.flowdrop.mobile"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 0.088,
+    "timeout_seconds": 120,
+    "log": "logs/uninstall-app.log",
+    "log_sha256": "7fc0023a6402c7bd7abd98bb3e580968de4833eed07d88d1cc8d70819d69c7a0"
+  },
+  {
+    "name": "confirm-app-removed",
+    "command": [
+      "/home/runner/work/_temp/flowdrop-runtime-35/toolchain/tools/sdk/platform-tools/adb",
+      "-P",
+      "5039",
+      "-s",
+      "emulator-5554",
+      "shell",
+      "pm",
+      "path",
+      "app.flowdrop.mobile"
+    ],
+    "exit_code": 1,
+    "wall_seconds": 0.042,
+    "timeout_seconds": 120,
+    "log": "logs/confirm-app-removed.log",
+    "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "confirm-test-removed",
+    "command": [
+      "/home/runner/work/_temp/flowdrop-runtime-35/toolchain/tools/sdk/platform-tools/adb",
+      "-P",
+      "5039",
+      "-s",
+      "emulator-5554",
+      "shell",
+      "pm",
+      "path",
+      "app.flowdrop.mobile.test"
+    ],
+    "exit_code": 1,
+    "wall_seconds": 0.285,
+    "timeout_seconds": 120,
+    "log": "logs/confirm-test-removed.log",
+    "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "remove-owned-forward",
+    "command": [
+      "/home/runner/work/_temp/flowdrop-runtime-35/toolchain/tools/sdk/platform-tools/adb",
+      "-P",
+      "5039",
+      "-s",
+      "emulator-5554",
+      "forward",
+      "--remove",
+      "tcp:39675"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 0.017,
+    "timeout_seconds": 120,
+    "log": "logs/remove-owned-forward.log",
+    "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "stop-owned-emulator",
+    "command": [
+      "/home/runner/work/_temp/flowdrop-runtime-35/toolchain/tools/sdk/platform-tools/adb",
+      "-P",
+      "5039",
+      "-s",
+      "emulator-5554",
+      "emu",
+      "kill"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 0.011,
+    "timeout_seconds": 30,
+    "log": "logs/stop-owned-emulator.log",
+    "log_sha256": "e2d4238ce853e3f4c1ba7b36adf25ff824d93c36a0b94db50cb96dc047aac6d3"
+  },
+  {
+    "name": "stop-owned-adb-server",
+    "command": [
+      "/home/runner/work/_temp/flowdrop-runtime-35/toolchain/tools/sdk/platform-tools/adb",
+      "-P",
+      "5039",
+      "kill-server"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 0.009,
+    "timeout_seconds": 120,
+    "log": "logs/stop-owned-adb-server.log",
+    "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+]

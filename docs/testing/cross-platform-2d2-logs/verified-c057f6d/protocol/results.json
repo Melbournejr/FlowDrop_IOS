@@ -1,0 +1,58 @@
+{
+  "status": "PASS",
+  "exit_code": 0,
+  "platform": "2d2-protocol",
+  "tests": [
+    {
+      "test_id": "A-HTTP-HELPER-UNIT",
+      "platform": "2d2-protocol",
+      "os_api": "Linux-7.0.0-1017-azure-x86_64-with-glibc2.39",
+      "source_commit": "c057f6dbbbd4d9da4e9fe4da63e173204691aefc",
+      "checkout_commit": "fa74266e3658332681214fb04f02ee758d6a5d63",
+      "artifact_sha256": {},
+      "preconditions": "Owned isolated environment and verified artifact",
+      "command_or_method": "A-HTTP-HELPER-UNIT",
+      "expected": "Real loopback streaming, truncated-body/redirect/bounds rejection, exact local-capability confinement",
+      "actual": {
+        "scope": "Test HTTP helper, not native app proof",
+        "tests": 5
+      },
+      "exit_code": 0,
+      "time_started_utc": "2026-11-16T11:37:16Z",
+      "wall_seconds": 0.248,
+      "evidence_path": "logs/test-matrix.json",
+      "required": true,
+      "status": "PASS"
+    },
+    {
+      "test_id": "A-PROTOCOL-MATRIX",
+      "platform": "2d2-protocol",
+      "os_api": "Linux-7.0.0-1017-azure-x86_64-with-glibc2.39",
+      "source_commit": "c057f6dbbbd4d9da4e9fe4da63e173204691aefc",
+      "checkout_commit": "fa74266e3658332681214fb04f02ee758d6a5d63",
+      "artifact_sha256": {},
+      "preconditions": "Owned isolated environment and verified artifact",
+      "command_or_method": "A-PROTOCOL-MATRIX",
+      "expected": "All four production-engine directions, exact SHA/size, capability and 25/50/75% interrupted upload assertions",
+      "actual": {
+        "status": "PASS",
+        "engine_cases": 36,
+        "full_size_matrix": true,
+        "native_e2e": "BLOCKED",
+        "physical_wifi": "NOT VERIFIED"
+      },
+      "exit_code": 0,
+      "time_started_utc": "2026-11-16T11:37:16Z",
+      "wall_seconds": 169.661,
+      "evidence_path": "logs/test-matrix.json",
+      "required": true,
+      "status": "PASS"
+    }
+  ],
+  "production_signing": "NOT VERIFIED",
+  "physical_devices": "NOT VERIFIED",
+  "cross_platform_lan": "NOT VERIFIED",
+  "layer": "A: protocol/toolkit validation",
+  "native_cross_platform_e2e": "BLOCKED",
+  "physical_lan": "NOT VERIFIED"
+}

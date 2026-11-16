@@ -1,0 +1,154 @@
+{
+  "group": "integration",
+  "status": "PASS",
+  "exit_code": 0,
+  "results": [
+    {
+      "name": "http",
+      "command": [
+        "node",
+        "tests/http-integration.mjs"
+      ],
+      "status": "PASS",
+      "executed": true,
+      "exit_code": 0,
+      "raw_returncode": 0,
+      "timeout": false,
+      "timeout_seconds": 120,
+      "wall_seconds": 1.503,
+      "resources": {
+        "supported": true,
+        "free_disk_bytes": 94912720896,
+        "memory_limit_bytes": 16464297984,
+        "minimum_disk_bytes": 536870912,
+        "minimum_memory_bytes": 2147483648
+      }
+    },
+    {
+      "name": "android-host",
+      "command": [
+        "node",
+        "tests/android-host-integration.mjs"
+      ],
+      "status": "PASS",
+      "executed": true,
+      "exit_code": 0,
+      "raw_returncode": 0,
+      "timeout": false,
+      "timeout_seconds": 120,
+      "wall_seconds": 2.372,
+      "resources": {
+        "supported": true,
+        "free_disk_bytes": 94912733184,
+        "memory_limit_bytes": 16464297984,
+        "minimum_disk_bytes": 536870912,
+        "minimum_memory_bytes": 2147483648
+      }
+    },
+    {
+      "name": "discovery",
+      "command": [
+        "node",
+        "tests/discovery-integration.mjs"
+      ],
+      "status": "PASS",
+      "executed": true,
+      "exit_code": 0,
+      "raw_returncode": 0,
+      "timeout": false,
+      "timeout_seconds": 120,
+      "wall_seconds": 2.747,
+      "resources": {
+        "supported": true,
+        "free_disk_bytes": 94912729088,
+        "memory_limit_bytes": 16464297984,
+        "minimum_disk_bytes": 536870912,
+        "minimum_memory_bytes": 2147483648
+      }
+    },
+    {
+      "name": "peer",
+      "command": [
+        "node",
+        "tests/peer-integration.mjs"
+      ],
+      "status": "PASS",
+      "executed": true,
+      "exit_code": 0,
+      "raw_returncode": 0,
+      "timeout": false,
+      "timeout_seconds": 240,
+      "wall_seconds": 9.179,
+      "resources": {
+        "supported": true,
+        "free_disk_bytes": 94912724992,
+        "memory_limit_bytes": 16464297984,
+        "minimum_disk_bytes": 536870912,
+        "minimum_memory_bytes": 2147483648
+      }
+    },
+    {
+      "name": "lan-discovery",
+      "command": [
+        "node",
+        "tests/lan-discovery-integration.mjs"
+      ],
+      "status": "PASS",
+      "executed": true,
+      "exit_code": 0,
+      "raw_returncode": 0,
+      "timeout": false,
+      "timeout_seconds": 240,
+      "wall_seconds": 15.456,
+      "resources": {
+        "supported": true,
+        "free_disk_bytes": 94912720896,
+        "memory_limit_bytes": 16464297984,
+        "minimum_disk_bytes": 536870912,
+        "minimum_memory_bytes": 2147483648
+      }
+    },
+    {
+      "name": "android-discovery",
+      "command": [
+        "node",
+        "tests/android-discovery-state.mjs"
+      ],
+      "status": "PASS",
+      "executed": true,
+      "exit_code": 0,
+      "raw_returncode": 0,
+      "timeout": false,
+      "timeout_seconds": 120,
+      "wall_seconds": 0.88,
+      "resources": {
+        "supported": true,
+        "free_disk_bytes": 94912712704,
+        "memory_limit_bytes": 16464297984,
+        "minimum_disk_bytes": 536870912,
+        "minimum_memory_bytes": 2147483648
+      }
+    },
+    {
+      "name": "security",
+      "command": [
+        "node",
+        "tests/security-integration.mjs"
+      ],
+      "status": "PASS",
+      "executed": true,
+      "exit_code": 0,
+      "raw_returncode": 0,
+      "timeout": false,
+      "timeout_seconds": 120,
+      "wall_seconds": 11.046,
+      "resources": {
+        "supported": true,
+        "free_disk_bytes": 94912708608,
+        "memory_limit_bytes": 16464297984,
+        "minimum_disk_bytes": 536870912,
+        "minimum_memory_bytes": 2147483648
+      }
+    }
+  ]
+}

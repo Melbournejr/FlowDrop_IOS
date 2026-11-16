@@ -1,0 +1,3325 @@
+{
+  "phase": "2D.2",
+  "layer": "A: automated production-engine protocol verification",
+  "network": "loopback HTTP, isolated Linux job",
+  "source_commit": "ff75c81074ffce6c3bbed1083a04e46d390c3f58",
+  "checkout_commit": "b1d802ab6491ff26d08c56410b6114446d6989ea",
+  "artifact_sha256": null,
+  "artifact_scope": "Source engines; no native installer is executed",
+  "native_cross_platform_e2e": "BLOCKED",
+  "physical_wifi": "NOT VERIFIED",
+  "cases": [
+    {
+      "test_id": "A-D1-bytes-0",
+      "sender": "Windows Node engine on Linux",
+      "receiver": "Android Java engine on JVM",
+      "network": "loopback HTTP, isolated Linux job",
+      "source_commit": "ff75c81074ffce6c3bbed1083a04e46d390c3f58",
+      "artifact_sha256": null,
+      "expected": "Source/destination SHA-256 and exact size agree; security assertions remain enabled",
+      "status": "PASS",
+      "exit_code": 0,
+      "started_utc": "2026-11-16T11:22:28.103Z",
+      "evidence": "protocol-matrix.json",
+      "actual": {
+        "size": 0,
+        "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "destination_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "exact_name": "Tệp 中文 😀 0.bin",
+        "files": 1
+      },
+      "elapsed_seconds": 0.12239755699999978,
+      "size": 0,
+      "MB_per_second": 0,
+      "Mbps": 0,
+      "rate_method": "Full test interval including generation, source stage, relay, destination read/hash; not Wi-Fi throughput"
+    },
+    {
+      "test_id": "A-D1-bytes-1024",
+      "sender": "Windows Node engine on Linux",
+      "receiver": "Android Java engine on JVM",
+      "network": "loopback HTTP, isolated Linux job",
+      "source_commit": "ff75c81074ffce6c3bbed1083a04e46d390c3f58",
+      "artifact_sha256": null,
+      "expected": "Source/destination SHA-256 and exact size agree; security assertions remain enabled",
+      "status": "PASS",
+      "exit_code": 0,
+      "started_utc": "2026-11-16T11:22:28.227Z",
+      "evidence": "protocol-matrix.json",
+      "actual": {
+        "size": 1024,
+        "source_sha256": "2bce1ba628720664be4b9fdd77aae0678e5f0f3f02fc6ff641ec879094f6a404",
+        "destination_sha256": "2bce1ba628720664be4b9fdd77aae0678e5f0f3f02fc6ff641ec879094f6a404",
+        "exact_name": "Tệp 中文 😀 1024.bin",
+        "files": 1
+      },
+      "elapsed_seconds": 0.027378986000000168,
+      "size": 1024,
+      "MB_per_second": 0.03740094684295443,
+      "Mbps": 0.29920757474363546,
+      "rate_method": "Full test interval including generation, source stage, relay, destination read/hash; not Wi-Fi throughput"
+    },
+    {
+      "test_id": "A-D1-bytes-1048576",
+      "sender": "Windows Node engine on Linux",
+      "receiver": "Android Java engine on JVM",
+      "network": "loopback HTTP, isolated Linux job",
+      "source_commit": "ff75c81074ffce6c3bbed1083a04e46d390c3f58",
+      "artifact_sha256": null,
+      "expected": "Source/destination SHA-256 and exact size agree; security assertions remain enabled",
+      "status": "PASS",
+      "exit_code": 0,
+      "started_utc": "2026-11-16T11:22:28.254Z",
+      "evidence": "protocol-matrix.json",
+      "actual": {
+        "size": 1048576,
+        "source_sha256": "631b84027d6b9e52b539c4e8373622d23032dfadc64d60af87339c9037e4f769",
+        "destination_sha256": "631b84027d6b9e52b539c4e8373622d23032dfadc64d60af87339c9037e4f769",
+        "exact_name": "Tệp 中文 😀 1048576.bin",
+        "files": 1
+      },
+      "elapsed_seconds": 0.03762108699999999,
+      "size": 1048576,
+      "MB_per_second": 27.87202825904526,
+      "Mbps": 222.97622607236207,
+      "rate_method": "Full test interval including generation, source stage, relay, destination read/hash; not Wi-Fi throughput"
+    },
+    {
+      "test_id": "A-D1-bytes-104857600",
+      "sender": "Windows Node engine on Linux",
+      "receiver": "Android Java engine on JVM",
+      "network": "loopback HTTP, isolated Linux job",
+      "source_commit": "ff75c81074ffce6c3bbed1083a04e46d390c3f58",
+      "artifact_sha256": null,
+      "expected": "Source/destination SHA-256 and exact size agree; security assertions remain enabled",
+      "status": "PASS",
+      "exit_code": 0,
+      "started_utc": "2026-11-16T11:22:28.292Z",
+      "evidence": "protocol-matrix.json",
+      "actual": {
+        "size": 104857600,
+        "source_sha256": "998fa39fe735dc4be63f55bf6ec3db8b64fe3d8fcd3fe759d1b88d27992c0b75",
+        "destination_sha256": "998fa39fe735dc4be63f55bf6ec3db8b64fe3d8fcd3fe759d1b88d27992c0b75",
+        "exact_name": "Tệp 中文 😀 104857600.bin",
+        "files": 1
+      },
+      "elapsed_seconds": 0.6967592469999995,
+      "size": 104857600,
+      "MB_per_second": 150.49330231565636,
+      "Mbps": 1203.946418525251,
+      "rate_method": "Full test interval including generation, source stage, relay, destination read/hash; not Wi-Fi throughput"
+    },
+    {
+      "test_id": "A-D1-bytes-1073741824",
+      "sender": "Windows Node engine on Linux",
+      "receiver": "Android Java engine on JVM",
+      "network": "loopback HTTP, isolated Linux job",
+      "source_commit": "ff75c81074ffce6c3bbed1083a04e46d390c3f58",
+      "artifact_sha256": null,
+      "expected": "Source/destination SHA-256 and exact size agree; security assertions remain enabled",
+      "status": "PASS",
+      "exit_code": 0,
+      "started_utc": "2026-11-16T11:22:28.988Z",
+      "evidence": "protocol-matrix.json",
+      "actual": {
+        "size": 1073741824,
+        "source_sha256": "e18e3f358b46eae9266ac36a5ff6347f6bf09711dff389597f237d5fe83111d8",
+        "destination_sha256": "e18e3f358b46eae9266ac36a5ff6347f6bf09711dff389597f237d5fe83111d8",
+        "exact_name": "Tệp 中文 😀 1073741824.bin",
+        "files": 1
+      },
+      "elapsed_seconds": 5.104769151,
+      "size": 1073741824,
+      "MB_per_second": 210.34091694227916,
+      "Mbps": 1682.7273355382333,
+      "rate_method": "Full test interval including generation, source stage, relay, destination read/hash; not Wi-Fi throughput"
+    },
+    {
+      "test_id": "A-D1-bytes-4294967313",
+      "sender": "Windows Node engine on Linux",
+      "receiver": "Android Java engine on JVM",
+      "network": "loopback HTTP, isolated Linux job",
+      "source_commit": "ff75c81074ffce6c3bbed1083a04e46d390c3f58",
+      "artifact_sha256": null,
+      "expected": "Source/destination SHA-256 and exact size agree; security assertions remain enabled",
+      "status": "PASS",
+      "exit_code": 0,
+      "started_utc": "2026-11-16T11:22:34.093Z",
+      "evidence": "protocol-matrix.json",
+      "actual": {
+        "size": 4294967313,
+        "source_sha256": "9bf2e05c25222af695af1537ef0d8d2241a85ddadf3819797b83c856efeff824",
+        "destination_sha256": "9bf2e05c25222af695af1537ef0d8d2241a85ddadf3819797b83c856efeff824",
+        "exact_name": "Tệp 中文 😀 4294967313.bin",
+        "files": 1
+      },
+      "elapsed_seconds": 41.590062292,
+      "size": 4294967313,
+      "MB_per_second": 103.26907622415735,
+      "Mbps": 826.1526097932588,
+      "rate_method": "Full test interval including generation, source stage, relay, destination read/hash; not Wi-Fi throughput"
+    },
+    {
+      "test_id": "A-D1-batch-101",
+      "sender": "Windows Node engine on Linux",
+      "receiver": "Android Java engine on JVM",
+      "network": "loopback HTTP, isolated Linux job",
+      "source_commit": "ff75c81074ffce6c3bbed1083a04e46d390c3f58",
+      "artifact_sha256": null,
+      "expected": "Source/destination SHA-256 and exact size agree; security assertions remain enabled",
+      "status": "PASS",
+      "exit_code": 0,
+      "started_utc": "2026-11-16T11:23:15.683Z",
+      "evidence": "protocol-matrix.json",
+      "actual": {
+        "files": 101,
+        "size": 3892,
+        "hashes": [
+          {
+            "name": "Rỗng.bin",
+            "size": 0,
+            "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "destination_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          {
+            "name": "Tiếng Việt 中文 😀 có khoảng trắng.txt",
+            "size": 38,
+            "source_sha256": "531cb29f4f7ca54e568b473e661f794555db3f38cae3b2b06a3761563b85b512",
+            "destination_sha256": "531cb29f4f7ca54e568b473e661f794555db3f38cae3b2b06a3761563b85b512"
+          },
+          {
+            "name": "Tên dài aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.txt",
+            "size": 38,
+            "source_sha256": "0e809058ce1b0b0da191ac2ce26a824bfb47e6fa3c8dff26d7071899f8599d3b",
+            "destination_sha256": "0e809058ce1b0b0da191ac2ce26a824bfb47e6fa3c8dff26d7071899f8599d3b"
+          },
+          {
+            "name": "file 3.bin",
+            "size": 38,
+            "source_sha256": "5f3506c15a06e64911900e99701ab647fb3d3930060975899fdd207c3589cee2",
+            "destination_sha256": "5f3506c15a06e64911900e99701ab647fb3d3930060975899fdd207c3589cee2"
+          },
+          {
+            "name": "file 4.bin",
+            "size": 38,
+            "source_sha256": "5e322da111f71f37e34984496338c9678743f2dbb1ab57c56712106dd1ce5b5e",
+            "destination_sha256": "5e322da111f71f37e34984496338c9678743f2dbb1ab57c56712106dd1ce5b5e"
+          },
+          {
+            "name": "file 5.bin",
+            "size": 38,
+            "source_sha256": "11a6aa817feb9f182ce9f182fe64bbb3407e8f27227f84cd97964c83cf30f791",
+            "destination_sha256": "11a6aa817feb9f182ce9f182fe64bbb3407e8f27227f84cd97964c83cf30f791"
+          },
+          {
+            "name": "file 6.bin",
+            "size": 38,
+            "source_sha256": "e4cbbd4b002e8dbeae5c17a01dcbdcc27d66e9b7097a95c5d15cadbac8c59fd3",
+            "destination_sha256": "e4cbbd4b002e8dbeae5c17a01dcbdcc27d66e9b7097a95c5d15cadbac8c59fd3"
+          },
+          {
+            "name": "file 7.bin",
+            "size": 38,
+            "source_sha256": "13a2c28e5c5f22f891b1477856241be048db6c3c2f4b6234d9f66e9dce6a79d3",
+            "destination_sha256": "13a2c28e5c5f22f891b1477856241be048db6c3c2f4b6234d9f66e9dce6a79d3"
+          },
+          {
+            "name": "file 8.bin",
+            "size": 38,
+            "source_sha256": "bb0b60b257562c39088b4bb35dfe9d03dab828280cea98e9a417d687908b8636",
+            "destination_sha256": "bb0b60b257562c39088b4bb35dfe9d03dab828280cea98e9a417d687908b8636"
+          },
+          {
+            "name": "file 9.bin",
+            "size": 38,
+            "source_sha256": "989da1a6c1b8c979b0d7935fb92c29c3ca126e8fc882f4d0085d60bce47a9027",
+            "destination_sha256": "989da1a6c1b8c979b0d7935fb92c29c3ca126e8fc882f4d0085d60bce47a9027"
+          },
+          {
+            "name": "file 10.bin",
+            "size": 39,
+            "source_sha256": "eecb9f7a8d93a489200b19049da3347f75fb84a655eb739bef0f49ad8c781eed",
+            "destination_sha256": "eecb9f7a8d93a489200b19049da3347f75fb84a655eb739bef0f49ad8c781eed"
+          },
+          {
+            "name": "file 11.bin",
+            "size": 39,
+            "source_sha256": "ddda5fe069fa38d440f88996e9a0aaed44f8cde2211678bbde9f910a19427425",
+            "destination_sha256": "ddda5fe069fa38d440f88996e9a0aaed44f8cde2211678bbde9f910a19427425"
+          },
+          {
+            "name": "file 12.bin",
+            "size": 39,
+            "source_sha256": "00d6b6e484f84edade05c46e619ec3d2a52b20eb8a7f439d4c35abd4d0399e1d",
+            "destination_sha256": "00d6b6e484f84edade05c46e619ec3d2a52b20eb8a7f439d4c35abd4d0399e1d"
+          },
+          {
+            "name": "file 13.bin",
+            "size": 39,
+            "source_sha256": "5d5525ff367a9c8127a8b9e0ba7bacaf0092a372eafb816708b55b111f8c6bbd",
+            "destination_sha256": "5d5525ff367a9c8127a8b9e0ba7bacaf0092a372eafb816708b55b111f8c6bbd"
+          },
+          {
+            "name": "file 14.bin",
+            "size": 39,
+            "source_sha256": "fb3dcae06bef2b9974793222b7c526c258a8fc049e6aa009375c60770982721c",
+            "destination_sha256": "fb3dcae06bef2b9974793222b7c526c258a8fc049e6aa009375c60770982721c"
+          },
+          {
+            "name": "file 15.bin",
+            "size": 39,
+            "source_sha256": "bc1401e594372395abb95b808b93f858d1596b2751225ec114d47f2426cff107",
+            "destination_sha256": "bc1401e594372395abb95b808b93f858d1596b2751225ec114d47f2426cff107"
+          },
+          {
+            "name": "file 16.bin",
+            "size": 39,
+            "source_sha256": "b58b4874c53ec6d4e9576c5cdb33d1ff6f3ce8b7efb728be41f569e9d9c18fbf",
+            "destination_sha256": "b58b4874c53ec6d4e9576c5cdb33d1ff6f3ce8b7efb728be41f569e9d9c18fbf"
+          },
+          {
+            "name": "file 17.bin",
+            "size": 39,
+            "source_sha256": "db4cb8bd01eaf42869dc082e1fad948d5ca2c5c1ee7b65957695b959fc927c17",
+            "destination_sha256": "db4cb8bd01eaf42869dc082e1fad948d5ca2c5c1ee7b65957695b959fc927c17"
+          },
+          {
+            "name": "file 18.bin",
+            "size": 39,
+            "source_sha256": "97ac84243754c479e4807f94a42ec7ee1fd8832a156e8601e3a8e08fd76b66fd",
+            "destination_sha256": "97ac84243754c479e4807f94a42ec7ee1fd8832a156e8601e3a8e08fd76b66fd"
+          },
+          {
+            "name": "file 19.bin",
+            "size": 39,
+            "source_sha256": "7738e7757bfd39f3f54cc663603ecc68349c846fa31d0ac3a7cff19af7f41671",
+            "destination_sha256": "7738e7757bfd39f3f54cc663603ecc68349c846fa31d0ac3a7cff19af7f41671"
+          },
+          {
+            "name": "file 20.bin",
+            "size": 39,
+            "source_sha256": "d02ece6ae0e1c295a472fd77d5591ae5b436a8cdb31454a26c8366d0fd60c49f",
+            "destination_sha256": "d02ece6ae0e1c295a472fd77d5591ae5b436a8cdb31454a26c8366d0fd60c49f"
+          },
+          {
+            "name": "file 21.bin",
+            "size": 39,
+            "source_sha256": "829d4def2cf3a14fe5fe5ff44b20992b79437ec216ee7da1286d394f442b4410",
+            "destination_sha256": "829d4def2cf3a14fe5fe5ff44b20992b79437ec216ee7da1286d394f442b4410"
+          },
+          {
+            "name": "file 22.bin",
+            "size": 39,
+            "source_sha256": "31a96810c57ba21f248d0222e47a5fde80c9302a5104d7c0c9eedee0f48d7809",
+            "destination_sha256": "31a96810c57ba21f248d0222e47a5fde80c9302a5104d7c0c9eedee0f48d7809"
+          },
+          {
+            "name": "file 23.bin",
+            "size": 39,
+            "source_sha256": "f5f8040c4882093dcf691338b8ba04049aed9d28c8c4dcb2370009cbcb9f06a4",
+            "destination_sha256": "f5f8040c4882093dcf691338b8ba04049aed9d28c8c4dcb2370009cbcb9f06a4"
+          },
+          {
+            "name": "file 24.bin",
+            "size": 39,
+            "source_sha256": "f86c03cd3907418a624a08a2290752405e7e899c988742a56ea2f633503928da",
+            "destination_sha256": "f86c03cd3907418a624a08a2290752405e7e899c988742a56ea2f633503928da"
+          },
+          {
+            "name": "file 25.bin",
+            "size": 39,
+            "source_sha256": "6c5182437f07ffacdaaff5821bc735f13547f5669ff4d28f17631e9b2e150d8d",
+            "destination_sha256": "6c5182437f07ffacdaaff5821bc735f13547f5669ff4d28f17631e9b2e150d8d"
+          },
+          {
+            "name": "file 26.bin",
+            "size": 39,
+            "source_sha256": "d5409edec06b17dd104841d419862c4f5664e6444781050fdd52e95d18da2078",
+            "destination_sha256": "d5409edec06b17dd104841d419862c4f5664e6444781050fdd52e95d18da2078"
+          },
+          {
+            "name": "file 27.bin",
+            "size": 39,
+            "source_sha256": "3a619599718ef6fbbfd87a800437362ee1a0bf45d0fd9ce4b1fe2b178b8ac55a",
+            "destination_sha256": "3a619599718ef6fbbfd87a800437362ee1a0bf45d0fd9ce4b1fe2b178b8ac55a"
+          },
+          {
+            "name": "file 28.bin",
+            "size": 39,
+            "source_sha256": "b50dca11185a07a9da862d99ca16cb52ef03ee9d9da0a161410731da4d3318a9",
+            "destination_sha256": "b50dca11185a07a9da862d99ca16cb52ef03ee9d9da0a161410731da4d3318a9"
+          },
+          {
+            "name": "file 29.bin",
+            "size": 39,
+            "source_sha256": "f5e037bdb5ad27d9d0c35f3228b3c5a48784a89e79879c3729108ee0e5b812cd",
+            "destination_sha256": "f5e037bdb5ad27d9d0c35f3228b3c5a48784a89e79879c3729108ee0e5b812cd"
+          },
+          {
+            "name": "file 30.bin",
+            "size": 39,
+            "source_sha256": "04dc650461422650d9e06419161a6c68605fad2b68bb2e647622de0c3c21d1b1",
+            "destination_sha256": "04dc650461422650d9e06419161a6c68605fad2b68bb2e647622de0c3c21d1b1"
+          },
+          {
+            "name": "file 31.bin",
+            "size": 39,
+            "source_sha256": "82c6801782b8a32c66becf6cabe512ebfbe7660ccd2eeb0b42336703289e48cc",
+            "destination_sha256": "82c6801782b8a32c66becf6cabe512ebfbe7660ccd2eeb0b42336703289e48cc"
+          },
+          {
+            "name": "file 32.bin",
+            "size": 39,
+            "source_sha256": "ce3a04c8eff7066137426d0f24321dd5206ac6159045ac3ffcd800b86eb1e225",
+            "destination_sha256": "ce3a04c8eff7066137426d0f24321dd5206ac6159045ac3ffcd800b86eb1e225"
+          },
+          {
+            "name": "file 33.bin",
+            "size": 39,
+            "source_sha256": "56f2bb209dcbeef40c897e0585201dc93161e910f67c406a4956ddd9412c8c86",
+            "destination_sha256": "56f2bb209dcbeef40c897e0585201dc93161e910f67c406a4956ddd9412c8c86"
+          },
+          {
+            "name": "file 34.bin",
+            "size": 39,
+            "source_sha256": "bcdbfa8b31dd92afefa16d7dfef559a4583769124c5e9f0af40ab9f3f5e0603d",
+            "destination_sha256": "bcdbfa8b31dd92afefa16d7dfef559a4583769124c5e9f0af40ab9f3f5e0603d"
+          },
+          {
+            "name": "file 35.bin",
+            "size": 39,
+            "source_sha256": "ad224d05c3906d1c70fe0f5a95e8327d4f7890266f08fbb8b455d7cfb90acb90",
+            "destination_sha256": "ad224d05c3906d1c70fe0f5a95e8327d4f7890266f08fbb8b455d7cfb90acb90"
+          },
+          {
+            "name": "file 36.bin",
+            "size": 39,
+            "source_sha256": "5f66bd2757cbe6528a7e3dceecc28363b8cb558ba951427f0f75b3ab873829db",
+            "destination_sha256": "5f66bd2757cbe6528a7e3dceecc28363b8cb558ba951427f0f75b3ab873829db"
+          },
+          {
+            "name": "file 37.bin",
+            "size": 39,
+            "source_sha256": "c6f3173664eb2d3b280f3d716927493ffbb013f814b052c517e1894fe36f6936",
+            "destination_sha256": "c6f3173664eb2d3b280f3d716927493ffbb013f814b052c517e1894fe36f6936"
+          },
+          {
+            "name": "file 38.bin",
+            "size": 39,
+            "source_sha256": "633183074af5c5ccac1f49fda945048af6312e973784d3c14ec162b71b2db899",
+            "destination_sha256": "633183074af5c5ccac1f49fda945048af6312e973784d3c14ec162b71b2db899"
+          },
+          {
+            "name": "file 39.bin",
+            "size": 39,
+            "source_sha256": "b506f2758ce2584a561ee35e5557859fde7166ad4051a2f274c814735ee8044d",
+            "destination_sha256": "b506f2758ce2584a561ee35e5557859fde7166ad4051a2f274c814735ee8044d"
+          },
+          {
+            "name": "file 40.bin",
+            "size": 39,
+            "source_sha256": "3cac9e9e01e231874462a61e09e3e7eedc41d15a6227010a50fd1459a187dfec",
+            "destination_sha256": "3cac9e9e01e231874462a61e09e3e7eedc41d15a6227010a50fd1459a187dfec"
+          },
+          {
+            "name": "file 41.bin",
+            "size": 39,
+            "source_sha256": "411a5dba1780c5fe5eb0f5c385bf0016b62f3c4bb25909905fcda9477e609616",
+            "destination_sha256": "411a5dba1780c5fe5eb0f5c385bf0016b62f3c4bb25909905fcda9477e609616"
+          },
+          {
+            "name": "file 42.bin",
+            "size": 39,
+            "source_sha256": "9995bb003b236a84dce8fc0abd503a0f17f9d5f5b6dafda560d3d6906d70e41e",
+            "destination_sha256": "9995bb003b236a84dce8fc0abd503a0f17f9d5f5b6dafda560d3d6906d70e41e"
+          },
+          {
+            "name": "file 43.bin",
+            "size": 39,
+            "source_sha256": "07f48268b22576465b7037d5b6198250fb35089162d5d9811325e773749f8ad0",
+            "destination_sha256": "07f48268b22576465b7037d5b6198250fb35089162d5d9811325e773749f8ad0"
+          },
+          {
+            "name": "file 44.bin",
+            "size": 39,
+            "source_sha256": "962b21446bff71cc4123cce30b5ad8dfd05b8c7d90d4c58a7b399397663da96d",
+            "destination_sha256": "962b21446bff71cc4123cce30b5ad8dfd05b8c7d90d4c58a7b399397663da96d"
+          },
+          {
+            "name": "file 45.bin",
+            "size": 39,
+            "source_sha256": "773e716e7e8933a196cb5fe6db231223e31ed162ed6bcfd2748b8b764b404f21",
+            "destination_sha256": "773e716e7e8933a196cb5fe6db231223e31ed162ed6bcfd2748b8b764b404f21"
+          },
+          {
+            "name": "file 46.bin",
+            "size": 39,
+            "source_sha256": "6ba3c36f42887d2534c4059b0787619e61d9a4342e58e38e041f052c8bd9add1",
+            "destination_sha256": "6ba3c36f42887d2534c4059b0787619e61d9a4342e58e38e041f052c8bd9add1"
+          },
+          {
+            "name": "file 47.bin",
+            "size": 39,
+            "source_sha256": "8438919f18ea234b1580baa34d22926fe629e57b9a97b8ef969795ce06ce8182",
+            "destination_sha256": "8438919f18ea234b1580baa34d22926fe629e57b9a97b8ef969795ce06ce8182"
+          },
+          {
+            "name": "file 48.bin",
+            "size": 39,
+            "source_sha256": "4488921ac8e6c8d317df8e4401cccba457a924e9592baf0df5e3fff66e264af7",
+            "destination_sha256": "4488921ac8e6c8d317df8e4401cccba457a924e9592baf0df5e3fff66e264af7"
+          },
+          {
+            "name": "file 49.bin",
+            "size": 39,
+            "source_sha256": "c1a57c1d54b938a9596b9b4ed06d562e422b3469b60a2c2d46ff4e6a43179f9e",
+            "destination_sha256": "c1a57c1d54b938a9596b9b4ed06d562e422b3469b60a2c2d46ff4e6a43179f9e"
+          },
+          {
+            "name": "file 50.bin",
+            "size": 39,
+            "source_sha256": "618a72d5fbc66f8123b9334eaf9149a53330fc8c733e7b3e4e0445860dbde7de",
+            "destination_sha256": "618a72d5fbc66f8123b9334eaf9149a53330fc8c733e7b3e4e0445860dbde7de"
+          },
+          {
+            "name": "file 51.bin",
+            "size": 39,
+            "source_sha256": "8cd8d1e2797be1501e9a6634278cdb583978a81ed993acb316f6c764841e5047",
+            "destination_sha256": "8cd8d1e2797be1501e9a6634278cdb583978a81ed993acb316f6c764841e5047"
+          },
+          {
+            "name": "file 52.bin",
+            "size": 39,
+            "source_sha256": "e359360c7ebc6ecd862cfe8ad100e84b07cc8e862c4e493ba7bfd73f3a450bb0",
+            "destination_sha256": "e359360c7ebc6ecd862cfe8ad100e84b07cc8e862c4e493ba7bfd73f3a450bb0"
+          },
+          {
+            "name": "file 53.bin",
+            "size": 39,
+            "source_sha256": "582686ca645d7d99682173aadf44391310d289fab49e7e9ad767717cce5719f2",
+            "destination_sha256": "582686ca645d7d99682173aadf44391310d289fab49e7e9ad767717cce5719f2"
+          },
+          {
+            "name": "file 54.bin",
+            "size": 39,
+            "source_sha256": "e7dee19e7b187504e5df3a94447dff741a3449059d96d989732c8f4dfe65661c",
+            "destination_sha256": "e7dee19e7b187504e5df3a94447dff741a3449059d96d989732c8f4dfe65661c"
+          },
+          {
+            "name": "file 55.bin",
+            "size": 39,
+            "source_sha256": "6436f9955e98fac31dda3e017735f72452bc4f580506188509eb4fe23915c248",
+            "destination_sha256": "6436f9955e98fac31dda3e017735f72452bc4f580506188509eb4fe23915c248"
+          },
+          {
+            "name": "file 56.bin",
+            "size": 39,
+            "source_sha256": "60b1f90fc553f8f8ead0cd158cae8c54c25e0a425bfb910ea3f255857e3dd5e2",
+            "destination_sha256": "60b1f90fc553f8f8ead0cd158cae8c54c25e0a425bfb910ea3f255857e3dd5e2"
+          },
+          {
+            "name": "file 57.bin",
+            "size": 39,
+            "source_sha256": "ea9209b2e2f5b886c6e047d2a299144eb423369f6d9ea74bb16fa04ae3ac9747",
+            "destination_sha256": "ea9209b2e2f5b886c6e047d2a299144eb423369f6d9ea74bb16fa04ae3ac9747"
+          },
+          {
+            "name": "file 58.bin",
+            "size": 39,
+            "source_sha256": "164e9a65fd34734e02b44223c3f5e1e9fd7ea9fd91223df88ceda524976cc640",
+            "destination_sha256": "164e9a65fd34734e02b44223c3f5e1e9fd7ea9fd91223df88ceda524976cc640"
+          },
+          {
+            "name": "file 59.bin",
+            "size": 39,
+            "source_sha256": "b369e3cb6a4909b77d23879aad40eb5d00d11621c06716111e85ad310d0f55a2",
+            "destination_sha256": "b369e3cb6a4909b77d23879aad40eb5d00d11621c06716111e85ad310d0f55a2"
+          },
+          {
+            "name": "file 60.bin",
+            "size": 39,
+            "source_sha256": "b71d97dd1466f162b3467e832e1567317b29df7dd99da7a2a93d060d19bd2cd6",
+            "destination_sha256": "b71d97dd1466f162b3467e832e1567317b29df7dd99da7a2a93d060d19bd2cd6"
+          },
+          {
+            "name": "file 61.bin",
+            "size": 39,
+            "source_sha256": "3b520f528a7147179b728339f364820ac46c4fadb834b0d05c97184c72864b22",
+            "destination_sha256": "3b520f528a7147179b728339f364820ac46c4fadb834b0d05c97184c72864b22"
+          },
+          {
+            "name": "file 62.bin",
+            "size": 39,
+            "source_sha256": "ae29472dd3807f8c79b71e0966c383266eb8082565f828ded99966c970557b41",
+            "destination_sha256": "ae29472dd3807f8c79b71e0966c383266eb8082565f828ded99966c970557b41"
+          },
+          {
+            "name": "file 63.bin",
+            "size": 39,
+            "source_sha256": "8644eb48d1465fb3e876020220e290a3505f35b806152b02c422a69e4aeee183",
+            "destination_sha256": "8644eb48d1465fb3e876020220e290a3505f35b806152b02c422a69e4aeee183"
+          },
+          {
+            "name": "file 64.bin",
+            "size": 39,
+            "source_sha256": "35d88d97bb772010cc8ba4f9823d7637460947cbd76763f796188c1c0f749d7f",
+            "destination_sha256": "35d88d97bb772010cc8ba4f9823d7637460947cbd76763f796188c1c0f749d7f"
+          },
+          {
+            "name": "file 65.bin",
+            "size": 39,
+            "source_sha256": "7a129d981de314bcf2b9c8c6d15e639799cf27b3be1aee86667647db4db03465",
+            "destination_sha256": "7a129d981de314bcf2b9c8c6d15e639799cf27b3be1aee86667647db4db03465"
+          },
+          {
+            "name": "file 66.bin",
+            "size": 39,
+            "source_sha256": "ebc753fe81691834ea16f68b00d82c0e16ee608f1ccc99539f0994d89b7d0855",
+            "destination_sha256": "ebc753fe81691834ea16f68b00d82c0e16ee608f1ccc99539f0994d89b7d0855"
+          },
+          {
+            "name": "file 67.bin",
+            "size": 39,
+            "source_sha256": "d1ae001f9ab3a8ada2ce9d85bb1ccfcdc5ea03fad307132b910871586c323bce",
+            "destination_sha256": "d1ae001f9ab3a8ada2ce9d85bb1ccfcdc5ea03fad307132b910871586c323bce"
+          },
+          {
+            "name": "file 68.bin",
+            "size": 39,
+            "source_sha256": "69351c6162e1fd2a721e556c5a2d1afaa166849243834b8528ff15118687f3b7",
+            "destination_sha256": "69351c6162e1fd2a721e556c5a2d1afaa166849243834b8528ff15118687f3b7"
+          },
+          {
+            "name": "file 69.bin",
+            "size": 39,
+            "source_sha256": "da2ac5c82fd71dbe48a3a0d7fa83b229e26f78f7145e6d0dd8a9c055556202f9",
+            "destination_sha256": "da2ac5c82fd71dbe48a3a0d7fa83b229e26f78f7145e6d0dd8a9c055556202f9"
+          },
+          {
+            "name": "file 70.bin",
+            "size": 39,
+            "source_sha256": "630c76fe2757add20d91d14f7cf7c11740e99477ffd28ba9021320b0eaf7c107",
+            "destination_sha256": "630c76fe2757add20d91d14f7cf7c11740e99477ffd28ba9021320b0eaf7c107"
+          },
+          {
+            "name": "file 71.bin",
+            "size": 39,
+            "source_sha256": "7e1a85d2acac2d83b6e1b0cb262d108becbcee88feb75647ff445cd3ed487ed8",
+            "destination_sha256": "7e1a85d2acac2d83b6e1b0cb262d108becbcee88feb75647ff445cd3ed487ed8"
+          },
+          {
+            "name": "file 72.bin",
+            "size": 39,
+            "source_sha256": "e37a936c20f1079ffd6ce7e12e552a81106e0f707da5f6a2ef0a2c41b782b0e0",
+            "destination_sha256": "e37a936c20f1079ffd6ce7e12e552a81106e0f707da5f6a2ef0a2c41b782b0e0"
+          },
+          {
+            "name": "file 73.bin",
+            "size": 39,
+            "source_sha256": "663989065512b59e9622f94259bcb22865049ee2df59fd4624eb1910f3905194",
+            "destination_sha256": "663989065512b59e9622f94259bcb22865049ee2df59fd4624eb1910f3905194"
+          },
+          {
+            "name": "file 74.bin",
+            "size": 39,
+            "source_sha256": "8b5e25904fefa82475ff7ff841138601a48cc837245b5e06158f3c9600776797",
+            "destination_sha256": "8b5e25904fefa82475ff7ff841138601a48cc837245b5e06158f3c9600776797"
+          },
+          {
+            "name": "file 75.bin",
+            "size": 39,
+            "source_sha256": "cbb7e1ae207069953a389c7d91eda14fbe131aab18222c7faab9ed317e5022e4",
+            "destination_sha256": "cbb7e1ae207069953a389c7d91eda14fbe131aab18222c7faab9ed317e5022e4"
+          },
+          {
+            "name": "file 76.bin",
+            "size": 39,
+            "source_sha256": "a1c0d3bb4310450f59f3e251e079a63d21e723c72615b0da22cc6e4d9c06fbc8",
+            "destination_sha256": "a1c0d3bb4310450f59f3e251e079a63d21e723c72615b0da22cc6e4d9c06fbc8"
+          },
+          {
+            "name": "file 77.bin",
+            "size": 39,
+            "source_sha256": "c9e234e64eb3af627c1cbe7a5b7f7cd7191b075964b90fef982b371f1e78fcf5",
+            "destination_sha256": "c9e234e64eb3af627c1cbe7a5b7f7cd7191b075964b90fef982b371f1e78fcf5"
+          },
+          {
+            "name": "file 78.bin",
+            "size": 39,
+            "source_sha256": "801ec99f4730f82c27753143efbe4dfb4ac8964f50b5cdfcd1796a600479efbd",
+            "destination_sha256": "801ec99f4730f82c27753143efbe4dfb4ac8964f50b5cdfcd1796a600479efbd"
+          },
+          {
+            "name": "file 79.bin",
+            "size": 39,
+            "source_sha256": "65b73d6609ba23847fed348eca5c8060ab7aebb6875540868e926d504d0bdba7",
+            "destination_sha256": "65b73d6609ba23847fed348eca5c8060ab7aebb6875540868e926d504d0bdba7"
+          },
+          {
+            "name": "file 80.bin",
+            "size": 39,
+            "source_sha256": "b867fccfd118ea748cf250685107d548c1291f87b33c6480643a439ecfd35d0c",
+            "destination_sha256": "b867fccfd118ea748cf250685107d548c1291f87b33c6480643a439ecfd35d0c"
+          },
+          {
+            "name": "file 81.bin",
+            "size": 39,
+            "source_sha256": "63259357c46e03d4db98b7bc877dc1304d948d52d8a7865efc33569485108954",
+            "destination_sha256": "63259357c46e03d4db98b7bc877dc1304d948d52d8a7865efc33569485108954"
+          },
+          {
+            "name": "file 82.bin",
+            "size": 39,
+            "source_sha256": "347f93bb7febd937d0b83b374e6cafcd8aaca9e6b8493f52f2129a00e1d5da41",
+            "destination_sha256": "347f93bb7febd937d0b83b374e6cafcd8aaca9e6b8493f52f2129a00e1d5da41"
+          },
+          {
+            "name": "file 83.bin",
+            "size": 39,
+            "source_sha256": "ed72e44a0e41f949aea4b6a81975e6fd0925581e8738a3a991a39e132d583369",
+            "destination_sha256": "ed72e44a0e41f949aea4b6a81975e6fd0925581e8738a3a991a39e132d583369"
+          },
+          {
+            "name": "file 84.bin",
+            "size": 39,
+            "source_sha256": "2b4bac531086e2213f56611aae65a3047ae8c782b59f19d0249f6e454a5d3957",
+            "destination_sha256": "2b4bac531086e2213f56611aae65a3047ae8c782b59f19d0249f6e454a5d3957"
+          },
+          {
+            "name": "file 85.bin",
+            "size": 39,
+            "source_sha256": "a69e9bc9232369c5b4445d8074ec1a653880ddae39d7b466ed69c872854aef50",
+            "destination_sha256": "a69e9bc9232369c5b4445d8074ec1a653880ddae39d7b466ed69c872854aef50"
+          },
+          {
+            "name": "file 86.bin",
+            "size": 39,
+            "source_sha256": "5e62a9352beaebb885c12d3e8dc84c7834fdc5e8e4baa55b3000546380c7daac",
+            "destination_sha256": "5e62a9352beaebb885c12d3e8dc84c7834fdc5e8e4baa55b3000546380c7daac"
+          },
+          {
+            "name": "file 87.bin",
+            "size": 39,
+            "source_sha256": "f882cd64134d13a83b45aa98e55b0607bb86ebc9dd933a93835a122ad6c64d19",
+            "destination_sha256": "f882cd64134d13a83b45aa98e55b0607bb86ebc9dd933a93835a122ad6c64d19"
+          },
+          {
+            "name": "file 88.bin",
+            "size": 39,
+            "source_sha256": "96b66aad0eafd5f1cb568f6cb9d8d435935c0b2d9e8d0cc401717ea85e7de3aa",
+            "destination_sha256": "96b66aad0eafd5f1cb568f6cb9d8d435935c0b2d9e8d0cc401717ea85e7de3aa"
+          },
+          {
+            "name": "file 89.bin",
+            "size": 39,
+            "source_sha256": "c449b244a2f9cb9039f3703e0e85ed2a3b0d892bdc87f607baf46cddece42760",
+            "destination_sha256": "c449b244a2f9cb9039f3703e0e85ed2a3b0d892bdc87f607baf46cddece42760"
+          },
+          {
+            "name": "file 90.bin",
+            "size": 39,
+            "source_sha256": "6343a050f35eebead82371181487ad8047e58c8a0fde1127e4d96ff2bc63dcde",
+            "destination_sha256": "6343a050f35eebead82371181487ad8047e58c8a0fde1127e4d96ff2bc63dcde"
+          },
+          {
+            "name": "file 91.bin",
+            "size": 39,
+            "source_sha256": "d3ce49e1bb8647fb6a0e2ec005cae01f426a515b4649f2077a5a730f66264490",
+            "destination_sha256": "d3ce49e1bb8647fb6a0e2ec005cae01f426a515b4649f2077a5a730f66264490"
+          },
+          {
+            "name": "file 92.bin",
+            "size": 39,
+            "source_sha256": "bcce7494857ee4805b16bcd460f8c8212906c42acd5a4b5a4e3cd367cec2c698",
+            "destination_sha256": "bcce7494857ee4805b16bcd460f8c8212906c42acd5a4b5a4e3cd367cec2c698"
+          },
+          {
+            "name": "file 93.bin",
+            "size": 39,
+            "source_sha256": "13159dc3d422ca10f2d11588ba5bf819804a73ccc1a1ed76a155f0098670246b",
+            "destination_sha256": "13159dc3d422ca10f2d11588ba5bf819804a73ccc1a1ed76a155f0098670246b"
+          },
+          {
+            "name": "file 94.bin",
+            "size": 39,
+            "source_sha256": "c1eb31fb15b02ca24564ce390f0dbf4419be01c1953012ce71813ce58f652cbc",
+            "destination_sha256": "c1eb31fb15b02ca24564ce390f0dbf4419be01c1953012ce71813ce58f652cbc"
+          },
+          {
+            "name": "file 95.bin",
+            "size": 39,
+            "source_sha256": "4a7d8f64b1ceef05d7bf6b033d89636fe73ff406e3258de77e48c46ce6fd3df5",
+            "destination_sha256": "4a7d8f64b1ceef05d7bf6b033d89636fe73ff406e3258de77e48c46ce6fd3df5"
+          },
+          {
+            "name": "file 96.bin",
+            "size": 39,
+            "source_sha256": "ac4c6e916372b53e8f61915f03b56896f6fbde46a0ece1b0410a4ad69fc3ec1d",
+            "destination_sha256": "ac4c6e916372b53e8f61915f03b56896f6fbde46a0ece1b0410a4ad69fc3ec1d"
+          },
+          {
+            "name": "file 97.bin",
+            "size": 39,
+            "source_sha256": "c1d03d714251aec27282252adae3bf15c57196acffe0974e4042d3008457dbab",
+            "destination_sha256": "c1d03d714251aec27282252adae3bf15c57196acffe0974e4042d3008457dbab"
+          },
+          {
+            "name": "file 98.bin",
+            "size": 39,
+            "source_sha256": "5421ae003dbcb244dc308f255fcdac2e045b90be06ddb1cadd1395710f45fbc5",
+            "destination_sha256": "5421ae003dbcb244dc308f255fcdac2e045b90be06ddb1cadd1395710f45fbc5"
+          },
+          {
+            "name": "file 99.bin",
+            "size": 39,
+            "source_sha256": "6d922e5c6abf247df18d964b0b156bd72c43bb070fc58036096a628d5971754d",
+            "destination_sha256": "6d922e5c6abf247df18d964b0b156bd72c43bb070fc58036096a628d5971754d"
+          },
+          {
+            "name": "file 100.bin",
+            "size": 40,
+            "source_sha256": "46dfc332269d6df80187d0c8cd99eb8ded1f153f6362132394ff9d8b7221bfac",
+            "destination_sha256": "46dfc332269d6df80187d0c8cd99eb8ded1f153f6362132394ff9d8b7221bfac"
+          }
+        ],
+        "concurrency": "Single FlowDrop batch, streamed files serially as baseline; no simultaneous-upload feature claimed"
+      },
+      "elapsed_seconds": 0.6366554409999954,
+      "size": 3892,
+      "MB_per_second": 0.00611319679273742,
+      "Mbps": 0.04890557434189936,
+      "rate_method": "Full test interval including generation, source stage, relay, destination read/hash; not Wi-Fi throughput"
+    },
+    {
+      "test_id": "A-D2-bytes-0",
+      "sender": "Android Java engine on JVM",
+      "receiver": "Windows Node engine on Linux",
+      "network": "loopback HTTP, isolated Linux job",
+      "source_commit": "ff75c81074ffce6c3bbed1083a04e46d390c3f58",
+      "artifact_sha256": null,
+      "expected": "Source/destination SHA-256 and exact size agree; security assertions remain enabled",
+      "status": "PASS",
+      "exit_code": 0,
+      "started_utc": "2026-11-16T11:23:16.320Z",
+      "evidence": "protocol-matrix.json",
+      "actual": {
+        "size": 0,
+        "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "destination_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "exact_name": "Tệp 中文 😀 0.bin",
+        "files": 1
+      },
+      "elapsed_seconds": 0.015187762000001385,
+      "size": 0,
+      "MB_per_second": 0,
+      "Mbps": 0,
+      "rate_method": "Full test interval including generation, source stage, relay, destination read/hash; not Wi-Fi throughput"
+    },
+    {
+      "test_id": "A-D2-bytes-1024",
+      "sender": "Android Java engine on JVM",
+      "receiver": "Windows Node engine on Linux",
+      "network": "loopback HTTP, isolated Linux job",
+      "source_commit": "ff75c81074ffce6c3bbed1083a04e46d390c3f58",
+      "artifact_sha256": null,
+      "expected": "Source/destination SHA-256 and exact size agree; security assertions remain enabled",
+      "status": "PASS",
+      "exit_code": 0,
+      "started_utc": "2026-11-16T11:23:16.335Z",
+      "evidence": "protocol-matrix.json",
+      "actual": {
+        "size": 1024,
+        "source_sha256": "2bce1ba628720664be4b9fdd77aae0678e5f0f3f02fc6ff641ec879094f6a404",
+        "destination_sha256": "2bce1ba628720664be4b9fdd77aae0678e5f0f3f02fc6ff641ec879094f6a404",
+        "exact_name": "Tệp 中文 😀 1024.bin",
+        "files": 1
+      },
+      "elapsed_seconds": 0.013249580000003335,
+      "size": 1024,
+      "MB_per_second": 0.07728546867144032,
+      "Mbps": 0.6182837493715225,
+      "rate_method": "Full test interval including generation, source stage, relay, destination read/hash; not Wi-Fi throughput"
+    },
+    {
+      "test_id": "A-D2-bytes-1048576",
+      "sender": "Android Java engine on JVM",
+      "receiver": "Windows Node engine on Linux",
+      "network": "loopback HTTP, isolated Linux job",
+      "source_commit": "ff75c81074ffce6c3bbed1083a04e46d390c3f58",
+      "artifact_sha256": null,
+      "expected": "Source/destination SHA-256 and exact size agree; security assertions remain enabled",
+      "status": "PASS",
+      "exit_code": 0,
+      "started_utc": "2026-11-16T11:23:16.348Z",
+      "evidence": "protocol-matrix.json",
+      "actual": {
+        "size": 1048576,
+        "source_sha256": "631b84027d6b9e52b539c4e8373622d23032dfadc64d60af87339c9037e4f769",
+        "destination_sha256": "631b84027d6b9e52b539c4e8373622d23032dfadc64d60af87339c9037e4f769",
+        "exact_name": "Tệp 中文 😀 1048576.bin",
+        "files": 1
+      },
+      "elapsed_seconds": 0.0299178649999958,
+      "size": 1048576,
+      "MB_per_second": 35.04849025825029,
+      "Mbps": 280.3879220660023,
+      "rate_method": "Full test interval including generation, source stage, relay, destination read/hash; not Wi-Fi throughput"
+    },
+    {
+      "test_id": "A-D2-bytes-104857600",
+      "sender": "Android Java engine on JVM",
+      "receiver": "Windows Node engine on Linux",
+      "network": "loopback HTTP, isolated Linux job",
+      "source_commit": "ff75c81074ffce6c3bbed1083a04e46d390c3f58",
+      "artifact_sha256": null,
+      "expected": "Source/destination SHA-256 and exact size agree; security assertions remain enabled",
+      "status": "PASS",
+      "exit_code": 0,
+      "started_utc": "2026-11-16T11:23:16.378Z",
+      "evidence": "protocol-matrix.json",
+      "actual": {
+        "size": 104857600,
+        "source_sha256": "998fa39fe735dc4be63f55bf6ec3db8b64fe3d8fcd3fe759d1b88d27992c0b75",
+        "destination_sha256": "998fa39fe735dc4be63f55bf6ec3db8b64fe3d8fcd3fe759d1b88d27992c0b75",
+        "exact_name": "Tệp 中文 😀 104857600.bin",
+        "files": 1
+      },
+      "elapsed_seconds": 0.6166094400000002,
+      "size": 104857600,
+      "MB_per_second": 170.0551324676443,
+      "Mbps": 1360.4410597411545,
+      "rate_method": "Full test interval including generation, source stage, relay, destination read/hash; not Wi-Fi throughput"
+    },
+    {
+      "test_id": "A-D2-bytes-1073741824",
+      "sender": "Android Java engine on JVM",
+      "receiver": "Windows Node engine on Linux",
+      "network": "loopback HTTP, isolated Linux job",
+      "source_commit": "ff75c81074ffce6c3bbed1083a04e46d390c3f58",
+      "artifact_sha256": null,
+      "expected": "Source/destination SHA-256 and exact size agree; security assertions remain enabled",
+      "status": "PASS",
+      "exit_code": 0,
+      "started_utc": "2026-11-16T11:23:16.995Z",
+      "evidence": "protocol-matrix.json",
+      "actual": {
+        "size": 1073741824,
+        "source_sha256": "e18e3f358b46eae9266ac36a5ff6347f6bf09711dff389597f237d5fe83111d8",
+        "destination_sha256": "e18e3f358b46eae9266ac36a5ff6347f6bf09711dff389597f237d5fe83111d8",
+        "exact_name": "Tệp 中文 😀 1073741824.bin",
+        "files": 1
+      },
+      "elapsed_seconds": 4.945218256,
+      "size": 1073741824,
+      "MB_per_second": 217.1272870913708,
+      "Mbps": 1737.0182967309663,
+      "rate_method": "Full test interval including generation, source stage, relay, destination read/hash; not Wi-Fi throughput"
+    },
+    {
+      "test_id": "A-D2-bytes-4294967313",
+      "sender": "Android Java engine on JVM",
+      "receiver": "Windows Node engine on Linux",
+      "network": "loopback HTTP, isolated Linux job",
+      "source_commit": "ff75c81074ffce6c3bbed1083a04e46d390c3f58",
+      "artifact_sha256": null,
+      "expected": "Source/destination SHA-256 and exact size agree; security assertions remain enabled",
+      "status": "PASS",
+      "exit_code": 0,
+      "started_utc": "2026-11-16T11:23:21.940Z",
+      "evidence": "protocol-matrix.json",
+      "actual": {
+        "size": 4294967313,
+        "source_sha256": "9bf2e05c25222af695af1537ef0d8d2241a85ddadf3819797b83c856efeff824",
+        "destination_sha256": "9bf2e05c25222af695af1537ef0d8d2241a85ddadf3819797b83c856efeff824",
+        "exact_name": "Tệp 中文 😀 4294967313.bin",
+        "files": 1
+      },
+      "elapsed_seconds": 37.39323851,
+      "size": 4294967313,
+      "MB_per_second": 114.85946347897641,
+      "Mbps": 918.8757078318113,
+      "rate_method": "Full test interval including generation, source stage, relay, destination read/hash; not Wi-Fi throughput"
+    },
+    {
+      "test_id": "A-D2-batch-101",
+      "sender": "Android Java engine on JVM",
+      "receiver": "Windows Node engine on Linux",
+      "network": "loopback HTTP, isolated Linux job",
+      "source_commit": "ff75c81074ffce6c3bbed1083a04e46d390c3f58",
+      "artifact_sha256": null,
+      "expected": "Source/destination SHA-256 and exact size agree; security assertions remain enabled",
+      "status": "PASS",
+      "exit_code": 0,
+      "started_utc": "2026-11-16T11:23:59.333Z",
+      "evidence": "protocol-matrix.json",
+      "actual": {
+        "files": 101,
+        "size": 3892,
+        "hashes": [
+          {
+            "name": "Rỗng.bin",
+            "size": 0,
+            "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "destination_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          {
+            "name": "Tiếng Việt 中文 😀 có khoảng trắng.txt",
+            "size": 38,
+            "source_sha256": "531cb29f4f7ca54e568b473e661f794555db3f38cae3b2b06a3761563b85b512",
+            "destination_sha256": "531cb29f4f7ca54e568b473e661f794555db3f38cae3b2b06a3761563b85b512"
+          },
+          {
+            "name": "Tên dài aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.txt",
+            "size": 38,
+            "source_sha256": "0e809058ce1b0b0da191ac2ce26a824bfb47e6fa3c8dff26d7071899f8599d3b",
+            "destination_sha256": "0e809058ce1b0b0da191ac2ce26a824bfb47e6fa3c8dff26d7071899f8599d3b"
+          },
+          {
+            "name": "file 3.bin",
+            "size": 38,
+            "source_sha256": "5f3506c15a06e64911900e99701ab647fb3d3930060975899fdd207c3589cee2",
+            "destination_sha256": "5f3506c15a06e64911900e99701ab647fb3d3930060975899fdd207c3589cee2"
+          },
+          {
+            "name": "file 4.bin",
+            "size": 38,
+            "source_sha256": "5e322da111f71f37e34984496338c9678743f2dbb1ab57c56712106dd1ce5b5e",
+            "destination_sha256": "5e322da111f71f37e34984496338c9678743f2dbb1ab57c56712106dd1ce5b5e"
+          },
+          {
+            "name": "file 5.bin",
+            "size": 38,
+            "source_sha256": "11a6aa817feb9f182ce9f182fe64bbb3407e8f27227f84cd97964c83cf30f791",
+            "destination_sha256": "11a6aa817feb9f182ce9f182fe64bbb3407e8f27227f84cd97964c83cf30f791"
+          },
+          {
+            "name": "file 6.bin",
+            "size": 38,
+            "source_sha256": "e4cbbd4b002e8dbeae5c17a01dcbdcc27d66e9b7097a95c5d15cadbac8c59fd3",
+            "destination_sha256": "e4cbbd4b002e8dbeae5c17a01dcbdcc27d66e9b7097a95c5d15cadbac8c59fd3"
+          },
+          {
+            "name": "file 7.bin",
+            "size": 38,
+            "source_sha256": "13a2c28e5c5f22f891b1477856241be048db6c3c2f4b6234d9f66e9dce6a79d3",
+            "destination_sha256": "13a2c28e5c5f22f891b1477856241be048db6c3c2f4b6234d9f66e9dce6a79d3"
+          },
+          {
+            "name": "file 8.bin",
+            "size": 38,
+            "source_sha256": "bb0b60b257562c39088b4bb35dfe9d03dab828280cea98e9a417d687908b8636",
+            "destination_sha256": "bb0b60b257562c39088b4bb35dfe9d03dab828280cea98e9a417d687908b8636"
+          },
+          {
+            "name": "file 9.bin",
+            "size": 38,
+            "source_sha256": "989da1a6c1b8c979b0d7935fb92c29c3ca126e8fc882f4d0085d60bce47a9027",
+            "destination_sha256": "989da1a6c1b8c979b0d7935fb92c29c3ca126e8fc882f4d0085d60bce47a9027"
+          },
+          {
+            "name": "file 10.bin",
+            "size": 39,
+            "source_sha256": "eecb9f7a8d93a489200b19049da3347f75fb84a655eb739bef0f49ad8c781eed",
+            "destination_sha256": "eecb9f7a8d93a489200b19049da3347f75fb84a655eb739bef0f49ad8c781eed"
+          },
+          {
+            "name": "file 11.bin",
+            "size": 39,
+            "source_sha256": "ddda5fe069fa38d440f88996e9a0aaed44f8cde2211678bbde9f910a19427425",
+            "destination_sha256": "ddda5fe069fa38d440f88996e9a0aaed44f8cde2211678bbde9f910a19427425"
+          },
+          {
+            "name": "file 12.bin",
+            "size": 39,
+            "source_sha256": "00d6b6e484f84edade05c46e619ec3d2a52b20eb8a7f439d4c35abd4d0399e1d",
+            "destination_sha256": "00d6b6e484f84edade05c46e619ec3d2a52b20eb8a7f439d4c35abd4d0399e1d"
+          },
+          {
+            "name": "file 13.bin",
+            "size": 39,
+            "source_sha256": "5d5525ff367a9c8127a8b9e0ba7bacaf0092a372eafb816708b55b111f8c6bbd",
+            "destination_sha256": "5d5525ff367a9c8127a8b9e0ba7bacaf0092a372eafb816708b55b111f8c6bbd"
+          },
+          {
+            "name": "file 14.bin",
+            "size": 39,
+            "source_sha256": "fb3dcae06bef2b9974793222b7c526c258a8fc049e6aa009375c60770982721c",
+            "destination_sha256": "fb3dcae06bef2b9974793222b7c526c258a8fc049e6aa009375c60770982721c"
+          },
+          {
+            "name": "file 15.bin",
+            "size": 39,
+            "source_sha256": "bc1401e594372395abb95b808b93f858d1596b2751225ec114d47f2426cff107",
+            "destination_sha256": "bc1401e594372395abb95b808b93f858d1596b2751225ec114d47f2426cff107"
+          },
+          {
+            "name": "file 16.bin",
+            "size": 39,
+            "source_sha256": "b58b4874c53ec6d4e9576c5cdb33d1ff6f3ce8b7efb728be41f569e9d9c18fbf",
+            "destination_sha256": "b58b4874c53ec6d4e9576c5cdb33d1ff6f3ce8b7efb728be41f569e9d9c18fbf"
+          },
+          {
+            "name": "file 17.bin",
+            "size": 39,
+            "source_sha256": "db4cb8bd01eaf42869dc082e1fad948d5ca2c5c1ee7b65957695b959fc927c17",
+            "destination_sha256": "db4cb8bd01eaf42869dc082e1fad948d5ca2c5c1ee7b65957695b959fc927c17"
+          },
+          {
+            "name": "file 18.bin",
+            "size": 39,
+            "source_sha256": "97ac84243754c479e4807f94a42ec7ee1fd8832a156e8601e3a8e08fd76b66fd",
+            "destination_sha256": "97ac84243754c479e4807f94a42ec7ee1fd8832a156e8601e3a8e08fd76b66fd"
+          },
+          {
+            "name": "file 19.bin",
+            "size": 39,
+            "source_sha256": "7738e7757bfd39f3f54cc663603ecc68349c846fa31d0ac3a7cff19af7f41671",
+            "destination_sha256": "7738e7757bfd39f3f54cc663603ecc68349c846fa31d0ac3a7cff19af7f41671"
+          },
+          {
+            "name": "file 20.bin",
+            "size": 39,
+            "source_sha256": "d02ece6ae0e1c295a472fd77d5591ae5b436a8cdb31454a26c8366d0fd60c49f",
+            "destination_sha256": "d02ece6ae0e1c295a472fd77d5591ae5b436a8cdb31454a26c8366d0fd60c49f"
+          },
+          {
+            "name": "file 21.bin",
+            "size": 39,
+            "source_sha256": "829d4def2cf3a14fe5fe5ff44b20992b79437ec216ee7da1286d394f442b4410",
+            "destination_sha256": "829d4def2cf3a14fe5fe5ff44b20992b79437ec216ee7da1286d394f442b4410"
+          },
+          {
+            "name": "file 22.bin",
+            "size": 39,
+            "source_sha256": "31a96810c57ba21f248d0222e47a5fde80c9302a5104d7c0c9eedee0f48d7809",
+            "destination_sha256": "31a96810c57ba21f248d0222e47a5fde80c9302a5104d7c0c9eedee0f48d7809"
+          },
+          {
+            "name": "file 23.bin",
+            "size": 39,
+            "source_sha256": "f5f8040c4882093dcf691338b8ba04049aed9d28c8c4dcb2370009cbcb9f06a4",
+            "destination_sha256": "f5f8040c4882093dcf691338b8ba04049aed9d28c8c4dcb2370009cbcb9f06a4"
+          },
+          {
+            "name": "file 24.bin",
+            "size": 39,
+            "source_sha256": "f86c03cd3907418a624a08a2290752405e7e899c988742a56ea2f633503928da",
+            "destination_sha256": "f86c03cd3907418a624a08a2290752405e7e899c988742a56ea2f633503928da"
+          },
+          {
+            "name": "file 25.bin",
+            "size": 39,
+            "source_sha256": "6c5182437f07ffacdaaff5821bc735f13547f5669ff4d28f17631e9b2e150d8d",
+            "destination_sha256": "6c5182437f07ffacdaaff5821bc735f13547f5669ff4d28f17631e9b2e150d8d"
+          },
+          {
+            "name": "file 26.bin",
+            "size": 39,
+            "source_sha256": "d5409edec06b17dd104841d419862c4f5664e6444781050fdd52e95d18da2078",
+            "destination_sha256": "d5409edec06b17dd104841d419862c4f5664e6444781050fdd52e95d18da2078"
+          },
+          {
+            "name": "file 27.bin",
+            "size": 39,
+            "source_sha256": "3a619599718ef6fbbfd87a800437362ee1a0bf45d0fd9ce4b1fe2b178b8ac55a",
+            "destination_sha256": "3a619599718ef6fbbfd87a800437362ee1a0bf45d0fd9ce4b1fe2b178b8ac55a"
+          },
+          {
+            "name": "file 28.bin",
+            "size": 39,
+            "source_sha256": "b50dca11185a07a9da862d99ca16cb52ef03ee9d9da0a161410731da4d3318a9",
+            "destination_sha256": "b50dca11185a07a9da862d99ca16cb52ef03ee9d9da0a161410731da4d3318a9"
+          },
+          {
+            "name": "file 29.bin",
+            "size": 39,
+            "source_sha256": "f5e037bdb5ad27d9d0c35f3228b3c5a48784a89e79879c3729108ee0e5b812cd",
+            "destination_sha256": "f5e037bdb5ad27d9d0c35f3228b3c5a48784a89e79879c3729108ee0e5b812cd"
+          },
+          {
+            "name": "file 30.bin",
+            "size": 39,
+            "source_sha256": "04dc650461422650d9e06419161a6c68605fad2b68bb2e647622de0c3c21d1b1",
+            "destination_sha256": "04dc650461422650d9e06419161a6c68605fad2b68bb2e647622de0c3c21d1b1"
+          },
+          {
+            "name": "file 31.bin",
+            "size": 39,
+            "source_sha256": "82c6801782b8a32c66becf6cabe512ebfbe7660ccd2eeb0b42336703289e48cc",
+            "destination_sha256": "82c6801782b8a32c66becf6cabe512ebfbe7660ccd2eeb0b42336703289e48cc"
+          },
+          {
+            "name": "file 32.bin",
+            "size": 39,
+            "source_sha256": "ce3a04c8eff7066137426d0f24321dd5206ac6159045ac3ffcd800b86eb1e225",
+            "destination_sha256": "ce3a04c8eff7066137426d0f24321dd5206ac6159045ac3ffcd800b86eb1e225"
+          },
+          {
+            "name": "file 33.bin",
+            "size": 39,
+            "source_sha256": "56f2bb209dcbeef40c897e0585201dc93161e910f67c406a4956ddd9412c8c86",
+            "destination_sha256": "56f2bb209dcbeef40c897e0585201dc93161e910f67c406a4956ddd9412c8c86"
+          },
+          {
+            "name": "file 34.bin",
+            "size": 39,
+            "source_sha256": "bcdbfa8b31dd92afefa16d7dfef559a4583769124c5e9f0af40ab9f3f5e0603d",
+            "destination_sha256": "bcdbfa8b31dd92afefa16d7dfef559a4583769124c5e9f0af40ab9f3f5e0603d"
+          },
+          {
+            "name": "file 35.bin",
+            "size": 39,
+            "source_sha256": "ad224d05c3906d1c70fe0f5a95e8327d4f7890266f08fbb8b455d7cfb90acb90",
+            "destination_sha256": "ad224d05c3906d1c70fe0f5a95e8327d4f7890266f08fbb8b455d7cfb90acb90"
+          },
+          {
+            "name": "file 36.bin",
+            "size": 39,
+            "source_sha256": "5f66bd2757cbe6528a7e3dceecc28363b8cb558ba951427f0f75b3ab873829db",
+            "destination_sha256": "5f66bd2757cbe6528a7e3dceecc28363b8cb558ba951427f0f75b3ab873829db"
+          },
+          {
+            "name": "file 37.bin",
+            "size": 39,
+            "source_sha256": "c6f3173664eb2d3b280f3d716927493ffbb013f814b052c517e1894fe36f6936",
+            "destination_sha256": "c6f3173664eb2d3b280f3d716927493ffbb013f814b052c517e1894fe36f6936"
+          },
+          {
+            "name": "file 38.bin",
+            "size": 39,
+            "source_sha256": "633183074af5c5ccac1f49fda945048af6312e973784d3c14ec162b71b2db899",
+            "destination_sha256": "633183074af5c5ccac1f49fda945048af6312e973784d3c14ec162b71b2db899"
+          },
+          {
+            "name": "file 39.bin",
+            "size": 39,
+            "source_sha256": "b506f2758ce2584a561ee35e5557859fde7166ad4051a2f274c814735ee8044d",
+            "destination_sha256": "b506f2758ce2584a561ee35e5557859fde7166ad4051a2f274c814735ee8044d"
+          },
+          {
+            "name": "file 40.bin",
+            "size": 39,
+            "source_sha256": "3cac9e9e01e231874462a61e09e3e7eedc41d15a6227010a50fd1459a187dfec",
+            "destination_sha256": "3cac9e9e01e231874462a61e09e3e7eedc41d15a6227010a50fd1459a187dfec"
+          },
+          {
+            "name": "file 41.bin",
+            "size": 39,
+            "source_sha256": "411a5dba1780c5fe5eb0f5c385bf0016b62f3c4bb25909905fcda9477e609616",
+            "destination_sha256": "411a5dba1780c5fe5eb0f5c385bf0016b62f3c4bb25909905fcda9477e609616"
+          },
+          {
+            "name": "file 42.bin",
+            "size": 39,
+            "source_sha256": "9995bb003b236a84dce8fc0abd503a0f17f9d5f5b6dafda560d3d6906d70e41e",
+            "destination_sha256": "9995bb003b236a84dce8fc0abd503a0f17f9d5f5b6dafda560d3d6906d70e41e"
+          },
+          {
+            "name": "file 43.bin",
+            "size": 39,
+            "source_sha256": "07f48268b22576465b7037d5b6198250fb35089162d5d9811325e773749f8ad0",
+            "destination_sha256": "07f48268b22576465b7037d5b6198250fb35089162d5d9811325e773749f8ad0"
+          },
+          {
+            "name": "file 44.bin",
+            "size": 39,
+            "source_sha256": "962b21446bff71cc4123cce30b5ad8dfd05b8c7d90d4c58a7b399397663da96d",
+            "destination_sha256": "962b21446bff71cc4123cce30b5ad8dfd05b8c7d90d4c58a7b399397663da96d"
+          },
+          {
+            "name": "file 45.bin",
+            "size": 39,
+            "source_sha256": "773e716e7e8933a196cb5fe6db231223e31ed162ed6bcfd2748b8b764b404f21",
+            "destination_sha256": "773e716e7e8933a196cb5fe6db231223e31ed162ed6bcfd2748b8b764b404f21"
+          },
+          {
+            "name": "file 46.bin",
+            "size": 39,
+            "source_sha256": "6ba3c36f42887d2534c4059b0787619e61d9a4342e58e38e041f052c8bd9add1",
+            "destination_sha256": "6ba3c36f42887d2534c4059b0787619e61d9a4342e58e38e041f052c8bd9add1"
+          },
+          {
+            "name": "file 47.bin",
+            "size": 39,
+            "source_sha256": "8438919f18ea234b1580baa34d22926fe629e57b9a97b8ef969795ce06ce8182",
+            "destination_sha256": "8438919f18ea234b1580baa34d22926fe629e57b9a97b8ef969795ce06ce8182"
+          },
+          {
+            "name": "file 48.bin",
+            "size": 39,
+            "source_sha256": "4488921ac8e6c8d317df8e4401cccba457a924e9592baf0df5e3fff66e264af7",
+            "destination_sha256": "4488921ac8e6c8d317df8e4401cccba457a924e9592baf0df5e3fff66e264af7"
+          },
+          {
+            "name": "file 49.bin",
+            "size": 39,
+            "source_sha256": "c1a57c1d54b938a9596b9b4ed06d562e422b3469b60a2c2d46ff4e6a43179f9e",
+            "destination_sha256": "c1a57c1d54b938a9596b9b4ed06d562e422b3469b60a2c2d46ff4e6a43179f9e"
+          },
+          {
+            "name": "file 50.bin",
+            "size": 39,
+            "source_sha256": "618a72d5fbc66f8123b9334eaf9149a53330fc8c733e7b3e4e0445860dbde7de",
+            "destination_sha256": "618a72d5fbc66f8123b9334eaf9149a53330fc8c733e7b3e4e0445860dbde7de"
+          },
+          {
+            "name": "file 51.bin",
+            "size": 39,
+            "source_sha256": "8cd8d1e2797be1501e9a6634278cdb583978a81ed993acb316f6c764841e5047",
+            "destination_sha256": "8cd8d1e2797be1501e9a6634278cdb583978a81ed993acb316f6c764841e5047"
+          },
+          {
+            "name": "file 52.bin",
+            "size": 39,
+            "source_sha256": "e359360c7ebc6ecd862cfe8ad100e84b07cc8e862c4e493ba7bfd73f3a450bb0",
+            "destination_sha256": "e359360c7ebc6ecd862cfe8ad100e84b07cc8e862c4e493ba7bfd73f3a450bb0"
+          },
+          {
+            "name": "file 53.bin",
+            "size": 39,
+            "source_sha256": "582686ca645d7d99682173aadf44391310d289fab49e7e9ad767717cce5719f2",
+            "destination_sha256": "582686ca645d7d99682173aadf44391310d289fab49e7e9ad767717cce5719f2"
+          },
+          {
+            "name": "file 54.bin",
+            "size": 39,
+            "source_sha256": "e7dee19e7b187504e5df3a94447dff741a3449059d96d989732c8f4dfe65661c",
+            "destination_sha256": "e7dee19e7b187504e5df3a94447dff741a3449059d96d989732c8f4dfe65661c"
+          },
+          {
+            "name": "file 55.bin",
+            "size": 39,
+            "source_sha256": "6436f9955e98fac31dda3e017735f72452bc4f580506188509eb4fe23915c248",
+            "destination_sha256": "6436f9955e98fac31dda3e017735f72452bc4f580506188509eb4fe23915c248"
+          },
+          {
+            "name": "file 56.bin",
+            "size": 39,
+            "source_sha256": "60b1f90fc553f8f8ead0cd158cae8c54c25e0a425bfb910ea3f255857e3dd5e2",
+            "destination_sha256": "60b1f90fc553f8f8ead0cd158cae8c54c25e0a425bfb910ea3f255857e3dd5e2"
+          },
+          {
+            "name": "file 57.bin",
+            "size": 39,
+            "source_sha256": "ea9209b2e2f5b886c6e047d2a299144eb423369f6d9ea74bb16fa04ae3ac9747",
+            "destination_sha256": "ea9209b2e2f5b886c6e047d2a299144eb423369f6d9ea74bb16fa04ae3ac9747"
+          },
+          {
+            "name": "file 58.bin",
+            "size": 39,
+            "source_sha256": "164e9a65fd34734e02b44223c3f5e1e9fd7ea9fd91223df88ceda524976cc640",
+            "destination_sha256": "164e9a65fd34734e02b44223c3f5e1e9fd7ea9fd91223df88ceda524976cc640"
+          },
+          {
+            "name": "file 59.bin",
+            "size": 39,
+            "source_sha256": "b369e3cb6a4909b77d23879aad40eb5d00d11621c06716111e85ad310d0f55a2",
+            "destination_sha256": "b369e3cb6a4909b77d23879aad40eb5d00d11621c06716111e85ad310d0f55a2"
+          },
+          {
+            "name": "file 60.bin",
+            "size": 39,
+            "source_sha256": "b71d97dd1466f162b3467e832e1567317b29df7dd99da7a2a93d060d19bd2cd6",
+            "destination_sha256": "b71d97dd1466f162b3467e832e1567317b29df7dd99da7a2a93d060d19bd2cd6"
+          },
+          {
+            "name": "file 61.bin",
+            "size": 39,
+            "source_sha256": "3b520f528a7147179b728339f364820ac46c4fadb834b0d05c97184c72864b22",
+            "destination_sha256": "3b520f528a7147179b728339f364820ac46c4fadb834b0d05c97184c72864b22"
+          },
+          {
+            "name": "file 62.bin",
+            "size": 39,
+            "source_sha256": "ae29472dd3807f8c79b71e0966c383266eb8082565f828ded99966c970557b41",
+            "destination_sha256": "ae29472dd3807f8c79b71e0966c383266eb8082565f828ded99966c970557b41"
+          },
+          {
+            "name": "file 63.bin",
+            "size": 39,
+            "source_sha256": "8644eb48d1465fb3e876020220e290a3505f35b806152b02c422a69e4aeee183",
+            "destination_sha256": "8644eb48d1465fb3e876020220e290a3505f35b806152b02c422a69e4aeee183"
+          },
+          {
+            "name": "file 64.bin",
+            "size": 39,
+            "source_sha256": "35d88d97bb772010cc8ba4f9823d7637460947cbd76763f796188c1c0f749d7f",
+            "destination_sha256": "35d88d97bb772010cc8ba4f9823d7637460947cbd76763f796188c1c0f749d7f"
+          },
+          {
+            "name": "file 65.bin",
+            "size": 39,
+            "source_sha256": "7a129d981de314bcf2b9c8c6d15e639799cf27b3be1aee86667647db4db03465",
+            "destination_sha256": "7a129d981de314bcf2b9c8c6d15e639799cf27b3be1aee86667647db4db03465"
+          },
+          {
+            "name": "file 66.bin",
+            "size": 39,
+            "source_sha256": "ebc753fe81691834ea16f68b00d82c0e16ee608f1ccc99539f0994d89b7d0855",
+            "destination_sha256": "ebc753fe81691834ea16f68b00d82c0e16ee608f1ccc99539f0994d89b7d0855"
+          },
+          {
+            "name": "file 67.bin",
+            "size": 39,
+            "source_sha256": "d1ae001f9ab3a8ada2ce9d85bb1ccfcdc5ea03fad307132b910871586c323bce",
+            "destination_sha256": "d1ae001f9ab3a8ada2ce9d85bb1ccfcdc5ea03fad307132b910871586c323bce"
+          },
+          {
+            "name": "file 68.bin",
+            "size": 39,
+            "source_sha256": "69351c6162e1fd2a721e556c5a2d1afaa166849243834b8528ff15118687f3b7",
+            "destination_sha256": "69351c6162e1fd2a721e556c5a2d1afaa166849243834b8528ff15118687f3b7"
+          },
+          {
+            "name": "file 69.bin",
+            "size": 39,
+            "source_sha256": "da2ac5c82fd71dbe48a3a0d7fa83b229e26f78f7145e6d0dd8a9c055556202f9",
+            "destination_sha256": "da2ac5c82fd71dbe48a3a0d7fa83b229e26f78f7145e6d0dd8a9c055556202f9"
+          },
+          {
+            "name": "file 70.bin",
+            "size": 39,
+            "source_sha256": "630c76fe2757add20d91d14f7cf7c11740e99477ffd28ba9021320b0eaf7c107",
+            "destination_sha256": "630c76fe2757add20d91d14f7cf7c11740e99477ffd28ba9021320b0eaf7c107"
+          },
+          {
+            "name": "file 71.bin",
+            "size": 39,
+            "source_sha256": "7e1a85d2acac2d83b6e1b0cb262d108becbcee88feb75647ff445cd3ed487ed8",
+            "destination_sha256": "7e1a85d2acac2d83b6e1b0cb262d108becbcee88feb75647ff445cd3ed487ed8"
+          },
+          {
+            "name": "file 72.bin",
+            "size": 39,
+            "source_sha256": "e37a936c20f1079ffd6ce7e12e552a81106e0f707da5f6a2ef0a2c41b782b0e0",
+            "destination_sha256": "e37a936c20f1079ffd6ce7e12e552a81106e0f707da5f6a2ef0a2c41b782b0e0"
+          },
+          {
+            "name": "file 73.bin",
+            "size": 39,
+            "source_sha256": "663989065512b59e9622f94259bcb22865049ee2df59fd4624eb1910f3905194",
+            "destination_sha256": "663989065512b59e9622f94259bcb22865049ee2df59fd4624eb1910f3905194"
+          },
+          {
+            "name": "file 74.bin",
+            "size": 39,
+            "source_sha256": "8b5e25904fefa82475ff7ff841138601a48cc837245b5e06158f3c9600776797",
+            "destination_sha256": "8b5e25904fefa82475ff7ff841138601a48cc837245b5e06158f3c9600776797"
+          },
+          {
+            "name": "file 75.bin",
+            "size": 39,
+            "source_sha256": "cbb7e1ae207069953a389c7d91eda14fbe131aab18222c7faab9ed317e5022e4",
+            "destination_sha256": "cbb7e1ae207069953a389c7d91eda14fbe131aab18222c7faab9ed317e5022e4"
+          },
+          {
+            "name": "file 76.bin",
+            "size": 39,
+            "source_sha256": "a1c0d3bb4310450f59f3e251e079a63d21e723c72615b0da22cc6e4d9c06fbc8",
+            "destination_sha256": "a1c0d3bb4310450f59f3e251e079a63d21e723c72615b0da22cc6e4d9c06fbc8"
+          },
+          {
+            "name": "file 77.bin",
+            "size": 39,
+            "source_sha256": "c9e234e64eb3af627c1cbe7a5b7f7cd7191b075964b90fef982b371f1e78fcf5",
+            "destination_sha256": "c9e234e64eb3af627c1cbe7a5b7f7cd7191b075964b90fef982b371f1e78fcf5"
+          },
+          {
+            "name": "file 78.bin",
+            "size": 39,
+            "source_sha256": "801ec99f4730f82c27753143efbe4dfb4ac8964f50b5cdfcd1796a600479efbd",
+            "destination_sha256": "801ec99f4730f82c27753143efbe4dfb4ac8964f50b5cdfcd1796a600479efbd"
+          },
+          {
+            "name": "file 79.bin",
+            "size": 39,
+            "source_sha256": "65b73d6609ba23847fed348eca5c8060ab7aebb6875540868e926d504d0bdba7",
+            "destination_sha256": "65b73d6609ba23847fed348eca5c8060ab7aebb6875540868e926d504d0bdba7"
+          },
+          {
+            "name": "file 80.bin",
+            "size": 39,
+            "source_sha256": "b867fccfd118ea748cf250685107d548c1291f87b33c6480643a439ecfd35d0c",
+            "destination_sha256": "b867fccfd118ea748cf250685107d548c1291f87b33c6480643a439ecfd35d0c"
+          },
+          {
+            "name": "file 81.bin",
+            "size": 39,
+            "source_sha256": "63259357c46e03d4db98b7bc877dc1304d948d52d8a7865efc33569485108954",
+            "destination_sha256": "63259357c46e03d4db98b7bc877dc1304d948d52d8a7865efc33569485108954"
+          },
+          {
+            "name": "file 82.bin",
+            "size": 39,
+            "source_sha256": "347f93bb7febd937d0b83b374e6cafcd8aaca9e6b8493f52f2129a00e1d5da41",
+            "destination_sha256": "347f93bb7febd937d0b83b374e6cafcd8aaca9e6b8493f52f2129a00e1d5da41"
+          },
+          {
+            "name": "file 83.bin",
+            "size": 39,
+            "source_sha256": "ed72e44a0e41f949aea4b6a81975e6fd0925581e8738a3a991a39e132d583369",
+            "destination_sha256": "ed72e44a0e41f949aea4b6a81975e6fd0925581e8738a3a991a39e132d583369"
+          },
+          {
+            "name": "file 84.bin",
+            "size": 39,
+            "source_sha256": "2b4bac531086e2213f56611aae65a3047ae8c782b59f19d0249f6e454a5d3957",
+            "destination_sha256": "2b4bac531086e2213f56611aae65a3047ae8c782b59f19d0249f6e454a5d3957"
+          },
+          {
+            "name": "file 85.bin",
+            "size": 39,
+            "source_sha256": "a69e9bc9232369c5b4445d8074ec1a653880ddae39d7b466ed69c872854aef50",
+            "destination_sha256": "a69e9bc9232369c5b4445d8074ec1a653880ddae39d7b466ed69c872854aef50"
+          },
+          {
+            "name": "file 86.bin",
+            "size": 39,
+            "source_sha256": "5e62a9352beaebb885c12d3e8dc84c7834fdc5e8e4baa55b3000546380c7daac",
+            "destination_sha256": "5e62a9352beaebb885c12d3e8dc84c7834fdc5e8e4baa55b3000546380c7daac"
+          },
+          {
+            "name": "file 87.bin",
+            "size": 39,
+            "source_sha256": "f882cd64134d13a83b45aa98e55b0607bb86ebc9dd933a93835a122ad6c64d19",
+            "destination_sha256": "f882cd64134d13a83b45aa98e55b0607bb86ebc9dd933a93835a122ad6c64d19"
+          },
+          {
+            "name": "file 88.bin",
+            "size": 39,
+            "source_sha256": "96b66aad0eafd5f1cb568f6cb9d8d435935c0b2d9e8d0cc401717ea85e7de3aa",
+            "destination_sha256": "96b66aad0eafd5f1cb568f6cb9d8d435935c0b2d9e8d0cc401717ea85e7de3aa"
+          },
+          {
+            "name": "file 89.bin",
+            "size": 39,
+            "source_sha256": "c449b244a2f9cb9039f3703e0e85ed2a3b0d892bdc87f607baf46cddece42760",
+            "destination_sha256": "c449b244a2f9cb9039f3703e0e85ed2a3b0d892bdc87f607baf46cddece42760"
+          },
+          {
+            "name": "file 90.bin",
+            "size": 39,
+            "source_sha256": "6343a050f35eebead82371181487ad8047e58c8a0fde1127e4d96ff2bc63dcde",
+            "destination_sha256": "6343a050f35eebead82371181487ad8047e58c8a0fde1127e4d96ff2bc63dcde"
+          },
+          {
+            "name": "file 91.bin",
+            "size": 39,
+            "source_sha256": "d3ce49e1bb8647fb6a0e2ec005cae01f426a515b4649f2077a5a730f66264490",
+            "destination_sha256": "d3ce49e1bb8647fb6a0e2ec005cae01f426a515b4649f2077a5a730f66264490"
+          },
+          {
+            "name": "file 92.bin",
+            "size": 39,
+            "source_sha256": "bcce7494857ee4805b16bcd460f8c8212906c42acd5a4b5a4e3cd367cec2c698",
+            "destination_sha256": "bcce7494857ee4805b16bcd460f8c8212906c42acd5a4b5a4e3cd367cec2c698"
+          },
+          {
+            "name": "file 93.bin",
+            "size": 39,
+            "source_sha256": "13159dc3d422ca10f2d11588ba5bf819804a73ccc1a1ed76a155f0098670246b",
+            "destination_sha256": "13159dc3d422ca10f2d11588ba5bf819804a73ccc1a1ed76a155f0098670246b"
+          },
+          {
+            "name": "file 94.bin",
+            "size": 39,
+            "source_sha256": "c1eb31fb15b02ca24564ce390f0dbf4419be01c1953012ce71813ce58f652cbc",
+            "destination_sha256": "c1eb31fb15b02ca24564ce390f0dbf4419be01c1953012ce71813ce58f652cbc"
+          },
+          {
+            "name": "file 95.bin",
+            "size": 39,
+            "source_sha256": "4a7d8f64b1ceef05d7bf6b033d89636fe73ff406e3258de77e48c46ce6fd3df5",
+            "destination_sha256": "4a7d8f64b1ceef05d7bf6b033d89636fe73ff406e3258de77e48c46ce6fd3df5"
+          },
+          {
+            "name": "file 96.bin",
+            "size": 39,
+            "source_sha256": "ac4c6e916372b53e8f61915f03b56896f6fbde46a0ece1b0410a4ad69fc3ec1d",
+            "destination_sha256": "ac4c6e916372b53e8f61915f03b56896f6fbde46a0ece1b0410a4ad69fc3ec1d"
+          },
+          {
+            "name": "file 97.bin",
+            "size": 39,
+            "source_sha256": "c1d03d714251aec27282252adae3bf15c57196acffe0974e4042d3008457dbab",
+            "destination_sha256": "c1d03d714251aec27282252adae3bf15c57196acffe0974e4042d3008457dbab"
+          },
+          {
+            "name": "file 98.bin",
+            "size": 39,
+            "source_sha256": "5421ae003dbcb244dc308f255fcdac2e045b90be06ddb1cadd1395710f45fbc5",
+            "destination_sha256": "5421ae003dbcb244dc308f255fcdac2e045b90be06ddb1cadd1395710f45fbc5"
+          },
+          {
+            "name": "file 99.bin",
+            "size": 39,
+            "source_sha256": "6d922e5c6abf247df18d964b0b156bd72c43bb070fc58036096a628d5971754d",
+            "destination_sha256": "6d922e5c6abf247df18d964b0b156bd72c43bb070fc58036096a628d5971754d"
+          },
+          {
+            "name": "file 100.bin",
+            "size": 40,
+            "source_sha256": "46dfc332269d6df80187d0c8cd99eb8ded1f153f6362132394ff9d8b7221bfac",
+            "destination_sha256": "46dfc332269d6df80187d0c8cd99eb8ded1f153f6362132394ff9d8b7221bfac"
+          }
+        ],
+        "concurrency": "Single FlowDrop batch, streamed files serially as baseline; no simultaneous-upload feature claimed"
+      },
+      "elapsed_seconds": 0.5126592289999972,
+      "size": 3892,
+      "MB_per_second": 0.007591787643405561,
+      "Mbps": 0.060734301147244485,
+      "rate_method": "Full test interval including generation, source stage, relay, destination read/hash; not Wi-Fi throughput"
+    },
+    {
+      "test_id": "A-D3-bytes-0",
+      "sender": "Windows Node engine on Linux",
+      "receiver": "Windows Node engine on Linux",
+      "network": "loopback HTTP, isolated Linux job",
+      "source_commit": "ff75c81074ffce6c3bbed1083a04e46d390c3f58",
+      "artifact_sha256": null,
+      "expected": "Source/destination SHA-256 and exact size agree; security assertions remain enabled",
+      "status": "PASS",
+      "exit_code": 0,
+      "started_utc": "2026-11-16T11:23:59.846Z",
+      "evidence": "protocol-matrix.json",
+      "actual": {
+        "size": 0,
+        "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "destination_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "exact_name": "Tệp 中文 😀 0.bin",
+        "files": 1
+      },
+      "elapsed_seconds": 0.03427011100000527,
+      "size": 0,
+      "MB_per_second": 0,
+      "Mbps": 0,
+      "rate_method": "Full test interval including generation, source stage, relay, destination read/hash; not Wi-Fi throughput"
+    },
+    {
+      "test_id": "A-D3-bytes-1024",
+      "sender": "Windows Node engine on Linux",
+      "receiver": "Windows Node engine on Linux",
+      "network": "loopback HTTP, isolated Linux job",
+      "source_commit": "ff75c81074ffce6c3bbed1083a04e46d390c3f58",
+      "artifact_sha256": null,
+      "expected": "Source/destination SHA-256 and exact size agree; security assertions remain enabled",
+      "status": "PASS",
+      "exit_code": 0,
+      "started_utc": "2026-11-16T11:23:59.880Z",
+      "evidence": "protocol-matrix.json",
+      "actual": {
+        "size": 1024,
+        "source_sha256": "2bce1ba628720664be4b9fdd77aae0678e5f0f3f02fc6ff641ec879094f6a404",
+        "destination_sha256": "2bce1ba628720664be4b9fdd77aae0678e5f0f3f02fc6ff641ec879094f6a404",
+        "exact_name": "Tệp 中文 😀 1024.bin",
+        "files": 1
+      },
+      "elapsed_seconds": 0.018112942000007026,
+      "size": 1024,
+      "MB_per_second": 0.05653416214768439,
+      "Mbps": 0.45227329718147513,
+      "rate_method": "Full test interval including generation, source stage, relay, destination read/hash; not Wi-Fi throughput"
+    },
+    {
+      "test_id": "A-D3-bytes-1048576",
+      "sender": "Windows Node engine on Linux",
+      "receiver": "Windows Node engine on Linux",
+      "network": "loopback HTTP, isolated Linux job",
+      "source_commit": "ff75c81074ffce6c3bbed1083a04e46d390c3f58",
+      "artifact_sha256": null,
+      "expected": "Source/destination SHA-256 and exact size agree; security assertions remain enabled",
+      "status": "PASS",
+      "exit_code": 0,
+      "started_utc": "2026-11-16T11:23:59.899Z",
+      "evidence": "protocol-matrix.json",
+      "actual": {
+        "size": 1048576,
+        "source_sha256": "631b84027d6b9e52b539c4e8373622d23032dfadc64d60af87339c9037e4f769",
+        "destination_sha256": "631b84027d6b9e52b539c4e8373622d23032dfadc64d60af87339c9037e4f769",
+        "exact_name": "Tệp 中文 😀 1048576.bin",
+        "files": 1
+      },
+      "elapsed_seconds": 0.026134665999998107,
+      "size": 1048576,
+      "MB_per_second": 40.12203561354394,
+      "Mbps": 320.97628490835154,
+      "rate_method": "Full test interval including generation, source stage, relay, destination read/hash; not Wi-Fi throughput"
+    },
+    {
+      "test_id": "A-D3-bytes-104857600",
+      "sender": "Windows Node engine on Linux",
+      "receiver": "Windows Node engine on Linux",
+      "network": "loopback HTTP, isolated Linux job",
+      "source_commit": "ff75c81074ffce6c3bbed1083a04e46d390c3f58",
+      "artifact_sha256": null,
+      "expected": "Source/destination SHA-256 and exact size agree; security assertions remain enabled",
+      "status": "PASS",
+      "exit_code": 0,
+      "started_utc": "2026-11-16T11:23:59.925Z",
+      "evidence": "protocol-matrix.json",
+      "actual": {
+        "size": 104857600,
+        "source_sha256": "998fa39fe735dc4be63f55bf6ec3db8b64fe3d8fcd3fe759d1b88d27992c0b75",
+        "destination_sha256": "998fa39fe735dc4be63f55bf6ec3db8b64fe3d8fcd3fe759d1b88d27992c0b75",
+        "exact_name": "Tệp 中文 😀 104857600.bin",
+        "files": 1
+      },
+      "elapsed_seconds": 0.7761767970000073,
+      "size": 104857600,
+      "MB_per_second": 135.09499434314966,
+      "Mbps": 1080.7599547451973,
+      "rate_method": "Full test interval including generation, source stage, relay, destination read/hash; not Wi-Fi throughput"
+    },
+    {
+      "test_id": "A-D3-bytes-1073741824",
+      "sender": "Windows Node engine on Linux",
+      "receiver": "Windows Node engine on Linux",
+      "network": "loopback HTTP, isolated Linux job",
+      "source_commit": "ff75c81074ffce6c3bbed1083a04e46d390c3f58",
+      "artifact_sha256": null,
+      "expected": "Source/destination SHA-256 and exact size agree; security assertions remain enabled",
+      "status": "PASS",
+      "exit_code": 0,
+      "started_utc": "2026-11-16T11:24:00.701Z",
+      "evidence": "protocol-matrix.json",
+      "actual": {
+        "size": 1073741824,
+        "source_sha256": "e18e3f358b46eae9266ac36a5ff6347f6bf09711dff389597f237d5fe83111d8",
+        "destination_sha256": "e18e3f358b46eae9266ac36a5ff6347f6bf09711dff389597f237d5fe83111d8",
+        "exact_name": "Tệp 中文 😀 1073741824.bin",
+        "files": 1
+      },
+      "elapsed_seconds": 6.096738591000001,
+      "size": 1073741824,
+      "MB_per_second": 176.11741228089664,
+      "Mbps": 1408.9392982471732,
+      "rate_method": "Full test interval including generation, source stage, relay, destination read/hash; not Wi-Fi throughput"
+    },
+    {
+      "test_id": "A-D3-bytes-4294967313",
+      "sender": "Windows Node engine on Linux",
+      "receiver": "Windows Node engine on Linux",
+      "network": "loopback HTTP, isolated Linux job",
+      "source_commit": "ff75c81074ffce6c3bbed1083a04e46d390c3f58",
+      "artifact_sha256": null,
+      "expected": "Source/destination SHA-256 and exact size agree; security assertions remain enabled",
+      "status": "PASS",
+      "exit_code": 0,
+      "started_utc": "2026-11-16T11:24:06.798Z",
+      "evidence": "protocol-matrix.json",
+      "actual": {
+        "size": 4294967313,
+        "source_sha256": "9bf2e05c25222af695af1537ef0d8d2241a85ddadf3819797b83c856efeff824",
+        "destination_sha256": "9bf2e05c25222af695af1537ef0d8d2241a85ddadf3819797b83c856efeff824",
+        "exact_name": "Tệp 中文 😀 4294967313.bin",
+        "files": 1
+      },
+      "elapsed_seconds": 41.78851338899999,
+      "size": 4294967313,
+      "MB_per_second": 102.77865769043046,
+      "Mbps": 822.2292615234437,
+      "rate_method": "Full test interval including generation, source stage, relay, destination read/hash; not Wi-Fi throughput"
+    },
+    {
+      "test_id": "A-D3-batch-101",
+      "sender": "Windows Node engine on Linux",
+      "receiver": "Windows Node engine on Linux",
+      "network": "loopback HTTP, isolated Linux job",
+      "source_commit": "ff75c81074ffce6c3bbed1083a04e46d390c3f58",
+      "artifact_sha256": null,
+      "expected": "Source/destination SHA-256 and exact size agree; security assertions remain enabled",
+      "status": "PASS",
+      "exit_code": 0,
+      "started_utc": "2026-11-16T11:24:48.586Z",
+      "evidence": "protocol-matrix.json",
+      "actual": {
+        "files": 101,
+        "size": 3892,
+        "hashes": [
+          {
+            "name": "Rỗng.bin",
+            "size": 0,
+            "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "destination_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          {
+            "name": "Tiếng Việt 中文 😀 có khoảng trắng.txt",
+            "size": 38,
+            "source_sha256": "531cb29f4f7ca54e568b473e661f794555db3f38cae3b2b06a3761563b85b512",
+            "destination_sha256": "531cb29f4f7ca54e568b473e661f794555db3f38cae3b2b06a3761563b85b512"
+          },
+          {
+            "name": "Tên dài aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.txt",
+            "size": 38,
+            "source_sha256": "0e809058ce1b0b0da191ac2ce26a824bfb47e6fa3c8dff26d7071899f8599d3b",
+            "destination_sha256": "0e809058ce1b0b0da191ac2ce26a824bfb47e6fa3c8dff26d7071899f8599d3b"
+          },
+          {
+            "name": "file 3.bin",
+            "size": 38,
+            "source_sha256": "5f3506c15a06e64911900e99701ab647fb3d3930060975899fdd207c3589cee2",
+            "destination_sha256": "5f3506c15a06e64911900e99701ab647fb3d3930060975899fdd207c3589cee2"
+          },
+          {
+            "name": "file 4.bin",
+            "size": 38,
+            "source_sha256": "5e322da111f71f37e34984496338c9678743f2dbb1ab57c56712106dd1ce5b5e",
+            "destination_sha256": "5e322da111f71f37e34984496338c9678743f2dbb1ab57c56712106dd1ce5b5e"
+          },
+          {
+            "name": "file 5.bin",
+            "size": 38,
+            "source_sha256": "11a6aa817feb9f182ce9f182fe64bbb3407e8f27227f84cd97964c83cf30f791",
+            "destination_sha256": "11a6aa817feb9f182ce9f182fe64bbb3407e8f27227f84cd97964c83cf30f791"
+          },
+          {
+            "name": "file 6.bin",
+            "size": 38,
+            "source_sha256": "e4cbbd4b002e8dbeae5c17a01dcbdcc27d66e9b7097a95c5d15cadbac8c59fd3",
+            "destination_sha256": "e4cbbd4b002e8dbeae5c17a01dcbdcc27d66e9b7097a95c5d15cadbac8c59fd3"
+          },
+          {
+            "name": "file 7.bin",
+            "size": 38,
+            "source_sha256": "13a2c28e5c5f22f891b1477856241be048db6c3c2f4b6234d9f66e9dce6a79d3",
+            "destination_sha256": "13a2c28e5c5f22f891b1477856241be048db6c3c2f4b6234d9f66e9dce6a79d3"
+          },
+          {
+            "name": "file 8.bin",
+            "size": 38,
+            "source_sha256": "bb0b60b257562c39088b4bb35dfe9d03dab828280cea98e9a417d687908b8636",
+            "destination_sha256": "bb0b60b257562c39088b4bb35dfe9d03dab828280cea98e9a417d687908b8636"
+          },
+          {
+            "name": "file 9.bin",
+            "size": 38,
+            "source_sha256": "989da1a6c1b8c979b0d7935fb92c29c3ca126e8fc882f4d0085d60bce47a9027",
+            "destination_sha256": "989da1a6c1b8c979b0d7935fb92c29c3ca126e8fc882f4d0085d60bce47a9027"
+          },
+          {
+            "name": "file 10.bin",
+            "size": 39,
+            "source_sha256": "eecb9f7a8d93a489200b19049da3347f75fb84a655eb739bef0f49ad8c781eed",
+            "destination_sha256": "eecb9f7a8d93a489200b19049da3347f75fb84a655eb739bef0f49ad8c781eed"
+          },
+          {
+            "name": "file 11.bin",
+            "size": 39,
+            "source_sha256": "ddda5fe069fa38d440f88996e9a0aaed44f8cde2211678bbde9f910a19427425",
+            "destination_sha256": "ddda5fe069fa38d440f88996e9a0aaed44f8cde2211678bbde9f910a19427425"
+          },
+          {
+            "name": "file 12.bin",
+            "size": 39,
+            "source_sha256": "00d6b6e484f84edade05c46e619ec3d2a52b20eb8a7f439d4c35abd4d0399e1d",
+            "destination_sha256": "00d6b6e484f84edade05c46e619ec3d2a52b20eb8a7f439d4c35abd4d0399e1d"
+          },
+          {
+            "name": "file 13.bin",
+            "size": 39,
+            "source_sha256": "5d5525ff367a9c8127a8b9e0ba7bacaf0092a372eafb816708b55b111f8c6bbd",
+            "destination_sha256": "5d5525ff367a9c8127a8b9e0ba7bacaf0092a372eafb816708b55b111f8c6bbd"
+          },
+          {
+            "name": "file 14.bin",
+            "size": 39,
+            "source_sha256": "fb3dcae06bef2b9974793222b7c526c258a8fc049e6aa009375c60770982721c",
+            "destination_sha256": "fb3dcae06bef2b9974793222b7c526c258a8fc049e6aa009375c60770982721c"
+          },
+          {
+            "name": "file 15.bin",
+            "size": 39,
+            "source_sha256": "bc1401e594372395abb95b808b93f858d1596b2751225ec114d47f2426cff107",
+            "destination_sha256": "bc1401e594372395abb95b808b93f858d1596b2751225ec114d47f2426cff107"
+          },
+          {
+            "name": "file 16.bin",
+            "size": 39,
+            "source_sha256": "b58b4874c53ec6d4e9576c5cdb33d1ff6f3ce8b7efb728be41f569e9d9c18fbf",
+            "destination_sha256": "b58b4874c53ec6d4e9576c5cdb33d1ff6f3ce8b7efb728be41f569e9d9c18fbf"
+          },
+          {
+            "name": "file 17.bin",
+            "size": 39,
+            "source_sha256": "db4cb8bd01eaf42869dc082e1fad948d5ca2c5c1ee7b65957695b959fc927c17",
+            "destination_sha256": "db4cb8bd01eaf42869dc082e1fad948d5ca2c5c1ee7b65957695b959fc927c17"
+          },
+          {
+            "name": "file 18.bin",
+            "size": 39,
+            "source_sha256": "97ac84243754c479e4807f94a42ec7ee1fd8832a156e8601e3a8e08fd76b66fd",
+            "destination_sha256": "97ac84243754c479e4807f94a42ec7ee1fd8832a156e8601e3a8e08fd76b66fd"
+          },
+          {
+            "name": "file 19.bin",
+            "size": 39,
+            "source_sha256": "7738e7757bfd39f3f54cc663603ecc68349c846fa31d0ac3a7cff19af7f41671",
+            "destination_sha256": "7738e7757bfd39f3f54cc663603ecc68349c846fa31d0ac3a7cff19af7f41671"
+          },
+          {
+            "name": "file 20.bin",
+            "size": 39,
+            "source_sha256": "d02ece6ae0e1c295a472fd77d5591ae5b436a8cdb31454a26c8366d0fd60c49f",
+            "destination_sha256": "d02ece6ae0e1c295a472fd77d5591ae5b436a8cdb31454a26c8366d0fd60c49f"
+          },
+          {
+            "name": "file 21.bin",
+            "size": 39,
+            "source_sha256": "829d4def2cf3a14fe5fe5ff44b20992b79437ec216ee7da1286d394f442b4410",
+            "destination_sha256": "829d4def2cf3a14fe5fe5ff44b20992b79437ec216ee7da1286d394f442b4410"
+          },
+          {
+            "name": "file 22.bin",
+            "size": 39,
+            "source_sha256": "31a96810c57ba21f248d0222e47a5fde80c9302a5104d7c0c9eedee0f48d7809",
+            "destination_sha256": "31a96810c57ba21f248d0222e47a5fde80c9302a5104d7c0c9eedee0f48d7809"
+          },
+          {
+            "name": "file 23.bin",
+            "size": 39,
+            "source_sha256": "f5f8040c4882093dcf691338b8ba04049aed9d28c8c4dcb2370009cbcb9f06a4",
+            "destination_sha256": "f5f8040c4882093dcf691338b8ba04049aed9d28c8c4dcb2370009cbcb9f06a4"
+          },
+          {
+            "name": "file 24.bin",
+            "size": 39,
+            "source_sha256": "f86c03cd3907418a624a08a2290752405e7e899c988742a56ea2f633503928da",
+            "destination_sha256": "f86c03cd3907418a624a08a2290752405e7e899c988742a56ea2f633503928da"
+          },
+          {
+            "name": "file 25.bin",
+            "size": 39,
+            "source_sha256": "6c5182437f07ffacdaaff5821bc735f13547f5669ff4d28f17631e9b2e150d8d",
+            "destination_sha256": "6c5182437f07ffacdaaff5821bc735f13547f5669ff4d28f17631e9b2e150d8d"
+          },
+          {
+            "name": "file 26.bin",
+            "size": 39,
+            "source_sha256": "d5409edec06b17dd104841d419862c4f5664e6444781050fdd52e95d18da2078",
+            "destination_sha256": "d5409edec06b17dd104841d419862c4f5664e6444781050fdd52e95d18da2078"
+          },
+          {
+            "name": "file 27.bin",
+            "size": 39,
+            "source_sha256": "3a619599718ef6fbbfd87a800437362ee1a0bf45d0fd9ce4b1fe2b178b8ac55a",
+            "destination_sha256": "3a619599718ef6fbbfd87a800437362ee1a0bf45d0fd9ce4b1fe2b178b8ac55a"
+          },
+          {
+            "name": "file 28.bin",
+            "size": 39,
+            "source_sha256": "b50dca11185a07a9da862d99ca16cb52ef03ee9d9da0a161410731da4d3318a9",
+            "destination_sha256": "b50dca11185a07a9da862d99ca16cb52ef03ee9d9da0a161410731da4d3318a9"
+          },
+          {
+            "name": "file 29.bin",
+            "size": 39,
+            "source_sha256": "f5e037bdb5ad27d9d0c35f3228b3c5a48784a89e79879c3729108ee0e5b812cd",
+            "destination_sha256": "f5e037bdb5ad27d9d0c35f3228b3c5a48784a89e79879c3729108ee0e5b812cd"
+          },
+          {
+            "name": "file 30.bin",
+            "size": 39,
+            "source_sha256": "04dc650461422650d9e06419161a6c68605fad2b68bb2e647622de0c3c21d1b1",
+            "destination_sha256": "04dc650461422650d9e06419161a6c68605fad2b68bb2e647622de0c3c21d1b1"
+          },
+          {
+            "name": "file 31.bin",
+            "size": 39,
+            "source_sha256": "82c6801782b8a32c66becf6cabe512ebfbe7660ccd2eeb0b42336703289e48cc",
+            "destination_sha256": "82c6801782b8a32c66becf6cabe512ebfbe7660ccd2eeb0b42336703289e48cc"
+          },
+          {
+            "name": "file 32.bin",
+            "size": 39,
+            "source_sha256": "ce3a04c8eff7066137426d0f24321dd5206ac6159045ac3ffcd800b86eb1e225",
+            "destination_sha256": "ce3a04c8eff7066137426d0f24321dd5206ac6159045ac3ffcd800b86eb1e225"
+          },
+          {
+            "name": "file 33.bin",
+            "size": 39,
+            "source_sha256": "56f2bb209dcbeef40c897e0585201dc93161e910f67c406a4956ddd9412c8c86",
+            "destination_sha256": "56f2bb209dcbeef40c897e0585201dc93161e910f67c406a4956ddd9412c8c86"
+          },
+          {
+            "name": "file 34.bin",
+            "size": 39,
+            "source_sha256": "bcdbfa8b31dd92afefa16d7dfef559a4583769124c5e9f0af40ab9f3f5e0603d",
+            "destination_sha256": "bcdbfa8b31dd92afefa16d7dfef559a4583769124c5e9f0af40ab9f3f5e0603d"
+          },
+          {
+            "name": "file 35.bin",
+            "size": 39,
+            "source_sha256": "ad224d05c3906d1c70fe0f5a95e8327d4f7890266f08fbb8b455d7cfb90acb90",
+            "destination_sha256": "ad224d05c3906d1c70fe0f5a95e8327d4f7890266f08fbb8b455d7cfb90acb90"
+          },
+          {
+            "name": "file 36.bin",
+            "size": 39,
+            "source_sha256": "5f66bd2757cbe6528a7e3dceecc28363b8cb558ba951427f0f75b3ab873829db",
+            "destination_sha256": "5f66bd2757cbe6528a7e3dceecc28363b8cb558ba951427f0f75b3ab873829db"
+          },
+          {
+            "name": "file 37.bin",
+            "size": 39,
+            "source_sha256": "c6f3173664eb2d3b280f3d716927493ffbb013f814b052c517e1894fe36f6936",
+            "destination_sha256": "c6f3173664eb2d3b280f3d716927493ffbb013f814b052c517e1894fe36f6936"
+          },
+          {
+            "name": "file 38.bin",
+            "size": 39,
+            "source_sha256": "633183074af5c5ccac1f49fda945048af6312e973784d3c14ec162b71b2db899",
+            "destination_sha256": "633183074af5c5ccac1f49fda945048af6312e973784d3c14ec162b71b2db899"
+          },
+          {
+            "name": "file 39.bin",
+            "size": 39,
+            "source_sha256": "b506f2758ce2584a561ee35e5557859fde7166ad4051a2f274c814735ee8044d",
+            "destination_sha256": "b506f2758ce2584a561ee35e5557859fde7166ad4051a2f274c814735ee8044d"
+          },
+          {
+            "name": "file 40.bin",
+            "size": 39,
+            "source_sha256": "3cac9e9e01e231874462a61e09e3e7eedc41d15a6227010a50fd1459a187dfec",
+            "destination_sha256": "3cac9e9e01e231874462a61e09e3e7eedc41d15a6227010a50fd1459a187dfec"
+          },
+          {
+            "name": "file 41.bin",
+            "size": 39,
+            "source_sha256": "411a5dba1780c5fe5eb0f5c385bf0016b62f3c4bb25909905fcda9477e609616",
+            "destination_sha256": "411a5dba1780c5fe5eb0f5c385bf0016b62f3c4bb25909905fcda9477e609616"
+          },
+          {
+            "name": "file 42.bin",
+            "size": 39,
+            "source_sha256": "9995bb003b236a84dce8fc0abd503a0f17f9d5f5b6dafda560d3d6906d70e41e",
+            "destination_sha256": "9995bb003b236a84dce8fc0abd503a0f17f9d5f5b6dafda560d3d6906d70e41e"
+          },
+          {
+            "name": "file 43.bin",
+            "size": 39,
+            "source_sha256": "07f48268b22576465b7037d5b6198250fb35089162d5d9811325e773749f8ad0",
+            "destination_sha256": "07f48268b22576465b7037d5b6198250fb35089162d5d9811325e773749f8ad0"
+          },
+          {
+            "name": "file 44.bin",
+            "size": 39,
+            "source_sha256": "962b21446bff71cc4123cce30b5ad8dfd05b8c7d90d4c58a7b399397663da96d",
+            "destination_sha256": "962b21446bff71cc4123cce30b5ad8dfd05b8c7d90d4c58a7b399397663da96d"
+          },
+          {
+            "name": "file 45.bin",
+            "size": 39,
+            "source_sha256": "773e716e7e8933a196cb5fe6db231223e31ed162ed6bcfd2748b8b764b404f21",
+            "destination_sha256": "773e716e7e8933a196cb5fe6db231223e31ed162ed6bcfd2748b8b764b404f21"
+          },
+          {
+            "name": "file 46.bin",
+            "size": 39,
+            "source_sha256": "6ba3c36f42887d2534c4059b0787619e61d9a4342e58e38e041f052c8bd9add1",
+            "destination_sha256": "6ba3c36f42887d2534c4059b0787619e61d9a4342e58e38e041f052c8bd9add1"
+          },
+          {
+            "name": "file 47.bin",
+            "size": 39,
+            "source_sha256": "8438919f18ea234b1580baa34d22926fe629e57b9a97b8ef969795ce06ce8182",
+            "destination_sha256": "8438919f18ea234b1580baa34d22926fe629e57b9a97b8ef969795ce06ce8182"
+          },
+          {
+            "name": "file 48.bin",
+            "size": 39,
+            "source_sha256": "4488921ac8e6c8d317df8e4401cccba457a924e9592baf0df5e3fff66e264af7",
+            "destination_sha256": "4488921ac8e6c8d317df8e4401cccba457a924e9592baf0df5e3fff66e264af7"
+          },
+          {
+            "name": "file 49.bin",
+            "size": 39,
+            "source_sha256": "c1a57c1d54b938a9596b9b4ed06d562e422b3469b60a2c2d46ff4e6a43179f9e",
+            "destination_sha256": "c1a57c1d54b938a9596b9b4ed06d562e422b3469b60a2c2d46ff4e6a43179f9e"
+          },
+          {
+            "name": "file 50.bin",
+            "size": 39,
+            "source_sha256": "618a72d5fbc66f8123b9334eaf9149a53330fc8c733e7b3e4e0445860dbde7de",
+            "destination_sha256": "618a72d5fbc66f8123b9334eaf9149a53330fc8c733e7b3e4e0445860dbde7de"
+          },
+          {
+            "name": "file 51.bin",
+            "size": 39,
+            "source_sha256": "8cd8d1e2797be1501e9a6634278cdb583978a81ed993acb316f6c764841e5047",
+            "destination_sha256": "8cd8d1e2797be1501e9a6634278cdb583978a81ed993acb316f6c764841e5047"
+          },
+          {
+            "name": "file 52.bin",
+            "size": 39,
+            "source_sha256": "e359360c7ebc6ecd862cfe8ad100e84b07cc8e862c4e493ba7bfd73f3a450bb0",
+            "destination_sha256": "e359360c7ebc6ecd862cfe8ad100e84b07cc8e862c4e493ba7bfd73f3a450bb0"
+          },
+          {
+            "name": "file 53.bin",
+            "size": 39,
+            "source_sha256": "582686ca645d7d99682173aadf44391310d289fab49e7e9ad767717cce5719f2",
+            "destination_sha256": "582686ca645d7d99682173aadf44391310d289fab49e7e9ad767717cce5719f2"
+          },
+          {
+            "name": "file 54.bin",
+            "size": 39,
+            "source_sha256": "e7dee19e7b187504e5df3a94447dff741a3449059d96d989732c8f4dfe65661c",
+            "destination_sha256": "e7dee19e7b187504e5df3a94447dff741a3449059d96d989732c8f4dfe65661c"
+          },
+          {
+            "name": "file 55.bin",
+            "size": 39,
+            "source_sha256": "6436f9955e98fac31dda3e017735f72452bc4f580506188509eb4fe23915c248",
+            "destination_sha256": "6436f9955e98fac31dda3e017735f72452bc4f580506188509eb4fe23915c248"
+          },
+          {
+            "name": "file 56.bin",
+            "size": 39,
+            "source_sha256": "60b1f90fc553f8f8ead0cd158cae8c54c25e0a425bfb910ea3f255857e3dd5e2",
+            "destination_sha256": "60b1f90fc553f8f8ead0cd158cae8c54c25e0a425bfb910ea3f255857e3dd5e2"
+          },
+          {
+            "name": "file 57.bin",
+            "size": 39,
+            "source_sha256": "ea9209b2e2f5b886c6e047d2a299144eb423369f6d9ea74bb16fa04ae3ac9747",
+            "destination_sha256": "ea9209b2e2f5b886c6e047d2a299144eb423369f6d9ea74bb16fa04ae3ac9747"
+          },
+          {
+            "name": "file 58.bin",
+            "size": 39,
+            "source_sha256": "164e9a65fd34734e02b44223c3f5e1e9fd7ea9fd91223df88ceda524976cc640",
+            "destination_sha256": "164e9a65fd34734e02b44223c3f5e1e9fd7ea9fd91223df88ceda524976cc640"
+          },
+          {
+            "name": "file 59.bin",
+            "size": 39,
+            "source_sha256": "b369e3cb6a4909b77d23879aad40eb5d00d11621c06716111e85ad310d0f55a2",
+            "destination_sha256": "b369e3cb6a4909b77d23879aad40eb5d00d11621c06716111e85ad310d0f55a2"
+          },
+          {
+            "name": "file 60.bin",
+            "size": 39,
+            "source_sha256": "b71d97dd1466f162b3467e832e1567317b29df7dd99da7a2a93d060d19bd2cd6",
+            "destination_sha256": "b71d97dd1466f162b3467e832e1567317b29df7dd99da7a2a93d060d19bd2cd6"
+          },
+          {
+            "name": "file 61.bin",
+            "size": 39,
+            "source_sha256": "3b520f528a7147179b728339f364820ac46c4fadb834b0d05c97184c72864b22",
+            "destination_sha256": "3b520f528a7147179b728339f364820ac46c4fadb834b0d05c97184c72864b22"
+          },
+          {
+            "name": "file 62.bin",
+            "size": 39,
+            "source_sha256": "ae29472dd3807f8c79b71e0966c383266eb8082565f828ded99966c970557b41",
+            "destination_sha256": "ae29472dd3807f8c79b71e0966c383266eb8082565f828ded99966c970557b41"
+          },
+          {
+            "name": "file 63.bin",
+            "size": 39,
+            "source_sha256": "8644eb48d1465fb3e876020220e290a3505f35b806152b02c422a69e4aeee183",
+            "destination_sha256": "8644eb48d1465fb3e876020220e290a3505f35b806152b02c422a69e4aeee183"
+          },
+          {
+            "name": "file 64.bin",
+            "size": 39,
+            "source_sha256": "35d88d97bb772010cc8ba4f9823d7637460947cbd76763f796188c1c0f749d7f",
+            "destination_sha256": "35d88d97bb772010cc8ba4f9823d7637460947cbd76763f796188c1c0f749d7f"
+          },
+          {
+            "name": "file 65.bin",
+            "size": 39,
+            "source_sha256": "7a129d981de314bcf2b9c8c6d15e639799cf27b3be1aee86667647db4db03465",
+            "destination_sha256": "7a129d981de314bcf2b9c8c6d15e639799cf27b3be1aee86667647db4db03465"
+          },
+          {
+            "name": "file 66.bin",
+            "size": 39,
+            "source_sha256": "ebc753fe81691834ea16f68b00d82c0e16ee608f1ccc99539f0994d89b7d0855",
+            "destination_sha256": "ebc753fe81691834ea16f68b00d82c0e16ee608f1ccc99539f0994d89b7d0855"
+          },
+          {
+            "name": "file 67.bin",
+            "size": 39,
+            "source_sha256": "d1ae001f9ab3a8ada2ce9d85bb1ccfcdc5ea03fad307132b910871586c323bce",
+            "destination_sha256": "d1ae001f9ab3a8ada2ce9d85bb1ccfcdc5ea03fad307132b910871586c323bce"
+          },
+          {
+            "name": "file 68.bin",
+            "size": 39,
+            "source_sha256": "69351c6162e1fd2a721e556c5a2d1afaa166849243834b8528ff15118687f3b7",
+            "destination_sha256": "69351c6162e1fd2a721e556c5a2d1afaa166849243834b8528ff15118687f3b7"
+          },
+          {
+            "name": "file 69.bin",
+            "size": 39,
+            "source_sha256": "da2ac5c82fd71dbe48a3a0d7fa83b229e26f78f7145e6d0dd8a9c055556202f9",
+            "destination_sha256": "da2ac5c82fd71dbe48a3a0d7fa83b229e26f78f7145e6d0dd8a9c055556202f9"
+          },
+          {
+            "name": "file 70.bin",
+            "size": 39,
+            "source_sha256": "630c76fe2757add20d91d14f7cf7c11740e99477ffd28ba9021320b0eaf7c107",
+            "destination_sha256": "630c76fe2757add20d91d14f7cf7c11740e99477ffd28ba9021320b0eaf7c107"
+          },
+          {
+            "name": "file 71.bin",
+            "size": 39,
+            "source_sha256": "7e1a85d2acac2d83b6e1b0cb262d108becbcee88feb75647ff445cd3ed487ed8",
+            "destination_sha256": "7e1a85d2acac2d83b6e1b0cb262d108becbcee88feb75647ff445cd3ed487ed8"
+          },
+          {
+            "name": "file 72.bin",
+            "size": 39,
+            "source_sha256": "e37a936c20f1079ffd6ce7e12e552a81106e0f707da5f6a2ef0a2c41b782b0e0",
+            "destination_sha256": "e37a936c20f1079ffd6ce7e12e552a81106e0f707da5f6a2ef0a2c41b782b0e0"
+          },
+          {
+            "name": "file 73.bin",
+            "size": 39,
+            "source_sha256": "663989065512b59e9622f94259bcb22865049ee2df59fd4624eb1910f3905194",
+            "destination_sha256": "663989065512b59e9622f94259bcb22865049ee2df59fd4624eb1910f3905194"
+          },
+          {
+            "name": "file 74.bin",
+            "size": 39,
+            "source_sha256": "8b5e25904fefa82475ff7ff841138601a48cc837245b5e06158f3c9600776797",
+            "destination_sha256": "8b5e25904fefa82475ff7ff841138601a48cc837245b5e06158f3c9600776797"
+          },
+          {
+            "name": "file 75.bin",
+            "size": 39,
+            "source_sha256": "cbb7e1ae207069953a389c7d91eda14fbe131aab18222c7faab9ed317e5022e4",
+            "destination_sha256": "cbb7e1ae207069953a389c7d91eda14fbe131aab18222c7faab9ed317e5022e4"
+          },
+          {
+            "name": "file 76.bin",
+            "size": 39,
+            "source_sha256": "a1c0d3bb4310450f59f3e251e079a63d21e723c72615b0da22cc6e4d9c06fbc8",
+            "destination_sha256": "a1c0d3bb4310450f59f3e251e079a63d21e723c72615b0da22cc6e4d9c06fbc8"
+          },
+          {
+            "name": "file 77.bin",
+            "size": 39,
+            "source_sha256": "c9e234e64eb3af627c1cbe7a5b7f7cd7191b075964b90fef982b371f1e78fcf5",
+            "destination_sha256": "c9e234e64eb3af627c1cbe7a5b7f7cd7191b075964b90fef982b371f1e78fcf5"
+          },
+          {
+            "name": "file 78.bin",
+            "size": 39,
+            "source_sha256": "801ec99f4730f82c27753143efbe4dfb4ac8964f50b5cdfcd1796a600479efbd",
+            "destination_sha256": "801ec99f4730f82c27753143efbe4dfb4ac8964f50b5cdfcd1796a600479efbd"
+          },
+          {
+            "name": "file 79.bin",
+            "size": 39,
+            "source_sha256": "65b73d6609ba23847fed348eca5c8060ab7aebb6875540868e926d504d0bdba7",
+            "destination_sha256": "65b73d6609ba23847fed348eca5c8060ab7aebb6875540868e926d504d0bdba7"
+          },
+          {
+            "name": "file 80.bin",
+            "size": 39,
+            "source_sha256": "b867fccfd118ea748cf250685107d548c1291f87b33c6480643a439ecfd35d0c",
+            "destination_sha256": "b867fccfd118ea748cf250685107d548c1291f87b33c6480643a439ecfd35d0c"
+          },
+          {
+            "name": "file 81.bin",
+            "size": 39,
+            "source_sha256": "63259357c46e03d4db98b7bc877dc1304d948d52d8a7865efc33569485108954",
+            "destination_sha256": "63259357c46e03d4db98b7bc877dc1304d948d52d8a7865efc33569485108954"
+          },
+          {
+            "name": "file 82.bin",
+            "size": 39,
+            "source_sha256": "347f93bb7febd937d0b83b374e6cafcd8aaca9e6b8493f52f2129a00e1d5da41",
+            "destination_sha256": "347f93bb7febd937d0b83b374e6cafcd8aaca9e6b8493f52f2129a00e1d5da41"
+          },
+          {
+            "name": "file 83.bin",
+            "size": 39,
+            "source_sha256": "ed72e44a0e41f949aea4b6a81975e6fd0925581e8738a3a991a39e132d583369",
+            "destination_sha256": "ed72e44a0e41f949aea4b6a81975e6fd0925581e8738a3a991a39e132d583369"
+          },
+          {
+            "name": "file 84.bin",
+            "size": 39,
+            "source_sha256": "2b4bac531086e2213f56611aae65a3047ae8c782b59f19d0249f6e454a5d3957",
+            "destination_sha256": "2b4bac531086e2213f56611aae65a3047ae8c782b59f19d0249f6e454a5d3957"
+          },
+          {
+            "name": "file 85.bin",
+            "size": 39,
+            "source_sha256": "a69e9bc9232369c5b4445d8074ec1a653880ddae39d7b466ed69c872854aef50",
+            "destination_sha256": "a69e9bc9232369c5b4445d8074ec1a653880ddae39d7b466ed69c872854aef50"
+          },
+          {
+            "name": "file 86.bin",
+            "size": 39,
+            "source_sha256": "5e62a9352beaebb885c12d3e8dc84c7834fdc5e8e4baa55b3000546380c7daac",
+            "destination_sha256": "5e62a9352beaebb885c12d3e8dc84c7834fdc5e8e4baa55b3000546380c7daac"
+          },
+          {
+            "name": "file 87.bin",
+            "size": 39,
+            "source_sha256": "f882cd64134d13a83b45aa98e55b0607bb86ebc9dd933a93835a122ad6c64d19",
+            "destination_sha256": "f882cd64134d13a83b45aa98e55b0607bb86ebc9dd933a93835a122ad6c64d19"
+          },
+          {
+            "name": "file 88.bin",
+            "size": 39,
+            "source_sha256": "96b66aad0eafd5f1cb568f6cb9d8d435935c0b2d9e8d0cc401717ea85e7de3aa",
+            "destination_sha256": "96b66aad0eafd5f1cb568f6cb9d8d435935c0b2d9e8d0cc401717ea85e7de3aa"
+          },
+          {
+            "name": "file 89.bin",
+            "size": 39,
+            "source_sha256": "c449b244a2f9cb9039f3703e0e85ed2a3b0d892bdc87f607baf46cddece42760",
+            "destination_sha256": "c449b244a2f9cb9039f3703e0e85ed2a3b0d892bdc87f607baf46cddece42760"
+          },
+          {
+            "name": "file 90.bin",
+            "size": 39,
+            "source_sha256": "6343a050f35eebead82371181487ad8047e58c8a0fde1127e4d96ff2bc63dcde",
+            "destination_sha256": "6343a050f35eebead82371181487ad8047e58c8a0fde1127e4d96ff2bc63dcde"
+          },
+          {
+            "name": "file 91.bin",
+            "size": 39,
+            "source_sha256": "d3ce49e1bb8647fb6a0e2ec005cae01f426a515b4649f2077a5a730f66264490",
+            "destination_sha256": "d3ce49e1bb8647fb6a0e2ec005cae01f426a515b4649f2077a5a730f66264490"
+          },
+          {
+            "name": "file 92.bin",
+            "size": 39,
+            "source_sha256": "bcce7494857ee4805b16bcd460f8c8212906c42acd5a4b5a4e3cd367cec2c698",
+            "destination_sha256": "bcce7494857ee4805b16bcd460f8c8212906c42acd5a4b5a4e3cd367cec2c698"
+          },
+          {
+            "name": "file 93.bin",
+            "size": 39,
+            "source_sha256": "13159dc3d422ca10f2d11588ba5bf819804a73ccc1a1ed76a155f0098670246b",
+            "destination_sha256": "13159dc3d422ca10f2d11588ba5bf819804a73ccc1a1ed76a155f0098670246b"
+          },
+          {
+            "name": "file 94.bin",
+            "size": 39,
+            "source_sha256": "c1eb31fb15b02ca24564ce390f0dbf4419be01c1953012ce71813ce58f652cbc",
+            "destination_sha256": "c1eb31fb15b02ca24564ce390f0dbf4419be01c1953012ce71813ce58f652cbc"
+          },
+          {
+            "name": "file 95.bin",
+            "size": 39,
+            "source_sha256": "4a7d8f64b1ceef05d7bf6b033d89636fe73ff406e3258de77e48c46ce6fd3df5",
+            "destination_sha256": "4a7d8f64b1ceef05d7bf6b033d89636fe73ff406e3258de77e48c46ce6fd3df5"
+          },
+          {
+            "name": "file 96.bin",
+            "size": 39,
+            "source_sha256": "ac4c6e916372b53e8f61915f03b56896f6fbde46a0ece1b0410a4ad69fc3ec1d",
+            "destination_sha256": "ac4c6e916372b53e8f61915f03b56896f6fbde46a0ece1b0410a4ad69fc3ec1d"
+          },
+          {
+            "name": "file 97.bin",
+            "size": 39,
+            "source_sha256": "c1d03d714251aec27282252adae3bf15c57196acffe0974e4042d3008457dbab",
+            "destination_sha256": "c1d03d714251aec27282252adae3bf15c57196acffe0974e4042d3008457dbab"
+          },
+          {
+            "name": "file 98.bin",
+            "size": 39,
+            "source_sha256": "5421ae003dbcb244dc308f255fcdac2e045b90be06ddb1cadd1395710f45fbc5",
+            "destination_sha256": "5421ae003dbcb244dc308f255fcdac2e045b90be06ddb1cadd1395710f45fbc5"
+          },
+          {
+            "name": "file 99.bin",
+            "size": 39,
+            "source_sha256": "6d922e5c6abf247df18d964b0b156bd72c43bb070fc58036096a628d5971754d",
+            "destination_sha256": "6d922e5c6abf247df18d964b0b156bd72c43bb070fc58036096a628d5971754d"
+          },
+          {
+            "name": "file 100.bin",
+            "size": 40,
+            "source_sha256": "46dfc332269d6df80187d0c8cd99eb8ded1f153f6362132394ff9d8b7221bfac",
+            "destination_sha256": "46dfc332269d6df80187d0c8cd99eb8ded1f153f6362132394ff9d8b7221bfac"
+          }
+        ],
+        "concurrency": "Single FlowDrop batch, streamed files serially as baseline; no simultaneous-upload feature claimed"
+      },
+      "elapsed_seconds": 0.5444602989999985,
+      "size": 3892,
+      "MB_per_second": 0.007148363263856656,
+      "Mbps": 0.057186906110853246,
+      "rate_method": "Full test interval including generation, source stage, relay, destination read/hash; not Wi-Fi throughput"
+    },
+    {
+      "test_id": "A-D4-bytes-0",
+      "sender": "Android Java engine on JVM",
+      "receiver": "Android Java engine on JVM",
+      "network": "loopback HTTP, isolated Linux job",
+      "source_commit": "ff75c81074ffce6c3bbed1083a04e46d390c3f58",
+      "artifact_sha256": null,
+      "expected": "Source/destination SHA-256 and exact size agree; security assertions remain enabled",
+      "status": "PASS",
+      "exit_code": 0,
+      "started_utc": "2026-11-16T11:24:49.131Z",
+      "evidence": "protocol-matrix.json",
+      "actual": {
+        "size": 0,
+        "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "destination_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "exact_name": "Tệp 中文 😀 0.bin",
+        "files": 1
+      },
+      "elapsed_seconds": 0.022239376999990783,
+      "size": 0,
+      "MB_per_second": 0,
+      "Mbps": 0,
+      "rate_method": "Full test interval including generation, source stage, relay, destination read/hash; not Wi-Fi throughput"
+    },
+    {
+      "test_id": "A-D4-bytes-1024",
+      "sender": "Android Java engine on JVM",
+      "receiver": "Android Java engine on JVM",
+      "network": "loopback HTTP, isolated Linux job",
+      "source_commit": "ff75c81074ffce6c3bbed1083a04e46d390c3f58",
+      "artifact_sha256": null,
+      "expected": "Source/destination SHA-256 and exact size agree; security assertions remain enabled",
+      "status": "PASS",
+      "exit_code": 0,
+      "started_utc": "2026-11-16T11:24:49.153Z",
+      "evidence": "protocol-matrix.json",
+      "actual": {
+        "size": 1024,
+        "source_sha256": "2bce1ba628720664be4b9fdd77aae0678e5f0f3f02fc6ff641ec879094f6a404",
+        "destination_sha256": "2bce1ba628720664be4b9fdd77aae0678e5f0f3f02fc6ff641ec879094f6a404",
+        "exact_name": "Tệp 中文 😀 1024.bin",
+        "files": 1
+      },
+      "elapsed_seconds": 0.014759344999998576,
+      "size": 1024,
+      "MB_per_second": 0.06937977261186719,
+      "Mbps": 0.5550381808949375,
+      "rate_method": "Full test interval including generation, source stage, relay, destination read/hash; not Wi-Fi throughput"
+    },
+    {
+      "test_id": "A-D4-bytes-1048576",
+      "sender": "Android Java engine on JVM",
+      "receiver": "Android Java engine on JVM",
+      "network": "loopback HTTP, isolated Linux job",
+      "source_commit": "ff75c81074ffce6c3bbed1083a04e46d390c3f58",
+      "artifact_sha256": null,
+      "expected": "Source/destination SHA-256 and exact size agree; security assertions remain enabled",
+      "status": "PASS",
+      "exit_code": 0,
+      "started_utc": "2026-11-16T11:24:49.168Z",
+      "evidence": "protocol-matrix.json",
+      "actual": {
+        "size": 1048576,
+        "source_sha256": "631b84027d6b9e52b539c4e8373622d23032dfadc64d60af87339c9037e4f769",
+        "destination_sha256": "631b84027d6b9e52b539c4e8373622d23032dfadc64d60af87339c9037e4f769",
+        "exact_name": "Tệp 中文 😀 1048576.bin",
+        "files": 1
+      },
+      "elapsed_seconds": 0.021248300999985075,
+      "size": 1048576,
+      "MB_per_second": 49.348698514800624,
+      "Mbps": 394.789588118405,
+      "rate_method": "Full test interval including generation, source stage, relay, destination read/hash; not Wi-Fi throughput"
+    },
+    {
+      "test_id": "A-D4-bytes-104857600",
+      "sender": "Android Java engine on JVM",
+      "receiver": "Android Java engine on JVM",
+      "network": "loopback HTTP, isolated Linux job",
+      "source_commit": "ff75c81074ffce6c3bbed1083a04e46d390c3f58",
+      "artifact_sha256": null,
+      "expected": "Source/destination SHA-256 and exact size agree; security assertions remain enabled",
+      "status": "PASS",
+      "exit_code": 0,
+      "started_utc": "2026-11-16T11:24:49.189Z",
+      "evidence": "protocol-matrix.json",
+      "actual": {
+        "size": 104857600,
+        "source_sha256": "998fa39fe735dc4be63f55bf6ec3db8b64fe3d8fcd3fe759d1b88d27992c0b75",
+        "destination_sha256": "998fa39fe735dc4be63f55bf6ec3db8b64fe3d8fcd3fe759d1b88d27992c0b75",
+        "exact_name": "Tệp 中文 😀 104857600.bin",
+        "files": 1
+      },
+      "elapsed_seconds": 0.4348266739999817,
+      "size": 104857600,
+      "MB_per_second": 241.14803959796728,
+      "Mbps": 1929.1843167837383,
+      "rate_method": "Full test interval including generation, source stage, relay, destination read/hash; not Wi-Fi throughput"
+    },
+    {
+      "test_id": "A-D4-bytes-1073741824",
+      "sender": "Android Java engine on JVM",
+      "receiver": "Android Java engine on JVM",
+      "network": "loopback HTTP, isolated Linux job",
+      "source_commit": "ff75c81074ffce6c3bbed1083a04e46d390c3f58",
+      "artifact_sha256": null,
+      "expected": "Source/destination SHA-256 and exact size agree; security assertions remain enabled",
+      "status": "PASS",
+      "exit_code": 0,
+      "started_utc": "2026-11-16T11:24:49.624Z",
+      "evidence": "protocol-matrix.json",
+      "actual": {
+        "size": 1073741824,
+        "source_sha256": "e18e3f358b46eae9266ac36a5ff6347f6bf09711dff389597f237d5fe83111d8",
+        "destination_sha256": "e18e3f358b46eae9266ac36a5ff6347f6bf09711dff389597f237d5fe83111d8",
+        "exact_name": "Tệp 中文 😀 1073741824.bin",
+        "files": 1
+      },
+      "elapsed_seconds": 4.163619347999978,
+      "size": 1073741824,
+      "MB_per_second": 257.8866448288024,
+      "Mbps": 2063.093158630419,
+      "rate_method": "Full test interval including generation, source stage, relay, destination read/hash; not Wi-Fi throughput"
+    },
+    {
+      "test_id": "A-D4-bytes-4294967313",
+      "sender": "Android Java engine on JVM",
+      "receiver": "Android Java engine on JVM",
+      "network": "loopback HTTP, isolated Linux job",
+      "source_commit": "ff75c81074ffce6c3bbed1083a04e46d390c3f58",
+      "artifact_sha256": null,
+      "expected": "Source/destination SHA-256 and exact size agree; security assertions remain enabled",
+      "status": "PASS",
+      "exit_code": 0,
+      "started_utc": "2026-11-16T11:24:53.787Z",
+      "evidence": "protocol-matrix.json",
+      "actual": {
+        "size": 4294967313,
+        "source_sha256": "9bf2e05c25222af695af1537ef0d8d2241a85ddadf3819797b83c856efeff824",
+        "destination_sha256": "9bf2e05c25222af695af1537ef0d8d2241a85ddadf3819797b83c856efeff824",
+        "exact_name": "Tệp 中文 😀 4294967313.bin",
+        "files": 1
+      },
+      "elapsed_seconds": 36.884679626,
+      "size": 4294967313,
+      "MB_per_second": 116.44312371829518,
+      "Mbps": 931.5449897463615,
+      "rate_method": "Full test interval including generation, source stage, relay, destination read/hash; not Wi-Fi throughput"
+    },
+    {
+      "test_id": "A-D4-batch-101",
+      "sender": "Android Java engine on JVM",
+      "receiver": "Android Java engine on JVM",
+      "network": "loopback HTTP, isolated Linux job",
+      "source_commit": "ff75c81074ffce6c3bbed1083a04e46d390c3f58",
+      "artifact_sha256": null,
+      "expected": "Source/destination SHA-256 and exact size agree; security assertions remain enabled",
+      "status": "PASS",
+      "exit_code": 0,
+      "started_utc": "2026-11-16T11:25:30.672Z",
+      "evidence": "protocol-matrix.json",
+      "actual": {
+        "files": 101,
+        "size": 3892,
+        "hashes": [
+          {
+            "name": "Rỗng.bin",
+            "size": 0,
+            "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "destination_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          {
+            "name": "Tiếng Việt 中文 😀 có khoảng trắng.txt",
+            "size": 38,
+            "source_sha256": "531cb29f4f7ca54e568b473e661f794555db3f38cae3b2b06a3761563b85b512",
+            "destination_sha256": "531cb29f4f7ca54e568b473e661f794555db3f38cae3b2b06a3761563b85b512"
+          },
+          {
+            "name": "Tên dài aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.txt",
+            "size": 38,
+            "source_sha256": "0e809058ce1b0b0da191ac2ce26a824bfb47e6fa3c8dff26d7071899f8599d3b",
+            "destination_sha256": "0e809058ce1b0b0da191ac2ce26a824bfb47e6fa3c8dff26d7071899f8599d3b"
+          },
+          {
+            "name": "file 3.bin",
+            "size": 38,
+            "source_sha256": "5f3506c15a06e64911900e99701ab647fb3d3930060975899fdd207c3589cee2",
+            "destination_sha256": "5f3506c15a06e64911900e99701ab647fb3d3930060975899fdd207c3589cee2"
+          },
+          {
+            "name": "file 4.bin",
+            "size": 38,
+            "source_sha256": "5e322da111f71f37e34984496338c9678743f2dbb1ab57c56712106dd1ce5b5e",
+            "destination_sha256": "5e322da111f71f37e34984496338c9678743f2dbb1ab57c56712106dd1ce5b5e"
+          },
+          {
+            "name": "file 5.bin",
+            "size": 38,
+            "source_sha256": "11a6aa817feb9f182ce9f182fe64bbb3407e8f27227f84cd97964c83cf30f791",
+            "destination_sha256": "11a6aa817feb9f182ce9f182fe64bbb3407e8f27227f84cd97964c83cf30f791"
+          },
+          {
+            "name": "file 6.bin",
+            "size": 38,
+            "source_sha256": "e4cbbd4b002e8dbeae5c17a01dcbdcc27d66e9b7097a95c5d15cadbac8c59fd3",
+            "destination_sha256": "e4cbbd4b002e8dbeae5c17a01dcbdcc27d66e9b7097a95c5d15cadbac8c59fd3"
+          },
+          {
+            "name": "file 7.bin",
+            "size": 38,
+            "source_sha256": "13a2c28e5c5f22f891b1477856241be048db6c3c2f4b6234d9f66e9dce6a79d3",
+            "destination_sha256": "13a2c28e5c5f22f891b1477856241be048db6c3c2f4b6234d9f66e9dce6a79d3"
+          },
+          {
+            "name": "file 8.bin",
+            "size": 38,
+            "source_sha256": "bb0b60b257562c39088b4bb35dfe9d03dab828280cea98e9a417d687908b8636",
+            "destination_sha256": "bb0b60b257562c39088b4bb35dfe9d03dab828280cea98e9a417d687908b8636"
+          },
+          {
+            "name": "file 9.bin",
+            "size": 38,
+            "source_sha256": "989da1a6c1b8c979b0d7935fb92c29c3ca126e8fc882f4d0085d60bce47a9027",
+            "destination_sha256": "989da1a6c1b8c979b0d7935fb92c29c3ca126e8fc882f4d0085d60bce47a9027"
+          },
+          {
+            "name": "file 10.bin",
+            "size": 39,
+            "source_sha256": "eecb9f7a8d93a489200b19049da3347f75fb84a655eb739bef0f49ad8c781eed",
+            "destination_sha256": "eecb9f7a8d93a489200b19049da3347f75fb84a655eb739bef0f49ad8c781eed"
+          },
+          {
+            "name": "file 11.bin",
+            "size": 39,
+            "source_sha256": "ddda5fe069fa38d440f88996e9a0aaed44f8cde2211678bbde9f910a19427425",
+            "destination_sha256": "ddda5fe069fa38d440f88996e9a0aaed44f8cde2211678bbde9f910a19427425"
+          },
+          {
+            "name": "file 12.bin",
+            "size": 39,
+            "source_sha256": "00d6b6e484f84edade05c46e619ec3d2a52b20eb8a7f439d4c35abd4d0399e1d",
+            "destination_sha256": "00d6b6e484f84edade05c46e619ec3d2a52b20eb8a7f439d4c35abd4d0399e1d"
+          },
+          {
+            "name": "file 13.bin",
+            "size": 39,
+            "source_sha256": "5d5525ff367a9c8127a8b9e0ba7bacaf0092a372eafb816708b55b111f8c6bbd",
+            "destination_sha256": "5d5525ff367a9c8127a8b9e0ba7bacaf0092a372eafb816708b55b111f8c6bbd"
+          },
+          {
+            "name": "file 14.bin",
+            "size": 39,
+            "source_sha256": "fb3dcae06bef2b9974793222b7c526c258a8fc049e6aa009375c60770982721c",
+            "destination_sha256": "fb3dcae06bef2b9974793222b7c526c258a8fc049e6aa009375c60770982721c"
+          },
+          {
+            "name": "file 15.bin",
+            "size": 39,
+            "source_sha256": "bc1401e594372395abb95b808b93f858d1596b2751225ec114d47f2426cff107",
+            "destination_sha256": "bc1401e594372395abb95b808b93f858d1596b2751225ec114d47f2426cff107"
+          },
+          {
+            "name": "file 16.bin",
+            "size": 39,
+            "source_sha256": "b58b4874c53ec6d4e9576c5cdb33d1ff6f3ce8b7efb728be41f569e9d9c18fbf",
+            "destination_sha256": "b58b4874c53ec6d4e9576c5cdb33d1ff6f3ce8b7efb728be41f569e9d9c18fbf"
+          },
+          {
+            "name": "file 17.bin",
+            "size": 39,
+            "source_sha256": "db4cb8bd01eaf42869dc082e1fad948d5ca2c5c1ee7b65957695b959fc927c17",
+            "destination_sha256": "db4cb8bd01eaf42869dc082e1fad948d5ca2c5c1ee7b65957695b959fc927c17"
+          },
+          {
+            "name": "file 18.bin",
+            "size": 39,
+            "source_sha256": "97ac84243754c479e4807f94a42ec7ee1fd8832a156e8601e3a8e08fd76b66fd",
+            "destination_sha256": "97ac84243754c479e4807f94a42ec7ee1fd8832a156e8601e3a8e08fd76b66fd"
+          },
+          {
+            "name": "file 19.bin",
+            "size": 39,
+            "source_sha256": "7738e7757bfd39f3f54cc663603ecc68349c846fa31d0ac3a7cff19af7f41671",
+            "destination_sha256": "7738e7757bfd39f3f54cc663603ecc68349c846fa31d0ac3a7cff19af7f41671"
+          },
+          {
+            "name": "file 20.bin",
+            "size": 39,
+            "source_sha256": "d02ece6ae0e1c295a472fd77d5591ae5b436a8cdb31454a26c8366d0fd60c49f",
+            "destination_sha256": "d02ece6ae0e1c295a472fd77d5591ae5b436a8cdb31454a26c8366d0fd60c49f"
+          },
+          {
+            "name": "file 21.bin",
+            "size": 39,
+            "source_sha256": "829d4def2cf3a14fe5fe5ff44b20992b79437ec216ee7da1286d394f442b4410",
+            "destination_sha256": "829d4def2cf3a14fe5fe5ff44b20992b79437ec216ee7da1286d394f442b4410"
+          },
+          {
+            "name": "file 22.bin",
+            "size": 39,
+            "source_sha256": "31a96810c57ba21f248d0222e47a5fde80c9302a5104d7c0c9eedee0f48d7809",
+            "destination_sha256": "31a96810c57ba21f248d0222e47a5fde80c9302a5104d7c0c9eedee0f48d7809"
+          },
+          {
+            "name": "file 23.bin",
+            "size": 39,
+            "source_sha256": "f5f8040c4882093dcf691338b8ba04049aed9d28c8c4dcb2370009cbcb9f06a4",
+            "destination_sha256": "f5f8040c4882093dcf691338b8ba04049aed9d28c8c4dcb2370009cbcb9f06a4"
+          },
+          {
+            "name": "file 24.bin",
+            "size": 39,
+            "source_sha256": "f86c03cd3907418a624a08a2290752405e7e899c988742a56ea2f633503928da",
+            "destination_sha256": "f86c03cd3907418a624a08a2290752405e7e899c988742a56ea2f633503928da"
+          },
+          {
+            "name": "file 25.bin",
+            "size": 39,
+            "source_sha256": "6c5182437f07ffacdaaff5821bc735f13547f5669ff4d28f17631e9b2e150d8d",
+            "destination_sha256": "6c5182437f07ffacdaaff5821bc735f13547f5669ff4d28f17631e9b2e150d8d"
+          },
+          {
+            "name": "file 26.bin",
+            "size": 39,
+            "source_sha256": "d5409edec06b17dd104841d419862c4f5664e6444781050fdd52e95d18da2078",
+            "destination_sha256": "d5409edec06b17dd104841d419862c4f5664e6444781050fdd52e95d18da2078"
+          },
+          {
+            "name": "file 27.bin",
+            "size": 39,
+            "source_sha256": "3a619599718ef6fbbfd87a800437362ee1a0bf45d0fd9ce4b1fe2b178b8ac55a",
+            "destination_sha256": "3a619599718ef6fbbfd87a800437362ee1a0bf45d0fd9ce4b1fe2b178b8ac55a"
+          },
+          {
+            "name": "file 28.bin",
+            "size": 39,
+            "source_sha256": "b50dca11185a07a9da862d99ca16cb52ef03ee9d9da0a161410731da4d3318a9",
+            "destination_sha256": "b50dca11185a07a9da862d99ca16cb52ef03ee9d9da0a161410731da4d3318a9"
+          },
+          {
+            "name": "file 29.bin",
+            "size": 39,
+            "source_sha256": "f5e037bdb5ad27d9d0c35f3228b3c5a48784a89e79879c3729108ee0e5b812cd",
+            "destination_sha256": "f5e037bdb5ad27d9d0c35f3228b3c5a48784a89e79879c3729108ee0e5b812cd"
+          },
+          {
+            "name": "file 30.bin",
+            "size": 39,
+            "source_sha256": "04dc650461422650d9e06419161a6c68605fad2b68bb2e647622de0c3c21d1b1",
+            "destination_sha256": "04dc650461422650d9e06419161a6c68605fad2b68bb2e647622de0c3c21d1b1"
+          },
+          {
+            "name": "file 31.bin",
+            "size": 39,
+            "source_sha256": "82c6801782b8a32c66becf6cabe512ebfbe7660ccd2eeb0b42336703289e48cc",
+            "destination_sha256": "82c6801782b8a32c66becf6cabe512ebfbe7660ccd2eeb0b42336703289e48cc"
+          },
+          {
+            "name": "file 32.bin",
+            "size": 39,
+            "source_sha256": "ce3a04c8eff7066137426d0f24321dd5206ac6159045ac3ffcd800b86eb1e225",
+            "destination_sha256": "ce3a04c8eff7066137426d0f24321dd5206ac6159045ac3ffcd800b86eb1e225"
+          },
+          {
+            "name": "file 33.bin",
+            "size": 39,
+            "source_sha256": "56f2bb209dcbeef40c897e0585201dc93161e910f67c406a4956ddd9412c8c86",
+            "destination_sha256": "56f2bb209dcbeef40c897e0585201dc93161e910f67c406a4956ddd9412c8c86"
+          },
+          {
+            "name": "file 34.bin",
+            "size": 39,
+            "source_sha256": "bcdbfa8b31dd92afefa16d7dfef559a4583769124c5e9f0af40ab9f3f5e0603d",
+            "destination_sha256": "bcdbfa8b31dd92afefa16d7dfef559a4583769124c5e9f0af40ab9f3f5e0603d"
+          },
+          {
+            "name": "file 35.bin",
+            "size": 39,
+            "source_sha256": "ad224d05c3906d1c70fe0f5a95e8327d4f7890266f08fbb8b455d7cfb90acb90",
+            "destination_sha256": "ad224d05c3906d1c70fe0f5a95e8327d4f7890266f08fbb8b455d7cfb90acb90"
+          },
+          {
+            "name": "file 36.bin",
+            "size": 39,
+            "source_sha256": "5f66bd2757cbe6528a7e3dceecc28363b8cb558ba951427f0f75b3ab873829db",
+            "destination_sha256": "5f66bd2757cbe6528a7e3dceecc28363b8cb558ba951427f0f75b3ab873829db"
+          },
+          {
+            "name": "file 37.bin",
+            "size": 39,
+            "source_sha256": "c6f3173664eb2d3b280f3d716927493ffbb013f814b052c517e1894fe36f6936",
+            "destination_sha256": "c6f3173664eb2d3b280f3d716927493ffbb013f814b052c517e1894fe36f6936"
+          },
+          {
+            "name": "file 38.bin",
+            "size": 39,
+            "source_sha256": "633183074af5c5ccac1f49fda945048af6312e973784d3c14ec162b71b2db899",
+            "destination_sha256": "633183074af5c5ccac1f49fda945048af6312e973784d3c14ec162b71b2db899"
+          },
+          {
+            "name": "file 39.bin",
+            "size": 39,
+            "source_sha256": "b506f2758ce2584a561ee35e5557859fde7166ad4051a2f274c814735ee8044d",
+            "destination_sha256": "b506f2758ce2584a561ee35e5557859fde7166ad4051a2f274c814735ee8044d"
+          },
+          {
+            "name": "file 40.bin",
+            "size": 39,
+            "source_sha256": "3cac9e9e01e231874462a61e09e3e7eedc41d15a6227010a50fd1459a187dfec",
+            "destination_sha256": "3cac9e9e01e231874462a61e09e3e7eedc41d15a6227010a50fd1459a187dfec"
+          },
+          {
+            "name": "file 41.bin",
+            "size": 39,
+            "source_sha256": "411a5dba1780c5fe5eb0f5c385bf0016b62f3c4bb25909905fcda9477e609616",
+            "destination_sha256": "411a5dba1780c5fe5eb0f5c385bf0016b62f3c4bb25909905fcda9477e609616"
+          },
+          {
+            "name": "file 42.bin",
+            "size": 39,
+            "source_sha256": "9995bb003b236a84dce8fc0abd503a0f17f9d5f5b6dafda560d3d6906d70e41e",
+            "destination_sha256": "9995bb003b236a84dce8fc0abd503a0f17f9d5f5b6dafda560d3d6906d70e41e"
+          },
+          {
+            "name": "file 43.bin",
+            "size": 39,
+            "source_sha256": "07f48268b22576465b7037d5b6198250fb35089162d5d9811325e773749f8ad0",
+            "destination_sha256": "07f48268b22576465b7037d5b6198250fb35089162d5d9811325e773749f8ad0"
+          },
+          {
+            "name": "file 44.bin",
+            "size": 39,
+            "source_sha256": "962b21446bff71cc4123cce30b5ad8dfd05b8c7d90d4c58a7b399397663da96d",
+            "destination_sha256": "962b21446bff71cc4123cce30b5ad8dfd05b8c7d90d4c58a7b399397663da96d"
+          },
+          {
+            "name": "file 45.bin",
+            "size": 39,
+            "source_sha256": "773e716e7e8933a196cb5fe6db231223e31ed162ed6bcfd2748b8b764b404f21",
+            "destination_sha256": "773e716e7e8933a196cb5fe6db231223e31ed162ed6bcfd2748b8b764b404f21"
+          },
+          {
+            "name": "file 46.bin",
+            "size": 39,
+            "source_sha256": "6ba3c36f42887d2534c4059b0787619e61d9a4342e58e38e041f052c8bd9add1",
+            "destination_sha256": "6ba3c36f42887d2534c4059b0787619e61d9a4342e58e38e041f052c8bd9add1"
+          },
+          {
+            "name": "file 47.bin",
+            "size": 39,
+            "source_sha256": "8438919f18ea234b1580baa34d22926fe629e57b9a97b8ef969795ce06ce8182",
+            "destination_sha256": "8438919f18ea234b1580baa34d22926fe629e57b9a97b8ef969795ce06ce8182"
+          },
+          {
+            "name": "file 48.bin",
+            "size": 39,
+            "source_sha256": "4488921ac8e6c8d317df8e4401cccba457a924e9592baf0df5e3fff66e264af7",
+            "destination_sha256": "4488921ac8e6c8d317df8e4401cccba457a924e9592baf0df5e3fff66e264af7"
+          },
+          {
+            "name": "file 49.bin",
+            "size": 39,
+            "source_sha256": "c1a57c1d54b938a9596b9b4ed06d562e422b3469b60a2c2d46ff4e6a43179f9e",
+            "destination_sha256": "c1a57c1d54b938a9596b9b4ed06d562e422b3469b60a2c2d46ff4e6a43179f9e"
+          },
+          {
+            "name": "file 50.bin",
+            "size": 39,
+            "source_sha256": "618a72d5fbc66f8123b9334eaf9149a53330fc8c733e7b3e4e0445860dbde7de",
+            "destination_sha256": "618a72d5fbc66f8123b9334eaf9149a53330fc8c733e7b3e4e0445860dbde7de"
+          },
+          {
+            "name": "file 51.bin",
+            "size": 39,
+            "source_sha256": "8cd8d1e2797be1501e9a6634278cdb583978a81ed993acb316f6c764841e5047",
+            "destination_sha256": "8cd8d1e2797be1501e9a6634278cdb583978a81ed993acb316f6c764841e5047"
+          },
+          {
+            "name": "file 52.bin",
+            "size": 39,
+            "source_sha256": "e359360c7ebc6ecd862cfe8ad100e84b07cc8e862c4e493ba7bfd73f3a450bb0",
+            "destination_sha256": "e359360c7ebc6ecd862cfe8ad100e84b07cc8e862c4e493ba7bfd73f3a450bb0"
+          },
+          {
+            "name": "file 53.bin",
+            "size": 39,
+            "source_sha256": "582686ca645d7d99682173aadf44391310d289fab49e7e9ad767717cce5719f2",
+            "destination_sha256": "582686ca645d7d99682173aadf44391310d289fab49e7e9ad767717cce5719f2"
+          },
+          {
+            "name": "file 54.bin",
+            "size": 39,
+            "source_sha256": "e7dee19e7b187504e5df3a94447dff741a3449059d96d989732c8f4dfe65661c",
+            "destination_sha256": "e7dee19e7b187504e5df3a94447dff741a3449059d96d989732c8f4dfe65661c"
+          },
+          {
+            "name": "file 55.bin",
+            "size": 39,
+            "source_sha256": "6436f9955e98fac31dda3e017735f72452bc4f580506188509eb4fe23915c248",
+            "destination_sha256": "6436f9955e98fac31dda3e017735f72452bc4f580506188509eb4fe23915c248"
+          },
+          {
+            "name": "file 56.bin",
+            "size": 39,
+            "source_sha256": "60b1f90fc553f8f8ead0cd158cae8c54c25e0a425bfb910ea3f255857e3dd5e2",
+            "destination_sha256": "60b1f90fc553f8f8ead0cd158cae8c54c25e0a425bfb910ea3f255857e3dd5e2"
+          },
+          {
+            "name": "file 57.bin",
+            "size": 39,
+            "source_sha256": "ea9209b2e2f5b886c6e047d2a299144eb423369f6d9ea74bb16fa04ae3ac9747",
+            "destination_sha256": "ea9209b2e2f5b886c6e047d2a299144eb423369f6d9ea74bb16fa04ae3ac9747"
+          },
+          {
+            "name": "file 58.bin",
+            "size": 39,
+            "source_sha256": "164e9a65fd34734e02b44223c3f5e1e9fd7ea9fd91223df88ceda524976cc640",
+            "destination_sha256": "164e9a65fd34734e02b44223c3f5e1e9fd7ea9fd91223df88ceda524976cc640"
+          },
+          {
+            "name": "file 59.bin",
+            "size": 39,
+            "source_sha256": "b369e3cb6a4909b77d23879aad40eb5d00d11621c06716111e85ad310d0f55a2",
+            "destination_sha256": "b369e3cb6a4909b77d23879aad40eb5d00d11621c06716111e85ad310d0f55a2"
+          },
+          {
+            "name": "file 60.bin",
+            "size": 39,
+            "source_sha256": "b71d97dd1466f162b3467e832e1567317b29df7dd99da7a2a93d060d19bd2cd6",
+            "destination_sha256": "b71d97dd1466f162b3467e832e1567317b29df7dd99da7a2a93d060d19bd2cd6"
+          },
+          {
+            "name": "file 61.bin",
+            "size": 39,
+            "source_sha256": "3b520f528a7147179b728339f364820ac46c4fadb834b0d05c97184c72864b22",
+            "destination_sha256": "3b520f528a7147179b728339f364820ac46c4fadb834b0d05c97184c72864b22"
+          },
+          {
+            "name": "file 62.bin",
+            "size": 39,
+            "source_sha256": "ae29472dd3807f8c79b71e0966c383266eb8082565f828ded99966c970557b41",
+            "destination_sha256": "ae29472dd3807f8c79b71e0966c383266eb8082565f828ded99966c970557b41"
+          },
+          {
+            "name": "file 63.bin",
+            "size": 39,
+            "source_sha256": "8644eb48d1465fb3e876020220e290a3505f35b806152b02c422a69e4aeee183",
+            "destination_sha256": "8644eb48d1465fb3e876020220e290a3505f35b806152b02c422a69e4aeee183"
+          },
+          {
+            "name": "file 64.bin",
+            "size": 39,
+            "source_sha256": "35d88d97bb772010cc8ba4f9823d7637460947cbd76763f796188c1c0f749d7f",
+            "destination_sha256": "35d88d97bb772010cc8ba4f9823d7637460947cbd76763f796188c1c0f749d7f"
+          },
+          {
+            "name": "file 65.bin",
+            "size": 39,
+            "source_sha256": "7a129d981de314bcf2b9c8c6d15e639799cf27b3be1aee86667647db4db03465",
+            "destination_sha256": "7a129d981de314bcf2b9c8c6d15e639799cf27b3be1aee86667647db4db03465"
+          },
+          {
+            "name": "file 66.bin",
+            "size": 39,
+            "source_sha256": "ebc753fe81691834ea16f68b00d82c0e16ee608f1ccc99539f0994d89b7d0855",
+            "destination_sha256": "ebc753fe81691834ea16f68b00d82c0e16ee608f1ccc99539f0994d89b7d0855"
+          },
+          {
+            "name": "file 67.bin",
+            "size": 39,
+            "source_sha256": "d1ae001f9ab3a8ada2ce9d85bb1ccfcdc5ea03fad307132b910871586c323bce",
+            "destination_sha256": "d1ae001f9ab3a8ada2ce9d85bb1ccfcdc5ea03fad307132b910871586c323bce"
+          },
+          {
+            "name": "file 68.bin",
+            "size": 39,
+            "source_sha256": "69351c6162e1fd2a721e556c5a2d1afaa166849243834b8528ff15118687f3b7",
+            "destination_sha256": "69351c6162e1fd2a721e556c5a2d1afaa166849243834b8528ff15118687f3b7"
+          },
+          {
+            "name": "file 69.bin",
+            "size": 39,
+            "source_sha256": "da2ac5c82fd71dbe48a3a0d7fa83b229e26f78f7145e6d0dd8a9c055556202f9",
+            "destination_sha256": "da2ac5c82fd71dbe48a3a0d7fa83b229e26f78f7145e6d0dd8a9c055556202f9"
+          },
+          {
+            "name": "file 70.bin",
+            "size": 39,
+            "source_sha256": "630c76fe2757add20d91d14f7cf7c11740e99477ffd28ba9021320b0eaf7c107",
+            "destination_sha256": "630c76fe2757add20d91d14f7cf7c11740e99477ffd28ba9021320b0eaf7c107"
+          },
+          {
+            "name": "file 71.bin",
+            "size": 39,
+            "source_sha256": "7e1a85d2acac2d83b6e1b0cb262d108becbcee88feb75647ff445cd3ed487ed8",
+            "destination_sha256": "7e1a85d2acac2d83b6e1b0cb262d108becbcee88feb75647ff445cd3ed487ed8"
+          },
+          {
+            "name": "file 72.bin",
+            "size": 39,
+            "source_sha256": "e37a936c20f1079ffd6ce7e12e552a81106e0f707da5f6a2ef0a2c41b782b0e0",
+            "destination_sha256": "e37a936c20f1079ffd6ce7e12e552a81106e0f707da5f6a2ef0a2c41b782b0e0"
+          },
+          {
+            "name": "file 73.bin",
+            "size": 39,
+            "source_sha256": "663989065512b59e9622f94259bcb22865049ee2df59fd4624eb1910f3905194",
+            "destination_sha256": "663989065512b59e9622f94259bcb22865049ee2df59fd4624eb1910f3905194"
+          },
+          {
+            "name": "file 74.bin",
+            "size": 39,
+            "source_sha256": "8b5e25904fefa82475ff7ff841138601a48cc837245b5e06158f3c9600776797",
+            "destination_sha256": "8b5e25904fefa82475ff7ff841138601a48cc837245b5e06158f3c9600776797"
+          },
+          {
+            "name": "file 75.bin",
+            "size": 39,
+            "source_sha256": "cbb7e1ae207069953a389c7d91eda14fbe131aab18222c7faab9ed317e5022e4",
+            "destination_sha256": "cbb7e1ae207069953a389c7d91eda14fbe131aab18222c7faab9ed317e5022e4"
+          },
+          {
+            "name": "file 76.bin",
+            "size": 39,
+            "source_sha256": "a1c0d3bb4310450f59f3e251e079a63d21e723c72615b0da22cc6e4d9c06fbc8",
+            "destination_sha256": "a1c0d3bb4310450f59f3e251e079a63d21e723c72615b0da22cc6e4d9c06fbc8"
+          },
+          {
+            "name": "file 77.bin",
+            "size": 39,
+            "source_sha256": "c9e234e64eb3af627c1cbe7a5b7f7cd7191b075964b90fef982b371f1e78fcf5",
+            "destination_sha256": "c9e234e64eb3af627c1cbe7a5b7f7cd7191b075964b90fef982b371f1e78fcf5"
+          },
+          {
+            "name": "file 78.bin",
+            "size": 39,
+            "source_sha256": "801ec99f4730f82c27753143efbe4dfb4ac8964f50b5cdfcd1796a600479efbd",
+            "destination_sha256": "801ec99f4730f82c27753143efbe4dfb4ac8964f50b5cdfcd1796a600479efbd"
+          },
+          {
+            "name": "file 79.bin",
+            "size": 39,
+            "source_sha256": "65b73d6609ba23847fed348eca5c8060ab7aebb6875540868e926d504d0bdba7",
+            "destination_sha256": "65b73d6609ba23847fed348eca5c8060ab7aebb6875540868e926d504d0bdba7"
+          },
+          {
+            "name": "file 80.bin",
+            "size": 39,
+            "source_sha256": "b867fccfd118ea748cf250685107d548c1291f87b33c6480643a439ecfd35d0c",
+            "destination_sha256": "b867fccfd118ea748cf250685107d548c1291f87b33c6480643a439ecfd35d0c"
+          },
+          {
+            "name": "file 81.bin",
+            "size": 39,
+            "source_sha256": "63259357c46e03d4db98b7bc877dc1304d948d52d8a7865efc33569485108954",
+            "destination_sha256": "63259357c46e03d4db98b7bc877dc1304d948d52d8a7865efc33569485108954"
+          },
+          {
+            "name": "file 82.bin",
+            "size": 39,
+            "source_sha256": "347f93bb7febd937d0b83b374e6cafcd8aaca9e6b8493f52f2129a00e1d5da41",
+            "destination_sha256": "347f93bb7febd937d0b83b374e6cafcd8aaca9e6b8493f52f2129a00e1d5da41"
+          },
+          {
+            "name": "file 83.bin",
+            "size": 39,
+            "source_sha256": "ed72e44a0e41f949aea4b6a81975e6fd0925581e8738a3a991a39e132d583369",
+            "destination_sha256": "ed72e44a0e41f949aea4b6a81975e6fd0925581e8738a3a991a39e132d583369"
+          },
+          {
+            "name": "file 84.bin",
+            "size": 39,
+            "source_sha256": "2b4bac531086e2213f56611aae65a3047ae8c782b59f19d0249f6e454a5d3957",
+            "destination_sha256": "2b4bac531086e2213f56611aae65a3047ae8c782b59f19d0249f6e454a5d3957"
+          },
+          {
+            "name": "file 85.bin",
+            "size": 39,
+            "source_sha256": "a69e9bc9232369c5b4445d8074ec1a653880ddae39d7b466ed69c872854aef50",
+            "destination_sha256": "a69e9bc9232369c5b4445d8074ec1a653880ddae39d7b466ed69c872854aef50"
+          },
+          {
+            "name": "file 86.bin",
+            "size": 39,
+            "source_sha256": "5e62a9352beaebb885c12d3e8dc84c7834fdc5e8e4baa55b3000546380c7daac",
+            "destination_sha256": "5e62a9352beaebb885c12d3e8dc84c7834fdc5e8e4baa55b3000546380c7daac"
+          },
+          {
+            "name": "file 87.bin",
+            "size": 39,
+            "source_sha256": "f882cd64134d13a83b45aa98e55b0607bb86ebc9dd933a93835a122ad6c64d19",
+            "destination_sha256": "f882cd64134d13a83b45aa98e55b0607bb86ebc9dd933a93835a122ad6c64d19"
+          },
+          {
+            "name": "file 88.bin",
+            "size": 39,
+            "source_sha256": "96b66aad0eafd5f1cb568f6cb9d8d435935c0b2d9e8d0cc401717ea85e7de3aa",
+            "destination_sha256": "96b66aad0eafd5f1cb568f6cb9d8d435935c0b2d9e8d0cc401717ea85e7de3aa"
+          },
+          {
+            "name": "file 89.bin",
+            "size": 39,
+            "source_sha256": "c449b244a2f9cb9039f3703e0e85ed2a3b0d892bdc87f607baf46cddece42760",
+            "destination_sha256": "c449b244a2f9cb9039f3703e0e85ed2a3b0d892bdc87f607baf46cddece42760"
+          },
+          {
+            "name": "file 90.bin",
+            "size": 39,
+            "source_sha256": "6343a050f35eebead82371181487ad8047e58c8a0fde1127e4d96ff2bc63dcde",
+            "destination_sha256": "6343a050f35eebead82371181487ad8047e58c8a0fde1127e4d96ff2bc63dcde"
+          },
+          {
+            "name": "file 91.bin",
+            "size": 39,
+            "source_sha256": "d3ce49e1bb8647fb6a0e2ec005cae01f426a515b4649f2077a5a730f66264490",
+            "destination_sha256": "d3ce49e1bb8647fb6a0e2ec005cae01f426a515b4649f2077a5a730f66264490"
+          },
+          {
+            "name": "file 92.bin",
+            "size": 39,
+            "source_sha256": "bcce7494857ee4805b16bcd460f8c8212906c42acd5a4b5a4e3cd367cec2c698",
+            "destination_sha256": "bcce7494857ee4805b16bcd460f8c8212906c42acd5a4b5a4e3cd367cec2c698"
+          },
+          {
+            "name": "file 93.bin",
+            "size": 39,
+            "source_sha256": "13159dc3d422ca10f2d11588ba5bf819804a73ccc1a1ed76a155f0098670246b",
+            "destination_sha256": "13159dc3d422ca10f2d11588ba5bf819804a73ccc1a1ed76a155f0098670246b"
+          },
+          {
+            "name": "file 94.bin",
+            "size": 39,
+            "source_sha256": "c1eb31fb15b02ca24564ce390f0dbf4419be01c1953012ce71813ce58f652cbc",
+            "destination_sha256": "c1eb31fb15b02ca24564ce390f0dbf4419be01c1953012ce71813ce58f652cbc"
+          },
+          {
+            "name": "file 95.bin",
+            "size": 39,
+            "source_sha256": "4a7d8f64b1ceef05d7bf6b033d89636fe73ff406e3258de77e48c46ce6fd3df5",
+            "destination_sha256": "4a7d8f64b1ceef05d7bf6b033d89636fe73ff406e3258de77e48c46ce6fd3df5"
+          },
+          {
+            "name": "file 96.bin",
+            "size": 39,
+            "source_sha256": "ac4c6e916372b53e8f61915f03b56896f6fbde46a0ece1b0410a4ad69fc3ec1d",
+            "destination_sha256": "ac4c6e916372b53e8f61915f03b56896f6fbde46a0ece1b0410a4ad69fc3ec1d"
+          },
+          {
+            "name": "file 97.bin",
+            "size": 39,
+            "source_sha256": "c1d03d714251aec27282252adae3bf15c57196acffe0974e4042d3008457dbab",
+            "destination_sha256": "c1d03d714251aec27282252adae3bf15c57196acffe0974e4042d3008457dbab"
+          },
+          {
+            "name": "file 98.bin",
+            "size": 39,
+            "source_sha256": "5421ae003dbcb244dc308f255fcdac2e045b90be06ddb1cadd1395710f45fbc5",
+            "destination_sha256": "5421ae003dbcb244dc308f255fcdac2e045b90be06ddb1cadd1395710f45fbc5"
+          },
+          {
+            "name": "file 99.bin",
+            "size": 39,
+            "source_sha256": "6d922e5c6abf247df18d964b0b156bd72c43bb070fc58036096a628d5971754d",
+            "destination_sha256": "6d922e5c6abf247df18d964b0b156bd72c43bb070fc58036096a628d5971754d"
+          },
+          {
+            "name": "file 100.bin",
+            "size": 40,
+            "source_sha256": "46dfc332269d6df80187d0c8cd99eb8ded1f153f6362132394ff9d8b7221bfac",
+            "destination_sha256": "46dfc332269d6df80187d0c8cd99eb8ded1f153f6362132394ff9d8b7221bfac"
+          }
+        ],
+        "concurrency": "Single FlowDrop batch, streamed files serially as baseline; no simultaneous-upload feature claimed"
+      },
+      "elapsed_seconds": 0.47933432500000345,
+      "size": 3892,
+      "MB_per_second": 0.008119593772050378,
+      "Mbps": 0.06495675017640302,
+      "rate_method": "Full test interval including generation, source stage, relay, destination read/hash; not Wi-Fi throughput"
+    },
+    {
+      "test_id": "A-SEC-0",
+      "sender": "Windows Node engine on Linux",
+      "receiver": "Windows Node engine on Linux",
+      "network": "loopback HTTP, isolated Linux job",
+      "source_commit": "ff75c81074ffce6c3bbed1083a04e46d390c3f58",
+      "artifact_sha256": null,
+      "expected": "Source/destination SHA-256 and exact size agree; security assertions remain enabled",
+      "status": "PASS",
+      "exit_code": 0,
+      "started_utc": "2026-11-16T11:25:31.151Z",
+      "evidence": "protocol-matrix.json",
+      "actual": {
+        "missing_capability": 403,
+        "incorrect_capability": 403,
+        "wrong_kind": 403,
+        "foreign_origin": 403,
+        "invalid_metadata": 400
+      },
+      "elapsed_seconds": 0.004609444999980041
+    },
+    {
+      "test_id": "A-DISCONNECT-0-25",
+      "sender": "Windows Node engine on Linux",
+      "receiver": "Windows Node engine on Linux",
+      "network": "loopback HTTP, isolated Linux job",
+      "source_commit": "ff75c81074ffce6c3bbed1083a04e46d390c3f58",
+      "artifact_sha256": null,
+      "expected": "Source/destination SHA-256 and exact size agree; security assertions remain enabled",
+      "status": "PASS",
+      "exit_code": 0,
+      "started_utc": "2026-11-16T11:25:31.156Z",
+      "evidence": "protocol-matrix.json",
+      "actual": {
+        "declared_size": 8388608,
+        "bytes_written_to_socket": 2097152,
+        "interruption_percent": 25,
+        "metadata_status": 409,
+        "complete_status": 409,
+        "file_status": 409,
+        "no_false_completion": true
+      },
+      "elapsed_seconds": 0.019302194000018064
+    },
+    {
+      "test_id": "A-DISCONNECT-0-50",
+      "sender": "Windows Node engine on Linux",
+      "receiver": "Windows Node engine on Linux",
+      "network": "loopback HTTP, isolated Linux job",
+      "source_commit": "ff75c81074ffce6c3bbed1083a04e46d390c3f58",
+      "artifact_sha256": null,
+      "expected": "Source/destination SHA-256 and exact size agree; security assertions remain enabled",
+      "status": "PASS",
+      "exit_code": 0,
+      "started_utc": "2026-11-16T11:25:31.175Z",
+      "evidence": "protocol-matrix.json",
+      "actual": {
+        "declared_size": 8388608,
+        "bytes_written_to_socket": 4194304,
+        "interruption_percent": 50,
+        "metadata_status": 409,
+        "complete_status": 409,
+        "file_status": 409,
+        "no_false_completion": true
+      },
+      "elapsed_seconds": 0.014236621000018204
+    },
+    {
+      "test_id": "A-DISCONNECT-0-75",
+      "sender": "Windows Node engine on Linux",
+      "receiver": "Windows Node engine on Linux",
+      "network": "loopback HTTP, isolated Linux job",
+      "source_commit": "ff75c81074ffce6c3bbed1083a04e46d390c3f58",
+      "artifact_sha256": null,
+      "expected": "Source/destination SHA-256 and exact size agree; security assertions remain enabled",
+      "status": "PASS",
+      "exit_code": 0,
+      "started_utc": "2026-11-16T11:25:31.190Z",
+      "evidence": "protocol-matrix.json",
+      "actual": {
+        "declared_size": 8388608,
+        "bytes_written_to_socket": 6291456,
+        "interruption_percent": 75,
+        "metadata_status": 409,
+        "complete_status": 409,
+        "file_status": 409,
+        "no_false_completion": true
+      },
+      "elapsed_seconds": 0.02183739900001092
+    },
+    {
+      "test_id": "A-SEC-1",
+      "sender": "Android Java engine on JVM",
+      "receiver": "Android Java engine on JVM",
+      "network": "loopback HTTP, isolated Linux job",
+      "source_commit": "ff75c81074ffce6c3bbed1083a04e46d390c3f58",
+      "artifact_sha256": null,
+      "expected": "Source/destination SHA-256 and exact size agree; security assertions remain enabled",
+      "status": "PASS",
+      "exit_code": 0,
+      "started_utc": "2026-11-16T11:25:31.212Z",
+      "evidence": "protocol-matrix.json",
+      "actual": {
+        "missing_capability": 403,
+        "incorrect_capability": 403,
+        "wrong_kind": 403,
+        "foreign_origin": 403,
+        "invalid_metadata": 400
+      },
+      "elapsed_seconds": 0.003553933000017423
+    },
+    {
+      "test_id": "A-DISCONNECT-1-25",
+      "sender": "Android Java engine on JVM",
+      "receiver": "Android Java engine on JVM",
+      "network": "loopback HTTP, isolated Linux job",
+      "source_commit": "ff75c81074ffce6c3bbed1083a04e46d390c3f58",
+      "artifact_sha256": null,
+      "expected": "Source/destination SHA-256 and exact size agree; security assertions remain enabled",
+      "status": "PASS",
+      "exit_code": 0,
+      "started_utc": "2026-11-16T11:25:31.215Z",
+      "evidence": "protocol-matrix.json",
+      "actual": {
+        "declared_size": 8388608,
+        "bytes_written_to_socket": 2097152,
+        "interruption_percent": 25,
+        "metadata_status": 409,
+        "complete_status": 409,
+        "file_status": 409,
+        "no_false_completion": true
+      },
+      "elapsed_seconds": 0.007516314999986207
+    },
+    {
+      "test_id": "A-DISCONNECT-1-50",
+      "sender": "Android Java engine on JVM",
+      "receiver": "Android Java engine on JVM",
+      "network": "loopback HTTP, isolated Linux job",
+      "source_commit": "ff75c81074ffce6c3bbed1083a04e46d390c3f58",
+      "artifact_sha256": null,
+      "expected": "Source/destination SHA-256 and exact size agree; security assertions remain enabled",
+      "status": "PASS",
+      "exit_code": 0,
+      "started_utc": "2026-11-16T11:25:31.223Z",
+      "evidence": "protocol-matrix.json",
+      "actual": {
+        "declared_size": 8388608,
+        "bytes_written_to_socket": 4194304,
+        "interruption_percent": 50,
+        "metadata_status": 409,
+        "complete_status": 409,
+        "file_status": 409,
+        "no_false_completion": true
+      },
+      "elapsed_seconds": 0.007905212999990908
+    },
+    {
+      "test_id": "A-DISCONNECT-1-75",
+      "sender": "Android Java engine on JVM",
+      "receiver": "Android Java engine on JVM",
+      "network": "loopback HTTP, isolated Linux job",
+      "source_commit": "ff75c81074ffce6c3bbed1083a04e46d390c3f58",
+      "artifact_sha256": null,
+      "expected": "Source/destination SHA-256 and exact size agree; security assertions remain enabled",
+      "status": "PASS",
+      "exit_code": 0,
+      "started_utc": "2026-11-16T11:25:31.231Z",
+      "evidence": "protocol-matrix.json",
+      "actual": {
+        "declared_size": 8388608,
+        "bytes_written_to_socket": 6291456,
+        "interruption_percent": 75,
+        "metadata_status": 409,
+        "complete_status": 409,
+        "file_status": 409,
+        "no_false_completion": true
+      },
+      "elapsed_seconds": 0.008170097000023815
+    }
+  ],
+  "status": "PASS",
+  "peak_rss_bytes": {
+    "Windows Node engine on Linux 0": 166207488,
+    "Android Java engine on JVM 1": 142913536,
+    "Windows Node engine on Linux 2": 157110272,
+    "Android Java engine on JVM 3": 148279296
+  },
+  "exit_code": 0
+}

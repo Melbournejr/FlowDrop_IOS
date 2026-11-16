@@ -1,0 +1,78 @@
+{
+  "status": "PASS",
+  "exit_code": 0,
+  "platform": "2d2-toolkit",
+  "tests": [
+    {
+      "test_id": "TOOLKIT-UNIT",
+      "platform": "2d2-toolkit",
+      "os_api": "Windows-2025Server-10.0.26100-SP0",
+      "source_commit": "4d64bcd4910fd310aa8a5b24608e1d1e1cb3b2d1",
+      "checkout_commit": "5901659403086e79901300c94cb5987076f049ac",
+      "artifact_sha256": {},
+      "preconditions": "Owned isolated environment and verified artifact",
+      "command_or_method": "TOOLKIT-UNIT",
+      "expected": "All original CI unit tests and new safety/honesty tests execute on this OS",
+      "actual": {
+        "os": "Windows-2025Server-10.0.26100-SP0",
+        "test_pattern": "test_physical_lan.py",
+        "scope": "Tool safety/unit only; not physical LAN"
+      },
+      "exit_code": 0,
+      "time_started_utc": "2026-11-16T11:28:26Z",
+      "wall_seconds": 10.954,
+      "evidence_path": "logs/test-matrix.json",
+      "required": true,
+      "status": "PASS"
+    },
+    {
+      "test_id": "TOOLKIT-CLI",
+      "platform": "2d2-toolkit",
+      "os_api": "Windows-2025Server-10.0.26100-SP0",
+      "source_commit": "4d64bcd4910fd310aa8a5b24608e1d1e1cb3b2d1",
+      "checkout_commit": "5901659403086e79901300c94cb5987076f049ac",
+      "artifact_sha256": {},
+      "preconditions": "Owned isolated environment and verified artifact",
+      "command_or_method": "TOOLKIT-CLI",
+      "expected": "Portable CLI runs prepare/hash/start/stop/compare/report and verifies exact synthetic file bytes",
+      "actual": {
+        "files": 110,
+        "cli_integrity": "PASS",
+        "overall_physical_status": "NOT VERIFIED",
+        "transport": "Test-only filesystem copy"
+      },
+      "exit_code": 0,
+      "time_started_utc": "2026-11-16T11:28:37Z",
+      "wall_seconds": 9.469,
+      "evidence_path": "logs/test-matrix.json",
+      "required": true,
+      "status": "PASS"
+    },
+    {
+      "test_id": "TOOLKIT-BUNDLE",
+      "platform": "2d2-toolkit",
+      "os_api": "Windows-2025Server-10.0.26100-SP0",
+      "source_commit": "4d64bcd4910fd310aa8a5b24608e1d1e1cb3b2d1",
+      "checkout_commit": "5901659403086e79901300c94cb5987076f049ac",
+      "artifact_sha256": {},
+      "preconditions": "Owned isolated environment and verified artifact",
+      "command_or_method": "TOOLKIT-BUNDLE",
+      "expected": "Only source scripts/docs enter the downloadable toolkit, with SHA-256/provenance",
+      "actual": {
+        "manifest": "toolkit/toolkit-manifest.json"
+      },
+      "exit_code": 0,
+      "time_started_utc": "2026-11-16T11:28:47Z",
+      "wall_seconds": 0.625,
+      "evidence_path": "logs/test-matrix.json",
+      "required": true,
+      "status": "PASS"
+    }
+  ],
+  "production_signing": "NOT VERIFIED",
+  "physical_devices": "NOT VERIFIED",
+  "cross_platform_lan": "NOT VERIFIED",
+  "layer": "A: protocol/toolkit validation",
+  "native_cross_platform_e2e": "BLOCKED",
+  "physical_lan": "NOT VERIFIED"
+}

@@ -1,0 +1,921 @@
+{
+  "phase": "2D.2",
+  "scope": "2D.2-A automated verification and owner toolkit; NOT complete Phase 2D.2",
+  "base": "f9b5a43c5eae93b169717a72d19f5a426d913094",
+  "source_commit": "c057f6dbbbd4d9da4e9fe4da63e173204691aefc",
+  "checkout_commit": "fa74266e3658332681214fb04f02ee758d6a5d63",
+  "status": "PASS",
+  "native_cross_platform": "BLOCKED",
+  "physical_lan": "NOT VERIFIED",
+  "phase_2D2_B": "NOT VERIFIED",
+  "production_certificate_pin_unchanged": "65cbed4feb375d2c3c2eb94e668bd7aaee7ce5b24f436887873a6fa11719f97f",
+  "production_signing": "NOT VERIFIED; no production secrets used",
+  "runs": {
+    "cross_platform": 43859327396,
+    "native_runtime": 43859327498,
+    "native_build": 43859327383,
+    "native_regression": 43859327444
+  },
+  "owner_toolkit": {
+    "source": {
+      "base": "f9b5a43c5eae93b169717a72d19f5a426d913094",
+      "protected_files": 790,
+      "checkout": "fa74266e3658332681214fb04f02ee758d6a5d63",
+      "reviewed_head": "c057f6dbbbd4d9da4e9fe4da63e173204691aefc",
+      "tracked_worktree_dirty": false
+    },
+    "purpose": "Verification tools only, no application installer",
+    "files": [
+      {
+        "name": "flowdrop_lan.py",
+        "size": 24909,
+        "sha256": "3078134b1fb83914322fa400efb38a288a8e92635f6eb794c56ebbdb764f228d"
+      },
+      {
+        "name": "Run-FlowDrop-LAN.ps1",
+        "size": 3226,
+        "sha256": "0cdad2fac102701670a05e6fecce258779ecb0d4516ace27384068ed6cd28b4a"
+      },
+      {
+        "name": "Collect-FlowDrop-Network.ps1",
+        "size": 2581,
+        "sha256": "3e82086a2c28bb95f8500ce46edc9d8dad0a6027f8dbe795270e29db7408a883"
+      },
+      {
+        "name": "PHYSICAL-LAN-TEST-GUIDE.md",
+        "size": 15888,
+        "sha256": "124789341760ca764a3ca11f637fa4d46110c7c24c09a79796f4b1c564e328a6"
+      },
+      {
+        "name": "CHECKLIST.md",
+        "size": 3671,
+        "sha256": "44cef579279cc64eea895ee267b9e33f98f33205b0d65834c3817bac465ab546"
+      }
+    ],
+    "archive": {
+      "name": "FlowDrop-Physical-LAN-Toolkit-2D2.zip",
+      "size": 19416,
+      "sha256": "f21af8b33f9f7f214886cf7965a31dbca71b105e7d75f0e4bbe8f4b9a17b4d66"
+    },
+    "github_artifact_id": 14221648361
+  },
+  "github_archives": [
+    {
+      "id": 14222133041,
+      "name": "FlowDrop-2D2-Tools-Evidence-ubuntu-24.04-43859327396-1",
+      "size_in_bytes": 29373,
+      "url": "https://api.github.com/repos/Melbournejr/FlowDrop_IOS/actions/artifacts/14222133041",
+      "archive_download_url": "https://api.github.com/repos/Melbournejr/FlowDrop_IOS/actions/artifacts/14222133041/zip",
+      "expired": false,
+      "created_at": "2026-11-16T11:37:28Z",
+      "expires_at": "2026-11-23T11:37:27Z",
+      "updated_at": "2026-11-16T11:37:28Z",
+      "digest": "sha256:efca7cca835079d8e85bab8486baf3e49db8d5f7ac8d67328ca7220a9921848d",
+      "workflow_run": {
+        "id": 43859327396,
+        "repository_id": 1431935346,
+        "head_repository_id": 1431935346,
+        "head_branch": "test/cross-platform-e2e-2d2",
+        "head_sha": "c057f6dbbbd4d9da4e9fe4da63e173204691aefc"
+      }
+    },
+    {
+      "id": 14221748137,
+      "name": "FlowDrop-2D2-Tools-Evidence-windows-2025-43859327396-1",
+      "size_in_bytes": 28091,
+      "url": "https://api.github.com/repos/Melbournejr/FlowDrop_IOS/actions/artifacts/14221748137",
+      "archive_download_url": "https://api.github.com/repos/Melbournejr/FlowDrop_IOS/actions/artifacts/14221748137/zip",
+      "expired": false,
+      "created_at": "2026-11-16T11:37:44Z",
+      "expires_at": "2026-11-23T11:37:43Z",
+      "updated_at": "2026-11-16T11:37:44Z",
+      "digest": "sha256:7a8b45ba6ced3d816240e9daf87ab4e891d7fe91bc51885ca70822662d2384ad",
+      "workflow_run": {
+        "id": 43859327396,
+        "repository_id": 1431935346,
+        "head_repository_id": 1431935346,
+        "head_branch": "test/cross-platform-e2e-2d2",
+        "head_sha": "c057f6dbbbd4d9da4e9fe4da63e173204691aefc"
+      }
+    },
+    {
+      "id": 14221738475,
+      "name": "FlowDrop-2D2-Protocol-43859327396-1",
+      "size_in_bytes": 28037,
+      "url": "https://api.github.com/repos/Melbournejr/FlowDrop_IOS/actions/artifacts/14221738475",
+      "archive_download_url": "https://api.github.com/repos/Melbournejr/FlowDrop_IOS/actions/artifacts/14221738475/zip",
+      "expired": false,
+      "created_at": "2026-11-16T11:40:07Z",
+      "expires_at": "2026-11-23T11:40:06Z",
+      "updated_at": "2026-11-16T11:40:07Z",
+      "digest": "sha256:1501a9d3fb2df14189d1958eceb0ded4afac064bb4e7f1cedede843317f37342",
+      "workflow_run": {
+        "id": 43859327396,
+        "repository_id": 1431935346,
+        "head_repository_id": 1431935346,
+        "head_branch": "test/cross-platform-e2e-2d2",
+        "head_sha": "c057f6dbbbd4d9da4e9fe4da63e173204691aefc"
+      }
+    },
+    {
+      "id": 14221648361,
+      "name": "FlowDrop-2D2-Owner-Toolkit-43859327396-1",
+      "size_in_bytes": 20497,
+      "url": "https://api.github.com/repos/Melbournejr/FlowDrop_IOS/actions/artifacts/14221648361",
+      "archive_download_url": "https://api.github.com/repos/Melbournejr/FlowDrop_IOS/actions/artifacts/14221648361/zip",
+      "expired": false,
+      "created_at": "2026-11-16T11:37:45Z",
+      "expires_at": "2026-11-23T11:37:44Z",
+      "updated_at": "2026-11-16T11:37:45Z",
+      "digest": "sha256:d411940f6914132fcc12c7d0d5c7f230cb93783c6df108b4bf2d8835e131f85c",
+      "workflow_run": {
+        "id": 43859327396,
+        "repository_id": 1431935346,
+        "head_repository_id": 1431935346,
+        "head_branch": "test/cross-platform-e2e-2d2",
+        "head_sha": "c057f6dbbbd4d9da4e9fe4da63e173204691aefc"
+      }
+    },
+    {
+      "id": 14223000975,
+      "name": "FlowDrop-Native-stream-43859327444-1",
+      "size_in_bytes": 2489,
+      "url": "https://api.github.com/repos/Melbournejr/FlowDrop_IOS/actions/artifacts/14223000975",
+      "archive_download_url": "https://api.github.com/repos/Melbournejr/FlowDrop_IOS/actions/artifacts/14223000975/zip",
+      "expired": false,
+      "created_at": "2026-11-16T11:38:16Z",
+      "expires_at": "2026-11-23T11:38:16Z",
+      "updated_at": "2026-11-16T11:38:16Z",
+      "digest": "sha256:f746ef01cab03a931947f49700bc22489dd769b23756e68464299a2f0024772b",
+      "workflow_run": {
+        "id": 43859327444,
+        "repository_id": 1431935346,
+        "head_repository_id": 1431935346,
+        "head_branch": "test/cross-platform-e2e-2d2",
+        "head_sha": "c057f6dbbbd4d9da4e9fe4da63e173204691aefc"
+      }
+    },
+    {
+      "id": 14222727408,
+      "name": "FlowDrop-Native-zip64-43859327444-1",
+      "size_in_bytes": 3527,
+      "url": "https://api.github.com/repos/Melbournejr/FlowDrop_IOS/actions/artifacts/14222727408",
+      "archive_download_url": "https://api.github.com/repos/Melbournejr/FlowDrop_IOS/actions/artifacts/14222727408/zip",
+      "expired": false,
+      "created_at": "2026-11-16T11:39:11Z",
+      "expires_at": "2026-11-23T11:39:11Z",
+      "updated_at": "2026-11-16T11:39:11Z",
+      "digest": "sha256:0548cd4998a9728549f62e278295d2703d077ddea3a3ba0266163d63e907abf0",
+      "workflow_run": {
+        "id": 43859327444,
+        "repository_id": 1431935346,
+        "head_repository_id": 1431935346,
+        "head_branch": "test/cross-platform-e2e-2d2",
+        "head_sha": "c057f6dbbbd4d9da4e9fe4da63e173204691aefc"
+      }
+    },
+    {
+      "id": 14222652503,
+      "name": "FlowDrop-Native-integration-43859327444-1",
+      "size_in_bytes": 4702,
+      "url": "https://api.github.com/repos/Melbournejr/FlowDrop_IOS/actions/artifacts/14222652503",
+      "archive_download_url": "https://api.github.com/repos/Melbournejr/FlowDrop_IOS/actions/artifacts/14222652503/zip",
+      "expired": false,
+      "created_at": "2026-11-16T11:38:47Z",
+      "expires_at": "2026-11-23T11:38:47Z",
+      "updated_at": "2026-11-16T11:38:47Z",
+      "digest": "sha256:bc2ee3b3cdcd881e3242cafa69c0b64c722adba04e01dd07d6dd28f37836b759",
+      "workflow_run": {
+        "id": 43859327444,
+        "repository_id": 1431935346,
+        "head_repository_id": 1431935346,
+        "head_branch": "test/cross-platform-e2e-2d2",
+        "head_sha": "c057f6dbbbd4d9da4e9fe4da63e173204691aefc"
+      }
+    },
+    {
+      "id": 14222162961,
+      "name": "FlowDrop-Native-fast-43859327444-1",
+      "size_in_bytes": 7063,
+      "url": "https://api.github.com/repos/Melbournejr/FlowDrop_IOS/actions/artifacts/14222162961",
+      "archive_download_url": "https://api.github.com/repos/Melbournejr/FlowDrop_IOS/actions/artifacts/14222162961/zip",
+      "expired": false,
+      "created_at": "2026-11-16T11:37:40Z",
+      "expires_at": "2026-11-23T11:37:39Z",
+      "updated_at": "2026-11-16T11:37:40Z",
+      "digest": "sha256:807708a3982fd69a0f7c695c812c8fec8c85067cdbee4b0840ed059ba2ce7a44",
+      "workflow_run": {
+        "id": 43859327444,
+        "repository_id": 1431935346,
+        "head_repository_id": 1431935346,
+        "head_branch": "test/cross-platform-e2e-2d2",
+        "head_sha": "c057f6dbbbd4d9da4e9fe4da63e173204691aefc"
+      }
+    },
+    {
+      "id": 14221713333,
+      "name": "FlowDrop-2C2-Independent-Verification-43859327383-1",
+      "size_in_bytes": 25731,
+      "url": "https://api.github.com/repos/Melbournejr/FlowDrop_IOS/actions/artifacts/14221713333",
+      "archive_download_url": "https://api.github.com/repos/Melbournejr/FlowDrop_IOS/actions/artifacts/14221713333/zip",
+      "expired": false,
+      "created_at": "2026-11-16T11:39:28Z",
+      "expires_at": "2026-11-23T11:39:27Z",
+      "updated_at": "2026-11-16T11:39:28Z",
+      "digest": "sha256:31011af3d31178dc7eb6a39e0bffcbc90671c865eed458855f098d90e6e2876f",
+      "workflow_run": {
+        "id": 43859327383,
+        "repository_id": 1431935346,
+        "head_repository_id": 1431935346,
+        "head_branch": "test/cross-platform-e2e-2d2",
+        "head_sha": "c057f6dbbbd4d9da4e9fe4da63e173204691aefc"
+      }
+    },
+    {
+      "id": 14223395768,
+      "name": "FlowDrop-2D1-Runtime-windows-43859327498-1",
+      "size_in_bytes": 16161,
+      "url": "https://api.github.com/repos/Melbournejr/FlowDrop_IOS/actions/artifacts/14223395768",
+      "archive_download_url": "https://api.github.com/repos/Melbournejr/FlowDrop_IOS/actions/artifacts/14223395768/zip",
+      "expired": false,
+      "created_at": "2026-11-16T11:39:54Z",
+      "expires_at": "2026-11-23T11:39:53Z",
+      "updated_at": "2026-11-16T11:39:54Z",
+      "digest": "sha256:a0daaf81e7cc144e83391ef41a7243222ea96bc72cb32a92e3f20b33b5460add",
+      "workflow_run": {
+        "id": 43859327498,
+        "repository_id": 1431935346,
+        "head_repository_id": 1431935346,
+        "head_branch": "test/cross-platform-e2e-2d2",
+        "head_sha": "c057f6dbbbd4d9da4e9fe4da63e173204691aefc"
+      }
+    },
+    {
+      "id": 14222867405,
+      "name": "FlowDrop-2D1-Runtime-29-43859327498-1",
+      "size_in_bytes": 221290,
+      "url": "https://api.github.com/repos/Melbournejr/FlowDrop_IOS/actions/artifacts/14222867405",
+      "archive_download_url": "https://api.github.com/repos/Melbournejr/FlowDrop_IOS/actions/artifacts/14222867405/zip",
+      "expired": false,
+      "created_at": "2026-11-16T11:40:06Z",
+      "expires_at": "2026-11-23T11:40:06Z",
+      "updated_at": "2026-11-16T11:40:06Z",
+      "digest": "sha256:18886f11c8c12655a1b4138d3f777ce868b7447592fee59379c60e67e4f4d9c8",
+      "workflow_run": {
+        "id": 43859327498,
+        "repository_id": 1431935346,
+        "head_repository_id": 1431935346,
+        "head_branch": "test/cross-platform-e2e-2d2",
+        "head_sha": "c057f6dbbbd4d9da4e9fe4da63e173204691aefc"
+      }
+    },
+    {
+      "id": 14223361027,
+      "name": "FlowDrop-2D1-Runtime-35-43859327498-1",
+      "size_in_bytes": 335463,
+      "url": "https://api.github.com/repos/Melbournejr/FlowDrop_IOS/actions/artifacts/14223361027",
+      "archive_download_url": "https://api.github.com/repos/Melbournejr/FlowDrop_IOS/actions/artifacts/14223361027/zip",
+      "expired": false,
+      "created_at": "2026-11-16T11:40:55Z",
+      "expires_at": "2026-11-23T11:40:54Z",
+      "updated_at": "2026-11-16T11:40:55Z",
+      "digest": "sha256:b069e1b020e30f8e0eb5881647bfa8f87249bebab49503d9f905db72d9405312",
+      "workflow_run": {
+        "id": 43859327498,
+        "repository_id": 1431935346,
+        "head_repository_id": 1431935346,
+        "head_branch": "test/cross-platform-e2e-2d2",
+        "head_sha": "c057f6dbbbd4d9da4e9fe4da63e173204691aefc"
+      }
+    }
+  ],
+  "imported_evidence": [
+    {
+      "artifact_id": 14221738475,
+      "source_path": "results.json",
+      "source_sha256": "eb079c270dedbd9dd62c353f671c1c9bba34b3ac0a81adda969e5d520df4b8e7",
+      "git_path": "docs/testing/cross-platform-2d2-logs/verified-c057f6d/protocol/results.json",
+      "git_sha256": "eb079c270dedbd9dd62c353f671c1c9bba34b3ac0a81adda969e5d520df4b8e7",
+      "size": 2144
+    },
+    {
+      "artifact_id": 14221738475,
+      "source_path": "test-matrix.json",
+      "source_sha256": "4ebdeeec38ef450b2696e0292f19f67bd41641f8dcae203244ba60bd7b88bb38",
+      "git_path": "docs/testing/cross-platform-2d2-logs/verified-c057f6d/protocol/test-matrix.json",
+      "git_sha256": "4ebdeeec38ef450b2696e0292f19f67bd41641f8dcae203244ba60bd7b88bb38",
+      "size": 2149
+    },
+    {
+      "artifact_id": 14221738475,
+      "source_path": "commands.json",
+      "source_sha256": "42783bc889105b88a177fd831adf4aca3d302d1b9912c739161b76b7fbcc35bf",
+      "git_path": "docs/testing/cross-platform-2d2-logs/verified-c057f6d/protocol/commands.json",
+      "git_sha256": "42783bc889105b88a177fd831adf4aca3d302d1b9912c739161b76b7fbcc35bf",
+      "size": 820
+    },
+    {
+      "artifact_id": 14221738475,
+      "source_path": "protocol-matrix.json",
+      "source_sha256": "ba8f6d42d6a56ca11ababa6d73d7a4319c077cc825bb5f3dbd69d579af1b8269",
+      "git_path": "docs/testing/cross-platform-2d2-logs/verified-c057f6d/protocol/protocol-matrix.json",
+      "git_sha256": "cb083940e346ac5462e43e1b3fcb54151baa8398bb764716dcfba0a4dd219a3b",
+      "size": 153347
+    },
+    {
+      "artifact_id": 14221738475,
+      "source_path": "protocol-command.log",
+      "source_sha256": "df01b2c3fa8962e09a404d4031d7f004763a70d93ad9fb6fa56e86d619e5a1cf",
+      "git_path": "docs/testing/cross-platform-2d2-logs/verified-c057f6d/protocol/protocol-command.log",
+      "git_sha256": "df01b2c3fa8962e09a404d4031d7f004763a70d93ad9fb6fa56e86d619e5a1cf",
+      "size": 122
+    },
+    {
+      "artifact_id": 14221738475,
+      "source_path": "http-helper-unit.log",
+      "source_sha256": "cb53825f2cdcfaf4d4e376bd75461f90a4c0054d075cfcec13f3b4adb93b2491",
+      "git_path": "docs/testing/cross-platform-2d2-logs/verified-c057f6d/protocol/http-helper-unit.log",
+      "git_sha256": "cb53825f2cdcfaf4d4e376bd75461f90a4c0054d075cfcec13f3b4adb93b2491",
+      "size": 564
+    },
+    {
+      "artifact_id": 14221748137,
+      "source_path": "results.json",
+      "source_sha256": "562020d1d69987aefc81628794d9324e15ef9fd1ff0564fe680d262fa6f5693c",
+      "git_path": "docs/testing/cross-platform-2d2-logs/verified-c057f6d/tools-windows/results.json",
+      "git_sha256": "8bd5459ce854fc9a40af6ef1cab16f9e8cbbb1211726b9eb25164fd9eaee336c",
+      "size": 2924
+    },
+    {
+      "artifact_id": 14221748137,
+      "source_path": "test-matrix.json",
+      "source_sha256": "0de24266d020b99fa48581998accc252abf823bc4e0fb55f09e9a48421c1dd25",
+      "git_path": "docs/testing/cross-platform-2d2-logs/verified-c057f6d/tools-windows/test-matrix.json",
+      "git_sha256": "7d48c1fc9f285c31778a60b3426a2dc8bef755ebde53a263b84bc59ece8444d4",
+      "size": 2929
+    },
+    {
+      "artifact_id": 14221748137,
+      "source_path": "commands.json",
+      "source_sha256": "126e623e5a203d8e65f24196d57c191f42f54e8dcc7221f4d82252016d5aca3d",
+      "git_path": "docs/testing/cross-platform-2d2-logs/verified-c057f6d/tools-windows/commands.json",
+      "git_sha256": "47a1d6958a2c6b349089bbda7f3de664755fb6c476235b4b42c15d11adb6be4b",
+      "size": 4983
+    },
+    {
+      "artifact_id": 14221748137,
+      "source_path": "toolkit-unit.log",
+      "source_sha256": "3ea9c950f0990002304b80db862d5a728dc00bbdb085d24fff4e3ae448bc5860",
+      "git_path": "docs/testing/cross-platform-2d2-logs/verified-c057f6d/tools-windows/toolkit-unit.log",
+      "git_sha256": "726382f9d99b16855f58911b29b8c6649506942abefb5a47313d427d96ed1df1",
+      "size": 3233
+    },
+    {
+      "artifact_id": 14221748137,
+      "source_path": "powershell-wrapper-prepare.log",
+      "source_sha256": "205074b68518042bc640cc3abcee861fbcb18ff89ca46106253b2150ab9fdc9b",
+      "git_path": "docs/testing/cross-platform-2d2-logs/verified-c057f6d/tools-windows/powershell-wrapper-prepare.log",
+      "git_sha256": "5047eb3f3a7e30bf4196cd7d807d05517430610f2b832fa44b59cc1fe737a7a4",
+      "size": 18857
+    },
+    {
+      "artifact_id": 14221748137,
+      "source_path": "powershell-readonly-network.log",
+      "source_sha256": "129916814043f9c7ddfda20996c2735006fff1953f6eea7919fcd4d403291177",
+      "git_path": "docs/testing/cross-platform-2d2-logs/verified-c057f6d/tools-windows/powershell-readonly-network.log",
+      "git_sha256": "840953e3def2d1482ccbd55095243ef7df9840f01576cea216ae2a72ff47b3d1",
+      "size": 104
+    },
+    {
+      "artifact_id": 14222133041,
+      "source_path": "results.json",
+      "source_sha256": "147df25455230a9fb7eaaf8464c0ff528fb639a8779763a9e9420932086a3ac8",
+      "git_path": "docs/testing/cross-platform-2d2-logs/verified-c057f6d/tools-linux/results.json",
+      "git_sha256": "147df25455230a9fb7eaaf8464c0ff528fb639a8779763a9e9420932086a3ac8",
+      "size": 2948
+    },
+    {
+      "artifact_id": 14222133041,
+      "source_path": "test-matrix.json",
+      "source_sha256": "d56ade826e843cb079a0decde5f4c0185cc993e7069403eca4f1261e4c289252",
+      "git_path": "docs/testing/cross-platform-2d2-logs/verified-c057f6d/tools-linux/test-matrix.json",
+      "git_sha256": "d56ade826e843cb079a0decde5f4c0185cc993e7069403eca4f1261e4c289252",
+      "size": 2953
+    },
+    {
+      "artifact_id": 14222133041,
+      "source_path": "commands.json",
+      "source_sha256": "b10a913d8ea9b6da9f4f572109a7e7b86786d3f832736cf16f7dfea4a7899466",
+      "git_path": "docs/testing/cross-platform-2d2-logs/verified-c057f6d/tools-linux/commands.json",
+      "git_sha256": "b10a913d8ea9b6da9f4f572109a7e7b86786d3f832736cf16f7dfea4a7899466",
+      "size": 4444
+    },
+    {
+      "artifact_id": 14222133041,
+      "source_path": "toolkit-unit.log",
+      "source_sha256": "df527cc77fc24209f816c73af8325c8a5efbe44b84b31359c22c2c268ef70421",
+      "git_path": "docs/testing/cross-platform-2d2-logs/verified-c057f6d/tools-linux/toolkit-unit.log",
+      "git_sha256": "df527cc77fc24209f816c73af8325c8a5efbe44b84b31359c22c2c268ef70421",
+      "size": 14141
+    },
+    {
+      "artifact_id": 14221648361,
+      "source_path": "toolkit-manifest.json",
+      "source_sha256": "4fea01e2bad07277826532a96025121b75cc5676406edccbe18efd45be2b7b66",
+      "git_path": "docs/testing/cross-platform-2d2-logs/verified-c057f6d/owner-toolkit/toolkit-manifest.json",
+      "git_sha256": "3e5bf4687f91d0a12f433ebb1d7ecfaa0f026b371db4f1331fba808fb56ca6a6",
+      "size": 1296
+    },
+    {
+      "artifact_id": 14223395768,
+      "source_path": "results.json",
+      "source_sha256": "db8fd8d3c6631052a500ec0a95e043052a8f7f6192239fb9d6333ead95a27efd",
+      "git_path": "docs/testing/cross-platform-2d2-logs/verified-c057f6d/windows-runtime/results.json",
+      "git_sha256": "db8fd8d3c6631052a500ec0a95e043052a8f7f6192239fb9d6333ead95a27efd",
+      "size": 24919
+    },
+    {
+      "artifact_id": 14223395768,
+      "source_path": "test-matrix.json",
+      "source_sha256": "67504271da09f53db285729a3ad65ed83dc1daf8c4dbc00ccd6baa03c4d12fb9",
+      "git_path": "docs/testing/cross-platform-2d2-logs/verified-c057f6d/windows-runtime/test-matrix.json",
+      "git_sha256": "67504271da09f53db285729a3ad65ed83dc1daf8c4dbc00ccd6baa03c4d12fb9",
+      "size": 25095
+    },
+    {
+      "artifact_id": 14223395768,
+      "source_path": "commands.json",
+      "source_sha256": "9fc43d1c2e29cd713a8715b1544c34be3196ecba11f712edd2aaa235a83d7c06",
+      "git_path": "docs/testing/cross-platform-2d2-logs/verified-c057f6d/windows-runtime/commands.json",
+      "git_sha256": "9fc43d1c2e29cd713a8715b1544c34be3196ecba11f712edd2aaa235a83d7c06",
+      "size": 7927
+    },
+    {
+      "artifact_id": 14222867405,
+      "source_path": "results.json",
+      "source_sha256": "85bc4f4c4ee952545f9d2cfaf460e5d292fc9b1b32580c470fba148e9a607dfb",
+      "git_path": "docs/testing/cross-platform-2d2-logs/verified-c057f6d/android29-runtime/results.json",
+      "git_sha256": "85bc4f4c4ee952545f9d2cfaf460e5d292fc9b1b32580c470fba148e9a607dfb",
+      "size": 24844
+    },
+    {
+      "artifact_id": 14222867405,
+      "source_path": "test-matrix.json",
+      "source_sha256": "8078fe507f0360c190004ed9d5f22eecdf59d41a95bf8cc73bb1e9f12f5071b4",
+      "git_path": "docs/testing/cross-platform-2d2-logs/verified-c057f6d/android29-runtime/test-matrix.json",
+      "git_sha256": "8078fe507f0360c190004ed9d5f22eecdf59d41a95bf8cc73bb1e9f12f5071b4",
+      "size": 25105
+    },
+    {
+      "artifact_id": 14222867405,
+      "source_path": "commands.json",
+      "source_sha256": "8328e1eeef10f22b539a4c2c03a42e350bf7af67da028dca8e525480eb9b565b",
+      "git_path": "docs/testing/cross-platform-2d2-logs/verified-c057f6d/android29-runtime/commands.json",
+      "git_sha256": "8328e1eeef10f22b539a4c2c03a42e350bf7af67da028dca8e525480eb9b565b",
+      "size": 35166
+    },
+    {
+      "artifact_id": 14222867405,
+      "source_path": "a13-runtime-smoke-result.json",
+      "source_sha256": "07a4e8b77c2d70694c50ead5565f08c86b839e1c84fac05edfcaee3cb1ca0b81",
+      "git_path": "docs/testing/cross-platform-2d2-logs/verified-c057f6d/android29-runtime/a13-runtime-smoke-result.json",
+      "git_sha256": "07a4e8b77c2d70694c50ead5565f08c86b839e1c84fac05edfcaee3cb1ca0b81",
+      "size": 3710
+    },
+    {
+      "artifact_id": 14223361027,
+      "source_path": "results.json",
+      "source_sha256": "c24b5f1133a12ac8e962cd6ce040f0a4e3d6e6a55112cf1c2efe3bf3a2e3665a",
+      "git_path": "docs/testing/cross-platform-2d2-logs/verified-c057f6d/android35-runtime/results.json",
+      "git_sha256": "c24b5f1133a12ac8e962cd6ce040f0a4e3d6e6a55112cf1c2efe3bf3a2e3665a",
+      "size": 25357
+    },
+    {
+      "artifact_id": 14223361027,
+      "source_path": "test-matrix.json",
+      "source_sha256": "cb05564cf307bc7cf757759c0d47d3517a6dcab1bf7f14a37298bbf2461e4aff",
+      "git_path": "docs/testing/cross-platform-2d2-logs/verified-c057f6d/android35-runtime/test-matrix.json",
+      "git_sha256": "cb05564cf307bc7cf757759c0d47d3517a6dcab1bf7f14a37298bbf2461e4aff",
+      "size": 25618
+    },
+    {
+      "artifact_id": 14223361027,
+      "source_path": "commands.json",
+      "source_sha256": "4907a4566adbd6c0ee94070438d9addc94f19b5d993fdd35ff3f7602df719d23",
+      "git_path": "docs/testing/cross-platform-2d2-logs/verified-c057f6d/android35-runtime/commands.json",
+      "git_sha256": "4907a4566adbd6c0ee94070438d9addc94f19b5d993fdd35ff3f7602df719d23",
+      "size": 40690
+    },
+    {
+      "artifact_id": 14223361027,
+      "source_path": "a13-runtime-smoke-result.json",
+      "source_sha256": "4bd43807e04a02691ff8a923b93e4f905a7f46a2858b963215c09cbdae5b3610",
+      "git_path": "docs/testing/cross-platform-2d2-logs/verified-c057f6d/android35-runtime/a13-runtime-smoke-result.json",
+      "git_sha256": "4bd43807e04a02691ff8a923b93e4f905a7f46a2858b963215c09cbdae5b3610",
+      "size": 3710
+    },
+    {
+      "artifact_id": 14223000975,
+      "source_path": "node-version.log",
+      "source_sha256": "6a0cec2e157365c1a8ac6d1715733b7c3321a7c5565862a701ca71ef00359d04",
+      "git_path": "docs/testing/cross-platform-2d2-logs/verified-c057f6d/regression-stream/node-version.log",
+      "git_sha256": "6a0cec2e157365c1a8ac6d1715733b7c3321a7c5565862a701ca71ef00359d04",
+      "size": 9
+    },
+    {
+      "artifact_id": 14223000975,
+      "source_path": "large-transfer.log",
+      "source_sha256": "370294e1db2e8a5b2385ad0ab8d9115e286a288ddfdb0c93741e7610b5f0e230",
+      "git_path": "docs/testing/cross-platform-2d2-logs/verified-c057f6d/regression-stream/large-transfer.log",
+      "git_sha256": "370294e1db2e8a5b2385ad0ab8d9115e286a288ddfdb0c93741e7610b5f0e230",
+      "size": 767
+    },
+    {
+      "artifact_id": 14223000975,
+      "source_path": "npm-ci.log",
+      "source_sha256": "96257ee724afbdad43552ebf0379999a1234a2aa2f715848980d813a7d66dea1",
+      "git_path": "docs/testing/cross-platform-2d2-logs/verified-c057f6d/regression-stream/npm-ci.log",
+      "git_sha256": "96257ee724afbdad43552ebf0379999a1234a2aa2f715848980d813a7d66dea1",
+      "size": 24
+    },
+    {
+      "artifact_id": 14223000975,
+      "source_path": "python-version.log",
+      "source_sha256": "9d0ae83e540febd225949f3df4aba97c7a9f79fcf745d6c835780f52a57b50cf",
+      "git_path": "docs/testing/cross-platform-2d2-logs/verified-c057f6d/regression-stream/python-version.log",
+      "git_sha256": "9d0ae83e540febd225949f3df4aba97c7a9f79fcf745d6c835780f52a57b50cf",
+      "size": 15
+    },
+    {
+      "artifact_id": 14223000975,
+      "source_path": "setup.json",
+      "source_sha256": "0bd248cdb1ab2a7f437f8e0d47ed72d80c27d5e9c21ee5f39f3c8aa39868f370",
+      "git_path": "docs/testing/cross-platform-2d2-logs/verified-c057f6d/regression-stream/setup.json",
+      "git_sha256": "0bd248cdb1ab2a7f437f8e0d47ed72d80c27d5e9c21ee5f39f3c8aa39868f370",
+      "size": 2196
+    },
+    {
+      "artifact_id": 14223000975,
+      "source_path": "jar-download.log",
+      "source_sha256": "c85557afe30cd71e6b1d8732b550b5dcc6d6acb45f2da72ce284b7f47a4691e2",
+      "git_path": "docs/testing/cross-platform-2d2-logs/verified-c057f6d/regression-stream/jar-download.log",
+      "git_sha256": "c85557afe30cd71e6b1d8732b550b5dcc6d6acb45f2da72ce284b7f47a4691e2",
+      "size": 317
+    },
+    {
+      "artifact_id": 14223000975,
+      "source_path": "java-version.log",
+      "source_sha256": "477d64a6b08c9a9dd143deae108edf7929a93b40434d87285d41addc8fba509f",
+      "git_path": "docs/testing/cross-platform-2d2-logs/verified-c057f6d/regression-stream/java-version.log",
+      "git_sha256": "477d64a6b08c9a9dd143deae108edf7929a93b40434d87285d41addc8fba509f",
+      "size": 195
+    },
+    {
+      "artifact_id": 14223000975,
+      "source_path": "results.json",
+      "source_sha256": "f0ace3fa7a7642545d1d6ab69e8c339d6f16e6dc1538c0aa676e87c5487ea9b0",
+      "git_path": "docs/testing/cross-platform-2d2-logs/verified-c057f6d/regression-stream/results.json",
+      "git_sha256": "f0ace3fa7a7642545d1d6ab69e8c339d6f16e6dc1538c0aa676e87c5487ea9b0",
+      "size": 621
+    },
+    {
+      "artifact_id": 14222727408,
+      "source_path": "node-version.log",
+      "source_sha256": "6a0cec2e157365c1a8ac6d1715733b7c3321a7c5565862a701ca71ef00359d04",
+      "git_path": "docs/testing/cross-platform-2d2-logs/verified-c057f6d/regression-zip64/node-version.log",
+      "git_sha256": "6a0cec2e157365c1a8ac6d1715733b7c3321a7c5565862a701ca71ef00359d04",
+      "size": 9
+    },
+    {
+      "artifact_id": 14222727408,
+      "source_path": "npm-ci.log",
+      "source_sha256": "96257ee724afbdad43552ebf0379999a1234a2aa2f715848980d813a7d66dea1",
+      "git_path": "docs/testing/cross-platform-2d2-logs/verified-c057f6d/regression-zip64/npm-ci.log",
+      "git_sha256": "96257ee724afbdad43552ebf0379999a1234a2aa2f715848980d813a7d66dea1",
+      "size": 24
+    },
+    {
+      "artifact_id": 14222727408,
+      "source_path": "features.log",
+      "source_sha256": "3a715ae3158cfce42494fc65219f43e234e47034e7351c8955dd0574d24c0d99",
+      "git_path": "docs/testing/cross-platform-2d2-logs/verified-c057f6d/regression-zip64/features.log",
+      "git_sha256": "3a715ae3158cfce42494fc65219f43e234e47034e7351c8955dd0574d24c0d99",
+      "size": 528
+    },
+    {
+      "artifact_id": 14222727408,
+      "source_path": "native-client.log",
+      "source_sha256": "1f90070842ae5fb4e18b08cca2ab071ed97f2f4cb980f04b81dec60de563fc7d",
+      "git_path": "docs/testing/cross-platform-2d2-logs/verified-c057f6d/regression-zip64/native-client.log",
+      "git_sha256": "1f90070842ae5fb4e18b08cca2ab071ed97f2f4cb980f04b81dec60de563fc7d",
+      "size": 602
+    },
+    {
+      "artifact_id": 14222727408,
+      "source_path": "folders.log",
+      "source_sha256": "6ede5b41f266d828f4a8a6fb256f5ea29bca45561dc9ce6b0e4665aac9f84dd8",
+      "git_path": "docs/testing/cross-platform-2d2-logs/verified-c057f6d/regression-zip64/folders.log",
+      "git_sha256": "6ede5b41f266d828f4a8a6fb256f5ea29bca45561dc9ce6b0e4665aac9f84dd8",
+      "size": 659
+    },
+    {
+      "artifact_id": 14222727408,
+      "source_path": "python-version.log",
+      "source_sha256": "9d0ae83e540febd225949f3df4aba97c7a9f79fcf745d6c835780f52a57b50cf",
+      "git_path": "docs/testing/cross-platform-2d2-logs/verified-c057f6d/regression-zip64/python-version.log",
+      "git_sha256": "9d0ae83e540febd225949f3df4aba97c7a9f79fcf745d6c835780f52a57b50cf",
+      "size": 15
+    },
+    {
+      "artifact_id": 14222727408,
+      "source_path": "setup.json",
+      "source_sha256": "b003d85e25a41a1be66a83c3dabe363df5f5ff665886a92bb49d4f63c8f7355f",
+      "git_path": "docs/testing/cross-platform-2d2-logs/verified-c057f6d/regression-zip64/setup.json",
+      "git_sha256": "b003d85e25a41a1be66a83c3dabe363df5f5ff665886a92bb49d4f63c8f7355f",
+      "size": 2194
+    },
+    {
+      "artifact_id": 14222727408,
+      "source_path": "jar-download.log",
+      "source_sha256": "84e5454331cf612fed699ee264a1513d514e142e9d77066284b3de6bf9d44e49",
+      "git_path": "docs/testing/cross-platform-2d2-logs/verified-c057f6d/regression-zip64/jar-download.log",
+      "git_sha256": "84e5454331cf612fed699ee264a1513d514e142e9d77066284b3de6bf9d44e49",
+      "size": 317
+    },
+    {
+      "artifact_id": 14222727408,
+      "source_path": "java-version.log",
+      "source_sha256": "477d64a6b08c9a9dd143deae108edf7929a93b40434d87285d41addc8fba509f",
+      "git_path": "docs/testing/cross-platform-2d2-logs/verified-c057f6d/regression-zip64/java-version.log",
+      "git_sha256": "477d64a6b08c9a9dd143deae108edf7929a93b40434d87285d41addc8fba509f",
+      "size": 195
+    },
+    {
+      "artifact_id": 14222727408,
+      "source_path": "results.json",
+      "source_sha256": "20f1d83f5656f7fdaa4c0db45355c459f89f1dbad538aaa19ebc24369f86a5fa",
+      "git_path": "docs/testing/cross-platform-2d2-logs/verified-c057f6d/regression-zip64/results.json",
+      "git_sha256": "20f1d83f5656f7fdaa4c0db45355c459f89f1dbad538aaa19ebc24369f86a5fa",
+      "size": 1709
+    },
+    {
+      "artifact_id": 14222652503,
+      "source_path": "node-version.log",
+      "source_sha256": "6a0cec2e157365c1a8ac6d1715733b7c3321a7c5565862a701ca71ef00359d04",
+      "git_path": "docs/testing/cross-platform-2d2-logs/verified-c057f6d/regression-integration/node-version.log",
+      "git_sha256": "6a0cec2e157365c1a8ac6d1715733b7c3321a7c5565862a701ca71ef00359d04",
+      "size": 9
+    },
+    {
+      "artifact_id": 14222652503,
+      "source_path": "npm-ci.log",
+      "source_sha256": "96257ee724afbdad43552ebf0379999a1234a2aa2f715848980d813a7d66dea1",
+      "git_path": "docs/testing/cross-platform-2d2-logs/verified-c057f6d/regression-integration/npm-ci.log",
+      "git_sha256": "96257ee724afbdad43552ebf0379999a1234a2aa2f715848980d813a7d66dea1",
+      "size": 24
+    },
+    {
+      "artifact_id": 14222652503,
+      "source_path": "discovery.log",
+      "source_sha256": "f0ff039b14283a41a7d5d6a62ae0f0263f7c75d6f6b377756423c37ae64dc2e0",
+      "git_path": "docs/testing/cross-platform-2d2-logs/verified-c057f6d/regression-integration/discovery.log",
+      "git_sha256": "f0ff039b14283a41a7d5d6a62ae0f0263f7c75d6f6b377756423c37ae64dc2e0",
+      "size": 111
+    },
+    {
+      "artifact_id": 14222652503,
+      "source_path": "peer.log",
+      "source_sha256": "f4bc2c7066deb23c476cd6a22ab6324bd64a1ce86f22de9cd8fb95f52a3ddf8c",
+      "git_path": "docs/testing/cross-platform-2d2-logs/verified-c057f6d/regression-integration/peer.log",
+      "git_sha256": "f4bc2c7066deb23c476cd6a22ab6324bd64a1ce86f22de9cd8fb95f52a3ddf8c",
+      "size": 1923
+    },
+    {
+      "artifact_id": 14222652503,
+      "source_path": "python-version.log",
+      "source_sha256": "9d0ae83e540febd225949f3df4aba97c7a9f79fcf745d6c835780f52a57b50cf",
+      "git_path": "docs/testing/cross-platform-2d2-logs/verified-c057f6d/regression-integration/python-version.log",
+      "git_sha256": "9d0ae83e540febd225949f3df4aba97c7a9f79fcf745d6c835780f52a57b50cf",
+      "size": 15
+    },
+    {
+      "artifact_id": 14222652503,
+      "source_path": "android-discovery.log",
+      "source_sha256": "dc1586377a185cae74038c3017e1de4a95c245d62352b31ff7c675c668134872",
+      "git_path": "docs/testing/cross-platform-2d2-logs/verified-c057f6d/regression-integration/android-discovery.log",
+      "git_sha256": "dc1586377a185cae74038c3017e1de4a95c245d62352b31ff7c675c668134872",
+      "size": 289
+    },
+    {
+      "artifact_id": 14222652503,
+      "source_path": "security.log",
+      "source_sha256": "46a3addd4f91382464ae04eab635a19f2715258c75910d92c94722ea9aefb2d3",
+      "git_path": "docs/testing/cross-platform-2d2-logs/verified-c057f6d/regression-integration/security.log",
+      "git_sha256": "46a3addd4f91382464ae04eab635a19f2715258c75910d92c94722ea9aefb2d3",
+      "size": 375
+    },
+    {
+      "artifact_id": 14222652503,
+      "source_path": "setup.json",
+      "source_sha256": "c2a9901e58d8671068277d6046a338f40119cd11b0c5ad257cc4014606887c6a",
+      "git_path": "docs/testing/cross-platform-2d2-logs/verified-c057f6d/regression-integration/setup.json",
+      "git_sha256": "c2a9901e58d8671068277d6046a338f40119cd11b0c5ad257cc4014606887c6a",
+      "size": 2206
+    },
+    {
+      "artifact_id": 14222652503,
+      "source_path": "jar-download.log",
+      "source_sha256": "271e2261f2d3ee1716b3be3cbd1ae7d7bca587561f8665d2a8f2f88089190ecd",
+      "git_path": "docs/testing/cross-platform-2d2-logs/verified-c057f6d/regression-integration/jar-download.log",
+      "git_sha256": "271e2261f2d3ee1716b3be3cbd1ae7d7bca587561f8665d2a8f2f88089190ecd",
+      "size": 317
+    },
+    {
+      "artifact_id": 14222652503,
+      "source_path": "lan-discovery.log",
+      "source_sha256": "559eae9c60c906c2b5eac6aa96d7f15053437806516c98273fccfc4c78d7fa4f",
+      "git_path": "docs/testing/cross-platform-2d2-logs/verified-c057f6d/regression-integration/lan-discovery.log",
+      "git_sha256": "559eae9c60c906c2b5eac6aa96d7f15053437806516c98273fccfc4c78d7fa4f",
+      "size": 506
+    },
+    {
+      "artifact_id": 14222652503,
+      "source_path": "http.log",
+      "source_sha256": "2bc1b387cd4eaa7afa4d284b102c994a68491440a23612f9e29a91dbb9545fab",
+      "git_path": "docs/testing/cross-platform-2d2-logs/verified-c057f6d/regression-integration/http.log",
+      "git_sha256": "2bc1b387cd4eaa7afa4d284b102c994a68491440a23612f9e29a91dbb9545fab",
+      "size": 175
+    },
+    {
+      "artifact_id": 14222652503,
+      "source_path": "java-version.log",
+      "source_sha256": "477d64a6b08c9a9dd143deae108edf7929a93b40434d87285d41addc8fba509f",
+      "git_path": "docs/testing/cross-platform-2d2-logs/verified-c057f6d/regression-integration/java-version.log",
+      "git_sha256": "477d64a6b08c9a9dd143deae108edf7929a93b40434d87285d41addc8fba509f",
+      "size": 195
+    },
+    {
+      "artifact_id": 14222652503,
+      "source_path": "android-host.log",
+      "source_sha256": "e56466c85b3f9c61e7e627b94d4e5ffbc84653132b007fa4781d31783369925a",
+      "git_path": "docs/testing/cross-platform-2d2-logs/verified-c057f6d/regression-integration/android-host.log",
+      "git_sha256": "e56466c85b3f9c61e7e627b94d4e5ffbc84653132b007fa4781d31783369925a",
+      "size": 373
+    },
+    {
+      "artifact_id": 14222652503,
+      "source_path": "results.json",
+      "source_sha256": "6682938f13fbd4ab73848f1677926dca409b02c709f59b4a989e2a2ca8d0103c",
+      "git_path": "docs/testing/cross-platform-2d2-logs/verified-c057f6d/regression-integration/results.json",
+      "git_sha256": "6682938f13fbd4ab73848f1677926dca409b02c709f59b4a989e2a2ca8d0103c",
+      "size": 3792
+    },
+    {
+      "artifact_id": 14222162961,
+      "source_path": "node-version.log",
+      "source_sha256": "6a0cec2e157365c1a8ac6d1715733b7c3321a7c5565862a701ca71ef00359d04",
+      "git_path": "docs/testing/cross-platform-2d2-logs/verified-c057f6d/regression-fast/node-version.log",
+      "git_sha256": "6a0cec2e157365c1a8ac6d1715733b7c3321a7c5565862a701ca71ef00359d04",
+      "size": 9
+    },
+    {
+      "artifact_id": 14222162961,
+      "source_path": "npm-ci.log",
+      "source_sha256": "96257ee724afbdad43552ebf0379999a1234a2aa2f715848980d813a7d66dea1",
+      "git_path": "docs/testing/cross-platform-2d2-logs/verified-c057f6d/regression-fast/npm-ci.log",
+      "git_sha256": "96257ee724afbdad43552ebf0379999a1234a2aa2f715848980d813a7d66dea1",
+      "size": 24
+    },
+    {
+      "artifact_id": 14222162961,
+      "source_path": "harness-unit.log",
+      "source_sha256": "b2adbac463a53b0efc3d4a69570efa17417515c9b97ce26f991ed41bc16c11fb",
+      "git_path": "docs/testing/cross-platform-2d2-logs/verified-c057f6d/regression-fast/harness-unit.log",
+      "git_sha256": "b2adbac463a53b0efc3d4a69570efa17417515c9b97ce26f991ed41bc16c11fb",
+      "size": 1665
+    },
+    {
+      "artifact_id": 14222162961,
+      "source_path": "asset-integrity.log",
+      "source_sha256": "bf87e9bf53dc1bf1b3a2cacb7732f76269d0dd1445c5a09603997718fa43e4f1",
+      "git_path": "docs/testing/cross-platform-2d2-logs/verified-c057f6d/regression-fast/asset-integrity.log",
+      "git_sha256": "bf87e9bf53dc1bf1b3a2cacb7732f76269d0dd1445c5a09603997718fa43e4f1",
+      "size": 198
+    },
+    {
+      "artifact_id": 14222162961,
+      "source_path": "python-version.log",
+      "source_sha256": "9d0ae83e540febd225949f3df4aba97c7a9f79fcf745d6c835780f52a57b50cf",
+      "git_path": "docs/testing/cross-platform-2d2-logs/verified-c057f6d/regression-fast/python-version.log",
+      "git_sha256": "9d0ae83e540febd225949f3df4aba97c7a9f79fcf745d6c835780f52a57b50cf",
+      "size": 15
+    },
+    {
+      "artifact_id": 14222162961,
+      "source_path": "unit.log",
+      "source_sha256": "7b7e21b0c4aa0a14950e8f77ea5fd222f31764c33a034ef8e31c46e8c50f2a1c",
+      "git_path": "docs/testing/cross-platform-2d2-logs/verified-c057f6d/regression-fast/unit.log",
+      "git_sha256": "7b7e21b0c4aa0a14950e8f77ea5fd222f31764c33a034ef8e31c46e8c50f2a1c",
+      "size": 1256
+    },
+    {
+      "artifact_id": 14222162961,
+      "source_path": "ci-runner-tests.log",
+      "source_sha256": "a9cd8305be2ab7b67e0bf7bb8ef693d4ac10531fcf68e69ebd0f347410449040",
+      "git_path": "docs/testing/cross-platform-2d2-logs/verified-c057f6d/regression-fast/ci-runner-tests.log",
+      "git_sha256": "a9cd8305be2ab7b67e0bf7bb8ef693d4ac10531fcf68e69ebd0f347410449040",
+      "size": 14141
+    },
+    {
+      "artifact_id": 14222162961,
+      "source_path": "setup.json",
+      "source_sha256": "91ca44148dba8b07e2d3d4a867a33bb2096053c32b9369af86999b605d809ce7",
+      "git_path": "docs/testing/cross-platform-2d2-logs/verified-c057f6d/regression-fast/setup.json",
+      "git_sha256": "91ca44148dba8b07e2d3d4a867a33bb2096053c32b9369af86999b605d809ce7",
+      "size": 2192
+    },
+    {
+      "artifact_id": 14222162961,
+      "source_path": "jar-download.log",
+      "source_sha256": "26f98985d08d2038a5ffa9eda143d95c019c4fcc49df2cab8b2404d5f7b3e6a4",
+      "git_path": "docs/testing/cross-platform-2d2-logs/verified-c057f6d/regression-fast/jar-download.log",
+      "git_sha256": "26f98985d08d2038a5ffa9eda143d95c019c4fcc49df2cab8b2404d5f7b3e6a4",
+      "size": 317
+    },
+    {
+      "artifact_id": 14222162961,
+      "source_path": "java-version.log",
+      "source_sha256": "477d64a6b08c9a9dd143deae108edf7929a93b40434d87285d41addc8fba509f",
+      "git_path": "docs/testing/cross-platform-2d2-logs/verified-c057f6d/regression-fast/java-version.log",
+      "git_sha256": "477d64a6b08c9a9dd143deae108edf7929a93b40434d87285d41addc8fba509f",
+      "size": 195
+    },
+    {
+      "artifact_id": 14222162961,
+      "source_path": "results.json",
+      "source_sha256": "9d7986241c6a0440d0c706c79c37623976e292a464396f1682e6ac0fc2520a01",
+      "git_path": "docs/testing/cross-platform-2d2-logs/verified-c057f6d/regression-fast/results.json",
+      "git_sha256": "9d7986241c6a0440d0c706c79c37623976e292a464396f1682e6ac0fc2520a01",
+      "size": 2359
+    },
+    {
+      "artifact_id": 14221713333,
+      "source_path": "independent-verification.json",
+      "source_sha256": "cdc45b475c0f74857c7039ac5bebc3ed335c9989613ba5bebfee6f5815497edd",
+      "git_path": "docs/testing/cross-platform-2d2-logs/verified-c057f6d/independent-build/independent-verification.json",
+      "git_sha256": "cdc45b475c0f74857c7039ac5bebc3ed335c9989613ba5bebfee6f5815497edd",
+      "size": 29589
+    }
+  ],
+  "native_runtime_regression": [
+    {
+      "artifact_id": 14223395768,
+      "status": "PASS",
+      "groups": 21,
+      "source": {
+        "base": "9171e7f1ffbc0143d6e11374e3f6c847853341fe",
+        "protected_files": 440,
+        "checkout": "fa74266e3658332681214fb04f02ee758d6a5d63",
+        "reviewed_head": "c057f6dbbbd4d9da4e9fe4da63e173204691aefc"
+      },
+      "artifact_sha256": {
+        "installer": "76b0be053e1d70aadebe4f33299c3f19d05d620eb3d7f91fda96bd3245915520"
+      },
+      "scope": "Single-device native regression, not cross-platform E2E"
+    },
+    {
+      "artifact_id": 14222867405,
+      "status": "PASS",
+      "groups": 16,
+      "source": {
+        "base": "9171e7f1ffbc0143d6e11374e3f6c847853341fe",
+        "protected_files": 440,
+        "checkout": "fa74266e3658332681214fb04f02ee758d6a5d63",
+        "reviewed_head": "c057f6dbbbd4d9da4e9fe4da63e173204691aefc"
+      },
+      "artifact_sha256": {
+        "app": "ce1de56d87bbeb5157860e7a371db7e1e00ef7e150078fe7c4c84aeb6d8b128d",
+        "instrumentation": "d238a3e2414c13e353070f401f55835684d9f287cc2815fc01087132b80d27df"
+      },
+      "scope": "Single-device native regression, not cross-platform E2E"
+    },
+    {
+      "artifact_id": 14223361027,
+      "status": "PASS",
+      "groups": 16,
+      "source": {
+        "base": "9171e7f1ffbc0143d6e11374e3f6c847853341fe",
+        "protected_files": 440,
+        "checkout": "fa74266e3658332681214fb04f02ee758d6a5d63",
+        "reviewed_head": "c057f6dbbbd4d9da4e9fe4da63e173204691aefc"
+      },
+      "artifact_sha256": {
+        "app": "ce1de56d87bbeb5157860e7a371db7e1e00ef7e150078fe7c4c84aeb6d8b128d",
+        "instrumentation": "d238a3e2414c13e353070f401f55835684d9f287cc2815fc01087132b80d27df"
+      },
+      "scope": "Single-device native regression, not cross-platform E2E"
+    }
+  ],
+  "phase_2D2A_status": "PASS at recorded snapshot; final-head CI must pass again",
+  "final_head_policy": "Authenticated CI snapshot at c057f6dbbbd4d9da4e9fe4da63e173204691aefc. Final PR body and final-head Actions artifacts bind the handoff commit after report commit. Snapshot is never relabelled."
+}

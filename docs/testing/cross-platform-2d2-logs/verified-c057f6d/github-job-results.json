@@ -1,0 +1,139 @@
+{
+  "reviewed_head": "c057f6dbbbd4d9da4e9fe4da63e173204691aefc",
+  "runs": {
+    "43859327396": [
+      {
+        "id": 133271675733,
+        "name": "Owner toolkit / ubuntu-24.04",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "id": 133271676078,
+        "name": "Layer A / production engines, not native E2E",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "id": 133271676249,
+        "name": "Owner toolkit / windows-2025",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "id": 133273203713,
+        "name": "Cross-platform / explicit layer coverage",
+        "status": "completed",
+        "conclusion": "success"
+      }
+    ],
+    "43859327498": [
+      {
+        "id": 133271675854,
+        "name": "Preconditions and artifact provenance",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "id": 133271835363,
+        "name": "Same-source android TEST ONLY artifacts",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "id": 133271835456,
+        "name": "Same-source windows TEST ONLY artifacts",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "id": 133272163997,
+        "name": "Android API 35 native emulator smoke",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "id": 133272163999,
+        "name": "Android API 29 native emulator smoke",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "id": 133272561529,
+        "name": "Windows native runtime smoke",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "id": 133273619285,
+        "name": "Runtime evidence and explicit coverage",
+        "status": "completed",
+        "conclusion": "success"
+      }
+    ],
+    "43859327444": [
+      {
+        "id": 133271676490,
+        "name": "Fast / unit and contracts",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "id": 133271988906,
+        "name": "Integration / serial discovery and HTTP",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "id": 133271988961,
+        "name": "Large / 101 files and 384 MiB streaming",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "id": 133271989163,
+        "name": "Large / full ZIP64 above 4 GiB",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "id": 133272746473,
+        "name": "Coverage / explicit verification status",
+        "status": "completed",
+        "conclusion": "success"
+      }
+    ],
+    "43859327383": [
+      {
+        "id": 133271675830,
+        "name": "Toolchain verification",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "id": 133272006838,
+        "name": "Windows x64 installer TEST ONLY",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "id": 133272006856,
+        "name": "Android app and instrumentation TEST ONLY",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "id": 133272631471,
+        "name": "Independent artifact verification",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "id": 133272871980,
+        "name": "Build verification summary",
+        "status": "completed",
+        "conclusion": "success"
+      }
+    ]
+  }
+}

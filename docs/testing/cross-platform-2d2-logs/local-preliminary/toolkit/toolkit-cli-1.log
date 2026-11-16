@@ -1,0 +1,10 @@
+{
+  "system": "Linux",
+  "release": "6.18.57",
+  "machine": "x86_64",
+  "python": "3.12.14",
+  "free_disk_bytes": 6571606016,
+  "physical_wifi_status": "NOT VERIFIED",
+  "firewall_changed": false,
+  "production_app_changed": false
+}

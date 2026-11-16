@@ -1,0 +1,37 @@
+{
+  "status": "PASS",
+  "exit_code": 0,
+  "platform": "2d2-protocol",
+  "tests": [
+    {
+      "test_id": "A-PROTOCOL-MATRIX",
+      "platform": "2d2-protocol",
+      "os_api": "Linux-6.18.57-x86_64-with-glibc2.41",
+      "source_commit": "f9b5a43c5eae93b169717a72d19f5a426d913094",
+      "checkout_commit": "f9b5a43c5eae93b169717a72d19f5a426d913094",
+      "artifact_sha256": {},
+      "preconditions": "Owned isolated environment and verified artifact",
+      "command_or_method": "A-PROTOCOL-MATRIX",
+      "expected": "All four production-engine directions, exact SHA/size, capability and 25/50/75% interrupted upload assertions",
+      "actual": {
+        "status": "PASS",
+        "engine_cases": 24,
+        "full_size_matrix": false,
+        "native_e2e": "BLOCKED",
+        "physical_wifi": "NOT VERIFIED"
+      },
+      "exit_code": 0,
+      "time_started_utc": "2026-11-16T11:06:43Z",
+      "wall_seconds": 10.656,
+      "evidence_path": "logs/test-matrix.json",
+      "required": true,
+      "status": "PASS"
+    }
+  ],
+  "production_signing": "NOT VERIFIED",
+  "physical_devices": "NOT VERIFIED",
+  "cross_platform_lan": "NOT VERIFIED",
+  "layer": "A: protocol/toolkit validation",
+  "native_cross_platform_e2e": "BLOCKED",
+  "physical_lan": "NOT VERIFIED"
+}

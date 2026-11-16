@@ -1,0 +1,17 @@
+[
+  {
+    "name": "protocol-command",
+    "command": [
+      "node",
+      "/home/runner/work/FlowDrop_IOS/FlowDrop_IOS/tests/cross-platform-protocol.mjs",
+      "--full"
+    ],
+    "exit_code": 1,
+    "raw_returncode": 1,
+    "timeout": false,
+    "timeout_seconds": 2700,
+    "wall_seconds": 48.31186670400001,
+    "log": "logs/protocol-command.log",
+    "log_sha256": "58437155c4b055a96dc53ca308af38fcb730aff37fc6463a530fc9ff4624bb87"
+  }
+]

@@ -1,0 +1,30 @@
+[
+  {
+    "name": "http-helper-unit",
+    "command": [
+      "node",
+      "--test",
+      "/home/runner/work/FlowDrop_IOS/FlowDrop_IOS/tests/protocol-http.test.mjs"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 0.247,
+    "timeout_seconds": 90,
+    "log": "logs/http-helper-unit.log",
+    "log_sha256": "cb53825f2cdcfaf4d4e376bd75461f90a4c0054d075cfcec13f3b4adb93b2491"
+  },
+  {
+    "name": "protocol-command",
+    "command": [
+      "node",
+      "/home/runner/work/FlowDrop_IOS/FlowDrop_IOS/tests/cross-platform-protocol.mjs",
+      "--full"
+    ],
+    "exit_code": 0,
+    "raw_returncode": 0,
+    "timeout": false,
+    "timeout_seconds": 2700,
+    "wall_seconds": 169.65888905299997,
+    "log": "logs/protocol-command.log",
+    "log_sha256": "df01b2c3fa8962e09a404d4031d7f004763a70d93ad9fb6fa56e86d619e5a1cf"
+  }
+]

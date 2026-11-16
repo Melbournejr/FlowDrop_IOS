@@ -1,0 +1,22 @@
+node:internal/assert/utils:77
+    throw err;
+    ^
+
+AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+
+  assert(!this.paused)
+
+    at Parser.finish (node:internal/deps/undici/undici:7433:9)
+    at Socket.onHttpSocketEnd (node:internal/deps/undici/undici:7872:34)
+    at Socket.emit (node:events:526:24)
+    at endReadableNT (node:internal/streams/readable:1783:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21) {
+  generatedMessage: true,
+  code: "[REDACTED]",
+  actual: false,
+  expected: true,
+  operator: '==',
+  diff: 'simple'
+}
+
+Node.js v24.22.2

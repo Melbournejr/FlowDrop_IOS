@@ -1,0 +1,148 @@
+[
+  {
+    "name": "toolkit-unit",
+    "command": [
+      "/opt/hostedtoolcache/Python/3.12.16/x64/bin/python",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests/ci",
+      "-p",
+      "test_*.py",
+      "-v"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 3.892,
+    "timeout_seconds": 90,
+    "log": "logs/toolkit-unit.log",
+    "log_sha256": "df527cc77fc24209f816c73af8325c8a5efbe44b84b31359c22c2c268ef70421"
+  },
+  {
+    "name": "toolkit-cli-0",
+    "command": [
+      "/opt/hostedtoolcache/Python/3.12.16/x64/bin/python",
+      "-X",
+      "utf8",
+      "/home/runner/work/FlowDrop_IOS/FlowDrop_IOS/tools/physical-lan/flowdrop_lan.py",
+      "--root",
+      "/home/runner/work/_temp/flowdrop-2d2-tools/synthetic/owner-tool",
+      "prepare"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 0.07,
+    "timeout_seconds": 120,
+    "log": "logs/toolkit-cli-0.log",
+    "log_sha256": "f2e44f069d2f7d6ba4136b9d9c3b75c128f61b7eace1588e24975d4374f6c23f"
+  },
+  {
+    "name": "toolkit-cli-1",
+    "command": [
+      "/opt/hostedtoolcache/Python/3.12.16/x64/bin/python",
+      "-X",
+      "utf8",
+      "/home/runner/work/FlowDrop_IOS/FlowDrop_IOS/tools/physical-lan/flowdrop_lan.py",
+      "--root",
+      "/home/runner/work/_temp/flowdrop-2d2-tools/synthetic/owner-tool",
+      "environment"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 0.041,
+    "timeout_seconds": 120,
+    "log": "logs/toolkit-cli-1.log",
+    "log_sha256": "a3896bb5ae0c8a7e61dccc68aea88a18fcff09c6e78c6822f56570c9ba576ac9"
+  },
+  {
+    "name": "toolkit-cli-2",
+    "command": [
+      "/opt/hostedtoolcache/Python/3.12.16/x64/bin/python",
+      "-X",
+      "utf8",
+      "/home/runner/work/FlowDrop_IOS/FlowDrop_IOS/tools/physical-lan/flowdrop_lan.py",
+      "--root",
+      "/home/runner/work/_temp/flowdrop-2d2-tools/synthetic/owner-tool",
+      "hash-source"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 0.073,
+    "timeout_seconds": 120,
+    "log": "logs/toolkit-cli-2.log",
+    "log_sha256": "041dff8cee4c14767a03435eb9f84a05152b2dc00e322d74a702b6f6944a4bdf"
+  },
+  {
+    "name": "toolkit-cli-3",
+    "command": [
+      "/opt/hostedtoolcache/Python/3.12.16/x64/bin/python",
+      "-X",
+      "utf8",
+      "/home/runner/work/FlowDrop_IOS/FlowDrop_IOS/tools/physical-lan/flowdrop_lan.py",
+      "--root",
+      "/home/runner/work/_temp/flowdrop-2d2-tools/synthetic/owner-tool",
+      "start",
+      "--direction",
+      "Windows-to-Windows",
+      "--mode",
+      "test-artifact",
+      "--network",
+      "isolated-virtual"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 0.074,
+    "timeout_seconds": 120,
+    "log": "logs/toolkit-cli-3.log",
+    "log_sha256": "2d6a5c92c39afebb11dec182a059a7192a371a66c46bb41c8d1036570ec115fa"
+  },
+  {
+    "name": "toolkit-cli-4",
+    "command": [
+      "/opt/hostedtoolcache/Python/3.12.16/x64/bin/python",
+      "-X",
+      "utf8",
+      "/home/runner/work/FlowDrop_IOS/FlowDrop_IOS/tools/physical-lan/flowdrop_lan.py",
+      "--root",
+      "/home/runner/work/_temp/flowdrop-2d2-tools/synthetic/owner-tool",
+      "stop"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 0.04,
+    "timeout_seconds": 120,
+    "log": "logs/toolkit-cli-4.log",
+    "log_sha256": "2d882191e5b9d15def380631264f3e9c46b12ecc19ec142d348cb6c17f4dcaf3"
+  },
+  {
+    "name": "toolkit-compare",
+    "command": [
+      "/opt/hostedtoolcache/Python/3.12.16/x64/bin/python",
+      "-X",
+      "utf8",
+      "/home/runner/work/FlowDrop_IOS/FlowDrop_IOS/tools/physical-lan/flowdrop_lan.py",
+      "--root",
+      "/home/runner/work/_temp/flowdrop-2d2-tools/synthetic/owner-tool",
+      "compare",
+      "--received-dir",
+      "/home/runner/work/_temp/flowdrop-2d2-tools/synthetic/self-test-copy"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 0.079,
+    "timeout_seconds": 120,
+    "log": "logs/toolkit-compare.log",
+    "log_sha256": "1be375e6d58486c0c2d6da6a933c572b999651f97f1106cda2e60bb092fb328f"
+  },
+  {
+    "name": "toolkit-report",
+    "command": [
+      "/opt/hostedtoolcache/Python/3.12.16/x64/bin/python",
+      "-X",
+      "utf8",
+      "/home/runner/work/FlowDrop_IOS/FlowDrop_IOS/tools/physical-lan/flowdrop_lan.py",
+      "--root",
+      "/home/runner/work/_temp/flowdrop-2d2-tools/synthetic/owner-tool",
+      "report"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 0.05,
+    "timeout_seconds": 120,
+    "log": "logs/toolkit-report.log",
+    "log_sha256": "19439ab9a2e149b6edfd44c8a6a38174c7a7454ff976c18e31b1cbece791e5e3"
+  }
+]

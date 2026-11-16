@@ -1,0 +1,78 @@
+{
+  "status": "PASS",
+  "exit_code": 0,
+  "platform": "2d2-toolkit",
+  "tests": [
+    {
+      "test_id": "TOOLKIT-UNIT",
+      "platform": "2d2-toolkit",
+      "os_api": "Linux-6.18.57-x86_64-with-glibc2.41",
+      "source_commit": "ff75c81074ffce6c3bbed1083a04e46d390c3f58",
+      "checkout_commit": "ff75c81074ffce6c3bbed1083a04e46d390c3f58",
+      "artifact_sha256": {},
+      "preconditions": "Owned isolated environment and verified artifact",
+      "command_or_method": "TOOLKIT-UNIT",
+      "expected": "All original CI unit tests and new safety/honesty tests execute on this OS",
+      "actual": {
+        "os": "Linux-6.18.57-x86_64-with-glibc2.41",
+        "test_pattern": "test_*.py",
+        "scope": "Tool safety/unit only; not physical LAN"
+      },
+      "exit_code": 0,
+      "time_started_utc": "2026-11-16T11:25:30Z",
+      "wall_seconds": 3.348,
+      "evidence_path": "logs/test-matrix.json",
+      "required": true,
+      "status": "PASS"
+    },
+    {
+      "test_id": "TOOLKIT-CLI",
+      "platform": "2d2-toolkit",
+      "os_api": "Linux-6.18.57-x86_64-with-glibc2.41",
+      "source_commit": "ff75c81074ffce6c3bbed1083a04e46d390c3f58",
+      "checkout_commit": "ff75c81074ffce6c3bbed1083a04e46d390c3f58",
+      "artifact_sha256": {},
+      "preconditions": "Owned isolated environment and verified artifact",
+      "command_or_method": "TOOLKIT-CLI",
+      "expected": "Portable CLI runs prepare/hash/start/stop/compare/report and verifies exact synthetic file bytes",
+      "actual": {
+        "files": 110,
+        "cli_integrity": "PASS",
+        "overall_physical_status": "NOT VERIFIED",
+        "transport": "Test-only filesystem copy"
+      },
+      "exit_code": 0,
+      "time_started_utc": "2026-11-16T11:25:34Z",
+      "wall_seconds": 0.869,
+      "evidence_path": "logs/test-matrix.json",
+      "required": true,
+      "status": "PASS"
+    },
+    {
+      "test_id": "TOOLKIT-BUNDLE",
+      "platform": "2d2-toolkit",
+      "os_api": "Linux-6.18.57-x86_64-with-glibc2.41",
+      "source_commit": "ff75c81074ffce6c3bbed1083a04e46d390c3f58",
+      "checkout_commit": "ff75c81074ffce6c3bbed1083a04e46d390c3f58",
+      "artifact_sha256": {},
+      "preconditions": "Owned isolated environment and verified artifact",
+      "command_or_method": "TOOLKIT-BUNDLE",
+      "expected": "Only source scripts/docs enter the downloadable toolkit, with SHA-256/provenance",
+      "actual": {
+        "manifest": "toolkit/toolkit-manifest.json"
+      },
+      "exit_code": 0,
+      "time_started_utc": "2026-11-16T11:25:35Z",
+      "wall_seconds": 0.063,
+      "evidence_path": "logs/test-matrix.json",
+      "required": true,
+      "status": "PASS"
+    }
+  ],
+  "production_signing": "NOT VERIFIED",
+  "physical_devices": "NOT VERIFIED",
+  "cross_platform_lan": "NOT VERIFIED",
+  "layer": "A: protocol/toolkit validation",
+  "native_cross_platform_e2e": "BLOCKED",
+  "physical_lan": "NOT VERIFIED"
+}

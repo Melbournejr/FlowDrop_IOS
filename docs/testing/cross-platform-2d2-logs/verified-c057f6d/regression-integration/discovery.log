@@ -1,0 +1,1 @@
+mDNS integration passed: two named devices, PTR/SRV/TXT/A, correct ports, local hostnames and goodbye on stop.

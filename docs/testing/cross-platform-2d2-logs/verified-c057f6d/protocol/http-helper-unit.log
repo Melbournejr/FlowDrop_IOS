@@ -1,0 +1,13 @@
+✔ HTTP helper streams actual upload/download and preserves Content-Length and SHA (109.779909ms)
+✔ HTTP helper reports a prematurely truncated Content-Length body as failure (3.648263ms)
+✔ HTTP helper does not follow redirects or send data to an external host (2.605952ms)
+✔ local capability belongs to exactly one loopback origin and kind (2.097368ms)
+✔ oversized control JSON is rejected without treating a prefix as valid (15.596855ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 213.781235

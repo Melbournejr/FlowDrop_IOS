@@ -1,0 +1,129 @@
+[
+  {
+    "name": "toolkit-unit",
+    "command": [
+      "C:\\hostedtoolcache\\windows\\Python\\3.12.10\\x64\\python.exe",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests/ci",
+      "-p",
+      "test_physical_lan.py",
+      "-v"
+    ],
+    "exit_code": 1,
+    "wall_seconds": 5.36,
+    "timeout_seconds": 90,
+    "log": "logs/toolkit-unit.log",
+    "log_sha256": "8178ed5f4c7603fbb063fbfff24895e86deb181c93aad604c9073f07e85f5cdc"
+  },
+  {
+    "name": "powershell-wrapper-prepare",
+    "command": [
+      "pwsh",
+      "-NoProfile",
+      "-File",
+      "D:\\a\\FlowDrop_IOS\\FlowDrop_IOS\\tools\\physical-lan\\Run-FlowDrop-LAN.ps1",
+      "-Action",
+      "Prepare",
+      "-Root",
+      "D:\\a\\_temp\\flowdrop-2d2-tools\\synthetic\\owner-tool"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 0.625,
+    "timeout_seconds": 120,
+    "log": "logs/powershell-wrapper-prepare.log",
+    "log_sha256": "a0d340d006808d2149e104602e3905d51b7b0380a4518a6ab77b479f6ef16688"
+  },
+  {
+    "name": "powershell-readonly-network",
+    "command": [
+      "pwsh",
+      "-NoProfile",
+      "-File",
+      "D:\\a\\FlowDrop_IOS\\FlowDrop_IOS\\tools\\physical-lan\\Collect-FlowDrop-Network.ps1",
+      "-Root",
+      "D:\\a\\_temp\\flowdrop-2d2-tools\\synthetic\\owner-tool"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 6.046,
+    "timeout_seconds": 120,
+    "log": "logs/powershell-readonly-network.log",
+    "log_sha256": "129916814043f9c7ddfda20996c2735006fff1953f6eea7919fcd4d403291177"
+  },
+  {
+    "name": "toolkit-cli-0",
+    "command": [
+      "C:\\hostedtoolcache\\windows\\Python\\3.12.10\\x64\\python.exe",
+      "-X",
+      "utf8",
+      "D:\\a\\FlowDrop_IOS\\FlowDrop_IOS\\tools\\physical-lan\\flowdrop_lan.py",
+      "--[REDACTED]",
+      "D:\\a\\_temp\\flowdrop-2d2-tools\\synthetic\\owner-tool",
+      "environment"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 0.11,
+    "timeout_seconds": 120,
+    "log": "logs/toolkit-cli-0.log",
+    "log_sha256": "3773011b6a1eccafad7fc4963d449207492c0d4e799df30c53fabdb40d07f3c6"
+  },
+  {
+    "name": "toolkit-cli-1",
+    "command": [
+      "C:\\hostedtoolcache\\windows\\Python\\3.12.10\\x64\\python.exe",
+      "-X",
+      "utf8",
+      "D:\\a\\FlowDrop_IOS\\FlowDrop_IOS\\tools\\physical-lan\\flowdrop_lan.py",
+      "--[REDACTED]",
+      "D:\\a\\_temp\\flowdrop-2d2-tools\\synthetic\\owner-tool",
+      "hash-source"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 0.187,
+    "timeout_seconds": 120,
+    "log": "logs/toolkit-cli-1.log",
+    "log_sha256": "7c1f8ac39d2a23ac445d861b29a255a29096df7649cf5e2dcc37384e2badf5dd"
+  },
+  {
+    "name": "toolkit-cli-2",
+    "command": [
+      "C:\\hostedtoolcache\\windows\\Python\\3.12.10\\x64\\python.exe",
+      "-X",
+      "utf8",
+      "D:\\a\\FlowDrop_IOS\\FlowDrop_IOS\\tools\\physical-lan\\flowdrop_lan.py",
+      "--[REDACTED]",
+      "D:\\a\\_temp\\flowdrop-2d2-tools\\synthetic\\owner-tool",
+      "start",
+      "--direction",
+      "Windows-to-Windows",
+      "--mode",
+      "test-artifact",
+      "--network",
+      "isolated-virtual"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 0.203,
+    "timeout_seconds": 120,
+    "log": "logs/toolkit-cli-2.log",
+    "log_sha256": "0cde05e4b941bc4fe4d708457e941ae986a5d49c84e36f18eb401ad9fbc04b7c"
+  },
+  {
+    "name": "toolkit-cli-3",
+    "command": [
+      "C:\\hostedtoolcache\\windows\\Python\\3.12.10\\x64\\python.exe",
+      "-X",
+      "utf8",
+      "D:\\a\\FlowDrop_IOS\\FlowDrop_IOS\\tools\\physical-lan\\flowdrop_lan.py",
+      "--[REDACTED]",
+      "D:\\a\\_temp\\flowdrop-2d2-tools\\synthetic\\owner-tool",
+      "stop"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 0.094,
+    "timeout_seconds": 120,
+    "log": "logs/toolkit-cli-3.log",
+    "log_sha256": "54dd9defa07c845a6acc7ce0446d5d9d438e83b8c69d3b25333459103b2857d3"
+  }
+]
