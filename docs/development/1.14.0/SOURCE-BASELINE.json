@@ -32,7 +32,7 @@
     {
       "path": "android/src/app/flowdrop/mobile/DeviceSecurity.java",
       "base_sha256": null,
-      "sha256": "432e6028cce894f418430a718464b6fe401752e4d15f886fb323683da5ed8280"
+      "sha256": "2bcc7c3b36c0f352870825dbfc90c2a00fa831aae4d4fa98600e41bb61a48c58"
     },
     {
       "path": "android/src/app/flowdrop/mobile/HostService.java",
@@ -127,12 +127,12 @@
     {
       "path": "scripts/device-security.mjs",
       "base_sha256": null,
-      "sha256": "f945fb374284b4c94b792f3650f3d6f1b9468cd3e8bfdeba79fc5a7c4bcb2793"
+      "sha256": "346efba01459016ed34c665b1e0eea4fecaa64bf94a70a9db07669f236872959"
     },
     {
       "path": "scripts/device-vault.ps1",
       "base_sha256": null,
-      "sha256": "412f536fbd46bfa2fc08f6b36c404a47c69c70449c1a255fff340b62e0736819"
+      "sha256": "1ddb378391ca9adfd63c49461cc457934c3b4550a2aa91ad53fbf6c283b5e62d"
     },
     {
       "path": "scripts/discovery.mjs",
@@ -192,12 +192,12 @@
     {
       "path": "scripts/native_runtime_ci/windows.py",
       "base_sha256": "9a4b5fc9e0be422a38115ca013c70b0544495da611d205a97f7557ba09f31b0d",
-      "sha256": "ea92a4ada8413d6f17062f3336bfd183e7a4a4c10c83bc00cef55731dca27841"
+      "sha256": "3c07d968de2a308b51537bd7bcbef4d38c39d2a4163d218f589ae8f7521f649b"
     },
     {
       "path": "scripts/peer-offers.mjs",
       "base_sha256": "f1bfa02c12067bbbe02d2929c4c18d483af06e4a7aeb51422931eb3c17f75ac7",
-      "sha256": "2b8c320429db2a05eceda656905aa3132bca730e7200cbe924e0250448d333ae"
+      "sha256": "c91058c0baf6c0a8d041560f3d1aea0fdcb71826eaa542ca581facf3a3bb05e7"
     },
     {
       "path": "scripts/release-config.mjs",
@@ -230,9 +230,14 @@
       "sha256": "6edc2f456af395fc8897ee4cf91143eced1aff34350dcd2364a2368870cd3215"
     },
     {
+      "path": "tests/android-native-smoke/NativeShareSmoke.java",
+      "base_sha256": "b7cd82e321f619b58542dc432eaa0f54b91d69516820bc45b9743e039097ae47",
+      "sha256": "c3964dc4fbfbbe65def9c292c25ab5563f27a2106c90a17cae19389184adfec9"
+    },
+    {
       "path": "tests/android-runtime/NativeRuntimeSmoke.java",
       "base_sha256": "1b66760dad004c1324c2dc3b5ce9ef019eff0c4d1264a43993d5d19d56a92899",
-      "sha256": "d33f6ad92137ab885dd7499bf143a5ddefddcb88f3b622951821fc77cbed028e"
+      "sha256": "c2cee18c650e7c031c9efe075d90f8d323d4ce7532f78b5b987f8c26b836f09e"
     },
     {
       "path": "tests/ci/run.py",
@@ -275,14 +280,29 @@
       "sha256": "8de4a60d66c16388dac34dd073ca49b00360e5fd618ff6540d67332f275acafc"
     },
     {
+      "path": "tests/features-1.10.test.mjs",
+      "base_sha256": "d846fccab7392679bd41d0569d3a6357ac2941398f9fef9936c05df86e06a8f0",
+      "sha256": "ef9a209360e22bea3ad6e22d4382805128ce9290f6c1ad96abfa93d53d6ad6c5"
+    },
+    {
       "path": "tests/helpers/harness.mjs",
       "base_sha256": "367a2253d7cc0060ed70553430251ffa7fbb2014fc21ffe22a0eb40fe4e77d98",
       "sha256": "20f8f1f3b4a8955f287d25f672f636bb392fb5b4fd121bc9f78dc93f6daa450f"
     },
     {
+      "path": "tests/native-tls-probe.mjs",
+      "base_sha256": null,
+      "sha256": "1a2fda1ea8fdb94d99511febb652a31e3b0fffe168fba1e9c9240ef7f8580d25"
+    },
+    {
       "path": "tests/secure-cross-platform-114.mjs",
       "base_sha256": null,
-      "sha256": "0e16e44192d15987ca9489f104dc840ba6f6827b560a9f5b610e1966c9b2a7b9"
+      "sha256": "f4ca6c8cf64f4affca007e18a190e56cfc2b703468ea0e34dbd5c1e2ba0a37b1"
+    },
+    {
+      "path": "tests/windows-vault-probe.mjs",
+      "base_sha256": null,
+      "sha256": "5b4cdbf67d5d186230778651c4209d27d6a8707b91182554dafc0ed065f0fca7"
     },
     {
       "path": "worker/index.js",

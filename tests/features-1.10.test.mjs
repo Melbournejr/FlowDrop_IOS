@@ -55,6 +55,6 @@ test('Java/Node resolve codes across multiple hosts, reject ambiguity, wrong and
  assert.equal((await java('code','ABCD-EFGH','',a.url)).origin,a.url+'/');
  await assert.rejects(findCode(code,{getPeers:()=>[a,b],getLocal:local}),/nhiều/);await assert.rejects(java('code',code,'',a.url,b.url));
  assert.equal((await findCode(code,{getPeers:()=>[a,b],getLocal:local,preferredId:'b'})).origin,b.url);assert.equal((await java('code',code,b.url,a.url,b.url)).origin,b.url+'/');
- revoked=true;await assert.rejects(findCode(code,{getPeers:()=>[a],getLocal:local}),/Chưa tìm/);await assert.rejects(java('code',code,'',a.url));
+ revoked=true;await assert.rejects(findCode(code,{getPeers:()=>[a],getLocal:local}),/Mã không tồn tại hoặc đã được thu hồi/);await assert.rejects(java('code',code,'',a.url));
  }finally{for(const server of servers){server.closeAllConnections();await new Promise(r=>server.close(r));}}
 });

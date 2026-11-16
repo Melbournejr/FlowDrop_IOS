@@ -186,6 +186,8 @@ def run(root, downloads, helpers):
         marker.write_text('FlowDrop 2D1 synthetic data preserved by uninstall', encoding='utf-8')
         marker_hash = sha256(marker)
         with rec.case('W05-start', WINDOWS['W05-start']) as row:
+            vault_output, vault_code = rec.run('actual-windows-dpapi', [install / 'runtime/node.exe', REPO / 'tests/windows-vault-probe.mjs', rec.root / 'synthetic-device-vault'], timeout=90)
+            assert vault_code == 0 and json.loads(vault_output)['status'] == 'PASS'
             metadata = start()
             actual = json.loads(ps('app-backend-processes', 'Get-CimInstance Win32_Process | Where-Object { $_.ProcessId -in @(' + str(process.pid) + ',' + str(metadata['pid']) + ') } | Select-Object ProcessId,ParentProcessId,ExecutablePath | ConvertTo-Json')[0])
             assert any(p['ExecutablePath'] and Path(p['ExecutablePath']).resolve() == (install / 'runtime/node.exe').resolve() for p in actual)
@@ -196,6 +198,11 @@ def run(root, downloads, helpers):
             config = client.json('GET', '/api/config')
             assert (config['name'], config['version'], config['platform'], config['mode']) == ('FlowDrop', '1.14.0', 'windows', 'local')
             identity = config['deviceId']
+            tls_identity = config['secure']['fingerprint']
+            public_config = rec.root / 'tls-public-config.json'
+            json_file(public_config, {'deviceId': identity, 'secure': config['secure']})
+            tls_output, tls_code = rec.run('actual-native-tls', [install / 'runtime/node.exe', REPO / 'tests/native-tls-probe.mjs', public_config], timeout=30)
+            assert tls_code == 0 and json.loads(tls_output)['status'] == 'PASS'
             row['actual'] = {k: config[k] for k in ['name', 'version', 'platform', 'mode']}
         with rec.case('W07-window', WINDOWS['W07-window']) as row:
             from ctypes import wintypes
@@ -262,7 +269,9 @@ def run(root, downloads, helpers):
         with rec.case('W18-close', WINDOWS['W18-close']) as row:
             stop(); row.update(exit_code=0, actual={'native_and_backend_stopped': True})
         with rec.case('W19-restart', WINDOWS['W19-restart']) as row:
-            start(); assert client.json('GET', '/api/config')['deviceId'] == identity
+            start(); restarted_config = client.json('GET', '/api/config')
+            assert restarted_config['deviceId'] == identity
+            assert restarted_config['secure']['fingerprint'] == tls_identity
             assert sha256(marker) == marker_hash
             assert len(preserved_files) >= 3, 'No successful receive available to verify restart preservation'
             for file, expected in preserved_files.items():

@@ -5,7 +5,7 @@ import http from 'node:http';
 let security;
 export function setPeerSecurity(value){security=value;}
 const bootstrap=new Map();
-async function securePeer(origin){const old=new URL(origin);let p=bootstrap.get(old.origin);if(!p){const response=await fetch(old.origin+'/api/config',{redirect:'error',signal:AbortSignal.timeout(3000)});if(Number(response.headers.get('content-length'))>32768)throw Error('Phản hồi quá lớn.');const chunks=[];let size=0;for await(const chunk of response.body){size+=chunk.length;if(size>32768)throw Error('Phản hồi quá lớn.');chunks.push(chunk);}const config=JSON.parse(Buffer.concat(chunks));const learned=await security.discover({id:config.deviceId,url:old.origin},config);if(!learned.secure)return null;p=security.candidates.get(learned.id);bootstrap.set(old.origin,p);}return security.peer(p.origin);}
+async function securePeer(origin){const old=new URL(origin);if(security.legacy&&old.protocol==='http:')return null;let p=bootstrap.get(old.origin);if(!p){const response=await fetch(old.origin+'/api/config',{redirect:'error',signal:AbortSignal.timeout(3000)});if(Number(response.headers.get('content-length'))>32768)throw Error('Phản hồi quá lớn.');const chunks=[];let size=0;for await(const chunk of response.body){size+=chunk.length;if(size>32768)throw Error('Phản hồi quá lớn.');chunks.push(chunk);}const config=JSON.parse(Buffer.concat(chunks));const learned=await security.discover({id:config.deviceId,url:old.origin},config);if(!learned.secure)return null;p=security.candidates.get(learned.id);bootstrap.set(old.origin,p);}return security.peer(p.origin);}
 
 import {Readable} from 'node:stream';
 const terminal=new Set(['completed','rejected','failed','expired','untracked']);

@@ -103,6 +103,8 @@ public final class DeviceSecurity {
   }
   private Map<String,String> authHeaders(JSONObject peer,String method,String route)throws Exception{String peerId=peer.getString("id");JSONObject s; synchronized(this){s=remoteSessions.get(peerId);}if(s==null||s.optLong("until")<System.currentTimeMillis()+30000){s=json(peer,"/api/secure/session",new JSONObject(),false,headers(peerId,"POST","/api/secure/session",""));if(!hex(s.optString("token"))||s.optLong("until")>System.currentTimeMillis()+660000)throw new IOException("Phiên bảo mật không hợp lệ.");synchronized(this){remoteSessions.put(peerId,s);}}return headers(peerId,method,route,s.getString("token"));}
   public HttpURLConnection open(URL url)throws Exception{
+    // Explicit user-selected, warned 1.13 mode. Never entered on a TLS failure.
+    if(legacy&&url.getProtocol().equals("http"))return raw.open(url);
     if(url.getProtocol().equals("http")&&(url.getHost().equals("127.0.0.1")||url.getHost().equals("localhost")||url.getHost().equals("::1")))return raw.open(url);
     if(url.getProtocol().equals("http")&&url.getPath().equals("/api/config"))return raw.open(url);
     JSONObject p=peer(url);if(p==null&&url.getProtocol().equals("http")){HttpURLConnection c=raw.open(new URL("http://"+url.getAuthority()+"/api/config"));c.setConnectTimeout(2000);c.setReadTimeout(3000);c.setInstanceFollowRedirects(false);try(InputStream in=c.getInputStream();ByteArrayOutputStream out=new ByteArrayOutputStream()){byte[] b=new byte[4096];int n;while((n=in.read(b))!=-1){if(out.size()+n>32768)throw new IOException("Phản hồi quá lớn.");out.write(b,0,n);}observe("http://"+url.getAuthority(),new JSONObject(new String(out.toByteArray(),StandardCharsets.UTF_8)));}finally{c.disconnect();}p=peer(url);}

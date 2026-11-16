@@ -1,5 +1,8 @@
 # Private stdin/stdout pipe only. No signing/update production material is accessed.
 $ErrorActionPreference = 'Stop'
+[Console]::InputEncoding = [System.Text.UTF8Encoding]::new($false)
+[Console]::OutputEncoding = [System.Text.UTF8Encoding]::new($false)
+try {
 Add-Type -AssemblyName System.Security
 $inputData = [Console]::In.ReadToEnd() | ConvertFrom-Json
 $entropy = [Text.Encoding]::UTF8.GetBytes('FlowDrop device transport vault v1')
@@ -21,3 +24,9 @@ if ($inputData.operation -eq 'seal') {
     if ($null -ne $certificate) { Remove-Item -LiteralPath ('Cert:\CurrentUser\My\'+$certificate.Thumbprint) -DeleteKey -Force }
   }
 } else { throw 'Invalid vault operation' }
+
+} catch {
+  # Only public exception class/identifier. Never dump arguments or private stdout.
+  [Console]::Error.Write('FLOWDROP_VAULT_ERROR=' + $_.Exception.GetType().FullName + ':' + $_.FullyQualifiedErrorId)
+  exit 1
+}

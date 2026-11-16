@@ -21,7 +21,7 @@ function certificate(value,id){
 function powershell(body){
  const script=fileURLToPath(new URL('./device-vault.ps1',import.meta.url));
  const r=spawnSync('powershell.exe',['-NoProfile','-NonInteractive','-ExecutionPolicy','Bypass','-File',script],{input:JSON.stringify(body),encoding:'utf8',windowsHide:true,maxBuffer:1024*1024,timeout:60000});
- if(r.status!==0)throw Error('Không mở được kho danh tính thiết bị Windows.');return r.stdout.trim();
+ if(r.status!==0){const code=r.stderr?.match(/FLOWDROP_VAULT_ERROR=([A-Za-z0-9_.,:-]{1,180})/)?.[1];throw Error('Không mở được kho danh tính thiết bị Windows.'+(code?' ['+code+']':''));}return r.stdout.trim();
 }
 export async function deviceVault(directory,id){
  if(process.platform==='win32'){
