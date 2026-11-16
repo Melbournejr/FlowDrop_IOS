@@ -23,3 +23,13 @@ ios/FlowDropCore/.build/
 ios/FlowDropApple/Assets.xcassets/AppIcon.appiconset/AppIcon.png
 *.xcuserstate
 xcuserdata/
+
+# Private signing material and machine-local credentials must not be committed.
+*.p12
+*.pfx
+*.key
+*private*.pem
+.env
+.env.*
+!.env.example
+!.env.sample
