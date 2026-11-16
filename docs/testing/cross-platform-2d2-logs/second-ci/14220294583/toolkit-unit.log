@@ -1,0 +1,26 @@
+test_adb_rejects_personal_directory_and_bad_serial_before_execution (test_physical_lan.PhysicalLanTests.test_adb_rejects_personal_directory_and_bad_serial_before_execution) ... ok
+test_compare_reads_only_manifest_paths_in_selected_folder (test_physical_lan.PhysicalLanTests.test_compare_reads_only_manifest_paths_in_selected_folder) ... ok
+test_copied_timing_cannot_use_another_computer_clock (test_physical_lan.PhysicalLanTests.test_copied_timing_cannot_use_another_computer_clock) ... ok
+test_evidence_checksum_inventory_matches_only_allowed_reports (test_physical_lan.PhysicalLanTests.test_evidence_checksum_inventory_matches_only_allowed_reports) ... ok
+test_existing_directory_is_never_overwritten (test_physical_lan.PhysicalLanTests.test_existing_directory_is_never_overwritten) ... ok
+test_generated_files_are_real_exact_size_and_independently_hashed (test_physical_lan.PhysicalLanTests.test_generated_files_are_real_exact_size_and_independently_hashed) ... ok
+test_hash_match_and_timing_are_not_physical_lan_proof (test_physical_lan.PhysicalLanTests.test_hash_match_and_timing_are_not_physical_lan_proof) ... ok
+test_high_resolution_timing_survives_an_unchanged_coarse_monotonic_tick (test_physical_lan.PhysicalLanTests.test_high_resolution_timing_survives_an_unchanged_coarse_monotonic_tick) ... ok
+test_incomplete_fake_pass_comparison_cannot_enter_report (test_physical_lan.PhysicalLanTests.test_incomplete_fake_pass_comparison_cannot_enter_report) ... ok
+test_large_profiles_need_explicit_opt_in_and_disk_guard (test_physical_lan.PhysicalLanTests.test_large_profiles_need_explicit_opt_in_and_disk_guard) ... ok
+test_linked_parent_is_rejected_on_real_filesystem (test_physical_lan.PhysicalLanTests.test_linked_parent_is_rejected_on_real_filesystem) ... ok
+test_manifest_cannot_change_after_start (test_physical_lan.PhysicalLanTests.test_manifest_cannot_change_after_start) ... ok
+test_manifest_path_tampering_is_rejected (test_physical_lan.PhysicalLanTests.test_manifest_path_tampering_is_rejected) ... ok
+test_missing_empty_directory_fails (test_physical_lan.PhysicalLanTests.test_missing_empty_directory_fails) ... ok
+test_missing_truncated_and_changed_destination_fail (test_physical_lan.PhysicalLanTests.test_missing_truncated_and_changed_destination_fail) ... ok
+test_name_map_may_not_merge_files_or_escape (test_physical_lan.PhysicalLanTests.test_name_map_may_not_merge_files_or_escape) ... ok
+test_new_report_never_claims_native_or_physical_pass (test_physical_lan.PhysicalLanTests.test_new_report_never_claims_native_or_physical_pass) ... ok
+test_png_has_valid_chunks_crc_and_two_rows (test_physical_lan.PhysicalLanTests.test_png_has_valid_chunks_crc_and_two_rows) ... ok
+test_source_changes_cannot_start_timing (test_physical_lan.PhysicalLanTests.test_source_changes_cannot_start_timing) ... ok
+test_timing_cannot_be_silently_restarted_or_stopped_twice (test_physical_lan.PhysicalLanTests.test_timing_cannot_be_silently_restarted_or_stopped_twice) ... ok
+test_traversal_absolute_drive_and_reserved_names_rejected (test_physical_lan.PhysicalLanTests.test_traversal_absolute_drive_and_reserved_names_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 21 tests in 10.271s
+
+OK

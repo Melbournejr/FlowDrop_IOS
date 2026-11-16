@@ -146,6 +146,9 @@ def run(root, role, full, jar):
             env.update(FLOWDROP_REVIEWED_HEAD=source['reviewed_head'], FLOWDROP_CHECKOUT_COMMIT=source['checkout'],
                        FLOWDROP_TEST_JSON_JAR=str(Path(jar).resolve()), FLOWDROP_TEST_TMPDIR=str(scratch),
                        FLOWDROP_TEST_REPORT_DIR=str(rec.root / 'logs'), FLOWDROP_DISABLE_UPDATES='1')
+            with rec.case('A-HTTP-HELPER-UNIT', 'Real loopback streaming, truncated-body/redirect/bounds rejection, exact local-capability confinement') as row:
+                _, code = rec.run('http-helper-unit', ['node', '--test', REPO / 'tests/protocol-http.test.mjs'], env=env, timeout=90)
+                row.update(exit_code=code, actual={'scope': 'Test HTTP helper, not native app proof', 'tests': 5})
             with rec.case('A-PROTOCOL-MATRIX', 'All four production-engine directions, exact SHA/size, capability and 25/50/75% interrupted upload assertions') as row:
                 command = ['node', REPO / 'tests/cross-platform-protocol.mjs'] + (['--full'] if full else [])
                 code = protocol_command(rec, command, env, timeout=2700)
@@ -191,7 +194,7 @@ def run(root, role, full, jar):
                 row.update(exit_code=0, actual={'manifest': 'toolkit/toolkit-manifest.json'})
     finally:
         clean_child(rec.root, scratch)
-        rec.finish(['A-PROTOCOL-MATRIX'] if role == 'protocol' else ['TOOLKIT-UNIT', 'TOOLKIT-CLI', 'TOOLKIT-BUNDLE'])
+        rec.finish(['A-HTTP-HELPER-UNIT', 'A-PROTOCOL-MATRIX'] if role == 'protocol' else ['TOOLKIT-UNIT', 'TOOLKIT-CLI', 'TOOLKIT-BUNDLE'])
         result = read_result(rec.root / 'logs/results.json')
         result.update(layer='A: protocol/toolkit validation', native_cross_platform_e2e='BLOCKED', physical_lan='NOT VERIFIED')
         json_file(rec.root / 'logs/results.json', result)

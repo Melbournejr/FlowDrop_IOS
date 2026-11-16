@@ -60,6 +60,7 @@ Sau khi có CI, nhập snapshot bằng chứng đúng head đã thực chạy; s
 | P2 | APK cert rejection trong update install thực, production signed update và artifact-to-source equivalence của binary đang dùng chưa xác minh | Không cài wrong-cert lên production; tách nhiệm vụ signing/update validation |
 | P3 | Manual stopwatch gồm thao tác người dùng; localhost RSS/rate không là Wi-Fi benchmark | Ghi đúng method, đo CPU/read/write/discovery riêng nếu có |
 | P3 | Artifact7ngày; network collector có private IP; Google/host toolchain provenance theo giới hạn2C.2/2D.1 | Chỉ chia sẻ allowlisted evidence, che dữ liệu trước public và ghi hash bản che |
+| P2 / chưa xác định ảnh hưởng sản phẩm | Node24.22.2 bundled Undici HTTP parser phát sinh unhandled assertion trong **client của test mới**, ở lần full matrix thứ hai. Node production cũng có dùng fetch nhưng chưa tái hiện lỗi này trong native app | Giữ log/raw exit, không sửa hoặc nâng dependency production; Phase3 tái hiện riêng bằng native binary trước khi kết luận/sửa |
 
 ## Điều tra CI đầu và sửa toolkit
 
@@ -67,10 +68,13 @@ Tại head `ff75c81074ffce6c3bbed1083a04e46d390c3f58`, [workflow mới4385711078
 
 | Lỗi | Tái hiện và trước sửa | Thay đổi nhỏ trong test tools | Kiểm sau sửa |
 |---|---|---|---|
-| T01 / P2 toolkit | Windows3.12.10 đọc source-manifest.json UTF-8 bằng locale cp1252: UnicodeDecodeError ở TOOLKIT-CLI, command exit1 | read_result dùng UTF-8-sig tường minh, bao gồm BOM PowerShell; không đổi app | Fixture UTF-8/BOM và local suite84 PASS; Windows CI phải chạy lại |
-| T02 / P2 toolkit | Windows20unit có1error, stop ngay sau start cho interval0 với monotonic tick thô; guard đúng cách từ chối timing | perf_counter_ns độ phân giải cao/cùng clock giữa process trên Python được hỗ trợ; giữ chặn clock khác máy, interval≤0, drift>5s và stop/reset trùng | Unit tái hiện tick không đổi +84local PASS; Windows CI phải chạy lại |
+| T01 / P2 toolkit | Windows3.12.10 đọc source-manifest.json UTF-8 bằng locale cp1252: UnicodeDecodeError ở TOOLKIT-CLI, command exit1 | read_result dùng UTF-8-sig tường minh, bao gồm BOM PowerShell; không đổi app | Fixture UTF-8/BOM và local suite84 PASS; Windows CI43858014802 thực PASS21unit +CLI/bundle |
+| T02 / P2 toolkit | Windows20unit có1error, stop ngay sau start cho interval0 với monotonic tick thô; guard đúng cách từ chối timing | perf_counter_ns độ phân giải cao/cùng clock giữa process trên Python được hỗ trợ; giữ chặn clock khác máy, interval≤0, drift>5s và stop/reset trùng | Unit tái hiện tick không đổi +84local PASS; Windows CI43858014802 thực PASS21unit +CLI/bundle |
+| T03 / P2 harness/client, ảnh hưởng app chưa xác minh | Full protocol lần đầu36PASS; lần hai Node24.22.2 exit1 ở Undici Parser.finish assert(!this.paused), không hoàn tất matrix. Summary FAIL, không khai PASS hoặc tự retry | Chỉ client mới của test chuyển sang node:http HTTP/1.1, giữ loopback/origin/capability, Content-Length/streaming/SHA và toàn bộ sizes/assertions; thêm checkpoint từng case +5HTTPhelperunit thực socket (truncated body/redirect/size bound/capability/stream) | Local helper5/5 và smoke24/24 thực PASS; full36CI phải chạy lại. Production source và dependency nguyên byte |
 
 Artifact trước sửa14221149484 được tải và kiểm GitHub archive SHA-256/size/CRC rồi đối chiếu evidence-manifest. Log unit, test matrix và commands đã lọc được giữ trong cross-platform-2d2-logs/first-ci; không commit raw Actions credential/setup log. Local sau sửa `python3 -m scripts.cross_platform_ci.run toolkit ...` exit0,84unit; không gọi nó là Windows OS proof. Native app không đổi.
+
+Tại head4d64bcd4910fd310aa8a5b24608e1d1e1cb3b2d1, artifact14222835565 giữ protocol child raw_returncode1/timeoutfalse, client parser stack và mandatory FAIL. Từng case của lần abrupt exit chưa có checkpoint nên không xác định được size/direction gây assertion từ log đó; không bịa kết quả. Chưa gọi đây là lỗi production đã tái hiện. Thay transport **của harness** không thay client/server ứng dụng; mọi regression cũ vẫn phải chạy nguyên bản.
 
 Source hiện hỗ trợ consent/pull/receipt/folder/ZIP64 nhưng không có resume offset; không thêm yêu cầu resume hoặc gọi đây là regression.
 

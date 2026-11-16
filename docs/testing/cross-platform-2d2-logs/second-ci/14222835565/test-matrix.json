@@ -1,0 +1,31 @@
+{
+  "platform": "2d2-protocol",
+  "source": {
+    "base": "f9b5a43c5eae93b169717a72d19f5a426d913094",
+    "protected_files": 790,
+    "checkout": "5901659403086e79901300c94cb5987076f049ac",
+    "reviewed_head": "4d64bcd4910fd310aa8a5b24608e1d1e1cb3b2d1",
+    "tracked_worktree_dirty": false
+  },
+  "artifact": {},
+  "tests": [
+    {
+      "test_id": "A-PROTOCOL-MATRIX",
+      "platform": "2d2-protocol",
+      "os_api": "Linux-7.0.0-1014-aws-x86_64-with-glibc2.39",
+      "source_commit": "4d64bcd4910fd310aa8a5b24608e1d1e1cb3b2d1",
+      "checkout_commit": "5901659403086e79901300c94cb5987076f049ac",
+      "artifact_sha256": {},
+      "preconditions": "Owned isolated environment and verified artifact",
+      "command_or_method": "A-PROTOCOL-MATRIX",
+      "expected": "All four production-engine directions, exact SHA/size, capability and 25/50/75% interrupted upload assertions",
+      "actual": "AssertionError: Protocol child exit=1; screened log retained",
+      "exit_code": null,
+      "time_started_utc": "2026-11-16T11:28:34Z",
+      "wall_seconds": 48.312,
+      "evidence_path": "logs/test-matrix.json",
+      "required": true,
+      "status": "FAIL"
+    }
+  ]
+}
