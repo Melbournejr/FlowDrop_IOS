@@ -9,6 +9,7 @@ import {tmpdir} from 'node:os';
 import {fileURLToPath} from 'node:url';
 export const digest=value=>createHash('sha256').update(value).digest('hex');
 export const identityName=id=>'flowdrop-'+digest(id).slice(0,24)+'.local';
+const vaultJson=text=>{try{return JSON.parse(text);}catch{throw Error('Dữ liệu kho danh tính Windows không hợp lệ.');}};
 const random=()=>randomBytes(32).toString('hex');
 const same=(a,b)=>typeof a==='string'&&typeof b==='string'&&a.length===b.length&&Buffer.byteLength(a)===Buffer.byteLength(b)&&timingSafeEqual(Buffer.from(a),Buffer.from(b));
 const commit=(transcript,nonce)=>digest(JSON.stringify([transcript,nonce]));
@@ -24,13 +25,14 @@ function powershell(body){
  const executable=path.join(systemRoot,'System32','WindowsPowerShell','v1.0','powershell.exe');
  const vaultEnvironment={...process.env};for(const key of Object.keys(vaultEnvironment))if(['psmodulepath','psmoduleanalysiscachepath','windowspowershellmodulepath'].includes(key.toLowerCase()))delete vaultEnvironment[key];
  vaultEnvironment.PSModulePath=path.join(systemRoot,'System32','WindowsPowerShell','v1.0','Modules');
- const r=spawnSync(executable,['-NoProfile','-NonInteractive','-ExecutionPolicy','Bypass','-File',script],{env:vaultEnvironment,input:JSON.stringify(body)+'\n',encoding:'utf8',windowsHide:true,maxBuffer:1024*1024,timeout:60000});
- if(r.status!==0){const code=r.stderr?.match(/FLOWDROP_VAULT_ERROR=([A-Za-z0-9_.,:-]{1,180})/)?.[1];throw Error('Không mở được kho danh tính thiết bị Windows.'+(code?' ['+code+']':''));}return r.stdout.trim();
+ const diagnose=process.env.FLOWDROP_VAULT_DIAGNOSTICS==='1';if(diagnose)process.stderr.write('FLOWDROP_VAULT_OPERATION='+body.operation+'\n');
+ const r=spawnSync(executable,['-NoProfile','-NonInteractive','-ExecutionPolicy','Bypass','-File',script],{stdio:['pipe','pipe',diagnose?'inherit':'pipe'],env:vaultEnvironment,input:JSON.stringify(body)+'\n',encoding:'utf8',windowsHide:true,maxBuffer:1024*1024,timeout:60000});
+ if(r.status!==0){const code=r.stderr?.match(/FLOWDROP_VAULT_ERROR=([A-Za-z0-9_.,:-]{1,180})/)?.[1];throw Error('Không mở được kho danh tính thiết bị Windows.'+(code?' ['+code+']':r.error?.code?' ['+r.error.code+']':''));}return r.stdout.trim();
 }
 export async function deviceVault(directory,id){
  if(process.platform==='win32'){
   const file=path.join(directory,'device-transport.dpapi');let value;
-  try{value=JSON.parse(powershell({operation:'open',value:await readFile(file,'utf8')}));}catch(error){if(error.code!=='ENOENT')throw error;value={...JSON.parse(powershell({operation:'create',name:identityName(id)})),trusted:{}};}
+  try{value=vaultJson(powershell({operation:'open',value:await readFile(file,'utf8')}));}catch(error){if(error.code!=='ENOENT')throw error;value={...vaultJson(powershell({operation:'create',name:identityName(id)})),trusted:{}};}
   let tail=Promise.resolve();const save=()=>{const snapshot=JSON.stringify(value);const operation=async()=>{const sealed=powershell({operation:'seal',value:snapshot});await writeFile(file+'.tmp',sealed,{mode:0o600});await rename(file+'.tmp',file);};const pending=tail.then(operation,operation);tail=pending.catch(()=>{});return pending;};await save();return {value,save};
  }
  // Non-Windows engine tests have no persistent private keys; no plaintext fallback vault.

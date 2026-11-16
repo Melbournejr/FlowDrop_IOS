@@ -177,3 +177,11 @@ creation. The generator now requests RSA2048 in the CSP constructor, avoiding
 its read-only KeySize property. Error records include only a public exception
 identifier and script line number. The private CSP key is not persisted and is
 disposed after the encrypted PFX is returned through the private pipe.
+
+Turbo ownership state is visible across callback/network threads. A late
+create-success callback after stop/LAN selection immediately cleans its own
+lease; removal additionally checks the generated passphrase, not just the SSID.
+Manual physical regression: start Turbo, immediately stop the host or select LAN,
+then verify no FlowDrop-owned group remains and another app's group is retained.
+This cancellation/driver test remains NOT VERIFIED without real Wi-Fi hardware.
+ETA is shown only after at least one byte has moved.

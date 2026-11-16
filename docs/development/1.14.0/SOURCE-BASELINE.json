@@ -42,7 +42,7 @@
     {
       "path": "android/src/app/flowdrop/mobile/MainActivity.java",
       "base_sha256": "5723842d292e94343b875fe33d5e98161da8e37425288966ca067e427bbfacd8",
-      "sha256": "4c3720ce67b8ae313c152dff24cfc4385826d02cc4839b3b218edf2e9b59a6ff"
+      "sha256": "9b0f2552b990a268755cc034c1552a67edd8e81fbdb79b60e57ab530da789da1"
     },
     {
       "path": "android/src/app/flowdrop/mobile/ReceiveService.java",
@@ -67,7 +67,7 @@
     {
       "path": "android/src/app/flowdrop/mobile/TurboLink.java",
       "base_sha256": null,
-      "sha256": "6d1a3384afb7fc44f8a201ce95fd5214fd96fe2b26853bfac5ae9a20134f523d"
+      "sha256": "5e937e5536a28c87b7a64eed1e7c997d1a18582329b703ad956f68ab0b0f2ecb"
     },
     {
       "path": "android/src/app/flowdrop/mobile/WifiNetwork.java",
@@ -77,7 +77,7 @@
     {
       "path": "desktop/windows/FlowDrop.cpp",
       "base_sha256": "f8a274fbc1ef1c560bc2455a15bab984918dce832b9e91410d3cc24595b64f23",
-      "sha256": "8376b59a89be9702331354df797372fdb935fe75689f4fa6823be5bf2c0022ac"
+      "sha256": "f04593fd0ce3718011744515e3445280ea122f5135de39ac1ffc51425f62c7f3"
     },
     {
       "path": "desktop/windows/FlowDrop.rc",
@@ -127,12 +127,12 @@
     {
       "path": "scripts/device-security.mjs",
       "base_sha256": null,
-      "sha256": "50cdbef7ff000bc389e56ec530128eb585c63a95864801294772bac0753fbdc9"
+      "sha256": "d969dc4f97a543a723ce531e97fecc76673f0d820e736ab0c011228814885056"
     },
     {
       "path": "scripts/device-vault.ps1",
       "base_sha256": null,
-      "sha256": "32af13cc3b761344f23cf29470a72f6a5ac119c08105e6856eec97e9c8a3cdd5"
+      "sha256": "4a3b32b6584c2eca98a48727a235601925a85cf0d604984af5c9e2b9872c6048"
     },
     {
       "path": "scripts/discovery.mjs",
@@ -192,7 +192,7 @@
     {
       "path": "scripts/native_runtime_ci/windows.py",
       "base_sha256": "9a4b5fc9e0be422a38115ca013c70b0544495da611d205a97f7557ba09f31b0d",
-      "sha256": "3c07d968de2a308b51537bd7bcbef4d38c39d2a4163d218f589ae8f7521f649b"
+      "sha256": "b8b13ba3407e48dae010d4d67aa3ba84e604acc1eeb89646b7da250ac0496dd4"
     },
     {
       "path": "scripts/peer-offers.mjs",
@@ -302,7 +302,7 @@
     {
       "path": "tests/windows-vault-probe.mjs",
       "base_sha256": null,
-      "sha256": "7a8131e55f07bebee72067ff5ce5d1f3c768fbc6ec305930c138848684c1712b"
+      "sha256": "c23a4b3ece406b178bd091bfdc1d23a17273d3f36020236f93c23b8b981501d9"
     },
     {
       "path": "worker/index.js",

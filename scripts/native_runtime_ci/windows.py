@@ -187,7 +187,7 @@ def run(root, downloads, helpers):
         marker_hash = sha256(marker)
         with rec.case('W05-start', WINDOWS['W05-start']) as row:
             vault_output, vault_code = rec.run('actual-windows-dpapi', [install / 'runtime/node.exe', REPO / 'tests/windows-vault-probe.mjs', rec.root / 'synthetic-device-vault'], timeout=90)
-            assert vault_code == 0 and json.loads(vault_output)['status'] == 'PASS'
+            assert vault_code == 0 and json.loads(vault_output.strip().splitlines()[-1])['status'] == 'PASS'
             metadata = start()
             actual = json.loads(ps('app-backend-processes', 'Get-CimInstance Win32_Process | Where-Object { $_.ProcessId -in @(' + str(process.pid) + ',' + str(metadata['pid']) + ') } | Select-Object ProcessId,ParentProcessId,ExecutablePath | ConvertTo-Json')[0])
             assert any(p['ExecutablePath'] and Path(p['ExecutablePath']).resolve() == (install / 'runtime/node.exe').resolve() for p in actual)
