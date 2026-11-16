@@ -141,9 +141,10 @@ class PhysicalLanTests(unittest.TestCase):
             lan.stop(self.root)
 
     def test_adb_rejects_personal_directory_and_bad_serial_before_execution(self):
-        self.create()
+        doc = self.create()
         with patch.object(lan.subprocess, 'run') as child:
-            for serial, remote in [('serial;bad', '/sdcard/Download/FlowDrop'), ('safe', '/sdcard/DCIM/Camera')]:
+            for serial, remote in [('serial;bad', '/sdcard/Download/FlowDrop'), ('safe', '/sdcard/DCIM/Camera'),
+                                   ('safe', '/sdcard/Download/FlowDrop/' + doc['payload_folder'])]:
                 with self.assertRaises(ValueError):
                     lan.adb_hash(self.root, FILE, serial, remote)
             child.assert_not_called()

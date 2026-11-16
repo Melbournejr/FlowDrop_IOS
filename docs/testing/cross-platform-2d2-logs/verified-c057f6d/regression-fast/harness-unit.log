@@ -1,0 +1,24 @@
+✔ REG-001: Java source paths remain individual arguments, including roots with spaces (1.915038ms)
+✔ compiler arguments reject outside-repository and non-Java inputs (0.238809ms)
+✔ test JAR configuration supports an explicit path and the existing build-tools override (0.178311ms)
+✔ concurrent workspaces are distinct and cleanup is idempotent (7.322613ms)
+✔ a missing JAR produces an actionable preflight failure and no scratch leak (1.060892ms)
+✔ a mismatched JAR is rejected before compilation instead of silently changing the fixture dependency (1.894921ms)
+✔ desktop readiness waits for the private pipe record and handles fragmented UTF-8 (1.075037ms)
+✔ Android readiness parses a fragmented local capability from the JVM pipe (0.288081ms)
+✔ readiness rejects missing capabilities and non-loopback addresses (6.53623ms)
+✔ startup failure and timeout detach listeners and redact capability diagnostics (10.364866ms)
+✔ a host that exited before the readiness listener was attached fails immediately (0.269402ms)
+✔ a missing executable is reported and cleaned up without waiting for an exit event (3.695319ms)
+✔ cleanup terminates a child that ignores graceful shutdown and removes its files (51.570789ms)
+✔ local requests use the correct per-host header; missing and wrong credentials remain denied (37.875012ms)
+✔ local capabilities are not forwarded when a local endpoint redirects to another origin (6.530893ms)
+✔ optional report output stays outside scratch cleanup and redacts capability fields (3.230872ms)
+ℹ tests 16
+ℹ suites 0
+ℹ pass 16
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 231.73983

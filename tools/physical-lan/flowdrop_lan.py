@@ -297,7 +297,9 @@ def adb_hash(root, executable, serial, remote_parent, purpose='destination'):
     executable = no_links(executable)
     if not executable.is_file() or not re.fullmatch(r'[A-Za-z0-9_.:-]{1,100}', serial):
         raise ValueError('Select a trusted adb executable and one explicit device serial')
-    allowed = ['/sdcard/Download/FlowDrop', '/storage/emulated/0/Download/FlowDrop']
+    # /sdcard is normally an Android symlink. Require the canonical primary-user
+    # path so the ancestor no-link checks remain both useful and usable.
+    allowed = ['/storage/emulated/0/Download/FlowDrop']
     parent = str(PurePosixPath(remote_parent))
     if not any(parent.startswith(p + '/') for p in allowed) or PurePosixPath(parent).name != doc['payload_folder']:
         raise ValueError('ADB reads only the exact unique generated folder under Download/FlowDrop')

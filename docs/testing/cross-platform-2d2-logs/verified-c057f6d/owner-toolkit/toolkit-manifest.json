@@ -1,0 +1,42 @@
+{
+  "source": {
+    "base": "f9b5a43c5eae93b169717a72d19f5a426d913094",
+    "protected_files": 790,
+    "checkout": "fa74266e3658332681214fb04f02ee758d6a5d63",
+    "reviewed_head": "c057f6dbbbd4d9da4e9fe4da63e173204691aefc",
+    "tracked_worktree_dirty": false
+  },
+  "purpose": "Verification tools only, no application installer",
+  "files": [
+    {
+      "name": "flowdrop_lan.py",
+      "size": 24909,
+      "sha256": "3078134b1fb83914322fa400efb38a288a8e92635f6eb794c56ebbdb764f228d"
+    },
+    {
+      "name": "Run-FlowDrop-LAN.ps1",
+      "size": 3226,
+      "sha256": "0cdad2fac102701670a05e6fecce258779ecb0d4516ace27384068ed6cd28b4a"
+    },
+    {
+      "name": "Collect-FlowDrop-Network.ps1",
+      "size": 2581,
+      "sha256": "3e82086a2c28bb95f8500ce46edc9d8dad0a6027f8dbe795270e29db7408a883"
+    },
+    {
+      "name": "PHYSICAL-LAN-TEST-GUIDE.md",
+      "size": 15888,
+      "sha256": "124789341760ca764a3ca11f637fa4d46110c7c24c09a79796f4b1c564e328a6"
+    },
+    {
+      "name": "CHECKLIST.md",
+      "size": 3671,
+      "sha256": "44cef579279cc64eea895ee267b9e33f98f33205b0d65834c3817bac465ab546"
+    }
+  ],
+  "archive": {
+    "name": "FlowDrop-Physical-LAN-Toolkit-2D2.zip",
+    "size": 19416,
+    "sha256": "f21af8b33f9f7f214886cf7965a31dbca71b105e7d75f0e4bbe8f4b9a17b4d66"
+  }
+}

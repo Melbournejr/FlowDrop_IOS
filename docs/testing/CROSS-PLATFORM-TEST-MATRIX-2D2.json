@@ -2,24 +2,24 @@
   "phase": "2D.2",
   "base": "f9b5a43c5eae93b169717a72d19f5a426d913094",
   "layer_A_local_status": "PASS",
-  "layer_A_CI_status": "NOT VERIFIED",
+  "layer_A_CI_status": "PASS",
   "layer_B_native_cross_platform": "BLOCKED",
   "layer_C_physical_LAN": "NOT VERIFIED",
   "phase_2D2_B": "NOT VERIFIED",
-  "evidence_scope": "Preliminary local working-tree protocol smoke (24 cases); final CI head/runs are recorded after reviewable commits. No native E2E inferred.",
+  "evidence_scope": "Authenticated CI snapshot at c057f6dbbbd4d9da4e9fe4da63e173204691aefc. Final PR body and final-head Actions artifacts bind the handoff commit after report commit. Snapshot is never relabelled.",
   "tests": [
     {
       "test_id": "A-D1-bytes-0",
       "sender": "Windows Node engine on Linux",
       "receiver": "Android Java engine on JVM",
       "network": "loopback HTTP, isolated Linux job",
-      "source_commit": "f9b5a43c5eae93b169717a72d19f5a426d913094",
+      "source_commit": "c057f6dbbbd4d9da4e9fe4da63e173204691aefc",
       "artifact_sha256": null,
       "expected": "Source/destination SHA-256 and exact size agree; security assertions remain enabled",
       "status": "PASS",
       "exit_code": 0,
-      "started_utc": "2026-11-16T11:06:46.119Z",
-      "evidence": "protocol-matrix.json",
+      "started_utc": "2026-11-16T11:37:21.643Z",
+      "evidence": "docs/testing/cross-platform-2d2-logs/verified-c057f6d/protocol/protocol-matrix.json",
       "actual": {
         "size": 0,
         "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
@@ -27,24 +27,25 @@
         "exact_name": "Tệp 中文 😀 0.bin",
         "files": 1
       },
-      "elapsed_seconds": 0.1840696680000001,
+      "elapsed_seconds": 0.05970934399999987,
       "size": 0,
       "MB_per_second": 0,
       "Mbps": 0,
-      "rate_method": "Full test interval including generation, source stage, relay, destination read/hash; not Wi-Fi throughput"
+      "rate_method": "Full test interval including generation, source stage, relay, destination read/hash; not Wi-Fi throughput",
+      "layer": "A: production-engine protocol, not native E2E"
     },
     {
       "test_id": "A-D1-bytes-1024",
       "sender": "Windows Node engine on Linux",
       "receiver": "Android Java engine on JVM",
       "network": "loopback HTTP, isolated Linux job",
-      "source_commit": "f9b5a43c5eae93b169717a72d19f5a426d913094",
+      "source_commit": "c057f6dbbbd4d9da4e9fe4da63e173204691aefc",
       "artifact_sha256": null,
       "expected": "Source/destination SHA-256 and exact size agree; security assertions remain enabled",
       "status": "PASS",
       "exit_code": 0,
-      "started_utc": "2026-11-16T11:06:46.305Z",
-      "evidence": "protocol-matrix.json",
+      "started_utc": "2026-11-16T11:37:21.704Z",
+      "evidence": "docs/testing/cross-platform-2d2-logs/verified-c057f6d/protocol/protocol-matrix.json",
       "actual": {
         "size": 1024,
         "source_sha256": "2bce1ba628720664be4b9fdd77aae0678e5f0f3f02fc6ff641ec879094f6a404",
@@ -52,24 +53,25 @@
         "exact_name": "Tệp 中文 😀 1024.bin",
         "files": 1
       },
-      "elapsed_seconds": 0.059180985999999845,
+      "elapsed_seconds": 0.023339984999999615,
       "size": 1024,
-      "MB_per_second": 0.01730285467024836,
-      "Mbps": 0.13842283736198688,
-      "rate_method": "Full test interval including generation, source stage, relay, destination read/hash; not Wi-Fi throughput"
+      "MB_per_second": 0.04387320728783745,
+      "Mbps": 0.3509856583026996,
+      "rate_method": "Full test interval including generation, source stage, relay, destination read/hash; not Wi-Fi throughput",
+      "layer": "A: production-engine protocol, not native E2E"
     },
     {
       "test_id": "A-D1-bytes-1048576",
       "sender": "Windows Node engine on Linux",
       "receiver": "Android Java engine on JVM",
       "network": "loopback HTTP, isolated Linux job",
-      "source_commit": "f9b5a43c5eae93b169717a72d19f5a426d913094",
+      "source_commit": "c057f6dbbbd4d9da4e9fe4da63e173204691aefc",
       "artifact_sha256": null,
       "expected": "Source/destination SHA-256 and exact size agree; security assertions remain enabled",
       "status": "PASS",
       "exit_code": 0,
-      "started_utc": "2026-11-16T11:06:46.365Z",
-      "evidence": "protocol-matrix.json",
+      "started_utc": "2026-11-16T11:37:21.728Z",
+      "evidence": "docs/testing/cross-platform-2d2-logs/verified-c057f6d/protocol/protocol-matrix.json",
       "actual": {
         "size": 1048576,
         "source_sha256": "631b84027d6b9e52b539c4e8373622d23032dfadc64d60af87339c9037e4f769",
@@ -77,24 +79,103 @@
         "exact_name": "Tệp 中文 😀 1048576.bin",
         "files": 1
       },
-      "elapsed_seconds": 0.1026122790000004,
+      "elapsed_seconds": 0.030283298000000285,
       "size": 1048576,
-      "MB_per_second": 10.218816015186603,
-      "Mbps": 81.75052812149282,
-      "rate_method": "Full test interval including generation, source stage, relay, destination read/hash; not Wi-Fi throughput"
+      "MB_per_second": 34.62555498413648,
+      "Mbps": 277.0044398730918,
+      "rate_method": "Full test interval including generation, source stage, relay, destination read/hash; not Wi-Fi throughput",
+      "layer": "A: production-engine protocol, not native E2E"
+    },
+    {
+      "test_id": "A-D1-bytes-104857600",
+      "sender": "Windows Node engine on Linux",
+      "receiver": "Android Java engine on JVM",
+      "network": "loopback HTTP, isolated Linux job",
+      "source_commit": "c057f6dbbbd4d9da4e9fe4da63e173204691aefc",
+      "artifact_sha256": null,
+      "expected": "Source/destination SHA-256 and exact size agree; security assertions remain enabled",
+      "status": "PASS",
+      "exit_code": 0,
+      "started_utc": "2026-11-16T11:37:21.759Z",
+      "evidence": "docs/testing/cross-platform-2d2-logs/verified-c057f6d/protocol/protocol-matrix.json",
+      "actual": {
+        "size": 104857600,
+        "source_sha256": "998fa39fe735dc4be63f55bf6ec3db8b64fe3d8fcd3fe759d1b88d27992c0b75",
+        "destination_sha256": "998fa39fe735dc4be63f55bf6ec3db8b64fe3d8fcd3fe759d1b88d27992c0b75",
+        "exact_name": "Tệp 中文 😀 104857600.bin",
+        "files": 1
+      },
+      "elapsed_seconds": 0.5975220499999996,
+      "size": 104857600,
+      "MB_per_second": 175.48741506694202,
+      "Mbps": 1403.8993205355362,
+      "rate_method": "Full test interval including generation, source stage, relay, destination read/hash; not Wi-Fi throughput",
+      "layer": "A: production-engine protocol, not native E2E"
+    },
+    {
+      "test_id": "A-D1-bytes-1073741824",
+      "sender": "Windows Node engine on Linux",
+      "receiver": "Android Java engine on JVM",
+      "network": "loopback HTTP, isolated Linux job",
+      "source_commit": "c057f6dbbbd4d9da4e9fe4da63e173204691aefc",
+      "artifact_sha256": null,
+      "expected": "Source/destination SHA-256 and exact size agree; security assertions remain enabled",
+      "status": "PASS",
+      "exit_code": 0,
+      "started_utc": "2026-11-16T11:37:22.358Z",
+      "evidence": "docs/testing/cross-platform-2d2-logs/verified-c057f6d/protocol/protocol-matrix.json",
+      "actual": {
+        "size": 1073741824,
+        "source_sha256": "e18e3f358b46eae9266ac36a5ff6347f6bf09711dff389597f237d5fe83111d8",
+        "destination_sha256": "e18e3f358b46eae9266ac36a5ff6347f6bf09711dff389597f237d5fe83111d8",
+        "exact_name": "Tệp 中文 😀 1073741824.bin",
+        "files": 1
+      },
+      "elapsed_seconds": 4.583543276,
+      "size": 1073741824,
+      "MB_per_second": 234.2602129715334,
+      "Mbps": 1874.0817037722672,
+      "rate_method": "Full test interval including generation, source stage, relay, destination read/hash; not Wi-Fi throughput",
+      "layer": "A: production-engine protocol, not native E2E"
+    },
+    {
+      "test_id": "A-D1-bytes-4294967313",
+      "sender": "Windows Node engine on Linux",
+      "receiver": "Android Java engine on JVM",
+      "network": "loopback HTTP, isolated Linux job",
+      "source_commit": "c057f6dbbbd4d9da4e9fe4da63e173204691aefc",
+      "artifact_sha256": null,
+      "expected": "Source/destination SHA-256 and exact size agree; security assertions remain enabled",
+      "status": "PASS",
+      "exit_code": 0,
+      "started_utc": "2026-11-16T11:37:26.943Z",
+      "evidence": "docs/testing/cross-platform-2d2-logs/verified-c057f6d/protocol/protocol-matrix.json",
+      "actual": {
+        "size": 4294967313,
+        "source_sha256": "9bf2e05c25222af695af1537ef0d8d2241a85ddadf3819797b83c856efeff824",
+        "destination_sha256": "9bf2e05c25222af695af1537ef0d8d2241a85ddadf3819797b83c856efeff824",
+        "exact_name": "Tệp 中文 😀 4294967313.bin",
+        "files": 1
+      },
+      "elapsed_seconds": 36.352256080000004,
+      "size": 4294967313,
+      "MB_per_second": 118.14857662611402,
+      "Mbps": 945.1886130089122,
+      "rate_method": "Full test interval including generation, source stage, relay, destination read/hash; not Wi-Fi throughput",
+      "layer": "A: production-engine protocol, not native E2E"
     },
     {
       "test_id": "A-D1-batch-101",
       "sender": "Windows Node engine on Linux",
       "receiver": "Android Java engine on JVM",
       "network": "loopback HTTP, isolated Linux job",
-      "source_commit": "f9b5a43c5eae93b169717a72d19f5a426d913094",
+      "source_commit": "c057f6dbbbd4d9da4e9fe4da63e173204691aefc",
       "artifact_sha256": null,
       "expected": "Source/destination SHA-256 and exact size agree; security assertions remain enabled",
       "status": "PASS",
       "exit_code": 0,
-      "started_utc": "2026-11-16T11:06:46.467Z",
-      "evidence": "protocol-matrix.json",
+      "started_utc": "2026-11-16T11:38:03.297Z",
+      "evidence": "docs/testing/cross-platform-2d2-logs/verified-c057f6d/protocol/protocol-matrix.json",
       "actual": {
         "files": 101,
         "size": 3892,
@@ -708,24 +789,25 @@
         ],
         "concurrency": "Single FlowDrop batch, streamed files serially as baseline; no simultaneous-upload feature claimed"
       },
-      "elapsed_seconds": 1.875660586,
+      "elapsed_seconds": 0.6827378240000035,
       "size": 3892,
-      "MB_per_second": 0.002075002284021977,
-      "Mbps": 0.016600018272175818,
-      "rate_method": "Full test interval including generation, source stage, relay, destination read/hash; not Wi-Fi throughput"
+      "MB_per_second": 0.0057005776788484775,
+      "Mbps": 0.04560462143078782,
+      "rate_method": "Full test interval including generation, source stage, relay, destination read/hash; not Wi-Fi throughput",
+      "layer": "A: production-engine protocol, not native E2E"
     },
     {
       "test_id": "A-D2-bytes-0",
       "sender": "Android Java engine on JVM",
       "receiver": "Windows Node engine on Linux",
       "network": "loopback HTTP, isolated Linux job",
-      "source_commit": "f9b5a43c5eae93b169717a72d19f5a426d913094",
+      "source_commit": "c057f6dbbbd4d9da4e9fe4da63e173204691aefc",
       "artifact_sha256": null,
       "expected": "Source/destination SHA-256 and exact size agree; security assertions remain enabled",
       "status": "PASS",
       "exit_code": 0,
-      "started_utc": "2026-11-16T11:06:48.343Z",
-      "evidence": "protocol-matrix.json",
+      "started_utc": "2026-11-16T11:38:03.980Z",
+      "evidence": "docs/testing/cross-platform-2d2-logs/verified-c057f6d/protocol/protocol-matrix.json",
       "actual": {
         "size": 0,
         "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
@@ -733,24 +815,25 @@
         "exact_name": "Tệp 中文 😀 0.bin",
         "files": 1
       },
-      "elapsed_seconds": 0.0381794060000002,
+      "elapsed_seconds": 0.018305238000000827,
       "size": 0,
       "MB_per_second": 0,
       "Mbps": 0,
-      "rate_method": "Full test interval including generation, source stage, relay, destination read/hash; not Wi-Fi throughput"
+      "rate_method": "Full test interval including generation, source stage, relay, destination read/hash; not Wi-Fi throughput",
+      "layer": "A: production-engine protocol, not native E2E"
     },
     {
       "test_id": "A-D2-bytes-1024",
       "sender": "Android Java engine on JVM",
       "receiver": "Windows Node engine on Linux",
       "network": "loopback HTTP, isolated Linux job",
-      "source_commit": "f9b5a43c5eae93b169717a72d19f5a426d913094",
+      "source_commit": "c057f6dbbbd4d9da4e9fe4da63e173204691aefc",
       "artifact_sha256": null,
       "expected": "Source/destination SHA-256 and exact size agree; security assertions remain enabled",
       "status": "PASS",
       "exit_code": 0,
-      "started_utc": "2026-11-16T11:06:48.381Z",
-      "evidence": "protocol-matrix.json",
+      "started_utc": "2026-11-16T11:38:04.000Z",
+      "evidence": "docs/testing/cross-platform-2d2-logs/verified-c057f6d/protocol/protocol-matrix.json",
       "actual": {
         "size": 1024,
         "source_sha256": "2bce1ba628720664be4b9fdd77aae0678e5f0f3f02fc6ff641ec879094f6a404",
@@ -758,24 +841,25 @@
         "exact_name": "Tệp 中文 😀 1024.bin",
         "files": 1
       },
-      "elapsed_seconds": 0.032548952000000096,
+      "elapsed_seconds": 0.014088182999999845,
       "size": 1024,
-      "MB_per_second": 0.03146030631032289,
-      "Mbps": 0.25168245048258314,
-      "rate_method": "Full test interval including generation, source stage, relay, destination read/hash; not Wi-Fi throughput"
+      "MB_per_second": 0.07268502971604013,
+      "Mbps": 0.581480237728321,
+      "rate_method": "Full test interval including generation, source stage, relay, destination read/hash; not Wi-Fi throughput",
+      "layer": "A: production-engine protocol, not native E2E"
     },
     {
       "test_id": "A-D2-bytes-1048576",
       "sender": "Android Java engine on JVM",
       "receiver": "Windows Node engine on Linux",
       "network": "loopback HTTP, isolated Linux job",
-      "source_commit": "f9b5a43c5eae93b169717a72d19f5a426d913094",
+      "source_commit": "c057f6dbbbd4d9da4e9fe4da63e173204691aefc",
       "artifact_sha256": null,
       "expected": "Source/destination SHA-256 and exact size agree; security assertions remain enabled",
       "status": "PASS",
       "exit_code": 0,
-      "started_utc": "2026-11-16T11:06:48.414Z",
-      "evidence": "protocol-matrix.json",
+      "started_utc": "2026-11-16T11:38:04.015Z",
+      "evidence": "docs/testing/cross-platform-2d2-logs/verified-c057f6d/protocol/protocol-matrix.json",
       "actual": {
         "size": 1048576,
         "source_sha256": "631b84027d6b9e52b539c4e8373622d23032dfadc64d60af87339c9037e4f769",
@@ -783,24 +867,103 @@
         "exact_name": "Tệp 中文 😀 1048576.bin",
         "files": 1
       },
-      "elapsed_seconds": 0.053891219000000094,
+      "elapsed_seconds": 0.021237889999996696,
       "size": 1048576,
-      "MB_per_second": 19.45727002389755,
-      "Mbps": 155.6581601911804,
-      "rate_method": "Full test interval including generation, source stage, relay, destination read/hash; not Wi-Fi throughput"
+      "MB_per_second": 49.372889679726335,
+      "Mbps": 394.9831174378107,
+      "rate_method": "Full test interval including generation, source stage, relay, destination read/hash; not Wi-Fi throughput",
+      "layer": "A: production-engine protocol, not native E2E"
+    },
+    {
+      "test_id": "A-D2-bytes-104857600",
+      "sender": "Android Java engine on JVM",
+      "receiver": "Windows Node engine on Linux",
+      "network": "loopback HTTP, isolated Linux job",
+      "source_commit": "c057f6dbbbd4d9da4e9fe4da63e173204691aefc",
+      "artifact_sha256": null,
+      "expected": "Source/destination SHA-256 and exact size agree; security assertions remain enabled",
+      "status": "PASS",
+      "exit_code": 0,
+      "started_utc": "2026-11-16T11:38:04.041Z",
+      "evidence": "docs/testing/cross-platform-2d2-logs/verified-c057f6d/protocol/protocol-matrix.json",
+      "actual": {
+        "size": 104857600,
+        "source_sha256": "998fa39fe735dc4be63f55bf6ec3db8b64fe3d8fcd3fe759d1b88d27992c0b75",
+        "destination_sha256": "998fa39fe735dc4be63f55bf6ec3db8b64fe3d8fcd3fe759d1b88d27992c0b75",
+        "exact_name": "Tệp 中文 😀 104857600.bin",
+        "files": 1
+      },
+      "elapsed_seconds": 0.5399125720000011,
+      "size": 104857600,
+      "MB_per_second": 194.21218441270116,
+      "Mbps": 1553.6974753016093,
+      "rate_method": "Full test interval including generation, source stage, relay, destination read/hash; not Wi-Fi throughput",
+      "layer": "A: production-engine protocol, not native E2E"
+    },
+    {
+      "test_id": "A-D2-bytes-1073741824",
+      "sender": "Android Java engine on JVM",
+      "receiver": "Windows Node engine on Linux",
+      "network": "loopback HTTP, isolated Linux job",
+      "source_commit": "c057f6dbbbd4d9da4e9fe4da63e173204691aefc",
+      "artifact_sha256": null,
+      "expected": "Source/destination SHA-256 and exact size agree; security assertions remain enabled",
+      "status": "PASS",
+      "exit_code": 0,
+      "started_utc": "2026-11-16T11:38:04.583Z",
+      "evidence": "docs/testing/cross-platform-2d2-logs/verified-c057f6d/protocol/protocol-matrix.json",
+      "actual": {
+        "size": 1073741824,
+        "source_sha256": "e18e3f358b46eae9266ac36a5ff6347f6bf09711dff389597f237d5fe83111d8",
+        "destination_sha256": "e18e3f358b46eae9266ac36a5ff6347f6bf09711dff389597f237d5fe83111d8",
+        "exact_name": "Tệp 中文 😀 1073741824.bin",
+        "files": 1
+      },
+      "elapsed_seconds": 4.394368146000001,
+      "size": 1073741824,
+      "MB_per_second": 244.3449862018001,
+      "Mbps": 1954.759889614401,
+      "rate_method": "Full test interval including generation, source stage, relay, destination read/hash; not Wi-Fi throughput",
+      "layer": "A: production-engine protocol, not native E2E"
+    },
+    {
+      "test_id": "A-D2-bytes-4294967313",
+      "sender": "Android Java engine on JVM",
+      "receiver": "Windows Node engine on Linux",
+      "network": "loopback HTTP, isolated Linux job",
+      "source_commit": "c057f6dbbbd4d9da4e9fe4da63e173204691aefc",
+      "artifact_sha256": null,
+      "expected": "Source/destination SHA-256 and exact size agree; security assertions remain enabled",
+      "status": "PASS",
+      "exit_code": 0,
+      "started_utc": "2026-11-16T11:38:08.979Z",
+      "evidence": "docs/testing/cross-platform-2d2-logs/verified-c057f6d/protocol/protocol-matrix.json",
+      "actual": {
+        "size": 4294967313,
+        "source_sha256": "9bf2e05c25222af695af1537ef0d8d2241a85ddadf3819797b83c856efeff824",
+        "destination_sha256": "9bf2e05c25222af695af1537ef0d8d2241a85ddadf3819797b83c856efeff824",
+        "exact_name": "Tệp 中文 😀 4294967313.bin",
+        "files": 1
+      },
+      "elapsed_seconds": 34.34546819199999,
+      "size": 4294967313,
+      "MB_per_second": 125.05193666279432,
+      "Mbps": 1000.4154933023545,
+      "rate_method": "Full test interval including generation, source stage, relay, destination read/hash; not Wi-Fi throughput",
+      "layer": "A: production-engine protocol, not native E2E"
     },
     {
       "test_id": "A-D2-batch-101",
       "sender": "Android Java engine on JVM",
       "receiver": "Windows Node engine on Linux",
       "network": "loopback HTTP, isolated Linux job",
-      "source_commit": "f9b5a43c5eae93b169717a72d19f5a426d913094",
+      "source_commit": "c057f6dbbbd4d9da4e9fe4da63e173204691aefc",
       "artifact_sha256": null,
       "expected": "Source/destination SHA-256 and exact size agree; security assertions remain enabled",
       "status": "PASS",
       "exit_code": 0,
-      "started_utc": "2026-11-16T11:06:48.468Z",
-      "evidence": "protocol-matrix.json",
+      "started_utc": "2026-11-16T11:38:43.326Z",
+      "evidence": "docs/testing/cross-platform-2d2-logs/verified-c057f6d/protocol/protocol-matrix.json",
       "actual": {
         "files": 101,
         "size": 3892,
@@ -1414,24 +1577,25 @@
         ],
         "concurrency": "Single FlowDrop batch, streamed files serially as baseline; no simultaneous-upload feature claimed"
       },
-      "elapsed_seconds": 1.462442024,
+      "elapsed_seconds": 0.5394530590000067,
       "size": 3892,
-      "MB_per_second": 0.002661302079760257,
-      "Mbps": 0.021290416638082055,
-      "rate_method": "Full test interval including generation, source stage, relay, destination read/hash; not Wi-Fi throughput"
+      "MB_per_second": 0.0072147148580724825,
+      "Mbps": 0.05771771886457986,
+      "rate_method": "Full test interval including generation, source stage, relay, destination read/hash; not Wi-Fi throughput",
+      "layer": "A: production-engine protocol, not native E2E"
     },
     {
       "test_id": "A-D3-bytes-0",
       "sender": "Windows Node engine on Linux",
       "receiver": "Windows Node engine on Linux",
       "network": "loopback HTTP, isolated Linux job",
-      "source_commit": "f9b5a43c5eae93b169717a72d19f5a426d913094",
+      "source_commit": "c057f6dbbbd4d9da4e9fe4da63e173204691aefc",
       "artifact_sha256": null,
       "expected": "Source/destination SHA-256 and exact size agree; security assertions remain enabled",
       "status": "PASS",
       "exit_code": 0,
-      "started_utc": "2026-11-16T11:06:49.930Z",
-      "evidence": "protocol-matrix.json",
+      "started_utc": "2026-11-16T11:38:43.867Z",
+      "evidence": "docs/testing/cross-platform-2d2-logs/verified-c057f6d/protocol/protocol-matrix.json",
       "actual": {
         "size": 0,
         "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
@@ -1439,24 +1603,25 @@
         "exact_name": "Tệp 中文 😀 0.bin",
         "files": 1
       },
-      "elapsed_seconds": 0.07421240800000033,
+      "elapsed_seconds": 0.04118116799999552,
       "size": 0,
       "MB_per_second": 0,
       "Mbps": 0,
-      "rate_method": "Full test interval including generation, source stage, relay, destination read/hash; not Wi-Fi throughput"
+      "rate_method": "Full test interval including generation, source stage, relay, destination read/hash; not Wi-Fi throughput",
+      "layer": "A: production-engine protocol, not native E2E"
     },
     {
       "test_id": "A-D3-bytes-1024",
       "sender": "Windows Node engine on Linux",
       "receiver": "Windows Node engine on Linux",
       "network": "loopback HTTP, isolated Linux job",
-      "source_commit": "f9b5a43c5eae93b169717a72d19f5a426d913094",
+      "source_commit": "c057f6dbbbd4d9da4e9fe4da63e173204691aefc",
       "artifact_sha256": null,
       "expected": "Source/destination SHA-256 and exact size agree; security assertions remain enabled",
       "status": "PASS",
       "exit_code": 0,
-      "started_utc": "2026-11-16T11:06:50.004Z",
-      "evidence": "protocol-matrix.json",
+      "started_utc": "2026-11-16T11:38:43.909Z",
+      "evidence": "docs/testing/cross-platform-2d2-logs/verified-c057f6d/protocol/protocol-matrix.json",
       "actual": {
         "size": 1024,
         "source_sha256": "2bce1ba628720664be4b9fdd77aae0678e5f0f3f02fc6ff641ec879094f6a404",
@@ -1464,24 +1629,25 @@
         "exact_name": "Tệp 中文 😀 1024.bin",
         "files": 1
       },
-      "elapsed_seconds": 0.05352825699999994,
+      "elapsed_seconds": 0.022650201000011295,
       "size": 1024,
-      "MB_per_second": 0.01913008301391172,
-      "Mbps": 0.15304066411129377,
-      "rate_method": "Full test interval including generation, source stage, relay, destination read/hash; not Wi-Fi throughput"
+      "MB_per_second": 0.04520931182904246,
+      "Mbps": 0.3616744946323397,
+      "rate_method": "Full test interval including generation, source stage, relay, destination read/hash; not Wi-Fi throughput",
+      "layer": "A: production-engine protocol, not native E2E"
     },
     {
       "test_id": "A-D3-bytes-1048576",
       "sender": "Windows Node engine on Linux",
       "receiver": "Windows Node engine on Linux",
       "network": "loopback HTTP, isolated Linux job",
-      "source_commit": "f9b5a43c5eae93b169717a72d19f5a426d913094",
+      "source_commit": "c057f6dbbbd4d9da4e9fe4da63e173204691aefc",
       "artifact_sha256": null,
       "expected": "Source/destination SHA-256 and exact size agree; security assertions remain enabled",
       "status": "PASS",
       "exit_code": 0,
-      "started_utc": "2026-11-16T11:06:50.058Z",
-      "evidence": "protocol-matrix.json",
+      "started_utc": "2026-11-16T11:38:43.933Z",
+      "evidence": "docs/testing/cross-platform-2d2-logs/verified-c057f6d/protocol/protocol-matrix.json",
       "actual": {
         "size": 1048576,
         "source_sha256": "631b84027d6b9e52b539c4e8373622d23032dfadc64d60af87339c9037e4f769",
@@ -1489,24 +1655,103 @@
         "exact_name": "Tệp 中文 😀 1048576.bin",
         "files": 1
       },
-      "elapsed_seconds": 0.08188565300000028,
+      "elapsed_seconds": 0.028278556000004756,
       "size": 1048576,
-      "MB_per_second": 12.805368969824254,
-      "Mbps": 102.44295175859403,
-      "rate_method": "Full test interval including generation, source stage, relay, destination read/hash; not Wi-Fi throughput"
+      "MB_per_second": 37.080252612609485,
+      "Mbps": 296.6420209008759,
+      "rate_method": "Full test interval including generation, source stage, relay, destination read/hash; not Wi-Fi throughput",
+      "layer": "A: production-engine protocol, not native E2E"
+    },
+    {
+      "test_id": "A-D3-bytes-104857600",
+      "sender": "Windows Node engine on Linux",
+      "receiver": "Windows Node engine on Linux",
+      "network": "loopback HTTP, isolated Linux job",
+      "source_commit": "c057f6dbbbd4d9da4e9fe4da63e173204691aefc",
+      "artifact_sha256": null,
+      "expected": "Source/destination SHA-256 and exact size agree; security assertions remain enabled",
+      "status": "PASS",
+      "exit_code": 0,
+      "started_utc": "2026-11-16T11:38:43.963Z",
+      "evidence": "docs/testing/cross-platform-2d2-logs/verified-c057f6d/protocol/protocol-matrix.json",
+      "actual": {
+        "size": 104857600,
+        "source_sha256": "998fa39fe735dc4be63f55bf6ec3db8b64fe3d8fcd3fe759d1b88d27992c0b75",
+        "destination_sha256": "998fa39fe735dc4be63f55bf6ec3db8b64fe3d8fcd3fe759d1b88d27992c0b75",
+        "exact_name": "Tệp 中文 😀 104857600.bin",
+        "files": 1
+      },
+      "elapsed_seconds": 0.6853324489999941,
+      "size": 104857600,
+      "MB_per_second": 153.0025320601752,
+      "Mbps": 1224.0202564814017,
+      "rate_method": "Full test interval including generation, source stage, relay, destination read/hash; not Wi-Fi throughput",
+      "layer": "A: production-engine protocol, not native E2E"
+    },
+    {
+      "test_id": "A-D3-bytes-1073741824",
+      "sender": "Windows Node engine on Linux",
+      "receiver": "Windows Node engine on Linux",
+      "network": "loopback HTTP, isolated Linux job",
+      "source_commit": "c057f6dbbbd4d9da4e9fe4da63e173204691aefc",
+      "artifact_sha256": null,
+      "expected": "Source/destination SHA-256 and exact size agree; security assertions remain enabled",
+      "status": "PASS",
+      "exit_code": 0,
+      "started_utc": "2026-11-16T11:38:44.650Z",
+      "evidence": "docs/testing/cross-platform-2d2-logs/verified-c057f6d/protocol/protocol-matrix.json",
+      "actual": {
+        "size": 1073741824,
+        "source_sha256": "e18e3f358b46eae9266ac36a5ff6347f6bf09711dff389597f237d5fe83111d8",
+        "destination_sha256": "e18e3f358b46eae9266ac36a5ff6347f6bf09711dff389597f237d5fe83111d8",
+        "exact_name": "Tệp 中文 😀 1073741824.bin",
+        "files": 1
+      },
+      "elapsed_seconds": 5.609957542999997,
+      "size": 1073741824,
+      "MB_per_second": 191.39927811749584,
+      "Mbps": 1531.1942249399667,
+      "rate_method": "Full test interval including generation, source stage, relay, destination read/hash; not Wi-Fi throughput",
+      "layer": "A: production-engine protocol, not native E2E"
+    },
+    {
+      "test_id": "A-D3-bytes-4294967313",
+      "sender": "Windows Node engine on Linux",
+      "receiver": "Windows Node engine on Linux",
+      "network": "loopback HTTP, isolated Linux job",
+      "source_commit": "c057f6dbbbd4d9da4e9fe4da63e173204691aefc",
+      "artifact_sha256": null,
+      "expected": "Source/destination SHA-256 and exact size agree; security assertions remain enabled",
+      "status": "PASS",
+      "exit_code": 0,
+      "started_utc": "2026-11-16T11:38:50.262Z",
+      "evidence": "docs/testing/cross-platform-2d2-logs/verified-c057f6d/protocol/protocol-matrix.json",
+      "actual": {
+        "size": 4294967313,
+        "source_sha256": "9bf2e05c25222af695af1537ef0d8d2241a85ddadf3819797b83c856efeff824",
+        "destination_sha256": "9bf2e05c25222af695af1537ef0d8d2241a85ddadf3819797b83c856efeff824",
+        "exact_name": "Tệp 中文 😀 4294967313.bin",
+        "files": 1
+      },
+      "elapsed_seconds": 35.88636775999999,
+      "size": 4294967313,
+      "MB_per_second": 119.68241928867758,
+      "Mbps": 957.4593543094206,
+      "rate_method": "Full test interval including generation, source stage, relay, destination read/hash; not Wi-Fi throughput",
+      "layer": "A: production-engine protocol, not native E2E"
     },
     {
       "test_id": "A-D3-batch-101",
       "sender": "Windows Node engine on Linux",
       "receiver": "Windows Node engine on Linux",
       "network": "loopback HTTP, isolated Linux job",
-      "source_commit": "f9b5a43c5eae93b169717a72d19f5a426d913094",
+      "source_commit": "c057f6dbbbd4d9da4e9fe4da63e173204691aefc",
       "artifact_sha256": null,
       "expected": "Source/destination SHA-256 and exact size agree; security assertions remain enabled",
       "status": "PASS",
       "exit_code": 0,
-      "started_utc": "2026-11-16T11:06:50.140Z",
-      "evidence": "protocol-matrix.json",
+      "started_utc": "2026-11-16T11:39:26.150Z",
+      "evidence": "docs/testing/cross-platform-2d2-logs/verified-c057f6d/protocol/protocol-matrix.json",
       "actual": {
         "files": 101,
         "size": 3892,
@@ -2120,24 +2365,25 @@
         ],
         "concurrency": "Single FlowDrop batch, streamed files serially as baseline; no simultaneous-upload feature claimed"
       },
-      "elapsed_seconds": 1.7586343939999998,
+      "elapsed_seconds": 0.6949243869999918,
       "size": 3892,
-      "MB_per_second": 0.002213080793414757,
-      "Mbps": 0.017704646347318057,
-      "rate_method": "Full test interval including generation, source stage, relay, destination read/hash; not Wi-Fi throughput"
+      "MB_per_second": 0.00560060932211902,
+      "Mbps": 0.04480487457695216,
+      "rate_method": "Full test interval including generation, source stage, relay, destination read/hash; not Wi-Fi throughput",
+      "layer": "A: production-engine protocol, not native E2E"
     },
     {
       "test_id": "A-D4-bytes-0",
       "sender": "Android Java engine on JVM",
       "receiver": "Android Java engine on JVM",
       "network": "loopback HTTP, isolated Linux job",
-      "source_commit": "f9b5a43c5eae93b169717a72d19f5a426d913094",
+      "source_commit": "c057f6dbbbd4d9da4e9fe4da63e173204691aefc",
       "artifact_sha256": null,
       "expected": "Source/destination SHA-256 and exact size agree; security assertions remain enabled",
       "status": "PASS",
       "exit_code": 0,
-      "started_utc": "2026-11-16T11:06:51.899Z",
-      "evidence": "protocol-matrix.json",
+      "started_utc": "2026-11-16T11:39:26.847Z",
+      "evidence": "docs/testing/cross-platform-2d2-logs/verified-c057f6d/protocol/protocol-matrix.json",
       "actual": {
         "size": 0,
         "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
@@ -2145,24 +2391,25 @@
         "exact_name": "Tệp 中文 😀 0.bin",
         "files": 1
       },
-      "elapsed_seconds": 0.06020698900000025,
+      "elapsed_seconds": 0.021962983999997958,
       "size": 0,
       "MB_per_second": 0,
       "Mbps": 0,
-      "rate_method": "Full test interval including generation, source stage, relay, destination read/hash; not Wi-Fi throughput"
+      "rate_method": "Full test interval including generation, source stage, relay, destination read/hash; not Wi-Fi throughput",
+      "layer": "A: production-engine protocol, not native E2E"
     },
     {
       "test_id": "A-D4-bytes-1024",
       "sender": "Android Java engine on JVM",
       "receiver": "Android Java engine on JVM",
       "network": "loopback HTTP, isolated Linux job",
-      "source_commit": "f9b5a43c5eae93b169717a72d19f5a426d913094",
+      "source_commit": "c057f6dbbbd4d9da4e9fe4da63e173204691aefc",
       "artifact_sha256": null,
       "expected": "Source/destination SHA-256 and exact size agree; security assertions remain enabled",
       "status": "PASS",
       "exit_code": 0,
-      "started_utc": "2026-11-16T11:06:51.960Z",
-      "evidence": "protocol-matrix.json",
+      "started_utc": "2026-11-16T11:39:26.870Z",
+      "evidence": "docs/testing/cross-platform-2d2-logs/verified-c057f6d/protocol/protocol-matrix.json",
       "actual": {
         "size": 1024,
         "source_sha256": "2bce1ba628720664be4b9fdd77aae0678e5f0f3f02fc6ff641ec879094f6a404",
@@ -2170,24 +2417,25 @@
         "exact_name": "Tệp 中文 😀 1024.bin",
         "files": 1
       },
-      "elapsed_seconds": 0.036949212000001355,
+      "elapsed_seconds": 0.013898847999997088,
       "size": 1024,
-      "MB_per_second": 0.027713716871687614,
-      "Mbps": 0.2217097349735009,
-      "rate_method": "Full test interval including generation, source stage, relay, destination read/hash; not Wi-Fi throughput"
+      "MB_per_second": 0.07367517077675896,
+      "Mbps": 0.5894013662140717,
+      "rate_method": "Full test interval including generation, source stage, relay, destination read/hash; not Wi-Fi throughput",
+      "layer": "A: production-engine protocol, not native E2E"
     },
     {
       "test_id": "A-D4-bytes-1048576",
       "sender": "Android Java engine on JVM",
       "receiver": "Android Java engine on JVM",
       "network": "loopback HTTP, isolated Linux job",
-      "source_commit": "f9b5a43c5eae93b169717a72d19f5a426d913094",
+      "source_commit": "c057f6dbbbd4d9da4e9fe4da63e173204691aefc",
       "artifact_sha256": null,
       "expected": "Source/destination SHA-256 and exact size agree; security assertions remain enabled",
       "status": "PASS",
       "exit_code": 0,
-      "started_utc": "2026-11-16T11:06:51.997Z",
-      "evidence": "protocol-matrix.json",
+      "started_utc": "2026-11-16T11:39:26.886Z",
+      "evidence": "docs/testing/cross-platform-2d2-logs/verified-c057f6d/protocol/protocol-matrix.json",
       "actual": {
         "size": 1048576,
         "source_sha256": "631b84027d6b9e52b539c4e8373622d23032dfadc64d60af87339c9037e4f769",
@@ -2195,24 +2443,103 @@
         "exact_name": "Tệp 中文 😀 1048576.bin",
         "files": 1
       },
-      "elapsed_seconds": 0.054433392999999344,
+      "elapsed_seconds": 0.019787899999995716,
       "size": 1048576,
-      "MB_per_second": 19.263469392768013,
-      "Mbps": 154.1077551421441,
-      "rate_method": "Full test interval including generation, source stage, relay, destination read/hash; not Wi-Fi throughput"
+      "MB_per_second": 52.990767084947215,
+      "Mbps": 423.9261366795777,
+      "rate_method": "Full test interval including generation, source stage, relay, destination read/hash; not Wi-Fi throughput",
+      "layer": "A: production-engine protocol, not native E2E"
+    },
+    {
+      "test_id": "A-D4-bytes-104857600",
+      "sender": "Android Java engine on JVM",
+      "receiver": "Android Java engine on JVM",
+      "network": "loopback HTTP, isolated Linux job",
+      "source_commit": "c057f6dbbbd4d9da4e9fe4da63e173204691aefc",
+      "artifact_sha256": null,
+      "expected": "Source/destination SHA-256 and exact size agree; security assertions remain enabled",
+      "status": "PASS",
+      "exit_code": 0,
+      "started_utc": "2026-11-16T11:39:26.907Z",
+      "evidence": "docs/testing/cross-platform-2d2-logs/verified-c057f6d/protocol/protocol-matrix.json",
+      "actual": {
+        "size": 104857600,
+        "source_sha256": "998fa39fe735dc4be63f55bf6ec3db8b64fe3d8fcd3fe759d1b88d27992c0b75",
+        "destination_sha256": "998fa39fe735dc4be63f55bf6ec3db8b64fe3d8fcd3fe759d1b88d27992c0b75",
+        "exact_name": "Tệp 中文 😀 104857600.bin",
+        "files": 1
+      },
+      "elapsed_seconds": 0.3319385800000018,
+      "size": 104857600,
+      "MB_per_second": 315.89458507655064,
+      "Mbps": 2527.156680612405,
+      "rate_method": "Full test interval including generation, source stage, relay, destination read/hash; not Wi-Fi throughput",
+      "layer": "A: production-engine protocol, not native E2E"
+    },
+    {
+      "test_id": "A-D4-bytes-1073741824",
+      "sender": "Android Java engine on JVM",
+      "receiver": "Android Java engine on JVM",
+      "network": "loopback HTTP, isolated Linux job",
+      "source_commit": "c057f6dbbbd4d9da4e9fe4da63e173204691aefc",
+      "artifact_sha256": null,
+      "expected": "Source/destination SHA-256 and exact size agree; security assertions remain enabled",
+      "status": "PASS",
+      "exit_code": 0,
+      "started_utc": "2026-11-16T11:39:27.242Z",
+      "evidence": "docs/testing/cross-platform-2d2-logs/verified-c057f6d/protocol/protocol-matrix.json",
+      "actual": {
+        "size": 1073741824,
+        "source_sha256": "e18e3f358b46eae9266ac36a5ff6347f6bf09711dff389597f237d5fe83111d8",
+        "destination_sha256": "e18e3f358b46eae9266ac36a5ff6347f6bf09711dff389597f237d5fe83111d8",
+        "exact_name": "Tệp 中文 😀 1073741824.bin",
+        "files": 1
+      },
+      "elapsed_seconds": 3.477599900000001,
+      "size": 1073741824,
+      "MB_per_second": 308.7594475718727,
+      "Mbps": 2470.075580574982,
+      "rate_method": "Full test interval including generation, source stage, relay, destination read/hash; not Wi-Fi throughput",
+      "layer": "A: production-engine protocol, not native E2E"
+    },
+    {
+      "test_id": "A-D4-bytes-4294967313",
+      "sender": "Android Java engine on JVM",
+      "receiver": "Android Java engine on JVM",
+      "network": "loopback HTTP, isolated Linux job",
+      "source_commit": "c057f6dbbbd4d9da4e9fe4da63e173204691aefc",
+      "artifact_sha256": null,
+      "expected": "Source/destination SHA-256 and exact size agree; security assertions remain enabled",
+      "status": "PASS",
+      "exit_code": 0,
+      "started_utc": "2026-11-16T11:39:30.721Z",
+      "evidence": "docs/testing/cross-platform-2d2-logs/verified-c057f6d/protocol/protocol-matrix.json",
+      "actual": {
+        "size": 4294967313,
+        "source_sha256": "9bf2e05c25222af695af1537ef0d8d2241a85ddadf3819797b83c856efeff824",
+        "destination_sha256": "9bf2e05c25222af695af1537ef0d8d2241a85ddadf3819797b83c856efeff824",
+        "exact_name": "Tệp 中文 😀 4294967313.bin",
+        "files": 1
+      },
+      "elapsed_seconds": 35.003613358,
+      "size": 4294967313,
+      "MB_per_second": 122.70068432859073,
+      "Mbps": 981.6054746287258,
+      "rate_method": "Full test interval including generation, source stage, relay, destination read/hash; not Wi-Fi throughput",
+      "layer": "A: production-engine protocol, not native E2E"
     },
     {
       "test_id": "A-D4-batch-101",
       "sender": "Android Java engine on JVM",
       "receiver": "Android Java engine on JVM",
       "network": "loopback HTTP, isolated Linux job",
-      "source_commit": "f9b5a43c5eae93b169717a72d19f5a426d913094",
+      "source_commit": "c057f6dbbbd4d9da4e9fe4da63e173204691aefc",
       "artifact_sha256": null,
       "expected": "Source/destination SHA-256 and exact size agree; security assertions remain enabled",
       "status": "PASS",
       "exit_code": 0,
-      "started_utc": "2026-11-16T11:06:52.051Z",
-      "evidence": "protocol-matrix.json",
+      "started_utc": "2026-11-16T11:40:05.728Z",
+      "evidence": "docs/testing/cross-platform-2d2-logs/verified-c057f6d/protocol/protocol-matrix.json",
       "actual": {
         "files": 101,
         "size": 3892,
@@ -2826,24 +3153,25 @@
         ],
         "concurrency": "Single FlowDrop batch, streamed files serially as baseline; no simultaneous-upload feature claimed"
       },
-      "elapsed_seconds": 1.5207307700000001,
+      "elapsed_seconds": 0.45761240899999395,
       "size": 3892,
-      "MB_per_second": 0.002559295883780927,
-      "Mbps": 0.020474367070247416,
-      "rate_method": "Full test interval including generation, source stage, relay, destination read/hash; not Wi-Fi throughput"
+      "MB_per_second": 0.008505014119929714,
+      "Mbps": 0.06804011295943771,
+      "rate_method": "Full test interval including generation, source stage, relay, destination read/hash; not Wi-Fi throughput",
+      "layer": "A: production-engine protocol, not native E2E"
     },
     {
       "test_id": "A-SEC-0",
       "sender": "Windows Node engine on Linux",
       "receiver": "Windows Node engine on Linux",
       "network": "loopback HTTP, isolated Linux job",
-      "source_commit": "f9b5a43c5eae93b169717a72d19f5a426d913094",
+      "source_commit": "c057f6dbbbd4d9da4e9fe4da63e173204691aefc",
       "artifact_sha256": null,
       "expected": "Source/destination SHA-256 and exact size agree; security assertions remain enabled",
       "status": "PASS",
       "exit_code": 0,
-      "started_utc": "2026-11-16T11:06:53.572Z",
-      "evidence": "protocol-matrix.json",
+      "started_utc": "2026-11-16T11:40:06.187Z",
+      "evidence": "docs/testing/cross-platform-2d2-logs/verified-c057f6d/protocol/protocol-matrix.json",
       "actual": {
         "missing_capability": 403,
         "incorrect_capability": 403,
@@ -2851,20 +3179,21 @@
         "foreign_origin": 403,
         "invalid_metadata": 400
       },
-      "elapsed_seconds": 0.013997078999998849
+      "elapsed_seconds": 0.005504272999998647,
+      "layer": "A: production-engine protocol, not native E2E"
     },
     {
       "test_id": "A-DISCONNECT-0-25",
       "sender": "Windows Node engine on Linux",
       "receiver": "Windows Node engine on Linux",
       "network": "loopback HTTP, isolated Linux job",
-      "source_commit": "f9b5a43c5eae93b169717a72d19f5a426d913094",
+      "source_commit": "c057f6dbbbd4d9da4e9fe4da63e173204691aefc",
       "artifact_sha256": null,
       "expected": "Source/destination SHA-256 and exact size agree; security assertions remain enabled",
       "status": "PASS",
       "exit_code": 0,
-      "started_utc": "2026-11-16T11:06:53.586Z",
-      "evidence": "protocol-matrix.json",
+      "started_utc": "2026-11-16T11:40:06.195Z",
+      "evidence": "docs/testing/cross-platform-2d2-logs/verified-c057f6d/protocol/protocol-matrix.json",
       "actual": {
         "declared_size": 8388608,
         "bytes_written_to_socket": 2097152,
@@ -2874,20 +3203,21 @@
         "file_status": 409,
         "no_false_completion": true
       },
-      "elapsed_seconds": 0.04221120200000041
+      "elapsed_seconds": 0.01381529299999238,
+      "layer": "A: production-engine protocol, not native E2E"
     },
     {
       "test_id": "A-DISCONNECT-0-50",
       "sender": "Windows Node engine on Linux",
       "receiver": "Windows Node engine on Linux",
       "network": "loopback HTTP, isolated Linux job",
-      "source_commit": "f9b5a43c5eae93b169717a72d19f5a426d913094",
+      "source_commit": "c057f6dbbbd4d9da4e9fe4da63e173204691aefc",
       "artifact_sha256": null,
       "expected": "Source/destination SHA-256 and exact size agree; security assertions remain enabled",
       "status": "PASS",
       "exit_code": 0,
-      "started_utc": "2026-11-16T11:06:53.628Z",
-      "evidence": "protocol-matrix.json",
+      "started_utc": "2026-11-16T11:40:06.210Z",
+      "evidence": "docs/testing/cross-platform-2d2-logs/verified-c057f6d/protocol/protocol-matrix.json",
       "actual": {
         "declared_size": 8388608,
         "bytes_written_to_socket": 4194304,
@@ -2897,20 +3227,21 @@
         "file_status": 409,
         "no_false_completion": true
       },
-      "elapsed_seconds": 0.04176196100000015
+      "elapsed_seconds": 0.022548501999990547,
+      "layer": "A: production-engine protocol, not native E2E"
     },
     {
       "test_id": "A-DISCONNECT-0-75",
       "sender": "Windows Node engine on Linux",
       "receiver": "Windows Node engine on Linux",
       "network": "loopback HTTP, isolated Linux job",
-      "source_commit": "f9b5a43c5eae93b169717a72d19f5a426d913094",
+      "source_commit": "c057f6dbbbd4d9da4e9fe4da63e173204691aefc",
       "artifact_sha256": null,
       "expected": "Source/destination SHA-256 and exact size agree; security assertions remain enabled",
       "status": "PASS",
       "exit_code": 0,
-      "started_utc": "2026-11-16T11:06:53.670Z",
-      "evidence": "protocol-matrix.json",
+      "started_utc": "2026-11-16T11:40:06.235Z",
+      "evidence": "docs/testing/cross-platform-2d2-logs/verified-c057f6d/protocol/protocol-matrix.json",
       "actual": {
         "declared_size": 8388608,
         "bytes_written_to_socket": 6291456,
@@ -2920,20 +3251,21 @@
         "file_status": 409,
         "no_false_completion": true
       },
-      "elapsed_seconds": 0.06149943600000006
+      "elapsed_seconds": 0.01812464100000216,
+      "layer": "A: production-engine protocol, not native E2E"
     },
     {
       "test_id": "A-SEC-1",
       "sender": "Android Java engine on JVM",
       "receiver": "Android Java engine on JVM",
       "network": "loopback HTTP, isolated Linux job",
-      "source_commit": "f9b5a43c5eae93b169717a72d19f5a426d913094",
+      "source_commit": "c057f6dbbbd4d9da4e9fe4da63e173204691aefc",
       "artifact_sha256": null,
       "expected": "Source/destination SHA-256 and exact size agree; security assertions remain enabled",
       "status": "PASS",
       "exit_code": 0,
-      "started_utc": "2026-11-16T11:06:53.731Z",
-      "evidence": "protocol-matrix.json",
+      "started_utc": "2026-11-16T11:40:06.255Z",
+      "evidence": "docs/testing/cross-platform-2d2-logs/verified-c057f6d/protocol/protocol-matrix.json",
       "actual": {
         "missing_capability": 403,
         "incorrect_capability": 403,
@@ -2941,20 +3273,21 @@
         "foreign_origin": 403,
         "invalid_metadata": 400
       },
-      "elapsed_seconds": 0.010624523999998928
+      "elapsed_seconds": 0.0066052389999968,
+      "layer": "A: production-engine protocol, not native E2E"
     },
     {
       "test_id": "A-DISCONNECT-1-25",
       "sender": "Android Java engine on JVM",
       "receiver": "Android Java engine on JVM",
       "network": "loopback HTTP, isolated Linux job",
-      "source_commit": "f9b5a43c5eae93b169717a72d19f5a426d913094",
+      "source_commit": "c057f6dbbbd4d9da4e9fe4da63e173204691aefc",
       "artifact_sha256": null,
       "expected": "Source/destination SHA-256 and exact size agree; security assertions remain enabled",
       "status": "PASS",
       "exit_code": 0,
-      "started_utc": "2026-11-16T11:06:53.742Z",
-      "evidence": "protocol-matrix.json",
+      "started_utc": "2026-11-16T11:40:06.263Z",
+      "evidence": "docs/testing/cross-platform-2d2-logs/verified-c057f6d/protocol/protocol-matrix.json",
       "actual": {
         "declared_size": 8388608,
         "bytes_written_to_socket": 2097152,
@@ -2964,20 +3297,21 @@
         "file_status": 409,
         "no_false_completion": true
       },
-      "elapsed_seconds": 0.01362440500000048
+      "elapsed_seconds": 0.0094325189999945,
+      "layer": "A: production-engine protocol, not native E2E"
     },
     {
       "test_id": "A-DISCONNECT-1-50",
       "sender": "Android Java engine on JVM",
       "receiver": "Android Java engine on JVM",
       "network": "loopback HTTP, isolated Linux job",
-      "source_commit": "f9b5a43c5eae93b169717a72d19f5a426d913094",
+      "source_commit": "c057f6dbbbd4d9da4e9fe4da63e173204691aefc",
       "artifact_sha256": null,
       "expected": "Source/destination SHA-256 and exact size agree; security assertions remain enabled",
       "status": "PASS",
       "exit_code": 0,
-      "started_utc": "2026-11-16T11:06:53.756Z",
-      "evidence": "protocol-matrix.json",
+      "started_utc": "2026-11-16T11:40:06.281Z",
+      "evidence": "docs/testing/cross-platform-2d2-logs/verified-c057f6d/protocol/protocol-matrix.json",
       "actual": {
         "declared_size": 8388608,
         "bytes_written_to_socket": 4194304,
@@ -2987,20 +3321,21 @@
         "file_status": 409,
         "no_false_completion": true
       },
-      "elapsed_seconds": 0.012919192999999723
+      "elapsed_seconds": 0.008133762000012212,
+      "layer": "A: production-engine protocol, not native E2E"
     },
     {
       "test_id": "A-DISCONNECT-1-75",
       "sender": "Android Java engine on JVM",
       "receiver": "Android Java engine on JVM",
       "network": "loopback HTTP, isolated Linux job",
-      "source_commit": "f9b5a43c5eae93b169717a72d19f5a426d913094",
+      "source_commit": "c057f6dbbbd4d9da4e9fe4da63e173204691aefc",
       "artifact_sha256": null,
       "expected": "Source/destination SHA-256 and exact size agree; security assertions remain enabled",
       "status": "PASS",
       "exit_code": 0,
-      "started_utc": "2026-11-16T11:06:53.769Z",
-      "evidence": "protocol-matrix.json",
+      "started_utc": "2026-11-16T11:40:06.291Z",
+      "evidence": "docs/testing/cross-platform-2d2-logs/verified-c057f6d/protocol/protocol-matrix.json",
       "actual": {
         "declared_size": 8388608,
         "bytes_written_to_socket": 6291456,
@@ -3010,7 +3345,8 @@
         "file_status": 409,
         "no_false_completion": true
       },
-      "elapsed_seconds": 0.028613652000000003
+      "elapsed_seconds": 0.009637491000001318,
+      "layer": "A: production-engine protocol, not native E2E"
     },
     {
       "test_id": "B-NATIVE-D1",
@@ -5315,6 +5651,389 @@
       "Mbps": null,
       "evidence": "tools/physical-lan/CHECKLIST.md",
       "status": "NOT VERIFIED"
+    }
+  ],
+  "source_commit": "c057f6dbbbd4d9da4e9fe4da63e173204691aefc",
+  "checkout_commit": "fa74266e3658332681214fb04f02ee758d6a5d63",
+  "engine_cases": 36,
+  "http_helper_tests": 5,
+  "python_unit_tests": 84,
+  "portable_windows_unit_tests": 21,
+  "native_runtime_regression": [
+    {
+      "artifact_id": 14223395768,
+      "status": "PASS",
+      "groups": 21,
+      "source": {
+        "base": "9171e7f1ffbc0143d6e11374e3f6c847853341fe",
+        "protected_files": 440,
+        "checkout": "fa74266e3658332681214fb04f02ee758d6a5d63",
+        "reviewed_head": "c057f6dbbbd4d9da4e9fe4da63e173204691aefc"
+      },
+      "artifact_sha256": {
+        "installer": "76b0be053e1d70aadebe4f33299c3f19d05d620eb3d7f91fda96bd3245915520"
+      },
+      "scope": "Single-device native regression, not cross-platform E2E"
+    },
+    {
+      "artifact_id": 14222867405,
+      "status": "PASS",
+      "groups": 16,
+      "source": {
+        "base": "9171e7f1ffbc0143d6e11374e3f6c847853341fe",
+        "protected_files": 440,
+        "checkout": "fa74266e3658332681214fb04f02ee758d6a5d63",
+        "reviewed_head": "c057f6dbbbd4d9da4e9fe4da63e173204691aefc"
+      },
+      "artifact_sha256": {
+        "app": "ce1de56d87bbeb5157860e7a371db7e1e00ef7e150078fe7c4c84aeb6d8b128d",
+        "instrumentation": "d238a3e2414c13e353070f401f55835684d9f287cc2815fc01087132b80d27df"
+      },
+      "scope": "Single-device native regression, not cross-platform E2E"
+    },
+    {
+      "artifact_id": 14223361027,
+      "status": "PASS",
+      "groups": 16,
+      "source": {
+        "base": "9171e7f1ffbc0143d6e11374e3f6c847853341fe",
+        "protected_files": 440,
+        "checkout": "fa74266e3658332681214fb04f02ee758d6a5d63",
+        "reviewed_head": "c057f6dbbbd4d9da4e9fe4da63e173204691aefc"
+      },
+      "artifact_sha256": {
+        "app": "ce1de56d87bbeb5157860e7a371db7e1e00ef7e150078fe7c4c84aeb6d8b128d",
+        "instrumentation": "d238a3e2414c13e353070f401f55835684d9f287cc2815fc01087132b80d27df"
+      },
+      "scope": "Single-device native regression, not cross-platform E2E"
+    }
+  ],
+  "native_regression": [
+    {
+      "name": "large-transfer",
+      "command": [
+        "node",
+        "tests/large-transfer-integration.mjs"
+      ],
+      "status": "PASS",
+      "executed": true,
+      "exit_code": 0,
+      "raw_returncode": 0,
+      "timeout": false,
+      "timeout_seconds": 300,
+      "wall_seconds": 8.895,
+      "resources": {
+        "supported": true,
+        "free_disk_bytes": 94912684032,
+        "memory_limit_bytes": 16464297984,
+        "minimum_disk_bytes": 2147483648,
+        "minimum_memory_bytes": 2147483648
+      }
+    },
+    {
+      "name": "features",
+      "command": [
+        "node",
+        "--test",
+        "tests/features-1.10.test.mjs"
+      ],
+      "status": "PASS",
+      "executed": true,
+      "exit_code": 0,
+      "raw_returncode": 0,
+      "timeout": false,
+      "timeout_seconds": 600,
+      "wall_seconds": 14.298,
+      "resources": {
+        "supported": true,
+        "free_disk_bytes": 91469975552,
+        "memory_limit_bytes": 16759300096,
+        "minimum_disk_bytes": 19327352832,
+        "minimum_memory_bytes": 2147483648
+      }
+    },
+    {
+      "name": "folders",
+      "command": [
+        "node",
+        "--test",
+        "tests/folder-receive.test.mjs"
+      ],
+      "status": "PASS",
+      "executed": true,
+      "exit_code": 0,
+      "raw_returncode": 0,
+      "timeout": false,
+      "timeout_seconds": 900,
+      "wall_seconds": 43.819,
+      "resources": {
+        "supported": true,
+        "free_disk_bytes": 91469983744,
+        "memory_limit_bytes": 16759300096,
+        "minimum_disk_bytes": 19327352832,
+        "minimum_memory_bytes": 2147483648
+      }
+    },
+    {
+      "name": "native-client",
+      "command": [
+        "node",
+        "tests/android-native-client.mjs"
+      ],
+      "status": "PASS",
+      "executed": true,
+      "exit_code": 0,
+      "raw_returncode": 0,
+      "timeout": false,
+      "timeout_seconds": 1500,
+      "wall_seconds": 15.912,
+      "resources": {
+        "supported": true,
+        "free_disk_bytes": 91469979648,
+        "memory_limit_bytes": 16759300096,
+        "minimum_disk_bytes": 19327352832,
+        "minimum_memory_bytes": 2147483648
+      }
+    },
+    {
+      "name": "http",
+      "command": [
+        "node",
+        "tests/http-integration.mjs"
+      ],
+      "status": "PASS",
+      "executed": true,
+      "exit_code": 0,
+      "raw_returncode": 0,
+      "timeout": false,
+      "timeout_seconds": 120,
+      "wall_seconds": 1.503,
+      "resources": {
+        "supported": true,
+        "free_disk_bytes": 94912720896,
+        "memory_limit_bytes": 16464297984,
+        "minimum_disk_bytes": 536870912,
+        "minimum_memory_bytes": 2147483648
+      }
+    },
+    {
+      "name": "android-host",
+      "command": [
+        "node",
+        "tests/android-host-integration.mjs"
+      ],
+      "status": "PASS",
+      "executed": true,
+      "exit_code": 0,
+      "raw_returncode": 0,
+      "timeout": false,
+      "timeout_seconds": 120,
+      "wall_seconds": 2.372,
+      "resources": {
+        "supported": true,
+        "free_disk_bytes": 94912733184,
+        "memory_limit_bytes": 16464297984,
+        "minimum_disk_bytes": 536870912,
+        "minimum_memory_bytes": 2147483648
+      }
+    },
+    {
+      "name": "discovery",
+      "command": [
+        "node",
+        "tests/discovery-integration.mjs"
+      ],
+      "status": "PASS",
+      "executed": true,
+      "exit_code": 0,
+      "raw_returncode": 0,
+      "timeout": false,
+      "timeout_seconds": 120,
+      "wall_seconds": 2.747,
+      "resources": {
+        "supported": true,
+        "free_disk_bytes": 94912729088,
+        "memory_limit_bytes": 16464297984,
+        "minimum_disk_bytes": 536870912,
+        "minimum_memory_bytes": 2147483648
+      }
+    },
+    {
+      "name": "peer",
+      "command": [
+        "node",
+        "tests/peer-integration.mjs"
+      ],
+      "status": "PASS",
+      "executed": true,
+      "exit_code": 0,
+      "raw_returncode": 0,
+      "timeout": false,
+      "timeout_seconds": 240,
+      "wall_seconds": 9.179,
+      "resources": {
+        "supported": true,
+        "free_disk_bytes": 94912724992,
+        "memory_limit_bytes": 16464297984,
+        "minimum_disk_bytes": 536870912,
+        "minimum_memory_bytes": 2147483648
+      }
+    },
+    {
+      "name": "lan-discovery",
+      "command": [
+        "node",
+        "tests/lan-discovery-integration.mjs"
+      ],
+      "status": "PASS",
+      "executed": true,
+      "exit_code": 0,
+      "raw_returncode": 0,
+      "timeout": false,
+      "timeout_seconds": 240,
+      "wall_seconds": 15.456,
+      "resources": {
+        "supported": true,
+        "free_disk_bytes": 94912720896,
+        "memory_limit_bytes": 16464297984,
+        "minimum_disk_bytes": 536870912,
+        "minimum_memory_bytes": 2147483648
+      }
+    },
+    {
+      "name": "android-discovery",
+      "command": [
+        "node",
+        "tests/android-discovery-state.mjs"
+      ],
+      "status": "PASS",
+      "executed": true,
+      "exit_code": 0,
+      "raw_returncode": 0,
+      "timeout": false,
+      "timeout_seconds": 120,
+      "wall_seconds": 0.88,
+      "resources": {
+        "supported": true,
+        "free_disk_bytes": 94912712704,
+        "memory_limit_bytes": 16464297984,
+        "minimum_disk_bytes": 536870912,
+        "minimum_memory_bytes": 2147483648
+      }
+    },
+    {
+      "name": "security",
+      "command": [
+        "node",
+        "tests/security-integration.mjs"
+      ],
+      "status": "PASS",
+      "executed": true,
+      "exit_code": 0,
+      "raw_returncode": 0,
+      "timeout": false,
+      "timeout_seconds": 120,
+      "wall_seconds": 11.046,
+      "resources": {
+        "supported": true,
+        "free_disk_bytes": 94912708608,
+        "memory_limit_bytes": 16464297984,
+        "minimum_disk_bytes": 536870912,
+        "minimum_memory_bytes": 2147483648
+      }
+    },
+    {
+      "name": "ci-runner-tests",
+      "command": [
+        "/opt/hostedtoolcache/Python/3.12.16/x64/bin/python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests/ci",
+        "-p",
+        "test_*.py",
+        "-v"
+      ],
+      "status": "PASS",
+      "executed": true,
+      "exit_code": 0,
+      "raw_returncode": 0,
+      "timeout": false,
+      "timeout_seconds": 90,
+      "wall_seconds": 4.659,
+      "resources": {
+        "supported": true,
+        "free_disk_bytes": 94912712704,
+        "memory_limit_bytes": 16464306176,
+        "minimum_disk_bytes": 536870912,
+        "minimum_memory_bytes": 2147483648
+      }
+    },
+    {
+      "name": "asset-integrity",
+      "command": [
+        "sha256sum",
+        "--check",
+        "docs/assets/FONT-RESTORATION-SHA256SUMS.txt"
+      ],
+      "status": "PASS",
+      "executed": true,
+      "exit_code": 0,
+      "raw_returncode": 0,
+      "timeout": false,
+      "timeout_seconds": 30,
+      "wall_seconds": 0.044,
+      "resources": {
+        "supported": true,
+        "free_disk_bytes": 94912217088,
+        "memory_limit_bytes": 16464306176,
+        "minimum_disk_bytes": 536870912,
+        "minimum_memory_bytes": 2147483648
+      }
+    },
+    {
+      "name": "unit",
+      "command": [
+        "npm",
+        "test"
+      ],
+      "status": "PASS",
+      "executed": true,
+      "exit_code": 0,
+      "raw_returncode": 0,
+      "timeout": false,
+      "timeout_seconds": 90,
+      "wall_seconds": 0.262,
+      "resources": {
+        "supported": true,
+        "free_disk_bytes": 94912212992,
+        "memory_limit_bytes": 16464306176,
+        "minimum_disk_bytes": 536870912,
+        "minimum_memory_bytes": 2147483648
+      }
+    },
+    {
+      "name": "harness-unit",
+      "command": [
+        "node",
+        "--test",
+        "tests/harness.test.mjs"
+      ],
+      "status": "PASS",
+      "executed": true,
+      "exit_code": 0,
+      "raw_returncode": 0,
+      "timeout": false,
+      "timeout_seconds": 90,
+      "wall_seconds": 0.261,
+      "resources": {
+        "supported": true,
+        "free_disk_bytes": 94912196608,
+        "memory_limit_bytes": 16464306176,
+        "minimum_disk_bytes": 536870912,
+        "minimum_memory_bytes": 2147483648
+      }
     }
   ]
 }

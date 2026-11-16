@@ -27,7 +27,7 @@ python -X utf8 ./flowdrop_lan.py --root "C:\Users\you\Desktop\FlowDrop-LAN-01" s
 python -X utf8 ./flowdrop_lan.py --root "C:\Users\you\Desktop\FlowDrop-LAN-01" stop
 ```
 
-`start/stop` phải chạy trên **cùng máy điều khiển**, không trên hai máy khác nhau. Khoảng đo chứa thao tác UI và thời gian phản ứng của người dùng. Report tách MB/s (10⁶ byte/giây) và Mbps (10⁶ bit/giây, gấp 8), không gọi đây là throughput thuần của Wi-Fi. Để trống CPU/RSS/discovery latency nếu chưa đo; Task Manager/Performance Monitor có thể cung cấp bằng chứng riêng với thời điểm và phương pháp.
+`start/stop` phải chạy trên **cùng máy điều khiển**, không trên hai máy khác nhau. Khoảng đo chứa thao tác UI và thời gian phản ứng của người dùng. Report tách MB/s (10⁶ byte/giây) và Mbps (10⁶ bit/giây, gấp 8), dùng tổng **byte file gốc**, không phải byte trên dây sau nén/overhead ZIP. Không gọi đây là throughput thuần của Wi-Fi. Để trống CPU/RSS/discovery latency nếu chưa đo; Task Manager/Performance Monitor có thể cung cấp bằng chứng riêng với thời điểm và phương pháp.
 
 Mỗi lượt thử độc lập dùng workspace mới. Nút bấm giờ không được reset im lặng. Source manifest được hash trước gửi; nguồn thay đổi hoặc manifest sửa sau bắt đầu sẽ bị chặn. Dữ liệu sinh gồm 110 file: rỗng, 1 KiB, 1 MiB, 101 file trong một thư mục, tên Việt/Trung/emoji/khoảng trắng/tên dài, PNG 2×2, AVI RGB tổng hợp, PDF trắng hợp lệ, ZIP, cây lồng và hai thư mục rỗng. **101 file trong một batch không phải cam kết 101 upload chạy song song**; app 1.13 có thứ tự streaming riêng.
 
@@ -61,13 +61,13 @@ Tải Platform Tools từ Google chính thức, xác minh nguồn; bật USB deb
 & "C:\Android\platform-tools\adb.exe" devices
 & "C:\Android\platform-tools\adb.exe" -s YOUR_SERIAL shell getprop ro.build.version.sdk
 & "C:\Android\platform-tools\adb.exe" -s YOUR_SERIAL shell dumpsys package app.flowdrop.mobile
-python -X utf8 ./flowdrop_lan.py --root "C:\Users\you\Desktop\FlowDrop-LAN-01" adb-hash --adb "C:\Android\platform-tools\adb.exe" --serial YOUR_SERIAL --remote-dir "/sdcard/Download/FlowDrop/FlowDrop-LAN-<run>"
+python -X utf8 ./flowdrop_lan.py --root "C:\Users\you\Desktop\FlowDrop-LAN-01" adb-hash --adb "C:\Android\platform-tools\adb.exe" --serial YOUR_SERIAL --remote-dir "/storage/emulated/0/Download/FlowDrop/FlowDrop-LAN-<run>"
 python -X utf8 ./flowdrop_lan.py --root "C:\Users\you\Desktop\FlowDrop-LAN-01" report
 ```
 
-Trong package output chỉ cần đối chiếu versionName/versionCode/targetSdk; không export toàn bộ dumpsys hoặc app profile. `adb-hash` tự nhắm một serial, chỉ `get-state/getprop/stat/sha256sum/test` trên đường dẫn tổng hợp đã biết, không logcat, content provider, token, password, install, uninstall hoặc force-stop. Serial chỉ lưu SHA-256, không lưu nguyên serial. Dùng đúng tên root thực; nếu root đã bị thêm hậu tố khi nhận lần hai, có thể hash bằng công cụ độc lập hoặc chọn lượt workspace mới; ADB helper cố ý chỉ nhận root nguyên tên UUID để tránh đọc nhầm dữ liệu cá nhân.
+Trong package output chỉ cần đối chiếu versionName/versionCode/targetSdk; không export toàn bộ dumpsys hoặc app profile. `adb-hash` yêu cầu đường dẫn canonical `/storage/emulated/0/Download/FlowDrop/<run>` của primary user. Alias `/sdcard` thường là symlink hệ thống nên bị từ chối trước khi đọc; không vô hiệu hóa guard symlink để dùng alias. Helper tự nhắm một serial, chỉ `get-state/getprop/stat/sha256sum/test` trên đường dẫn tổng hợp đã biết, không logcat, content provider, token, password, install, uninstall hoặc force-stop. Serial chỉ lưu SHA-256, không lưu nguyên serial. Dùng đúng tên root thực; nếu root đã bị thêm hậu tố khi nhận lần hai, có thể hash bằng công cụ độc lập hoặc chọn lượt workspace mới; ADB helper cố ý chỉ nhận root nguyên tên UUID để tránh đọc nhầm dữ liệu cá nhân.
 
-**Android → Windows:** ban đầu tạo manifest/fixture trên máy điều khiển, copy USB fixture vào `/sdcard/Download/FlowDrop/FlowDrop-LAN-<run>` để chuẩn bị **nguồn**; việc chuẩn bị này không phải test transfer. Trước khi gửi, chạy lệnh `adb-hash` trên nguồn Android với thêm `--purpose source`; kết quả riêng ở android-source-comparison.json. Sau đó chọn thư mục đó trong FlowDrop Android, gửi qua Wi-Fi sang Windows, chạy compare trên file nhận. Giữ cả SHA nguồn Android và SHA đích Windows. Android → Android làm tương tự, hai serial khác nhau; hash nguồn với `--purpose source`, đích mặc định, ghi thiết bị gửi/nhận vào checklist. Không cài test APK lên điện thoại production.
+**Android → Windows:** ban đầu tạo manifest/fixture trên máy điều khiển, copy USB fixture vào `/storage/emulated/0/Download/FlowDrop/FlowDrop-LAN-<run>` để chuẩn bị **nguồn**; việc chuẩn bị này không phải test transfer. Trước khi gửi, chạy lệnh `adb-hash` trên nguồn Android với thêm `--purpose source`; kết quả riêng ở android-source-comparison.json. Sau đó chọn thư mục đó trong FlowDrop Android, gửi qua Wi-Fi sang Windows, chạy compare trên file nhận. Giữ cả SHA nguồn Android và SHA đích Windows. Android → Android làm tương tự, hai serial khác nhau; hash nguồn với `--purpose source`, đích mặc định, ghi thiết bị gửi/nhận vào checklist. Không cài test APK lên điện thoại production.
 
 ## Discovery, nhận bằng mã và topology
 
