@@ -1,0 +1,1 @@
+PASS: production Android discovery uses Wi-Fi, merges LAN fallback without NSD callbacks, excludes self, survives hung resolution and late callbacks, rebinds on Wi-Fi change, restarts safely, probes every advertised IPv4 when a VPN address fails, and uses TXT address hints on Android 10.

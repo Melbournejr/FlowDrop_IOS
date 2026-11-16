@@ -1,0 +1,89 @@
+[
+  {
+    "command": [
+      "npm",
+      "test"
+    ],
+    "exit_code": 0
+  },
+  {
+    "command": [
+      "node",
+      "--test",
+      "--test-isolation=none",
+      "tests/code-114.test.mjs",
+      "tests/device-security.test.mjs"
+    ],
+    "exit_code": 0
+  },
+  {
+    "command": [
+      "node",
+      "tests/code-receive-114.mjs"
+    ],
+    "exit_code": 0
+  },
+  {
+    "command": [
+      "node",
+      "tests/secure-cross-platform-114.mjs"
+    ],
+    "exit_code": 0
+  },
+  {
+    "command": [
+      "node",
+      "tests/http-integration.mjs"
+    ],
+    "exit_code": 0
+  },
+  {
+    "command": [
+      "node",
+      "tests/android-host-integration.mjs"
+    ],
+    "exit_code": 0
+  },
+  {
+    "command": [
+      "node",
+      "tests/discovery-integration.mjs"
+    ],
+    "exit_code": 0
+  },
+  {
+    "command": [
+      "node",
+      "tests/peer-integration.mjs"
+    ],
+    "exit_code": 0
+  },
+  {
+    "command": [
+      "node",
+      "tests/lan-discovery-integration.mjs"
+    ],
+    "exit_code": 0
+  },
+  {
+    "command": [
+      "node",
+      "tests/android-discovery-state.mjs"
+    ],
+    "exit_code": 0
+  },
+  {
+    "command": [
+      "node",
+      "tests/security-integration.mjs"
+    ],
+    "exit_code": 0
+  },
+  {
+    "command": [
+      "node",
+      "tests/large-transfer-integration.mjs"
+    ],
+    "exit_code": 0
+  }
+]

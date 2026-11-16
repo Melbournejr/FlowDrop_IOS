@@ -4,6 +4,11 @@ $ErrorActionPreference = 'Stop'
 [Console]::OutputEncoding = [System.Text.UTF8Encoding]::new($false)
 try {
 Add-Type -AssemblyName System.Security
+# PKI cmdlets do not initialize Certificate provider drives in every clean host.
+Import-Module Microsoft.PowerShell.Security -ErrorAction Stop
+if (-not (Get-PSDrive -Name Cert -ErrorAction SilentlyContinue)) {
+  New-PSDrive -Name Cert -PSProvider Certificate -Root '\' -Scope Global -ErrorAction Stop | Out-Null
+}
 $inputData = [Console]::In.ReadToEnd() | ConvertFrom-Json
 $entropy = [Text.Encoding]::UTF8.GetBytes('FlowDrop device transport vault v1')
 if ($inputData.operation -eq 'seal') {

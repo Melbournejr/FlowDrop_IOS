@@ -41,6 +41,8 @@ public final class TransferServer implements Closeable {
   private final Object[] locks=new Object[64];
   private final Set<Socket> connections=Collections.newSetFromMap(new ConcurrentHashMap<Socket,Boolean>());
   private volatile boolean closed=false;
+  private volatile String tlsFailure="";
+  public String lastTlsFailure(){return tlsFailure;}
   private volatile String deviceName,discoveryName;
   private final String deviceId,offerKey=UUID.randomUUID().toString();
   private final Map<String,JSONObject> offers=new LinkedHashMap<>(),outgoing=new LinkedHashMap<>();
@@ -182,7 +184,7 @@ public final class TransferServer implements Closeable {
       try{HeaderInput guarded=new HeaderInput(input,client);Request request=parse(guarded,output);request.secure=client instanceof javax.net.ssl.SSLSocket;request.localPort=client.getLocalPort();request.client=client;guarded.finish();route(request,output,client.getInetAddress().getHostAddress());}catch(java.net.SocketTimeoutException timeout){sendJson(output,408,new JSONObject().put("error","Hết thời gian gửi header."));}catch(HttpError error){sendJson(output,error.status,new JSONObject().put("error",error.getMessage()));}
       catch(Exception error){sendJson(output,500,new JSONObject().put("error","Chưa thực hiện được. Kiểm tra kết nối và dung lượng trống trên điện thoại."));}
       output.flush();
-    }catch(Exception ignored){}finally{connections.remove(client);activity.remove(client);}
+    }catch(Exception error){if(client instanceof javax.net.ssl.SSLSocket){StringBuilder issue=new StringBuilder();Throwable cause=error;for(int i=0;cause!=null&&i<5;i++,cause=cause.getCause()){issue.append(cause.getClass().getSimpleName()).append(' ');String message=String.valueOf(cause.getMessage()).toLowerCase(Locale.ROOT);for(String keyword:new String[]{"digest","padding","private key","certificate","alias","signature","handshake","authentication"})if(message.contains(keyword))issue.append('[').append(keyword).append(']');}tlsFailure=issue.toString();}}finally{connections.remove(client);activity.remove(client);}
   }
   private static final class HeaderInput extends FilterInputStream {
     final Socket socket;final long deadline=System.nanoTime()+java.util.concurrent.TimeUnit.SECONDS.toNanos(10);boolean headers=true;

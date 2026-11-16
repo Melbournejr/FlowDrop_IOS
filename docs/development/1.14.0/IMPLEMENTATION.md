@@ -99,3 +99,40 @@ fonts/icon, runtime/npm dependencies, production APK certificate inventory and
 RSA update key remain unchanged. No iOS/publisher/feed/tag/release changes.
 Historical 1.13 manifests are retained; the feature source manifest explicitly
 pins authorized changed/new bytes for CI rather than claiming 1.13 source equality.
+
+## CI findings retained during development
+
+Initial head `21d7caadde69a5d213adb2f94081571bebba6a9a` built and independently
+verified both TEST ONLY installers. It did **not** pass all runtime/regression
+checks. The failures remain in `evidence/ci-initial-21d7caa`:
+
+- ZIP64 suite's code-lookup assertion expected the old generic error text. The
+  >4 GiB ZIP operation itself passed. The assertion now requires the requested
+  distinct unknown/revoked-code message; sizes/cases remain unchanged.
+- Android API29/35 sharesheet test used a synthetic 1.13 HTTP recipient. It now
+  asserts compatibility defaults off, explicitly selects that mode for the old
+  fixture, retains every grant/consent/byte assertion and resets it afterwards.
+  Explicit compatibility makes HTTP target requests cleartext, including newer
+  hosts if both owners opt in; it is never selected because TLS failed.
+- Windows native startup timed out. The added real Windows vault probe exposed
+  `DriveNotFoundException` from New-SelfSignedCertificate in a clean PowerShell
+  session. The helper now explicitly initializes the Certificate provider/drive,
+  uses UTF-8 private pipes, and returns only public exception type/identifier.
+  Native tests additionally check real TLS/pin rejection, DPAPI persistence,
+  Unicode names, encrypted storage, corrupt-vault refusal and restart identity.
+
+At head `d4320d9295806b34f5f55d4509441ec97aa637fc`, Native Regression including
+all ZIP64 cases passed; Windows runtime remained failed at provider setup.
+These are historical observations, not PASS claims for later heads. Latest
+four-workflow results and downloadable TEST ONLY artifacts are recorded in
+[Draft PR #12](https://github.com/Melbournejr/FlowDrop_IOS/pull/12) after CI at the
+final head. SKIPPED/BLOCKED/unfinished jobs do not count as verification.
+
+The added native TLS probe at `d4320d9` also found an Android Conscrypt handshake
+failure on both API29/35. New transport keys now authorize the raw/prehashed RSA
+operation needed by the TLS provider (`DIGEST_NONE` alongside SHA-256/SHA-512),
+without changing certificate validation, APK/update keys, TLS version negotiation
+or authentication. Native tests continue requiring an actual successful TLS
+handshake and rejection of an unpaired request; a failure records only public
+exception classes/keywords and requested key types. It is not a simulated PASS.
+Previously created experimental transport keys are not silently replaced.

@@ -1,0 +1,115 @@
+[
+  {
+    "artifact": "14233315621",
+    "head": "21d7caadde69a5d213adb2f94081571bebba6a9a",
+    "cases": [
+      {
+        "id": "W05-start",
+        "status": "FAIL",
+        "actual": "AssertionError: Actual native app/backend startup timed out"
+      },
+      {
+        "id": "W-infrastructure-error",
+        "status": "BLOCKED",
+        "actual": "A preceding required Windows prerequisite did not complete"
+      },
+      {
+        "id": "W21-preserve-data",
+        "status": "FAIL",
+        "actual": "AssertionError: "
+      },
+      {
+        "id": "W06-http",
+        "status": "NOT VERIFIED",
+        "actual": "Prerequisite failure prevented execution"
+      },
+      {
+        "id": "W07-window",
+        "status": "NOT VERIFIED",
+        "actual": "Prerequisite failure prevented execution"
+      },
+      {
+        "id": "W08-single-instance",
+        "status": "NOT VERIFIED",
+        "actual": "Prerequisite failure prevented execution"
+      },
+      {
+        "id": "W09-shortcuts",
+        "status": "NOT VERIFIED",
+        "actual": "Prerequisite failure prevented execution"
+      },
+      {
+        "id": "W10-transfer-sha",
+        "status": "NOT VERIFIED",
+        "actual": "Prerequisite failure prevented execution"
+      },
+      {
+        "id": "W11-collision",
+        "status": "NOT VERIFIED",
+        "actual": "Prerequisite failure prevented execution"
+      },
+      {
+        "id": "W12-cancel",
+        "status": "NOT VERIFIED",
+        "actual": "Prerequisite failure prevented execution"
+      },
+      {
+        "id": "W13-disconnect",
+        "status": "NOT VERIFIED",
+        "actual": "Prerequisite failure prevented execution"
+      },
+      {
+        "id": "W14-invalid",
+        "status": "NOT VERIFIED",
+        "actual": "Prerequisite failure prevented execution"
+      },
+      {
+        "id": "W15-legacy-native",
+        "status": "NOT VERIFIED",
+        "actual": "Prerequisite failure prevented execution"
+      },
+      {
+        "id": "W16-legacy-shell",
+        "status": "NOT VERIFIED",
+        "actual": "Prerequisite failure prevented execution"
+      },
+      {
+        "id": "W17-backend-failure",
+        "status": "NOT VERIFIED",
+        "actual": "Prerequisite failure prevented execution"
+      },
+      {
+        "id": "W18-close",
+        "status": "NOT VERIFIED",
+        "actual": "Prerequisite failure prevented execution"
+      },
+      {
+        "id": "W19-restart",
+        "status": "NOT VERIFIED",
+        "actual": "Prerequisite failure prevented execution"
+      }
+    ]
+  },
+  {
+    "artifact": "14232127512",
+    "head": "21d7caadde69a5d213adb2f94081571bebba6a9a",
+    "cases": [
+      {
+        "id": "A12-share-smoke",
+        "status": "FAIL",
+        "actual": "AssertionError: Instrumentation did not finish successfully (process exit=0, result=['0'])"
+      }
+    ]
+  },
+  {
+    "artifact": "14232078321",
+    "head": "21d7caadde69a5d213adb2f94081571bebba6a9a",
+    "cases": [
+      {
+        "id": "A12-share-smoke",
+        "status": "FAIL",
+        "actual": "AssertionError: Instrumentation did not finish successfully (process exit=0, result=['0'])"
+      }
+    ]
+  }
+]

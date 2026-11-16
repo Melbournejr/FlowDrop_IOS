@@ -14,7 +14,8 @@ import javax.crypto.spec.SecretKeySpec;
 
 /** Standard TLS + explicit two-screen commit/reveal pairing, independent of APK signing. */
 public final class DeviceSecurity {
-  public interface Vault {JSONObject trusted();void save()throws Exception;}
+  public interface Vault {JSONObject trusted();void save()throws Exception;default String diagnostic(){return "portable vault";}}
+  public String diagnostic(){return vault.diagnostic();}
   public interface Connections {HttpURLConnection open(URL url)throws Exception;}
   private final String id,name,certificate,fingerprint;
   private final SSLContext serverContext;

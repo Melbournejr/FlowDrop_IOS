@@ -1,0 +1,16 @@
+✔ share codes normalize pasted Unicode spacing and separators, not arbitrary characters (1.180808ms)
+✔ malformed codes fail before network access (2.083031ms)
+✔ expired and unknown codes have distinct messages (10.553595ms)
+✔ failed guess limiter is address scoped, bounded, and expires (13.920282ms)
+✔ receiver rejects same-size corrupted payload before publishing a destination (25.814675ms)
+✔ original public signing inventory and its signature remain valid (100.490423ms)
+✔ real TLS, two-screen pairing, identity pin, expiring authenticated sessions and replay rejection (347.791633ms)
+✔ pairing commitment mismatch, expiry and guessing limits never create trust (456.022165ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 8
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1010.124947

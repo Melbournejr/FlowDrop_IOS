@@ -1,0 +1,10 @@
+file:///D:/a/FlowDrop_IOS/FlowDrop_IOS/scripts/device-security.mjs:24
+ if(r.status!==0){const code="[REDACTED]",:-]{1,180})/)?.[1];throw Error('Không mở được kho danh tính thiết bị Windows.'+(code?' ['+code+']':''));}return r.stdout.trim();
+                                                                                                          ^
+
+Error: Không mở được kho danh tính thiết bị Windows. [System.Management.Automation.DriveNotFoundException:DriveNotFound,Microsoft.CertificateServices.Commands.NewSelfSignedCertificateCommand]
+    at powershell (file:///D:/a/FlowDrop_IOS/FlowDrop_IOS/scripts/device-security.mjs:24:107)
+    at deviceVault (file:///D:/a/FlowDrop_IOS/FlowDrop_IOS/scripts/device-security.mjs:29:162)
+    at async file:///D:/a/FlowDrop_IOS/FlowDrop_IOS/tests/windows-vault-probe.mjs:10:14
+
+Node.js v24.22.2

@@ -21,7 +21,7 @@ public final class TurboLink {
   private boolean creating,seenTransfer,closed;
   private int frequency;
   public TurboLink(Context context,TransferServer host){this.context=context;this.host=host;manager=(WifiP2pManager)context.getSystemService(Context.WIFI_P2P_SERVICE);channel=manager==null?null:manager.initialize(context,Looper.getMainLooper(),()->{status="Turbo mất kết nối API · tiếp tục dùng LAN";});main.post(tick);}
-  public JSONObject snapshot()throws Exception{return new JSONObject().put("mode",mode).put("status",status).put("ssid",ssid).put("passphrase",passphrase).put("frequencyMHz",frequency).put("band",frequency>=4900&&frequency<5925?"5 GHz":frequency>=2400&&frequency<2500?"2.4 GHz":"Chưa xác minh").put("owned",!expected.isEmpty());}
+  public JSONObject snapshot()throws Exception{return new JSONObject().put("mode",mode).put("status",status).put("ssid",ssid).put("passphrase",passphrase).put("frequencyMHz",frequency).put("band",frequency>=5000&&frequency<5925?"5 GHz":frequency>=2400&&frequency<2500?"2.4 GHz":"Chưa xác minh").put("owned",!expected.isEmpty());}
   public void mode(String value){if(!Arrays.asList("auto","lan","turbo").contains(value))throw new IllegalArgumentException("Invalid link mode");mode=value;if(value.equals("lan"))stop();}
   public boolean supported(){return manager!=null&&channel!=null&&context.getPackageManager().hasSystemFeature(PackageManager.FEATURE_WIFI_DIRECT);}
   public void start(){
@@ -35,7 +35,7 @@ public final class TurboLink {
     });}catch(RuntimeException e){creating=false;status="Không mở được Wi-Fi Direct · dùng LAN";}
   }
   private void inspect(){if(closed||expected.isEmpty())return;try{manager.requestGroupInfo(channel,group->{if(group==null){status="Turbo mất kết nối · dùng LAN";releaseDiscovery();expected="";ssid="";passphrase="";interfaceName="";frequency=0;return;}if(!group.isGroupOwner()||!expected.equals(group.getNetworkName())){status="Nhóm Wi-Fi Direct đã đổi · không can thiệp";releaseDiscovery();expected="";return;}
-    frequency=group.getFrequency();interfaceName=group.getInterface();status="Wi-Fi Direct · "+(frequency>=4900&&frequency<5925?"5 GHz":frequency>=2400&&frequency<2500?"2.4 GHz":"băng tần chưa xác minh")+" · TLS";
+    frequency=group.getFrequency();interfaceName=group.getInterface();status="Wi-Fi Direct · "+(frequency>=5000&&frequency<5925?"5 GHz":frequency>=2400&&frequency<2500?"2.4 GHz":"băng tần chưa xác minh")+" · TLS";
     if(discovery==null&&!interfaceName.isEmpty())try{discovery=new LanDiscovery(host.getDeviceId(),"FlowDrop Turbo","android","1.14.0",host.getPort(),new LanDiscovery.Adapter(){public List<NetworkInterface> interfaces()throws Exception{NetworkInterface iface=NetworkInterface.getByName(interfaceName);return iface==null?Collections.emptyList():Collections.singletonList(iface);}public void bind(DatagramSocket socket){}public HttpURLConnection open(URL url)throws Exception{return (HttpURLConnection)url.openConnection();}});}catch(Exception ignored){status+=" · tìm kiếm dự phòng bằng LAN";}
   });}catch(RuntimeException ignored){status="Không xác minh được Turbo · dùng LAN";}}
   public JSONArray peers()throws Exception{return discovery==null?new JSONArray():discovery.peers();}
