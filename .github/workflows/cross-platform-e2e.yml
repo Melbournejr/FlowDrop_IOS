@@ -1,0 +1,146 @@
+name: Cross-platform E2E verification
+on:
+  pull_request:
+    branches: [main]
+    types: [opened, synchronize, reopened, labeled, unlabeled]
+  workflow_dispatch:
+    inputs:
+      full_engine_matrix:
+        description: Run 100 MiB, 1 GiB and above 4 GiB engine cases (not native LAN proof)
+        type: boolean
+        default: true
+permissions:
+  contents: read
+concurrency:
+  group: cross-platform-2d2-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+env:
+  FLOWDROP_REVIEWED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+jobs:
+  protocol:
+    name: Layer A / production engines, not native E2E
+    if: ${{ github.event_name == 'workflow_dispatch' || contains(github.event.pull_request.labels.*.name, 'ci-cross-platform') }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 55
+    outputs:
+      status: ${{ steps.status.outputs.status }}
+    steps:
+    - name: Checkout exact source
+      uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1, verified Phase 2C.2 pin
+      with:
+        persist-credentials: false
+        fetch-depth: 0
+    - name: Node 24, Java 21, Python 3.12, checksum-verified JAR and npm ci
+      uses: ./.github/actions/native-test-setup
+      with:
+        gate: e2e
+    - name: Execute protocol matrix on four engine directions
+      timeout-minutes: 47
+      env:
+        FULL: ${{ github.event_name == 'pull_request' || inputs.full_engine_matrix }}
+      run: |
+        args=()
+        if [[ "$FULL" == "true" ]]; then args+=(--full); fi
+        python3 -m scripts.cross_platform_ci.run protocol --work-root "$RUNNER_TEMP/flowdrop-2d2-protocol" --jar "$RUNNER_TEMP/flowdrop-native-e2e/tools/json-20240303.jar" "${args[@]}"
+    - name: Explicit layer A status
+      if: ${{ always() }}
+      id: status
+      run: |
+        python3 - <<'PY'
+        import json,os,pathlib
+        p=pathlib.Path(os.environ['RUNNER_TEMP'])/'flowdrop-2d2-protocol/logs/results.json'
+        r=json.loads(p.read_text()) if p.is_file() else {'status':'NOT VERIFIED'}
+        with open(os.environ['GITHUB_OUTPUT'],'a') as f: f.write('status='+r['status']+'\n')
+        if r['status']!='PASS': raise SystemExit(1)
+        PY
+    - name: Upload screened layer A evidence
+      if: ${{ always() }}
+      uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2, verified Phase 2C.2 pin
+      with:
+        name: FlowDrop-2D2-Protocol-${{ github.run_id }}-${{ github.run_attempt }}
+        path: ${{ runner.temp }}/flowdrop-2d2-protocol/export/
+        retention-days: 7
+        if-no-files-found: error
+    - name: Cleanup owned protocol and dependency scratch
+      if: ${{ always() }}
+      run: |
+        if [[ -f "$RUNNER_TEMP/flowdrop-2d2-protocol/.flowdrop-2d1-owned" ]]; then
+          python3 -m scripts.cross_platform_ci.run cleanup --work-root "$RUNNER_TEMP/flowdrop-2d2-protocol"
+        fi
+        if [[ -f "$RUNNER_TEMP/flowdrop-native-e2e/.flowdrop-native-ci-owned" ]]; then
+          python3 tests/ci/run.py cleanup --work-root "$RUNNER_TEMP/flowdrop-native-e2e"
+        fi
+  tools:
+    name: Owner toolkit / ${{ matrix.os }}
+    if: ${{ github.event_name == 'workflow_dispatch' || contains(github.event.pull_request.labels.*.name, 'ci-cross-platform') }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-24.04, windows-2025]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 12
+    env:
+      GIT_CONFIG_COUNT: '1'
+      GIT_CONFIG_KEY_0: core.autocrlf
+      GIT_CONFIG_VALUE_0: 'false'
+    steps:
+    - name: Checkout exact source without newline conversion
+      uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      with:
+        persist-credentials: false
+        fetch-depth: 0
+    - name: Verified Python distribution
+      uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+      with:
+        python-version: ${{ matrix.os == 'windows-2025' && '3.12.10' || '3.12.16' }}
+    - name: Verify portable CLI, safety units and toolkit bundle
+      shell: bash
+      run: python -m scripts.cross_platform_ci.run toolkit --work-root "$RUNNER_TEMP/flowdrop-2d2-tools"
+    - name: Upload screened toolkit test evidence
+      if: ${{ always() }}
+      uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+      with:
+        name: FlowDrop-2D2-Tools-Evidence-${{ matrix.os }}-${{ github.run_id }}-${{ github.run_attempt }}
+        path: ${{ runner.temp }}/flowdrop-2d2-tools/export/
+        retention-days: 7
+        if-no-files-found: error
+    - name: Upload source-only owner toolkit after verification
+      if: ${{ success() && matrix.os == 'windows-2025' }}
+      uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+      with:
+        name: FlowDrop-2D2-Owner-Toolkit-${{ github.run_id }}-${{ github.run_attempt }}
+        path: ${{ runner.temp }}/flowdrop-2d2-tools/toolkit/
+        retention-days: 7
+        if-no-files-found: error
+    - name: Cleanup only owned synthetic scratch
+      if: ${{ always() }}
+      shell: bash
+      run: |
+        if [[ -f "$RUNNER_TEMP/flowdrop-2d2-tools/.flowdrop-2d1-owned" ]]; then
+          python -m scripts.cross_platform_ci.run cleanup --work-root "$RUNNER_TEMP/flowdrop-2d2-tools"
+        fi
+  summary:
+    name: Cross-platform / explicit layer coverage
+    if: ${{ always() }}
+    needs: [protocol, tools]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+    - name: Separate automated checks from blocked native and unverified physical LAN
+      env:
+        RESULTS: ${{ toJSON(needs) }}
+        REQUESTED: ${{ github.event_name == 'workflow_dispatch' || contains(github.event.pull_request.labels.*.name, 'ci-cross-platform') }}
+      run: |
+        python3 - <<'PY'
+        import os,json
+        requested=os.environ['REQUESTED']=='true'; needs=json.loads(os.environ['RESULTS'])
+        with open(os.environ['GITHUB_STEP_SUMMARY'],'a') as f:
+          f.write('## Phase 2D.2 explicit coverage\n\n| Layer | Status | Scope |\n|---|---|---|\n')
+          for name,r in needs.items(): f.write('| A / '+name+' | '+r['result']+' | Protocol engines / owner toolkit, NOT native LAN |\n')
+          f.write('| B / native Windows↔Android | BLOCKED | Independent Windows/Linux hosted runners have no configured common private LAN. No public tunnel opened. |\n')
+          f.write('| B / native Windows↔Windows and Android↔Android | NOT VERIFIED | No two-device native session executed by this workflow; use the local guide. |\n')
+          f.write('| C / physical LAN, router multicast, OEM | NOT VERIFIED | Requires owner hardware and completed checklist; no emulator inference. |\n')
+          f.write('\n2D.2-B and complete Phase 2D.2 are NOT VERIFIED until physical evidence is reviewed.\n')
+          if not requested: f.write('\nSKIPPED: opt in using ci-cross-platform; green opt-out summary is not PASS.\n')
+        if requested and (any(r['result']!='success' for r in needs.values()) or needs['protocol'].get('outputs',{}).get('status')!='PASS'): raise SystemExit(1)
+        PY

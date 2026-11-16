@@ -1,0 +1,13 @@
+{
+  "phase": "2D.2",
+  "base": "f9b5a43c5eae93b169717a72d19f5a426d913094",
+  "status": "NOT VERIFIED",
+  "purpose": "Native app binaries are not altered or republished; toolkit is scripts/docs only",
+  "production_identity": "unchanged by 790-file SHA guard",
+  "production_signing": "NOT VERIFIED; no production keys used",
+  "native_cross_platform": "BLOCKED",
+  "physical_lan": "NOT VERIFIED",
+  "github_actions": [],
+  "artifacts": [],
+  "local_evidence_scope": "Preliminary working tree; no claim that new harness was committed at base SHA"
+}

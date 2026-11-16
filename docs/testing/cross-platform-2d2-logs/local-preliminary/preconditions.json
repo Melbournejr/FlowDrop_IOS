@@ -1,0 +1,93 @@
+{
+  "base": "f9b5a43c5eae93b169717a72d19f5a426d913094",
+  "ruleset": {
+    "id": 27172303,
+    "name": "protectMain",
+    "target": "branch",
+    "source_type": "Repository",
+    "source": "Melbournejr/FlowDrop_IOS",
+    "enforcement": "active",
+    "conditions": {
+      "ref_name": {
+        "exclude": [],
+        "include": [
+          "~DEFAULT_BRANCH"
+        ]
+      }
+    },
+    "rules": [
+      {
+        "type": "deletion"
+      },
+      {
+        "type": "non_fast_forward"
+      },
+      {
+        "type": "pull_request",
+        "parameters": {
+          "required_approving_review_count": 0,
+          "dismiss_stale_reviews_on_push": false,
+          "required_reviewers": [],
+          "require_code_owner_review": false,
+          "require_last_push_approval": false,
+          "required_review_thread_resolution": true,
+          "require_extra_approval_for_unattributed_changes": false,
+          "allowed_merge_methods": [
+            "squash"
+          ]
+        }
+      },
+      {
+        "type": "required_status_checks",
+        "parameters": {
+          "strict_required_status_checks_policy": true,
+          "do_not_enforce_on_create": false,
+          "required_status_checks": [
+            {
+              "context": "Coverage / explicit verification status",
+              "integration_id": 15368
+            }
+          ]
+        }
+      }
+    ],
+    "node_id": "RRS_lACqUmVwb3NpdG9yec5VWZlyzgGenc8",
+    "created_at": "2026-11-13T02:21:11.997Z",
+    "updated_at": "2026-11-13T02:26:10.955Z",
+    "bypass_actors": [],
+    "current_user_can_bypass": "never",
+    "_links": {
+      "self": {
+        "href": "https://api.github.com/repos/Melbournejr/FlowDrop_IOS/rulesets/27172303"
+      },
+      "html": {
+        "href": "https://github.com/Melbournejr/FlowDrop_IOS/rules/27172303"
+      }
+    }
+  },
+  "branches": [
+    "audit/flowdrop-baseline",
+    "automation/flowdrop-release-1.10.0",
+    "automation/flowdrop-release-1.11.0",
+    "automation/flowdrop-release-1.12.0",
+    "automation/flowdrop-release-1.13.0",
+    "baseline/native-source-1.13.0",
+    "build/native-verification-2c2",
+    "build/restore-native-toolchain",
+    "ci/native-regression",
+    "fix/restore-baseline-fonts-1.13.0",
+    "main",
+    "security/github-hardening-2026-11-11",
+    "security/public-signing-identities-2026-11-11",
+    "test/fix-regression-harness",
+    "test/native-runtime-verification-2d1"
+  ],
+  "open_prs": [
+    {
+      "number": 1,
+      "head": "2ccf9248ed6de184a200a950e1d37dd1e5b11741",
+      "base": "main",
+      "title": "Harden GitHub workflows and add automated security checks"
+    }
+  ]
+}

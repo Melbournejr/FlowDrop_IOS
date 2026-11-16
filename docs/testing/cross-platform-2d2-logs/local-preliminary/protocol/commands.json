@@ -1,0 +1,14 @@
+[
+  {
+    "name": "protocol-command",
+    "command": [
+      "node",
+      "/workspace/flowdrop-build/flowdrop-e2e-2d2/repository/tests/cross-platform-protocol.mjs"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 10.647,
+    "timeout_seconds": 2700,
+    "log": "logs/protocol-command.log",
+    "log_sha256": "244f0bd94af511fcf3176ca37154c73f7e0b7198a5afc1c6e0cf252e631d38a8"
+  }
+]

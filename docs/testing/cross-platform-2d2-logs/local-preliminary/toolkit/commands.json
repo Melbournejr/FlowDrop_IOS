@@ -1,0 +1,148 @@
+[
+  {
+    "name": "toolkit-unit",
+    "command": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests/ci",
+      "-p",
+      "test_*.py",
+      "-v"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 2.358,
+    "timeout_seconds": 90,
+    "log": "logs/toolkit-unit.log",
+    "log_sha256": "e63b290c856a17a54c0837ad2bbfc41ff44d29b5dd1e142a58dcf3a1623649e9"
+  },
+  {
+    "name": "toolkit-cli-0",
+    "command": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+      "-X",
+      "utf8",
+      "/workspace/flowdrop-build/flowdrop-e2e-2d2/repository/tools/physical-lan/flowdrop_lan.py",
+      "--root",
+      "/workspace/flowdrop-build/flowdrop-e2e-2d2/work/toolkit-local-final/synthetic/owner-tool",
+      "prepare"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 0.111,
+    "timeout_seconds": 120,
+    "log": "logs/toolkit-cli-0.log",
+    "log_sha256": "bbfa05d0141e124cf9f2709ac3c6cfe1f541b314821e0e08ddfb762d6ce10548"
+  },
+  {
+    "name": "toolkit-cli-1",
+    "command": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+      "-X",
+      "utf8",
+      "/workspace/flowdrop-build/flowdrop-e2e-2d2/repository/tools/physical-lan/flowdrop_lan.py",
+      "--root",
+      "/workspace/flowdrop-build/flowdrop-e2e-2d2/work/toolkit-local-final/synthetic/owner-tool",
+      "environment"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 0.061,
+    "timeout_seconds": 120,
+    "log": "logs/toolkit-cli-1.log",
+    "log_sha256": "41e0127f207f1e6260e7b387f07831fb72282605119dc26b86b8528b23e5dee9"
+  },
+  {
+    "name": "toolkit-cli-2",
+    "command": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+      "-X",
+      "utf8",
+      "/workspace/flowdrop-build/flowdrop-e2e-2d2/repository/tools/physical-lan/flowdrop_lan.py",
+      "--root",
+      "/workspace/flowdrop-build/flowdrop-e2e-2d2/work/toolkit-local-final/synthetic/owner-tool",
+      "hash-source"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 0.108,
+    "timeout_seconds": 120,
+    "log": "logs/toolkit-cli-2.log",
+    "log_sha256": "041dff8cee4c14767a03435eb9f84a05152b2dc00e322d74a702b6f6944a4bdf"
+  },
+  {
+    "name": "toolkit-cli-3",
+    "command": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+      "-X",
+      "utf8",
+      "/workspace/flowdrop-build/flowdrop-e2e-2d2/repository/tools/physical-lan/flowdrop_lan.py",
+      "--root",
+      "/workspace/flowdrop-build/flowdrop-e2e-2d2/work/toolkit-local-final/synthetic/owner-tool",
+      "start",
+      "--direction",
+      "Windows-to-Windows",
+      "--mode",
+      "test-artifact",
+      "--network",
+      "isolated-virtual"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 0.11,
+    "timeout_seconds": 120,
+    "log": "logs/toolkit-cli-3.log",
+    "log_sha256": "2d6a5c92c39afebb11dec182a059a7192a371a66c46bb41c8d1036570ec115fa"
+  },
+  {
+    "name": "toolkit-cli-4",
+    "command": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+      "-X",
+      "utf8",
+      "/workspace/flowdrop-build/flowdrop-e2e-2d2/repository/tools/physical-lan/flowdrop_lan.py",
+      "--root",
+      "/workspace/flowdrop-build/flowdrop-e2e-2d2/work/toolkit-local-final/synthetic/owner-tool",
+      "stop"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 0.059,
+    "timeout_seconds": 120,
+    "log": "logs/toolkit-cli-4.log",
+    "log_sha256": "21d94f4382150458354f0a4b52dce0087f671b647559fce311ce9c17c2c27594"
+  },
+  {
+    "name": "toolkit-compare",
+    "command": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+      "-X",
+      "utf8",
+      "/workspace/flowdrop-build/flowdrop-e2e-2d2/repository/tools/physical-lan/flowdrop_lan.py",
+      "--root",
+      "/workspace/flowdrop-build/flowdrop-e2e-2d2/work/toolkit-local-final/synthetic/owner-tool",
+      "compare",
+      "--received-dir",
+      "/workspace/flowdrop-build/flowdrop-e2e-2d2/work/toolkit-local-final/synthetic/self-test-copy"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 0.121,
+    "timeout_seconds": 120,
+    "log": "logs/toolkit-compare.log",
+    "log_sha256": "a7d22602ac90a011d3c2cd047d580db261c9cdb2ffa4c06dab2f68f3b35647d8"
+  },
+  {
+    "name": "toolkit-report",
+    "command": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+      "-X",
+      "utf8",
+      "/workspace/flowdrop-build/flowdrop-e2e-2d2/repository/tools/physical-lan/flowdrop_lan.py",
+      "--root",
+      "/workspace/flowdrop-build/flowdrop-e2e-2d2/work/toolkit-local-final/synthetic/owner-tool",
+      "report"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 0.083,
+    "timeout_seconds": 120,
+    "log": "logs/toolkit-report.log",
+    "log_sha256": "1d439ae443d3506aaf4988fccfc6e291a83231f7bd2cd54618907b6d63cc1fdd"
+  }
+]

@@ -1,0 +1,1612 @@
+{
+  "schema": 1,
+  "run_id": "a9fecd37c02a4f67b3be7670f89bdcca",
+  "phase": "2D.2-B",
+  "status": "NOT VERIFIED",
+  "source_manifest_sha256": "bbfa05d0141e124cf9f2709ac3c6cfe1f541b314821e0e08ddfb762d6ce10548",
+  "file_integrity": "PASS",
+  "physical_wifi": "NOT VERIFIED",
+  "native_e2e": "NOT VERIFIED",
+  "cpu_peak_rss": "NOT VERIFIED",
+  "discovery_seconds": "NOT VERIFIED",
+  "cleanup_seconds": "NOT VERIFIED",
+  "production_signing": "NOT VERIFIED",
+  "resume": "NOT DESIGNED; no resume protocol claimed",
+  "instructions": "Attach completed operator checklist and app/version/network evidence; a hash match alone is not physical LAN proof.",
+  "comparison": {
+    "schema": 1,
+    "run_id": "a9fecd37c02a4f67b3be7670f89bdcca",
+    "layer": "file-integrity-only",
+    "status": "PASS",
+    "files": [
+      {
+        "path": "FD-a9fecd37-empty.bin",
+        "destination_relative": "FD-a9fecd37-empty.bin",
+        "expected": {
+          "path": "FD-a9fecd37-empty.bin",
+          "size": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "actual": {
+          "size": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "status": "PASS"
+      },
+      {
+        "path": "FD-a9fecd37-1KiB.bin",
+        "destination_relative": "FD-a9fecd37-1KiB.bin",
+        "expected": {
+          "path": "FD-a9fecd37-1KiB.bin",
+          "size": 1024,
+          "sha256": "2bce1ba628720664be4b9fdd77aae0678e5f0f3f02fc6ff641ec879094f6a404"
+        },
+        "actual": {
+          "size": 1024,
+          "sha256": "2bce1ba628720664be4b9fdd77aae0678e5f0f3f02fc6ff641ec879094f6a404"
+        },
+        "status": "PASS"
+      },
+      {
+        "path": "FD-a9fecd37-1MiB.bin",
+        "destination_relative": "FD-a9fecd37-1MiB.bin",
+        "expected": {
+          "path": "FD-a9fecd37-1MiB.bin",
+          "size": 1048576,
+          "sha256": "cc2cffa7208256c3d2e7fc44bc928e2b18c4390920e90bf087c97fcc4bec1f23"
+        },
+        "actual": {
+          "size": 1048576,
+          "sha256": "cc2cffa7208256c3d2e7fc44bc928e2b18c4390920e90bf087c97fcc4bec1f23"
+        },
+        "status": "PASS"
+      },
+      {
+        "path": "Thư mục 测试 📂/FD-a9fecd37-Tiếng Việt 中文 😀 có khoảng trắng.txt",
+        "destination_relative": "Thư mục 测试 📂/FD-a9fecd37-Tiếng Việt 中文 😀 có khoảng trắng.txt",
+        "expected": {
+          "path": "Thư mục 测试 📂/FD-a9fecd37-Tiếng Việt 中文 😀 có khoảng trắng.txt",
+          "size": 1057,
+          "sha256": "b47fbdcc235963413022b74351b6fa0e3b0c9d2617f044f3a685c1638e4ccf92"
+        },
+        "actual": {
+          "size": 1057,
+          "sha256": "b47fbdcc235963413022b74351b6fa0e3b0c9d2617f044f3a685c1638e4ccf92"
+        },
+        "status": "PASS"
+      },
+      {
+        "path": "Thư mục 测试 📂/Cấp hai/FD-a9fecd37-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.bin",
+        "destination_relative": "Thư mục 测试 📂/Cấp hai/FD-a9fecd37-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.bin",
+        "expected": {
+          "path": "Thư mục 测试 📂/Cấp hai/FD-a9fecd37-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.bin",
+          "size": 32769,
+          "sha256": "346e2310c7233f7723048e8289ba7a299d635ded9723dfea5248773f5b7684b8"
+        },
+        "actual": {
+          "size": 32769,
+          "sha256": "346e2310c7233f7723048e8289ba7a299d635ded9723dfea5248773f5b7684b8"
+        },
+        "status": "PASS"
+      },
+      {
+        "path": "Nhiều file/FD-a9fecd37-000.txt",
+        "destination_relative": "Nhiều file/FD-a9fecd37-000.txt",
+        "expected": {
+          "path": "Nhiều file/FD-a9fecd37-000.txt",
+          "size": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "actual": {
+          "size": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "status": "PASS"
+      },
+      {
+        "path": "Nhiều file/FD-a9fecd37-001.txt",
+        "destination_relative": "Nhiều file/FD-a9fecd37-001.txt",
+        "expected": {
+          "path": "Nhiều file/FD-a9fecd37-001.txt",
+          "size": 1,
+          "sha256": "6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d"
+        },
+        "actual": {
+          "size": 1,
+          "sha256": "6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d"
+        },
+        "status": "PASS"
+      },
+      {
+        "path": "Nhiều file/FD-a9fecd37-002.txt",
+        "destination_relative": "Nhiều file/FD-a9fecd37-002.txt",
+        "expected": {
+          "path": "Nhiều file/FD-a9fecd37-002.txt",
+          "size": 2,
+          "sha256": "b413f47d13ee2fe6c845b2ee141af81de858df4ec549a58b7970bb96645bc8d2"
+        },
+        "actual": {
+          "size": 2,
+          "sha256": "b413f47d13ee2fe6c845b2ee141af81de858df4ec549a58b7970bb96645bc8d2"
+        },
+        "status": "PASS"
+      },
+      {
+        "path": "Nhiều file/FD-a9fecd37-003.txt",
+        "destination_relative": "Nhiều file/FD-a9fecd37-003.txt",
+        "expected": {
+          "path": "Nhiều file/FD-a9fecd37-003.txt",
+          "size": 3,
+          "sha256": "ae4b3280e56e2faf83f414a6e3dabe9d5fbe18976544c05fed121accb85b53fc"
+        },
+        "actual": {
+          "size": 3,
+          "sha256": "ae4b3280e56e2faf83f414a6e3dabe9d5fbe18976544c05fed121accb85b53fc"
+        },
+        "status": "PASS"
+      },
+      {
+        "path": "Nhiều file/FD-a9fecd37-004.txt",
+        "destination_relative": "Nhiều file/FD-a9fecd37-004.txt",
+        "expected": {
+          "path": "Nhiều file/FD-a9fecd37-004.txt",
+          "size": 4,
+          "sha256": "054edec1d0211f624fed0cbca9d4f9400b0e491c43742af2c5b0abebf0c990d8"
+        },
+        "actual": {
+          "size": 4,
+          "sha256": "054edec1d0211f624fed0cbca9d4f9400b0e491c43742af2c5b0abebf0c990d8"
+        },
+        "status": "PASS"
+      },
+      {
+        "path": "Nhiều file/FD-a9fecd37-005.txt",
+        "destination_relative": "Nhiều file/FD-a9fecd37-005.txt",
+        "expected": {
+          "path": "Nhiều file/FD-a9fecd37-005.txt",
+          "size": 5,
+          "sha256": "08bb5e5d6eaac1049ede0893d30ed022b1a4d9b5b48db414871f51c9cb35283d"
+        },
+        "actual": {
+          "size": 5,
+          "sha256": "08bb5e5d6eaac1049ede0893d30ed022b1a4d9b5b48db414871f51c9cb35283d"
+        },
+        "status": "PASS"
+      },
+      {
+        "path": "Nhiều file/FD-a9fecd37-006.txt",
+        "destination_relative": "Nhiều file/FD-a9fecd37-006.txt",
+        "expected": {
+          "path": "Nhiều file/FD-a9fecd37-006.txt",
+          "size": 6,
+          "sha256": "17e88db187afd62c16e5debf3e6527cd006bc012bc90b51a810cd80c2d511f43"
+        },
+        "actual": {
+          "size": 6,
+          "sha256": "17e88db187afd62c16e5debf3e6527cd006bc012bc90b51a810cd80c2d511f43"
+        },
+        "status": "PASS"
+      },
+      {
+        "path": "Nhiều file/FD-a9fecd37-007.txt",
+        "destination_relative": "Nhiều file/FD-a9fecd37-007.txt",
+        "expected": {
+          "path": "Nhiều file/FD-a9fecd37-007.txt",
+          "size": 7,
+          "sha256": "57355ac3303c148f11aef7cb179456b9232cde33a818dfda2c2fcb9325749a6b"
+        },
+        "actual": {
+          "size": 7,
+          "sha256": "57355ac3303c148f11aef7cb179456b9232cde33a818dfda2c2fcb9325749a6b"
+        },
+        "status": "PASS"
+      },
+      {
+        "path": "Nhiều file/FD-a9fecd37-008.txt",
+        "destination_relative": "Nhiều file/FD-a9fecd37-008.txt",
+        "expected": {
+          "path": "Nhiều file/FD-a9fecd37-008.txt",
+          "size": 8,
+          "sha256": "8a851ff82ee7048ad09ec3847f1ddf44944104d2cbd17ef4e3db22c6785a0d45"
+        },
+        "actual": {
+          "size": 8,
+          "sha256": "8a851ff82ee7048ad09ec3847f1ddf44944104d2cbd17ef4e3db22c6785a0d45"
+        },
+        "status": "PASS"
+      },
+      {
+        "path": "Nhiều file/FD-a9fecd37-009.txt",
+        "destination_relative": "Nhiều file/FD-a9fecd37-009.txt",
+        "expected": {
+          "path": "Nhiều file/FD-a9fecd37-009.txt",
+          "size": 9,
+          "sha256": "f8348e0b1df00833cbbbd08f07abdecc10c0efb78829d7828c62a7f36d0cc549"
+        },
+        "actual": {
+          "size": 9,
+          "sha256": "f8348e0b1df00833cbbbd08f07abdecc10c0efb78829d7828c62a7f36d0cc549"
+        },
+        "status": "PASS"
+      },
+      {
+        "path": "Nhiều file/FD-a9fecd37-010.txt",
+        "destination_relative": "Nhiều file/FD-a9fecd37-010.txt",
+        "expected": {
+          "path": "Nhiều file/FD-a9fecd37-010.txt",
+          "size": 10,
+          "sha256": "1f825aa2f0020ef7cf91dfa30da4668d791c5d4824fc8e41354b89ec05795ab3"
+        },
+        "actual": {
+          "size": 10,
+          "sha256": "1f825aa2f0020ef7cf91dfa30da4668d791c5d4824fc8e41354b89ec05795ab3"
+        },
+        "status": "PASS"
+      },
+      {
+        "path": "Nhiều file/FD-a9fecd37-011.txt",
+        "destination_relative": "Nhiều file/FD-a9fecd37-011.txt",
+        "expected": {
+          "path": "Nhiều file/FD-a9fecd37-011.txt",
+          "size": 11,
+          "sha256": "78a6273103d17c39a0b6126e226cec70e33337f4bc6a38067401b54a33e78ead"
+        },
+        "actual": {
+          "size": 11,
+          "sha256": "78a6273103d17c39a0b6126e226cec70e33337f4bc6a38067401b54a33e78ead"
+        },
+        "status": "PASS"
+      },
+      {
+        "path": "Nhiều file/FD-a9fecd37-012.txt",
+        "destination_relative": "Nhiều file/FD-a9fecd37-012.txt",
+        "expected": {
+          "path": "Nhiều file/FD-a9fecd37-012.txt",
+          "size": 12,
+          "sha256": "fff3a9bcdd37363d703c1c4f9512533686157868f0d4f16a0f02d0f1da24f9a2"
+        },
+        "actual": {
+          "size": 12,
+          "sha256": "fff3a9bcdd37363d703c1c4f9512533686157868f0d4f16a0f02d0f1da24f9a2"
+        },
+        "status": "PASS"
+      },
+      {
+        "path": "Nhiều file/FD-a9fecd37-013.txt",
+        "destination_relative": "Nhiều file/FD-a9fecd37-013.txt",
+        "expected": {
+          "path": "Nhiều file/FD-a9fecd37-013.txt",
+          "size": 13,
+          "sha256": "86eba947d50c2c01570fe1bb5ca552958dabbdbb59b0657f0f26e21ff011e5c7"
+        },
+        "actual": {
+          "size": 13,
+          "sha256": "86eba947d50c2c01570fe1bb5ca552958dabbdbb59b0657f0f26e21ff011e5c7"
+        },
+        "status": "PASS"
+      },
+      {
+        "path": "Nhiều file/FD-a9fecd37-014.txt",
+        "destination_relative": "Nhiều file/FD-a9fecd37-014.txt",
+        "expected": {
+          "path": "Nhiều file/FD-a9fecd37-014.txt",
+          "size": 14,
+          "sha256": "ab107f1bd632d3c3f5c724a99d024f7faa033f33c07696384b604bfe78ac352d"
+        },
+        "actual": {
+          "size": 14,
+          "sha256": "ab107f1bd632d3c3f5c724a99d024f7faa033f33c07696384b604bfe78ac352d"
+        },
+        "status": "PASS"
+      },
+      {
+        "path": "Nhiều file/FD-a9fecd37-015.txt",
+        "destination_relative": "Nhiều file/FD-a9fecd37-015.txt",
+        "expected": {
+          "path": "Nhiều file/FD-a9fecd37-015.txt",
+          "size": 15,
+          "sha256": "7071fc3188fde7e7e500d4768f1784bede1a22e991648dcab9dc3219acff1d4c"
+        },
+        "actual": {
+          "size": 15,
+          "sha256": "7071fc3188fde7e7e500d4768f1784bede1a22e991648dcab9dc3219acff1d4c"
+        },
+        "status": "PASS"
+      },
+      {
+        "path": "Nhiều file/FD-a9fecd37-016.txt",
+        "destination_relative": "Nhiều file/FD-a9fecd37-016.txt",
+        "expected": {
+          "path": "Nhiều file/FD-a9fecd37-016.txt",
+          "size": 16,
+          "sha256": "be45cb2605bf36bebde684841a28f0fd43c69850a3dce5fedba69928ee3a8991"
+        },
+        "actual": {
+          "size": 16,
+          "sha256": "be45cb2605bf36bebde684841a28f0fd43c69850a3dce5fedba69928ee3a8991"
+        },
+        "status": "PASS"
+      },
+      {
+        "path": "Nhiều file/FD-a9fecd37-017.txt",
+        "destination_relative": "Nhiều file/FD-a9fecd37-017.txt",
+        "expected": {
+          "path": "Nhiều file/FD-a9fecd37-017.txt",
+          "size": 17,
+          "sha256": "3e5718fea51a8f3f5baca61c77afab473c1810f8b9db330273b4011ce92c787e"
+        },
+        "actual": {
+          "size": 17,
+          "sha256": "3e5718fea51a8f3f5baca61c77afab473c1810f8b9db330273b4011ce92c787e"
+        },
+        "status": "PASS"
+      },
+      {
+        "path": "Nhiều file/FD-a9fecd37-018.txt",
+        "destination_relative": "Nhiều file/FD-a9fecd37-018.txt",
+        "expected": {
+          "path": "Nhiều file/FD-a9fecd37-018.txt",
+          "size": 18,
+          "sha256": "7a096cc12702bcfa647ee070d4f3ba4c2d1d715b484b55b825d0edba6545803b"
+        },
+        "actual": {
+          "size": 18,
+          "sha256": "7a096cc12702bcfa647ee070d4f3ba4c2d1d715b484b55b825d0edba6545803b"
+        },
+        "status": "PASS"
+      },
+      {
+        "path": "Nhiều file/FD-a9fecd37-019.txt",
+        "destination_relative": "Nhiều file/FD-a9fecd37-019.txt",
+        "expected": {
+          "path": "Nhiều file/FD-a9fecd37-019.txt",
+          "size": 19,
+          "sha256": "5f9a753613d87b8a17302373c4aee56faa310d3b24b6ae1862d673aa22e1790f"
+        },
+        "actual": {
+          "size": 19,
+          "sha256": "5f9a753613d87b8a17302373c4aee56faa310d3b24b6ae1862d673aa22e1790f"
+        },
+        "status": "PASS"
+      },
+      {
+        "path": "Nhiều file/FD-a9fecd37-020.txt",
+        "destination_relative": "Nhiều file/FD-a9fecd37-020.txt",
+        "expected": {
+          "path": "Nhiều file/FD-a9fecd37-020.txt",
+          "size": 20,
+          "sha256": "e7aebf577f60412f0312d442c70a1fa6148c090bf5bab404caec29482ae779e8"
+        },
+        "actual": {
+          "size": 20,
+          "sha256": "e7aebf577f60412f0312d442c70a1fa6148c090bf5bab404caec29482ae779e8"
+        },
+        "status": "PASS"
+      },
+      {
+        "path": "Nhiều file/FD-a9fecd37-021.txt",
+        "destination_relative": "Nhiều file/FD-a9fecd37-021.txt",
+        "expected": {
+          "path": "Nhiều file/FD-a9fecd37-021.txt",
+          "size": 21,
+          "sha256": "75aee9dcc9fbe7ddc9394f5bc5d38d9f5ad361f0520f7ceab59616e38f5950b5"
+        },
+        "actual": {
+          "size": 21,
+          "sha256": "75aee9dcc9fbe7ddc9394f5bc5d38d9f5ad361f0520f7ceab59616e38f5950b5"
+        },
+        "status": "PASS"
+      },
+      {
+        "path": "Nhiều file/FD-a9fecd37-022.txt",
+        "destination_relative": "Nhiều file/FD-a9fecd37-022.txt",
+        "expected": {
+          "path": "Nhiều file/FD-a9fecd37-022.txt",
+          "size": 22,
+          "sha256": "22cb4df00cddd6067ad5cfa2bba9857f21a06843e1a6e39ad1a68cb9a45ab8b7"
+        },
+        "actual": {
+          "size": 22,
+          "sha256": "22cb4df00cddd6067ad5cfa2bba9857f21a06843e1a6e39ad1a68cb9a45ab8b7"
+        },
+        "status": "PASS"
+      },
+      {
+        "path": "Nhiều file/FD-a9fecd37-023.txt",
+        "destination_relative": "Nhiều file/FD-a9fecd37-023.txt",
+        "expected": {
+          "path": "Nhiều file/FD-a9fecd37-023.txt",
+          "size": 23,
+          "sha256": "f6a954a68555187d88cd9a026940d15ab2a7e24c7517d21ceeb028e93c96f318"
+        },
+        "actual": {
+          "size": 23,
+          "sha256": "f6a954a68555187d88cd9a026940d15ab2a7e24c7517d21ceeb028e93c96f318"
+        },
+        "status": "PASS"
+      },
+      {
+        "path": "Nhiều file/FD-a9fecd37-024.txt",
+        "destination_relative": "Nhiều file/FD-a9fecd37-024.txt",
+        "expected": {
+          "path": "Nhiều file/FD-a9fecd37-024.txt",
+          "size": 24,
+          "sha256": "1d64add2a6388367c9bc2d1f1b384b069a6ef382cdaaa89771dd103e28613a25"
+        },
+        "actual": {
+          "size": 24,
+          "sha256": "1d64add2a6388367c9bc2d1f1b384b069a6ef382cdaaa89771dd103e28613a25"
+        },
+        "status": "PASS"
+      },
+      {
+        "path": "Nhiều file/FD-a9fecd37-025.txt",
+        "destination_relative": "Nhiều file/FD-a9fecd37-025.txt",
+        "expected": {
+          "path": "Nhiều file/FD-a9fecd37-025.txt",
+          "size": 25,
+          "sha256": "b729ce724d9a48d3884dbfcbee1d3793d922b29fa9d639e7290af4978263772b"
+        },
+        "actual": {
+          "size": 25,
+          "sha256": "b729ce724d9a48d3884dbfcbee1d3793d922b29fa9d639e7290af4978263772b"
+        },
+        "status": "PASS"
+      },
+      {
+        "path": "Nhiều file/FD-a9fecd37-026.txt",
+        "destination_relative": "Nhiều file/FD-a9fecd37-026.txt",
+        "expected": {
+          "path": "Nhiều file/FD-a9fecd37-026.txt",
+          "size": 26,
+          "sha256": "b858da80d8a57dc546905fd147612ebddd3c9188620405d058f9ee5ab1e6bc52"
+        },
+        "actual": {
+          "size": 26,
+          "sha256": "b858da80d8a57dc546905fd147612ebddd3c9188620405d058f9ee5ab1e6bc52"
+        },
+        "status": "PASS"
+      },
+      {
+        "path": "Nhiều file/FD-a9fecd37-027.txt",
+        "destination_relative": "Nhiều file/FD-a9fecd37-027.txt",
+        "expected": {
+          "path": "Nhiều file/FD-a9fecd37-027.txt",
+          "size": 27,
+          "sha256": "d78750726155a89c9131d0ecf2704b973b8710865bf9e831845de4f2dcbc19da"
+        },
+        "actual": {
+          "size": 27,
+          "sha256": "d78750726155a89c9131d0ecf2704b973b8710865bf9e831845de4f2dcbc19da"
+        },
+        "status": "PASS"
+      },
+      {
+        "path": "Nhiều file/FD-a9fecd37-028.txt",
+        "destination_relative": "Nhiều file/FD-a9fecd37-028.txt",
+        "expected": {
+          "path": "Nhiều file/FD-a9fecd37-028.txt",
+          "size": 28,
+          "sha256": "dc27f8e8ee2d08a2bccbb2dbd6c8e07ffba194101fc3458c34ded55f72c0971a"
+        },
+        "actual": {
+          "size": 28,
+          "sha256": "dc27f8e8ee2d08a2bccbb2dbd6c8e07ffba194101fc3458c34ded55f72c0971a"
+        },
+        "status": "PASS"
+      },
+      {
+        "path": "Nhiều file/FD-a9fecd37-029.txt",
+        "destination_relative": "Nhiều file/FD-a9fecd37-029.txt",
+        "expected": {
+          "path": "Nhiều file/FD-a9fecd37-029.txt",
+          "size": 29,
+          "sha256": "d09bea65dff48928a14b79741de3274b646f55ac898b71a66fa3eae2d9facd77"
+        },
+        "actual": {
+          "size": 29,
+          "sha256": "d09bea65dff48928a14b79741de3274b646f55ac898b71a66fa3eae2d9facd77"
+        },
+        "status": "PASS"
+      },
+      {
+        "path": "Nhiều file/FD-a9fecd37-030.txt",
+        "destination_relative": "Nhiều file/FD-a9fecd37-030.txt",
+        "expected": {
+          "path": "Nhiều file/FD-a9fecd37-030.txt",
+          "size": 30,
+          "sha256": "f2192584b67da35dfc26f743e5f53bb0376046f899dc6dabd5e7b541ae86c32f"
+        },
+        "actual": {
+          "size": 30,
+          "sha256": "f2192584b67da35dfc26f743e5f53bb0376046f899dc6dabd5e7b541ae86c32f"
+        },
+        "status": "PASS"
+      },
+      {
+        "path": "Nhiều file/FD-a9fecd37-031.txt",
+        "destination_relative": "Nhiều file/FD-a9fecd37-031.txt",
+        "expected": {
+          "path": "Nhiều file/FD-a9fecd37-031.txt",
+          "size": 31,
+          "sha256": "4f23c2ca8c5c962e50cd31e221bfb6d0adca19111dca8e0c62598ff146dd19c4"
+        },
+        "actual": {
+          "size": 31,
+          "sha256": "4f23c2ca8c5c962e50cd31e221bfb6d0adca19111dca8e0c62598ff146dd19c4"
+        },
+        "status": "PASS"
+      },
+      {
+        "path": "Nhiều file/FD-a9fecd37-032.txt",
+        "destination_relative": "Nhiều file/FD-a9fecd37-032.txt",
+        "expected": {
+          "path": "Nhiều file/FD-a9fecd37-032.txt",
+          "size": 32,
+          "sha256": "630dcd2966c4336691125448bbb25b4ff412a49c732db2c8abc1b8581bd710dd"
+        },
+        "actual": {
+          "size": 32,
+          "sha256": "630dcd2966c4336691125448bbb25b4ff412a49c732db2c8abc1b8581bd710dd"
+        },
+        "status": "PASS"
+      },
+      {
+        "path": "Nhiều file/FD-a9fecd37-033.txt",
+        "destination_relative": "Nhiều file/FD-a9fecd37-033.txt",
+        "expected": {
+          "path": "Nhiều file/FD-a9fecd37-033.txt",
+          "size": 33,
+          "sha256": "5d8fcfefa9aeeb711fb8ed1e4b7d5c8a9bafa46e8e76e68aa18adce5a10df6ab"
+        },
+        "actual": {
+          "size": 33,
+          "sha256": "5d8fcfefa9aeeb711fb8ed1e4b7d5c8a9bafa46e8e76e68aa18adce5a10df6ab"
+        },
+        "status": "PASS"
+      },
+      {
+        "path": "Nhiều file/FD-a9fecd37-034.txt",
+        "destination_relative": "Nhiều file/FD-a9fecd37-034.txt",
+        "expected": {
+          "path": "Nhiều file/FD-a9fecd37-034.txt",
+          "size": 34,
+          "sha256": "14cdbf171499f86bd18b262243d669067efbdbb5431a48289cf02f2b5448b3d4"
+        },
+        "actual": {
+          "size": 34,
+          "sha256": "14cdbf171499f86bd18b262243d669067efbdbb5431a48289cf02f2b5448b3d4"
+        },
+        "status": "PASS"
+      },
+      {
+        "path": "Nhiều file/FD-a9fecd37-035.txt",
+        "destination_relative": "Nhiều file/FD-a9fecd37-035.txt",
+        "expected": {
+          "path": "Nhiều file/FD-a9fecd37-035.txt",
+          "size": 35,
+          "sha256": "f12dd12340cb84e4d0d9958d62be7c59bb8f7243a7420fd043177ac542a26aaa"
+        },
+        "actual": {
+          "size": 35,
+          "sha256": "f12dd12340cb84e4d0d9958d62be7c59bb8f7243a7420fd043177ac542a26aaa"
+        },
+        "status": "PASS"
+      },
+      {
+        "path": "Nhiều file/FD-a9fecd37-036.txt",
+        "destination_relative": "Nhiều file/FD-a9fecd37-036.txt",
+        "expected": {
+          "path": "Nhiều file/FD-a9fecd37-036.txt",
+          "size": 36,
+          "sha256": "5d7e2d9b1dcbc85e7c890036a2cf2f9fe7b66554f2df08cec6aa9c0a25c99c21"
+        },
+        "actual": {
+          "size": 36,
+          "sha256": "5d7e2d9b1dcbc85e7c890036a2cf2f9fe7b66554f2df08cec6aa9c0a25c99c21"
+        },
+        "status": "PASS"
+      },
+      {
+        "path": "Nhiều file/FD-a9fecd37-037.txt",
+        "destination_relative": "Nhiều file/FD-a9fecd37-037.txt",
+        "expected": {
+          "path": "Nhiều file/FD-a9fecd37-037.txt",
+          "size": 37,
+          "sha256": "f4d285f47a1e4959a445ea6528e5df3efab041fa15aad94db1e2600b3f395518"
+        },
+        "actual": {
+          "size": 37,
+          "sha256": "f4d285f47a1e4959a445ea6528e5df3efab041fa15aad94db1e2600b3f395518"
+        },
+        "status": "PASS"
+      },
+      {
+        "path": "Nhiều file/FD-a9fecd37-038.txt",
+        "destination_relative": "Nhiều file/FD-a9fecd37-038.txt",
+        "expected": {
+          "path": "Nhiều file/FD-a9fecd37-038.txt",
+          "size": 38,
+          "sha256": "a2fd0e15d72c9d18f383e40016f9ddc706673c54252084285aaa47a812552577"
+        },
+        "actual": {
+          "size": 38,
+          "sha256": "a2fd0e15d72c9d18f383e40016f9ddc706673c54252084285aaa47a812552577"
+        },
+        "status": "PASS"
+      },
+      {
+        "path": "Nhiều file/FD-a9fecd37-039.txt",
+        "destination_relative": "Nhiều file/FD-a9fecd37-039.txt",
+        "expected": {
+          "path": "Nhiều file/FD-a9fecd37-039.txt",
+          "size": 39,
+          "sha256": "4aba23aea5e2a91b7807cf3026cdd10a1c38533ce55332683d4ccb88456e0703"
+        },
+        "actual": {
+          "size": 39,
+          "sha256": "4aba23aea5e2a91b7807cf3026cdd10a1c38533ce55332683d4ccb88456e0703"
+        },
+        "status": "PASS"
+      },
+      {
+        "path": "Nhiều file/FD-a9fecd37-040.txt",
+        "destination_relative": "Nhiều file/FD-a9fecd37-040.txt",
+        "expected": {
+          "path": "Nhiều file/FD-a9fecd37-040.txt",
+          "size": 40,
+          "sha256": "5faa4eec3611556812c2d74b437c8c49add3f910f10063d801441f7d75cd5e3b"
+        },
+        "actual": {
+          "size": 40,
+          "sha256": "5faa4eec3611556812c2d74b437c8c49add3f910f10063d801441f7d75cd5e3b"
+        },
+        "status": "PASS"
+      },
+      {
+        "path": "Nhiều file/FD-a9fecd37-041.txt",
+        "destination_relative": "Nhiều file/FD-a9fecd37-041.txt",
+        "expected": {
+          "path": "Nhiều file/FD-a9fecd37-041.txt",
+          "size": 41,
+          "sha256": "753629a6117f5a25d338dff10f4dd3d07e63eecc2eaf8eabe773f6399706fe67"
+        },
+        "actual": {
+          "size": 41,
+          "sha256": "753629a6117f5a25d338dff10f4dd3d07e63eecc2eaf8eabe773f6399706fe67"
+        },
+        "status": "PASS"
+      },
+      {
+        "path": "Nhiều file/FD-a9fecd37-042.txt",
+        "destination_relative": "Nhiều file/FD-a9fecd37-042.txt",
+        "expected": {
+          "path": "Nhiều file/FD-a9fecd37-042.txt",
+          "size": 42,
+          "sha256": "40a1ed73b46030c8d7e88682078c5ab1ae5a2e524e066e8c8743c484de0e21e5"
+        },
+        "actual": {
+          "size": 42,
+          "sha256": "40a1ed73b46030c8d7e88682078c5ab1ae5a2e524e066e8c8743c484de0e21e5"
+        },
+        "status": "PASS"
+      },
+      {
+        "path": "Nhiều file/FD-a9fecd37-043.txt",
+        "destination_relative": "Nhiều file/FD-a9fecd37-043.txt",
+        "expected": {
+          "path": "Nhiều file/FD-a9fecd37-043.txt",
+          "size": 43,
+          "sha256": "c033843682818c475e187d260d5e2edf0469862dfa3bb0c116f6816a29edbf60"
+        },
+        "actual": {
+          "size": 43,
+          "sha256": "c033843682818c475e187d260d5e2edf0469862dfa3bb0c116f6816a29edbf60"
+        },
+        "status": "PASS"
+      },
+      {
+        "path": "Nhiều file/FD-a9fecd37-044.txt",
+        "destination_relative": "Nhiều file/FD-a9fecd37-044.txt",
+        "expected": {
+          "path": "Nhiều file/FD-a9fecd37-044.txt",
+          "size": 44,
+          "sha256": "17619ec4250ef65f083e2314ef30af796b6f1198d0fddfbb0f272930bf9bb991"
+        },
+        "actual": {
+          "size": 44,
+          "sha256": "17619ec4250ef65f083e2314ef30af796b6f1198d0fddfbb0f272930bf9bb991"
+        },
+        "status": "PASS"
+      },
+      {
+        "path": "Nhiều file/FD-a9fecd37-045.txt",
+        "destination_relative": "Nhiều file/FD-a9fecd37-045.txt",
+        "expected": {
+          "path": "Nhiều file/FD-a9fecd37-045.txt",
+          "size": 45,
+          "sha256": "a8e960c769a9508d098451e3d74dd5a2ac6c861eb0341ae94e9fc273597278c9"
+        },
+        "actual": {
+          "size": 45,
+          "sha256": "a8e960c769a9508d098451e3d74dd5a2ac6c861eb0341ae94e9fc273597278c9"
+        },
+        "status": "PASS"
+      },
+      {
+        "path": "Nhiều file/FD-a9fecd37-046.txt",
+        "destination_relative": "Nhiều file/FD-a9fecd37-046.txt",
+        "expected": {
+          "path": "Nhiều file/FD-a9fecd37-046.txt",
+          "size": 46,
+          "sha256": "8ebfeb2e3a159e9f39ad7cc040e6678dade70d4f59a67d529fa76af301ab2946"
+        },
+        "actual": {
+          "size": 46,
+          "sha256": "8ebfeb2e3a159e9f39ad7cc040e6678dade70d4f59a67d529fa76af301ab2946"
+        },
+        "status": "PASS"
+      },
+      {
+        "path": "Nhiều file/FD-a9fecd37-047.txt",
+        "destination_relative": "Nhiều file/FD-a9fecd37-047.txt",
+        "expected": {
+          "path": "Nhiều file/FD-a9fecd37-047.txt",
+          "size": 47,
+          "sha256": "ef8a7781a95c32fa02ebf511eda3dc6e273be59cb0f9e20a4f84d54f41427791"
+        },
+        "actual": {
+          "size": 47,
+          "sha256": "ef8a7781a95c32fa02ebf511eda3dc6e273be59cb0f9e20a4f84d54f41427791"
+        },
+        "status": "PASS"
+      },
+      {
+        "path": "Nhiều file/FD-a9fecd37-048.txt",
+        "destination_relative": "Nhiều file/FD-a9fecd37-048.txt",
+        "expected": {
+          "path": "Nhiều file/FD-a9fecd37-048.txt",
+          "size": 48,
+          "sha256": "4dbdc2b2b62cb00749785bc84202236dbc3777d74660611b8e58812f0cfde6c3"
+        },
+        "actual": {
+          "size": 48,
+          "sha256": "4dbdc2b2b62cb00749785bc84202236dbc3777d74660611b8e58812f0cfde6c3"
+        },
+        "status": "PASS"
+      },
+      {
+        "path": "Nhiều file/FD-a9fecd37-049.txt",
+        "destination_relative": "Nhiều file/FD-a9fecd37-049.txt",
+        "expected": {
+          "path": "Nhiều file/FD-a9fecd37-049.txt",
+          "size": 49,
+          "sha256": "7509fe148e2c426ed16c990f22fe8116905c82c561756e723f63223ace0e147e"
+        },
+        "actual": {
+          "size": 49,
+          "sha256": "7509fe148e2c426ed16c990f22fe8116905c82c561756e723f63223ace0e147e"
+        },
+        "status": "PASS"
+      },
+      {
+        "path": "Nhiều file/FD-a9fecd37-050.txt",
+        "destination_relative": "Nhiều file/FD-a9fecd37-050.txt",
+        "expected": {
+          "path": "Nhiều file/FD-a9fecd37-050.txt",
+          "size": 50,
+          "sha256": "a622e13829e488422ee72a5fc92cb11d25c3d0f185a1384b8138df5074c983bf"
+        },
+        "actual": {
+          "size": 50,
+          "sha256": "a622e13829e488422ee72a5fc92cb11d25c3d0f185a1384b8138df5074c983bf"
+        },
+        "status": "PASS"
+      },
+      {
+        "path": "Nhiều file/FD-a9fecd37-051.txt",
+        "destination_relative": "Nhiều file/FD-a9fecd37-051.txt",
+        "expected": {
+          "path": "Nhiều file/FD-a9fecd37-051.txt",
+          "size": 51,
+          "sha256": "3309847cee454b4f99dcfe8fdc5511a7ba168ce0b6e5684ef73f9030d009b8b5"
+        },
+        "actual": {
+          "size": 51,
+          "sha256": "3309847cee454b4f99dcfe8fdc5511a7ba168ce0b6e5684ef73f9030d009b8b5"
+        },
+        "status": "PASS"
+      },
+      {
+        "path": "Nhiều file/FD-a9fecd37-052.txt",
+        "destination_relative": "Nhiều file/FD-a9fecd37-052.txt",
+        "expected": {
+          "path": "Nhiều file/FD-a9fecd37-052.txt",
+          "size": 52,
+          "sha256": "c4c6540a15fc140a784056fe6d9e13566fb614ecb2d9ac0331e264c386442acd"
+        },
+        "actual": {
+          "size": 52,
+          "sha256": "c4c6540a15fc140a784056fe6d9e13566fb614ecb2d9ac0331e264c386442acd"
+        },
+        "status": "PASS"
+      },
+      {
+        "path": "Nhiều file/FD-a9fecd37-053.txt",
+        "destination_relative": "Nhiều file/FD-a9fecd37-053.txt",
+        "expected": {
+          "path": "Nhiều file/FD-a9fecd37-053.txt",
+          "size": 53,
+          "sha256": "90962cc12ae9cdae32d7c33c4b93194b11fac835942ee41b98770c6141c66795"
+        },
+        "actual": {
+          "size": 53,
+          "sha256": "90962cc12ae9cdae32d7c33c4b93194b11fac835942ee41b98770c6141c66795"
+        },
+        "status": "PASS"
+      },
+      {
+        "path": "Nhiều file/FD-a9fecd37-054.txt",
+        "destination_relative": "Nhiều file/FD-a9fecd37-054.txt",
+        "expected": {
+          "path": "Nhiều file/FD-a9fecd37-054.txt",
+          "size": 54,
+          "sha256": "675f28acc0b90a72d1c3a570fe83ac565555db358cf01826dc8eefb2bf7ca0f3"
+        },
+        "actual": {
+          "size": 54,
+          "sha256": "675f28acc0b90a72d1c3a570fe83ac565555db358cf01826dc8eefb2bf7ca0f3"
+        },
+        "status": "PASS"
+      },
+      {
+        "path": "Nhiều file/FD-a9fecd37-055.txt",
+        "destination_relative": "Nhiều file/FD-a9fecd37-055.txt",
+        "expected": {
+          "path": "Nhiều file/FD-a9fecd37-055.txt",
+          "size": 55,
+          "sha256": "463eb28e72f82e0a96c0a4cc53690c571281131f672aa229e0d45ae59b598b59"
+        },
+        "actual": {
+          "size": 55,
+          "sha256": "463eb28e72f82e0a96c0a4cc53690c571281131f672aa229e0d45ae59b598b59"
+        },
+        "status": "PASS"
+      },
+      {
+        "path": "Nhiều file/FD-a9fecd37-056.txt",
+        "destination_relative": "Nhiều file/FD-a9fecd37-056.txt",
+        "expected": {
+          "path": "Nhiều file/FD-a9fecd37-056.txt",
+          "size": 56,
+          "sha256": "da2ae4d6b36748f2a318f23e7ab1dfdf45acdc9d049bd80e59de82a60895f562"
+        },
+        "actual": {
+          "size": 56,
+          "sha256": "da2ae4d6b36748f2a318f23e7ab1dfdf45acdc9d049bd80e59de82a60895f562"
+        },
+        "status": "PASS"
+      },
+      {
+        "path": "Nhiều file/FD-a9fecd37-057.txt",
+        "destination_relative": "Nhiều file/FD-a9fecd37-057.txt",
+        "expected": {
+          "path": "Nhiều file/FD-a9fecd37-057.txt",
+          "size": 57,
+          "sha256": "2fe741af801cc238602ac0ec6a7b0c3a8a87c7fc7d7f02a3fe03d1c12eac4d8f"
+        },
+        "actual": {
+          "size": 57,
+          "sha256": "2fe741af801cc238602ac0ec6a7b0c3a8a87c7fc7d7f02a3fe03d1c12eac4d8f"
+        },
+        "status": "PASS"
+      },
+      {
+        "path": "Nhiều file/FD-a9fecd37-058.txt",
+        "destination_relative": "Nhiều file/FD-a9fecd37-058.txt",
+        "expected": {
+          "path": "Nhiều file/FD-a9fecd37-058.txt",
+          "size": 58,
+          "sha256": "e03b18640c635b338a92b82cce4ff072f9f1aba9ac5261ee1340f592f35c0499"
+        },
+        "actual": {
+          "size": 58,
+          "sha256": "e03b18640c635b338a92b82cce4ff072f9f1aba9ac5261ee1340f592f35c0499"
+        },
+        "status": "PASS"
+      },
+      {
+        "path": "Nhiều file/FD-a9fecd37-059.txt",
+        "destination_relative": "Nhiều file/FD-a9fecd37-059.txt",
+        "expected": {
+          "path": "Nhiều file/FD-a9fecd37-059.txt",
+          "size": 59,
+          "sha256": "bd2de8f5dd15c73f68dfd26a614080c2e323b2b51b1b5ed9d7933e535d223bda"
+        },
+        "actual": {
+          "size": 59,
+          "sha256": "bd2de8f5dd15c73f68dfd26a614080c2e323b2b51b1b5ed9d7933e535d223bda"
+        },
+        "status": "PASS"
+      },
+      {
+        "path": "Nhiều file/FD-a9fecd37-060.txt",
+        "destination_relative": "Nhiều file/FD-a9fecd37-060.txt",
+        "expected": {
+          "path": "Nhiều file/FD-a9fecd37-060.txt",
+          "size": 60,
+          "sha256": "0ddde28e40838ef6f9853e887f597d6adb5f40eb35d5763c52e1e64d8ba3bfff"
+        },
+        "actual": {
+          "size": 60,
+          "sha256": "0ddde28e40838ef6f9853e887f597d6adb5f40eb35d5763c52e1e64d8ba3bfff"
+        },
+        "status": "PASS"
+      },
+      {
+        "path": "Nhiều file/FD-a9fecd37-061.txt",
+        "destination_relative": "Nhiều file/FD-a9fecd37-061.txt",
+        "expected": {
+          "path": "Nhiều file/FD-a9fecd37-061.txt",
+          "size": 61,
+          "sha256": "4b5c2783c91ceccb7c839213bcbb6a902d7fe8c2ec866877a51f433ea17f3e85"
+        },
+        "actual": {
+          "size": 61,
+          "sha256": "4b5c2783c91ceccb7c839213bcbb6a902d7fe8c2ec866877a51f433ea17f3e85"
+        },
+        "status": "PASS"
+      },
+      {
+        "path": "Nhiều file/FD-a9fecd37-062.txt",
+        "destination_relative": "Nhiều file/FD-a9fecd37-062.txt",
+        "expected": {
+          "path": "Nhiều file/FD-a9fecd37-062.txt",
+          "size": 62,
+          "sha256": "c89da82cbcd76ddf220e4e9091019b9866ffda72bee30de1effe6c99701a2221"
+        },
+        "actual": {
+          "size": 62,
+          "sha256": "c89da82cbcd76ddf220e4e9091019b9866ffda72bee30de1effe6c99701a2221"
+        },
+        "status": "PASS"
+      },
+      {
+        "path": "Nhiều file/FD-a9fecd37-063.txt",
+        "destination_relative": "Nhiều file/FD-a9fecd37-063.txt",
+        "expected": {
+          "path": "Nhiều file/FD-a9fecd37-063.txt",
+          "size": 63,
+          "sha256": "29af2686fd53374a36b0846694cc342177e428d1647515f078784d69cdb9e488"
+        },
+        "actual": {
+          "size": 63,
+          "sha256": "29af2686fd53374a36b0846694cc342177e428d1647515f078784d69cdb9e488"
+        },
+        "status": "PASS"
+      },
+      {
+        "path": "Nhiều file/FD-a9fecd37-064.txt",
+        "destination_relative": "Nhiều file/FD-a9fecd37-064.txt",
+        "expected": {
+          "path": "Nhiều file/FD-a9fecd37-064.txt",
+          "size": 64,
+          "sha256": "fdeab9acf3710362bd2658cdc9a29e8f9c757fcf9811603a8c447cd1d9151108"
+        },
+        "actual": {
+          "size": 64,
+          "sha256": "fdeab9acf3710362bd2658cdc9a29e8f9c757fcf9811603a8c447cd1d9151108"
+        },
+        "status": "PASS"
+      },
+      {
+        "path": "Nhiều file/FD-a9fecd37-065.txt",
+        "destination_relative": "Nhiều file/FD-a9fecd37-065.txt",
+        "expected": {
+          "path": "Nhiều file/FD-a9fecd37-065.txt",
+          "size": 65,
+          "sha256": "4bfd2c8b6f1eec7a2afeb48b934ee4b2694182027e6d0fc075074f2fabb31781"
+        },
+        "actual": {
+          "size": 65,
+          "sha256": "4bfd2c8b6f1eec7a2afeb48b934ee4b2694182027e6d0fc075074f2fabb31781"
+        },
+        "status": "PASS"
+      },
+      {
+        "path": "Nhiều file/FD-a9fecd37-066.txt",
+        "destination_relative": "Nhiều file/FD-a9fecd37-066.txt",
+        "expected": {
+          "path": "Nhiều file/FD-a9fecd37-066.txt",
+          "size": 66,
+          "sha256": "b6dfd259f6e0d07deb658a88148f8253f9bbbb74ddd6db3edbe159a56bc35073"
+        },
+        "actual": {
+          "size": 66,
+          "sha256": "b6dfd259f6e0d07deb658a88148f8253f9bbbb74ddd6db3edbe159a56bc35073"
+        },
+        "status": "PASS"
+      },
+      {
+        "path": "Nhiều file/FD-a9fecd37-067.txt",
+        "destination_relative": "Nhiều file/FD-a9fecd37-067.txt",
+        "expected": {
+          "path": "Nhiều file/FD-a9fecd37-067.txt",
+          "size": 67,
+          "sha256": "8fa5913b62847d42bb4b464e00a72c612d2ab0df2af0b9a96af8d323fa509077"
+        },
+        "actual": {
+          "size": 67,
+          "sha256": "8fa5913b62847d42bb4b464e00a72c612d2ab0df2af0b9a96af8d323fa509077"
+        },
+        "status": "PASS"
+      },
+      {
+        "path": "Nhiều file/FD-a9fecd37-068.txt",
+        "destination_relative": "Nhiều file/FD-a9fecd37-068.txt",
+        "expected": {
+          "path": "Nhiều file/FD-a9fecd37-068.txt",
+          "size": 68,
+          "sha256": "7ded979c0153ebb9ef28a15a314d0b27b41c4f8eed700b54974b48eb3ecaf91c"
+        },
+        "actual": {
+          "size": 68,
+          "sha256": "7ded979c0153ebb9ef28a15a314d0b27b41c4f8eed700b54974b48eb3ecaf91c"
+        },
+        "status": "PASS"
+      },
+      {
+        "path": "Nhiều file/FD-a9fecd37-069.txt",
+        "destination_relative": "Nhiều file/FD-a9fecd37-069.txt",
+        "expected": {
+          "path": "Nhiều file/FD-a9fecd37-069.txt",
+          "size": 69,
+          "sha256": "1cf3aa651dcf35dbfe296e770ad7ebc4e00bcccd0224db296183dc952d0008c9"
+        },
+        "actual": {
+          "size": 69,
+          "sha256": "1cf3aa651dcf35dbfe296e770ad7ebc4e00bcccd0224db296183dc952d0008c9"
+        },
+        "status": "PASS"
+      },
+      {
+        "path": "Nhiều file/FD-a9fecd37-070.txt",
+        "destination_relative": "Nhiều file/FD-a9fecd37-070.txt",
+        "expected": {
+          "path": "Nhiều file/FD-a9fecd37-070.txt",
+          "size": 70,
+          "sha256": "5767d69a906d4860db9079eb7e90ab4a543e5cb032fce846554aef6ceb600e1d"
+        },
+        "actual": {
+          "size": 70,
+          "sha256": "5767d69a906d4860db9079eb7e90ab4a543e5cb032fce846554aef6ceb600e1d"
+        },
+        "status": "PASS"
+      },
+      {
+        "path": "Nhiều file/FD-a9fecd37-071.txt",
+        "destination_relative": "Nhiều file/FD-a9fecd37-071.txt",
+        "expected": {
+          "path": "Nhiều file/FD-a9fecd37-071.txt",
+          "size": 71,
+          "sha256": "8189e3d54767d51e8d1942659a9e2905f9ec3ae72860c16a66e75b8cc9bd2087"
+        },
+        "actual": {
+          "size": 71,
+          "sha256": "8189e3d54767d51e8d1942659a9e2905f9ec3ae72860c16a66e75b8cc9bd2087"
+        },
+        "status": "PASS"
+      },
+      {
+        "path": "Nhiều file/FD-a9fecd37-072.txt",
+        "destination_relative": "Nhiều file/FD-a9fecd37-072.txt",
+        "expected": {
+          "path": "Nhiều file/FD-a9fecd37-072.txt",
+          "size": 72,
+          "sha256": "107de2bc788e11029f7851f8e1b0b5afb4e34379c709fc840689ebd3d1f51b5b"
+        },
+        "actual": {
+          "size": 72,
+          "sha256": "107de2bc788e11029f7851f8e1b0b5afb4e34379c709fc840689ebd3d1f51b5b"
+        },
+        "status": "PASS"
+      },
+      {
+        "path": "Nhiều file/FD-a9fecd37-073.txt",
+        "destination_relative": "Nhiều file/FD-a9fecd37-073.txt",
+        "expected": {
+          "path": "Nhiều file/FD-a9fecd37-073.txt",
+          "size": 73,
+          "sha256": "169f6f093a9be82febe1a6a4471425697ec25d5040b472c5b1822aeea2625988"
+        },
+        "actual": {
+          "size": 73,
+          "sha256": "169f6f093a9be82febe1a6a4471425697ec25d5040b472c5b1822aeea2625988"
+        },
+        "status": "PASS"
+      },
+      {
+        "path": "Nhiều file/FD-a9fecd37-074.txt",
+        "destination_relative": "Nhiều file/FD-a9fecd37-074.txt",
+        "expected": {
+          "path": "Nhiều file/FD-a9fecd37-074.txt",
+          "size": 74,
+          "sha256": "2087ebd358ae3ea2a092fc19c2dfee57c5f0860296bc7b057c14e1227c5cb9d1"
+        },
+        "actual": {
+          "size": 74,
+          "sha256": "2087ebd358ae3ea2a092fc19c2dfee57c5f0860296bc7b057c14e1227c5cb9d1"
+        },
+        "status": "PASS"
+      },
+      {
+        "path": "Nhiều file/FD-a9fecd37-075.txt",
+        "destination_relative": "Nhiều file/FD-a9fecd37-075.txt",
+        "expected": {
+          "path": "Nhiều file/FD-a9fecd37-075.txt",
+          "size": 75,
+          "sha256": "182ab56f7739e43cee0b9ba1e92c4b2a81b088705516a5243910159744f21be9"
+        },
+        "actual": {
+          "size": 75,
+          "sha256": "182ab56f7739e43cee0b9ba1e92c4b2a81b088705516a5243910159744f21be9"
+        },
+        "status": "PASS"
+      },
+      {
+        "path": "Nhiều file/FD-a9fecd37-076.txt",
+        "destination_relative": "Nhiều file/FD-a9fecd37-076.txt",
+        "expected": {
+          "path": "Nhiều file/FD-a9fecd37-076.txt",
+          "size": 76,
+          "sha256": "081f6c68899a48a1be455a55416104921d2fe4bdae696f4b72f9d9626a47915e"
+        },
+        "actual": {
+          "size": 76,
+          "sha256": "081f6c68899a48a1be455a55416104921d2fe4bdae696f4b72f9d9626a47915e"
+        },
+        "status": "PASS"
+      },
+      {
+        "path": "Nhiều file/FD-a9fecd37-077.txt",
+        "destination_relative": "Nhiều file/FD-a9fecd37-077.txt",
+        "expected": {
+          "path": "Nhiều file/FD-a9fecd37-077.txt",
+          "size": 77,
+          "sha256": "5ce02376cc256861b78f87e34783814ba1aec6d09ab500d579ed8ee95c8afcc8"
+        },
+        "actual": {
+          "size": 77,
+          "sha256": "5ce02376cc256861b78f87e34783814ba1aec6d09ab500d579ed8ee95c8afcc8"
+        },
+        "status": "PASS"
+      },
+      {
+        "path": "Nhiều file/FD-a9fecd37-078.txt",
+        "destination_relative": "Nhiều file/FD-a9fecd37-078.txt",
+        "expected": {
+          "path": "Nhiều file/FD-a9fecd37-078.txt",
+          "size": 78,
+          "sha256": "b93e407404e3e95f20fd647365e0e7f46afabe9af1ff083af996135e00d54009"
+        },
+        "actual": {
+          "size": 78,
+          "sha256": "b93e407404e3e95f20fd647365e0e7f46afabe9af1ff083af996135e00d54009"
+        },
+        "status": "PASS"
+      },
+      {
+        "path": "Nhiều file/FD-a9fecd37-079.txt",
+        "destination_relative": "Nhiều file/FD-a9fecd37-079.txt",
+        "expected": {
+          "path": "Nhiều file/FD-a9fecd37-079.txt",
+          "size": 79,
+          "sha256": "e81fa832b37be8ed8f79da29987aa4d61310dcb14b2859dedf8fb1daa2541fd3"
+        },
+        "actual": {
+          "size": 79,
+          "sha256": "e81fa832b37be8ed8f79da29987aa4d61310dcb14b2859dedf8fb1daa2541fd3"
+        },
+        "status": "PASS"
+      },
+      {
+        "path": "Nhiều file/FD-a9fecd37-080.txt",
+        "destination_relative": "Nhiều file/FD-a9fecd37-080.txt",
+        "expected": {
+          "path": "Nhiều file/FD-a9fecd37-080.txt",
+          "size": 80,
+          "sha256": "c56705fea5b110b8dc63688533ced21167e628017387c885423b835a55edd5ef"
+        },
+        "actual": {
+          "size": 80,
+          "sha256": "c56705fea5b110b8dc63688533ced21167e628017387c885423b835a55edd5ef"
+        },
+        "status": "PASS"
+      },
+      {
+        "path": "Nhiều file/FD-a9fecd37-081.txt",
+        "destination_relative": "Nhiều file/FD-a9fecd37-081.txt",
+        "expected": {
+          "path": "Nhiều file/FD-a9fecd37-081.txt",
+          "size": 81,
+          "sha256": "c2226285d08a245a17058ed2d24ad095b714f608ae364fddf119e0a7df890540"
+        },
+        "actual": {
+          "size": 81,
+          "sha256": "c2226285d08a245a17058ed2d24ad095b714f608ae364fddf119e0a7df890540"
+        },
+        "status": "PASS"
+      },
+      {
+        "path": "Nhiều file/FD-a9fecd37-082.txt",
+        "destination_relative": "Nhiều file/FD-a9fecd37-082.txt",
+        "expected": {
+          "path": "Nhiều file/FD-a9fecd37-082.txt",
+          "size": 82,
+          "sha256": "f9c270da8793221a6809ac685fdd4f5387e0fe1ee6aaf01c74f1e0a719621614"
+        },
+        "actual": {
+          "size": 82,
+          "sha256": "f9c270da8793221a6809ac685fdd4f5387e0fe1ee6aaf01c74f1e0a719621614"
+        },
+        "status": "PASS"
+      },
+      {
+        "path": "Nhiều file/FD-a9fecd37-083.txt",
+        "destination_relative": "Nhiều file/FD-a9fecd37-083.txt",
+        "expected": {
+          "path": "Nhiều file/FD-a9fecd37-083.txt",
+          "size": 83,
+          "sha256": "e69befd6ef7f685c36e343ac1702d87ad6a0e4ac8c0d5c521d04aad4ef0b7458"
+        },
+        "actual": {
+          "size": 83,
+          "sha256": "e69befd6ef7f685c36e343ac1702d87ad6a0e4ac8c0d5c521d04aad4ef0b7458"
+        },
+        "status": "PASS"
+      },
+      {
+        "path": "Nhiều file/FD-a9fecd37-084.txt",
+        "destination_relative": "Nhiều file/FD-a9fecd37-084.txt",
+        "expected": {
+          "path": "Nhiều file/FD-a9fecd37-084.txt",
+          "size": 84,
+          "sha256": "4e3033562ad74a7d43eb5ff5fc2382622c6307cb10e245ad62da77c4c63cb178"
+        },
+        "actual": {
+          "size": 84,
+          "sha256": "4e3033562ad74a7d43eb5ff5fc2382622c6307cb10e245ad62da77c4c63cb178"
+        },
+        "status": "PASS"
+      },
+      {
+        "path": "Nhiều file/FD-a9fecd37-085.txt",
+        "destination_relative": "Nhiều file/FD-a9fecd37-085.txt",
+        "expected": {
+          "path": "Nhiều file/FD-a9fecd37-085.txt",
+          "size": 85,
+          "sha256": "2ea17629472564a59e5eb845a2cdd04f442df2ff26bcc866e400f77158d612a1"
+        },
+        "actual": {
+          "size": 85,
+          "sha256": "2ea17629472564a59e5eb845a2cdd04f442df2ff26bcc866e400f77158d612a1"
+        },
+        "status": "PASS"
+      },
+      {
+        "path": "Nhiều file/FD-a9fecd37-086.txt",
+        "destination_relative": "Nhiều file/FD-a9fecd37-086.txt",
+        "expected": {
+          "path": "Nhiều file/FD-a9fecd37-086.txt",
+          "size": 86,
+          "sha256": "b90223df74dd49a8a1461f340f2d7a90f96903ccbb5bc3c74ea3658fc8948b20"
+        },
+        "actual": {
+          "size": 86,
+          "sha256": "b90223df74dd49a8a1461f340f2d7a90f96903ccbb5bc3c74ea3658fc8948b20"
+        },
+        "status": "PASS"
+      },
+      {
+        "path": "Nhiều file/FD-a9fecd37-087.txt",
+        "destination_relative": "Nhiều file/FD-a9fecd37-087.txt",
+        "expected": {
+          "path": "Nhiều file/FD-a9fecd37-087.txt",
+          "size": 87,
+          "sha256": "e0209f42b927ec9c0f6d6a76007ed540e9bdd6e427b3368a1ea6c5e7565972dd"
+        },
+        "actual": {
+          "size": 87,
+          "sha256": "e0209f42b927ec9c0f6d6a76007ed540e9bdd6e427b3368a1ea6c5e7565972dd"
+        },
+        "status": "PASS"
+      },
+      {
+        "path": "Nhiều file/FD-a9fecd37-088.txt",
+        "destination_relative": "Nhiều file/FD-a9fecd37-088.txt",
+        "expected": {
+          "path": "Nhiều file/FD-a9fecd37-088.txt",
+          "size": 88,
+          "sha256": "10d9bd424114319c0999adf6288f74060cd8918ef1228827a6269b2bf0f0880c"
+        },
+        "actual": {
+          "size": 88,
+          "sha256": "10d9bd424114319c0999adf6288f74060cd8918ef1228827a6269b2bf0f0880c"
+        },
+        "status": "PASS"
+      },
+      {
+        "path": "Nhiều file/FD-a9fecd37-089.txt",
+        "destination_relative": "Nhiều file/FD-a9fecd37-089.txt",
+        "expected": {
+          "path": "Nhiều file/FD-a9fecd37-089.txt",
+          "size": 89,
+          "sha256": "7d1978a65ac94dbbcdc62e3d81850299fe157dd9b7bd9e01b170156210d2815a"
+        },
+        "actual": {
+          "size": 89,
+          "sha256": "7d1978a65ac94dbbcdc62e3d81850299fe157dd9b7bd9e01b170156210d2815a"
+        },
+        "status": "PASS"
+      },
+      {
+        "path": "Nhiều file/FD-a9fecd37-090.txt",
+        "destination_relative": "Nhiều file/FD-a9fecd37-090.txt",
+        "expected": {
+          "path": "Nhiều file/FD-a9fecd37-090.txt",
+          "size": 90,
+          "sha256": "e052dff9e1c94aaa49556f86fad55029a4875839fda57f5005f4c4403876b256"
+        },
+        "actual": {
+          "size": 90,
+          "sha256": "e052dff9e1c94aaa49556f86fad55029a4875839fda57f5005f4c4403876b256"
+        },
+        "status": "PASS"
+      },
+      {
+        "path": "Nhiều file/FD-a9fecd37-091.txt",
+        "destination_relative": "Nhiều file/FD-a9fecd37-091.txt",
+        "expected": {
+          "path": "Nhiều file/FD-a9fecd37-091.txt",
+          "size": 91,
+          "sha256": "58d29459b2130a2e151252d408b95e6dac424c564062eb911cc76440cb926ca0"
+        },
+        "actual": {
+          "size": 91,
+          "sha256": "58d29459b2130a2e151252d408b95e6dac424c564062eb911cc76440cb926ca0"
+        },
+        "status": "PASS"
+      },
+      {
+        "path": "Nhiều file/FD-a9fecd37-092.txt",
+        "destination_relative": "Nhiều file/FD-a9fecd37-092.txt",
+        "expected": {
+          "path": "Nhiều file/FD-a9fecd37-092.txt",
+          "size": 92,
+          "sha256": "4e4530c392316f598e1bd07f32166380a8f712a33a48e9eb4247131ec5dc05d3"
+        },
+        "actual": {
+          "size": 92,
+          "sha256": "4e4530c392316f598e1bd07f32166380a8f712a33a48e9eb4247131ec5dc05d3"
+        },
+        "status": "PASS"
+      },
+      {
+        "path": "Nhiều file/FD-a9fecd37-093.txt",
+        "destination_relative": "Nhiều file/FD-a9fecd37-093.txt",
+        "expected": {
+          "path": "Nhiều file/FD-a9fecd37-093.txt",
+          "size": 93,
+          "sha256": "a09c9d3e42342c7dea44edb4aeb48cf6727cacd8032a12cf77a25829fc249d32"
+        },
+        "actual": {
+          "size": 93,
+          "sha256": "a09c9d3e42342c7dea44edb4aeb48cf6727cacd8032a12cf77a25829fc249d32"
+        },
+        "status": "PASS"
+      },
+      {
+        "path": "Nhiều file/FD-a9fecd37-094.txt",
+        "destination_relative": "Nhiều file/FD-a9fecd37-094.txt",
+        "expected": {
+          "path": "Nhiều file/FD-a9fecd37-094.txt",
+          "size": 94,
+          "sha256": "eb978d0f1ac03ce5c3510b5f4a16073a7a2bdc15c4ab7777dcf01030cc316667"
+        },
+        "actual": {
+          "size": 94,
+          "sha256": "eb978d0f1ac03ce5c3510b5f4a16073a7a2bdc15c4ab7777dcf01030cc316667"
+        },
+        "status": "PASS"
+      },
+      {
+        "path": "Nhiều file/FD-a9fecd37-095.txt",
+        "destination_relative": "Nhiều file/FD-a9fecd37-095.txt",
+        "expected": {
+          "path": "Nhiều file/FD-a9fecd37-095.txt",
+          "size": 95,
+          "sha256": "7d1905a3ace827ea1ac51c4fa08c281ed3be87e7f4e928d696bfde35c8f2dc0f"
+        },
+        "actual": {
+          "size": 95,
+          "sha256": "7d1905a3ace827ea1ac51c4fa08c281ed3be87e7f4e928d696bfde35c8f2dc0f"
+        },
+        "status": "PASS"
+      },
+      {
+        "path": "Nhiều file/FD-a9fecd37-096.txt",
+        "destination_relative": "Nhiều file/FD-a9fecd37-096.txt",
+        "expected": {
+          "path": "Nhiều file/FD-a9fecd37-096.txt",
+          "size": 96,
+          "sha256": "08359b108fa567f5dcf319fa3434da6abbc1d595f426372666447f09cc5a87dc"
+        },
+        "actual": {
+          "size": 96,
+          "sha256": "08359b108fa567f5dcf319fa3434da6abbc1d595f426372666447f09cc5a87dc"
+        },
+        "status": "PASS"
+      },
+      {
+        "path": "Nhiều file/FD-a9fecd37-097.txt",
+        "destination_relative": "Nhiều file/FD-a9fecd37-097.txt",
+        "expected": {
+          "path": "Nhiều file/FD-a9fecd37-097.txt",
+          "size": 97,
+          "sha256": "a7b3830ffab0f2bbabbef6df0b169a7917008bf238880bbf8c20b8e000077312"
+        },
+        "actual": {
+          "size": 97,
+          "sha256": "a7b3830ffab0f2bbabbef6df0b169a7917008bf238880bbf8c20b8e000077312"
+        },
+        "status": "PASS"
+      },
+      {
+        "path": "Nhiều file/FD-a9fecd37-098.txt",
+        "destination_relative": "Nhiều file/FD-a9fecd37-098.txt",
+        "expected": {
+          "path": "Nhiều file/FD-a9fecd37-098.txt",
+          "size": 98,
+          "sha256": "b4f5d9b1555994c5ebaebd82918d560a3bf82962a171a1614e7551939e943366"
+        },
+        "actual": {
+          "size": 98,
+          "sha256": "b4f5d9b1555994c5ebaebd82918d560a3bf82962a171a1614e7551939e943366"
+        },
+        "status": "PASS"
+      },
+      {
+        "path": "Nhiều file/FD-a9fecd37-099.txt",
+        "destination_relative": "Nhiều file/FD-a9fecd37-099.txt",
+        "expected": {
+          "path": "Nhiều file/FD-a9fecd37-099.txt",
+          "size": 99,
+          "sha256": "014ecaea1b378900f1212898c6ddb01565d81af1d0ef78df5e28d46e9caf7cfc"
+        },
+        "actual": {
+          "size": 99,
+          "sha256": "014ecaea1b378900f1212898c6ddb01565d81af1d0ef78df5e28d46e9caf7cfc"
+        },
+        "status": "PASS"
+      },
+      {
+        "path": "Nhiều file/FD-a9fecd37-100.txt",
+        "destination_relative": "Nhiều file/FD-a9fecd37-100.txt",
+        "expected": {
+          "path": "Nhiều file/FD-a9fecd37-100.txt",
+          "size": 100,
+          "sha256": "bce0aff19cf5aa6a7469a30d61d04e4376e4bbf6381052ee9e7f33925c954d52"
+        },
+        "actual": {
+          "size": 100,
+          "sha256": "bce0aff19cf5aa6a7469a30d61d04e4376e4bbf6381052ee9e7f33925c954d52"
+        },
+        "status": "PASS"
+      },
+      {
+        "path": "FD-a9fecd37-image.png",
+        "destination_relative": "FD-a9fecd37-image.png",
+        "expected": {
+          "path": "FD-a9fecd37-image.png",
+          "size": 72,
+          "sha256": "c19c5b9487fe92cc1dae546e83628d3301ed1fefc069a1f1706f07bd681b8795"
+        },
+        "actual": {
+          "size": 72,
+          "sha256": "c19c5b9487fe92cc1dae546e83628d3301ed1fefc069a1f1706f07bd681b8795"
+        },
+        "status": "PASS"
+      },
+      {
+        "path": "FD-a9fecd37-video.avi",
+        "destination_relative": "FD-a9fecd37-video.avi",
+        "expected": {
+          "path": "FD-a9fecd37-video.avi",
+          "size": 272,
+          "sha256": "833baaacf0538c667f8e6e6f2d17351445cdc3537bc063fc54d4d8d7436900fe"
+        },
+        "actual": {
+          "size": 272,
+          "sha256": "833baaacf0538c667f8e6e6f2d17351445cdc3537bc063fc54d4d8d7436900fe"
+        },
+        "status": "PASS"
+      },
+      {
+        "path": "FD-a9fecd37-document.pdf",
+        "destination_relative": "FD-a9fecd37-document.pdf",
+        "expected": {
+          "path": "FD-a9fecd37-document.pdf",
+          "size": 414,
+          "sha256": "680cde6bcc0a32b813f26deb4a36272a1f86f6e32b88114dde48945602e58231"
+        },
+        "actual": {
+          "size": 414,
+          "sha256": "680cde6bcc0a32b813f26deb4a36272a1f86f6e32b88114dde48945602e58231"
+        },
+        "status": "PASS"
+      },
+      {
+        "path": "FD-a9fecd37-archive.zip",
+        "destination_relative": "FD-a9fecd37-archive.zip",
+        "expected": {
+          "path": "FD-a9fecd37-archive.zip",
+          "size": 281,
+          "sha256": "777767bde0dedb7cccaef6399eeebc60f91bfb21537e1f1e87d8f8c3a350e64d"
+        },
+        "actual": {
+          "size": 281,
+          "sha256": "777767bde0dedb7cccaef6399eeebc60f91bfb21537e1f1e87d8f8c3a350e64d"
+        },
+        "status": "PASS"
+      }
+    ],
+    "empty_directories": [
+      {
+        "path": "Thư mục 测试 📂/Thư mục rỗng",
+        "status": "PASS"
+      },
+      {
+        "path": "Empty folder",
+        "status": "PASS"
+      }
+    ],
+    "hashing_seconds": 0.04408144699982586,
+    "total_bytes": 1089515,
+    "physical_lan_verification": "NOT VERIFIED",
+    "native_application_behavior": "NOT VERIFIED",
+    "destination_environment": {
+      "system": "Linux",
+      "release": "6.18.57",
+      "machine": "x86_64",
+      "python": "3.12.14",
+      "free_disk_bytes": 6570033152,
+      "physical_wifi_status": "NOT VERIFIED",
+      "firewall_changed": false,
+      "production_app_changed": false
+    }
+  },
+  "transfer_context": {
+    "run_id": "a9fecd37c02a4f67b3be7670f89bdcca",
+    "direction": "Windows-to-Windows",
+    "mode": "test-artifact",
+    "network_operator_declared": "isolated-virtual",
+    "source_manifest_sha256": "bbfa05d0141e124cf9f2709ac3c6cfe1f541b314821e0e08ddfb762d6ce10548",
+    "clock_origin_sha256": "a3855cc28a9e317f5324ee5a23f1ca2659d7a52d58366cf4c9b1342d1fa4b441",
+    "started_epoch": 1794827832.7599983,
+    "started_monotonic_ns": 3009083235475,
+    "artifact": null,
+    "artifact_provenance": "locally measured SHA only; source commit NOT VERIFIED",
+    "app_version": "NOT VERIFIED; record actual UI/package evidence in checklist"
+  },
+  "timing": {
+    "run_id": "a9fecd37c02a4f67b3be7670f89bdcca",
+    "elapsed_seconds": 0.064007955,
+    "method": "Operator start/stop wall interval including UI and human overhead; NOT wire-only throughput",
+    "transport_success": "NOT VERIFIED"
+  },
+  "measured_operator_interval_rate": {
+    "MB_per_second_decimal": 17.02155614876307,
+    "Mbps_decimal": 136.17244919010457,
+    "scope": "Manual end-to-end interval on the operator-declared network; not physical Wi-Fi benchmark certification"
+  }
+}

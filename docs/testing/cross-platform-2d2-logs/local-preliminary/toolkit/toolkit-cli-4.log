@@ -1,0 +1,6 @@
+{
+  "run_id": "a9fecd37c02a4f67b3be7670f89bdcca",
+  "elapsed_seconds": 0.064007955,
+  "method": "Operator start/stop wall interval including UI and human overhead; NOT wire-only throughput",
+  "transport_success": "NOT VERIFIED"
+}
