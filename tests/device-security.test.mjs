@@ -17,6 +17,7 @@ test('real TLS, two-screen pairing, identity pin, expiring authenticated session
   await a.security.confirm(p.id,true);assert.equal(a.security.snapshot().trusted.length,0,'one-sided approval must not establish trust');
   await b.security.confirm(p.id,true);await a.security.refresh();assert.equal(a.security.snapshot().trusted.length,1);assert.equal(b.security.snapshot().trusted.length,1);
   assert.equal((await a.security.json(peer,'/private')).ok,true);
+  b.security.sessions.clear();assert.equal((await a.security.json(peer,'/private')).ok,true,'Cached trust must obtain a fresh session after receiver restart');
   const session=a.security.remoteSessions.get(peer.id),headers=a.security.headers(peer.id,'GET','/private',session.token);
   const first=await a.security.raw(peer,'/private',{headers});assert.equal(first.statusCode,200);first.resume();
   const replay=await a.security.raw(peer,'/private',{headers});assert.equal(replay.statusCode,403);replay.resume();

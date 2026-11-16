@@ -115,12 +115,34 @@ public final class DeviceSecurity {
     return new SecureConnection(tls(chosen,url.getFile()),chosen,url.getFile(),null);
   }
   private final class SecureConnection extends HttpURLConnection {
-    final HttpURLConnection delegate;final JSONObject peer;final String route;boolean prepared;
+    HttpURLConnection delegate;final JSONObject peer;final String route;boolean prepared,renewed,bodyComplete,bodyBounded=true;
+    final Map<String,String> properties=new HashMap<>();final ByteArrayOutputStream captured=new ByteArrayOutputStream();
     SecureConnection(HttpURLConnection delegate,JSONObject peer,String route,Map<String,String> ignored){super(delegate.getURL());this.delegate=delegate;this.peer=peer;this.route=route;}
     private void prepare()throws IOException{if(prepared)return;try{delegate.setRequestMethod(method);for(Map.Entry<String,String> e:authHeaders(peer,method,route).entrySet())delegate.setRequestProperty(e.getKey(),e.getValue());delegate.setConnectTimeout(getConnectTimeout());delegate.setReadTimeout(getReadTimeout());delegate.setInstanceFollowRedirects(false);delegate.setDoOutput(getDoOutput());activeRequests.put(delegate,peer.getString("id"));prepared=true;}catch(Exception e){throw new IOException(e.getMessage(),e);}}
     public void connect()throws IOException{prepare();delegate.connect();}public void disconnect(){activeRequests.remove(delegate);delegate.disconnect();}public boolean usingProxy(){return delegate.usingProxy();}
-    public void setRequestProperty(String k,String v){if(k.toLowerCase(Locale.ROOT).startsWith("x-fd-"))throw new IllegalArgumentException("Reserved authentication header");delegate.setRequestProperty(k,v);}
+    public void setRequestProperty(String k,String v){if(k.toLowerCase(Locale.ROOT).startsWith("x-fd-"))throw new IllegalArgumentException("Reserved authentication header");properties.put(k,v);delegate.setRequestProperty(k,v);}
     public void setFixedLengthStreamingMode(long n){delegate.setFixedLengthStreamingMode(n);}public void setFixedLengthStreamingMode(int n){delegate.setFixedLengthStreamingMode(n);}public void setChunkedStreamingMode(int n){delegate.setChunkedStreamingMode(n);}
-    public InputStream getInputStream()throws IOException{prepare();return delegate.getInputStream();}public OutputStream getOutputStream()throws IOException{prepare();return delegate.getOutputStream();}public int getResponseCode()throws IOException{prepare();return delegate.getResponseCode();}public InputStream getErrorStream(){return delegate.getErrorStream();}public String getHeaderField(String name){try{prepare();}catch(IOException e){return null;}return delegate.getHeaderField(name);}public long getContentLengthLong(){try{prepare();}catch(IOException e){return -1;}return delegate.getContentLengthLong();}
+    public InputStream getInputStream()throws IOException{getResponseCode();return delegate.getInputStream();}
+    public OutputStream getOutputStream()throws IOException{prepare();final OutputStream target=delegate.getOutputStream();return new FilterOutputStream(target){
+      private void capture(byte[] b,int off,int len){if(!bodyBounded)return;if(captured.size()+len>16384){bodyBounded=false;captured.reset();return;}captured.write(b,off,len);}
+      public void write(int b)throws IOException{byte[] one={(byte)b};capture(one,0,1);out.write(b);}
+      public void write(byte[] b,int off,int len)throws IOException{capture(b,off,len);out.write(b,off,len);}
+      public void close()throws IOException{try{out.close();}finally{bodyComplete=true;}}
+    };}
+    public int getResponseCode()throws IOException{
+      prepare();int status=delegate.getResponseCode();if(status!=403||renewed)return status;renewed=true;
+      try{synchronized(DeviceSecurity.this){remoteSessions.remove(peer.getString("id"));}
+        boolean replayable=method.equals("GET")||method.equals("POST")&&(!getDoOutput()||bodyComplete&&bodyBounded);
+        if(!replayable)return status;
+        activeRequests.remove(delegate);delegate.disconnect();delegate=tls(peer,route);prepared=false;
+        for(Map.Entry<String,String> entry:properties.entrySet())delegate.setRequestProperty(entry.getKey(),entry.getValue());
+        if(getDoOutput())delegate.setFixedLengthStreamingMode(captured.size());prepare();
+        if(getDoOutput())try(OutputStream out=delegate.getOutputStream()){captured.writeTo(out);}
+        return delegate.getResponseCode();
+      }catch(Exception e){throw new IOException(e.getMessage(),e);}
+    }
+    public InputStream getErrorStream(){return delegate.getErrorStream();}
+    public String getHeaderField(String name){try{getResponseCode();}catch(IOException e){return null;}return delegate.getHeaderField(name);}
+    public long getContentLengthLong(){try{getResponseCode();}catch(IOException e){return -1;}return delegate.getContentLengthLong();}
   }
 }

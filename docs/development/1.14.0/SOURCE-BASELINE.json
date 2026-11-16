@@ -32,7 +32,7 @@
     {
       "path": "android/src/app/flowdrop/mobile/DeviceSecurity.java",
       "base_sha256": null,
-      "sha256": "a0bd583397d98e9e5c673d168d8a72fbcd7e7da9c9e8dad26c6399a85ce871dc"
+      "sha256": "de403f9d5b7533d5f4dfb4b660e43c10c2e2ed9605f7902a8e8755ecea5b4b61"
     },
     {
       "path": "android/src/app/flowdrop/mobile/HostService.java",
@@ -127,12 +127,12 @@
     {
       "path": "scripts/device-security.mjs",
       "base_sha256": null,
-      "sha256": "346efba01459016ed34c665b1e0eea4fecaa64bf94a70a9db07669f236872959"
+      "sha256": "4975a86142c83ea7a8602b32f1edd0a46182687a51096ceaa5518a302126bbf0"
     },
     {
       "path": "scripts/device-vault.ps1",
       "base_sha256": null,
-      "sha256": "e4d15fa3a012d481a89383660745dc332b09fd5c05a7e74bc3094c453f475501"
+      "sha256": "d3c218812421908f25094086edf646de814f5dcc0b70592378798ad445665a4b"
     },
     {
       "path": "scripts/discovery.mjs",
@@ -217,7 +217,7 @@
     {
       "path": "tests/SecureHostHarness.java",
       "base_sha256": null,
-      "sha256": "59b7cc37c9543729432ae82851acad23f29203a1e5fc28f42aa9c4425adeb545"
+      "sha256": "58e40b5fb0c68963118d4d6463668d25f28edd1313d4357ac3163d941f3ad29d"
     },
     {
       "path": "tests/android-host-integration.mjs",
@@ -272,7 +272,7 @@
     {
       "path": "tests/device-security.test.mjs",
       "base_sha256": null,
-      "sha256": "10c49d32456701e2107f4574096464c9011f49d02dd082964ad598a512b389fc"
+      "sha256": "e6f8e82cc0518a68a5bd329c17811947b09c797759c6765e3c73984a54b90685"
     },
     {
       "path": "tests/discovery-integration.mjs",
@@ -297,12 +297,12 @@
     {
       "path": "tests/secure-cross-platform-114.mjs",
       "base_sha256": null,
-      "sha256": "f4ca6c8cf64f4affca007e18a190e56cfc2b703468ea0e34dbd5c1e2ba0a37b1"
+      "sha256": "93fcff695f37d08377475d285dd32efc9e65296941613dad5cb7b3a605c54b20"
     },
     {
       "path": "tests/windows-vault-probe.mjs",
       "base_sha256": null,
-      "sha256": "5b4cdbf67d5d186230778651c4209d27d6a8707b91182554dafc0ed065f0fca7"
+      "sha256": "7a8131e55f07bebee72067ff5ce5d1f3c768fbc6ec305930c138848684c1712b"
     },
     {
       "path": "worker/index.js",

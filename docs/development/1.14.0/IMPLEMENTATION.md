@@ -146,3 +146,19 @@ RSA-PSS/PKCS1 scheme, handshake hashing and peer validation; this does not creat
 an unpadded TLS signature algorithm. Actual OS probes require **both TLS1.2 and
 TLS1.3** plus unpaired-request rejection; neither version is disabled to hide the
 failure. New test profiles are fresh; no existing key is deleted or regenerated.
+
+A subsequent Windows probe reported `FormatXmlUpdateException` while importing
+the Security module. The helper now invokes the inbox PowerShell executable by
+absolute system path, uses only inbox Windows PowerShell module locations in its
+child environment and imports its own `$PSHOME` Security manifest explicitly.
+This prevents inherited PowerShell7 module paths from shadowing Desktop modules;
+the real Windows vault test deliberately supplies an invalid inherited module
+path. No user/system environment or policy is changed.
+
+A separate regression reproduced a stale ten-minute token after the receiver
+loses volatile sessions on restart (`session-renew-before.log`, actual exit1).
+Clients now discard an auth-rejected token and renew once with fresh request
+nonce/HMAC over pinned TLS. Java only replays GET or a fully captured control POST
+up to16KiB; file streams are not buffered/replayed. Revoked trust still rejects
+renewal. Node unit and real Node/Java GET/POST transfer tests passed after the fix;
+this is engine proof, not two-device OS reboot proof.

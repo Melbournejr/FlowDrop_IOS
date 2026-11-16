@@ -5,7 +5,7 @@ $ErrorActionPreference = 'Stop'
 try {
 Add-Type -AssemblyName System.Security
 # PKI cmdlets do not initialize Certificate provider drives in every clean host.
-Import-Module Microsoft.PowerShell.Security -ErrorAction Stop
+Import-Module (Join-Path $PSHOME 'Modules\Microsoft.PowerShell.Security\Microsoft.PowerShell.Security.psd1') -ErrorAction Stop
 if (-not (Get-PSDrive -Name Cert -ErrorAction SilentlyContinue)) {
   New-PSDrive -Name Cert -PSProvider Certificate -Root '\' -Scope Global -ErrorAction Stop | Out-Null
 }

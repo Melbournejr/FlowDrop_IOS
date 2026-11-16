@@ -20,7 +20,11 @@ function certificate(value,id){
 }
 function powershell(body){
  const script=fileURLToPath(new URL('./device-vault.ps1',import.meta.url));
- const r=spawnSync('powershell.exe',['-NoProfile','-NonInteractive','-ExecutionPolicy','Bypass','-File',script],{input:JSON.stringify(body),encoding:'utf8',windowsHide:true,maxBuffer:1024*1024,timeout:60000});
+ const systemRoot=process.env.SystemRoot||process.env.WINDIR;if(!systemRoot)throw Error('Không tìm thấy Windows system root.');
+ const executable=path.join(systemRoot,'System32','WindowsPowerShell','v1.0','powershell.exe');
+ const vaultEnvironment={...process.env};for(const key of Object.keys(vaultEnvironment))if(['psmodulepath','psmoduleanalysiscachepath','windowspowershellmodulepath'].includes(key.toLowerCase()))delete vaultEnvironment[key];
+ vaultEnvironment.PSModulePath=path.join(systemRoot,'System32','WindowsPowerShell','v1.0','Modules');
+ const r=spawnSync(executable,['-NoProfile','-NonInteractive','-ExecutionPolicy','Bypass','-File',script],{env:vaultEnvironment,input:JSON.stringify(body),encoding:'utf8',windowsHide:true,maxBuffer:1024*1024,timeout:60000});
  if(r.status!==0){const code=r.stderr?.match(/FLOWDROP_VAULT_ERROR=([A-Za-z0-9_.,:-]{1,180})/)?.[1];throw Error('Không mở được kho danh tính thiết bị Windows.'+(code?' ['+code+']':''));}return r.stdout.trim();
 }
 export async function deviceVault(directory,id){
@@ -89,9 +93,13 @@ export class DeviceSecurity {
   if(session&&(!this.sessions.has(token)||this.sessions.get(token).id!==id))throw Error('Phiên bảo mật đã hết hạn.');if(this.nonces.size>=4096)throw Error('Có quá nhiều yêu cầu bảo mật.');this.nonces.set(id+nonce,Date.now()+240000);return id;
  }
  session(h){const id=this.authorize('POST','/api/secure/session',h,false);if(this.sessions.size>=512)throw Error('Có quá nhiều phiên.');const token=random(),until=Date.now()+600000;this.sessions.set(token,{id,until});return {token,until};}
- async request(peer,route,{method='GET',body,authenticated=true,signal}={}){
+ async request(peer,route,{method='GET',body,authenticated=true,signal,renewed=false}={}){
   let headers={};if(authenticated){let s=this.remoteSessions.get(peer.id);if(!s||s.until<Date.now()+30000){s=await this.json(peer,'/api/secure/session',{},false,this.headers(peer.id,'POST','/api/secure/session'));if(!/^[a-f0-9]{64}$/.test(s.token)||!Number.isSafeInteger(s.until)||s.until>Date.now()+660000)throw Error('Phiên bảo mật không hợp lệ.');this.remoteSessions.set(peer.id,s);}headers=this.headers(peer.id,method,route,s.token);}
-  return this.raw(peer,route,{method,body,headers,signal});
+  const response=await this.raw(peer,route,{method,body,headers,signal});
+  // A receiver restart invalidates volatile session tokens, but not paired trust.
+  // Auth rejection occurs before routing; retry once with a fresh nonce/session.
+  if(authenticated&&response.statusCode===403&&!renewed){response.destroy();this.remoteSessions.delete(peer.id);return this.request(peer,route,{method,body,authenticated,signal,renewed:true});}
+  return response;
  }
  raw(peer,route,{method='GET',body,headers={},signal}={}){return new Promise((resolve,reject)=>{
    const url=new URL(route,peer.origin);if(url.origin!==peer.origin||url.protocol!=='https:')return reject(Error('Không chuyển tiếp danh tính sang địa chỉ khác.'));
