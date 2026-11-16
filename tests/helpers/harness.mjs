@@ -28,7 +28,7 @@ export function javaCompileArguments(sources,classes,jar){
 }
 
 export function redactCapabilities(text){
-  return String(text).replace(/(["'](?:token|localToken|desktopToken|statusToken)["']\s*:\s*["'])[^"'\r\n]+/gi,'$1[REDACTED]').replace(/\b(?:[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}){1,2}\b/gi,'[REDACTED_UUID]');
+  return String(text).replace(/(["'](?:token|secret|nonce|commit|passphrase|code|localToken|desktopToken|statusToken)["']\s*:\s*["'])[^"'\r\n]+/gi,'$1[REDACTED]').replace(/\b(?:[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}){1,2}\b/gi,'[REDACTED_UUID]');
 }
 
 export async function stopChild(child,{graceMs=1500,killMs=1500}={}){
@@ -60,7 +60,7 @@ export async function createHarness(label,{env=process.env}={}){
   return {
     directory,
     spawn(command,args,options={}){
-      const child=spawn(command,args,{cwd:root,...options});
+      const child=spawn(command,args,{cwd:root,...options,env:{...process.env,FLOWDROP_LEGACY_HTTP:'1',...options.env}});
       // Keep a missing executable from becoming an unhandled event before readiness is awaited.
       child.on('error',()=>{});children.add(child);return child;
     },

@@ -21,6 +21,7 @@ GROUPS = {
         ('ci-runner-tests', [sys.executable, '-m', 'unittest', 'discover', '-s', 'tests/ci', '-p', 'test_*.py', '-v'], 90),
         ('asset-integrity', ['sha256sum', '--check', 'docs/assets/FONT-RESTORATION-SHA256SUMS.txt'], 30),
         ('unit', ['npm', 'test'], 90),
+        ('security-114-unit', ['node', '--test', '--test-isolation=none', 'tests/code-114.test.mjs', 'tests/device-security.test.mjs'], 90),
         ('harness-unit', ['node', '--test', 'tests/harness.test.mjs'], 90),
     ],
     # One process, sequential commands: discovery never shares a namespace with a parallel test.
@@ -32,6 +33,8 @@ GROUPS = {
         ('lan-discovery', ['node', 'tests/lan-discovery-integration.mjs'], 240),
         ('android-discovery', ['node', 'tests/android-discovery-state.mjs'], 120),
         ('security', ['node', 'tests/security-integration.mjs'], 120),
+        ('code-114', ['node', 'tests/code-receive-114.mjs'], 120),
+        ('tls-114', ['node', 'tests/secure-cross-platform-114.mjs'], 180),
     ],
     'stream': [('large-transfer', ['node', 'tests/large-transfer-integration.mjs'], 300)],
     'zip64': [
@@ -47,7 +50,7 @@ def redact(text, env=None):
     for name, value in env.items():
         if len(value) >= 8 and re.search(r'TOKEN|SECRET|PASSWORD|CREDENTIAL|AUTH', name, re.I):
             text = text.replace(value, '[REDACTED_ENV]')
-    text = re.sub(r'(["\x27](?:token|localToken|desktopToken|statusToken|uploadCapability)["\x27]\s*:\s*["\x27])[^"\x27\r\n]+', r'\1[REDACTED]', text, flags=re.I)
+    text = re.sub(r'(["\x27](?:token|secret|nonce|commit|passphrase|code|localToken|desktopToken|statusToken|uploadCapability)["\x27]\s*:\s*["\x27])[^"\x27\r\n]+', r'\1[REDACTED]', text, flags=re.I)
     text = re.sub(r'(X-(?:Desktop|Local|Upload)-Token\s*[:=]\s*)[^\s,}\r\n]+', r'\1[REDACTED]', text, flags=re.I)
     text = re.sub(r'\b(?:[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}){1,2}\b', '[REDACTED_UUID]', text, flags=re.I)
     return re.sub(r'\b(?:gh[pousr]_[A-Za-z0-9]{30,}|github_pat_[A-Za-z0-9_]{40,})\b', '[REDACTED_GITHUB_TOKEN]', text)

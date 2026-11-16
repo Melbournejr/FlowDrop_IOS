@@ -12,8 +12,8 @@ from .verify import (PRODUCTION_CERT, inspect_installer, reject_secret_bytes,
                      verify_apk, verify_windows_payload)
 
 NAMES = {
-    'android': {'FlowDrop-1.13.0-Android-TEST-ONLY.apk', 'FlowDrop-1.13.0-Android-Instrumentation-TEST-ONLY.apk'},
-    'windows': {'FlowDrop-Setup-1.13.0-Windows-x64-TEST-ONLY.exe'},
+    'android': {'FlowDrop-1.14.0-Android-TEST-ONLY.apk', 'FlowDrop-1.14.0-Android-Instrumentation-TEST-ONLY.apk'},
+    'windows': {'FlowDrop-Setup-1.14.0-Windows-x64-TEST-ONLY.exe'},
 }
 PLUGINS = {'$PLUGINSDIR/modern-wizard.bmp', '$PLUGINSDIR/nsDialogs.dll', '$PLUGINSDIR/System.dll'}
 
@@ -57,12 +57,12 @@ def verify_downloads(root, cache, android, windows):
     source, source_info = source_snapshot(root)
     journal = Journal(root, tool_env(root))
     certificate = manifests['android']['android']['test_certificate_sha256']
-    app = verify_apk(Path(android) / 'FlowDrop-1.13.0-Android-TEST-ONLY.apk', source, root, journal, certificate)
-    instrumentation = verify_apk(Path(android) / 'FlowDrop-1.13.0-Android-Instrumentation-TEST-ONLY.apk', source, root, journal, certificate, instrumentation=True)
+    app = verify_apk(Path(android) / 'FlowDrop-1.14.0-Android-TEST-ONLY.apk', source, root, journal, certificate)
+    instrumentation = verify_apk(Path(android) / 'FlowDrop-1.14.0-Android-Instrumentation-TEST-ONLY.apk', source, root, journal, certificate, instrumentation=True)
     for key, actual in [('android', app), ('instrumentation', instrumentation)]:
         if actual != manifests['android'][key]:
             raise Blocked('APK re-verification differs from producer manifest')
-    setup = Path(windows) / 'FlowDrop-Setup-1.13.0-Windows-x64-TEST-ONLY.exe'
+    setup = Path(windows) / 'FlowDrop-Setup-1.14.0-Windows-x64-TEST-ONLY.exe'
     extracted, installer = inspect_installer(setup, root, journal)
     inventory = manifests['windows']['windows_payload']['inventory']
     expected = {item['path'] for item in inventory}

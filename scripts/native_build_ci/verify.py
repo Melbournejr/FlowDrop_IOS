@@ -56,7 +56,7 @@ def verify_apk(path, source, root, journal, expected_cert, instrumentation=False
     expected_package = 'app.flowdrop.mobile.test' if instrumentation else 'app.flowdrop.mobile'
     if actual['package'] != expected_package or actual['min_sdk'] != 29 or actual['target_sdk'] != 35:
         raise Blocked('APK package or SDK levels changed')
-    if not instrumentation and (actual['version_code'] != '14' or actual['version_name'] != '1.13.0'):
+    if not instrumentation and (actual['version_code'] != '15' or actual['version_name'] != '1.14.0'):
         raise Blocked('APK production version metadata changed')
     permissions = sorted(n.attrib[ANDROID_NS + 'name'] for n in manifest if n.tag.startswith('uses-permission'))
     if actual['permissions'] != permissions:
@@ -176,8 +176,8 @@ def verify_windows_payload(payload, source):
         raise Blocked('PE version resource missing')
     for value in versions:
         offset = value.index(signature)
-        if struct.unpack_from('<IIII', value, offset + 8) != (0x0001000d, 0, 0x0001000d, 0):
-            raise Blocked('PE version differs from 1.13.0.0')
+        if struct.unpack_from('<IIII', value, offset + 8) != (0x0001000e, 0, 0x0001000e, 0):
+            raise Blocked('PE version differs from 1.14.0.0')
     icon = (source / 'desktop/windows/FlowDrop.ico').read_bytes()
     count = struct.unpack_from('<H', icon, 4)[0]
     expected_icons = []
@@ -200,7 +200,7 @@ def verify_windows_payload(payload, source):
         for file in (source / folder).rglob('*'):
             if file.is_file() and (not (payload / file.relative_to(source)).is_file() or file.read_bytes() != (payload / file.relative_to(source)).read_bytes()):
                 raise Blocked('Windows web/worker/font payload changed')
-    expected_scripts = ['request-security.mjs','device-name.mjs','dev.mjs','stop.mjs','discovery.mjs','desktop-storage.mjs','local-bucket.mjs','peer-offers.mjs','lan-discovery.mjs','folder-jobs.mjs','folder-zip.mjs','folder-receive.mjs','code-lookup.mjs','secure-update.mjs','release-config.mjs']
+    expected_scripts = ['request-security.mjs','device-security.mjs','device-vault.ps1','device-name.mjs','dev.mjs','stop.mjs','discovery.mjs','desktop-storage.mjs','local-bucket.mjs','peer-offers.mjs','lan-discovery.mjs','folder-jobs.mjs','folder-zip.mjs','folder-receive.mjs','code-lookup.mjs','secure-update.mjs','release-config.mjs']
     for name in expected_scripts:
         if (payload / 'scripts' / name).read_bytes() != (source / 'scripts' / name).read_bytes():
             raise Blocked('Required LAN/folder/security script changed')
@@ -225,7 +225,7 @@ def verify_windows_payload(payload, source):
                 raise Blocked('Build/cache/signing material in Windows payload')
             reject_secret_bytes(file.read_bytes())
             inventory.append({'path': name.as_posix(), 'size': file.stat().st_size, 'sha256': digest(file)})
-    return {'status': 'PASS', 'machine': 'AMD64', 'subsystem': 'WINDOWS_GUI', 'version': '1.13.0.0',
+    return {'status': 'PASS', 'machine': 'AMD64', 'subsystem': 'WINDOWS_GUI', 'version': '1.14.0.0',
             'icon_png_count': len(actual_icons), 'node_version': pin['nodeVersion'],
             'node_sha256': pin['executableSha256'], 'npm_packages': packages, 'inventory': inventory}
 

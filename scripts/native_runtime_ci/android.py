@@ -142,8 +142,8 @@ def run(root, artifact, api):
             raise Blocked("A preceding required Android prerequisite did not complete")
         with rec.case('A04-provenance', ANDROID['A04-provenance']) as row:
             manifest = verify_export(artifact, 'android', source)
-            apk = Path(artifact) / 'FlowDrop-1.13.0-Android-TEST-ONLY.apk'
-            testapk = Path(artifact) / 'FlowDrop-1.13.0-Android-Instrumentation-TEST-ONLY.apk'
+            apk = Path(artifact) / 'FlowDrop-1.14.0-Android-TEST-ONLY.apk'
+            testapk = Path(artifact) / 'FlowDrop-1.14.0-Android-Instrumentation-TEST-ONLY.apk'
             rec.artifact.update(app=sha256(apk), instrumentation=sha256(testapk))
             certificate = manifest['android']['test_certificate_sha256']
             app = verify_apk(apk, REPO, tools['tool'], VerifyJournal(), certificate)
@@ -201,7 +201,7 @@ def run(root, artifact, api):
                     break
                 except (OSError, http.client.HTTPException):
                     time.sleep(.5)
-            assert config and config['name'] == 'FlowDrop' and config['version'] == '1.13.0'
+            assert config and config['name'] == 'FlowDrop' and config['version'] == '1.14.0'
             row['actual'] = {k: config.get(k) for k in ['name', 'version', 'platform', 'mode']}
             row['actual']['tunnel_preserves_host'] = '127.0.0.1:5173'
         for test_id, component in INSTRUMENTATIONS.items():

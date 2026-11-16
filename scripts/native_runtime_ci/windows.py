@@ -147,7 +147,7 @@ def run(root, downloads, helpers):
             raise Blocked("A preceding required Windows prerequisite did not complete")
         with rec.case('W02-provenance', WINDOWS['W02-provenance']) as row:
             manifest = verify_export(downloads, 'windows', source)
-            installer = Path(downloads) / 'FlowDrop-Setup-1.13.0-Windows-x64-TEST-ONLY.exe'
+            installer = Path(downloads) / 'FlowDrop-Setup-1.14.0-Windows-x64-TEST-ONLY.exe'
             rec.artifact.update(installer=sha256(installer))
             proof = json.loads((Path(helpers) / 'helper-manifest.json').read_text(encoding='utf-8'))
             assert proof['source']['checkout_commit'] == source['checkout'], 'Helper source differs from app/runtime source'
@@ -194,7 +194,7 @@ def run(root, downloads, helpers):
             raise Blocked("A preceding required Windows prerequisite did not complete")
         with rec.case('W06-http', WINDOWS['W06-http']) as row:
             config = client.json('GET', '/api/config')
-            assert (config['name'], config['version'], config['platform'], config['mode']) == ('FlowDrop', '1.13.0', 'windows', 'local')
+            assert (config['name'], config['version'], config['platform'], config['mode']) == ('FlowDrop', '1.14.0', 'windows', 'local')
             identity = config['deviceId']
             row['actual'] = {k: config[k] for k in ['name', 'version', 'platform', 'mode']}
         with rec.case('W07-window', WINDOWS['W07-window']) as row:
@@ -217,7 +217,7 @@ def run(root, downloads, helpers):
             shortcut = json.loads(ps('sendto-shortcut', "$s=(New-Object -ComObject WScript.Shell).CreateShortcut('" + link + "'); @{TargetPath=$s.TargetPath;Arguments=$s.Arguments} | ConvertTo-Json")[0])
             assert Path(shortcut['TargetPath']).resolve() == (install / 'FlowDrop.exe').resolve() and shortcut['Arguments'] == '--send-files'
             with winreg.OpenKey(winreg.HKEY_CURRENT_USER, r'Software\Microsoft\Windows\CurrentVersion\Uninstall\FlowDrop') as key:
-                assert winreg.QueryValueEx(key, 'DisplayVersion')[0] == '1.13.0'
+                assert winreg.QueryValueEx(key, 'DisplayVersion')[0] == '1.14.0'
             row['actual'] = {'sendto': shortcut, 'desktop_and_startmenu': True, 'uninstall_registry': True}
         directory.mkdir()
         client.desktop('/api/desktop/settings', {'directory': str(directory), 'autoSave': True})

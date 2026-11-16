@@ -14,6 +14,8 @@ import zipfile
 
 from scripts.native_runtime_ci.common import REPO, Recorder, clean_env, json_file, sha256, sanitize, own_root, clean_child
 
+from scripts.feature_baseline import expected_sha, verify_feature
+
 BASE = 'f9b5a43c5eae93b169717a72d19f5a426d913094'
 
 
@@ -75,18 +77,19 @@ def source_guard():
             blobs[name.decode()] = blob
     if len(blobs) != 790 or set(blobs) != {r['path'] for r in doc['files']}:
         raise RuntimeError('Baseline manifest disagrees with immutable Git commit inventory')
+    feature = verify_feature()
     for row in doc['files']:
         path = REPO / row['path']
-        if path.is_symlink() or not path.is_file() or sha256(path) != row['sha256']:
+        if path.is_symlink() or not path.is_file() or sha256(path) != expected_sha(row['path'], row['sha256']):
             raise RuntimeError('Frozen baseline modified: ' + row['path'])
         data = path.read_bytes()
         git_hash = hashlib.sha1(b'blob ' + str(len(data)).encode() + b'\0' + data).hexdigest()
-        if git_hash != blobs[row['path']]:
+        if expected_sha(row['path'], row['sha256']) == row['sha256'] and git_hash != blobs[row['path']]:
             raise RuntimeError('Source bytes differ from immutable base Git object')
     subprocess.run(['git', 'merge-base', '--is-ancestor', BASE, 'HEAD'], cwd=REPO, check=True)
     checkout = subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=REPO, text=True).strip()
     dirty = subprocess.check_output(['git', 'status', '--porcelain', '--untracked-files=no'], cwd=REPO, text=True).strip()
-    return {'base': BASE, 'protected_files': 790, 'checkout': checkout,
+    return {**feature, 'base': BASE, 'protected_files': 790, 'checkout': checkout,
             'reviewed_head': os.environ.get('FLOWDROP_REVIEWED_HEAD', checkout), 'tracked_worktree_dirty': bool(dirty)}
 
 

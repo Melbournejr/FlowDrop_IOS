@@ -89,7 +89,7 @@ def android(root, cache, adapt):
         signing, fingerprint = c2.make_test_key(root, journal)
         journal.run('build-app-from-source', [sys.executable, source / 'scripts/build-installers.py', '--only', 'android'], env=signing, cwd=source, timeout=1200)
         journal.run('build-original-instrumentation-from-source', [sys.executable, source / 'scripts/build-native-test-apk.py'], env=signing, cwd=source, timeout=600)
-        app = source / 'artifacts/FlowDrop-1.13.0-Android.apk'
+        app = source / 'artifacts/FlowDrop-1.14.0-Android.apk'
         original = root / 'tools/native-instrumentation/FlowDrop-native-tests.apk'
         original_result = verify_apk(original, source, root, journal, fingerprint, instrumentation=True)
         extended, proof = extended_instrumentation(root, source, journal, signing, signing['FLOWDROP_ANDROID_KEYSTORE'], adapt)
@@ -106,8 +106,8 @@ def android(root, cache, adapt):
         values = [signing['FLOWDROP_ANDROID_STORE_PASSWORD'], signing['FLOWDROP_ANDROID_KEY_PASSWORD']]
         remove_child(root, root / 'test-secrets')
         write_json(root / 'logs/build-results.json', report)
-        c2.export_files(root, [(app, 'FlowDrop-1.13.0-Android-TEST-ONLY.apk'),
-                        (extended, 'FlowDrop-1.13.0-Android-Instrumentation-TEST-ONLY.apk')], report, journal, values)
+        c2.export_files(root, [(app, 'FlowDrop-1.14.0-Android-TEST-ONLY.apk'),
+                        (extended, 'FlowDrop-1.14.0-Android-Instrumentation-TEST-ONLY.apk')], report, journal, values)
         return report
     finally:
         if (root / 'test-secrets').exists():

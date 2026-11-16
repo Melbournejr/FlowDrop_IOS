@@ -65,7 +65,7 @@ public final class NativeRuntimeSmoke extends Instrumentation {
  void core()throws Exception{
   Context context=getTargetContext();launch();await(()->HostService.current!=null&&HostService.current.isReady(),"App foreground backend never became ready",150);
   HostService host=HostService.current;TransferServer server=host.transfers();String origin=server.getLocalUrl();String identity=server.getDeviceId();
-  JSONObject config=TransferClient.json(origin,"api/config","GET",null,null,null);check("FlowDrop".equals(config.getString("name"))&&"1.13.0".equals(config.getString("version")),"Unexpected actual backend config");
+  JSONObject config=TransferClient.json(origin,"api/config","GET",null,null,null);check("FlowDrop".equals(config.getString("name"))&&"1.14.0".equals(config.getString("version")),"Unexpected actual backend config");
   passed("live-native-backend",new JSONObject().put("sdk",Build.VERSION.SDK_INT).put("version",config.getString("version")));
   boolean notification=false;for(StatusBarNotification item:((NotificationManager)context.getSystemService(Context.NOTIFICATION_SERVICE)).getActiveNotifications())if(item.getId()==120)notification=true;
   check(notification,"Foreground HostService notification missing");passed("foreground-notification",new JSONObject().put("hostReady",true).put("notificationId",120));

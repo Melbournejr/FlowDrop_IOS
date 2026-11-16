@@ -26,7 +26,10 @@ class NativeRunnerTests(unittest.TestCase):
 
     def test_all_thirteen_existing_commands_are_present_once_without_skip_flags(self):
         entries = [item for group in ci.GROUPS.values() for item in group]
-        existing = [name for name, _, _ in entries if name not in ['ci-runner-tests', 'asset-integrity']]
+        new_tests = {'security-114-unit', 'code-114', 'tls-114'}
+        existing = [name for name, _, _ in entries if name not in {'ci-runner-tests', 'asset-integrity'} | new_tests]
+        self.assertEqual(new_tests, {name for name, _, _ in entries if name in new_tests})
+        self.assertEqual(len(entries), 18)
         self.assertEqual(len(existing), 13)
         self.assertEqual(len(set(existing)), 13)
         for _, argv, _ in entries:

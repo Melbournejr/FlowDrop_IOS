@@ -13,7 +13,7 @@ try{
  const android=harness.spawn(javaCommand,['-Xmx96m','-cp',classpath,'app.flowdrop.mobile.NativeHostHarness',androidData],{stdio:['ignore','pipe','pipe']});
  const [winHost,phoneHost]=await Promise.all([waitForHost(desktop,'node-web'),waitForHost(android,'android')]);
  const win=winHost.origin+'/',phone=phoneHost.origin+'/',phoneToken=phoneHost.token;
- assert.equal((await fetch(phone)).headers.get('content-type'),'text/plain; charset=utf-8');assert.equal((await fetch(phone+'app.js')).status,404);assert.equal((await(await fetch(phone+'api/config')).json()).version,'1.13.0');
+ assert.equal((await fetch(phone)).headers.get('content-type'),'text/plain; charset=utf-8');assert.equal((await fetch(phone+'app.js')).status,404);assert.equal((await(await fetch(phone+'api/config')).json()).version,'1.14.0');
  for(const [name,base,bytes] of [['Windows 1.5 host',win,384*1024*1024+17],['Android 1.6 host',phone,4*1024*1024*1024+131089]]){
   console.log('Testing native Java client → '+name+'; large file '+bytes+' bytes.');
   const result=await new Promise((resolve,reject)=>{const client=harness.spawn(javaCommand,['-Xmx96m','-cp',classpath,'app.flowdrop.mobile.NativeClientHarness',base,String(bytes)],{env:{...process.env,FLOWDROP_TEST_LOCAL_CAPABILITY:base===phone?phoneToken:''},stdio:['ignore','pipe','pipe']});let out='',err='';const timer=setTimeout(()=>{client.kill();reject(new Error('Native client timeout '+err));},600000);client.stdout.on('data',b=>out+=b);client.stderr.on('data',b=>err+=b);client.once('error',error=>{clearTimeout(timer);reject(error);});client.on('exit',code=>{clearTimeout(timer);code===0?resolve(JSON.parse(out.trim().split('\n').at(-1))):reject(new Error(err+out));});});

@@ -44,7 +44,7 @@ class NativePipelineTests(unittest.TestCase):
                 (tools / name).write_text('fixture, not executed')
             key = root / 'placeholder.fixture'
             key.write_text('not a key')
-            old = source / 'artifacts/FlowDrop-1.13.0-Android.apk'
+            old = source / 'artifacts/FlowDrop-1.14.0-Android.apk'
             old.write_text('stale fixture')
             module = self.load_builder('build-installers.py')
             module.ROOT, module.OUT, module.BT = source, source / 'artifacts', tools
@@ -172,8 +172,8 @@ class NativePipelineTests(unittest.TestCase):
     def test_artifact_extra_keystore_and_tampered_checksum_are_rejected(self):
         with tempfile.TemporaryDirectory() as temp:
             root = Path(temp)
-            files = {'FlowDrop-1.13.0-Android-TEST-ONLY.apk': b'unit fixture only',
-                     'FlowDrop-1.13.0-Android-Instrumentation-TEST-ONLY.apk': b'unit fixture only',
+            files = {'FlowDrop-1.14.0-Android-TEST-ONLY.apk': b'unit fixture only',
+                     'FlowDrop-1.14.0-Android-Instrumentation-TEST-ONLY.apk': b'unit fixture only',
                      'artifact-manifest.json': json.dumps({'status': 'PASS', 'role': 'android', 'builder_steps': [{'exit_code': 0}]}).encode()}
             for name, data in files.items():
                 (root / name).write_bytes(data)
@@ -185,7 +185,7 @@ class NativePipelineTests(unittest.TestCase):
             with self.assertRaises(Blocked):
                 check_export(root, 'android')
             extra.unlink()
-            (root / 'FlowDrop-1.13.0-Android-TEST-ONLY.apk').write_text('tampered fixture')
+            (root / 'FlowDrop-1.14.0-Android-TEST-ONLY.apk').write_text('tampered fixture')
             with self.assertRaises(Blocked):
                 check_export(root, 'android')
 

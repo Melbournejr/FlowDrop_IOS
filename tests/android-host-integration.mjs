@@ -17,7 +17,7 @@ try{
   const r=await request('/api/transfers/'+session.code+'/files/'+session.files[index].id,{method:'PUT',headers:{'X-Upload-Token':session.token},body,...(chunked?{duplex:'half'}:{})});assert.equal(r.status,200,await r.text());
  };
  const finish=async s=>{assert.equal((await request('/api/transfers/'+s.code+'/complete',{method:'POST',headers:{'X-Upload-Token':s.token}})).status,200);};
- const config=await (await request('/api/config')).json();assert.equal(config.name,'FlowDrop');assert.equal(config.platform,'android');assert.equal(config.version,'1.13.0');
+ const config=await (await request('/api/config')).json();assert.equal(config.name,'FlowDrop');assert.equal(config.platform,'android');assert.equal(config.version,'1.14.0');
  for(const asset of ['/','/app.js','/style.css','/favicon.svg','/manifest.webmanifest','/assets/fonts/BeVietnamPro-Regular.ttf'])assert.equal((await request(asset)).status,200,asset);
  for(const [direction,bytes,chunked] of [['A → B',randomBytes(1024*1024),false],['B → A',randomBytes(8193),true]]){
   const s=await create([{name:'Từ '+direction+' — tài liệu.bin',size:bytes.length},{name:'rỗng.txt',size:0}]);const base='/api/transfers/'+s.code;
