@@ -2,6 +2,11 @@ import {validateMetadata,sameSecret} from './request-security.mjs';
 import {randomUUID} from 'node:crypto';
 import {isIPv4} from 'node:net';
 import http from 'node:http';
+let security;
+export function setPeerSecurity(value){security=value;}
+const bootstrap=new Map();
+async function securePeer(origin){const old=new URL(origin);let p=bootstrap.get(old.origin);if(!p){const response=await fetch(old.origin+'/api/config',{redirect:'error',signal:AbortSignal.timeout(3000)});if(Number(response.headers.get('content-length'))>32768)throw Error('Phản hồi quá lớn.');const chunks=[];let size=0;for await(const chunk of response.body){size+=chunk.length;if(size>32768)throw Error('Phản hồi quá lớn.');chunks.push(chunk);}const config=JSON.parse(Buffer.concat(chunks));const learned=await security.discover({id:config.deviceId,url:old.origin},config);if(!learned.secure)return null;p=security.candidates.get(learned.id);bootstrap.set(old.origin,p);}return security.peer(p.origin);}
+
 import {Readable} from 'node:stream';
 const terminal=new Set(['completed','rejected','failed','expired','untracked']);
 const publicItem=i=>({id:i.id,direction:i.direction,name:i.name,code:i.code,count:i.count,size:i.size,bytes:i.bytes||0,filesDone:i.filesDone||0,currentName:i.currentName||'',state:i.state,createdAt:i.createdAt,startedAt:i.startedAt||0,updatedAt:i.updatedAt,finishedAt:i.finishedAt||0,error:i.error||'',connectionError:i.connectionError||''});
@@ -23,7 +28,8 @@ export class PeerOffers {
   list(){this.prune();return [...this.items.values()].filter(i=>i.state==='pending').map(({origin,statusToken,...i})=>i);}
   sessions(){this.prune();return [...this.items.values(),...this.outgoing.values()].sort((a,b)=>b.createdAt-a.createdAt).map(publicItem);}
   status(id,token){this.prune();const item=this.items.get(id);if(!item||!token||!sameSecret(token,item.statusToken))throw new Error('Không có quyền xem phiên truyền.');return publicItem(item);}
-  async incoming(body,remote){
+  async incoming(body,remote,authenticatedId){
+    if(authenticatedId&&authenticatedId!==body.deviceId)throw Error('Danh tính người gửi không khớp.');
     this.prune();if(!sameSecret(body.offerKey,this.key))throw new Error('Mở lại danh sách thiết bị rồi gửi lại.');
     remote=remote?.replace(/^::ffff:/,'');
     if(!isIPv4(remote)||remote==='0.0.0.0'||remote.startsWith('169.254.')||!Number.isInteger(body.port)||body.port<1||body.port>65535||!/^[A-Z2-9]{8}$/.test(body.code)||typeof body.deviceId!=='string'||body.deviceId===this.deviceId)throw new Error('Thiết bị gửi không hợp lệ.');
@@ -79,13 +85,17 @@ export class PeerOffers {
   }
 }
 export async function peerJson(origin,route,body,timeout=8000,signal){
+  if(security&&route!=='/api/config'){const p=await securePeer(origin);if(p)return security.json(p,route,body);if(!security.legacy)throw Error('Ghép nối thiết bị trước khi truyền file.');}
+
   const response=await fetch(origin+route,{method:body?'POST':'GET',redirect:'error',headers:body?{'Content-Type':'application/json'}:{},body:body?JSON.stringify(body):undefined,signal:AbortSignal.any([AbortSignal.timeout(timeout),signal].filter(Boolean))});
   if(Number(response.headers.get('content-length'))>8*1024*1024){await response.body?.cancel();throw new Error('Phản hồi quá lớn.');}
-  let bytes=0,text='';const decoder=new TextDecoder();for await(const chunk of response.body){bytes+=chunk.length;if(bytes>8*1024*1024)throw new Error('Phản hồi quá lớn.');text+=decoder.decode(chunk,{stream:true});}text+=decoder.decode();const result=JSON.parse(text);if(!response.ok)throw Object.assign(new Error(String(result.error||'Không kết nối được thiết bị.').slice(0,500)),{status:response.status});return result;
+  let bytes=0,text='';const decoder=new TextDecoder();for await(const chunk of response.body){bytes+=chunk.length;if(bytes>8*1024*1024)throw new Error('Phản hồi quá lớn.');text+=decoder.decode(chunk,{stream:true});}text+=decoder.decode();const result=JSON.parse(text);if(!response.ok)throw Object.assign(new Error(String(result.error||'Không kết nối được thiết bị.').slice(0,500)),{status:response.status});if(security&&route==='/api/config'&&result.name==='FlowDrop'){const p=await security.discover({id:result.deviceId,url:origin},result);if(p.secure)bootstrap.set(new URL(origin).origin,security.candidates.get(p.id));}return result;
 }
 
 // Only idle periods time out: a large, steadily downloading file has no total deadline.
-export function peerDownload(url){
+export async function peerDownload(url){
+  if(security){const target=new URL(url),p=await securePeer(target.origin);if(p){const response=await security.request(p,target.pathname+target.search);return new Response(Readable.toWeb(response),{status:response.statusCode,headers:Object.fromEntries(Object.entries(response.headers).filter(([,v])=>v!==undefined))});}if(!security.legacy)throw Error('Cần ghép nối TLS.');}
+
   return new Promise((resolve,reject)=>{
     // Node's HTTP stream handles an abruptly truncated download without the
     // Fetch parser's paused-body assertion; only idle periods are timed out.

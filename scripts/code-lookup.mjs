@@ -10,7 +10,7 @@ export function validateSharedMetadata(metadata,code){
 export async function findCode(input,{getPeers,getLocal,preferredId,timeout=7000}){
   const code=normalizeCode(input);if(!/^[A-Z2-9]{8}$/.test(code))throw new Error('Nhập đủ mã nhận 8 ký tự.');
   const stop=new AbortController(),timer=setTimeout(()=>stop.abort(),timeout),deadline=Date.now()+timeout;
-  const matches=[],attempted=new Set();let verified=0,expired=false;
+  const matches=[],attempted=new Set();let verified=0,expired=false,unpaired=false;
   try{
     try{const response=await getLocal('/api/transfers/'+code);if(response.ok){const metadata=validateSharedMetadata(await response.json(),code);matches.push({origin:'local',metadata,name:'Máy này',id:'local',getResponse:getLocal});}else if(response.status===410)expired=true;}catch{}
     // Discovery may complete after the user pastes a code. A snapshot of an empty
@@ -23,7 +23,7 @@ export async function findCode(input,{getPeers,getLocal,preferredId,timeout=7000
         const config=await peerJson(url.origin,'/api/config',undefined,3000,stop.signal);if(config.name!=='FlowDrop'||config.deviceId!==peer.id)return;verified++;
         try{const metadata=validateSharedMetadata(await peerJson(url.origin,'/api/transfers/'+code,undefined,3000,stop.signal),code);
           matches.push({origin:url.origin,metadata,name:config.deviceName||peer.name,id:peer.id,getResponse:route=>peerDownload(url.origin+route)});
-        }catch(error){if(error.status===410)expired=true;}
+        }catch(error){if(error.status===410)expired=true;if(/Ghép nối|ghép nối/.test(error.message))unpaired=true;}
       }));
       if(matches.length||stop.signal.aborted)break;
       await new Promise(resolve=>setTimeout(resolve,Math.min(200,Math.max(0,deadline-Date.now()))));
@@ -31,6 +31,6 @@ export async function findCode(input,{getPeers,getLocal,preferredId,timeout=7000
   }finally{clearTimeout(timer);stop.abort();}
   const chosen=matches.find(match=>match.id===preferredId);if(chosen)return chosen;
   if(matches.length>1)throw new Error('Có nhiều thiết bị dùng cùng mã. Chọn đúng thiết bị rồi nhận lại.');
-  if(!matches.length)throw new Error(expired?'Mã chia sẻ đã hết hạn. Tạo mã mới trên thiết bị gửi.':verified?'Mã không tồn tại hoặc đã được thu hồi trên các thiết bị tìm thấy. Kiểm tra mã và máy gửi.':'Chưa tìm thấy thiết bị giữ mã trong Wi-Fi. Mở FlowDrop trên máy gửi rồi bấm nhận lại.');
+  if(!matches.length)throw new Error(unpaired?'Ghép nối thiết bị gửi trong mục Bảo mật trước khi nhận mã.':expired?'Mã chia sẻ đã hết hạn. Tạo mã mới trên thiết bị gửi.':verified?'Mã không tồn tại hoặc đã được thu hồi trên các thiết bị tìm thấy. Kiểm tra mã và máy gửi.':'Chưa tìm thấy thiết bị giữ mã trong Wi-Fi. Mở FlowDrop trên máy gửi rồi bấm nhận lại.');
   return matches[0];
 }

@@ -45,7 +45,7 @@ def windows():
     payload=fresh_build_directory(TOOLS/'windows-payload',TOOLS)
     for folder in ['web','worker','node_modules']:shutil.copytree(ROOT/folder,payload/folder)
     (payload/'scripts').mkdir()
-    for f in ['request-security.mjs','device-name.mjs','dev.mjs','stop.mjs','discovery.mjs','desktop-storage.mjs','local-bucket.mjs','peer-offers.mjs','lan-discovery.mjs','folder-jobs.mjs','folder-zip.mjs','folder-receive.mjs','code-lookup.mjs','secure-update.mjs','release-config.mjs']:shutil.copyfile(ROOT/'scripts'/f,payload/'scripts'/f)
+    for f in ['request-security.mjs','device-security.mjs','device-vault.ps1','device-name.mjs','dev.mjs','stop.mjs','discovery.mjs','desktop-storage.mjs','local-bucket.mjs','peer-offers.mjs','lan-discovery.mjs','folder-jobs.mjs','folder-zip.mjs','folder-receive.mjs','code-lookup.mjs','secure-update.mjs','release-config.mjs']:shutil.copyfile(ROOT/'scripts'/f,payload/'scripts'/f)
     for f in ['FlowDrop.vbs','Stop-FlowDrop.vbs','Allow-LAN.ps1']:shutil.copyfile(ROOT/'desktop/windows'/f,payload/f)
     mingw=TOOLS/'mingw/usr/bin'
     env=os.environ.copy();env['PATH']=str(mingw)+os.pathsep+env['PATH']

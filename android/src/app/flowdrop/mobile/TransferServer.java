@@ -23,6 +23,16 @@ public final class TransferServer implements Closeable {
   private static final String ALPHABET="ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
   private final Path directory;
   private final Assets assets;
+  public interface SecureAccess {
+    ServerSocket socket()throws Exception;JSONObject config(int port)throws Exception;boolean legacy();
+    JSONObject pairing(String route,JSONObject body,String address)throws Exception;
+    JSONObject session(Map<String,String> headers)throws Exception;
+    String authorize(String method,String route,Map<String,String> headers)throws Exception;
+    default void track(String id,Socket socket){}
+  }
+  private volatile SecureAccess secureAccess;
+  private volatile ServerSocket secureSocket;
+  public synchronized void enableSecurity(SecureAccess access)throws Exception{if(secureSocket!=null)throw new IOException("TLS already started");secureSocket=access.socket();secureAccess=access;Thread t=new Thread(()->acceptLoop(secureSocket),"flowdrop-tls");t.setDaemon(true);t.start();}
   private final ServerSocket socket;
   private final ThreadPoolExecutor clients;
   private final ScheduledExecutorService cleanup;
@@ -117,6 +127,7 @@ public final class TransferServer implements Closeable {
     JSONObject body=new JSONObject(new String(readSmall(request.body,16384),StandardCharsets.UTF_8));
     if(!offerKey.equals(body.optString("offerKey")))throw new HttpError(403,"Mở lại danh sách thiết bị rồi gửi lại.");
     String code=body.optString("code"),sender=body.optString("deviceId");int port=body.optInt("port");
+    if(request.authenticatedId!=null&&!request.authenticatedId.equals(sender))throw new HttpError(403,"Danh tính người gửi không khớp.");
     if(!address.matches("[0-9.]+")||port<1||port>65535||!code.matches("[A-Z2-9]{8}")||sender.isEmpty()||deviceId.equals(sender))throw new HttpError(400,"Thiết bị gửi không hợp lệ.");
     synchronized(this){pruneOffers();if(offers.values().stream().filter(i->!ended(i.optString("state"))).count()>=20)throw new HttpError(429,"Đang có nhiều yêu cầu nhận. Hãy thử lại sau.");}
     if(!incomingChecks.tryAcquire())throw new HttpError(429,"Đang xác minh nhiều yêu cầu. Thử lại sau.");
@@ -142,7 +153,7 @@ public final class TransferServer implements Closeable {
     cleanup=Executors.newSingleThreadScheduledExecutor(r->{Thread t=new Thread(r,"flowdrop-cleanup");t.setDaemon(true);return t;});
     cleanup.scheduleWithFixedDelay(()->cleanExpired(),0,10,TimeUnit.MINUTES);
     cleanup.scheduleWithFixedDelay(()->pollSessions(),1,1,TimeUnit.SECONDS);
-    Thread accept=new Thread(()->acceptLoop(),"flowdrop-http");accept.setDaemon(true);accept.start();
+    Thread accept=new Thread(()->acceptLoop(socket),"flowdrop-http");accept.setDaemon(true);accept.start();
   }
   private final java.util.concurrent.ConcurrentMap<Socket,Long> activity=new java.util.concurrent.ConcurrentHashMap<>();
   private final ScheduledExecutorService socketWatch=Executors.newSingleThreadScheduledExecutor(r->{Thread t=new Thread(r,"flowdrop-socket-watch");t.setDaemon(true);return t;});
@@ -153,9 +164,9 @@ public final class TransferServer implements Closeable {
   public void setDeviceName(String name){deviceName=name;}
   public void setDiscoveryName(String name){discoveryName=name;}
   private Object lock(String code){return locks[(code.hashCode()&0x7fffffff)%locks.length];}
-  private void acceptLoop(){
+  private void acceptLoop(ServerSocket listener){
     while(!closed)try{
-      Socket client=socket.accept();client.setSoTimeout(10000);connections.add(client);activity.put(client,System.nanoTime());
+      Socket client=listener.accept();client.setSoTimeout(10000);connections.add(client);activity.put(client,System.nanoTime());
       try{clients.execute(()->handle(client));}catch(RejectedExecutionException busy){connections.remove(client);activity.remove(client);client.close();}
     }catch(IOException error){if(!closed)close();}
   }
@@ -168,7 +179,7 @@ public final class TransferServer implements Closeable {
         public void write(int value)throws IOException{out.write(value);activity.put(client,System.nanoTime());}
         public void write(byte[] bytes,int off,int length)throws IOException{out.write(bytes,off,length);activity.put(client,System.nanoTime());}
       });
-      try{HeaderInput guarded=new HeaderInput(input,client);Request request=parse(guarded,output);guarded.finish();route(request,output,client.getInetAddress().getHostAddress());}catch(java.net.SocketTimeoutException timeout){sendJson(output,408,new JSONObject().put("error","Hết thời gian gửi header."));}catch(HttpError error){sendJson(output,error.status,new JSONObject().put("error",error.getMessage()));}
+      try{HeaderInput guarded=new HeaderInput(input,client);Request request=parse(guarded,output);request.secure=client instanceof javax.net.ssl.SSLSocket;request.localPort=client.getLocalPort();request.client=client;guarded.finish();route(request,output,client.getInetAddress().getHostAddress());}catch(java.net.SocketTimeoutException timeout){sendJson(output,408,new JSONObject().put("error","Hết thời gian gửi header."));}catch(HttpError error){sendJson(output,error.status,new JSONObject().put("error",error.getMessage()));}
       catch(Exception error){sendJson(output,500,new JSONObject().put("error","Chưa thực hiện được. Kiểm tra kết nối và dung lượng trống trên điện thoại."));}
       output.flush();
     }catch(Exception ignored){}finally{connections.remove(client);activity.remove(client);}
@@ -183,6 +194,7 @@ public final class TransferServer implements Closeable {
   }
   private static final class HttpError extends IOException {final int status;HttpError(int status,String text){super(text);this.status=status;}}
   private static final class Request {
+    boolean secure;int localPort;String authenticatedId;Socket client;
     final String method,path;final Map<String,String> headers;final InputStream body;final long length;
     Request(String method,String path,Map<String,String> headers,InputStream body,long length){this.method=method;this.path=path;this.headers=headers;this.body=body;this.length=length;}
   }
@@ -195,7 +207,7 @@ public final class TransferServer implements Closeable {
     String[] first=line(input,4096).split(" ");if(first.length!=3||!(first[2].equals("HTTP/1.1")||first[2].equals("HTTP/1.0")))throw new HttpError(400,"Yêu cầu không hợp lệ.");
     String path;try{URI uri=new URI(first[1]);if(uri.isAbsolute()||uri.getRawAuthority()!=null||!first[1].startsWith("/")||uri.getRawFragment()!=null)throw new Exception();path=uri.getRawPath();}catch(Exception e){throw new HttpError(400,"Đường dẫn không hợp lệ.");}
     Map<String,String> headers=new HashMap<>();int count=0;
-    while(true){String header=line(input,8192);count+=header.length()+2;if(count>16384)throw new HttpError(431,"Header quá lớn.");if(header.isEmpty())break;int colon=header.indexOf(':');if(colon<1)throw new HttpError(400,"Header không hợp lệ.");String rawKey=header.substring(0,colon);if(!rawKey.matches("[!#$%&'*+.^_`|~0-9A-Za-z-]+"))throw new HttpError(400,"Header không hợp lệ.");String key=rawKey.toLowerCase(Locale.ROOT);if(headers.containsKey(key)&&("content-length".equals(key)||"transfer-encoding".equals(key)||"host".equals(key)||"origin".equals(key)||"x-local-token".equals(key)||"x-upload-token".equals(key)))throw new HttpError(400,"Header trùng lặp.");headers.put(key,header.substring(colon+1).trim());}
+    while(true){String header=line(input,8192);count+=header.length()+2;if(count>16384)throw new HttpError(431,"Header quá lớn.");if(header.isEmpty())break;int colon=header.indexOf(':');if(colon<1)throw new HttpError(400,"Header không hợp lệ.");String rawKey=header.substring(0,colon);if(!rawKey.matches("[!#$%&'*+.^_`|~0-9A-Za-z-]+"))throw new HttpError(400,"Header không hợp lệ.");String key=rawKey.toLowerCase(Locale.ROOT);if(headers.containsKey(key)&&("content-length".equals(key)||"transfer-encoding".equals(key)||"host".equals(key)||"origin".equals(key)||"x-local-token".equals(key)||"x-upload-token".equals(key)||key.startsWith("x-fd-")))throw new HttpError(400,"Header trùng lặp.");headers.put(key,header.substring(colon+1).trim());}
     String transfer=headers.get("transfer-encoding");long length=0;InputStream body;
     if(transfer!=null){if(!"chunked".equalsIgnoreCase(transfer)||headers.containsKey("content-length"))throw new HttpError(400,"Body không hợp lệ.");length=-1;body=new Chunked(input);}
     else{try{String declared=headers.getOrDefault("content-length","0");if(!declared.matches("[0-9]+"))throw new NumberFormatException();length=Long.parseLong(declared);}catch(NumberFormatException e){throw new HttpError(400,"Dung lượng không hợp lệ.");}if(length<0)throw new HttpError(413,"Dung lượng không hợp lệ.");body=new Limited(input,length);}
@@ -227,13 +239,21 @@ public final class TransferServer implements Closeable {
   }
   private void route(Request request,OutputStream output,String remoteAddress)throws Exception{
     String path=request.path,method=request.method;
-    if(!RequestSecurity.allowedHost(request.headers.get("host"),getPort()))throw new HttpError(403,"Địa chỉ truy cập không được phép.");
+    if(!RequestSecurity.allowedHost(request.headers.get("host"),request.localPort))throw new HttpError(403,"Địa chỉ truy cập không được phép.");
     if(path.startsWith("/api/")&&!RequestSecurity.browserAllowed(request.headers))throw new HttpError(403,"Yêu cầu từ website khác bị chặn.");
+    SecureAccess access=secureAccess;boolean local=InetAddress.getByName(remoteAddress).isLoopbackAddress()&&!request.secure;
+    if(access!=null&&!local&&!path.equals("/api/config")){
+      if(!request.secure){if(!access.legacy())throw new HttpError(426,"Cần ghép nối qua TLS. Chế độ HTTP cũ đang tắt.");}
+      else if(path.startsWith("/api/secure/pair/")&&method.equals("POST")){try{JSONObject body=new JSONObject(new String(readSmall(request.body,16384),StandardCharsets.UTF_8));sendJson(output,200,access.pairing(path,body,remoteAddress));}catch(Exception e){throw new HttpError(403,"Ghép nối không hợp lệ hoặc đã hết hạn.");}return;}
+      else if(path.equals("/api/secure/session")&&method.equals("POST")){try{sendJson(output,200,access.session(request.headers));}catch(Exception e){throw new HttpError(403,"Chưa ghép nối hoặc yêu cầu không hợp lệ.");}return;}
+      else{try{request.authenticatedId=access.authorize(method,path,request.headers);access.track(request.authenticatedId,request.client);}catch(Exception e){throw new HttpError(403,"Chưa ghép nối, phiên hết hạn hoặc yêu cầu đã dùng.");}}
+    }
+    if(request.secure&&path.equals("/api/transfers")&&method.equals("POST"))throw new HttpError(403,"Chỉ ứng dụng trên máy này được tạo phiên gửi.");
     if(path.equals("/api/transfers")&&method.equals("POST")&&(!InetAddress.getByName(remoteAddress).isLoopbackAddress()||!RequestSecurity.secret(request.headers.get("x-local-token"),uploadCapability)))throw new HttpError(403,"Chỉ ứng dụng FlowDrop trên máy này được tạo phiên gửi.");
     if("/api/config".equals(path)&&"GET".equals(method)){
       JSONArray addresses=new JSONArray();Enumeration<NetworkInterface> interfaces=NetworkInterface.getNetworkInterfaces();
       while(interfaces!=null&&interfaces.hasMoreElements()){NetworkInterface iface=interfaces.nextElement();Enumeration<InetAddress> list=iface.getInetAddresses();while(list.hasMoreElements()){InetAddress address=list.nextElement();if(address instanceof Inet4Address&&!address.isLoopbackAddress()&&!address.isLinkLocalAddress())addresses.put("http://"+address.getHostAddress()+":"+getPort());}}
-      sendJson(output,200,new JSONObject().put("name","FlowDrop").put("version","1.13.0").put("deviceId",deviceId).put("offerKey",offerKey).put("direct",1).put("sessions",1).put("mode","local").put("platform","android").put("deviceName",deviceName).put("discoveryName",discoveryName).put("discovery","mdns+lan").put("addresses",addresses));return;
+      sendJson(output,200,new JSONObject().put("secure",access==null?null:access.config(secureSocket.getLocalPort())).put("name","FlowDrop").put("version","1.14.0").put("deviceId",deviceId).put("offerKey",offerKey).put("direct",1).put("sessions",1).put("mode","local").put("platform","android").put("deviceName",deviceName).put("discoveryName",discoveryName).put("discovery","mdns+lan").put("addresses",addresses));return;
     }
     if("/api/offers/status".equals(path)&&"POST".equals(method)){JSONObject body=new JSONObject(new String(readSmall(request.body,16384),StandardCharsets.UTF_8));sendJson(output,200,sessionStatus(body.optString("id"),body.optString("token")));return;}
     if("/api/offers".equals(path)&&"POST".equals(method)){incomingOffer(request,output,remoteAddress);return;}
@@ -303,10 +323,10 @@ public final class TransferServer implements Closeable {
       if("PUT".equals(method)){
         if(!authorized||!"uploading".equals(metadata.getString("status")))throw new HttpError(403,"Không có quyền tải lên.");
         if(request.length>=0&&request.length!=size)throw new HttpError(400,"Dung lượng file không khớp.");
-        Path temporary=file(code,id+".upload-"+UUID.randomUUID());long received=0;
+        Path temporary=file(code,id+".upload-"+UUID.randomUUID());long received=0;java.security.MessageDigest digest=java.security.MessageDigest.getInstance("SHA-256");
         try{
-          try(OutputStream disk=Files.newOutputStream(temporary)){byte[] buffer=new byte[65536];int n;while((n=request.body.read(buffer))!=-1){received+=n;if(received>size)throw new HttpError(413,"File vượt quá dung lượng cho phép.");disk.write(buffer,0,n);}}
-          if(received!=size)throw new HttpError(400,"File chưa được tải lên đầy đủ.");move(temporary,target);
+          try(OutputStream disk=Files.newOutputStream(temporary)){byte[] buffer=new byte[65536];int n;while((n=request.body.read(buffer))!=-1){received+=n;if(received>size)throw new HttpError(413,"File vượt quá dung lượng cho phép.");digest.update(buffer,0,n);disk.write(buffer,0,n);}}
+          if(received!=size)throw new HttpError(400,"File chưa được tải lên đầy đủ.");move(temporary,target);selected.put("sha256",RequestSecurity.hex(digest.digest()));save(code,metadata);
         }catch(EOFException e){throw new HttpError(400,"Kết nối bị ngắt khi tải file.");}finally{Files.deleteIfExists(temporary);}
         sendJson(output,200,new JSONObject().put("ok",true));return;
       }
@@ -327,5 +347,5 @@ public final class TransferServer implements Closeable {
     StringBuilder header=new StringBuilder("HTTP/1.1 "+status+" "+(status<400?"OK":"Error")+"\r\nContent-Type: "+type+"\r\nContent-Length: "+length+"\r\nConnection: close\r\nCache-Control: no-store\r\nX-Content-Type-Options: nosniff\r\nReferrer-Policy: no-referrer\r\n");
     for(Map.Entry<String,String> item:extra.entrySet())header.append(item.getKey()).append(": ").append(item.getValue()).append("\r\n");header.append("\r\n");output.write(header.toString().getBytes(StandardCharsets.ISO_8859_1));
   }
-  @Override public void close(){if(closed)return;closed=true;try{socket.close();}catch(IOException ignored){}for(Socket client:connections)try{client.close();}catch(IOException ignored){}clients.shutdownNow();cleanup.shutdownNow();socketWatch.shutdownNow();activity.clear();statusWorkers.shutdownNow();}
+  @Override public void close(){if(closed)return;closed=true;try{if(secureSocket!=null)secureSocket.close();socket.close();}catch(IOException ignored){}for(Socket client:connections)try{client.close();}catch(IOException ignored){}clients.shutdownNow();cleanup.shutdownNow();socketWatch.shutdownNow();activity.clear();statusWorkers.shutdownNow();}
 }

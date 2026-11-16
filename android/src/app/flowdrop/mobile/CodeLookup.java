@@ -29,7 +29,7 @@ public final class CodeLookup {
   }
   public static Found find(String input,Supplier<? extends Collection<String>> candidates,String preferred,Connections connections)throws Exception{
     String code=normalize(input);if(!code.matches("[A-Z2-9]{8}"))throw new IOException("Nhập đủ mã nhận 8 ký tự.");
-    LinkedHashSet<String> origins=new LinkedHashSet<>();final java.util.concurrent.atomic.AtomicInteger verified=new java.util.concurrent.atomic.AtomicInteger();final java.util.concurrent.atomic.AtomicBoolean expired=new java.util.concurrent.atomic.AtomicBoolean();
+    LinkedHashSet<String> origins=new LinkedHashSet<>();final java.util.concurrent.atomic.AtomicInteger verified=new java.util.concurrent.atomic.AtomicInteger();final java.util.concurrent.atomic.AtomicBoolean expired=new java.util.concurrent.atomic.AtomicBoolean(),unpaired=new java.util.concurrent.atomic.AtomicBoolean();
     ExecutorService pool=Executors.newFixedThreadPool(4,r->{Thread thread=new Thread(r,"flowdrop-code-lookup");thread.setDaemon(true);return thread;});
     CompletionService<Found> completion=new ExecutorCompletionService<>(pool);ArrayList<Found> found=new ArrayList<>();
     try{
@@ -41,11 +41,11 @@ public final class CodeLookup {
         }catch(Exception ignored){}
         if(pending==0&&!found.isEmpty())break;
         Future<Found> next=completion.poll(Math.min(TimeUnit.MILLISECONDS.toNanos(200),Math.max(0,deadline-System.nanoTime())),TimeUnit.NANOSECONDS);
-        if(next!=null){pending--;try{found.add(next.get());}catch(ExecutionException ignored){}}
+        if(next!=null){pending--;try{found.add(next.get());}catch(ExecutionException error){if(error.getCause()!=null&&String.valueOf(error.getCause().getMessage()).toLowerCase(Locale.ROOT).contains("ghép nối"))unpaired.set(true);}}
       }
     }finally{pool.shutdownNow();}
     if(found.size()>1){for(Found match:found)if(preferred!=null&&match.origin.equals(preferred.endsWith("/")?preferred:preferred+"/"))return match;throw new IOException("Nhiều thiết bị dùng cùng mã. Chọn đúng thiết bị gửi rồi nhận lại.");}
-    if(found.isEmpty())throw new IOException(expired.get()?"Mã chia sẻ đã hết hạn. Tạo mã mới trên thiết bị gửi.":verified.get()>0?"Mã không tồn tại hoặc đã được thu hồi. Kiểm tra lại mã và máy gửi.":"Chưa tìm thấy thiết bị giữ mã trong Wi-Fi. Mở FlowDrop trên máy gửi rồi thử lại.");
+    if(found.isEmpty())throw new IOException(unpaired.get()?"Ghép nối thiết bị gửi trong mục Bảo mật trước khi nhận mã.":expired.get()?"Mã chia sẻ đã hết hạn. Tạo mã mới trên thiết bị gửi.":verified.get()>0?"Mã không tồn tại hoặc đã được thu hồi. Kiểm tra lại mã và máy gửi.":"Chưa tìm thấy thiết bị giữ mã trong Wi-Fi. Mở FlowDrop trên máy gửi rồi thử lại.");
     return found.get(0);
   }
   public static void validate(JSONObject metadata,String code)throws Exception{
@@ -53,7 +53,7 @@ public final class CodeLookup {
     JSONArray files=metadata.getJSONArray("files");if(files.length()==0)throw new IOException("Không có file trong mã này.");long total=0;Set<String> ids=new HashSet<>();
     for(int i=0;i<files.length();i++){
       JSONObject file=files.getJSONObject(i);Object raw=file.get("size");if(!(raw instanceof Number))throw new IOException("Dung lượng không hợp lệ.");double exact=((Number)raw).doubleValue();long size=((Number)raw).longValue();
-      if(!Double.isFinite(exact)||size!=exact||size<0||size>9007199254740991L-total||!file.getString("id").matches("[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}")||!ids.add(file.getString("id"))||file.getString("name").trim().isEmpty()||file.getString("name").length()>255||java.util.regex.Pattern.compile("[\\x00-\\x1f\\x7f]").matcher(file.getString("name")).find()||file.optString("type","").length()>150||java.util.regex.Pattern.compile("[\\x00-\\x1f\\x7f]").matcher(file.optString("type","")).find())throw new IOException("Thông tin file không hợp lệ.");total+=size;
+      if(!Double.isFinite(exact)||size!=exact||size<0||size>9007199254740991L-total||!file.getString("id").matches("[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}")||!ids.add(file.getString("id"))||file.getString("name").trim().isEmpty()||file.getString("name").length()>255||java.util.regex.Pattern.compile("[\\x00-\\x1f\\x7f]").matcher(file.getString("name")).find()||file.optString("type","").length()>150||java.util.regex.Pattern.compile("[\\x00-\\x1f\\x7f]").matcher(file.optString("type","")).find())throw new IOException("Thông tin file không hợp lệ.");if(file.has("sha256")&&!file.getString("sha256").matches("[a-f0-9]{64}"))throw new IOException("SHA-256 của file không hợp lệ.");total+=size;
     }
   }
 }

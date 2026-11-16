@@ -13,16 +13,16 @@ Function .onInstSuccess
  Exec '$\"$INSTDIR\FlowDrop.exe$\"'
 FunctionEnd
 !define APPNAME "FlowDrop"
-!define VERSION "1.13.0"
+!define VERSION "1.14.0"
 Name "FlowDrop"
 OutFile "${OUTPUT_FILE}"
 InstallDir "$LOCALAPPDATA\Programs\FlowDrop"
 RequestExecutionLevel user
 SetCompressor /SOLID lzma
-VIProductVersion "1.13.0.0"
+VIProductVersion "1.14.0.0"
 VIAddVersionKey /LANG=1033 "ProductName" "FlowDrop"
 VIAddVersionKey /LANG=1033 "FileDescription" "FlowDrop Setup"
-VIAddVersionKey /LANG=1033 "FileVersion" "1.13.0"
+VIAddVersionKey /LANG=1033 "FileVersion" "1.14.0"
 VIAddVersionKey /LANG=1033 "LegalCopyright" "FlowDrop"
 !define MUI_ABORTWARNING
 !define MUI_FINISHPAGE_RUN
@@ -53,7 +53,7 @@ Section "FlowDrop" SEC_MAIN
  WriteUninstaller "$INSTDIR\Uninstall.exe"
  WriteRegStr HKCU "Software\Microsoft\Windows\CurrentVersion\Uninstall\FlowDrop" "DisplayName" "FlowDrop"
  WriteRegStr HKCU "Software\Microsoft\Windows\CurrentVersion\Uninstall\FlowDrop" "UninstallString" '$\"$INSTDIR\Uninstall.exe$\"'
- WriteRegStr HKCU "Software\Microsoft\Windows\CurrentVersion\Uninstall\FlowDrop" "DisplayVersion" "1.13.0"
+ WriteRegStr HKCU "Software\Microsoft\Windows\CurrentVersion\Uninstall\FlowDrop" "DisplayVersion" "1.14.0"
  WriteRegDWORD HKCU "Software\Microsoft\Windows\CurrentVersion\Uninstall\FlowDrop" "NoModify" 1
  WriteRegDWORD HKCU "Software\Microsoft\Windows\CurrentVersion\Uninstall\FlowDrop" "NoRepair" 1
 SectionEnd
