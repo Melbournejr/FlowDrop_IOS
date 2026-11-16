@@ -51,6 +51,6 @@ try {
     }
   } else { throw 'Invalid vault operation' }
 } catch {
-  [Console]::Error.Write('FLOWDROP_VAULT_ERROR=' + $_.Exception.GetType().FullName + ':L' + $_.InvocationInfo.ScriptLineNumber + ':' + $_.FullyQualifiedErrorId)
+  [Console]::Error.WriteLine('FLOWDROP_VAULT_ERROR=' + $_.Exception.GetType().FullName + ':L' + $_.InvocationInfo.ScriptLineNumber + ':' + $_.FullyQualifiedErrorId)
   exit 1
 }

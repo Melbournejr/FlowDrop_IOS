@@ -193,3 +193,11 @@ reading input. The helper now uses strongly named framework assembly loads and
 Certificate provider or module autoload. Private JSON parse failures return a
 fixed message instead of echoing potentially secret stdout. Trace is opt-in in
 the isolated Windows probe, not enabled by the installed app.
+
+At `652778c`, actual Windows DPAPI completed creation, encrypted persistence,
+Unicode trust reload and corrupt-vault rejection (probe exit 0). Its expected
+corrupt-input diagnostic lacked a newline and joined the result JSON in the
+recorder's combined stderr/stdout stream, causing JSONDecodeError in W05 before
+app launch. Error records now end with a newline; the same probe assertions and
+native runtime prerequisites remain mandatory. This is a log framing fix, not
+a relaxation of corruption rejection or a claim that later native tests ran.
