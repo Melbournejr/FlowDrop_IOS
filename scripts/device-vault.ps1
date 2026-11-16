@@ -17,7 +17,7 @@ try {
     # certificate-store writes, private key files and interactive PKI cmdlets.
     $rsa = $null; $certificate = $null
     try {
-      $rsa = [Security.Cryptography.RSA]::Create(); $rsa.KeySize = 2048
+      $rsa = [Security.Cryptography.RSACryptoServiceProvider]::new(2048)
       if ($rsa -is [Security.Cryptography.RSACryptoServiceProvider]) { $rsa.PersistKeyInCsp = $false }
       $subject = [Security.Cryptography.X509Certificates.X500DistinguishedName]::new('CN='+$inputData.name)
       $request = [Security.Cryptography.X509Certificates.CertificateRequest]::new($subject,$rsa,[Security.Cryptography.HashAlgorithmName]::SHA256,[Security.Cryptography.RSASignaturePadding]::Pkcs1)
@@ -35,6 +35,6 @@ try {
     }
   } else { throw 'Invalid vault operation' }
 } catch {
-  [Console]::Error.Write('FLOWDROP_VAULT_ERROR=' + $_.Exception.GetType().FullName + ':' + $_.FullyQualifiedErrorId)
+  [Console]::Error.Write('FLOWDROP_VAULT_ERROR=' + $_.Exception.GetType().FullName + ':L' + $_.InvocationInfo.ScriptLineNumber + ':' + $_.FullyQualifiedErrorId)
   exit 1
 }

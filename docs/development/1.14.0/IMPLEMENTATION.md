@@ -171,3 +171,9 @@ CurrentUser DPAPI storage and existing identity format remain the same. Private
 IPC reads exactly one newline-terminated JSON record rather than waiting for EOF.
 The Windows runner must still demonstrate real DPAPI, TLS and native assertions
 at the final head before this path can be considered verified.
+
+The Windows .NET probe then reported a property-assignment error during key
+creation. The generator now requests RSA2048 in the CSP constructor, avoiding
+its read-only KeySize property. Error records include only a public exception
+identifier and script line number. The private CSP key is not persisted and is
+disposed after the encrypted PFX is returned through the private pipe.

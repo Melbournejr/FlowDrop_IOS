@@ -16,9 +16,9 @@
 test at tests/features-1.10.test.mjs:50:1
 ✖ Java/Node resolve codes across multiple hosts, reject ambiguity, wrong and revoked shares (7433.556357ms)
   AssertionError [ERR_ASSERTION]: The input did not match the regular expression /Chưa tìm/. Input:
-  
+
   'Error: Mã không tồn tại hoặc đã được thu hồi trên các thiết bị tìm thấy. Kiểm tra mã và máy gửi.'
-  
+
       at async TestContext.<anonymous> (file:///home/runner/work/FlowDrop_IOS/FlowDrop_IOS/tests/features-1.10.test.mjs:58:15)
       at async Test.run (node:internal/test_runner/test:1409:7)
       at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
