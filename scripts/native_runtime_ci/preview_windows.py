@@ -4,7 +4,7 @@ from pathlib import Path
 import subprocess
 
 from scripts import windows_preview as preview
-from .common import Blocked, clean_env, sha256
+from .common import Blocked, clean_env, sha256, json_file
 from .http_probe import LiveHTTP
 
 
@@ -78,7 +78,14 @@ def verify(rec, downloads, manifest, install, data, profiles, original, wait, ps
         denied_update = client.json('POST', '/api/desktop/update/apply', headers={'X-Desktop-Token': client.capability}, expected=400)
         assert 'error' in denied_update
         rec.run('uninstall-only-windows-preview', [target / 'Uninstall.exe', '/S'], timeout=180, env=env)
-        wait(lambda: process.poll() is not None and not target.exists(), 'Preview did not uninstall/stop')
+        try:
+            wait(lambda: process.poll() is not None and not target.exists(), 'Preview did not uninstall/stop')
+        except AssertionError:
+            json_file(rec.root / 'logs/preview-uninstall-state.json', {'app_exit_code': process.poll(),
+                'directory_exists': target.exists(), 'remaining_install_paths': [p.relative_to(target).as_posix() for p in target.rglob('*')][:100] if target.exists() else []})
+            quoted = str(target).replace("'", "''")
+            ps('preview-uninstall-processes', "$p=@(Get-CimInstance Win32_Process | Where-Object { $_.ExecutablePath -and $_.ExecutablePath.StartsWith('" + quoted + "\\') } | Select-Object ProcessId,ExecutablePath); ConvertTo-Json -InputObject $p")
+            raise
         installed = False
         assert not any(p.exists() for p in links.values())
         try:

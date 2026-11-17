@@ -202,7 +202,7 @@
     {
       "path": "scripts/native_runtime_ci/preview_windows.py",
       "base_sha256": null,
-      "sha256": "4307bd94ce421561c97f4a718a677108671543cdaacd5fef29fa43592e386e91"
+      "sha256": "b944b0350fd4cc0f57bc8d41d74adc465d74033bb36fb7ce1acb0b456cf8de47"
     },
     {
       "path": "scripts/native_runtime_ci/windows.py",
@@ -227,7 +227,7 @@
     {
       "path": "scripts/windows_preview.py",
       "base_sha256": null,
-      "sha256": "1264d22f8e4153f6b7494b27a7535c0e192026a93c39eee112aa02c7634afdb7"
+      "sha256": "2dd5c8359afee2001e6905ef15a16da514bf4656c574aa77b41ccd8481e3e9d3"
     },
     {
       "path": "tests/CodeLookupLateHarness.java",
@@ -287,7 +287,7 @@
     {
       "path": "tests/ci/test_windows_preview.py",
       "base_sha256": null,
-      "sha256": "6007b765dd1c97b2cf046c1a88f0286cfab321df9623e145e1d800886e4aca82"
+      "sha256": "b933f505ef3733acd57308352d69a6b21e7f1e93a0eeb72ac3e163f1ac365ede"
     },
     {
       "path": "tests/code-114.test.mjs",

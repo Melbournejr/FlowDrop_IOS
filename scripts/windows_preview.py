@@ -58,6 +58,8 @@ def prepare(source, root):
  Abort
 '''
     text = replace_once(text, 'Section "FlowDrop Preview" SEC_MAIN', 'Section "FlowDrop Preview" SEC_MAIN' + guard)
+    # NSIS must release its output/current directory before removing it.
+    text = replace_once(text, ' RMDir /r "$INSTDIR"', ' SetOutPath "$TEMP"\n RMDir /r "$INSTDIR"')
     text += '''
 Function .onVerifyInstDir
  IfFileExists "$INSTDIR\\FlowDrop.exe" 0 +2
