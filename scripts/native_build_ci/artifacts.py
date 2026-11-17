@@ -30,6 +30,12 @@ def check_export(directory, role):
         if role != 'android' or manifest['preview'].get('status') != 'PASS' or manifest['preview'].get('identity', {}).get('package') != PACKAGE or manifest['preview'].get('overlay', {}).get('label') != LABEL:
             raise Blocked('Preview must be independently verified and explicitly declared')
         expected_names.add(APK_NAME)
+    if 'windows_preview' in manifest:
+        from scripts.windows_preview import SETUP, EXE, LABEL
+        info = manifest['windows_preview']
+        if role != 'windows' or info.get('status') != 'PASS' or info.get('overlay', {}).get('executable') != EXE or info.get('overlay', {}).get('label') != LABEL:
+            raise Blocked('Windows Preview must be explicitly verified and separately identified')
+        expected_names.add(SETUP)
     paths = set()
     for file in directory.rglob('*'):
         if file.is_symlink():
@@ -54,6 +60,8 @@ def check_export(directory, role):
             raise Blocked('Downloaded artifact SHA-256 mismatch')
     if 'preview' in manifest and digest(directory / APK_NAME) != manifest['preview'].get('sha256'):
         raise Blocked('Preview APK differs from verification manifest')
+    if 'windows_preview' in manifest and digest(directory / SETUP) != manifest['windows_preview'].get('windows_installer', {}).get('sha256'):
+        raise Blocked('Windows Preview installer differs from verification manifest')
     if manifest.get('status') != 'PASS' or manifest.get('role') != role:
         raise Blocked('Builder did not complete verification')
     if not manifest.get('builder_steps') or any(step['exit_code'] != 0 for step in manifest['builder_steps']):

@@ -278,6 +278,11 @@ def run(root, downloads, helpers):
                 assert sha256(file) == expected, 'Restart changed received file SHA-256'
             stop(); row['actual'] = {'app_and_backend_restarted': True, 'persistent_device_id': True, 'synthetic_user_data_sha256': marker_hash,
                                     'received_files_reverified': len(preserved_files)}
+        with rec.case('W22-preview-coexistence', WINDOWS['W22-preview-coexistence']) as row:
+            from .preview_windows import verify
+            start()
+            row.update(exit_code=0, actual=verify(rec, downloads, manifest, install, data, profile_paths, client, wait, ps))
+            stop()
     except Exception as error:
         with rec.case('W-infrastructure-error', 'Runtime orchestration completes'):
             raise error

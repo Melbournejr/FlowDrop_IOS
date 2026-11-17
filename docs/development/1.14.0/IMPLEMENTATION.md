@@ -235,3 +235,48 @@ are in PR12; until executed, coexistence must not be reported as PASS.
 
 Rollback: revert the dedicated Preview commit. Neither production source nor
 workflow/release/signing configuration is changed by this addition.
+
+## Windows Preview installation beside the current app
+
+The owner requested the same separation for Windows. The earlier regular TEST
+ONLY EXE uses production install/data paths and is not a side-by-side installer.
+`scripts/windows_preview.py` now builds **FlowDrop Preview** in an isolated source
+overlay. The original Windows/native/Node source, installer and update verifier
+in Git remain unchanged. Runtime build verification produces both installers;
+the publisher and all workflows are unchanged.
+
+Preview executable: `FlowDropPreview.exe`. Default program directory:
+`%LOCALAPPDATA%\Programs\FlowDrop Preview`; data/DPAPI/trust/settings/history:
+`%LOCALAPPDATA%\FlowDrop Preview\Data`; default receive directory: the system
+Downloads folder plus `FlowDrop Preview`. Native class/mutex, firewall preference
+registry, uninstall registry, Desktop/Start menu/Send To links and process are
+separate. Its startup and stop helper always target its own data path even if
+an inherited `FLOWDROP_DATA_DIR` points to the original app. HTTP uses the existing
+ephemeral-port mechanism; TLS/discovery/file protocol, icon/fonts, Node/npm and
+signing/update public keys are retained.
+
+The Preview updater has no network/feed/download/installer implementation. A
+manual update click explains using a separate Preview installer, the automatic
+checkbox is disabled, and local API attempts cannot enable/install production
+updates. Both interactive directory validation and the installation section
+reject an existing `FlowDrop.exe`; silent `/D=<original>` must exit2 before any
+original program is stopped or changed. Uninstall targets only Preview program,
+shortcuts and registration; received files and Preview data remain outside it.
+
+Required W22 on the owned Windows VM installs both variants, verifies payload,
+two HWND classes and process/backend identities/ports/data paths, separate Send To,
+single-instance routing, rejected update toggles and the original-directory
+guard. It uninstalls only Preview and checks original EXE/data
+canary/device ID/shortcut SHA, registry and still-running backend. This uses the
+source-built test app in a fresh VM, not the owner's real installation. New unit
+tests cover overlay isolation, disabled updater execution and artifact rejection;
+unit results alone do not establish Windows installation/runtime success.
+
+Use only `FlowDrop-Preview-Setup-1.14.0-Windows-x64-TEST-ONLY.exe` for side-by-side
+testing. The regular `FlowDrop-Setup-...` file in the same CI archive still uses
+the original install paths. Final-head CI and artifact hashes are recorded in
+PR12 after execution. No merge/release or Authenticode/production key use.
+
+Rollback: revert the Windows Preview commit; keep the original app/data. On a
+test machine use the **FlowDrop Preview** uninstall entry, never the original
+FlowDrop entry. Physical Windows10/11 Wi-Fi/OEM interoperability remains unverified.

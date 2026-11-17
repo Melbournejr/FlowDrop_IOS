@@ -162,7 +162,7 @@
     {
       "path": "scripts/native_build_ci/artifacts.py",
       "base_sha256": "1a463adce3a24ce982e47d4456c90cdc2292efbdb4ec47e5b3a699b6fc43ff14",
-      "sha256": "cf0701596336406b930ee8945ed178801838fdfddbd88b2054a08d56d07700cf"
+      "sha256": "bdecbda374df451bb0c610cdff955501a6b080e47e1d52b58b08e9b2ec6acea4"
     },
     {
       "path": "scripts/native_build_ci/runner.py",
@@ -172,7 +172,7 @@
     {
       "path": "scripts/native_build_ci/verify.py",
       "base_sha256": "8a80753c8bf946b4c8d29106eeed762abee4b81dd175e3062307041e68947d66",
-      "sha256": "7dd4413c252b59e286225e33a302129264eeba9be3d31c5423abcf0106640cc4"
+      "sha256": "9601ad349bc08dfb79e40c2ddcd7b6b4853873e967179be41465a49b55ad860f"
     },
     {
       "path": "scripts/native_runtime_ci/android.py",
@@ -182,7 +182,7 @@
     {
       "path": "scripts/native_runtime_ci/build.py",
       "base_sha256": "d5cf91325983d397177b61759b3db70cef5617e90edb47f3acc44e787f95d4f5",
-      "sha256": "97569cb498a1a90c146945c019207c5c9c55784e8e08e5be3f85df7fd00d9fa0"
+      "sha256": "86a43e51ca5934c97924f0e56df9df0aeb061323e94e2a3a0e3ef5e2acf2e2ee"
     },
     {
       "path": "scripts/native_runtime_ci/common.py",
@@ -192,12 +192,17 @@
     {
       "path": "scripts/native_runtime_ci/definitions.py",
       "base_sha256": "492de052cd6c143c7e4bf076ee0f88035c64c5176f9c83f3ee2d942c8bec5365",
-      "sha256": "ed1a44a227ef22ce4f6673c5a832d80d2bcf152cb4ba410d292ee945837ddecc"
+      "sha256": "660695565bdbbafb9da57d6700c44c2e9b1ca6e7a90842875a644422effcdc23"
+    },
+    {
+      "path": "scripts/native_runtime_ci/preview_windows.py",
+      "base_sha256": null,
+      "sha256": "4307bd94ce421561c97f4a718a677108671543cdaacd5fef29fa43592e386e91"
     },
     {
       "path": "scripts/native_runtime_ci/windows.py",
       "base_sha256": "9a4b5fc9e0be422a38115ca013c70b0544495da611d205a97f7557ba09f31b0d",
-      "sha256": "b8b13ba3407e48dae010d4d67aa3ba84e604acc1eeb89646b7da250ac0496dd4"
+      "sha256": "9b3687d9a0a2d87eab7c44ca65e774f2bc1977357fb192be88244cb3a3e51b8b"
     },
     {
       "path": "scripts/peer-offers.mjs",
@@ -213,6 +218,11 @@
       "path": "scripts/request-security.mjs",
       "base_sha256": "4a468c6292d151bebcca51df4ce86f304e7b9a74a5116a7e5e2ad74ab8c52bc3",
       "sha256": "da69a4c5d2f244573a4b400bb316c825bf3d749815aea47ee6661c81f8779ec3"
+    },
+    {
+      "path": "scripts/windows_preview.py",
+      "base_sha256": null,
+      "sha256": "1264d22f8e4153f6b7494b27a7535c0e192026a93c39eee112aa02c7634afdb7"
     },
     {
       "path": "tests/CodeLookupLateHarness.java",
@@ -268,6 +278,11 @@
       "path": "tests/ci/test_runner.py",
       "base_sha256": "f7f675b252cccc33207e29b0fef867a989003bd40aca255fb5892bd9e0d343fc",
       "sha256": "5fe400f09333da4fcfe8d8f14d9977acccc06528a20b475b9e3ad0afd79adfb9"
+    },
+    {
+      "path": "tests/ci/test_windows_preview.py",
+      "base_sha256": null,
+      "sha256": "e3d112db0996b68e8d8d7c5e86e199c269b9e45ca4a03ee6ede60b6e5e91570b"
     },
     {
       "path": "tests/code-114.test.mjs",

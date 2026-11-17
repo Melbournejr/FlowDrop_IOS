@@ -21,6 +21,7 @@ WINDOWS = {
  'W19-restart': 'Application/backend restart and synthetic received files retain SHA-256',
  'W20-uninstall': 'NSIS uninstall actually removes app, processes, owned shortcuts and uninstall registry',
  'W21-preserve-data': 'Uninstall preserves synthetic user data according to baseline NSIS design',
+ 'W22-preview-coexistence': 'Preview installs/runs/uninstalls beside the original with isolated paths/identity/IPC/shortcuts/registry and no production updater',
 }
 ANDROID = {
  'A01-environment': 'Linux hardware acceleration/owned emulator requirements available',

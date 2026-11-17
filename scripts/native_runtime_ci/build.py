@@ -15,7 +15,7 @@ from scripts.native_build_ci.toolchain import provision, tool_env
 from scripts.native_build_ci.verify import verify_apk, pe_info, reject_secret_bytes
 from .common import protected_source
 from .test_sources import windows_driver
-from scripts import android_preview
+from scripts import android_preview, windows_preview
 
 
 def checksums(directory):
@@ -162,6 +162,18 @@ def windows(root, cache):
     write_json(export / 'helper-manifest.json', {'status': 'PASS', 'purpose': 'TEST ONLY native OS smoke helpers',
                'source': report['source'], 'compiler_commands': journal.entries, 'files': files})
     checksums(export)
+    # Build Preview only in the runtime verification producer, never the publisher.
+    preview_journal = c2.Journal(root, env)
+    preview_journal.entries = json.loads((root / 'logs/commands.json').read_text())
+    preview_env = dict(env)
+    preview_env.update(FLOWDROP_NATIVE_WORK_ROOT=str(root), FLOWDROP_BUILD_STEP_REPORT=str(root / 'logs/builder-steps.jsonl'))
+    setup, report['windows_preview'] = windows_preview.build(source, root, preview_journal, preview_env)
+    report['builder_steps'] = [json.loads(line) for line in (root / 'logs/builder-steps.jsonl').read_text().splitlines()]
+    if any(step['exit_code'] != 0 for step in report['builder_steps']):
+        raise RuntimeError('Windows Preview compiler/packager step failed')
+    write_json(root / 'logs/build-results.json', report)
+    c2.export_files(root, [(source / 'artifacts/FlowDrop-Setup-1.14.0-Windows-x64.exe', 'FlowDrop-Setup-1.14.0-Windows-x64-TEST-ONLY.exe'),
+                          (setup, windows_preview.SETUP)], report, preview_journal)
     return report
 
 
