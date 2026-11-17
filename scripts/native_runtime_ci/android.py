@@ -13,6 +13,7 @@ from scripts.native_build_ci.verify import verify_apk
 from .common import Blocked, Recorder, REPO, clean_env, json_file, protected_source, sanitize, sha256, verify_export
 from .definitions import ANDROID, INSTRUMENTATIONS
 from .sdk import prepare
+from scripts import android_preview
 
 
 def instrumentation_result(output, code):
@@ -68,6 +69,7 @@ def run(root, artifact, api):
     source = protected_source()
     rec = Recorder(root, 'android-api-' + str(api), source)
     tools, emulator, raw_emulator, installed, forwarding = None, None, None, False, None
+    preview_installed = False
     serial = 'emulator-5554'
     def adb(name, *args, check=True, timeout=120):
         if tools is None or not serial.startswith('emulator-'):
@@ -151,6 +153,11 @@ def run(root, artifact, api):
             assert app['sha256'] == manifest['android']['sha256'] and test['sha256'] == manifest['instrumentation']['sha256']
             assert manifest['derived_test_harness']['original_tests_retained'] == 4
             assert manifest['derived_test_harness']['additional_runner'] == INSTRUMENTATIONS['A13-runtime-smoke']
+            preview_apk = Path(artifact) / android_preview.APK_NAME
+            preview_source, _ = android_preview.prepare(REPO, tools['tool'])
+            preview = verify_apk(preview_apk, preview_source, tools['tool'], VerifyJournal(), certificate, preview=True)
+            assert preview['sha256'] == manifest['preview']['sha256']
+            rec.artifact['preview'] = preview['sha256']
             row.update(exit_code=0, actual={'app': app['identity'], 'test_package': test['identity']['package'], 'same_test_certificate_sha256': certificate})
         if rec.cases[-1]['status'] != 'PASS':
             raise Blocked("A preceding required Android prerequisite did not complete")
@@ -224,6 +231,51 @@ def run(root, artifact, api):
                     time.sleep(.5)
             assert ready and ready['name'] == 'FlowDrop'
             row.update(exit_code=0, actual={'force_stop_observed': True, 'real_backend_restarted': True})
+        with rec.case('A17-preview-coexistence', ANDROID['A17-preview-coexistence']) as row:
+            existing, _ = adb('check-no-existing-preview', 'shell', 'pm', 'path', android_preview.PACKAGE, check=False)
+            assert 'package:' not in existing, 'Refusing to replace an existing Preview'
+            instr('preview-marker-before', INSTRUMENTATIONS['A13-runtime-smoke'], [('mode', 'preview-before')])
+            def original_hash(name):
+                paths, _ = adb(name + '-path', 'shell', 'pm', 'path', 'app.flowdrop.mobile')
+                path = paths.strip().removeprefix('package:')
+                assert re.fullmatch(r'/data/app/[A-Za-z0-9_./=+~-]+/base.apk', path), 'Unexpected owned app APK path'
+                raw, _ = adb(name + '-sha', 'shell', 'sha256sum', path)
+                assert raw.split()[0] == manifest['android']['sha256'], 'Original installed APK changed'
+                return raw.split()[0]
+            before = original_hash('original-before-preview')
+            adb('install-preview-beside-original', 'install', preview_apk, timeout=180)
+            preview_installed = True
+            packages, _ = adb('coexisting-package-uids', 'shell', 'pm', 'list', 'packages', '-U', 'app.flowdrop')
+            uids = dict(re.findall(r'package:(app\.flowdrop\.(?:mobile|preview)) uid:(\d+)', packages))
+            assert set(uids) == {'app.flowdrop.mobile', android_preview.PACKAGE} and len(set(uids.values())) == 2
+            directories = {}
+            for package in uids:
+                details, _ = adb('coexisting-data-' + package, 'shell', 'dumpsys', 'package', package)
+                match = re.search(r'\bdataDir=(\S+)', details)
+                assert match, 'Package data directory not observable'
+                directories[package] = match[1]
+            assert len(set(directories.values())) == 2
+            adb('launch-preview-activity', 'shell', 'am', 'start', '-W', '-n', android_preview.PACKAGE + '/.MainActivity')
+            for _ in range(60):
+                state, _ = adb('preview-resumed-state', 'shell', 'dumpsys', 'activity', 'activities')
+                if re.search(r'(?:mResumedActivity|topResumedActivity).*app\.flowdrop\.preview/\.MainActivity', state):
+                    break
+                time.sleep(.5)
+            else:
+                raise AssertionError('Preview Activity did not resume')
+            jobs, _ = adb('preview-job-state', 'shell', 'dumpsys', 'jobscheduler')
+            assert not re.search(r'app\.flowdrop\.preview/.*UpdateJobService', jobs), 'Preview scheduled production updates'
+            adb('uninstall-only-preview', 'uninstall', android_preview.PACKAGE)
+            preview_installed = False
+            removed, _ = adb('confirm-preview-removed', 'shell', 'pm', 'path', android_preview.PACKAGE, check=False)
+            assert 'package:' not in removed
+            assert original_hash('original-after-preview') == before
+            instr('preview-marker-after', INSTRUMENTATIONS['A13-runtime-smoke'], [('mode', 'preview-after')])
+            adb('launch-original-after-preview', 'shell', 'am', 'start', '-W', '-n', 'app.flowdrop.mobile/.MainActivity')
+            state, _ = adb('original-after-preview-state', 'shell', 'dumpsys', 'activity', 'activities')
+            assert re.search(r'(?:mResumedActivity|topResumedActivity).*app\.flowdrop\.mobile/\.MainActivity', state)
+            row.update(exit_code=0, actual={'distinct_uids': uids, 'distinct_data_directories': directories,
+                'preview_launched': True, 'preview_uninstalled': True, 'original_apk_unchanged': True, 'original_private_marker_preserved': True})
         with rec.case('A15-crash-anr', ANDROID['A15-crash-anr']) as row:
             raw, code = adb('app-logcat-source', 'logcat', '-d', '-v', 'threadtime', check=False, timeout=60)
             assert code == 0, 'Could not inspect actual Android logcat'
@@ -235,7 +287,7 @@ def run(root, artifact, api):
             (rec.root / 'logs/android-app-logcat.log').write_text(sanitize('\n'.join(lines[i] for i in sorted(selected)), rec.secrets), encoding='utf-8')
             # Keep filtered app evidence only, not a whole device log dump.
             (rec.root / 'logs/app-logcat-source.log').unlink(missing_ok=True)
-            assert 'Process: app.flowdrop.mobile' not in raw and 'ANR in app.flowdrop.mobile' not in raw, 'Android app crash/ANR detected'
+            assert all('Process: ' + pkg not in raw and 'ANR in ' + pkg not in raw for pkg in ['app.flowdrop.mobile', android_preview.PACKAGE]), 'Android app/Preview crash/ANR detected'
             adb('final-activity-state', 'shell', 'dumpsys', 'activity', 'activities')
             adb('final-service-state', 'shell', 'dumpsys', 'activity', 'services', 'app.flowdrop.mobile')
             row.update(exit_code=0, actual={'app_crash': False, 'app_anr': False}, evidence_path='logs/android-app-logcat.log')
@@ -247,6 +299,8 @@ def run(root, artifact, api):
             if tools is None or emulator is None or emulator.poll() is not None:
                 raise Blocked('Emulator unavailable for uninstall/cleanup verification')
             if installed:
+                if preview_installed:
+                    adb('cleanup-owned-preview', 'uninstall', android_preview.PACKAGE)
                 adb('uninstall-test', 'uninstall', 'app.flowdrop.mobile.test', check=False)
                 adb('uninstall-app', 'uninstall', 'app.flowdrop.mobile')
                 paths, _ = adb('confirm-app-removed', 'shell', 'pm', 'path', 'app.flowdrop.mobile', check=False)

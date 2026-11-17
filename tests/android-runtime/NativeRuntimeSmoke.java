@@ -122,5 +122,12 @@ public final class NativeRuntimeSmoke extends Instrumentation {
   for(JSONObject receipt:saved)check(receipt.getString("sha256").equals(hash(read(context.getContentResolver().openInputStream(Uri.parse(receipt.getString("uri")))))),"Restart or collision changed received data");
   passed("stop-restart-data-preserved",new JSONObject().put("filesVerified",saved.size()).put("deviceIdentityPreserved",true));
  }
- public void onStart(){Bundle result=new Bundle();try{if("prepare".equals(arguments.getString("mode"))){AppUpdates.configure(getTargetContext(),false);check(!AppUpdates.automatic(getTargetContext()),"Could not disable automatic updates in isolated test profile");passed("isolated-update-settings",new JSONObject().put("automatic",false));}else if("permissions".equals(arguments.getString("mode")))permissions(result);else core();result.putString("result",new JSONObject().put("passed",true).put("sdk",Build.VERSION.SDK_INT).put("checks",checks).toString());finish(Activity.RESULT_OK,result);}catch(Throwable failure){result.putString("failure",android.util.Log.getStackTraceString(failure));result.putString("completedChecks",checks.toString());finish(Activity.RESULT_CANCELED,result);}}
+ private void previewMarker()throws Exception{
+  File marker=new File(getTargetContext().getFilesDir(),"preview-coexistence.marker");byte[] expected="original-app-private-marker".getBytes("UTF-8");
+  if("preview-before".equals(arguments.getString("mode")))try(FileOutputStream out=new FileOutputStream(marker)){out.write(expected);}
+  byte[] actual=java.nio.file.Files.readAllBytes(marker.toPath());check(Arrays.equals(expected,actual),"Preview changed original private data");
+  if("preview-after".equals(arguments.getString("mode")))check(marker.delete(),"Could not clean owned marker");
+  passed("preview-original-private-marker",new JSONObject().put("preserved",true));
+ }
+ public void onStart(){Bundle result=new Bundle();try{if("prepare".equals(arguments.getString("mode"))){AppUpdates.configure(getTargetContext(),false);check(!AppUpdates.automatic(getTargetContext()),"Could not disable automatic updates in isolated test profile");passed("isolated-update-settings",new JSONObject().put("automatic",false));}else if("permissions".equals(arguments.getString("mode")))permissions(result);else if(arguments.getString("mode","").startsWith("preview-"))previewMarker();else core();result.putString("result",new JSONObject().put("passed",true).put("sdk",Build.VERSION.SDK_INT).put("checks",checks).toString());finish(Activity.RESULT_OK,result);}catch(Throwable failure){result.putString("failure",android.util.Log.getStackTraceString(failure));result.putString("completedChecks",checks.toString());finish(Activity.RESULT_CANCELED,result);}}
 }

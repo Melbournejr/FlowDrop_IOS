@@ -201,3 +201,37 @@ recorder's combined stderr/stdout stream, causing JSONDecodeError in W05 before
 app launch. Error records now end with a newline; the same probe assertions and
 native runtime prerequisites remain mandatory. This is a log framing fix, not
 a relaxation of corruption rejection or a claim that later native tests ran.
+
+## Android Preview installation beside the current app
+
+The owner requested a separately named app after discovering the TEST ONLY APK
+cannot replace production because its signing certificate differs. A display
+name alone does not isolate Android packages. The new **FlowDrop Preview** build
+uses `app.flowdrop.preview`; the original `app.flowdrop.mobile` source/manifest,
+version, production certificate pin and update verifier remain unchanged.
+
+`scripts/android_preview.py` makes an isolated working-source overlay, relocates
+the Java namespace/internal actions, and directs received files/folders/media to
+`Download/FlowDrop Preview` and `DCIM/FlowDrop Preview`. Private settings, history,
+device identity, KeyStore and trust are scoped by its separate Android UID. The
+default advertised name includes Preview; its preferred HTTP port is5175 with
+the existing dynamic conflict fallback. The TLS/file/discovery protocol remains
+unchanged, so Preview can pair with1.14 Windows;1.13 still needs explicit legacy.
+
+Preview has no production feed/PackageInstaller entry points, update service,
+boot receiver or install/update permissions. Its updater UI reports that a new
+Preview APK must be installed manually. The APK is test-signed; new CI runs use
+new disposable keys, so a later Preview may require uninstalling only Preview.
+Do not remove the original FlowDrop or its data. No production key is accessed.
+
+The existing runtime producer exports a clearly named Preview APK after real
+compiler/signature/zipalign/resource verification. Required A17 runs on API29/35:
+install beside the original-package test app, check distinct UID/data directory,
+launch Preview, observe no updater job, uninstall only Preview, then verify the
+original APK SHA/private-data marker and launch. These tests use an isolated
+emulator and a test-signed original-package app, not the owner's production phone.
+Existing native groups remain mandatory. Final-head run/results/download links
+are in PR12; until executed, coexistence must not be reported as PASS.
+
+Rollback: revert the dedicated Preview commit. Neither production source nor
+workflow/release/signing configuration is changed by this addition.

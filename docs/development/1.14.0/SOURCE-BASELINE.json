@@ -100,6 +100,11 @@
       "sha256": "3ef8e491cf5bfe9e7526cead726a21457b8fdd10bb33e71de5301ec21fdb6ab0"
     },
     {
+      "path": "scripts/android_preview.py",
+      "base_sha256": null,
+      "sha256": "8d0e38c489eb33013df65ed93f34e91fd1121d7dc3234701bad809e9a6e2b585"
+    },
+    {
       "path": "scripts/build-installers.py",
       "base_sha256": "b708ae17f4973e649f7015a3ee334048abbb1074dbeb67a0e5d302e868d3fbec",
       "sha256": "54a0915e0af497e27559eb0547e8a2453cc5556b6605287dae343dbe216c212f"
@@ -157,7 +162,7 @@
     {
       "path": "scripts/native_build_ci/artifacts.py",
       "base_sha256": "1a463adce3a24ce982e47d4456c90cdc2292efbdb4ec47e5b3a699b6fc43ff14",
-      "sha256": "3156276fd4bf8f2e2aed10dfbc5c990271c63a60b7c26182efe223d0e76e34c0"
+      "sha256": "e495324beb2dfcdc9f64d5fd34e67bc7e6dbe946e7d63d33de07b008bdeb675c"
     },
     {
       "path": "scripts/native_build_ci/runner.py",
@@ -167,17 +172,17 @@
     {
       "path": "scripts/native_build_ci/verify.py",
       "base_sha256": "8a80753c8bf946b4c8d29106eeed762abee4b81dd175e3062307041e68947d66",
-      "sha256": "e6e072c55bf739792155659a82acb13231a9e509dbc05542fecfa50f39254768"
+      "sha256": "7dd4413c252b59e286225e33a302129264eeba9be3d31c5423abcf0106640cc4"
     },
     {
       "path": "scripts/native_runtime_ci/android.py",
       "base_sha256": "5adb46a151ae19babb8a56d26202094b07a02a1195495b3dceef2d4ac36bb3e9",
-      "sha256": "49f031cffe33422228503224e0007ed92293775774bbcbeea180a8f6ffc26da6"
+      "sha256": "7bcec52b67b263feef304185fb1d5e16c82c69011e601ccc0fb68ebc60d0cce2"
     },
     {
       "path": "scripts/native_runtime_ci/build.py",
       "base_sha256": "d5cf91325983d397177b61759b3db70cef5617e90edb47f3acc44e787f95d4f5",
-      "sha256": "720001659e4145d92ffac2d8a05b3d4d795d467b1fa3373374d07ecbf56ec5be"
+      "sha256": "97569cb498a1a90c146945c019207c5c9c55784e8e08e5be3f85df7fd00d9fa0"
     },
     {
       "path": "scripts/native_runtime_ci/common.py",
@@ -187,7 +192,7 @@
     {
       "path": "scripts/native_runtime_ci/definitions.py",
       "base_sha256": "492de052cd6c143c7e4bf076ee0f88035c64c5176f9c83f3ee2d942c8bec5365",
-      "sha256": "3e9555a5267759a7a9d2e1f39ea709c6da7ff2ab15604c3e5eec4af4bda85d79"
+      "sha256": "ed1a44a227ef22ce4f6673c5a832d80d2bcf152cb4ba410d292ee945837ddecc"
     },
     {
       "path": "scripts/native_runtime_ci/windows.py",
@@ -237,12 +242,17 @@
     {
       "path": "tests/android-runtime/NativeRuntimeSmoke.java",
       "base_sha256": "1b66760dad004c1324c2dc3b5ce9ef019eff0c4d1264a43993d5d19d56a92899",
-      "sha256": "64f2a3f23107092503944cf9c9df37fdf531040fa4502e8fbc6d56752da7c47f"
+      "sha256": "84dd79af5937843d340c5d0ce934451c3b150dc7c07dbad41517a16fb30b0120"
     },
     {
       "path": "tests/ci/run.py",
       "base_sha256": "685f15b8246830901dd8d0403e1785c81ed09a4a6fd697700848004dc8e3df50",
       "sha256": "30b2b93aad36e75385d64bef3da3d4f6020c2f9050fec8a125536631f7b9a7c7"
+    },
+    {
+      "path": "tests/ci/test_android_preview.py",
+      "base_sha256": null,
+      "sha256": "db9c95193d889ac84da1aa4ec32fb8123dda59657c5db40db783dae010e21d18"
     },
     {
       "path": "tests/ci/test_feature_baseline.py",

@@ -20,13 +20,20 @@ PLUGINS = {'$PLUGINSDIR/modern-wizard.bmp', '$PLUGINSDIR/nsDialogs.dll', '$PLUGI
 
 def check_export(directory, role):
     directory = Path(directory).resolve()
+    manifest = json.loads((directory / 'artifact-manifest.json').read_text())
+    expected_names = set(NAMES[role])
+    if 'preview' in manifest:
+        from scripts.android_preview import APK_NAME, PACKAGE, LABEL
+        if role != 'android' or manifest['preview'].get('status') != 'PASS' or manifest['preview'].get('identity', {}).get('package') != PACKAGE or manifest['preview'].get('overlay', {}).get('label') != LABEL:
+            raise Blocked('Preview must be independently verified and explicitly declared')
+        expected_names.add(APK_NAME)
     paths = set()
     for file in directory.rglob('*'):
         if file.is_symlink():
             raise Blocked('Artifact export contains a link')
         if file.is_file():
             name = file.relative_to(directory).as_posix()
-            if name not in NAMES[role] | {'artifact-manifest.json', 'SHA256SUMS.txt'} and not (
+            if name not in expected_names | {'artifact-manifest.json', 'SHA256SUMS.txt'} and not (
                     name.startswith('logs/') and len(Path(name).parts) == 2 and file.suffix in ['.json', '.jsonl', '.log']):
                 raise Blocked('Artifact export contains an unexpected file')
             reject_secret_bytes(file.read_bytes())
@@ -37,12 +44,13 @@ def check_export(directory, role):
         if not match or archive_name(match[2]) is None or match[2] in checksums:
             raise Blocked('Malformed/duplicate artifact checksum record')
         checksums[match[2]] = match[1]
-    if set(checksums) != paths - {'SHA256SUMS.txt'} or not NAMES[role].issubset(paths):
+    if set(checksums) != paths - {'SHA256SUMS.txt'} or not expected_names.issubset(paths):
         raise Blocked('Artifact checksum inventory incomplete')
     for name, expected in checksums.items():
         if digest(directory / name) != expected:
             raise Blocked('Downloaded artifact SHA-256 mismatch')
-    manifest = json.loads((directory / 'artifact-manifest.json').read_text())
+    if 'preview' in manifest and digest(directory / APK_NAME) != manifest['preview'].get('sha256'):
+        raise Blocked('Preview APK differs from verification manifest')
     if manifest.get('status') != 'PASS' or manifest.get('role') != role:
         raise Blocked('Builder did not complete verification')
     if not manifest.get('builder_steps') or any(step['exit_code'] != 0 for step in manifest['builder_steps']):

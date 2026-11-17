@@ -39,6 +39,7 @@ ANDROID = {
  'A14-force-stop': 'Force-stop removes app backend, restart resumes Activity and backend without a crash',
  'A15-crash-anr': 'App-specific logcat and Activity/service state contain no crash or ANR',
  'A16-uninstall': 'App/test package actually removed and only owned emulator/adb processes cleaned',
+ 'A17-preview-coexistence': 'Preview installs beside the original app with separate UID/data directory, launches, and uninstalls without changing original APK/private marker',
 }
 INSTRUMENTATIONS = {
  'A09-native-smoke': 'app.flowdrop.mobile.test.NativeSmoke',

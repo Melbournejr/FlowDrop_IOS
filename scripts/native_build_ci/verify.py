@@ -38,13 +38,15 @@ def certificate_fingerprint(output):
     return found[0].lower()
 
 
-def verify_apk(path, source, root, journal, expected_cert, instrumentation=False, secrets=()):
+def verify_apk(path, source, root, journal, expected_cert, instrumentation=False, secrets=(), preview=False):
     path, source, root = Path(path), Path(source), Path(root)
     if expected_cert == PRODUCTION_CERT or not re.fullmatch('[0-9a-f]{64}', expected_cert):
         raise Blocked('Only a distinct test certificate is permitted')
     bt = root / 'tools/sdk/build-tools/android-15'
     java = root / 'jdk/bin/java'
-    label = 'instrumentation' if instrumentation else 'app'
+    if preview and instrumentation:
+        raise Blocked('Preview is a separate application, not production instrumentation')
+    label = 'preview' if preview else 'instrumentation' if instrumentation else 'app'
     signature = journal.run(label + '-signature', [java, '-jar', bt / 'lib/apksigner.jar', 'verify', '--verbose', '--print-certs', path])
     actual_cert = certificate_fingerprint(signature)
     if actual_cert != expected_cert:
@@ -53,7 +55,9 @@ def verify_apk(path, source, root, journal, expected_cert, instrumentation=False
     badging = journal.run(label + '-badging', [bt / 'aapt2', 'dump', 'badging', path])
     actual = apk_identity(badging)
     manifest = ET.parse(source / ('tests/android-native-smoke/AndroidManifest.xml' if instrumentation else 'android/AndroidManifest.xml')).getroot()
-    expected_package = 'app.flowdrop.mobile.test' if instrumentation else 'app.flowdrop.mobile'
+    expected_package = 'app.flowdrop.preview' if preview else 'app.flowdrop.mobile.test' if instrumentation else 'app.flowdrop.mobile'
+    if preview and ("application-label:'FlowDrop Preview'" not in badging or manifest.get('package') != expected_package):
+        raise Blocked('Preview APK must have its separate package and visible label')
     if actual['package'] != expected_package or actual['min_sdk'] != 29 or actual['target_sdk'] != 35:
         raise Blocked('APK package or SDK levels changed')
     if not instrumentation and (actual['version_code'] != '15' or actual['version_name'] != '1.14.0'):

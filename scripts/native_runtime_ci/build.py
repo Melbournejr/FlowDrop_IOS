@@ -15,6 +15,7 @@ from scripts.native_build_ci.toolchain import provision, tool_env
 from scripts.native_build_ci.verify import verify_apk, pe_info, reject_secret_bytes
 from .common import protected_source
 from .test_sources import windows_driver
+from scripts import android_preview
 
 
 def checksums(directory):
@@ -104,10 +105,15 @@ def android(root, cache, adapt):
         if any(step['exit_code'] != 0 for step in report['builder_steps']):
             raise RuntimeError('Frozen builder reported a failed child')
         values = [signing['FLOWDROP_ANDROID_STORE_PASSWORD'], signing['FLOWDROP_ANDROID_KEY_PASSWORD']]
+        preview, report['preview'] = android_preview.build(source, root, journal, signing, fingerprint)
+        report['builder_steps'] = [json.loads(line) for line in (root / 'logs/builder-steps.jsonl').read_text().splitlines()]
+        if any(step['exit_code'] != 0 for step in report['builder_steps']):
+            raise RuntimeError('Preview compiler/packager step failed')
         remove_child(root, root / 'test-secrets')
         write_json(root / 'logs/build-results.json', report)
         c2.export_files(root, [(app, 'FlowDrop-1.14.0-Android-TEST-ONLY.apk'),
-                        (extended, 'FlowDrop-1.14.0-Android-Instrumentation-TEST-ONLY.apk')], report, journal, values)
+                        (extended, 'FlowDrop-1.14.0-Android-Instrumentation-TEST-ONLY.apk'),
+                        (preview, android_preview.APK_NAME)], report, journal, values)
         return report
     finally:
         if (root / 'test-secrets').exists():
