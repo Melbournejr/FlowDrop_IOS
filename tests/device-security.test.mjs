@@ -6,6 +6,10 @@ import path from 'node:path';
 import https from 'node:https';
 import {DeviceSecurity,deviceVault} from '../scripts/device-security.mjs';
 
+test('Windows request signature has a fixed cross-platform canonical byte vector',()=>{
+ assert.equal(DeviceSecurity.prototype.signature('11'.repeat(32),'POST','/api/secure/session','1763384400000','22'.repeat(32),''),'d06e638576c1c502ed2303468c665db07cec48e91adfc45debf841d0b298a519');
+});
+
 test('real TLS, two-screen pairing, identity pin, expiring authenticated sessions and replay rejection',async()=>{
  const scratch=await mkdtemp(path.join(tmpdir(),'flowdrop-secure-unit-')),servers=[];
  try{

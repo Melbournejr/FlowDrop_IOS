@@ -257,7 +257,7 @@
     {
       "path": "tests/android-runtime/NativeRuntimeSmoke.java",
       "base_sha256": "1b66760dad004c1324c2dc3b5ce9ef019eff0c4d1264a43993d5d19d56a92899",
-      "sha256": "84dd79af5937843d340c5d0ce934451c3b150dc7c07dbad41517a16fb30b0120"
+      "sha256": "dfb8f5876b43fa91acb6a23ce4814f31d2fda0e20bf60c177d10a94472380768"
     },
     {
       "path": "tests/ci/run.py",
@@ -302,7 +302,7 @@
     {
       "path": "tests/device-security.test.mjs",
       "base_sha256": null,
-      "sha256": "e6f8e82cc0518a68a5bd329c17811947b09c797759c6765e3c73984a54b90685"
+      "sha256": "730ee538b1289db47db7b1cfc3d3178057daa1e5954f375151cd088995ff0d2c"
     },
     {
       "path": "tests/discovery-integration.mjs",
