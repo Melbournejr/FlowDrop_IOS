@@ -37,7 +37,7 @@
     {
       "path": "android/src/app/flowdrop/mobile/DeviceSecurity.java",
       "base_sha256": null,
-      "sha256": "de403f9d5b7533d5f4dfb4b660e43c10c2e2ed9605f7902a8e8755ecea5b4b61"
+      "sha256": "e46bf99e87d25e798f4e162f07544fffb62ac2a98b534c48ea6ed7db99977063"
     },
     {
       "path": "android/src/app/flowdrop/mobile/HostService.java",
@@ -235,6 +235,11 @@
       "sha256": "c751b4167fee2f7e30409398ac003711cb797f4ffdad0538829ca7b735458fa0"
     },
     {
+      "path": "tests/RequestCanonicalHarness.java",
+      "base_sha256": null,
+      "sha256": "2f965778847d23d09ad7abffc83df11f9421806fccb0345f2c7da95de14eaa32"
+    },
+    {
       "path": "tests/SecureHostHarness.java",
       "base_sha256": null,
       "sha256": "58e40b5fb0c68963118d4d6463668d25f28edd1313d4357ac3163d941f3ad29d"
@@ -260,9 +265,14 @@
       "sha256": "dfb8f5876b43fa91acb6a23ce4814f31d2fda0e20bf60c177d10a94472380768"
     },
     {
+      "path": "tests/canonical-auth-114.test.mjs",
+      "base_sha256": null,
+      "sha256": "0ad048d9925ed269746ff22f9d56c1f2324ecf4e53b61d582f4e8edff70a4911"
+    },
+    {
       "path": "tests/ci/run.py",
       "base_sha256": "685f15b8246830901dd8d0403e1785c81ed09a4a6fd697700848004dc8e3df50",
-      "sha256": "30b2b93aad36e75385d64bef3da3d4f6020c2f9050fec8a125536631f7b9a7c7"
+      "sha256": "58ff5187e4a824646ede44bc25cb62ba90a1edb2f93cbd12e53d586aa441835a"
     },
     {
       "path": "tests/ci/test_android_preview.py",

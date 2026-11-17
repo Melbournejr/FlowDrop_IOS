@@ -283,3 +283,51 @@ PR12 after execution. No merge/release or Authenticode/production key use.
 Rollback: revert the Windows Preview commit; keep the original app/data. On a
 test machine use the **FlowDrop Preview** uninstall entry, never the original
 FlowDrop entry. Physical Windows10/11 Wi-Fi/OEM interoperability remains unverified.
+
+## Native Android request authentication after successful pairing
+
+The owner physically paired Preview on Android16 and Windows, confirmed both
+six-digit codes, then received an authentication rejection before any file bytes
+moved. Source inspection found that Android's platform `org.json.JSONStringer`
+escapes every `/`, unlike Node `JSON.stringify` and the JVM test JSON JAR. Pairing
+transcripts contain constrained IDs/fingerprints and no slash, so their codes can
+match while the HMAC tuple containing `/api/secure/session` differs byte-for-byte.
+Both sending directions are affected. This is not a file-size limit.
+
+The [Android16 platform implementation](https://android.googlesource.com/platform/libcore/+/android16-release/json/src/main/java/org/json/JSONStringer.java)
+and Android10 source explicitly include `case '/'` in string escaping. No AOSP
+source/library is imported into the application; it is evidence only.
+
+Before fix, head `9aead915a671be43979a26fede861b16b42d2506` deliberately added a
+public Windows HMAC vector to the native A13 test, without changing production.
+Both emulator API29 and35 actually failed with **Windows/Android request signature
+mismatch (JSON slash escaping)**. JVM/Node regression remained green, exposing
+the prior coverage gap. [Before native run](https://github.com/Melbournejr/FlowDrop_IOS/actions/runs/44093541611),
+[API29 failure](https://github.com/Melbournejr/FlowDrop_IOS/actions/runs/44093541611/artifacts/14332778781),
+[API35 failure](https://github.com/Melbournejr/FlowDrop_IOS/actions/runs/44093541611/artifacts/14332258648).
+The instrumentation shell process returned0 but its terminal instrumentation
+result was failure0, not success-1; the runtime gate correctly failed.
+
+Fix: encode the known string-only HMAC tuple explicitly using the existing
+Windows `JSON.stringify` byte format, independent of Android/JVM JSON serializers.
+Quotes, backslashes, C0 controls, UTF-8, paired and lone UTF-16 surrogates are
+covered by118 Node/JVM vectors. HMAC-SHA256, tag/method/route/time/nonce/session
+fields, keys, TLS/pinning, timestamp window, anti-replay and file limits are
+unchanged. This corrects Android to the existing1.14 protocol, without a second
+accepted encoding or an HTTP fallback. Normal JSON request/response bodies and
+the already-matching pairing/SAS algorithm remain unchanged.
+
+The native Windows vector remains mandatory in A13 after the fix. Final-head
+native/build/regression/cross-platform results and APK SHA are recorded in PR12;
+source/JVM equality alone is not a physical Windows↔Android transfer PASS.
+The first local JVM attempt was blocked by sandbox EPERM; the permitted rerun
+actually compiled/executed and passed118 vectors.
+
+All Android1.14 Preview peers should use the corrected APK for secure transfers.
+Windows Preview already uses the reference byte format and needs no reinstall.
+Because CI APK keys are disposable, replacing an installed Android Preview may
+require uninstalling **only Preview**, which resets its private history/settings/
+trust; retain the original FlowDrop and any files the owner wants to keep.
+After reinstall, select the new live device and compare/confirm both six-digit
+codes again. Production1.13 remains on its explicit legacy compatibility policy.
+The unrelated Windows Wi-Fi QR is for joining an OS hotspot, not FlowDrop pairing.

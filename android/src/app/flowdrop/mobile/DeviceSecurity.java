@@ -86,7 +86,36 @@ public final class DeviceSecurity {
     if(!route.endsWith("/status")||!p.has("code")||!RequestSecurity.secret(p.optString("remoteNonce"),body.getString("nonce")))throw new IOException("Ghép nối không hợp lệ.");
     if(p.optBoolean("local")&&body.optBoolean("confirmed")){if(!p.has("secret"))p.put("secret",random());JSONObject trust=new JSONObject(p.getJSONObject("peer").toString()).put("secret",p.getString("secret"));vault.trusted().put(trust.getString("id"),trust);vault.save();p.put("complete",true);return new JSONObject().put("confirmed",true).put("secret",p.getString("secret"));}return new JSONObject().put("confirmed",false);
   }
-  private static String signature(String secret,String method,String route,String time,String nonce,String token)throws Exception{byte[] key=new byte[32];for(int i=0;i<32;i++)key[i]=(byte)Integer.parseInt(secret.substring(i*2,i*2+2),16);Mac m=Mac.getInstance("HmacSHA256");m.init(new SecretKeySpec(key,"HmacSHA256"));String value=new JSONArray().put("FlowDropRequest1").put(method).put(route).put(time).put(nonce).put(token).toString();StringBuilder out=new StringBuilder();for(byte b:m.doFinal(value.getBytes(StandardCharsets.UTF_8)))out.append(String.format(Locale.ROOT,"%02x",b&255));return out.toString();}
+  /** Match the existing Windows JSON.stringify string-array signing format.
+   * Android's org.json escapes '/', unlike the JVM test JAR and Windows.
+   * JSON is still valid either way, but an HMAC authenticates exact bytes.
+   */
+  private static String canonicalStrings(String... values){
+    StringBuilder out=new StringBuilder("[");
+    for(int n=0;n<values.length;n++){
+      if(n>0)out.append(',');out.append('"');String value=Objects.requireNonNull(values[n]);
+      for(int i=0;i<value.length();i++){
+        char c=value.charAt(i);
+        switch(c){
+          case '"':out.append("\\\"");break;
+          case '\\':out.append("\\\\");break;
+          case '\b':out.append("\\b");break;
+          case '\f':out.append("\\f");break;
+          case '\n':out.append("\\n");break;
+          case '\r':out.append("\\r");break;
+          case '\t':out.append("\\t");break;
+          default:
+            boolean loneHigh=Character.isHighSurrogate(c)&&(i+1==value.length()||!Character.isLowSurrogate(value.charAt(i+1)));
+            boolean loneLow=Character.isLowSurrogate(c)&&(i==0||!Character.isHighSurrogate(value.charAt(i-1)));
+            if(c<32||loneHigh||loneLow){out.append("\\u");for(int shift=12;shift>=0;shift-=4)out.append("0123456789abcdef".charAt((c>>>shift)&15));}
+            else out.append(c);
+        }
+      }
+      out.append('"');
+    }
+    return out.append(']').toString();
+  }
+  private static String signature(String secret,String method,String route,String time,String nonce,String token)throws Exception{byte[] key=new byte[32];for(int i=0;i<32;i++)key[i]=(byte)Integer.parseInt(secret.substring(i*2,i*2+2),16);Mac m=Mac.getInstance("HmacSHA256");m.init(new SecretKeySpec(key,"HmacSHA256"));String value=canonicalStrings("FlowDropRequest1",method,route,time,nonce,token);StringBuilder out=new StringBuilder();for(byte b:m.doFinal(value.getBytes(StandardCharsets.UTF_8)))out.append(String.format(Locale.ROOT,"%02x",b&255));return out.toString();}
   private synchronized Map<String,String> headers(String peerId,String method,String route,String token)throws Exception{JSONObject t=vault.trusted().optJSONObject(peerId);if(t==null)throw new IOException("Ghép nối thiết bị trước khi gửi hoặc nhận mã.");String time=Long.toString(System.currentTimeMillis()),nonce=random();Map<String,String> h=new HashMap<>();h.put("x-fd-id",id);h.put("x-fd-time",time);h.put("x-fd-nonce",nonce);h.put("x-fd-session",token);h.put("x-fd-mac",signature(t.getString("secret"),method,route,time,nonce,token));return h;}
   public synchronized String authorize(String method,String route,Map<String,String> h,boolean session)throws Exception{prune();String peerId=h.get("x-fd-id"),time=h.get("x-fd-time"),nonce=h.get("x-fd-nonce"),token=h.getOrDefault("x-fd-session","");JSONObject trust=vault.trusted().optJSONObject(peerId==null?"":peerId);
     if(trust==null||time==null||!time.matches("[0-9]{13}")||Math.abs(System.currentTimeMillis()-Long.parseLong(time))>120000||!hex(nonce)||nonces.containsKey(peerId+nonce)||!RequestSecurity.secret(h.get("x-fd-mac"),signature(trust.getString("secret"),method,route,time,nonce,token)))throw new IOException("Không có quyền truy cập thiết bị.");
