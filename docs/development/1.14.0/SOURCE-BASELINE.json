@@ -162,7 +162,7 @@
     {
       "path": "scripts/native_build_ci/artifacts.py",
       "base_sha256": "1a463adce3a24ce982e47d4456c90cdc2292efbdb4ec47e5b3a699b6fc43ff14",
-      "sha256": "e495324beb2dfcdc9f64d5fd34e67bc7e6dbe946e7d63d33de07b008bdeb675c"
+      "sha256": "cf0701596336406b930ee8945ed178801838fdfddbd88b2054a08d56d07700cf"
     },
     {
       "path": "scripts/native_build_ci/runner.py",
@@ -252,7 +252,7 @@
     {
       "path": "tests/ci/test_android_preview.py",
       "base_sha256": null,
-      "sha256": "db9c95193d889ac84da1aa4ec32fb8123dda59657c5db40db783dae010e21d18"
+      "sha256": "e4f1d35adce1d112dc8a4b937f9b10411eea2c8827ddaa31c3a397e510d9bdb0"
     },
     {
       "path": "tests/ci/test_feature_baseline.py",

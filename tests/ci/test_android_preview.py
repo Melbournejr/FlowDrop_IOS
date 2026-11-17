@@ -33,16 +33,16 @@ class PreviewTests(unittest.TestCase):
             self.assertNotIn('.UpdateInstallReceiver', components)
             src = output / 'android/src/app/flowdrop/preview'
             for p in src.glob('*.java'):
-                self.assertNotIn('app.flowdrop.mobile', p.read_text())
+                self.assertNotIn('app.flowdrop.mobile', p.read_text(encoding='utf-8'))
             for name in ['DeviceSecurity.java', 'RequestSecurity.java', 'ReleaseConfig.java', 'TransferServer.java']:
                 expected = original[REPO / 'android/src/app/flowdrop/mobile' / name].decode().replace('app.flowdrop.mobile', preview.PACKAGE)
-                self.assertEqual((src / name).read_text(), expected)
+                self.assertEqual((src / name).read_text(encoding='utf-8'), expected)
             for name in ['ReceiveFiles.java', 'FolderReceive.java']:
-                text = (src / name).read_text()
+                text = (src / name).read_text(encoding='utf-8')
                 self.assertNotIn('Download/FlowDrop"', text)
                 self.assertNotIn('Download/FlowDrop/', text)
                 self.assertIn('Download/FlowDrop Preview', text)
-            updater = (src / 'AppUpdates.java').read_text()
+            updater = (src / 'AppUpdates.java').read_text(encoding='utf-8')
             for forbidden in ['ReleaseConfig.FEED', 'openConnection', 'PackageInstaller', 'scheduler.schedule', 'PUBLIC_KEY']:
                 self.assertNotIn(forbidden, updater)
             for row in proof['source_overlay']:

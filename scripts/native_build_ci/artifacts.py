@@ -20,7 +20,10 @@ PLUGINS = {'$PLUGINSDIR/modern-wizard.bmp', '$PLUGINSDIR/nsDialogs.dll', '$PLUGI
 
 def check_export(directory, role):
     directory = Path(directory).resolve()
-    manifest = json.loads((directory / 'artifact-manifest.json').read_text())
+    manifest_path = directory / 'artifact-manifest.json'
+    if manifest_path.is_symlink():
+        raise Blocked('Artifact manifest cannot be a link')
+    manifest = json.loads(manifest_path.read_text())
     expected_names = set(NAMES[role])
     if 'preview' in manifest:
         from scripts.android_preview import APK_NAME, PACKAGE, LABEL
