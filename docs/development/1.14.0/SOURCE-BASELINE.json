@@ -15,6 +15,11 @@
       "sha256": "64dabeb8e429df12395be32080f6b3c67b96eee2cad49307986acaf22752df63"
     },
     {
+      "path": ".github/workflows/native-runtime-verification.yml",
+      "base_sha256": "ed8a52b2f7395bea84542fc8c1c70635051ef62ad449ff649a46e5efb6c15819",
+      "sha256": "a13e7d39aecce663f6617db3e7c1715be33bbd63e2c4fc10e7cb2eaf6d43dd9a"
+    },
+    {
       "path": "android/AndroidManifest.xml",
       "base_sha256": "93ea154b2d31e9ec8bb93d5806ea546df5aa307f6fc436c879364e736ce0bd66",
       "sha256": "605c759878127c83e45f44470caa5a82416b82d8966c0958f5dee71a65e81d03"
@@ -147,7 +152,7 @@
     {
       "path": "scripts/feature_baseline.py",
       "base_sha256": null,
-      "sha256": "fc9f487bbae02fa5fd4546bb727c021542242f745c774840d2a5e5830ea8eb8a"
+      "sha256": "d40429a119c17fe12f22039aedeca9847d1390a1b7aeef91ca6aa4ddfd42ebf0"
     },
     {
       "path": "scripts/lan-discovery.mjs",

@@ -243,7 +243,10 @@ ONLY EXE uses production install/data paths and is not a side-by-side installer.
 `scripts/windows_preview.py` now builds **FlowDrop Preview** in an isolated source
 overlay. The original Windows/native/Node source, installer and update verifier
 in Git remain unchanged. Runtime build verification produces both installers;
-the publisher and all workflows are unchanged.
+the publisher is unchanged. The existing runtime workflow adds two narrowly
+scoped uploads of already verified Preview-only APK/EXE files, avoiding accidental
+selection of the regular installer from the mixed CI bundle. The upload action
+pin, read-only permissions, opt-in labels and release boundaries are unchanged.
 
 Preview executable: `FlowDropPreview.exe`. Default program directory:
 `%LOCALAPPDATA%\Programs\FlowDrop Preview`; data/DPAPI/trust/settings/history:
