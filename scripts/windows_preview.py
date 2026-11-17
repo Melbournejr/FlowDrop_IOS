@@ -59,7 +59,20 @@ def prepare(source, root):
 '''
     text = replace_once(text, 'Section "FlowDrop Preview" SEC_MAIN', 'Section "FlowDrop Preview" SEC_MAIN' + guard)
     # NSIS must release its output/current directory before removing it.
-    text = replace_once(text, ' RMDir /r "$INSTDIR"', ' SetOutPath "$TEMP"\n RMDir /r "$INSTDIR"')
+    text = replace_once(text, ' RMDir /r "$INSTDIR"', ''' SetOutPath "$TEMP"
+ RMDir /r "$INSTDIR"
+ # A just-closed app/backend can briefly retain its working-directory handle.
+ # Retry only the empty program directory; never recurse into user data again.
+ StrCpy $R2 40
+ preview_directory_retry:
+ ClearErrors
+ RMDir "$INSTDIR"
+ IfErrors 0 preview_directory_done
+ IntOp $R2 $R2 - 1
+ StrCmp $R2 0 preview_directory_done
+ Sleep 250
+ Goto preview_directory_retry
+ preview_directory_done:''')
     text += '''
 Function .onVerifyInstDir
  IfFileExists "$INSTDIR\\FlowDrop.exe" 0 +2

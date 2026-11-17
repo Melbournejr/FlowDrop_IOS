@@ -42,6 +42,8 @@ class WindowsPreviewTests(unittest.TestCase):
             self.assertIn('CurrentVersion\\Uninstall\\FlowDropPreview', nsi)
             self.assertIn('IfFileExists "$INSTDIR\\FlowDrop.exe" 0 +3\n SetErrorLevel 2\n Abort', nsi)
             self.assertIn('SetOutPath "$TEMP"\n RMDir /r "$INSTDIR"', nsi)
+            self.assertIn('StrCpy $R2 40', nsi)
+            self.assertIn('RMDir "$INSTDIR"\n IfErrors 0 preview_directory_done', nsi)
             self.assertNotIn('"$INSTDIR\\FlowDrop.exe$\\" --shutdown', nsi)
             stop = (output / 'scripts/stop.mjs').read_text(encoding='utf-8')
             self.assertNotIn('process.env.FLOWDROP_DATA_DIR', stop)

@@ -227,7 +227,7 @@
     {
       "path": "scripts/windows_preview.py",
       "base_sha256": null,
-      "sha256": "2dd5c8359afee2001e6905ef15a16da514bf4656c574aa77b41ccd8481e3e9d3"
+      "sha256": "16ea8b595352da7bfbbbe5c68738a272788708ce0fede198d9562ac98cb0e400"
     },
     {
       "path": "tests/CodeLookupLateHarness.java",
@@ -287,7 +287,7 @@
     {
       "path": "tests/ci/test_windows_preview.py",
       "base_sha256": null,
-      "sha256": "b933f505ef3733acd57308352d69a6b21e7f1e93a0eeb72ac3e163f1ac365ede"
+      "sha256": "0921b207c4b24975e364b2ae81361c17078c644fb1a4a5df0875ead0ff26fd09"
     },
     {
       "path": "tests/code-114.test.mjs",
