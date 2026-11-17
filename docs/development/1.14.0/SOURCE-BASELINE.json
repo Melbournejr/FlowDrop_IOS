@@ -287,7 +287,7 @@
     {
       "path": "tests/ci/test_windows_preview.py",
       "base_sha256": null,
-      "sha256": "e3d112db0996b68e8d8d7c5e86e199c269b9e45ca4a03ee6ede60b6e5e91570b"
+      "sha256": "6007b765dd1c97b2cf046c1a88f0286cfab321df9623e145e1d800886e4aca82"
     },
     {
       "path": "tests/code-114.test.mjs",

@@ -3,6 +3,7 @@ import hashlib
 import json
 from pathlib import Path
 import subprocess
+import shutil
 import tempfile
 import unittest
 
@@ -18,7 +19,18 @@ class WindowsPreviewTests(unittest.TestCase):
         protected = ['desktop/windows/FlowDrop.cpp', 'desktop/windows/installer.nsi', 'scripts/secure-update.mjs', 'scripts/dev.mjs']
         before = {name: (REPO / name).read_bytes() for name in protected}
         with tempfile.TemporaryDirectory() as temp:
-            output, proof = preview.prepare(REPO, owned_root(Path(temp) / 'build'))
+            # This is a source transformation fixture, not an npm/build test.
+            # The toolkit job intentionally runs without npm ci; never depend on
+            # a developer checkout's node_modules or change the real builder.
+            fixture = Path(temp) / 'source'
+            for folder in ['desktop/windows', 'web', 'worker', 'scripts']:
+                shutil.copytree(REPO / folder, fixture / folder, ignore=shutil.ignore_patterns('__pycache__'))
+            for name in ['package.json', 'package-lock.json', 'INSTALL.md', 'android/AndroidManifest.xml']:
+                target = fixture / name; target.parent.mkdir(parents=True, exist_ok=True)
+                shutil.copyfile(REPO / name, target)
+            (fixture / 'node_modules').mkdir()
+            (fixture / 'node_modules/fixture.txt').write_text('Synthetic overlay fixture; not an npm dependency')
+            output, proof = preview.prepare(fixture, owned_root(Path(temp) / 'build'))
             cpp = (output / 'desktop/windows/FlowDrop.cpp').read_text(encoding='utf-8')
             nsi = (output / 'desktop/windows/installer.nsi').read_text(encoding='utf-8')
             self.assertIn('Local\\\\FlowDrop Preview.NativeDesktop.1', cpp)
