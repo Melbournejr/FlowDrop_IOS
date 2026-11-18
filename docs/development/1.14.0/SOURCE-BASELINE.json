@@ -22,12 +22,17 @@
     {
       "path": "android/AndroidManifest.xml",
       "base_sha256": "93ea154b2d31e9ec8bb93d5806ea546df5aa307f6fc436c879364e736ce0bd66",
-      "sha256": "605c759878127c83e45f44470caa5a82416b82d8966c0958f5dee71a65e81d03"
+      "sha256": "f23ced3ef6e8b4b434ee056f8b950319b503a84c8f6918bfbcd2d857a702f2c0"
     },
     {
       "path": "android/src/app/flowdrop/mobile/AndroidDeviceVault.java",
       "base_sha256": null,
       "sha256": "0ce29628942cab57a33090232c90a9df1ea1584f407238268fc25c05e97cd4c3"
+    },
+    {
+      "path": "android/src/app/flowdrop/mobile/BluetoothLink.java",
+      "base_sha256": null,
+      "sha256": "9d4aae09b0d9ff9cbc2304b39982f21f47b4c0c49731350b06c7757ac70af602"
     },
     {
       "path": "android/src/app/flowdrop/mobile/CodeLookup.java",
@@ -47,7 +52,7 @@
     {
       "path": "android/src/app/flowdrop/mobile/MainActivity.java",
       "base_sha256": "5723842d292e94343b875fe33d5e98161da8e37425288966ca067e427bbfacd8",
-      "sha256": "9b0f2552b990a268755cc034c1552a67edd8e81fbdb79b60e57ab530da789da1"
+      "sha256": "1298eda1b89085574492fd1015a583d67d734de7abbeb17e3e88590672444ece"
     },
     {
       "path": "android/src/app/flowdrop/mobile/ReceiveService.java",
@@ -72,7 +77,7 @@
     {
       "path": "android/src/app/flowdrop/mobile/TurboLink.java",
       "base_sha256": null,
-      "sha256": "5e937e5536a28c87b7a64eed1e7c997d1a18582329b703ad956f68ab0b0f2ecb"
+      "sha256": "98332848d65f891425d7cbdcd2a6b98bd953c2cb03d974f11a8daf401905514d"
     },
     {
       "path": "android/src/app/flowdrop/mobile/WifiNetwork.java",
@@ -80,9 +85,14 @@
       "sha256": "27a57f60f4144432f35e32dfbb7d660e2faa5370037e219338aa7a0f624e85e6"
     },
     {
+      "path": "desktop/windows/DirectBluetooth.h",
+      "base_sha256": null,
+      "sha256": "63747e9811d03eaaa07be1414858426958274b53b70173f745b82e793ec959f5"
+    },
+    {
       "path": "desktop/windows/FlowDrop.cpp",
       "base_sha256": "f8a274fbc1ef1c560bc2455a15bab984918dce832b9e91410d3cc24595b64f23",
-      "sha256": "f04593fd0ce3718011744515e3445280ea122f5135de39ac1ffc51425f62c7f3"
+      "sha256": "026cbaeb56ce47eeb882417902ce0a6a04d5481d81bd49c7805af969bbd9fb0c"
     },
     {
       "path": "desktop/windows/FlowDrop.rc",
@@ -112,7 +122,7 @@
     {
       "path": "scripts/build-installers.py",
       "base_sha256": "b708ae17f4973e649f7015a3ee334048abbb1074dbeb67a0e5d302e868d3fbec",
-      "sha256": "54a0915e0af497e27559eb0547e8a2453cc5556b6605287dae343dbe216c212f"
+      "sha256": "538a00d9a2fa75c114e5b7f88f6a7c5e1fee97912f0ae87442da6c0b511100cf"
     },
     {
       "path": "scripts/code-lookup.mjs",
@@ -187,7 +197,7 @@
     {
       "path": "scripts/native_runtime_ci/build.py",
       "base_sha256": "d5cf91325983d397177b61759b3db70cef5617e90edb47f3acc44e787f95d4f5",
-      "sha256": "86a43e51ca5934c97924f0e56df9df0aeb061323e94e2a3a0e3ef5e2acf2e2ee"
+      "sha256": "1b385640866c6508e2f8978a5a40a8e7b6bdcea63121eabc098e947de5280f16"
     },
     {
       "path": "scripts/native_runtime_ci/common.py",
@@ -272,7 +282,7 @@
     {
       "path": "tests/ci/run.py",
       "base_sha256": "685f15b8246830901dd8d0403e1785c81ed09a4a6fd697700848004dc8e3df50",
-      "sha256": "58ff5187e4a824646ede44bc25cb62ba90a1edb2f93cbd12e53d586aa441835a"
+      "sha256": "3e7be93cbc65c0ab3bd62d1b60a7d1dca7cc8aef05d438db86ddfdfc7757836b"
     },
     {
       "path": "tests/ci/test_android_preview.py",
@@ -338,6 +348,16 @@
       "path": "tests/secure-cross-platform-114.mjs",
       "base_sha256": null,
       "sha256": "93fcff695f37d08377475d285dd32efc9e65296941613dad5cb7b3a605c54b20"
+    },
+    {
+      "path": "tests/turbo-lifecycle.test.mjs",
+      "base_sha256": null,
+      "sha256": "cb48e9998e98dc52a88052eb61518556e42234b51b74cdea6938a2325d8fbd4b"
+    },
+    {
+      "path": "tests/windows-native-smoke.cpp",
+      "base_sha256": "3c4402b3f190255944cf49fc964e4235dae4bce0d44d635152e3e2c343c97f5c",
+      "sha256": "8ba223e46e4c96cdaadd12b7dbbe66cc3bac5fdbcf1d325713374cf1c6ebbed5"
     },
     {
       "path": "tests/windows-vault-probe.mjs",

@@ -5,6 +5,7 @@
 #define _UNICODE
 #endif
 #define NOMINMAX
+#include <winsock2.h>
 #include <windows.h>
 #include <commctrl.h>
 #include <shobjidl.h>
@@ -72,6 +73,7 @@ std::string utf8(const std::wstring& value) {
   int n=WideCharToMultiByte(CP_UTF8,0,value.data(),(int)value.size(),nullptr,0,nullptr,nullptr);
   std::string result(n,'\0'); WideCharToMultiByte(CP_UTF8,0,value.data(),(int)value.size(),result.data(),n,nullptr,nullptr); return result;
 }
+#include "DirectBluetooth.h"
 std::wstring text(HWND control) {
   int length=GetWindowTextLengthW(control); std::wstring result(length+1,L'\0');
   GetWindowTextW(control,result.data(),length+1); result.resize(length); return result;
@@ -278,8 +280,12 @@ std::wstring observedWifi(){
   if(open&&enumerate&&query&&bss&&freeMemory&&close&&open(2,nullptr,&version,&handle)==ERROR_SUCCESS){PWLAN_INTERFACE_INFO_LIST interfaces=nullptr;if(enumerate(handle,nullptr,&interfaces)==ERROR_SUCCESS){for(DWORD i=0;i<interfaces->dwNumberOfItems;i++){auto& iface=interfaces->InterfaceInfo[i];if(iface.isState!=wlan_interface_state_connected)continue;DWORD size=0;PVOID raw=nullptr;WLAN_OPCODE_VALUE_TYPE opcode;if(query(handle,&iface.InterfaceGuid,wlan_intf_opcode_current_connection,nullptr,&size,&raw,&opcode)==ERROR_SUCCESS&&raw){auto current=(PWLAN_CONNECTION_ATTRIBUTES)raw;PWLAN_BSS_LIST list=nullptr;if(bss(handle,&iface.InterfaceGuid,&current->wlanAssociationAttributes.dot11Ssid,dot11_BSS_type_any,FALSE,nullptr,&list)==ERROR_SUCCESS&&list){for(DWORD j=0;j<list->dwNumberOfItems;j++){auto& entry=list->wlanBssEntries[j];if(memcmp(entry.dot11Bssid,current->wlanAssociationAttributes.dot11Bssid,6)==0){DWORD mhz=entry.ulChCenterFrequency/1000;result=L"Wi-Fi đang kết nối: "+std::to_wstring(mhz)+L" MHz · "+(mhz>=5000&&mhz<5925?L"5 GHz":mhz>=2400&&mhz<2500?L"2.4 GHz":L"băng tần khác / chưa xác minh");break;}}freeMemory(list);}freeMemory(raw);}}freeMemory(interfaces);}close(handle,nullptr);}FreeLibrary(library);return result;
 }
 void turboMenu(){
-  auto info=L"Chế độ: "+connectionMode+L"\n"+observedWifi()+L"\n\nAuto ưu tiên LAN hiện tại. Turbo trên Windows dùng Mobile Hotspot theo khả năng driver và quyền của hệ điều hành. Chọn băng tần 5 GHz trong Cài đặt nếu có. FlowDrop chỉ báo 5 GHz khi API xác minh được tần số; hotspot do bạn bật sẽ không bị ứng dụng tự tắt.\n\nCó: mở cài đặt Mobile Hotspot. Không: dùng LAN. Hủy: giữ Auto.\n\nCách offline khác: tạo Turbo trên Android, kết nối Windows vào tên Wi-Fi đó rồi ghép nối FlowDrop. TLS giữ nguyên trên mọi kết nối.";
-  int choice=MessageBoxW(window,info.c_str(),L"FlowDrop · Auto / LAN / Turbo",MB_YESNOCANCEL|MB_ICONINFORMATION|MB_DEFBUTTON3);if(choice==IDYES){connectionMode=L"Turbo · chờ OS";ShellExecuteW(window,L"open",L"ms-settings:network-mobilehotspot",nullptr,nullptr,SW_SHOWNORMAL);}else if(choice==IDNO)connectionMode=L"LAN";else connectionMode=L"Auto";
+  static std::atomic<bool> linking{false};
+  auto info=L"Chế độ: "+connectionMode+L"\n"+observedWifi()+L"\n\nKết nối trực tiếp không nhập mật khẩu:\n1. Ghép đôi Bluetooth Windows và điện thoại trong Cài đặt hệ điều hành (lần đầu).\n2. Trên Android: Tạo Turbo → Kết nối Windows qua Bluetooth.\n3. Chọn Có bên dưới, chọn điện thoại và xác nhận trên điện thoại.\n\nCó: kết nối qua Bluetooth. Không: mở Mobile Hotspot thủ công. Hủy: đóng. File vẫn truyền qua Wi-Fi và TLS. Mạng Turbo Android được giữ cho nhiều lượt gửi đến khi bạn dừng.";
+  int choice=MessageBoxW(window,info.c_str(),L"FlowDrop · Kết nối trực tiếp",MB_YESNOCANCEL|MB_ICONINFORMATION|MB_DEFBUTTON3);
+  if(choice==IDNO){ShellExecuteW(window,L"open",L"ms-settings:network-mobilehotspot",nullptr,nullptr,SW_SHOWNORMAL);return;}
+  if(choice!=IDYES||linking.load())return;std::optional<BTH_ADDR> peer;try{peer=fdlink::choose(window);}catch(const std::exception& e){MessageBoxW(window,wide(e.what()).c_str(),L"FlowDrop · Bluetooth",MB_OK|MB_ICONINFORMATION);return;}if(!peer)return;linking=true;
+  std::thread([address=*peer]{try{auto network=fdlink::receive(address);fdlink::join(network);post({{"kind","directLinkReady"}});}catch(const std::exception& e){post({{"kind","error"},{"operation","direct-link"},{"message",e.what()}});}linking=false;}).detach();
 }
 void securityAction(const std::string& action,json body=json::object()){
   auto token=desktopToken;backgroundTask("security",[token,action,body]{requestJson(L"POST","/api/desktop/security/"+action,&body,token);});
@@ -567,7 +573,8 @@ LRESULT CALLBACK windowProc(HWND hwnd,UINT message,WPARAM wp,LPARAM lp) {
     case WM_TIMER: if(wp==5){scanPeers();return 0;}if(wp==3) {KillTimer(hwnd,3);auto code=normalizedCode(text(receiveCode));if(ready&&automatic&&!receiving&&validCode(code)&&code!=lastAutoCode)receiveFiles();return 0;}break;
     case UI_EVENT: {
       std::unique_ptr<json> data((json*)lp);const auto& event=*data;auto kind=event.value("kind",std::string());
-      if(kind=="peers") {
+      if(kind=="directLinkReady") {connectionMode=L"Turbo · Wi-Fi đã kết nối";SetWindowTextW(statusLabel,L"Đã vào mạng Turbo. Chờ thiết bị xuất hiện, rồi chọn gửi file; ghép nối TLS vẫn cần xác nhận.");MessageBoxW(window,L"Windows đã kết nối mạng Turbo. Không cần Internet. Chờ FlowDrop tìm lại thiết bị rồi gửi file; nếu chưa ghép nối TLS hãy xác nhận mã trên hai màn hình.",L"FlowDrop · Kết nối trực tiếp",MB_OK|MB_ICONINFORMATION);}
+      else if(kind=="peers") {
         const auto& state=event.at("state");const auto& next=state.at("peers");
         securityState=state.value("security",json::object());handlePairings();
         sessions=state.value("sessions",json::array());renderSessions();

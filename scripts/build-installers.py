@@ -50,7 +50,7 @@ def windows():
     mingw=TOOLS/'mingw/usr/bin'
     env=os.environ.copy();env['PATH']=str(mingw)+os.pathsep+env['PATH']
     run([mingw/'x86_64-w64-mingw32-windres','--preprocessor='+str(mingw/'x86_64-w64-mingw32-gcc-posix'),'--preprocessor-arg=-E','--preprocessor-arg=-xc','--preprocessor-arg=-DRC_INVOKED','FlowDrop.rc','-O','coff','-o',TOOLS/'flowdrop-res.o'],cwd=ROOT/'desktop/windows',env=env)
-    run([mingw/'x86_64-w64-mingw32-g++-posix','-std=c++17','-O2','-s','-municode','-mwindows','-static','-static-libgcc','-static-libstdc++','-I',ROOT/'desktop/windows/vendor',ROOT/'desktop/windows/FlowDrop.cpp',TOOLS/'flowdrop-res.o','-o',payload/'FlowDrop.exe','-lwinhttp','-lcomctl32','-lole32','-luuid','-lshell32','-luxtheme','-lgdi32','-luser32','-ladvapi32'],env=env)
+    run([mingw/'x86_64-w64-mingw32-g++-posix','-std=c++17','-O2','-s','-municode','-mwindows','-static','-static-libgcc','-static-libstdc++','-I',ROOT/'desktop/windows/vendor',ROOT/'desktop/windows/FlowDrop.cpp',TOOLS/'flowdrop-res.o','-o',payload/'FlowDrop.exe','-lwinhttp','-lcomctl32','-lole32','-luuid','-lshell32','-luxtheme','-lgdi32','-luser32','-ladvapi32','-lws2_32'],env=env)
     shutil.copyfile(ROOT/'desktop/windows/vendor/json.hpp',payload/'nlohmann-json-license-and-source.hpp')
     shutil.copyfile(ROOT/'package.json',payload/'package.json')
     shutil.copyfile(ROOT/'INSTALL.md',payload/'Huong-dan.md')

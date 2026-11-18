@@ -1,7 +1,9 @@
 #define UNICODE
 #define _UNICODE
 #define NOMINMAX
+#include <winsock2.h>
 #include <windows.h>
+#include <wlanapi.h>
 #include <shellapi.h>
 #include <shlobj.h>
 #include <commctrl.h>
@@ -15,6 +17,15 @@
 using json=nlohmann::json;namespace fs=std::filesystem;
 unsigned port=0;
 std::wstring wide(const std::string&s){int n=MultiByteToWideChar(CP_UTF8,0,s.data(),(int)s.size(),nullptr,0);std::wstring r(n,L'\0');MultiByteToWideChar(CP_UTF8,0,s.data(),(int)s.size(),r.data(),n);return r;}
+#include "DirectBluetooth.h"
+void verifyBluetoothSetupValidation(){
+ auto valid=json{{"protocol","FlowDropLink1"},{"ssid","DIRECT-fd-FlowDrop-0123abcd"},{"passphrase","0123456789abcdef0123"}};
+ fdlink::validate(valid);
+ for(auto invalid:std::vector<json>{json::array(),json(),json{{"protocol","other"}},json{{"protocol","FlowDropLink1"},{"ssid","other-network"},{"passphrase","0123456789abcdef0123"}}}){bool denied=false;try{fdlink::validate(invalid);}catch(...){denied=true;}if(!denied)throw std::runtime_error("Bluetooth malformed setup accepted");}
+ for(auto field:{"ssid","passphrase","protocol"}){auto invalid=valid;invalid[field]=17;bool denied=false;try{fdlink::validate(invalid);}catch(...){denied=true;}if(!denied)throw std::runtime_error("Bluetooth wrong type accepted");}
+ for(auto password:{"short","0123456789ABCDEF0123","0123456789abcdef0123<xml>"}){auto invalid=valid;invalid["passphrase"]=password;bool denied=false;try{fdlink::validate(invalid);}catch(...){denied=true;}if(!denied)throw std::runtime_error("Bluetooth unsafe credentials accepted");}
+ auto extra=valid;extra["url"]="http://external.example";bool denied=false;try{fdlink::validate(extra);}catch(...){denied=true;}if(!denied)throw std::runtime_error("Bluetooth extra fields accepted");
+}
 void check(bool test,const char* message){if(!test)throw std::runtime_error(message);}
 void wait(std::function<bool()> predicate,const char* message,int seconds=40){auto start=GetTickCount64();while(GetTickCount64()-start<(unsigned)seconds*1000){if(predicate())return;Sleep(100);}throw std::runtime_error(message);}
 std::wstring text(HWND control){wchar_t value[1024]{};DWORD_PTR result=0;SendMessageTimeoutW(control,WM_GETTEXT,1024,(LPARAM)value,SMTO_ABORTIFHUNG,1000,&result);return value;}
@@ -39,6 +50,7 @@ void capture(HWND app,const fs::path& file){
  BITMAPFILEHEADER header{};header.bfType=0x4d42;header.bfOffBits=sizeof(header)+sizeof(BITMAPINFOHEADER);header.bfSize=header.bfOffBits+pixels.size();std::ofstream out(file,std::ios::binary);out.write((char*)&header,sizeof(header));out.write((char*)&bi.bmiHeader,sizeof(bi.bmiHeader));out.write(pixels.data(),pixels.size());SelectObject(dc,old);DeleteObject(bitmap);DeleteDC(dc);ReleaseDC(app,src);
 }
 int wmain(int argc,wchar_t**argv){
+ verifyBluetoothSetupValidation();
  try{
  check(argc==2,"Expected application path");fs::path exe=argv[1];std::wstring command=L"\""+exe.wstring()+L"\"";STARTUPINFOW info{sizeof(info)};PROCESS_INFORMATION process{};
  check(CreateProcessW(exe.c_str(),command.data(),nullptr,nullptr,FALSE,0,nullptr,exe.parent_path().c_str(),&info,&process),"CreateProcess failed");CloseHandle(process.hThread);

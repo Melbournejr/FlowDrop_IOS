@@ -144,8 +144,8 @@ def windows(root, cache):
         compiled_source = helpers / (name + '.cpp')
         compiled_source.write_text(windows_driver(name, original.read_text(encoding='utf-8')), encoding='utf-8')
         journal.run('compile-' + name, [compiler, '-std=c++17', '-O2', '-s', '-municode', '-static', '-static-libgcc', '-static-libstdc++',
-            '-I', source / 'desktop/windows/vendor', '-I', source / 'tests', compiled_source, resource_object, '-o', output,
-            '-lwinhttp', '-lcomctl32', '-lole32', '-luuid', '-lshell32', '-luxtheme', '-lgdi32', '-luser32', '-ladvapi32'], timeout=600)
+            '-I', source / 'desktop/windows/vendor', '-I', source / 'desktop/windows', '-I', source / 'tests', compiled_source, resource_object, '-o', output,
+            '-lwinhttp', '-lcomctl32', '-lole32', '-luuid', '-lshell32', '-luxtheme', '-lgdi32', '-luser32', '-ladvapi32', '-lws2_32'], timeout=600)
         pe = pe_info(output.read_bytes())
         if pe['machine'] != 0x8664 or pe['subsystem'] != 3:
             raise RuntimeError('Test helper must be a real Windows x64 console PE')

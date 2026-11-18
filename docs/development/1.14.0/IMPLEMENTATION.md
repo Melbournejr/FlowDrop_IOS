@@ -75,7 +75,7 @@ permissions are checked first. Where supported, creation requests a 5 GHz group;
 UI only labels 5 GHz after `WifiP2pGroup.getFrequency()` reports a matching actual
 frequency. A uniquely named group, owned P2P interface routing and separate LAN
 discovery preserve the same TLS transport. Cleanup removes only that owned group
-after a transfer finishes or the user stops it, never another app's group.
+when the user explicitly stops Turbo or the host shuts down, never another app's group.
 
 Windows provides a semi-automatic Mobile Hotspot settings flow and reads the
 current association's actual BSS frequency through WLAN APIs. The owner selects
@@ -331,3 +331,56 @@ trust; retain the original FlowDrop and any files the owner wants to keep.
 After reinstall, select the new live device and compare/confirm both six-digit
 codes again. Production1.13 remains on its explicit legacy compatibility policy.
 The unrelated Windows Wi-Fi QR is for joining an OS hotspot, not FlowDrop pairing.
+
+
+## Turbo retained across transfers; Bluetooth setup preview
+
+Owner evidence (18 November 2026, Asia/Saigon): Xiaomi14 Pro/Android16 created
+Wi-Fi Direct5GHz and Windows IntelAC9560 joined it. Owner subsequently reported
+all three files received. This is owner-reported completion, not an independent
+file-hash verification. A later desktop-to-phone test reached about30 in the UI
+(unit not independently recorded), then the link disappeared before the next file.
+No private SSID/passphrase/MAC or uploaded screenshots/video are committed.
+
+Source root cause: TurboLink tick called stop after observing an active transfer
+followed by no active transfer. The new JVM test executes the real class against
+explicit radio stubs: old source fails `first completed transfer tears down Turbo`;
+new source retains the group through completion, idle and another transfer. Stop
+is explicit through Stop Turbo, selecting LAN or host shutdown. A failed OS remove
+keeps owned credentials for retry. Unowned groups are never removed/adopted solely
+because their name resembles FlowDrop. This fixes the demonstrated lifecycle bug,
+not all possible vendor power/radio disconnects. No idle lifetime guarantee after
+Android terminates the host process is claimed.
+
+The Android Turbo dialog now refreshes in place and reports actual creating,
+blocked and ready state. It no longer unconditionally toasts `creating` after a
+blocked request. Network credentials stay in the local dialog, not public config.
+
+New opt-in Bluetooth rendezvous is setup-only: first pair the phone and Windows
+in OS Bluetooth Settings. Create Turbo on Android, choose `Connect Windows via
+Bluetooth`, then Windows Connection -> Bluetooth -> select a bonded device and
+accept on the phone. The listener is opened only by that user action, accepts one
+connection within60seconds, closes on dialog dismissal/background/host-change,
+requires OS bonding and secure authenticated/encrypted RFCOMM, bounds request and
+response, and refuses malformed input or a changed Turbo group. Windows requires
+explicit selection/approval before leaving its current WLAN and requests a
+WPA2-AES temporary profile in memory; it never saves a WLAN password/profile.
+
+Bluetooth transfers only the current owned SSID/passphrase, not file bytes, trust
+secrets, APK/update keys or local API capabilities. Independent pinned TLS and
+both-screen FlowDrop pairing remain mandatory; Bluetooth bonding does not create
+FlowDrop trust or enable HTTP compatibility. No discovery/pairing/file route or
+wire schema changes. The separate rendezvous uses a fixed service UUID and
+FlowDropLink1 marker, not the eight-character transfer code or six-digit SAS.
+Android requests BLUETOOTH_CONNECT on31+ (legacy Bluetooth permissions on29/30),
+not unrestricted Bluetooth scans. Windows uses OS Bluetooth/WLAN system libraries;
+no npm/runtime/toolchain dependency or signing identity changes.
+
+Checks distinguish real Java behavior with radio mocks, actual Android compile,
+Windows cross-compile/link, and native OS CI from physical Bluetooth/Wi-Fi testing.
+Radio pairing, RFCOMM interoperability and repeated real-device Turbo transfers
+remain NOT VERIFIED until exercised on supported hardware. Native CI success is
+not a substitute for those tests. No speed improvement or80-100MB/s claim.
+Final-head build/runtime/regression/download evidence belongs in Draft PR12.
+Rollback: revert the dedicated Turbo/Bluetooth commits in a PR; no data deletion,
+main force push, production re-signing, or release/feed changes.
