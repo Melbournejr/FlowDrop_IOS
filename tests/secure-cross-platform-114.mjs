@@ -31,7 +31,7 @@ try{
  for(let n=0;n<30;n++){const s=await(await localFetch(desktop,'/api/desktop/peers',{method:'POST',body:'{}'})).json();if(s.security.trusted.length)break;if(n===29)throw Error('Pair status timeout');await new Promise(r=>setTimeout(r,100));}
  assert.equal((await command({op:'observe',origin:desktopOrigin,config:desktopConfig})).ok,true);
  const bytes=Buffer.from('TLS ghép nối — 中文 😀');
- async function stage(h){const r=await localFetch(h,'/api/transfers',{method:'POST',body:JSON.stringify({files:[{name:'TLS.txt',size:bytes.length,type:'text/plain'}]})});assert.equal(r.status,201);const s=await r.json();assert.equal((await fetch(h.origin+'/api/transfers/'+s.code+'/files/'+s.files[0].id,{method:'PUT',headers:{'X-Upload-Token':s.token},body:bytes})).status,200);assert.equal((await fetch(h.origin+'/api/transfers/'+s.code+'/complete',{method:'POST',headers:{'X-Upload-Token':s.token}})).status,200);return s;}
+ async function stage(h,payload=bytes){const r=await localFetch(h,'/api/transfers',{method:'POST',body:JSON.stringify({files:[{name:'TLS.txt',size:payload.length,type:'text/plain'}]})});assert.equal(r.status,201);const s=await r.json();assert.equal((await fetch(h.origin+'/api/transfers/'+s.code+'/files/'+s.files[0].id,{method:'PUT',headers:{'X-Upload-Token':s.token},body:payload})).status,200);assert.equal((await fetch(h.origin+'/api/transfers/'+s.code+'/complete',{method:'POST',headers:{'X-Upload-Token':s.token}})).status,200);return s;}
  const fromDesktop=await stage(desktop),fromPhone=await stage(phone);
  const secureDesktop='https://'+address+':'+desktopConfig.secure.port;
  const downloaded=await command({op:'request',url:secureDesktop+'/api/transfers/'+fromDesktop.code+'/files/'+fromDesktop.files[0].id});assert.equal(downloaded.status,200,JSON.stringify(downloaded));assert.equal(downloaded.sha256,hash(bytes));
@@ -50,6 +50,14 @@ try{
  const origin2='http://'+address+':'+new URL(phone2.origin).port,cfg2=await(await fetch(origin2+'/api/config')).json();assert.equal((await command2({op:'observe',origin:phoneOrigin,config:phoneConfig})).ok,true);assert.equal((await command({op:'observe',origin:origin2,config:cfg2})).ok,true);
  const s2=await command2({op:'start',id});assert.ok(!s2.error,s2.error);const p2=s2.pairings[0];const remotePair=(await command({op:'snapshot'})).pairings.find(p=>p.id===p2.id);assert.ok(p2.code===remotePair.code,'Java pairing SAS must match');await command2({op:'confirm',id:p2.id,accept:true});await command({op:'confirm',id:p2.id,accept:true});assert.equal((await command2({op:'snapshot'})).trusted.length,1);
  const javaDownloaded=await command2({op:'request',url:'https://'+address+':'+phoneConfig.secure.port+'/api/transfers/'+fromPhone.code+'/files/'+fromPhone.files[0].id});assert.equal(javaDownloaded.status,200,JSON.stringify(javaDownloaded));assert.equal(javaDownloaded.sha256,hash(bytes));
+ // Actual pinned-TLS bulk download keeps exact SHA and only bounded local timing samples.
+ const bulkBytes=Buffer.alloc(2*1024*1024+17,0x5a),bulk=await stage(phone,bulkBytes);
+ const bulkUrl='https://'+address+':'+phoneConfig.secure.port+'/api/transfers/'+bulk.code+'/files/'+bulk.files[0].id;
+ for(let n=0;n<9;n++){const response=await command2({op:'request',url:bulkUrl});assert.equal(response.status,200);assert.equal(response.sha256,hash(bulkBytes));}
+ const metrics=(await command({op:'sendStats'})).samples;assert.equal(metrics.length,8);
+ const allowed=new Set(['bytesWritten','bodyWritten','tls','elapsedMs','diskReadMs','tlsWriteMs','bulkWrites','bufferBytes','tcpNoDelay','sendBufferBytes']);
+ for(const sample of metrics){assert.equal(sample.bytesWritten,bulkBytes.length);assert.equal(sample.bodyWritten,true);assert.equal(sample.tls,true);assert.equal(sample.tcpNoDelay,true);assert.ok(sample.bufferBytes<=262144&&sample.bulkWrites>0);for(const key of ['elapsedMs','diskReadMs','tlsWriteMs'])assert.ok(Number.isSafeInteger(sample[key])&&sample[key]>=0);assert.ok(Object.keys(sample).every(key=>allowed.has(key)),'No identifiers/credentials in local body diagnostics');}
+ console.log('PASS: pinned TLS bulk SHA, bounded local diagnostics and actual TCP_NODELAY; no physical throughput claim');
  // Compatibility is an explicit local capability action, never an automatic TLS fallback.
  assert.equal((await localFetch(desktop,'/api/desktop/security/legacy',{method:'POST',body:JSON.stringify({enabled:true})})).status,200);assert.equal((await fetch(desktopOrigin+'/api/transfers/'+fromDesktop.code)).status,200);
  assert.equal((await localFetch(desktop,'/api/desktop/security/legacy',{method:'POST',body:JSON.stringify({enabled:false})})).status,200);assert.equal((await fetch(desktopOrigin+'/api/transfers/'+fromDesktop.code)).status,426);

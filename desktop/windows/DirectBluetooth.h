@@ -5,6 +5,9 @@
 #include <regex>
 #include <atomic>
 #include <functional>
+#include <mutex>
+#include <iphlpapi.h>
+#include <ws2tcpip.h>
 
 // Setup only. RFCOMM is authenticated/encrypted by the OS bond; Wi-Fi file
 // transport still requires the existing independent FlowDrop TLS pairing.
@@ -30,6 +33,25 @@ struct WlanMemory { void* p=nullptr;decltype(&WlanFreeMemory) freeMemory;explici
 inline std::atomic<unsigned> sessionGeneration{0};
 inline std::atomic<bool> monitoring{false};
 inline std::atomic<int> monitorPhase{0};
+inline std::mutex joinedMutex;
+inline GUID joinedInterface{};
+inline bool joinedKnown=false;
+inline std::string joinedSsid;
+// DHCP gateway is a location hint for the Android group owner, never TLS trust.
+inline std::string directGateway(){
+  if(!monitoring.load())return {};GUID wanted;std::string expected;{std::lock_guard<std::mutex> lock(joinedMutex);if(!joinedKnown)return {};wanted=joinedInterface;expected=joinedSsid;}
+  wchar_t wideGuid[40]{};if(!StringFromGUID2(wanted,wideGuid,40))return {};std::string guid;for(wchar_t c:wideGuid){if(!c)break;guid+=(char)c;}
+  try{Wlan wlan;DWORD version,size=0;WLAN_OPCODE_VALUE_TYPE type;if(wlan.open(2,nullptr,&version,&wlan.h)!=ERROR_SUCCESS)return {};WlanMemory current(wlan.freeMemory);if(wlan.query(wlan.h,&wanted,wlan_intf_opcode_current_connection,nullptr,&size,&current.p,&type)!=ERROR_SUCCESS||!current.p)return {};auto association=(PWLAN_CONNECTION_ATTRIBUTES)current.p;if(association->isState!=wlan_interface_state_connected||association->wlanAssociationAttributes.dot11Ssid.uSSIDLength!=expected.size()||memcmp(association->wlanAssociationAttributes.dot11Ssid.ucSSID,expected.data(),expected.size()))return {};
+    SystemDll dll(L"iphlpapi.dll");auto adapters=(decltype(&GetAdaptersAddresses))GetProcAddress(dll.h,"GetAdaptersAddresses");if(!adapters)return {};ULONG bytes=16384;std::vector<unsigned char> buffer;
+    for(int attempt=0;attempt<3&&bytes<=1024*1024;attempt++){buffer.resize(bytes);auto list=(PIP_ADAPTER_ADDRESSES)buffer.data();ULONG result=adapters(AF_INET,GAA_FLAG_INCLUDE_GATEWAYS|GAA_FLAG_SKIP_ANYCAST|GAA_FLAG_SKIP_MULTICAST|GAA_FLAG_SKIP_DNS_SERVER,nullptr,list,&bytes);if(result==ERROR_BUFFER_OVERFLOW)continue;if(result!=NO_ERROR)return {};
+      for(auto p=list;p;p=p->Next)if(p->AdapterName&&!_stricmp(p->AdapterName,guid.c_str())&&p->OperStatus==IfOperStatusUp){for(auto g=p->FirstGatewayAddress;g;g=g->Next)if(g->Address.lpSockaddr&&g->Address.lpSockaddr->sa_family==AF_INET){char ip[INET_ADDRSTRLEN]{};auto address=&((sockaddr_in*)g->Address.lpSockaddr)->sin_addr;if(InetNtopA(AF_INET,address,ip,sizeof(ip))&&strcmp(ip,"0.0.0.0")&&strncmp(ip,"127.",4))return ip;}}break;
+    }
+  }catch(...){}return {};
+}
+inline int directPeerIndex(const json& peers,const std::string& gateway){
+  if(gateway.empty()||!peers.is_array())return -1;int found=-1;std::regex url("^https?://([0-9.]+):([0-9]{1,5})/?$");
+  for(size_t i=0;i<peers.size();i++){if(!peers[i].is_object()||!peers[i].contains("url")||!peers[i]["url"].is_string())continue;std::smatch match;auto value=peers[i]["url"].get<std::string>();if(std::regex_match(value,match,url)&&match[1].str()==gateway){auto port=std::stoul(match[2].str());if(port==0||port>65535)continue;if(found>=0)return -2;found=(int)i;}}return found;
+}
 inline void stopRecovery(){sessionGeneration++;monitoring=false;monitorPhase=4;}
 // A connected different SSID is respected, never forcibly replaced by recovery.
 inline int recoveryAction(bool connected,bool expected,unsigned misses,unsigned attempts,bool due=true){if(connected)return expected?0:3;if(attempts>=2)return 2;return misses>=3&&due?1:0;}
@@ -90,7 +112,7 @@ inline void join(const json& value,unsigned lease=0,bool allowSwitch=true){
   if(lease&&sessionGeneration.load()!=lease)throw std::runtime_error("Đã hủy kết nối trực tiếp.");
   if(!allowSwitch){DWORD size=0;WLAN_OPCODE_VALUE_TYPE type;WlanMemory observed(wlan.freeMemory);if(wlan.query(wlan.h,&guid,wlan_intf_opcode_current_connection,nullptr,&size,&observed.p,&type)==ERROR_SUCCESS&&observed.p){auto a=(PWLAN_CONNECTION_ATTRIBUTES)observed.p;if(a->isState==wlan_interface_state_connected&&(a->wlanAssociationAttributes.dot11Ssid.uSSIDLength!=ssid.size()||memcmp(a->wlanAssociationAttributes.dot11Ssid.ucSSID,ssid.data(),ssid.size())!=0))throw std::runtime_error("Windows đã chuyển mạng.");}}
   DWORD result=wlan.connect(wlan.h,&guid,&p,nullptr);SecureZeroMemory(xml.data(),xml.size()*sizeof(wchar_t));SecureZeroMemory(pass.data(),pass.size());if(result!=ERROR_SUCCESS)throw std::runtime_error("Windows chưa cho phép kết nối Wi-Fi. Kiểm tra quyền vị trí/Wi-Fi trong Cài đặt.");
-  for(int n=0;n<60;n++){if(lease&&sessionGeneration.load()!=lease)throw std::runtime_error("Đã hủy kết nối trực tiếp.");DWORD size=0;WLAN_OPCODE_VALUE_TYPE type;WlanMemory current(wlan.freeMemory);if(wlan.query(wlan.h,&guid,wlan_intf_opcode_current_connection,nullptr,&size,&current.p,&type)==ERROR_SUCCESS&&current.p){auto a=(PWLAN_CONNECTION_ATTRIBUTES)current.p;if(a->isState==wlan_interface_state_connected&&a->wlanAssociationAttributes.dot11Ssid.uSSIDLength==ssid.size()&&memcmp(a->wlanAssociationAttributes.dot11Ssid.ucSSID,ssid.data(),ssid.size())==0)return;}Sleep(500);}
+  for(int n=0;n<60;n++){if(lease&&sessionGeneration.load()!=lease)throw std::runtime_error("Đã hủy kết nối trực tiếp.");DWORD size=0;WLAN_OPCODE_VALUE_TYPE type;WlanMemory current(wlan.freeMemory);if(wlan.query(wlan.h,&guid,wlan_intf_opcode_current_connection,nullptr,&size,&current.p,&type)==ERROR_SUCCESS&&current.p){auto a=(PWLAN_CONNECTION_ATTRIBUTES)current.p;if(a->isState==wlan_interface_state_connected&&a->wlanAssociationAttributes.dot11Ssid.uSSIDLength==ssid.size()&&memcmp(a->wlanAssociationAttributes.dot11Ssid.ucSSID,ssid.data(),ssid.size())==0){std::lock_guard<std::mutex> lock(joinedMutex);joinedInterface=guid;joinedSsid=ssid;joinedKnown=true;return;}}Sleep(500);}
   throw std::runtime_error("Chưa xác nhận được Windows vào mạng Turbo. Kiểm tra danh sách Wi-Fi; không cần Internet.");
 }
 inline void monitor(const json& value,unsigned lease,const std::function<void(int)>& notify){

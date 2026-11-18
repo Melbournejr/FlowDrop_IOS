@@ -20,6 +20,10 @@ unsigned port=0;
 std::wstring wide(const std::string&s){int n=MultiByteToWideChar(CP_UTF8,0,s.data(),(int)s.size(),nullptr,0);std::wstring r(n,L'\0');MultiByteToWideChar(CP_UTF8,0,s.data(),(int)s.size(),r.data(),n);return r;}
 #include "DirectBluetooth.h"
 void verifyBluetoothSetupValidation(){
+ json nearby=json::array({json{{"url","http://192.168.1.2:5173"}},json{{"url","http://192.168.49.1:43123/"}}});
+ if(fdlink::directPeerIndex(nearby,"192.168.49.1")!=1||fdlink::directPeerIndex(nearby,"")!=-1||fdlink::directPeerIndex(nearby,"192.168.49.38")!=-1)throw std::runtime_error("Direct owner hint selected unrelated peer");
+ nearby.push_back(nearby[1]);if(fdlink::directPeerIndex(nearby,"192.168.49.1")!=-2)throw std::runtime_error("Ambiguous direct owner hint accepted");
+ for(auto url:{"http://user@192.168.49.1:22","http://192.168.49.1:0","http://192.168.49.1:99999","http://192.168.49.1:1234/path","file://192.168.49.1:1234"})if(fdlink::directPeerIndex(json::array({json{{"url",url}}}),"192.168.49.1")!=-1)throw std::runtime_error("Malformed direct location hint accepted");
  if(fdlink::recoveryAction(true,true,0,0)!=0||fdlink::recoveryAction(true,false,0,0)!=3||fdlink::recoveryAction(false,false,2,0)!=0||fdlink::recoveryAction(false,false,3,0)!=1||fdlink::recoveryAction(false,false,3,2)!=2||fdlink::recoveryAction(false,false,20,1,false)!=0)throw std::runtime_error("Recovery policy changed");
  auto valid=json{{"protocol","FlowDropLink1"},{"ssid","DIRECT-fd-FlowDrop-0123abcd"},{"passphrase","0123456789abcdef0123"}};
  fdlink::validate(valid);
@@ -77,6 +81,7 @@ int wmain(int argc,wchar_t**argv){
  wait([&]{return IsWindowEnabled(GetDlgItem(app,101))&&text(GetDlgItem(app,1002)).find(L"Sẵn sàng")!=std::wstring::npos;},"Native backend did not become ready",60);
  std::wcout<<L"Native window ready; status: "<<text(GetDlgItem(app,1002))<<std::endl;
  check(text(GetDlgItem(app,2035))==L"Kết nối trực tiếp","Direct connection entry missing");
+ check(GetDlgItem(app,2036)&&IsWindowVisible(GetDlgItem(app,2036)),"Persistent direct connection status row missing");
  PostMessageW(app,WM_COMMAND,2035,0);HWND direct=nullptr;
  wait([&]{direct=FindWindowW(nullptr,L"FlowDrop · Kết nối trực tiếp");return direct&&IsWindowVisible(direct);},"Direct connection device chooser did not open",20);
  wait([&]{return directOptionsAccessible(direct);},"Direct chooser options missing, hidden or disabled in actual UI Automation tree",20);PostMessageW(direct,TDM_CLICK_BUTTON,IDCANCEL,0);

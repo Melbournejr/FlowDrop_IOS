@@ -32,7 +32,7 @@
     {
       "path": "android/src/app/flowdrop/mobile/BluetoothLink.java",
       "base_sha256": null,
-      "sha256": "5d53cad570973e8cf9eee8dada31ca8cd84608578ec2bca9b0dc5015ce32a4d1"
+      "sha256": "9d9f854141dc4191e7c1083629c68935e8b2056c3edd2938ecbb10697e9afaa0"
     },
     {
       "path": "android/src/app/flowdrop/mobile/CodeLookup.java",
@@ -47,7 +47,7 @@
     {
       "path": "android/src/app/flowdrop/mobile/HostService.java",
       "base_sha256": "1df2c31350d9239e001041afab4c1a7410dc6f6f40318ee3a793eb1d526db94a",
-      "sha256": "a4ee7cfe2c63439355fecc6587c849e2b7d32776433457dc834fd3fb042f19f6"
+      "sha256": "51617a4386b894571bf0d46e5369bd129a70fcda9107904fc44115ca36dd3a67"
     },
     {
       "path": "android/src/app/flowdrop/mobile/LinkDiagnostics.java",
@@ -57,7 +57,7 @@
     {
       "path": "android/src/app/flowdrop/mobile/MainActivity.java",
       "base_sha256": "5723842d292e94343b875fe33d5e98161da8e37425288966ca067e427bbfacd8",
-      "sha256": "05bece41d42dadeabf6b4e1fce1fcb02d621b162e29dceafe88b5fabc5616395"
+      "sha256": "33c02484d18efab134a54a32993ac0931b316788618650a4f3c731d88793d8f6"
     },
     {
       "path": "android/src/app/flowdrop/mobile/ReceiveService.java",
@@ -77,7 +77,7 @@
     {
       "path": "android/src/app/flowdrop/mobile/TransferServer.java",
       "base_sha256": "e97da86bd3668892af5e1db6ac908e5f9c3c688bd8294200d6fe572ea2483f78",
-      "sha256": "366a0c01560177095a262f14df966904fecb3b2eec2d67a84c2998c70c7b5990"
+      "sha256": "39b13a1fc280647c7943e3cab76fc7832c5fb99f5c5e235f2841ef2f0a0fcf2a"
     },
     {
       "path": "android/src/app/flowdrop/mobile/TurboLink.java",
@@ -92,12 +92,12 @@
     {
       "path": "desktop/windows/DirectBluetooth.h",
       "base_sha256": null,
-      "sha256": "6489d722dc434f54d3c01da68941bfafa9216c337ac4d6bcf1d6ecdb93853986"
+      "sha256": "63d5920fab2079472e18358b0c6c135b9eebdc1173c1e5714cf9d421a0b1f3cb"
     },
     {
       "path": "desktop/windows/FlowDrop.cpp",
       "base_sha256": "f8a274fbc1ef1c560bc2455a15bab984918dce832b9e91410d3cc24595b64f23",
-      "sha256": "f06a44140a36eb0633443a510f7dd359695d70bf020f2d738559b45656d5a840"
+      "sha256": "61795bbcb89789f18a5f63a562b7410fac75d3d3a39bd6145d8e672e5c218ac0"
     },
     {
       "path": "desktop/windows/FlowDrop.rc",
@@ -257,7 +257,7 @@
     {
       "path": "tests/SecureHostHarness.java",
       "base_sha256": null,
-      "sha256": "58e40b5fb0c68963118d4d6463668d25f28edd1313d4357ac3163d941f3ad29d"
+      "sha256": "807953568a6ea53ac334cbcc47aa143f4baa970927cd481ffcf5a00e8bd1d52d"
     },
     {
       "path": "tests/android-host-integration.mjs",
@@ -277,7 +277,7 @@
     {
       "path": "tests/android-runtime/NativeRuntimeSmoke.java",
       "base_sha256": "1b66760dad004c1324c2dc3b5ce9ef019eff0c4d1264a43993d5d19d56a92899",
-      "sha256": "130a7974fda681906786ca04b1941dabd877143145176f357944d3198107ec83"
+      "sha256": "4b4f6a165554381c614e5acee6591b1af7b9901f3696a0eed6eeccd9b3871daa"
     },
     {
       "path": "tests/canonical-auth-114.test.mjs",
@@ -352,17 +352,17 @@
     {
       "path": "tests/secure-cross-platform-114.mjs",
       "base_sha256": null,
-      "sha256": "93fcff695f37d08377475d285dd32efc9e65296941613dad5cb7b3a605c54b20"
+      "sha256": "a1a8bc3b60ba1483f91018573068d1e88bd9f2658654011dcb1710ba50e33607"
     },
     {
       "path": "tests/turbo-lifecycle.test.mjs",
       "base_sha256": null,
-      "sha256": "f9c23f873a164985d77e5b5eac969aaf2dc3997c891abe0f4736cdb2199f577b"
+      "sha256": "fd1083598eb18e928edf3ad77d20f1b6a5287e6cee42f922eaf975c17f48b78b"
     },
     {
       "path": "tests/windows-native-smoke.cpp",
       "base_sha256": "3c4402b3f190255944cf49fc964e4235dae4bce0d44d635152e3e2c343c97f5c",
-      "sha256": "ed59e6e5386d5028741af958d65b89dcc5c776c1b174eedc2f750d05e536cc29"
+      "sha256": "757874233c8293bb60829901d1246ea29bacf60ee28c7ee440eeec0a65b1137a"
     },
     {
       "path": "tests/windows-vault-probe.mjs",

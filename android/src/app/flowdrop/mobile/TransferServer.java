@@ -42,6 +42,10 @@ public final class TransferServer implements Closeable {
   private final Set<Socket> connections=Collections.newSetFromMap(new ConcurrentHashMap<Socket,Boolean>());
   private volatile boolean closed=false;
   private volatile String tlsFailure="";
+  private final ArrayDeque<JSONObject> sendSamples=new ArrayDeque<>();
+  /** Local-only timing samples, never part of transfer metadata or an API response. */
+  public JSONArray sendDiagnostics()throws Exception{synchronized(sendSamples){JSONArray rows=new JSONArray();for(JSONObject sample:sendSamples)rows.put(new JSONObject(sample.toString()));return rows;}}
+  private void sendSample(JSONObject sample){synchronized(sendSamples){sendSamples.add(sample);while(sendSamples.size()>8)sendSamples.removeFirst();}}
   public String lastTlsFailure(){return tlsFailure;}
   private volatile String deviceName,discoveryName;
   private final String deviceId,offerKey=UUID.randomUUID().toString();
@@ -168,7 +172,7 @@ public final class TransferServer implements Closeable {
   private Object lock(String code){return locks[(code.hashCode()&0x7fffffff)%locks.length];}
   private void acceptLoop(ServerSocket listener){
     while(!closed)try{
-      Socket client=listener.accept();client.setSoTimeout(10000);connections.add(client);activity.put(client,System.nanoTime());
+      Socket client=listener.accept();client.setSoTimeout(10000);try{client.setTcpNoDelay(true);}catch(SocketException ignored){}connections.add(client);activity.put(client,System.nanoTime());
       try{clients.execute(()->handle(client));}catch(RejectedExecutionException busy){connections.remove(client);activity.remove(client);client.close();}
     }catch(IOException error){if(!closed)close();}
   }
@@ -336,7 +340,15 @@ public final class TransferServer implements Closeable {
         if(!"ready".equals(metadata.getString("status")))throw new HttpError(409,"File chưa sẵn sàng.");if(!Files.exists(target))throw new HttpError(404,"File không còn khả dụng.");
         String name=selected.getString("name"),ascii=name.replaceAll("[^\\x20-\\x7e]|[\"\\\\]","_");String encoded=URLEncoder.encode(name,"UTF-8").replace("+","%20").replace("*","%2A");
         Map<String,String> headers=new LinkedHashMap<>();headers.put("Content-Disposition","attachment; filename=\""+ascii+"\"; filename*=UTF-8''"+encoded);headers(output,200,"application/octet-stream",size,headers);
-        try(InputStream disk=Files.newInputStream(target)){byte[] buffer=new byte[65536];int n;while((n=disk.read(buffer))!=-1)output.write(buffer,0,n);}return;
+        // Retain the bounded 64 KiB copy and time disk reads separately
+        // from TLS writes/backpressure. A successful write is not a save receipt.
+        long began=System.nanoTime(),readNs=0,writeNs=0,bytes=0;int writes=0;boolean bodyWritten=false;
+        try(InputStream disk=Files.newInputStream(target)){byte[] buffer=new byte[65536];int n;
+          for(;;){long before=System.nanoTime();n=disk.read(buffer);readNs+=System.nanoTime()-before;if(n<0)break;before=System.nanoTime();output.write(buffer,0,n);writeNs+=System.nanoTime()-before;bytes+=n;writes++;}
+          long before=System.nanoTime();output.flush();writeNs+=System.nanoTime()-before;bodyWritten=true;
+        }finally{JSONObject sample=new JSONObject().put("bytesWritten",bytes).put("bodyWritten",bodyWritten).put("tls",request.secure).put("elapsedMs",(System.nanoTime()-began)/1000000).put("diskReadMs",readNs/1000000).put("tlsWriteMs",writeNs/1000000).put("bulkWrites",writes).put("bufferBytes",65536);
+          try{sample.put("tcpNoDelay",request.client.getTcpNoDelay()).put("sendBufferBytes",request.client.getSendBufferSize());}catch(SocketException ignored){}sendSample(sample);
+        }return;
       }
     }
     throw new HttpError(405,"Phương thức không được hỗ trợ.");

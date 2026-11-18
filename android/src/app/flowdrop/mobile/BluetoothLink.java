@@ -20,6 +20,8 @@ public final class BluetoothLink implements AutoCloseable {
   private volatile BluetoothServerSocket listener;
   private volatile BluetoothSocket connection;
   private volatile boolean closed;
+  private volatile boolean delivered;
+  public boolean isDelivered(){return delivered;}
   private Runnable deadline;
   public boolean isActive(){return !closed&&(listener!=null||connection!=null);}
   public void start(Context context,TurboLink turbo,Consent consent,Status status)throws Exception {
@@ -47,7 +49,7 @@ public final class BluetoothLink implements AutoCloseable {
         if(!current.optBoolean("ready")||!state.getString("ssid").equals(current.optString("ssid"))||!state.getString("passphrase").equals(current.optString("passphrase")))throw new IOException("Mạng Turbo đã đổi; hãy thử lại.");
         JSONObject reply=new JSONObject().put("protocol","FlowDropLink1").put("ssid",current.getString("ssid")).put("passphrase",current.getString("passphrase"));
         byte[] payload=(reply.toString()+"\n").getBytes(StandardCharsets.UTF_8);
-        connection.getOutputStream().write(payload);connection.getOutputStream().flush();
+        connection.getOutputStream().write(payload);connection.getOutputStream().flush();delivered=true;
         main.post(()->status.update("Đã chuyển thông tin mạng qua Bluetooth. Chờ Windows kết nối Wi-Fi; vẫn cần ghép nối TLS trong FlowDrop."));
       }catch(Exception error){if(!closed)main.post(()->status.update("Chưa nối được Bluetooth. Kiểm tra ghép đôi Bluetooth của Windows rồi thử lại."));}
       finally{close();}

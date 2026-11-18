@@ -455,3 +455,57 @@ cancels via the TaskDialog API. Windowless DirectUI controls cannot be verified
 by assuming one HWND per button. No production change, skipped transfer test or
 weaker outcome is used for this harness correction. The failed run/artifact is
 retained at44236103819/14397765812; final-head rerun status belongs in PR12.
+
+## Direct setup progress and Android outgoing measurements
+
+Owner follow-up: the Preview is almost usable, Windows-to-phone reports about50
+in the UI, phone-to-Windows remains slower. Units and exact reverse-direction
+rate have not been independently established. The owner clarified that the main
+connection obstacle is knowing when it has finished and which device to select.
+
+Android now shows explicit three-stage progress: phone network preparation,
+computer Wi-Fi setup, and discovery of FlowDrop. After network discovery, actual
+peers on the owned Direct interface appear as send-target buttons inside the same
+dialog. The user still chooses a target and goes through the existing TLS/SAS
+confirmation when needed. Delivering Bluetooth credentials alone is never called
+Wi-Fi/FlowDrop completion. Timeout/retry and manual/LAN/Stop/diagnostic controls
+remain available. A Bluetooth delivered flag only becomes true after an approved
+reply is flushed; denials/malformed/unbonded cases do not become delivered.
+
+Windows has a persistent progress row, independent of transient transfer status.
+After association it immediately rescans. It may highlight the unique discovered
+peer at the DHCP gateway of the exact WLAN interface/SSID it joined. This is a
+location hint, not authentication: it does not trust, pair or send a file. Missing
+gateway, other-network association, ambiguous endpoints, credentials/path in URL
+or invalid port cannot select a peer. Multiple FlowDrop instances explicitly ask
+the user to choose; an existing manual selection is not replaced by polling.
+Independent pinned TLS and both-screen SAS remain unchanged.
+
+Source inspection: phone sending stages a copy locally, then the receiver pulls
+it via TLS. No fixed send quota/rate limiter was found in this path. Linux/JVM
+measurements of four32MiB+17byte transfers before/after an experimental128KiB
+copy showed substantial warmup variance; warm-run medians were approximately42.6
+and41.6MiB/s. They DO NOT establish a throughput gain or explain the Xiaomi radio.
+The larger-buffer/FileInputStream experiment was discarded. The original64KiB
+Files stream, staging, SHA/length checks, routes and completion semantics remain.
+
+Accepted Android TCP sockets request TCP_NODELAY to avoid Nagle/delayed-ACK delay
+in small HTTP/TLS bursts. The OS-selected send-buffer size is retained. No physical
+throughput gain is claimed from this setting. Eight bounded, local-only outgoing
+body samples now record bytes written, body-write success (not receiver receipt),
+TLS flag, elapsed/disk-read/TLS-write milliseconds, bulk-write count, buffer size
+and actual socket settings. TLS-write time includes crypto and backpressure; it
+cannot alone distinguish radio/CPU/receiver disk. Samples are added to explicitly
+copied diagnostics, not HTTP endpoints, wire metadata or telemetry. No file names,
+paths, codes, URLs, peer identities or credentials are recorded. Copy samples use
+a dedicated short lock, not the server/session lock.
+
+Tests add real pinned-TLS2MiB+17byte repeated downloads with exact SHA, bounded and
+sanitized samples and the accepted socket's TCP_NODELAY; real Android downloads
+must populate bounded samples too. Windows helper checks unique/absent/ambiguous/
+malformed gateway hints and the persistent status control. Physical discovery,
+DHCP/Wi-Fi association, clarity on the owner's devices and asymmetric throughput
+remain NOT VERIFIED by cloud CI. Final head CI/artifact evidence is recorded in
+Draft PR12; no release/version/signing/dependency/iOS/workflow changes are made.
+Rollback is a PR revert of this dedicated change and feature source pins, without
+deleting received files, re-signing production or changing main protection.

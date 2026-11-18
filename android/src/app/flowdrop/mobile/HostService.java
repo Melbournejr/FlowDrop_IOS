@@ -31,7 +31,7 @@ public final class HostService extends Service {
     String build="source";try{android.os.Bundle metadata=getPackageManager().getApplicationInfo(getPackageName(),android.content.pm.PackageManager.GET_META_DATA).metaData;String value=metadata==null?null:metadata.getString("flowdrop.preview.commit");if(value!=null&&value.matches("[a-f0-9]{40}"))build=value;}catch(Exception ignored){}
     org.json.JSONObject report=new org.json.JSONObject().put("appVersion",ReleaseConfig.VERSION).put("build",build).put("androidApi",Build.VERSION.SDK_INT).put("hostReady",isReady()).put("events",linkDiagnostics==null?new org.json.JSONArray():linkDiagnostics.report());
     report.put("appForeground",MainActivity.foregroundActivity!=null);try{WifiManager wifi=(WifiManager)getApplicationContext().getSystemService(WIFI_SERVICE);report.put("wifiEnabled",wifi!=null&&wifi.isWifiEnabled());}catch(RuntimeException ignored){report.put("wifiStatusReadable",false);}
-    if(turbo!=null)report.put("link",turbo.diagnostics());return report;
+    if(turbo!=null)report.put("link",turbo.diagnostics());if(server!=null)report.put("outgoingBodies",server.sendDiagnostics());return report;
   }
   public TurboLink turbo(){return turbo;}
   public DeviceSecurity security(){return security;}
