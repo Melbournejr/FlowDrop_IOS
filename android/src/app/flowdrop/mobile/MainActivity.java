@@ -241,8 +241,8 @@ if(requestCode!=PICK_FILE||resultCode!=RESULT_OK||data==null)return;ArrayList<Ur
     TurboLink turbo=hostService==null?null:hostService.turbo();if(turbo==null){problem("Bật chia sẻ trước khi chọn kết nối.");return;}
     LinearLayout panel=column();panel.setPadding(dp(20),dp(12),dp(20),dp(12));
     TextView detail=label("Đang đọc trạng thái kết nối…",14,INK,false);panel.addView(detail);
-    Button create=button("Tạo Turbo",true),bluetooth=button("Kết nối Windows qua Bluetooth",false),lan=button("Dùng LAN",false);
-    addButton(panel,create);addButton(panel,bluetooth);addButton(panel,lan);
+    Button create=button("Tạo Turbo",true),bluetooth=button("Kết nối Windows qua Bluetooth",false),auto=button("Auto · dùng mạng hiện tại",false),lan=button("Dùng LAN",false);
+    addButton(panel,create);addButton(panel,bluetooth);addButton(panel,auto);addButton(panel,lan);
     TextView note=label("Mạng Turbo được giữ cho nhiều lượt gửi đến khi bạn Dừng Turbo hoặc dừng chia sẻ.\n\nBluetooth: lần đầu ghép đôi điện thoại và Windows trong Cài đặt hệ điều hành. Sau đó bấm nút Bluetooth ở đây và trên Windows, xác nhận cho phép. File vẫn truyền qua Wi-Fi và TLS.",12,MUTED,false);addText(panel,note,12);
     ScrollView scroll=new ScrollView(this);scroll.addView(panel);
     AlertDialog dialog=new AlertDialog.Builder(this).setTitle("Kết nối trực tiếp · Turbo").setView(scroll).setNegativeButton("Đóng",null).create();
@@ -253,6 +253,7 @@ if(requestCode!=PICK_FILE||resultCode!=RESULT_OK||data==null)return;ArrayList<Ur
       if(bluetoothLink!=null)bluetoothLink.close();bluetoothLink=new BluetoothLink();
       try{bluetoothLink.start(this,turbo,(name,accept,reject)->{if(!foreground||!dialog.isShowing()){reject.run();return;}new AlertDialog.Builder(this).setTitle("Cho phép kết nối trực tiếp?").setMessage("Thiết bị Bluetooth đã ghép đôi: "+name+"\n\nCho phép thiết bị này nhận thông tin mạng Turbo? Việc kết nối sẽ có thể thay đổi mạng Wi-Fi hiện tại của Windows. Ghép nối bảo mật FlowDrop vẫn được giữ riêng.").setNegativeButton("Từ chối",(d,w)->reject.run()).setPositiveButton("Cho phép",(d,w)->accept.run()).setOnCancelListener(d->reject.run()).show();},message->{if(!isDestroyed())note.setText(message);});note.setText("Đang chờ Windows qua Bluetooth, tối đa 60 giây. Trên Windows chọn Kết nối → Bluetooth. Giữ hộp thoại này mở.");}catch(Exception e){bluetoothLink.close();note.setText("Bật Bluetooth và ghép đôi hai máy trong Cài đặt hệ điều hành, sau đó thử lại.");}
     });
+    auto.setOnClickListener(v->turbo.mode("auto"));
     lan.setOnClickListener(v->{if(bluetoothLink!=null)bluetoothLink.close();turbo.mode("lan");});
     dialog.setOnDismissListener(d->{main.removeCallbacks(refresh);if(bluetoothLink!=null)bluetoothLink.close();});dialog.show();main.post(refresh);
   }

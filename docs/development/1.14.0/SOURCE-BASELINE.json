@@ -52,7 +52,7 @@
     {
       "path": "android/src/app/flowdrop/mobile/MainActivity.java",
       "base_sha256": "5723842d292e94343b875fe33d5e98161da8e37425288966ca067e427bbfacd8",
-      "sha256": "1298eda1b89085574492fd1015a583d67d734de7abbeb17e3e88590672444ece"
+      "sha256": "7df42a41e66b4d934978e1aea18a71e657a37c5a9937d5cef24d965648f51bc9"
     },
     {
       "path": "android/src/app/flowdrop/mobile/ReceiveService.java",
@@ -92,7 +92,7 @@
     {
       "path": "desktop/windows/FlowDrop.cpp",
       "base_sha256": "f8a274fbc1ef1c560bc2455a15bab984918dce832b9e91410d3cc24595b64f23",
-      "sha256": "026cbaeb56ce47eeb882417902ce0a6a04d5481d81bd49c7805af969bbd9fb0c"
+      "sha256": "c0119abcedb0b0a847a13df1f491b11cd17acf3bcf5364e48b68bca30bdb7125"
     },
     {
       "path": "desktop/windows/FlowDrop.rc",

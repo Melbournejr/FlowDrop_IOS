@@ -281,9 +281,10 @@ std::wstring observedWifi(){
 }
 void turboMenu(){
   static std::atomic<bool> linking{false};
-  auto info=L"Chế độ: "+connectionMode+L"\n"+observedWifi()+L"\n\nKết nối trực tiếp không nhập mật khẩu:\n1. Ghép đôi Bluetooth Windows và điện thoại trong Cài đặt hệ điều hành (lần đầu).\n2. Trên Android: Tạo Turbo → Kết nối Windows qua Bluetooth.\n3. Chọn Có bên dưới, chọn điện thoại và xác nhận trên điện thoại.\n\nCó: kết nối qua Bluetooth. Không: mở Mobile Hotspot thủ công. Hủy: đóng. File vẫn truyền qua Wi-Fi và TLS. Mạng Turbo Android được giữ cho nhiều lượt gửi đến khi bạn dừng.";
+  auto info=L"Chế độ: "+connectionMode+L"\n"+observedWifi()+L"\n\nKết nối trực tiếp không nhập mật khẩu:\n1. Ghép đôi Bluetooth Windows và điện thoại trong Cài đặt hệ điều hành (lần đầu).\n2. Trên Android: Tạo Turbo → Kết nối Windows qua Bluetooth.\n3. Chọn Có bên dưới, chọn điện thoại và xác nhận trên điện thoại.\n\nCó: kết nối qua Bluetooth. Không: mở Mobile Hotspot thủ công. Hủy: chọn Auto và đóng. File vẫn truyền qua Wi-Fi và TLS. Mạng Turbo Android được giữ cho nhiều lượt gửi đến khi bạn dừng.";
   int choice=MessageBoxW(window,info.c_str(),L"FlowDrop · Kết nối trực tiếp",MB_YESNOCANCEL|MB_ICONINFORMATION|MB_DEFBUTTON3);
   if(choice==IDNO){ShellExecuteW(window,L"open",L"ms-settings:network-mobilehotspot",nullptr,nullptr,SW_SHOWNORMAL);return;}
+  if(choice==IDCANCEL){connectionMode=L"Auto";return;}
   if(choice!=IDYES||linking.load())return;std::optional<BTH_ADDR> peer;try{peer=fdlink::choose(window);}catch(const std::exception& e){MessageBoxW(window,wide(e.what()).c_str(),L"FlowDrop · Bluetooth",MB_OK|MB_ICONINFORMATION);return;}if(!peer)return;linking=true;
   std::thread([address=*peer]{try{auto network=fdlink::receive(address);fdlink::join(network);post({{"kind","directLinkReady"}});}catch(const std::exception& e){post({{"kind","error"},{"operation","direct-link"},{"message",e.what()}});}linking=false;}).detach();
 }
