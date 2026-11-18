@@ -362,7 +362,7 @@
     {
       "path": "tests/windows-native-smoke.cpp",
       "base_sha256": "3c4402b3f190255944cf49fc964e4235dae4bce0d44d635152e3e2c343c97f5c",
-      "sha256": "89183da7c135293bc7018909fd78fef8367ae489e991e90b83238b53a87df4ca"
+      "sha256": "ed59e6e5386d5028741af958d65b89dcc5c776c1b174eedc2f750d05e536cc29"
     },
     {
       "path": "tests/windows-vault-probe.mjs",

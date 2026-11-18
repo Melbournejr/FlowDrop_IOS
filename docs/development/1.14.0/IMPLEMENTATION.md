@@ -443,3 +443,15 @@ Bluetooth interoperability and throughput remain NOT VERIFIED by cloud CI.
 If DIRECT still drops, copy the diagnostics before uninstalling Preview so its
 private event history is retained for investigation. Revert this dedicated change
 through a PR to roll back; do not delete received files or change production keys.
+
+First native CI ataffe644: Android29/35, build, regression includingZIP64 and
+engine E2E passed; Windows W15 failed at the new chooser assertion before its
+transfer steps. The initial predicate combined window visibility with GetDlgItem
+for TaskDialog command links, so that log alone cannot establish whether the
+window or a control lookup failed. The harness now requires the visible actual
+dialog, then uses Windows UI Automation to require all four enabled/on-screen
+button roles/names (pairing, manual hotspot, diagnostics, Auto/LAN), and finally
+cancels via the TaskDialog API. Windowless DirectUI controls cannot be verified
+by assuming one HWND per button. No production change, skipped transfer test or
+weaker outcome is used for this harness correction. The failed run/artifact is
+retained at44236103819/14397765812; final-head rerun status belongs in PR12.

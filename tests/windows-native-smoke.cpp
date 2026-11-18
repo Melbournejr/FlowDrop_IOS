@@ -7,6 +7,7 @@
 #include <shellapi.h>
 #include <shlobj.h>
 #include <commctrl.h>
+#include <uiautomation.h>
 #include <winhttp.h>
 #include <filesystem>
 #include <fstream>
@@ -28,6 +29,23 @@ void verifyBluetoothSetupValidation(){
  auto extra=valid;extra["url"]="http://external.example";bool denied=false;try{fdlink::validate(extra);}catch(...){denied=true;}if(!denied)throw std::runtime_error("Bluetooth extra fields accepted");
 }
 void check(bool test,const char* message){if(!test)throw std::runtime_error(message);}
+template<class T>struct TestCom {T* p=nullptr;~TestCom(){if(p)p->Release();}};
+bool directOptionsAccessible(HWND dialog){
+ // TaskDialog command links can be windowless DirectUI elements: inspect the
+ // actual OS accessibility tree instead of assuming each button has an HWND.
+ struct Apartment {HRESULT result=CoInitializeEx(nullptr,COINIT_MULTITHREADED);~Apartment(){if(SUCCEEDED(result))CoUninitialize();}} apartment;
+ TestCom<IUIAutomation> automation;if(FAILED(CoCreateInstance(__uuidof(CUIAutomation),nullptr,CLSCTX_INPROC_SERVER,__uuidof(IUIAutomation),(void**)&automation.p)))return false;
+ TestCom<IUIAutomationElement> root;if(FAILED(automation.p->ElementFromHandle(dialog,&root.p)))return false;
+ TestCom<IUIAutomationCondition> any;if(FAILED(automation.p->CreateTrueCondition(&any.p)))return false;
+ TestCom<IUIAutomationElementArray> elements;if(FAILED(root.p->FindAll(TreeScope_Descendants,any.p,&elements.p)))return false;
+ int count=0;if(FAILED(elements.p->get_Length(&count))||count>256)return false;
+ fdlink::SystemDll oleaut(L"oleaut32.dll");auto freeString=(void(WINAPI*)(BSTR))GetProcAddress(oleaut.h,"SysFreeString");if(!freeString)return false;
+ bool found[4]{};const wchar_t* expected[]={L"Ghép đôi Bluetooth lần đầu",L"Mobile Hotspot thủ công",L"Sao chép chẩn đoán Wi-Fi",L"Auto / LAN"};
+ for(int i=0;i<count;i++){TestCom<IUIAutomationElement> element;if(FAILED(elements.p->GetElement(i,&element.p)))continue;CONTROLTYPEID type=0;BOOL enabled=FALSE,offscreen=TRUE;
+  if(FAILED(element.p->get_CurrentControlType(&type))||type!=UIA_ButtonControlTypeId||FAILED(element.p->get_CurrentIsEnabled(&enabled))||!enabled||FAILED(element.p->get_CurrentIsOffscreen(&offscreen))||offscreen)continue;
+  BSTR name=nullptr;if(SUCCEEDED(element.p->get_CurrentName(&name))&&name){std::wstring label(name);for(int j=0;j<4;j++)if(label.find(expected[j])!=std::wstring::npos)found[j]=true;}if(name)freeString(name);
+ }return found[0]&&found[1]&&found[2]&&found[3];
+}
 void wait(std::function<bool()> predicate,const char* message,int seconds=40){auto start=GetTickCount64();while(GetTickCount64()-start<(unsigned)seconds*1000){if(predicate())return;Sleep(100);}throw std::runtime_error(message);}
 std::wstring text(HWND control){wchar_t value[1024]{};DWORD_PTR result=0;SendMessageTimeoutW(control,WM_GETTEXT,1024,(LPARAM)value,SMTO_ABORTIFHUNG,1000,&result);return value;}
 std::string http(const wchar_t* method,const std::string& route,const std::string& body="",const std::string& token="",bool desktop=false){
@@ -60,8 +78,8 @@ int wmain(int argc,wchar_t**argv){
  std::wcout<<L"Native window ready; status: "<<text(GetDlgItem(app,1002))<<std::endl;
  check(text(GetDlgItem(app,2035))==L"Kết nối trực tiếp","Direct connection entry missing");
  PostMessageW(app,WM_COMMAND,2035,0);HWND direct=nullptr;
- wait([&]{direct=FindWindowW(nullptr,L"FlowDrop · Kết nối trực tiếp");return direct&&IsWindowVisible(direct)&&GetDlgItem(direct,6001)&&GetDlgItem(direct,6003);},"Direct connection device chooser did not open",20);
- check(GetDlgItem(direct,6002)&&GetDlgItem(direct,6004),"Manual hotspot or Auto/LAN entry removed");PostMessageW(direct,TDM_CLICK_BUTTON,IDCANCEL,0);
+ wait([&]{direct=FindWindowW(nullptr,L"FlowDrop · Kết nối trực tiếp");return direct&&IsWindowVisible(direct);},"Direct connection device chooser did not open",20);
+ wait([&]{return directOptionsAccessible(direct);},"Direct chooser options missing, hidden or disabled in actual UI Automation tree",20);PostMessageW(direct,TDM_CLICK_BUTTON,IDCANCEL,0);
  wait([&]{return !IsWindow(direct);},"Direct chooser did not close",10);
  std::cout<<"Native direct chooser and cancellation verified without radio operations."<<std::endl;
  PWSTR local=nullptr;SHGetKnownFolderPath(FOLDERID_LocalAppData,0,nullptr,&local);fs::path state=fs::path(local)/L"FlowDrop"/L"Data"/L"desktop-state.json";CoTaskMemFree(local);
