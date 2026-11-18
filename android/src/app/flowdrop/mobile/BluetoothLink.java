@@ -21,11 +21,12 @@ public final class BluetoothLink implements AutoCloseable {
   private volatile BluetoothSocket connection;
   private volatile boolean closed;
   private Runnable deadline;
+  public boolean isActive(){return !closed&&(listener!=null||connection!=null);}
   public void start(Context context,TurboLink turbo,Consent consent,Status status)throws Exception {
     BluetoothManager manager=(BluetoothManager)context.getSystemService(Context.BLUETOOTH_SERVICE);
     BluetoothAdapter adapter=manager==null?null:manager.getAdapter();
     if(adapter==null||!adapter.isEnabled())throw new IOException("Bật Bluetooth và ghép đôi điện thoại với Windows trong Cài đặt trước.");
-    JSONObject state=turbo.snapshot();if(!state.optBoolean("owned")||state.optString("ssid").isEmpty())throw new IOException("Tạo mạng Turbo trước khi kết nối Bluetooth.");
+    JSONObject state=turbo.snapshot();if(!state.optBoolean("ready")||state.optString("ssid").isEmpty())throw new IOException("Tạo mạng Turbo trước khi kết nối Bluetooth.");
     listener=adapter.listenUsingRfcommWithServiceRecord("FlowDrop Direct Link",SERVICE);
     deadline=()->{close();status.update("Hết thời gian chờ Bluetooth. Bấm kết nối để thử lại.");};
     main.postDelayed(deadline,60000);
@@ -43,7 +44,7 @@ public final class BluetoothLink implements AutoCloseable {
         main.post(()->{if(closed){answered.countDown();return;}consent.ask(bondedName,()->{allowed[0]=true;answered.countDown();},answered::countDown);});
         if(!answered.await(30,TimeUnit.SECONDS)||!allowed[0]||closed)throw new IOException("Chưa được chấp nhận kết nối Bluetooth.");
         JSONObject current=turbo.snapshot();
-        if(!current.optBoolean("owned")||!state.getString("ssid").equals(current.optString("ssid"))||!state.getString("passphrase").equals(current.optString("passphrase")))throw new IOException("Mạng Turbo đã đổi; hãy thử lại.");
+        if(!current.optBoolean("ready")||!state.getString("ssid").equals(current.optString("ssid"))||!state.getString("passphrase").equals(current.optString("passphrase")))throw new IOException("Mạng Turbo đã đổi; hãy thử lại.");
         JSONObject reply=new JSONObject().put("protocol","FlowDropLink1").put("ssid",current.getString("ssid")).put("passphrase",current.getString("passphrase"));
         byte[] payload=(reply.toString()+"\n").getBytes(StandardCharsets.UTF_8);
         connection.getOutputStream().write(payload);connection.getOutputStream().flush();

@@ -82,6 +82,7 @@ public final class NativeRuntimeSmoke extends Instrumentation {
   check("d06e638576c1c502ed2303468c665db07cec48e91adfc45debf841d0b298a519".equals(actualSignature),"Windows/Android request signature mismatch (JSON slash escaping)");
   passed("windows-android-request-signature",new JSONObject().put("canonicalHmacMatches",true));
   Context context=getTargetContext();launch();await(()->HostService.current!=null&&HostService.current.isReady(),"App foreground backend never became ready",150);
+  check(widget("Kết nối trực tiếp với máy tính")!=null,"Direct connection entry missing from main screen");String directReport=HostService.current.linkReport().toString();for(String forbidden:new String[]{"passphrase","ssid","token","nonce","certificate","fingerprint"})check(!directReport.contains("\""+forbidden+"\""),"Diagnostics contains private field "+forbidden);passed("direct-entry-and-safe-diagnostics",new JSONObject().put("mainEntryPresent",true).put("sensitiveFieldsExcluded",true));
   HostService host=HostService.current;TransferServer server=host.transfers();String origin=server.getLocalUrl();String identity=server.getDeviceId();
   JSONObject config=TransferClient.json(origin,"api/config","GET",null,null,null);check("FlowDrop".equals(config.getString("name"))&&"1.14.0".equals(config.getString("version")),"Unexpected actual backend config");
   JSONObject tlsConfig=config.getJSONObject("secure");String fingerprint=tlsConfig.getString("fingerprint");

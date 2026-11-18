@@ -1,5 +1,7 @@
 """Isolated Android Preview overlay. Never rewrite the checkout or production APK."""
 import hashlib
+import os
+import re
 from pathlib import Path
 import shutil
 import sys
@@ -67,6 +69,8 @@ def prepare(source, root):
             tree.getroot().remove(permission)
     application = tree.getroot().find('application')
     application.set(NS + 'label', LABEL)
+    commit = os.environ.get('FLOWDROP_REVIEWED_HEAD', '')
+    ET.SubElement(application, 'meta-data', {NS + 'name': 'flowdrop.preview.commit', NS + 'value': commit if re.fullmatch(r'[a-f0-9]{40}', commit) else 'source'})
     for item in list(application):
         if item.get(NS + 'name') in ['.UpdateJobService', '.UpdateInstallReceiver']:
             application.remove(item)

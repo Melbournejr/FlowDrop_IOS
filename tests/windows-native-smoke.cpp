@@ -19,6 +19,7 @@ unsigned port=0;
 std::wstring wide(const std::string&s){int n=MultiByteToWideChar(CP_UTF8,0,s.data(),(int)s.size(),nullptr,0);std::wstring r(n,L'\0');MultiByteToWideChar(CP_UTF8,0,s.data(),(int)s.size(),r.data(),n);return r;}
 #include "DirectBluetooth.h"
 void verifyBluetoothSetupValidation(){
+ if(fdlink::recoveryAction(true,true,0,0)!=0||fdlink::recoveryAction(true,false,0,0)!=3||fdlink::recoveryAction(false,false,2,0)!=0||fdlink::recoveryAction(false,false,3,0)!=1||fdlink::recoveryAction(false,false,3,2)!=2||fdlink::recoveryAction(false,false,20,1,false)!=0)throw std::runtime_error("Recovery policy changed");
  auto valid=json{{"protocol","FlowDropLink1"},{"ssid","DIRECT-fd-FlowDrop-0123abcd"},{"passphrase","0123456789abcdef0123"}};
  fdlink::validate(valid);
  for(auto invalid:std::vector<json>{json::array(),json(),json{{"protocol","other"}},json{{"protocol","FlowDropLink1"},{"ssid","other-network"},{"passphrase","0123456789abcdef0123"}}}){bool denied=false;try{fdlink::validate(invalid);}catch(...){denied=true;}if(!denied)throw std::runtime_error("Bluetooth malformed setup accepted");}
@@ -57,6 +58,12 @@ int wmain(int argc,wchar_t**argv){
  HWND app=nullptr;wait([&]{app=FindWindowW(L"FlowDrop.NativeDesktop",nullptr);return app&&GetDlgItem(app,101);},"Native window did not appear");
  wait([&]{return IsWindowEnabled(GetDlgItem(app,101))&&text(GetDlgItem(app,1002)).find(L"Sẵn sàng")!=std::wstring::npos;},"Native backend did not become ready",60);
  std::wcout<<L"Native window ready; status: "<<text(GetDlgItem(app,1002))<<std::endl;
+ check(text(GetDlgItem(app,2035))==L"Kết nối trực tiếp","Direct connection entry missing");
+ PostMessageW(app,WM_COMMAND,2035,0);HWND direct=nullptr;
+ wait([&]{direct=FindWindowW(nullptr,L"FlowDrop · Kết nối trực tiếp");return direct&&IsWindowVisible(direct)&&GetDlgItem(direct,6001)&&GetDlgItem(direct,6003);},"Direct connection device chooser did not open",20);
+ check(GetDlgItem(direct,6002)&&GetDlgItem(direct,6004),"Manual hotspot or Auto/LAN entry removed");PostMessageW(direct,TDM_CLICK_BUTTON,IDCANCEL,0);
+ wait([&]{return !IsWindow(direct);},"Direct chooser did not close",10);
+ std::cout<<"Native direct chooser and cancellation verified without radio operations."<<std::endl;
  PWSTR local=nullptr;SHGetKnownFolderPath(FOLDERID_LocalAppData,0,nullptr,&local);fs::path state=fs::path(local)/L"FlowDrop"/L"Data"/L"desktop-state.json";CoTaskMemFree(local);
  json metadata;{std::ifstream stream(state);stream>>metadata;}port=metadata.at("port");
  check(GetDlgItem(app,2013)&&GetDlgItem(app,2030)&&GetDlgItem(app,2031)&&GetDlgItem(app,2032),"Folder, update or LAN controls missing");

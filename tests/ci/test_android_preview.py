@@ -1,5 +1,7 @@
 """Preview isolation fixtures; OS coexistence is separately required on emulator."""
 import hashlib
+import os
+from unittest.mock import patch
 import json
 from pathlib import Path
 import tempfile
@@ -18,8 +20,10 @@ class PreviewTests(unittest.TestCase):
         paths = list((REPO / 'android').rglob('*.java')) + [REPO / 'android/AndroidManifest.xml']
         original = {p: p.read_bytes() for p in paths}
         with tempfile.TemporaryDirectory() as temp:
-            output, proof = preview.prepare(REPO, owned_root(Path(temp) / 'build'))
+            with patch.dict(os.environ, {"FLOWDROP_REVIEWED_HEAD": "a" * 40}):
+                output, proof = preview.prepare(REPO, owned_root(Path(temp) / 'build'))
             manifest = ET.parse(output / 'android/AndroidManifest.xml').getroot()
+            self.assertEqual(manifest.find("application/meta-data[@%s='flowdrop.preview.commit']" % (preview.NS + 'name')).get(preview.NS + 'value'), 'a' * 40)
             self.assertEqual(manifest.get('package'), 'app.flowdrop.preview')
             self.assertEqual(manifest.find('application').get(preview.NS + 'label'), 'FlowDrop Preview')
             self.assertEqual(manifest.get(preview.NS + 'versionName'), '1.14.0')

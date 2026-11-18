@@ -1,5 +1,7 @@
 """Windows Preview build isolation; real Windows proof is required in W22."""
 import hashlib
+import os
+from unittest.mock import patch
 import json
 from pathlib import Path
 import subprocess
@@ -30,8 +32,10 @@ class WindowsPreviewTests(unittest.TestCase):
                 shutil.copyfile(REPO / name, target)
             (fixture / 'node_modules').mkdir()
             (fixture / 'node_modules/fixture.txt').write_text('Synthetic overlay fixture; not an npm dependency')
-            output, proof = preview.prepare(fixture, owned_root(Path(temp) / 'build'))
+            with patch.dict(os.environ, {"FLOWDROP_REVIEWED_HEAD": "a" * 40}):
+                output, proof = preview.prepare(fixture, owned_root(Path(temp) / 'build'))
             cpp = (output / 'desktop/windows/FlowDrop.cpp').read_text(encoding='utf-8')
+            self.assertTrue(cpp.startswith('#define FLOWDROP_PREVIEW_BUILD \"' + 'a' * 40 + '\"\n'))
             nsi = (output / 'desktop/windows/installer.nsi').read_text(encoding='utf-8')
             self.assertIn('Local\\\\FlowDrop Preview.NativeDesktop.1', cpp)
             self.assertIn('L"FlowDrop Preview.NativeDesktop"', cpp)

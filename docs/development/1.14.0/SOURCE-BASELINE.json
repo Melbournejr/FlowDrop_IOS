@@ -32,7 +32,7 @@
     {
       "path": "android/src/app/flowdrop/mobile/BluetoothLink.java",
       "base_sha256": null,
-      "sha256": "9d4aae09b0d9ff9cbc2304b39982f21f47b4c0c49731350b06c7757ac70af602"
+      "sha256": "5d53cad570973e8cf9eee8dada31ca8cd84608578ec2bca9b0dc5015ce32a4d1"
     },
     {
       "path": "android/src/app/flowdrop/mobile/CodeLookup.java",
@@ -47,12 +47,17 @@
     {
       "path": "android/src/app/flowdrop/mobile/HostService.java",
       "base_sha256": "1df2c31350d9239e001041afab4c1a7410dc6f6f40318ee3a793eb1d526db94a",
-      "sha256": "6134b03858f1a6323575cf841a29d09af1e6c9a96503c29b3627164c5035cc4e"
+      "sha256": "a4ee7cfe2c63439355fecc6587c849e2b7d32776433457dc834fd3fb042f19f6"
+    },
+    {
+      "path": "android/src/app/flowdrop/mobile/LinkDiagnostics.java",
+      "base_sha256": null,
+      "sha256": "e29bfb8ba32658652a711a1da2ee2e37d2756f0fc2848bf58697751c4e8259a9"
     },
     {
       "path": "android/src/app/flowdrop/mobile/MainActivity.java",
       "base_sha256": "5723842d292e94343b875fe33d5e98161da8e37425288966ca067e427bbfacd8",
-      "sha256": "7df42a41e66b4d934978e1aea18a71e657a37c5a9937d5cef24d965648f51bc9"
+      "sha256": "05bece41d42dadeabf6b4e1fce1fcb02d621b162e29dceafe88b5fabc5616395"
     },
     {
       "path": "android/src/app/flowdrop/mobile/ReceiveService.java",
@@ -77,7 +82,7 @@
     {
       "path": "android/src/app/flowdrop/mobile/TurboLink.java",
       "base_sha256": null,
-      "sha256": "98332848d65f891425d7cbdcd2a6b98bd953c2cb03d974f11a8daf401905514d"
+      "sha256": "b7d86cb44cc8d98b4c054d9c4df549e1c72ccd0e1e60a4ecf660bc1122342a03"
     },
     {
       "path": "android/src/app/flowdrop/mobile/WifiNetwork.java",
@@ -87,12 +92,12 @@
     {
       "path": "desktop/windows/DirectBluetooth.h",
       "base_sha256": null,
-      "sha256": "63747e9811d03eaaa07be1414858426958274b53b70173f745b82e793ec959f5"
+      "sha256": "6489d722dc434f54d3c01da68941bfafa9216c337ac4d6bcf1d6ecdb93853986"
     },
     {
       "path": "desktop/windows/FlowDrop.cpp",
       "base_sha256": "f8a274fbc1ef1c560bc2455a15bab984918dce832b9e91410d3cc24595b64f23",
-      "sha256": "c0119abcedb0b0a847a13df1f491b11cd17acf3bcf5364e48b68bca30bdb7125"
+      "sha256": "f06a44140a36eb0633443a510f7dd359695d70bf020f2d738559b45656d5a840"
     },
     {
       "path": "desktop/windows/FlowDrop.rc",
@@ -117,7 +122,7 @@
     {
       "path": "scripts/android_preview.py",
       "base_sha256": null,
-      "sha256": "8d0e38c489eb33013df65ed93f34e91fd1121d7dc3234701bad809e9a6e2b585"
+      "sha256": "dbb47fdd7b2092fcd88a5a6c81380587997fa84a08a8599af98006151f5aeb06"
     },
     {
       "path": "scripts/build-installers.py",
@@ -237,7 +242,7 @@
     {
       "path": "scripts/windows_preview.py",
       "base_sha256": null,
-      "sha256": "16ea8b595352da7bfbbbe5c68738a272788708ce0fede198d9562ac98cb0e400"
+      "sha256": "d77ec66f85d0329c145baee45e9d6ab3a37530ac0a02ccd9ae93d941d3f8ea06"
     },
     {
       "path": "tests/CodeLookupLateHarness.java",
@@ -272,7 +277,7 @@
     {
       "path": "tests/android-runtime/NativeRuntimeSmoke.java",
       "base_sha256": "1b66760dad004c1324c2dc3b5ce9ef019eff0c4d1264a43993d5d19d56a92899",
-      "sha256": "dfb8f5876b43fa91acb6a23ce4814f31d2fda0e20bf60c177d10a94472380768"
+      "sha256": "130a7974fda681906786ca04b1941dabd877143145176f357944d3198107ec83"
     },
     {
       "path": "tests/canonical-auth-114.test.mjs",
@@ -287,7 +292,7 @@
     {
       "path": "tests/ci/test_android_preview.py",
       "base_sha256": null,
-      "sha256": "e4f1d35adce1d112dc8a4b937f9b10411eea2c8827ddaa31c3a397e510d9bdb0"
+      "sha256": "5389d0ffcab9d2583bedf52331a951868d4d3e04027fe8a73711f0a7d99b9500"
     },
     {
       "path": "tests/ci/test_feature_baseline.py",
@@ -307,7 +312,7 @@
     {
       "path": "tests/ci/test_windows_preview.py",
       "base_sha256": null,
-      "sha256": "0921b207c4b24975e364b2ae81361c17078c644fb1a4a5df0875ead0ff26fd09"
+      "sha256": "a7fd2f798ac6751c8196396983cdcfd551d79222533a9616eeef2b0b1d27080c"
     },
     {
       "path": "tests/code-114.test.mjs",
@@ -352,12 +357,12 @@
     {
       "path": "tests/turbo-lifecycle.test.mjs",
       "base_sha256": null,
-      "sha256": "cb48e9998e98dc52a88052eb61518556e42234b51b74cdea6938a2325d8fbd4b"
+      "sha256": "f9c23f873a164985d77e5b5eac969aaf2dc3997c891abe0f4736cdb2199f577b"
     },
     {
       "path": "tests/windows-native-smoke.cpp",
       "base_sha256": "3c4402b3f190255944cf49fc964e4235dae4bce0d44d635152e3e2c343c97f5c",
-      "sha256": "8ba223e46e4c96cdaadd12b7dbbe66cc3bac5fdbcf1d325713374cf1c6ebbed5"
+      "sha256": "89183da7c135293bc7018909fd78fef8367ae489e991e90b83238b53a87df4ca"
     },
     {
       "path": "tests/windows-vault-probe.mjs",

@@ -281,12 +281,9 @@ std::wstring observedWifi(){
 }
 void turboMenu(){
   static std::atomic<bool> linking{false};
-  auto info=L"Chế độ: "+connectionMode+L"\n"+observedWifi()+L"\n\nKết nối trực tiếp không nhập mật khẩu:\n1. Ghép đôi Bluetooth Windows và điện thoại trong Cài đặt hệ điều hành (lần đầu).\n2. Trên Android: Tạo Turbo → Kết nối Windows qua Bluetooth.\n3. Chọn Có bên dưới, chọn điện thoại và xác nhận trên điện thoại.\n\nCó: kết nối qua Bluetooth. Không: mở Mobile Hotspot thủ công. Hủy: chọn Auto và đóng. File vẫn truyền qua Wi-Fi và TLS. Mạng Turbo Android được giữ cho nhiều lượt gửi đến khi bạn dừng.";
-  int choice=MessageBoxW(window,info.c_str(),L"FlowDrop · Kết nối trực tiếp",MB_YESNOCANCEL|MB_ICONINFORMATION|MB_DEFBUTTON3);
-  if(choice==IDNO){ShellExecuteW(window,L"open",L"ms-settings:network-mobilehotspot",nullptr,nullptr,SW_SHOWNORMAL);return;}
-  if(choice==IDCANCEL){connectionMode=L"Auto";return;}
-  if(choice!=IDYES||linking.load())return;std::optional<BTH_ADDR> peer;try{peer=fdlink::choose(window);}catch(const std::exception& e){MessageBoxW(window,wide(e.what()).c_str(),L"FlowDrop · Bluetooth",MB_OK|MB_ICONINFORMATION);return;}if(!peer)return;linking=true;
-  std::thread([address=*peer]{try{auto network=fdlink::receive(address);fdlink::join(network);post({{"kind","directLinkReady"}});}catch(const std::exception& e){post({{"kind","error"},{"operation","direct-link"},{"message",e.what()}});}linking=false;}).detach();
+  if(linking.load()){MessageBoxW(window,L"Đang kết nối. Kiểm tra yêu cầu xác nhận trên điện thoại.",L"FlowDrop",MB_OK|MB_ICONINFORMATION);return;}std::optional<BTH_ADDR> peer;try{peer=fdlink::choose(window);}catch(const std::exception& e){MessageBoxW(window,wide(e.what()).c_str(),L"FlowDrop · Bluetooth",MB_OK|MB_ICONINFORMATION);return;}if(!peer)return;linking=true;unsigned lease=++fdlink::sessionGeneration;fdlink::monitoring=true;
+  SetWindowTextW(statusLabel,L"Đang kết nối. Kiểm tra yêu cầu xác nhận trên điện thoại.");
+  std::thread([address=*peer,lease]{try{auto network=fdlink::receive(address);fdlink::join(network,lease);if(fdlink::sessionGeneration.load()==lease){post({{"kind","directLinkReady"}});linking=false;fdlink::monitor(network,lease,[lease](int state){if(fdlink::sessionGeneration.load()==lease)post({{"kind","directLinkState"},{"state",state}});});}}catch(const std::exception& e){if(fdlink::sessionGeneration.load()==lease){fdlink::monitoring=false;post({{"kind","error"},{"operation","direct-link"},{"message",e.what()}});}}linking=false;}).detach();
 }
 void securityAction(const std::string& action,json body=json::object()){
   auto token=desktopToken;backgroundTask("security",[token,action,body]{requestJson(L"POST","/api/desktop/security/"+action,&body,token);});
@@ -427,7 +424,7 @@ void layout() {
   int top=122,bottom=h-202,inside=20,inner=col-40,footer=bottom+18;
   peerPanel={p,top,p+238,bottom};sendPanel={left,top,left+col,bottom};receivePanel={right,top,right+col,bottom};savePanel={p,footer,w-p,h-67};
   auto place=[](HWND c,int x,int y,int width,int height){MoveWindow(c,x,y,width,height,TRUE);};
-  place(heading,p,20,w-2*p-465,44);place(updateButton,w-p-438,23,132,40);place(transferButton,w-p-294,23,132,40);place(sessionsButton,w-p-150,23,150,40);place(subtitle,p,72,w-2*p-342,30);place(turboButton,w-p-332,70,98,32);place(securityButton,w-p-226,70,114,32);place(renameButton,w-p-104,70,104,32);
+  place(heading,p,20,w-2*p-465,44);place(updateButton,w-p-438,23,132,40);place(transferButton,w-p-294,23,132,40);place(sessionsButton,w-p-150,23,150,40);place(subtitle,p,72,w-2*p-412,30);place(turboButton,w-p-402,70,168,32);place(securityButton,w-p-226,70,114,32);place(renameButton,w-p-104,70,104,32);
   place(peerTitle,p+16,top+19,210,29);place(peerHelp,p+16,top+60,206,65);place(peerList,p+12,top+139,214,std::max(60,bottom-top-258));place(rescanButton,p+16,bottom-104,206,39);place(lanButton,p+16,bottom-57,206,39);
   place(sendTitle,left+inside,top+19,inner,29);place(receiveTitle,right+inside,top+19,inner,29);
   place(pickButton,left+inside,top+66,(inner-20)/3,39);place(folderPickButton,left+inside+(inner-20)/3+10,top+66,(inner-20)/3,39);place(clearButton,left+inside+2*((inner-20)/3+10),top+66,inner-2*((inner-20)/3+10),39);
@@ -454,7 +451,7 @@ LRESULT CALLBACK windowProc(HWND hwnd,UINT message,WPARAM wp,LPARAM lp) {
       background=CreateSolidBrush(BG);whiteBrush=CreateSolidBrush(FIELD);surfaceBrush=CreateSolidBrush(SURFACE);sectionFont=CreateFontW(-20,0,0,0,FW_BOLD,FALSE,FALSE,FALSE,DEFAULT_CHARSET,0,0,CLEARTYPE_QUALITY,0,L"Be Vietnam Pro");
       heading=control(L"STATIC",L"FlowDrop.",0);SendMessageW(heading,WM_SETFONT,(WPARAM)titleFont,TRUE);
       subtitle=control(L"STATIC",L"Đang khởi động…",0);renameButton=control(L"BUTTON",L"Đổi tên",BS_OWNERDRAW|WS_TABSTOP,RENAME_DEVICE);
-      turboButton=control(L"BUTTON",L"Kết nối",BS_OWNERDRAW|WS_TABSTOP,TURBO);
+      turboButton=control(L"BUTTON",L"Kết nối trực tiếp",BS_OWNERDRAW|WS_TABSTOP,TURBO);
       securityButton=control(L"BUTTON",L"Bảo mật",BS_OWNERDRAW|WS_TABSTOP,SECURITY);
       updateButton=control(L"BUTTON",L"Cập nhật",WS_TABSTOP,UPDATE_CHECK);
       transferButton=control(L"BUTTON",L"Gửi / Nhận",WS_TABSTOP,TRANSFER_VIEW);sessionsButton=control(L"BUTTON",L"Phiên truyền (0)",WS_TABSTOP,SESSION_VIEW);
@@ -574,7 +571,8 @@ LRESULT CALLBACK windowProc(HWND hwnd,UINT message,WPARAM wp,LPARAM lp) {
     case WM_TIMER: if(wp==5){scanPeers();return 0;}if(wp==3) {KillTimer(hwnd,3);auto code=normalizedCode(text(receiveCode));if(ready&&automatic&&!receiving&&validCode(code)&&code!=lastAutoCode)receiveFiles();return 0;}break;
     case UI_EVENT: {
       std::unique_ptr<json> data((json*)lp);const auto& event=*data;auto kind=event.value("kind",std::string());
-      if(kind=="directLinkReady") {connectionMode=L"Turbo · Wi-Fi đã kết nối";SetWindowTextW(statusLabel,L"Đã vào mạng Turbo. Chờ thiết bị xuất hiện, rồi chọn gửi file; ghép nối TLS vẫn cần xác nhận.");MessageBoxW(window,L"Windows đã kết nối mạng Turbo. Không cần Internet. Chờ FlowDrop tìm lại thiết bị rồi gửi file; nếu chưa ghép nối TLS hãy xác nhận mã trên hai màn hình.",L"FlowDrop · Kết nối trực tiếp",MB_OK|MB_ICONINFORMATION);}
+      if(kind=="directLinkReady") {connectionMode=L"Turbo · Wi-Fi đã kết nối";SetWindowTextW(statusLabel,L"Đã vào mạng trực tiếp. Chọn thiết bị để gửi; xác nhận ghép nối bảo mật nếu được hỏi.");}
+      else if(kind=="directLinkState"){int state=event.value("state",2);SetWindowTextW(statusLabel,state==0?L"Đã nối lại Wi-Fi. Nếu lượt gửi cũ đã báo lỗi, hãy gửi lại file đó.":state==1?L"Wi-Fi trực tiếp bị ngắt · đang thử nối lại…":state==3?L"Windows đã chuyển sang mạng khác. Bấm Kết nối trực tiếp để chọn lại.":L"Chưa nối lại được mạng. Bấm Kết nối trực tiếp; có thể sao chép chẩn đoán.");}
       else if(kind=="peers") {
         const auto& state=event.at("state");const auto& next=state.at("peers");
         securityState=state.value("security",json::object());handlePairings();

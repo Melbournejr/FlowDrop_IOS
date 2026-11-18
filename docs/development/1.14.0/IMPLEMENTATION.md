@@ -384,3 +384,62 @@ not a substitute for those tests. No speed improvement or80-100MB/s claim.
 Final-head build/runtime/regression/download evidence belongs in Draft PR12.
 Rollback: revert the dedicated Turbo/Bluetooth commits in a PR; no data deletion,
 main force push, production re-signing, or release/feed changes.
+
+## Foreground DIRECT loss: recovery and one-entry connection UI
+
+Owner follow-up: DIRECT still disconnects/disappears while the phone screen is
+on and FlowDrop is open. Screen-off/process termination is not established as
+the cause. The actual Xiaomi14 Pro/Intel9560 radio failure is NOT REPRODUCED in
+the cloud. Do not describe the following state fix as a proven driver/radio fix.
+
+An additional app-state defect IS reproduced: the previous TurboLink discards
+its owned lease after a single null group-info callback. The new real-class JVM
+fixture fails against exact previous source5244049 with `BUG: transient group
+query discards live ownership`. Radio APIs in this test are explicit stubs.
+
+TurboLink now tolerates a transient null for9seconds, allows30seconds for group
+formation, times out stalled queries after6seconds and ignores callbacks from
+old generations. After confirmed loss it recreates the same owned network and
+credentials at most twice per user start. Credentials are withheld when not
+confirmed ready. An unknown/replaced group blocks recovery; neither SSID prefix
+nor a stale callback authorizes adoption/removal. A cancelled late create may
+only remove the exact group/credentials created by that cancelled request.
+Channel reconnection is bounded to two attempts. Explicit LAN/Stop/host shutdown
+remain effective; no timer after file completion tears down a healthy group.
+
+Windows observes association without active radio scans, retries an interrupted
+temporary-profile join at most twice and waits at least10seconds after a failed
+attempt. It respects a connected different network and stops recovery instead
+of replacing it. The user can stop recovery from the connection dialog. Network
+restoration does not implement file-offset resume: a file session already marked
+failed must be sent again. An initial join only confirms association, not DHCP,
+peer discovery, TLS trust or file completion.
+
+Android has a main-screen `Kết nối trực tiếp với máy tính` entry. It starts sharing
+if needed, requests the necessary permissions, creates/awaits the group and opens
+the secure Bluetooth listener in one flow. Windows `Kết nối trực tiếp` opens one
+bonded-device chooser, replacing chained Yes/No prompts. First-time OS Bluetooth
+bonding, explicit phone consent and independent FlowDrop TLS/SAS remain required.
+Manual credentials, hotspot and Auto/LAN options remain available. No promise of
+silent connection on unsupported radios or removal of OS confirmation is made.
+
+Private Android preferences retain only64 typed events (time, enum, integer);
+restoration rejects unknown types and discards extra fields. The optional copied
+diagnostic includes build commit, API, host/foreground state, Wi-Fi enabled state,
+group/channel/recovery flags and these bounded events. Windows copies only build,
+recovery flags and interface state/link rate/signal/PHY/query codes. Neither report
+includes SSID, password, IP/MAC, device/file names, pairing codes, tokens, certificates,
+trust secrets or arbitrary exception strings. Preview overlays stamp the reviewed
+40-hex source commit; no version or production signing/update identity is changed.
+Diagnostics are local/explicit clipboard actions, not network telemetry.
+
+Verification includes the before/after JVM fixture, async recovery/stale callback/
+cancelled-create/diagnostic sanitization cases, native Android entry/report checks
+and a real Windows chooser-open/cancel assertion without radio operations. The
+existing transfer, consent, authentication and coexistence assertions are retained.
+Final-head workflow results and checked Preview artifact hashes are recorded in
+Draft PR12 after CI completes. Physical repeated transfers, OEM radio stability,
+Bluetooth interoperability and throughput remain NOT VERIFIED by cloud CI.
+If DIRECT still drops, copy the diagnostics before uninstalling Preview so its
+private event history is retained for investigation. Revert this dedicated change
+through a PR to roll back; do not delete received files or change production keys.

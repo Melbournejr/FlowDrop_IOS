@@ -1,5 +1,7 @@
 """Build a side-by-side Windows Preview in a separate working source tree."""
 import hashlib
+import os
+import re
 import json
 from pathlib import Path
 import shutil
@@ -40,6 +42,9 @@ def prepare(source, root):
     text = cpp.read_text(encoding='utf-8').replace('FlowDrop', LABEL)
     text = replace_once(text, 'void checkUpdate(){', 'void checkUpdate(){MessageBoxW(window,L"Preview không tự động cập nhật. Cài bản Preview mới bằng bộ cài riêng.",L"FlowDrop Preview",MB_OK|MB_ICONINFORMATION);return;')
     text = replace_once(text, 'EnableWindow(updateAutoCheck,ready&&!applyingUpdate)', 'EnableWindow(updateAutoCheck,FALSE)')
+    commit = os.environ.get('FLOWDROP_REVIEWED_HEAD', '')
+    build = commit if re.fullmatch(r'[a-f0-9]{40}', commit) else 'source'
+    text = '#define FLOWDROP_PREVIEW_BUILD \"' + build + '\"\n' + text
     cpp.write_text(text, encoding='utf-8')
     rc = output / 'desktop/windows/FlowDrop.rc'
     text = rc.read_text(encoding='utf-8').replace('"FlowDrop.exe\\0"', '"FlowDropPreview.exe\\0"').replace('"FlowDrop native Windows application\\0"', '"FlowDrop Preview native Windows application\\0"').replace('"ProductName", "FlowDrop\\0"', '"ProductName", "FlowDrop Preview\\0"')
