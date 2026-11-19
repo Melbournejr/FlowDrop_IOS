@@ -17,7 +17,7 @@
     {
       "path": ".github/workflows/native-release-preparation.yml",
       "base_sha256": null,
-      "sha256": "370dfb05f1e95029f4f06cf4f69b36dec25d144a4d92cdb17381f2944df5d117"
+      "sha256": "b91ffa015ea845802b79dc25fb3584a6faf30447bf55472457888972fd447882"
     },
     {
       "path": ".github/workflows/native-runtime-verification.yml",
