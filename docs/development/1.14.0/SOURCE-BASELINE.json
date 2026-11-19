@@ -147,7 +147,7 @@
     {
       "path": "scripts/Start-ReleaseSigning.ps1",
       "base_sha256": null,
-      "sha256": "8a02fa8c2e2db5c9fb1ec4028ae9011ba30d2dea7badfd49d8dd91ab0f112028"
+      "sha256": "5a15c24eefda62dddc0cddec2653f0a6118f2857742544c73f57760260cd30c6"
     },
     {
       "path": "scripts/android_preview.py",

@@ -20,7 +20,12 @@ function RunPrivate([string]$exe, [string[]]$argv, [string[]]$secretInput = @(),
   foreach ($name in $secretEnv.Keys) { $info.EnvironmentVariables[$name] = $secretEnv[$name] }
   $process = New-Object System.Diagnostics.Process; $process.StartInfo = $info
   try {
-    [void]$process.Start(); $stdout = $process.StandardOutput.ReadToEndAsync(); $stderr = $process.StandardError.ReadToEndAsync()
+    # .NET Framework creates an AutoFlush StreamWriter during Start(), which
+    # can emit Console.InputEncoding's preamble before BaseStream is accessed.
+    $previousInputEncoding = [Console]::InputEncoding
+    try { [Console]::InputEncoding = New-Object Text.UTF8Encoding($false); [void]$process.Start() }
+    finally { [Console]::InputEncoding = $previousInputEncoding }
+    $stdout = $process.StandardOutput.ReadToEndAsync(); $stderr = $process.StandardError.ReadToEndAsync()
     # Console.InputEncoding on Windows PowerShell can emit a BOM. Send exact
     # UTF-8 password lines without a preamble or a shell/argv conversion.
     $stdin = $process.StandardInput.BaseStream
