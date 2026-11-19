@@ -14,6 +14,7 @@ import time
 
 REPO = Path(__file__).resolve().parents[2]
 JAR_URL = 'https://repo.maven.apache.org/maven2/org/json/json/20240303/json-20240303.jar'
+JAR_CENTRAL_MIRROR = 'https://repo1.maven.org/maven2/org/json/json/20240303/json-20240303.jar'
 JAR_SHA256 = '3cf6cd6892e32e2b4c1c39e0f52f5248a2f5b37646fdfbb79a66b46b618414ed'
 MARKER = '.flowdrop-native-ci-owned'
 GROUPS = {
@@ -163,6 +164,7 @@ def setup(root):
             write_json(root / 'logs' / 'setup.json', {'status': 'FAIL', 'steps': steps})
             return result['exit_code'] or 1
     jar = root / 'tools' / 'json-20240303.jar'
+    resolved_jar_url = JAR_URL
     commands = [
         ('jar-download', ['curl', '--fail', '--location', '--retry', '3', '--retry-all-errors',
                           '--retry-delay', '2', '--retry-max-time', '90', '--connect-timeout', '15',
@@ -172,12 +174,21 @@ def setup(root):
     for name, command, deadline in commands:
         result = execute(name, command, deadline, root, env)
         steps.append(result)
+        if name == 'jar-download' and result['exit_code'] != 0:
+            # Same Maven Central artifact, version and mandatory SHA; only a
+            # transport failure may use its other official HTTPS endpoint.
+            jar.unlink(missing_ok=True)
+            alternate = [JAR_CENTRAL_MIRROR if value == JAR_URL else value for value in command]
+            result = execute('jar-download-central-mirror', alternate, deadline, root, env)
+            steps.append(result)
+            resolved_jar_url = JAR_CENTRAL_MIRROR
         if result['exit_code'] != 0:
             write_json(root / 'logs' / 'setup.json', {'status': 'FAIL', 'steps': steps})
             return result['exit_code']
         if name == 'jar-download':
             verify_jar(jar)
     write_json(root / 'logs' / 'setup.json', {'status': 'PASS', 'jar_url': JAR_URL,
+                                          'jar_resolved_url': resolved_jar_url,
                                           'jar_sha256': JAR_SHA256, 'steps': steps})
     return 0
 
