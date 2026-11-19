@@ -35,7 +35,7 @@ public final class TransferClient {
     try{URI uri=new URI(value);if(!Arrays.asList("http","https").contains(uri.getScheme())||uri.getHost()==null||uri.getUserInfo()!=null||uri.getPort()>65535)throw new Exception();return new URI(uri.getScheme(),null,uri.getHost(),uri.getPort(),"/",null,null).toString();}catch(Exception e){throw new IOException("Địa chỉ thiết bị không hợp lệ.");}
   }
   private static HttpURLConnection connect(String origin,String route,String method,Cancellation cancellation)throws IOException{
-    HttpURLConnection c=open(new URL(base(origin)+route));c.setRequestMethod(method);if(method.equals("POST")&&route.equals("api/transfers")&&base(origin).equals(localOrigin))c.setRequestProperty("X-Local-Token",localUploadCapability);c.setConnectTimeout(8000);c.setReadTimeout(90000);c.setInstanceFollowRedirects(false);c.setRequestProperty("User-Agent","FlowDropAndroidNative/1.9");if(cancellation!=null)cancellation.attach(c);return c;
+    HttpURLConnection c=open(new URL(base(origin)+route));c.setRequestMethod(method);if(method.equals("POST")&&route.equals("api/transfers")&&base(origin).equals(localOrigin))c.setRequestProperty("X-Local-Token",localUploadCapability);c.setConnectTimeout(8000);c.setReadTimeout(90000);c.setInstanceFollowRedirects(false);c.setRequestProperty("User-Agent","FlowDropAndroidNative/1.14.0");if(cancellation!=null)cancellation.attach(c);return c;
   }
   private static JSONObject response(HttpURLConnection c)throws Exception{
     int status=c.getResponseCode();InputStream body=status>=400?c.getErrorStream():c.getInputStream();ByteArrayOutputStream bytes=new ByteArrayOutputStream();

@@ -12,10 +12,10 @@ ANDROID_VERSION=ET.parse(ROOT/'android/AndroidManifest.xml').getroot().attrib['{
 SDK=TOOLS/'sdk';BT=SDK/'build-tools/android-15';JAR=SDK/'platforms/android-35/android.jar'
 def run(args,**kwargs):
     return run_command(args,**kwargs)
-def android():
-    signing=load_signing(ROOT)
+def android(unsigned_only=False):
+    signing=None if unsigned_only else load_signing(ROOT)
     OUT.mkdir(exist_ok=True)
-    apk=OUT/('FlowDrop-'+ANDROID_VERSION+'-Android.apk');clear_build_output(apk,OUT)
+    apk=OUT/('FlowDrop-'+ANDROID_VERSION+('-Android-UNSIGNED.apk' if unsigned_only else '-Android.apk'));clear_build_output(apk,OUT)
     build=fresh_build_directory(ROOT/'android/build',ROOT)
     for name in ['aapt2','zipalign']:(BT/name).chmod(0o755)
     run([BT/'aapt2','compile','--dir',ROOT/'android/res','-o',build/'resources.zip'])
@@ -32,6 +32,12 @@ def android():
         for asset in (ROOT/'web/assets/fonts').iterdir():
             if asset.is_file() and asset.suffix in ['.ttf','.txt']:archive.write(asset,'assets/fonts/'+asset.name)
     aligned=build/'aligned.apk';run([BT/'zipalign','-f','-p','4',unsigned,aligned])
+    if unsigned_only:
+        shutil.copyfile(aligned,apk)
+        run([BT/'zipalign','-c','-p','4',apk])
+        run([BT/'aapt2','dump','badging',apk])
+        print('UNSIGNED APK (requires original production key):',apk,flush=True)
+        return
     apk=OUT/('FlowDrop-'+ANDROID_VERSION+'-Android.apk')
     run(['java','-jar',BT/'lib/apksigner.jar','sign',*signing.arguments(),'--v1-signing-enabled','true','--v2-signing-enabled','true','--v3-signing-enabled','true','--out',apk,aligned],signing=True)
     run(['java','-jar',BT/'lib/apksigner.jar','verify','--verbose','--print-certs',apk])
@@ -65,10 +71,11 @@ def windows():
     print('EXE:',exe,flush=True)
 def main():
     global TOOLS,SDK,BT,JAR
-    parser=argparse.ArgumentParser();parser.add_argument('--only',choices=['android','windows']);args=parser.parse_args()
+    parser=argparse.ArgumentParser();parser.add_argument('--only',choices=['android','windows']);parser.add_argument('--unsigned',action='store_true',help='Build an aligned Android candidate without reading any signing key');args=parser.parse_args()
+    if args.unsigned and args.only!='android':parser.error('--unsigned requires --only android')
     try:
         TOOLS=require_tool_root();SDK=TOOLS/'sdk';BT=SDK/'build-tools/android-15';JAR=SDK/'platforms/android-35/android.jar'
-        if args.only!='windows':android()
+        if args.only!='windows':android(args.unsigned)
         if args.only!='android':windows()
     except (BuildError,OSError,ValueError) as error:
         return report_failure(error)

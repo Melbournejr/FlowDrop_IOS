@@ -21,7 +21,7 @@ GROUPS = {
         ('ci-runner-tests', [sys.executable, '-m', 'unittest', 'discover', '-s', 'tests/ci', '-p', 'test_*.py', '-v'], 90),
         ('asset-integrity', ['sha256sum', '--check', 'docs/assets/FONT-RESTORATION-SHA256SUMS.txt'], 30),
         ('unit', ['npm', 'test'], 90),
-        ('security-114-unit', ['node', '--test', '--test-isolation=none', 'tests/code-114.test.mjs', 'tests/device-security.test.mjs', 'tests/canonical-auth-114.test.mjs', 'tests/turbo-lifecycle.test.mjs'], 90),
+        ('security-114-unit', ['node', '--test', '--test-isolation=none', 'tests/code-114.test.mjs', 'tests/device-security.test.mjs', 'tests/canonical-auth-114.test.mjs', 'tests/turbo-lifecycle.test.mjs', 'tests/release-preparation.test.mjs'], 90),
         ('harness-unit', ['node', '--test', 'tests/harness.test.mjs'], 90),
     ],
     # One process, sequential commands: discovery never shares a namespace with a parallel test.

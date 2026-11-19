@@ -1,3 +1,5 @@
+> Windows/Android 1.14.0: [ghi chú phát hành](docs/releases/Release-notes-1.14.0.md), [cài đặt](INSTALL.md). iOS/iPadOS bên dưới đang tạm dừng.
+
 # FlowDrop cho iPhone và iPad — mã nguồn bản phát triển 1.0.2
 
 Đây là ứng dụng SwiftUI native, cửa sổ riêng, không dùng trình duyệt hoặc WebView. Một dự án dùng chung cho iPhone và iPad chạy iOS/iPadOS 16 trở lên.
@@ -73,6 +75,6 @@ Nếu không thấy thiết bị, kiểm tra quyền Mạng cục bộ, cùng Wi
 - Giao thức tương thích luồng gửi trực tiếp 1.9: cache file ở máy gửi, đề nghị `/api/offers`, máy nhận xác nhận rồi tải từ máy gửi và báo trạng thái qua `/api/offers/status` có token riêng. Không triển khai các API tạo upload của bản legacy từ trình duyệt.
 - File truyền bằng bộ đệm 64 KiB/URLSession download ra đĩa, không nạp toàn bộ file vào RAM. Có bản cache ở máy gửi và bản tạm ở máy nhận; dung lượng thực tế phụ thuộc bộ nhớ trống và hệ thống. Giới hạn metadata 8 MiB và số nguyên giao thức 2^53−1 được giữ để tương thích. Không đặt trần 10 file hay 50/200 MB.
 - Phiên đang hoạt động ở bộ nhớ, lịch sử file đã nhận lưu trên thiết bị. Cache mã gửi không được khôi phục sau khi thoát ứng dụng. Không báo hoàn tất nếu chưa lưu đủ byte/file.
-- Truyền HTTP trong LAN như Windows/Android hiện tại; chưa có mã hóa đầu cuối. Không có máy chủ cloud nhận nội dung file, SDK quảng cáo hoặc analytics.
+- Bản iOS thử nghiệm này truyền HTTP trong LAN; Windows/Android 1.14 dùng pinned TLS và ghép thiết bị. Không có máy chủ cloud nhận nội dung file, SDK quảng cáo hoặc analytics.
 
 Tham khảo: [Apple về tài khoản miễn phí và trả phí](https://developer.apple.com/help/account/basics/about-your-developer-account), [quyền mạng cục bộ](https://developer.apple.com/documentation/technotes/tn3179-understanding-local-network-privacy), [cài ứng dụng phát triển](https://developer.apple.com/documentation/xcode/distributing-your-app-to-registered-devices).

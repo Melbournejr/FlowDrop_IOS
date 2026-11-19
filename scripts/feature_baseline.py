@@ -26,7 +26,7 @@ def approved():
     rows = {}
     for row in doc['files']:
         name = row['path']
-        if name in rows or '..' in Path(name).parts or Path(name).is_absolute() or (name.startswith(('ios/', 'security/')) or name.startswith('.github/workflows/') and name not in ['.github/workflows/native-build-verification.yml', '.github/workflows/native-regression.yml', '.github/workflows/native-runtime-verification.yml']):
+        if name in rows or '..' in Path(name).parts or Path(name).is_absolute() or (name.startswith(('ios/', 'security/')) or name.startswith('.github/workflows/') and name not in ['.github/workflows/native-build-verification.yml', '.github/workflows/native-regression.yml', '.github/workflows/native-runtime-verification.yml', '.github/workflows/native-release-preparation.yml']):
             raise RuntimeError('Unapproved feature source path')
         rows[name] = row
     return rows

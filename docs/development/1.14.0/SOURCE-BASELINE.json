@@ -15,9 +15,24 @@
       "sha256": "64dabeb8e429df12395be32080f6b3c67b96eee2cad49307986acaf22752df63"
     },
     {
+      "path": ".github/workflows/native-release-preparation.yml",
+      "base_sha256": null,
+      "sha256": "370dfb05f1e95029f4f06cf4f69b36dec25d144a4d92cdb17381f2944df5d117"
+    },
+    {
       "path": ".github/workflows/native-runtime-verification.yml",
       "base_sha256": "ed8a52b2f7395bea84542fc8c1c70635051ef62ad449ff649a46e5efb6c15819",
       "sha256": "a13e7d39aecce663f6617db3e7c1715be33bbd63e2c4fc10e7cb2eaf6d43dd9a"
+    },
+    {
+      "path": "INSTALL.md",
+      "base_sha256": "9f17fe44ff9680cf12e2dbc314baaec5c76b1e2daafe4ad180f15f6f532664e7",
+      "sha256": "cbeb0361f94afe08d4c18f21f42718c054749e59e68adae72c468a519a51356d"
+    },
+    {
+      "path": "README.md",
+      "base_sha256": "50b039a07c1bde6ef9e075b74a6b2977ff49e2a9cba843d5528ba01d970f18a6",
+      "sha256": "e708c86027b317085f09a695a0a1a5714944e501370bb5dbcf39e680fe6c3c90"
     },
     {
       "path": "android/AndroidManifest.xml",
@@ -57,7 +72,7 @@
     {
       "path": "android/src/app/flowdrop/mobile/MainActivity.java",
       "base_sha256": "5723842d292e94343b875fe33d5e98161da8e37425288966ca067e427bbfacd8",
-      "sha256": "33c02484d18efab134a54a32993ac0931b316788618650a4f3c731d88793d8f6"
+      "sha256": "8e076bfe233c707511bd7fbcf4e60fa8e7aba8fba06ad83bd82bda8bbe3fdf61"
     },
     {
       "path": "android/src/app/flowdrop/mobile/ReceiveService.java",
@@ -92,12 +107,17 @@
     {
       "path": "desktop/windows/DirectBluetooth.h",
       "base_sha256": null,
-      "sha256": "63d5920fab2079472e18358b0c6c135b9eebdc1173c1e5714cf9d421a0b1f3cb"
+      "sha256": "d5cd94bcae023c90e8ff6de7538a3cfe069189ed3d39f7c8e27567b9ce10241d"
     },
     {
       "path": "desktop/windows/FlowDrop.cpp",
       "base_sha256": "f8a274fbc1ef1c560bc2455a15bab984918dce832b9e91410d3cc24595b64f23",
       "sha256": "61795bbcb89789f18a5f63a562b7410fac75d3d3a39bd6145d8e672e5c218ac0"
+    },
+    {
+      "path": "desktop/windows/FlowDrop.manifest",
+      "base_sha256": "dfae8c217e50f5d2948985fb45c55687c34157718a5f05bc31d4c392fc6e85e0",
+      "sha256": "ea8c2b27b9d69063fa62af01540e5c5372bce4fb664e66026da1ca768fce3882"
     },
     {
       "path": "desktop/windows/FlowDrop.rc",
@@ -120,6 +140,11 @@
       "sha256": "3ef8e491cf5bfe9e7526cead726a21457b8fdd10bb33e71de5301ec21fdb6ab0"
     },
     {
+      "path": "scripts/Start-ReleaseSigning.ps1",
+      "base_sha256": null,
+      "sha256": "04b27f7be59b8dacb2ee34559a51cc639cd208fa9ba94bd5ba5ff90cd2ab1e9f"
+    },
+    {
       "path": "scripts/android_preview.py",
       "base_sha256": null,
       "sha256": "dbb47fdd7b2092fcd88a5a6c81380587997fa84a08a8599af98006151f5aeb06"
@@ -127,7 +152,7 @@
     {
       "path": "scripts/build-installers.py",
       "base_sha256": "b708ae17f4973e649f7015a3ee334048abbb1074dbeb67a0e5d302e868d3fbec",
-      "sha256": "538a00d9a2fa75c114e5b7f88f6a7c5e1fee97912f0ae87442da6c0b511100cf"
+      "sha256": "43adee4ba83ebe4b98a7b1ab3688fb916e62fcc84b97ab7115460eb70894268d"
     },
     {
       "path": "scripts/code-lookup.mjs",
@@ -167,7 +192,7 @@
     {
       "path": "scripts/feature_baseline.py",
       "base_sha256": null,
-      "sha256": "d40429a119c17fe12f22039aedeca9847d1390a1b7aeef91ca6aa4ddfd42ebf0"
+      "sha256": "8e0f55fecca1dccd1b0d68ae0f3fbed29f335866360bc1fee2fbf8627c4bc388"
     },
     {
       "path": "scripts/lan-discovery.mjs",
@@ -178,6 +203,11 @@
       "path": "scripts/local-bucket.mjs",
       "base_sha256": "a1b33bc56d3498614c2451b96c5594a9ebb1cf5813e71e5f2724edc7d42fb4f0",
       "sha256": "5aaf7523c916280ce425cf847857d16716ea634f8fbc5f8768ab0a3bf20ccd7b"
+    },
+    {
+      "path": "scripts/make-release.mjs",
+      "base_sha256": "b20fc195577bc314e18e4458ea7d4d8be335c65a253c8d3f1b1c0dd98cae31c4",
+      "sha256": "5ce098328a51239f74fc0ccc33b4f0a57b248e2db87da1846c9a9913e8e17299"
     },
     {
       "path": "scripts/native_build_ci/artifacts.py",
@@ -230,14 +260,29 @@
       "sha256": "c91058c0baf6c0a8d041560f3d1aea0fdcb71826eaa542ca581facf3a3bb05e7"
     },
     {
+      "path": "scripts/prepare_native_release.py",
+      "base_sha256": null,
+      "sha256": "11bd619d0ec3f2e348701e64b99a4deeda95ae9e56b0f0f42cc72b7f3b0292b5"
+    },
+    {
       "path": "scripts/release-config.mjs",
       "base_sha256": "693c18ebe0463c3ee3d4d306b2b2fd1544f2e34bb9ef1341eae23486901d93d7",
       "sha256": "38ef72e2d437dc34e93ba022dcf8eb1fc8bda44a78b2c414bd9dd836100cbfaa"
     },
     {
+      "path": "scripts/release-support.mjs",
+      "base_sha256": null,
+      "sha256": "27ffe9d426f42dc1b3d3f653314b639d30ed731a532de6e69235dd2c6ededc4d"
+    },
+    {
       "path": "scripts/request-security.mjs",
       "base_sha256": "4a468c6292d151bebcca51df4ce86f304e7b9a74a5116a7e5e2ad74ab8c52bc3",
       "sha256": "da69a4c5d2f244573a4b400bb316c825bf3d749815aea47ee6661c81f8779ec3"
+    },
+    {
+      "path": "scripts/verify_windows_upgrade.py",
+      "base_sha256": null,
+      "sha256": "c4e22f096594570daee91411eb2f691e573541881e9f1c6ca94b7ed23345e34b"
     },
     {
       "path": "scripts/windows_preview.py",
@@ -287,7 +332,7 @@
     {
       "path": "tests/ci/run.py",
       "base_sha256": "685f15b8246830901dd8d0403e1785c81ed09a4a6fd697700848004dc8e3df50",
-      "sha256": "3e7be93cbc65c0ab3bd62d1b60a7d1dca7cc8aef05d438db86ddfdfc7757836b"
+      "sha256": "656425f48f7d600f2bf284bcbcc0a2f6db461bac656156c2a012f290a5b62157"
     },
     {
       "path": "tests/ci/test_android_preview.py",
@@ -303,6 +348,11 @@
       "path": "tests/ci/test_native_build_pipeline.py",
       "base_sha256": "07086b81af35188c3594320f52375201353f15402e0955eef9176cc2390073d9",
       "sha256": "83fc275eac292bfd92255e99b47b15baf34f66fe7459eaaea7e2fadd0e56277b"
+    },
+    {
+      "path": "tests/ci/test_release_preparation.py",
+      "base_sha256": null,
+      "sha256": "5715605f137649f334f9f7efd812b0622a8f878f2390a7f8df4c679edee3b3d6"
     },
     {
       "path": "tests/ci/test_runner.py",
@@ -350,6 +400,11 @@
       "sha256": "37b9fe7ba9f60ad550de5e8af9fabba172af41aff7f79673ec1169c3bf2f89d7"
     },
     {
+      "path": "tests/release-preparation.test.mjs",
+      "base_sha256": null,
+      "sha256": "2357f05e0db2bb730296355ef2bcb8a000660b92b2ba15e7b718d29fd28c6557"
+    },
+    {
       "path": "tests/secure-cross-platform-114.mjs",
       "base_sha256": null,
       "sha256": "a1a8bc3b60ba1483f91018573068d1e88bd9f2658654011dcb1710ba50e33607"
@@ -363,6 +418,11 @@
       "path": "tests/windows-native-smoke.cpp",
       "base_sha256": "3c4402b3f190255944cf49fc964e4235dae4bce0d44d635152e3e2c343c97f5c",
       "sha256": "757874233c8293bb60829901d1246ea29bacf60ee28c7ee440eeec0a65b1137a"
+    },
+    {
+      "path": "tests/windows-signing-kit.ps1",
+      "base_sha256": null,
+      "sha256": "aaed961f9193d0a4cc16ad7d09c4dfca861500dacccd2e9b865fa51eb24c6cf9"
     },
     {
       "path": "tests/windows-vault-probe.mjs",

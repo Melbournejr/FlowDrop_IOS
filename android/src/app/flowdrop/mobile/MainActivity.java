@@ -247,7 +247,7 @@ if(requestCode!=PICK_FILE||resultCode!=RESULT_OK||data==null)return;ArrayList<Ur
     LinearLayout panel=column();panel.setPadding(dp(20),dp(12),dp(20),dp(12));TextView detail=label("Đang đọc kết nối…",15,INK,false);panel.addView(detail);
     Button connectNow=button("Kết nối máy tính",true);addButton(panel,connectNow);
     LinearLayout directDevices=column();panel.addView(directDevices);final String[] listed={""};
-    TextView note=label("Lần đầu: ghép đôi Bluetooth điện thoại với Windows trong Cài đặt hệ điều hành. Sau đó bấm Kết nối trực tiếp trên cả hai ứng dụng, chọn điện thoại và xác nhận cho phép. File truyền qua Wi-Fi và TLS.",13,MUTED,false);addText(panel,note,12);
+    TextView note=label("Turbo đang thử nghiệm; Auto/LAN là mặc định. Lần đầu: ghép đôi Bluetooth điện thoại với Windows trong Cài đặt hệ điều hành. Sau đó chọn điện thoại trên Windows và cho phép kết nối. File truyền qua Wi-Fi và TLS; nếu không ổn định, dùng LAN.",13,MUTED,false);addText(panel,note,12);
     Button pairing=button("Ghép đôi Bluetooth lần đầu",false);addButton(panel,pairing);pairing.setOnClickListener(v->{try{startActivity(new Intent(android.provider.Settings.ACTION_BLUETOOTH_SETTINGS));}catch(Exception e){note.setText("Mở Cài đặt Bluetooth của hệ điều hành để ghép đôi hai máy.");}});
     LinearLayout advanced=column();advanced.setVisibility(View.GONE);Button more=button("Thông tin mạng / Dừng / Chẩn đoán",false);addButton(panel,more);panel.addView(advanced,new LinearLayout.LayoutParams(-1,-2));more.setOnClickListener(v->advanced.setVisibility(advanced.getVisibility()==View.VISIBLE?View.GONE:View.VISIBLE));
     TextView credentials=label("",13,INK,false);credentials.setTextIsSelectable(true);advanced.addView(credentials);

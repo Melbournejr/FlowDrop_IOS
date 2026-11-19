@@ -78,7 +78,7 @@ inline std::optional<BTH_ADDR> choose(HWND owner){
   buttons.push_back({6001,L"Ghép đôi Bluetooth lần đầu\nMở Cài đặt Bluetooth của Windows"});buttons.push_back({6002,L"Mobile Hotspot thủ công"});buttons.push_back({6003,L"Sao chép chẩn đoán Wi-Fi"});buttons.push_back({6004,L"Auto / LAN\nGiữ mạng hiện tại"});if(monitoring.load())buttons.push_back({6005,L"Dừng tự nối lại\nGiữ nguyên Wi-Fi hiện tại"});
   TASKDIALOGCONFIG config{};config.cbSize=sizeof(config);config.hwndParent=owner;config.dwFlags=TDF_USE_COMMAND_LINKS|TDF_ALLOW_DIALOG_CANCELLATION;config.dwCommonButtons=TDCBF_CANCEL_BUTTON;
   config.pszWindowTitle=L"FlowDrop · Kết nối trực tiếp";config.pszMainInstruction=names.empty()?L"Ghép đôi Bluetooth để kết nối":L"Chọn điện thoại để kết nối";
-  config.pszContent=L"Trên điện thoại, mở FlowDrop và bấm Kết nối trực tiếp với máy tính. Chọn điện thoại bên dưới, rồi cho phép trên điện thoại. Windows sẽ chuyển sang mạng Wi-Fi riêng và thử nối lại tối đa 2 lần nếu mạng bị rớt. Dừng tự nối lại trong cửa sổ này; file vẫn cần ghép nối bảo mật FlowDrop.";
+  config.pszContent=L"Turbo đang thử nghiệm; Auto/LAN là mặc định. Trên điện thoại, bấm Kết nối trực tiếp với máy tính. Chọn điện thoại bên dưới rồi cho phép trên điện thoại. Windows sẽ chuyển sang mạng Wi-Fi riêng và thử nối lại tối đa 2 lần. Nếu không ổn định, dùng LAN. File vẫn cần ghép nối bảo mật FlowDrop.";
   config.cButtons=(UINT)buttons.size();config.pButtons=buttons.data();config.nDefaultButton=IDCANCEL;int selected=IDCANCEL;
   if(FAILED(TaskDialogIndirect(&config,&selected,nullptr,nullptr)))throw std::runtime_error("Chưa mở được cửa sổ kết nối.");
   if(selected>=5000&&selected<5000+(int)addresses.size())return addresses[selected-5000];
