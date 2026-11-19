@@ -9,6 +9,14 @@ from unittest.mock import patch
 ROOT=Path(__file__).resolve().parents[2]
 
 class ReleasePreparationTests(unittest.TestCase):
+    def test_protected_native_sources_match_reviewed_feature_manifest(self):
+        import hashlib,json
+        from scripts.feature_baseline import expected_sha
+        baseline=json.loads((ROOT/'docs/build/NATIVE-SOURCE-BASELINE-2C2.json').read_text())
+        for row in baseline['files']:
+            with self.subTest(path=row['path']):
+                self.assertEqual(hashlib.sha256((ROOT/row['path']).read_bytes()).hexdigest(),expected_sha(row['path'],row['sha256']))
+
     def builder(self):
         import sys
         sys.path.insert(0,str(ROOT/'scripts'))

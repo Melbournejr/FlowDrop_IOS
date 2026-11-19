@@ -90,6 +90,11 @@
       "sha256": "d043a14c364ccec0287076f4b498d21503ec06911fe9c4d50cf6cb0faecae6ae"
     },
     {
+      "path": "android/src/app/flowdrop/mobile/TransferClient.java",
+      "base_sha256": "8bc718a1a4c0de540d76065538d4da9d39ab910d51358f6146029c93baa8ba1f",
+      "sha256": "ba9ab7b91486c918f8420d7009a90c729798f06dfe7b7716ed0d43df85e6eda3"
+    },
+    {
       "path": "android/src/app/flowdrop/mobile/TransferServer.java",
       "base_sha256": "e97da86bd3668892af5e1db6ac908e5f9c3c688bd8294200d6fe572ea2483f78",
       "sha256": "39b13a1fc280647c7943e3cab76fc7832c5fb99f5c5e235f2841ef2f0a0fcf2a"
@@ -352,7 +357,7 @@
     {
       "path": "tests/ci/test_release_preparation.py",
       "base_sha256": null,
-      "sha256": "5715605f137649f334f9f7efd812b0622a8f878f2390a7f8df4c679edee3b3d6"
+      "sha256": "ce0174b6694b5b125031f3466aa30375b64378e568b56ef0cd70621906c67476"
     },
     {
       "path": "tests/ci/test_runner.py",
