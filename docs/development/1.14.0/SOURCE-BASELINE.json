@@ -147,7 +147,7 @@
     {
       "path": "scripts/Start-ReleaseSigning.ps1",
       "base_sha256": null,
-      "sha256": "04b27f7be59b8dacb2ee34559a51cc639cd208fa9ba94bd5ba5ff90cd2ab1e9f"
+      "sha256": "f9af82e14c200c05c388380a098785b0aa5b9d84c627c63101eb32cf9bec0366"
     },
     {
       "path": "scripts/android_preview.py",
@@ -337,7 +337,7 @@
     {
       "path": "tests/ci/run.py",
       "base_sha256": "685f15b8246830901dd8d0403e1785c81ed09a4a6fd697700848004dc8e3df50",
-      "sha256": "656425f48f7d600f2bf284bcbcc0a2f6db461bac656156c2a012f290a5b62157"
+      "sha256": "4c0475aacca872c96259e03143d2f6c109056324ce1a970b9bb9938cef50743c"
     },
     {
       "path": "tests/ci/test_android_preview.py",
@@ -362,7 +362,7 @@
     {
       "path": "tests/ci/test_runner.py",
       "base_sha256": "f7f675b252cccc33207e29b0fef867a989003bd40aca255fb5892bd9e0d343fc",
-      "sha256": "5fe400f09333da4fcfe8d8f14d9977acccc06528a20b475b9e3ad0afd79adfb9"
+      "sha256": "5b70825a4f40d7ce0b52e8ba3c48ff0dd9e112ecb2298ae92b23825fb2b58517"
     },
     {
       "path": "tests/ci/test_windows_preview.py",

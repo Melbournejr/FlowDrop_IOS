@@ -1,5 +1,10 @@
 param([switch]$ValidateOnly)
 $ErrorActionPreference = 'Stop'
+# A Windows PowerShell child launched from pwsh can inherit Core-only module
+# paths. Use this engine's built-in modules, without changing the user's profile.
+if ($PSVersionTable.PSEdition -eq 'Desktop') {
+  $env:PSModulePath = (Join-Path $PSHOME 'Modules') + ';' + (Join-Path $env:ProgramFiles 'WindowsPowerShell/Modules')
+}
 $root = $PSScriptRoot
 if (-not (Test-Path (Join-Path $root 'production-build-proof.json'))) { throw 'Run the copy at the root of the downloaded signing kit.' }
 function HashFile([string]$file) { (Get-FileHash -LiteralPath $file -Algorithm SHA256).Hash.ToLowerInvariant() }

@@ -96,6 +96,20 @@ class NativeRunnerTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'SHA-256 mismatch'):
             ci.verify_jar(jar)
 
+    def test_transient_download_retries_are_bounded_and_failure_is_not_masked(self):
+        seen=[]
+        def execute(name,argv,deadline,root,env):
+            seen.append((name,argv,deadline))
+            values={'node-version':'v24.0.0','java-version':'version "21.0.0"','python-version':'Python 3.12.0'}
+            if name in values:(root/'logs'/ (name+'.log')).write_text(values[name])
+            return {'exit_code':22 if name=='jar-download' else 0}
+        with patch.object(ci,'execute',side_effect=execute):self.assertEqual(ci.setup(self.root),22)
+        name,argv,deadline=seen[-1]
+        self.assertEqual(name,'jar-download');self.assertIn('--retry-all-errors',argv)
+        self.assertEqual(argv[argv.index('--retry')+1],'3');self.assertEqual(argv[argv.index('--retry-max-time')+1],'90')
+        self.assertEqual(deadline,150);self.assertIn(ci.JAR_URL,argv)
+        self.assertEqual(json.loads((self.root/'logs/setup.json').read_text())['status'],'FAIL')
+
     def test_cleanup_refuses_unowned_directory_and_preserves_logs(self):
         outside = Path(self.temporary.name) / 'outside'
         outside.mkdir()

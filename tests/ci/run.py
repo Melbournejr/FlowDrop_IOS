@@ -164,7 +164,8 @@ def setup(root):
             return result['exit_code'] or 1
     jar = root / 'tools' / 'json-20240303.jar'
     commands = [
-        ('jar-download', ['curl', '--fail', '--location', '--retry', '3', '--connect-timeout', '15',
+        ('jar-download', ['curl', '--fail', '--location', '--retry', '3', '--retry-all-errors',
+                          '--retry-delay', '2', '--retry-max-time', '90', '--connect-timeout', '15',
                           '--max-time', '120', '--proto', '=https', JAR_URL, '-o', str(jar)], 150),
         ('npm-ci', ['npm', 'ci', '--ignore-scripts', '--no-audit', '--no-fund', '--cache', str(root / 'tools' / 'npm-cache')], 300),
     ]
