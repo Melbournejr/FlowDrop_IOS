@@ -287,7 +287,7 @@
     {
       "path": "scripts/verify_windows_upgrade.py",
       "base_sha256": null,
-      "sha256": "c4e22f096594570daee91411eb2f691e573541881e9f1c6ca94b7ed23345e34b"
+      "sha256": "fb1533feb5c99bff578ada15c5ee0eef9d6f91af067a4cf36d8d7cdd2187a92b"
     },
     {
       "path": "scripts/windows_preview.py",

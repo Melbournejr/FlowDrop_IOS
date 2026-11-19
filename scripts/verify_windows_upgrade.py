@@ -34,7 +34,14 @@ def main(root,candidate):
     report={'status':'NOT VERIFIED','scope':'Actual Windows 1.13.0 production EXE -> freshly source-built 1.14.0 production-layout EXE; synthetic data only','steps':[],'productionAndroidUpgrade':'NOT VERIFIED; owner original signing key required'}
     def save(): (root/'upgrade-results.json').write_text(json.dumps(report,indent=2)+'\n')
     def run(name,args,**kw):
-        p=subprocess.run([str(x) for x in args],stdout=subprocess.PIPE,stderr=subprocess.PIPE,timeout=180,**kw);report['steps'].append({'name':name,'exit_code':p.returncode});save();assert p.returncode==0,name;return p.stdout.decode(errors='replace')
+        p=subprocess.run([str(x) for x in args],stdout=subprocess.PIPE,stderr=subprocess.PIPE,timeout=180,**kw)
+        row={'name':name,'exit_code':p.returncode}
+        if p.returncode and name in ['actual-windows-kit-validation','actual-windows-private-process-controls']:
+            # Both commands are keyless: ValidateOnly or random synthetic inputs.
+            # Owner signing deliberately suppresses raw child failures instead.
+            from scripts.native_build_support import redact
+            row['keylessDiagnostic']=redact((p.stdout+p.stderr).decode(errors='replace'))[-4096:]
+        report['steps'].append(row);save();assert p.returncode==0,name;return p.stdout.decode(errors='replace')
     save();old=root/'FlowDrop-Setup-1.13.0-Windows-x64.exe'
     for attempt in range(3):
         try:
