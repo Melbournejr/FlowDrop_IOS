@@ -9,6 +9,21 @@ from unittest.mock import patch
 ROOT=Path(__file__).resolve().parents[2]
 
 class ReleasePreparationTests(unittest.TestCase):
+    def test_actual_npm_ci_accepts_isolated_user_and_global_configuration(self):
+        import json,shutil
+        from scripts.prepare_native_release import install_locked_dependencies
+        from scripts.native_build_ci.runner import Journal
+        with tempfile.TemporaryDirectory() as temp:
+            root=Path(temp);source=root/'source';source.mkdir()
+            (source/'package.json').write_text('{"name":"empty-release-fixture","version":"1.0.0","private":true}')
+            (source/'package-lock.json').write_text('{"name":"empty-release-fixture","version":"1.0.0","lockfileVersion":3,"packages":{"":{"name":"empty-release-fixture","version":"1.0.0"}}}')
+            node=root/'node-linux/bin/node';node.parent.mkdir(parents=True);node.symlink_to(Path(shutil.which('node')).resolve())
+            npm=root/'node-linux/lib/node_modules/npm/bin/npm-cli.js';npm.parent.mkdir(parents=True);npm.symlink_to(Path(shutil.which('npm')).resolve())
+            install_locked_dependencies(root,source,Journal(root,dict(os.environ)))
+            commands=json.loads((root/'logs/commands.json').read_text())
+            self.assertEqual(commands[0]['exit_code'],0)
+            self.assertEqual((source/'package.json').read_text(),'{"name":"empty-release-fixture","version":"1.0.0","private":true}')
+
     def test_protected_native_sources_match_reviewed_feature_manifest(self):
         import hashlib,json
         from scripts.feature_baseline import expected_sha

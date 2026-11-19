@@ -55,13 +55,17 @@ def unsigned_apk(apk, source, root, journal):
             'permissions': identity['permissions'], 'sha256': digest(apk), 'size': apk.stat().st_size,
             'entries': entries, 'productionCertificateRequired': PRODUCTION_CERT, 'signed': False}
 
+def install_locked_dependencies(root, source, journal):
+    user = root / 'empty-user.npmrc'; user.write_text('')
+    global_config = root / 'empty-global.npmrc'; global_config.write_text('')
+    journal.run('release-npm-ci', [root / 'node-linux/bin/node', root / 'node-linux/lib/node_modules/npm/bin/npm-cli.js', 'ci', '--ignore-scripts', '--no-audit', '--no-fund', '--cache', root / 'npm-cache', '--registry', 'https://registry.npmjs.org/', '--userconfig', user, '--globalconfig', global_config], cwd=source, timeout=600)
+
 def prepare(root, cache):
     root = owned_root(root); provision(root, cache, 'all')
     source, info = source_snapshot(root); env = tool_env(root)
     env.update(FLOWDROP_NATIVE_WORK_ROOT=str(root), FLOWDROP_BUILD_STEP_REPORT=str(root / 'logs/builder-steps.jsonl'))
     journal = Journal(root, env)
-    empty = root / 'empty.npmrc'; empty.write_text('')
-    journal.run('release-npm-ci', [root / 'node-linux/bin/node', root / 'node-linux/lib/node_modules/npm/bin/npm-cli.js', 'ci', '--ignore-scripts', '--no-audit', '--no-fund', '--cache', root / 'npm-cache', '--registry', 'https://registry.npmjs.org/', '--userconfig', empty, '--globalconfig', empty], cwd=source, timeout=600)
+    install_locked_dependencies(root, source, journal)
     journal.run('release-unsigned-android', [sys.executable, source / 'scripts/build-installers.py', '--only', 'android', '--unsigned'], cwd=source, timeout=1200)
     journal.run('release-production-windows', [sys.executable, source / 'scripts/build-installers.py', '--only', 'windows'], cwd=source, timeout=1800)
     apk = source / 'artifacts/FlowDrop-1.14.0-Android-UNSIGNED.apk'
