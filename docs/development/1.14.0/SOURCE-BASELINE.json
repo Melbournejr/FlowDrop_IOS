@@ -427,7 +427,7 @@
     {
       "path": "tests/windows-signing-kit.ps1",
       "base_sha256": null,
-      "sha256": "7956d834796b01d47078c1fb9a00b9ff0919178c68472994451b521382e7dff2"
+      "sha256": "9709a11b8a49d450aea86fbf5810e838172b0c0e14ea1e52f9bc416a965b81b2"
     },
     {
       "path": "tests/windows-vault-probe.mjs",
