@@ -15,6 +15,7 @@ import time
 REPO = Path(__file__).resolve().parents[2]
 JAR_URL = 'https://repo.maven.apache.org/maven2/org/json/json/20240303/json-20240303.jar'
 JAR_CENTRAL_MIRROR = 'https://repo1.maven.org/maven2/org/json/json/20240303/json-20240303.jar'
+JAR_GOOGLE_MIRROR = 'https://maven-central.storage-download.googleapis.com/maven2/org/json/json/20240303/json-20240303.jar'
 JAR_SHA256 = '3cf6cd6892e32e2b4c1c39e0f52f5248a2f5b37646fdfbb79a66b46b618414ed'
 MARKER = '.flowdrop-native-ci-owned'
 GROUPS = {
@@ -177,11 +178,12 @@ def setup(root):
         if name == 'jar-download' and result['exit_code'] != 0:
             # Same Maven Central artifact, version and mandatory SHA; only a
             # transport failure may use its other official HTTPS endpoint.
-            jar.unlink(missing_ok=True)
-            alternate = [JAR_CENTRAL_MIRROR if value == JAR_URL else value for value in command]
-            result = execute('jar-download-central-mirror', alternate, deadline, root, env)
-            steps.append(result)
-            resolved_jar_url = JAR_CENTRAL_MIRROR
+            for suffix, mirror in [('central-mirror', JAR_CENTRAL_MIRROR), ('google-mirror', JAR_GOOGLE_MIRROR)]:
+                jar.unlink(missing_ok=True)
+                alternate = [mirror if value == JAR_URL else value for value in command]
+                result = execute('jar-download-'+suffix, alternate, deadline, root, env)
+                steps.append(result); resolved_jar_url = mirror
+                if result['exit_code'] == 0: break
         if result['exit_code'] != 0:
             write_json(root / 'logs' / 'setup.json', {'status': 'FAIL', 'steps': steps})
             return result['exit_code']

@@ -21,8 +21,15 @@ function RunPrivate([string]$exe, [string[]]$argv, [string[]]$secretInput = @(),
   $process = New-Object System.Diagnostics.Process; $process.StartInfo = $info
   try {
     [void]$process.Start(); $stdout = $process.StandardOutput.ReadToEndAsync(); $stderr = $process.StandardError.ReadToEndAsync()
-    foreach ($line in $secretInput) { if ($line -match "[\r\n`0]") { throw 'Invalid password input.' }; $process.StandardInput.WriteLine($line) }
-    $process.StandardInput.Close()
+    # Console.InputEncoding on Windows PowerShell can emit a BOM. Send exact
+    # UTF-8 password lines without a preamble or a shell/argv conversion.
+    $stdin = $process.StandardInput.BaseStream
+    foreach ($line in $secretInput) {
+      if ($line -match "[\r\n`0]") { throw 'Invalid password input.' }
+      $bytes = [Text.Encoding]::UTF8.GetBytes($line + "`n"); $stdin.Write($bytes,0,$bytes.Length)
+      [Array]::Clear($bytes,0,$bytes.Length)
+    }
+    $stdin.Flush(); $stdin.Close()
     if (-not $process.WaitForExit(180000)) { $process.Kill(); throw 'Signing tool timed out.' }
     $text = $stdout.Result; $ignoredError = $stderr.Result
     if ($process.ExitCode -ne 0) { throw 'Tool verification/signing failed. No key/password/log is uploaded. Check the selected original keys and passwords.' }

@@ -2,7 +2,7 @@ param([Parameter(Mandatory=$true)][string]$Kit)
 $ErrorActionPreference='Stop'
 . (Join-Path $Kit 'Start-ReleaseSigning.ps1') -ValidateOnly
 $node=Join-Path $Kit 'tools/node.exe'
-$a='synthetic-a-'+[guid]::NewGuid().ToString('N');$b='synthetic-b-'+[guid]::NewGuid().ToString('N');$c='synthetic-c-'+[guid]::NewGuid().ToString('N')
+$a='synthetic-a-'+[char]0x1EAD+[guid]::NewGuid().ToString('N');$b='synthetic-b-'+[guid]::NewGuid().ToString('N');$c='synthetic-c-'+[guid]::NewGuid().ToString('N')
 $code='const c=require("node:crypto");let b="";process.stdin.setEncoding("utf8");process.stdin.on("data",x=>b+=x);process.stdin.on("end",()=>console.log(JSON.stringify({input:c.createHash("sha256").update(b.replace(/\r\n/g,"\n")).digest("hex"),secret:c.createHash("sha256").update(process.env.FLOWDROP_UPDATE_KEY_PASSWORD).digest("hex"),args:process.argv.slice(1)})));'
 $value=RunPrivate $node @('-e',$code,'path with spaces','a"b') @($a,$b) @{FLOWDROP_UPDATE_KEY_PASSWORD=$c} | ConvertFrom-Json
 function TextHash([string]$text) { $hash=[Security.Cryptography.SHA256]::Create();try{([BitConverter]::ToString($hash.ComputeHash([Text.Encoding]::UTF8.GetBytes($text)))).Replace('-','').ToLowerInvariant()}finally{$hash.Dispose()} }

@@ -16,7 +16,11 @@ Run `44454199123` thất bại ở setup integration, exit22: log cho thấy Mav
 
 Các lượt chuẩn bị sau tiếp tục gặp404 từ `repo.maven.apache.org`, kể cả retry. Test setup nay retry tối đa3 lần trong ngân sách hữu hạn, sau lỗi tải mới thử endpoint Maven Central chính thức `repo1.maven.org` cho **cùng artifact/version/SHA**. Probe cả hai endpoint đã cho cùng SHA trên. Hash sai phải dừng, không thử mirror để che lỗi; hai endpoint đều lỗi thì setup FAIL và tests NOT VERIFIED. URL thực tải được ghi riêng trong setup.json. Không đổi dependency, checksum hay required check.
 
+Sau khi cả hai host Central tiếp tục404 trên runner, bổ sung mirror Maven Central do Google phục vụ: `https://maven-central.storage-download.googleapis.com/maven2/org/json/json/20240303/json-20240303.jar`. Probe thực cũng trả đúng SHA/78332byte. Chỉ tối đa ba endpoint HTTPS cố định, không URL tùy ý; tất cả đều lỗi thì FAIL, hash sai từ bất kỳ endpoint nào phải dừng trước compile. Không coi mirror tự tạo checksum là chứng cứ: so với SHA độc lập đã pin từ baseline.
+
 Các lỗi build-control đã tái hiện: thiếu record hash cho chuỗi User-Agent Android đã sửa; npm từ chối dùng cùng file user/global config; Python3.12.16 không có trên Windows2025; Windows PowerShell con kế thừa module path của pwsh nên không tìm thấy Get-FileHash. Sửa tương ứng: bổ sung source pin/test, tách npmrc (npm ci thực chạy fixture rỗng), dùng Windows Python3.12.10 như CI hiện có, chọn module tích hợp đúng engine trong tiến trình script ký. Lỗi đầu và exit code vẫn giữ trong run lịch sử; chỉ run cuối được dùng cho kết luận.
+
+Kiểm tra process trên Windows sau đó cho environment/quote/path PASS nhưng exact stdin hash FAIL. Script ký chuyển sang ghi UTF-8 raw không BOM với newline cố định và xóa byte buffer sau ghi; kiểm tra dùng thêm ký tự Unicode tổng hợp. Không đổi cách nhập khóa/mật khẩu hoặc bỏ assertion stdin.
 
 Giữ toàn bộ Native Regression (kể cả ZIP64), Native Build, Native Runtime và Cross-platform tại final HEAD. Workflow bổ sung `Native Release Preparation` chỉ contents:read, không production secrets/publisher. Nó dùng toolchain đã pin, chạy builder lại từ source, xuất APK production-layout **chưa ký** và EXE production. Không đổi tên/tái sử dụng artifact TEST ONLY thành release.
 

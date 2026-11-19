@@ -147,7 +147,7 @@
     {
       "path": "scripts/Start-ReleaseSigning.ps1",
       "base_sha256": null,
-      "sha256": "f9af82e14c200c05c388380a098785b0aa5b9d84c627c63101eb32cf9bec0366"
+      "sha256": "8a02fa8c2e2db5c9fb1ec4028ae9011ba30d2dea7badfd49d8dd91ab0f112028"
     },
     {
       "path": "scripts/android_preview.py",
@@ -337,7 +337,7 @@
     {
       "path": "tests/ci/run.py",
       "base_sha256": "685f15b8246830901dd8d0403e1785c81ed09a4a6fd697700848004dc8e3df50",
-      "sha256": "62861ff33586bb3eb47a9c5813b8f91d61201dd516ce20c65bee1fc7fcfa8076"
+      "sha256": "9059e38d4afeddfd388532b7998be7093da21ee04c9860bd88a2fd5072fd5c7c"
     },
     {
       "path": "tests/ci/test_android_preview.py",
@@ -362,7 +362,7 @@
     {
       "path": "tests/ci/test_runner.py",
       "base_sha256": "f7f675b252cccc33207e29b0fef867a989003bd40aca255fb5892bd9e0d343fc",
-      "sha256": "e52bc87b715c975c50a5720e01f95fa1381e120fcece4a01d69c636438aa56e7"
+      "sha256": "44a23d81bb4fe14ac3ffce9dfe55e56b95093e5d6ac1fe24269170be528a0f28"
     },
     {
       "path": "tests/ci/test_windows_preview.py",
@@ -427,7 +427,7 @@
     {
       "path": "tests/windows-signing-kit.ps1",
       "base_sha256": null,
-      "sha256": "4051d30c91b9ea37e64df6e1e8c48f443aaa80061567a5c361310925a42db467"
+      "sha256": "7956d834796b01d47078c1fb9a00b9ff0919178c68472994451b521382e7dff2"
     },
     {
       "path": "tests/windows-vault-probe.mjs",
