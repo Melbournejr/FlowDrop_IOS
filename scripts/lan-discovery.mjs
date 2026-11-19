@@ -5,7 +5,7 @@ import {peerJson} from './peer-offers.mjs';
 export const LAN_PORT=53317,LAN_GROUP='239.255.77.77';
 const ipv4=ip=>ip.split('.').reduce((n,b)=>(n*256+Number(b))>>>0,0);
 const address=n=>[24,16,8,0].map(s=>(n>>>s)&255).join('.');
-export function startLanDiscovery({deviceId,deviceName,port,platform='windows',version='1.13.0',onError=console.warn,interfaces=()=>Object.values(networkInterfaces()).flat().filter(a=>a?.family==='IPv4'&&!a.internal&&!a.address.startsWith('169.254.'))}){
+export function startLanDiscovery({deviceId,deviceName,port,platform='windows',version='1.14.0',onError=console.warn,interfaces=()=>Object.values(networkInterfaces()).flat().filter(a=>a?.family==='IPv4'&&!a.internal&&!a.address.startsWith('169.254.'))}){
   const socket=dgram.createSocket({type:'udp4',reuseAddr:true}),peers=new Map(),attempts=new Map(),pending=new Set(),members=new Set(),transports=new Map();
   let closed=false,ready=false,lastError='',timer;
   const report=error=>{const message=error?.message||String(error);if(!closed&&message!==lastError){lastError=message;onError('Dò thiết bị trong Wi-Fi: '+message);}};

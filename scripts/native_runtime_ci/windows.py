@@ -147,7 +147,7 @@ def run(root, downloads, helpers):
             raise Blocked("A preceding required Windows prerequisite did not complete")
         with rec.case('W02-provenance', WINDOWS['W02-provenance']) as row:
             manifest = verify_export(downloads, 'windows', source)
-            installer = Path(downloads) / 'FlowDrop-Setup-1.13.0-Windows-x64-TEST-ONLY.exe'
+            installer = Path(downloads) / 'FlowDrop-Setup-1.14.0-Windows-x64-TEST-ONLY.exe'
             rec.artifact.update(installer=sha256(installer))
             proof = json.loads((Path(helpers) / 'helper-manifest.json').read_text(encoding='utf-8'))
             assert proof['source']['checkout_commit'] == source['checkout'], 'Helper source differs from app/runtime source'
@@ -186,6 +186,8 @@ def run(root, downloads, helpers):
         marker.write_text('FlowDrop 2D1 synthetic data preserved by uninstall', encoding='utf-8')
         marker_hash = sha256(marker)
         with rec.case('W05-start', WINDOWS['W05-start']) as row:
+            vault_output, vault_code = rec.run('actual-windows-dpapi', [install / 'runtime/node.exe', REPO / 'tests/windows-vault-probe.mjs', rec.root / 'synthetic-device-vault'], timeout=90)
+            assert vault_code == 0 and json.loads(vault_output.strip().splitlines()[-1])['status'] == 'PASS'
             metadata = start()
             actual = json.loads(ps('app-backend-processes', 'Get-CimInstance Win32_Process | Where-Object { $_.ProcessId -in @(' + str(process.pid) + ',' + str(metadata['pid']) + ') } | Select-Object ProcessId,ParentProcessId,ExecutablePath | ConvertTo-Json')[0])
             assert any(p['ExecutablePath'] and Path(p['ExecutablePath']).resolve() == (install / 'runtime/node.exe').resolve() for p in actual)
@@ -194,8 +196,13 @@ def run(root, downloads, helpers):
             raise Blocked("A preceding required Windows prerequisite did not complete")
         with rec.case('W06-http', WINDOWS['W06-http']) as row:
             config = client.json('GET', '/api/config')
-            assert (config['name'], config['version'], config['platform'], config['mode']) == ('FlowDrop', '1.13.0', 'windows', 'local')
+            assert (config['name'], config['version'], config['platform'], config['mode']) == ('FlowDrop', '1.14.0', 'windows', 'local')
             identity = config['deviceId']
+            tls_identity = config['secure']['fingerprint']
+            public_config = rec.root / 'tls-public-config.json'
+            json_file(public_config, {'deviceId': identity, 'secure': config['secure']})
+            tls_output, tls_code = rec.run('actual-native-tls', [install / 'runtime/node.exe', REPO / 'tests/native-tls-probe.mjs', public_config], timeout=30)
+            assert tls_code == 0 and json.loads(tls_output)['status'] == 'PASS'
             row['actual'] = {k: config[k] for k in ['name', 'version', 'platform', 'mode']}
         with rec.case('W07-window', WINDOWS['W07-window']) as row:
             from ctypes import wintypes
@@ -217,7 +224,7 @@ def run(root, downloads, helpers):
             shortcut = json.loads(ps('sendto-shortcut', "$s=(New-Object -ComObject WScript.Shell).CreateShortcut('" + link + "'); @{TargetPath=$s.TargetPath;Arguments=$s.Arguments} | ConvertTo-Json")[0])
             assert Path(shortcut['TargetPath']).resolve() == (install / 'FlowDrop.exe').resolve() and shortcut['Arguments'] == '--send-files'
             with winreg.OpenKey(winreg.HKEY_CURRENT_USER, r'Software\Microsoft\Windows\CurrentVersion\Uninstall\FlowDrop') as key:
-                assert winreg.QueryValueEx(key, 'DisplayVersion')[0] == '1.13.0'
+                assert winreg.QueryValueEx(key, 'DisplayVersion')[0] == '1.14.0'
             row['actual'] = {'sendto': shortcut, 'desktop_and_startmenu': True, 'uninstall_registry': True}
         directory.mkdir()
         client.desktop('/api/desktop/settings', {'directory': str(directory), 'autoSave': True})
@@ -262,13 +269,20 @@ def run(root, downloads, helpers):
         with rec.case('W18-close', WINDOWS['W18-close']) as row:
             stop(); row.update(exit_code=0, actual={'native_and_backend_stopped': True})
         with rec.case('W19-restart', WINDOWS['W19-restart']) as row:
-            start(); assert client.json('GET', '/api/config')['deviceId'] == identity
+            start(); restarted_config = client.json('GET', '/api/config')
+            assert restarted_config['deviceId'] == identity
+            assert restarted_config['secure']['fingerprint'] == tls_identity
             assert sha256(marker) == marker_hash
             assert len(preserved_files) >= 3, 'No successful receive available to verify restart preservation'
             for file, expected in preserved_files.items():
                 assert sha256(file) == expected, 'Restart changed received file SHA-256'
             stop(); row['actual'] = {'app_and_backend_restarted': True, 'persistent_device_id': True, 'synthetic_user_data_sha256': marker_hash,
                                     'received_files_reverified': len(preserved_files)}
+        with rec.case('W22-preview-coexistence', WINDOWS['W22-preview-coexistence']) as row:
+            from .preview_windows import verify
+            start()
+            row.update(exit_code=0, actual=verify(rec, downloads, manifest, install, data, profile_paths, client, wait, ps))
+            stop()
     except Exception as error:
         with rec.case('W-infrastructure-error', 'Runtime orchestration completes'):
             raise error

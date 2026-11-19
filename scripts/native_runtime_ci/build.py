@@ -15,6 +15,7 @@ from scripts.native_build_ci.toolchain import provision, tool_env
 from scripts.native_build_ci.verify import verify_apk, pe_info, reject_secret_bytes
 from .common import protected_source
 from .test_sources import windows_driver
+from scripts import android_preview, windows_preview
 
 
 def checksums(directory):
@@ -89,7 +90,7 @@ def android(root, cache, adapt):
         signing, fingerprint = c2.make_test_key(root, journal)
         journal.run('build-app-from-source', [sys.executable, source / 'scripts/build-installers.py', '--only', 'android'], env=signing, cwd=source, timeout=1200)
         journal.run('build-original-instrumentation-from-source', [sys.executable, source / 'scripts/build-native-test-apk.py'], env=signing, cwd=source, timeout=600)
-        app = source / 'artifacts/FlowDrop-1.13.0-Android.apk'
+        app = source / 'artifacts/FlowDrop-1.14.0-Android.apk'
         original = root / 'tools/native-instrumentation/FlowDrop-native-tests.apk'
         original_result = verify_apk(original, source, root, journal, fingerprint, instrumentation=True)
         extended, proof = extended_instrumentation(root, source, journal, signing, signing['FLOWDROP_ANDROID_KEYSTORE'], adapt)
@@ -104,10 +105,15 @@ def android(root, cache, adapt):
         if any(step['exit_code'] != 0 for step in report['builder_steps']):
             raise RuntimeError('Frozen builder reported a failed child')
         values = [signing['FLOWDROP_ANDROID_STORE_PASSWORD'], signing['FLOWDROP_ANDROID_KEY_PASSWORD']]
+        preview, report['preview'] = android_preview.build(source, root, journal, signing, fingerprint)
+        report['builder_steps'] = [json.loads(line) for line in (root / 'logs/builder-steps.jsonl').read_text().splitlines()]
+        if any(step['exit_code'] != 0 for step in report['builder_steps']):
+            raise RuntimeError('Preview compiler/packager step failed')
         remove_child(root, root / 'test-secrets')
         write_json(root / 'logs/build-results.json', report)
-        c2.export_files(root, [(app, 'FlowDrop-1.13.0-Android-TEST-ONLY.apk'),
-                        (extended, 'FlowDrop-1.13.0-Android-Instrumentation-TEST-ONLY.apk')], report, journal, values)
+        c2.export_files(root, [(app, 'FlowDrop-1.14.0-Android-TEST-ONLY.apk'),
+                        (extended, 'FlowDrop-1.14.0-Android-Instrumentation-TEST-ONLY.apk'),
+                        (preview, android_preview.APK_NAME)], report, journal, values)
         return report
     finally:
         if (root / 'test-secrets').exists():
@@ -138,8 +144,8 @@ def windows(root, cache):
         compiled_source = helpers / (name + '.cpp')
         compiled_source.write_text(windows_driver(name, original.read_text(encoding='utf-8')), encoding='utf-8')
         journal.run('compile-' + name, [compiler, '-std=c++17', '-O2', '-s', '-municode', '-static', '-static-libgcc', '-static-libstdc++',
-            '-I', source / 'desktop/windows/vendor', '-I', source / 'tests', compiled_source, resource_object, '-o', output,
-            '-lwinhttp', '-lcomctl32', '-lole32', '-luuid', '-lshell32', '-luxtheme', '-lgdi32', '-luser32', '-ladvapi32'], timeout=600)
+            '-I', source / 'desktop/windows/vendor', '-I', source / 'desktop/windows', '-I', source / 'tests', compiled_source, resource_object, '-o', output,
+            '-lwinhttp', '-lcomctl32', '-lole32', '-luuid', '-lshell32', '-luxtheme', '-lgdi32', '-luser32', '-ladvapi32', '-lws2_32'], timeout=600)
         pe = pe_info(output.read_bytes())
         if pe['machine'] != 0x8664 or pe['subsystem'] != 3:
             raise RuntimeError('Test helper must be a real Windows x64 console PE')
@@ -156,6 +162,18 @@ def windows(root, cache):
     write_json(export / 'helper-manifest.json', {'status': 'PASS', 'purpose': 'TEST ONLY native OS smoke helpers',
                'source': report['source'], 'compiler_commands': journal.entries, 'files': files})
     checksums(export)
+    # Build Preview only in the runtime verification producer, never the publisher.
+    preview_journal = c2.Journal(root, env)
+    preview_journal.entries = json.loads((root / 'logs/commands.json').read_text())
+    preview_env = dict(env)
+    preview_env.update(FLOWDROP_NATIVE_WORK_ROOT=str(root), FLOWDROP_BUILD_STEP_REPORT=str(root / 'logs/builder-steps.jsonl'))
+    setup, report['windows_preview'] = windows_preview.build(source, root, preview_journal, preview_env)
+    report['builder_steps'] = [json.loads(line) for line in (root / 'logs/builder-steps.jsonl').read_text().splitlines()]
+    if any(step['exit_code'] != 0 for step in report['builder_steps']):
+        raise RuntimeError('Windows Preview compiler/packager step failed')
+    write_json(root / 'logs/build-results.json', report)
+    c2.export_files(root, [(source / 'artifacts/FlowDrop-Setup-1.14.0-Windows-x64.exe', 'FlowDrop-Setup-1.14.0-Windows-x64-TEST-ONLY.exe'),
+                          (setup, windows_preview.SETUP)], report, preview_journal)
     return report
 
 

@@ -1,10 +1,13 @@
 #define UNICODE
 #define _UNICODE
 #define NOMINMAX
+#include <winsock2.h>
 #include <windows.h>
+#include <wlanapi.h>
 #include <shellapi.h>
 #include <shlobj.h>
 #include <commctrl.h>
+#include <uiautomation.h>
 #include <winhttp.h>
 #include <filesystem>
 #include <fstream>
@@ -15,7 +18,38 @@
 using json=nlohmann::json;namespace fs=std::filesystem;
 unsigned port=0;
 std::wstring wide(const std::string&s){int n=MultiByteToWideChar(CP_UTF8,0,s.data(),(int)s.size(),nullptr,0);std::wstring r(n,L'\0');MultiByteToWideChar(CP_UTF8,0,s.data(),(int)s.size(),r.data(),n);return r;}
+#include "DirectBluetooth.h"
+void verifyBluetoothSetupValidation(){
+ json nearby=json::array({json{{"url","http://192.168.1.2:5173"}},json{{"url","http://192.168.49.1:43123/"}}});
+ if(fdlink::directPeerIndex(nearby,"192.168.49.1")!=1||fdlink::directPeerIndex(nearby,"")!=-1||fdlink::directPeerIndex(nearby,"192.168.49.38")!=-1)throw std::runtime_error("Direct owner hint selected unrelated peer");
+ nearby.push_back(nearby[1]);if(fdlink::directPeerIndex(nearby,"192.168.49.1")!=-2)throw std::runtime_error("Ambiguous direct owner hint accepted");
+ for(auto url:{"http://user@192.168.49.1:22","http://192.168.49.1:0","http://192.168.49.1:99999","http://192.168.49.1:1234/path","file://192.168.49.1:1234"})if(fdlink::directPeerIndex(json::array({json{{"url",url}}}),"192.168.49.1")!=-1)throw std::runtime_error("Malformed direct location hint accepted");
+ if(fdlink::recoveryAction(true,true,0,0)!=0||fdlink::recoveryAction(true,false,0,0)!=3||fdlink::recoveryAction(false,false,2,0)!=0||fdlink::recoveryAction(false,false,3,0)!=1||fdlink::recoveryAction(false,false,3,2)!=2||fdlink::recoveryAction(false,false,20,1,false)!=0)throw std::runtime_error("Recovery policy changed");
+ auto valid=json{{"protocol","FlowDropLink1"},{"ssid","DIRECT-fd-FlowDrop-0123abcd"},{"passphrase","0123456789abcdef0123"}};
+ fdlink::validate(valid);
+ for(auto invalid:std::vector<json>{json::array(),json(),json{{"protocol","other"}},json{{"protocol","FlowDropLink1"},{"ssid","other-network"},{"passphrase","0123456789abcdef0123"}}}){bool denied=false;try{fdlink::validate(invalid);}catch(...){denied=true;}if(!denied)throw std::runtime_error("Bluetooth malformed setup accepted");}
+ for(auto field:{"ssid","passphrase","protocol"}){auto invalid=valid;invalid[field]=17;bool denied=false;try{fdlink::validate(invalid);}catch(...){denied=true;}if(!denied)throw std::runtime_error("Bluetooth wrong type accepted");}
+ for(auto password:{"short","0123456789ABCDEF0123","0123456789abcdef0123<xml>"}){auto invalid=valid;invalid["passphrase"]=password;bool denied=false;try{fdlink::validate(invalid);}catch(...){denied=true;}if(!denied)throw std::runtime_error("Bluetooth unsafe credentials accepted");}
+ auto extra=valid;extra["url"]="http://external.example";bool denied=false;try{fdlink::validate(extra);}catch(...){denied=true;}if(!denied)throw std::runtime_error("Bluetooth extra fields accepted");
+}
 void check(bool test,const char* message){if(!test)throw std::runtime_error(message);}
+template<class T>struct TestCom {T* p=nullptr;~TestCom(){if(p)p->Release();}};
+bool directOptionsAccessible(HWND dialog){
+ // TaskDialog command links can be windowless DirectUI elements: inspect the
+ // actual OS accessibility tree instead of assuming each button has an HWND.
+ struct Apartment {HRESULT result=CoInitializeEx(nullptr,COINIT_MULTITHREADED);~Apartment(){if(SUCCEEDED(result))CoUninitialize();}} apartment;
+ TestCom<IUIAutomation> automation;if(FAILED(CoCreateInstance(__uuidof(CUIAutomation),nullptr,CLSCTX_INPROC_SERVER,__uuidof(IUIAutomation),(void**)&automation.p)))return false;
+ TestCom<IUIAutomationElement> root;if(FAILED(automation.p->ElementFromHandle(dialog,&root.p)))return false;
+ TestCom<IUIAutomationCondition> any;if(FAILED(automation.p->CreateTrueCondition(&any.p)))return false;
+ TestCom<IUIAutomationElementArray> elements;if(FAILED(root.p->FindAll(TreeScope_Descendants,any.p,&elements.p)))return false;
+ int count=0;if(FAILED(elements.p->get_Length(&count))||count>256)return false;
+ fdlink::SystemDll oleaut(L"oleaut32.dll");auto freeString=(void(WINAPI*)(BSTR))GetProcAddress(oleaut.h,"SysFreeString");if(!freeString)return false;
+ bool found[4]{};const wchar_t* expected[]={L"Ghép đôi Bluetooth lần đầu",L"Mobile Hotspot thủ công",L"Sao chép chẩn đoán Wi-Fi",L"Auto / LAN"};
+ for(int i=0;i<count;i++){TestCom<IUIAutomationElement> element;if(FAILED(elements.p->GetElement(i,&element.p)))continue;CONTROLTYPEID type=0;BOOL enabled=FALSE,offscreen=TRUE;
+  if(FAILED(element.p->get_CurrentControlType(&type))||type!=UIA_ButtonControlTypeId||FAILED(element.p->get_CurrentIsEnabled(&enabled))||!enabled||FAILED(element.p->get_CurrentIsOffscreen(&offscreen))||offscreen)continue;
+  BSTR name=nullptr;if(SUCCEEDED(element.p->get_CurrentName(&name))&&name){std::wstring label(name);for(int j=0;j<4;j++)if(label.find(expected[j])!=std::wstring::npos)found[j]=true;}if(name)freeString(name);
+ }return found[0]&&found[1]&&found[2]&&found[3];
+}
 void wait(std::function<bool()> predicate,const char* message,int seconds=40){auto start=GetTickCount64();while(GetTickCount64()-start<(unsigned)seconds*1000){if(predicate())return;Sleep(100);}throw std::runtime_error(message);}
 std::wstring text(HWND control){wchar_t value[1024]{};DWORD_PTR result=0;SendMessageTimeoutW(control,WM_GETTEXT,1024,(LPARAM)value,SMTO_ABORTIFHUNG,1000,&result);return value;}
 std::string http(const wchar_t* method,const std::string& route,const std::string& body="",const std::string& token="",bool desktop=false){
@@ -39,12 +73,20 @@ void capture(HWND app,const fs::path& file){
  BITMAPFILEHEADER header{};header.bfType=0x4d42;header.bfOffBits=sizeof(header)+sizeof(BITMAPINFOHEADER);header.bfSize=header.bfOffBits+pixels.size();std::ofstream out(file,std::ios::binary);out.write((char*)&header,sizeof(header));out.write((char*)&bi.bmiHeader,sizeof(bi.bmiHeader));out.write(pixels.data(),pixels.size());SelectObject(dc,old);DeleteObject(bitmap);DeleteDC(dc);ReleaseDC(app,src);
 }
 int wmain(int argc,wchar_t**argv){
+ verifyBluetoothSetupValidation();
  try{
  check(argc==2,"Expected application path");fs::path exe=argv[1];std::wstring command=L"\""+exe.wstring()+L"\"";STARTUPINFOW info{sizeof(info)};PROCESS_INFORMATION process{};
  check(CreateProcessW(exe.c_str(),command.data(),nullptr,nullptr,FALSE,0,nullptr,exe.parent_path().c_str(),&info,&process),"CreateProcess failed");CloseHandle(process.hThread);
  HWND app=nullptr;wait([&]{app=FindWindowW(L"FlowDrop.NativeDesktop",nullptr);return app&&GetDlgItem(app,101);},"Native window did not appear");
  wait([&]{return IsWindowEnabled(GetDlgItem(app,101))&&text(GetDlgItem(app,1002)).find(L"Sẵn sàng")!=std::wstring::npos;},"Native backend did not become ready",60);
  std::wcout<<L"Native window ready; status: "<<text(GetDlgItem(app,1002))<<std::endl;
+ check(text(GetDlgItem(app,2035))==L"Kết nối trực tiếp","Direct connection entry missing");
+ check(GetDlgItem(app,2036)&&IsWindowVisible(GetDlgItem(app,2036)),"Persistent direct connection status row missing");
+ PostMessageW(app,WM_COMMAND,2035,0);HWND direct=nullptr;
+ wait([&]{direct=FindWindowW(nullptr,L"FlowDrop · Kết nối trực tiếp");return direct&&IsWindowVisible(direct);},"Direct connection device chooser did not open",20);
+ wait([&]{return directOptionsAccessible(direct);},"Direct chooser options missing, hidden or disabled in actual UI Automation tree",20);PostMessageW(direct,TDM_CLICK_BUTTON,IDCANCEL,0);
+ wait([&]{return !IsWindow(direct);},"Direct chooser did not close",10);
+ std::cout<<"Native direct chooser and cancellation verified without radio operations."<<std::endl;
  PWSTR local=nullptr;SHGetKnownFolderPath(FOLDERID_LocalAppData,0,nullptr,&local);fs::path state=fs::path(local)/L"FlowDrop"/L"Data"/L"desktop-state.json";CoTaskMemFree(local);
  json metadata;{std::ifstream stream(state);stream>>metadata;}port=metadata.at("port");
  check(GetDlgItem(app,2013)&&GetDlgItem(app,2030)&&GetDlgItem(app,2031)&&GetDlgItem(app,2032),"Folder, update or LAN controls missing");

@@ -1,8 +1,8 @@
-import {access,copyFile,link,mkdir,open,readFile,rename,stat,unlink,writeFile} from 'node:fs/promises';
+import {access,copyFile,link,mkdir,open,readFile,rename,stat,statfs,unlink,writeFile} from 'node:fs/promises';
 import {constants,createWriteStream} from 'node:fs';
 import {homedir} from 'node:os';
 import path from 'node:path';
-import {randomUUID} from 'node:crypto';
+import {randomUUID,createHash} from 'node:crypto';
 import {Readable,Transform} from 'node:stream';
 import {pipeline} from 'node:stream/promises';
 import {spawn} from 'node:child_process';
@@ -68,12 +68,14 @@ export class DesktopStorage {
       report(file,0);
       const receiptKey=source+'/'+code+'/'+file.id+'/'+directory,previous=receipts[receiptKey];
       if(previous&&path.dirname(previous.path)===directory)try{if(previous.kind==='folder'?file.type===FOLDER_TYPE&&previous.size===file.size&&await folderStillSaved(previous):file.type!==FOLDER_TYPE&&(await stat(previous.path)).size===file.size){saved.push({...previous,id:file.id,alreadySaved:true});report(file,file.size,true);completed+=file.size;continue;}}catch{}
+      try{const space=await statfs(directory);if(space.bavail*space.bsize<file.size+20*1024*1024)throw new Error('Thư mục nhận không đủ dung lượng trống.');}catch(error){if(!error.code)throw error;}
       const download=await getResponse('/api/transfers/'+code+'/files/'+file.id);if(!download.ok)throw new Error((await download.json()).error||'Không tải được file.');
-      const temporary=path.join(directory,'.flowdrop-'+randomUUID()+'.part');let bytes=0;
-      const limit=new Transform({transform(chunk,encoding,next){bytes+=chunk.length;if(bytes>file.size)return next(new Error('Dung lượng file không khớp.'));report(file,bytes);next(null,chunk);}});
+      const temporary=path.join(directory,'.flowdrop-'+randomUUID()+'.part');let bytes=0;const digest=createHash('sha256');
+      const limit=new Transform({transform(chunk,encoding,next){digest.update(chunk);bytes+=chunk.length;if(bytes>file.size)return next(new Error('Dung lượng file không khớp.'));report(file,bytes);next(null,chunk);}});
       try{
         await pipeline(Readable.fromWeb(download.body),limit,createWriteStream(temporary,{flags:'wx',mode:0o600}));
         if(bytes!==file.size)throw new Error('File chưa tải đủ. Hãy thử lại.');
+        if(file.sha256&&(!/^[a-f0-9]{64}$/.test(file.sha256)||digest.digest('hex')!==file.sha256))throw new Error('SHA-256 không khớp. Chưa lưu file; hãy gửi lại.');
         if(file.type===FOLDER_TYPE){
           const folder=await receiveFolder(temporary,directory,this.dataDirectory,entry=>onProgress({bytes:completed+bytes,filesDone:saved.length,currentName:'Đang tạo thư mục · '+entry.name}));
           const item={...folder,id:file.id,size:bytes};saved.push(item);receipts[receiptKey]=item;await this.persist(this.receiptPath,receipts);report(file,bytes,true);completed+=bytes;continue;

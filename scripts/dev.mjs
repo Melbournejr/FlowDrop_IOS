@@ -1,4 +1,6 @@
 import http from 'node:http';
+import https from 'node:https';
+import {DeviceSecurity,deviceVault} from './device-security.mjs';
 import {Readable} from 'node:stream';
 import {pipeline} from 'node:stream/promises';
 import {readFile,writeFile,mkdir,readdir,stat,unlink} from 'node:fs/promises';
@@ -11,11 +13,11 @@ import worker from '../worker/index.js';
 import {startLanDiscovery} from './lan-discovery.mjs';
 import {advertiseFlowDrop} from './discovery.mjs';
 import {DesktopStorage} from './desktop-storage.mjs';
-import {PeerOffers} from './peer-offers.mjs';
+import {setPeerSecurity,peerJson,PeerOffers} from './peer-offers.mjs';
 import {localBucket} from './local-bucket.mjs';
 import {findCode} from './code-lookup.mjs';
 import {FolderJobs} from './folder-jobs.mjs';
-import {sameSecret,loopback,browserRequestAllowed} from './request-security.mjs';
+import {sameSecret,loopback,browserRequestAllowed,CodeGuessGuard} from './request-security.mjs';
 import {DeviceName} from './device-name.mjs';
 import {DesktopUpdater} from './secure-update.mjs';
 const root=fileURLToPath(new URL('../',import.meta.url)),data=process.env.FLOWDROP_DATA_DIR||path.join(root,'.local-data');await mkdir(data,{recursive:true,mode:0o700});
@@ -24,12 +26,17 @@ const desktopToken=randomUUID(),stateFile=path.join(data,'desktop-state.json');
 let discovery=null,lanDiscovery=null;
 const discoveredPeers=()=>[...new Map([...(discovery?.peers()||[]),...(lanDiscovery?.peers()||[])].map(p=>[p.id,p])).values()].sort((a,b)=>a.name.localeCompare(b.name));
 let deviceId;try{deviceId=(await readFile(path.join(data,'device-id'),'utf8')).trim();}catch{deviceId=randomUUID();await writeFile(path.join(data,'device-id'),deviceId);}
+const security=new DeviceSecurity({id:deviceId,name:deviceName,vault:await deviceVault(data,deviceId)});
+setPeerSecurity(security);
+if(process.env.FLOWDROP_LEGACY_HTTP==='1')security.legacy=true;
+const secureTimer=setInterval(()=>security.refresh().catch(()=>{}),1000);secureTimer.unref();
 const addresses=()=>Object.entries(networkInterfaces()).flatMap(([name,list])=>(list||[]).filter(a=>a.family==='IPv4'&&!a.internal&&!a.address.startsWith('169.254.')).map(a=>({name,address:a.address}))).sort((a,b)=>Number(!/wi-fi|wlan|wireless/i.test(a.name))-Number(!/wi-fi|wlan|wireless/i.test(b.name)));
 function openBrowser(url){if(process.platform==='win32')spawn('rundll32.exe',['url.dll,FileProtocolHandler',url],{detached:true,stdio:'ignore'}).unref();}
 const bucket=await localBucket(data);
 const folders=new FolderJobs(data);folders.cleanup().catch(()=>{});
 const storage=new DesktopStorage({dataDirectory:data,getResponse:pathname=>worker.fetch(new Request('http://flowdrop.local'+pathname),{BUCKET:bucket},{})});
 const offers=new PeerOffers({deviceId,deviceName,port:()=>server.address().port,getPeers:discoveredPeers,storage});
+const codeGuesses=new CodeGuessGuard();
 let bulkRequests=0;
 const busy=()=>folders.busy()||bulkRequests>0||storage.pending>0||offers.sessions().some(s=>['pending','accepted','transferring'].includes(s.state));
 const updater=new DesktopUpdater({dataDirectory:data,busy,enabled:process.env.FLOWDROP_DISABLE_UPDATES!=='1'});
@@ -38,22 +45,34 @@ const json=(res,status,value)=>{if(status>=400)res.shouldKeepAlive=false;res.wri
 async function smallJson(req){const chunks=[];let bytes=0;for await(const chunk of req){bytes+=chunk.length;if(bytes>16384)throw new Error('Yêu cầu quá lớn.');chunks.push(chunk);}return bytes?JSON.parse(Buffer.concat(chunks).toString('utf8')):{};}
 function localDesktop(req,url){const client=req.socket.remoteAddress?.replace(/^::ffff:/,'');const own=['127.0.0.1','::1',...addresses().map(a=>a.address)];return own.includes(client)&&['localhost',...own].includes(url.hostname.replace(/^\[|\]$/g,''))&&url.port===String(server.address().port);}
 const files={'/':['web/index.html','text/html; charset=utf-8'],'/app.js':['web/app.js','text/javascript; charset=utf-8'],'/style.css':['web/style.css','text/css; charset=utf-8']};
-const server=http.createServer({maxHeaderSize:16384,headersTimeout:10000,requestTimeout:0,connectionsCheckingInterval:1000},async(req,res)=>{
+const handler=async(req,res)=>{
  try{
   if(!req.url.startsWith('/')||req.url.startsWith('//')||typeof req.headers.host!=='string'){json(res,400,{error:'Yêu cầu không hợp lệ.'});return;}
   for(const name of ['host','origin','x-desktop-token','x-upload-token']){let count=0;for(let i=0;i<req.rawHeaders.length;i+=2)if(req.rawHeaders[i].toLowerCase()===name)count++;if(count>1){json(res,400,{error:'Header trùng lặp.'});return;}}
-  const url=new URL(req.url,'http://'+req.headers.host);
+  const url=new URL(req.url,(req.socket.encrypted?'https://':'http://')+req.headers.host);
   const allowedHosts=['localhost','127.0.0.1','::1',...addresses().map(a=>a.address)];
-  if(!allowedHosts.includes(url.hostname.replace(/^\[|\]$/g,''))||url.port!==String(server.address().port)){json(res,403,{error:'Địa chỉ truy cập không được phép.'});return;}
+  if(!allowedHosts.includes(url.hostname.replace(/^\[|\]$/g,''))||url.port!==String(req.socket.localPort)){json(res,403,{error:'Địa chỉ truy cập không được phép.'});return;}
   if(url.pathname.startsWith('/api/')&&!browserRequestAllowed(req.headers,url.origin)){json(res,403,{error:'Yêu cầu từ website khác bị chặn.'});return;}
   if(url.pathname==='/api/transfers'&&req.method==='POST'&&(!loopback(req.socket.remoteAddress)||process.env.FLOWDROP_DESKTOP_NATIVE==='1'&&!sameSecret(req.headers['x-desktop-token'],desktopToken))){json(res,403,{error:'Chỉ ứng dụng FlowDrop trên máy này được tạo phiên gửi.'});return;}
 
+  const local=loopback(req.socket.remoteAddress)&&!req.socket.encrypted;
+  if(!local&&url.pathname!=='/api/config'){
+    if(!req.socket.encrypted){if(!security.legacy){json(res,426,{error:'Cần ghép nối qua TLS. Chế độ HTTP cũ đang tắt.'});return;}}
+    else if(url.pathname.startsWith('/api/secure/pair/')&&req.method==='POST'){try{json(res,200,await security.pairRoute(url.pathname,await smallJson(req),req.socket.remoteAddress));}catch{json(res,403,{error:'Ghép nối không hợp lệ hoặc đã hết hạn.'});}return;}
+    else if(url.pathname==='/api/secure/session'&&req.method==='POST'){try{json(res,200,security.session(req.headers));}catch{json(res,403,{error:'Chưa ghép nối hoặc yêu cầu không hợp lệ.'});}return;}
+    else{try{req.peerId=security.authorize(req.method,url.pathname+url.search,req.headers);security.track(req.peerId,req.socket);}catch{json(res,403,{error:'Chưa ghép nối, phiên hết hạn hoặc yêu cầu đã dùng.'});return;}}
+  }
+  if(req.socket.encrypted&&(url.pathname.startsWith('/api/desktop/')||url.pathname==='/api/transfers'&&req.method==='POST')){json(res,403,{error:'Chức năng này chỉ dùng nội bộ.'});return;}
   if(url.pathname.startsWith('/api/desktop/')&&url.pathname!=='/api/desktop/stop'){
     if(!localDesktop(req,url)){json(res,403,{error:'Cài đặt này chỉ dùng trên máy tính đang chạy FlowDrop.'});return;}
     if(req.method==='GET'&&url.pathname==='/api/desktop/settings'){if(process.env.FLOWDROP_DESKTOP_NATIVE==='1'&&(!loopback(req.socket.remoteAddress)||!sameSecret(req.headers['x-desktop-token'],desktopToken))){json(res,403,{error:'Thiếu quyền truy cập ứng dụng trên máy này.'});return;}json(res,200,{...await storage.settings(),token:desktopToken,deviceName});return;}
     if(req.method!=='POST'||!sameSecret(req.headers['x-desktop-token'],desktopToken)||req.headers.origin&&req.headers.origin!==url.origin){json(res,403,{error:'Không có quyền thay đổi hoặc lưu file trên máy tính.'});return;}
     try{
-      if(url.pathname==='/api/desktop/peers'){const body=await smallJson(req);if(body.rescan){discovery?.rescan();lanDiscovery?.rescan();}json(res,200,{peers:discoveredPeers(),offers:offers.list(),sessions:offers.sessions(),deviceName,update:updater.snapshot()});updater.resume();return;}
+      if(url.pathname==='/api/desktop/peers'){const body=await smallJson(req);if(body.rescan){discovery?.rescan();lanDiscovery?.rescan();}json(res,200,{peers:discoveredPeers(),offers:offers.list(),sessions:offers.sessions(),deviceName,security:security.snapshot(),update:updater.snapshot()});updater.resume();return;}
+      if(url.pathname==='/api/desktop/security/start'){const body=await smallJson(req),peer=discoveredPeers().find(p=>p.id===body.peerId);if(!peer)throw Error('Thiết bị đã rời mạng.');await peerJson(peer.url,'/api/config');json(res,200,await security.start(body.peerId));return;}
+      if(url.pathname==='/api/desktop/security/confirm'){const b=await smallJson(req);json(res,200,await security.confirm(b.id,b.accept===true));return;}
+      if(url.pathname==='/api/desktop/security/forget'){const b=await smallJson(req);await security.forget(b.id);json(res,200,security.snapshot());return;}
+      if(url.pathname==='/api/desktop/security/legacy'){const b=await smallJson(req);security.legacy=b.enabled===true;json(res,200,security.snapshot());return;}
       if(updater.state.phase==='installing'&&['/api/desktop/send-offer','/api/desktop/answer-offer','/api/desktop/archive-folder','/api/desktop/receive'].includes(url.pathname))throw new Error('Đang cài cập nhật. Mở lại FlowDrop sau khi cài xong.');
       if(url.pathname==='/api/desktop/send-offer'){const body=await smallJson(req);json(res,200,await offers.send(body.peerId,body.code));return;}
       if(url.pathname==='/api/desktop/answer-offer'){const body=await smallJson(req);json(res,200,await offers.answer(body.id,body.accept===true));return;}
@@ -83,7 +102,7 @@ const server=http.createServer({maxHeaderSize:16384,headersTimeout:10000,request
   if(files[url.pathname]){const [file,type]=files[url.pathname];res.writeHead(200,{'Content-Type':type,'X-Content-Type-Options':'nosniff','Referrer-Policy':'no-referrer','Content-Security-Policy':"default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data:; object-src 'none'; frame-ancestors 'none'; base-uri 'self'"});res.end(await readFile(path.join(root,file)));return;}
   if(url.pathname==='/favicon.svg'){res.writeHead(200,{'Content-Type':'image/svg+xml'});res.end('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><rect width="48" height="48" rx="12" fill="#1b654e"/><path d="M13 18a12 12 0 0 1 21-3l2 2m0-9v9h-9M35 30a12 12 0 0 1-21 3l-2-2m0 9v-9h9" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>');return;}
   if(url.pathname==='/manifest.webmanifest'){res.writeHead(200,{'Content-Type':'application/manifest+json'});res.end(JSON.stringify({name:'FlowDrop',short_name:'FlowDrop',start_url:'/',display:'standalone',theme_color:'#1b654e',background_color:'#f9faf7',icons:[{src:'/favicon.svg',sizes:'any',type:'image/svg+xml'}]}));return;}
-  if(url.pathname==='/api/config'){res.writeHead(200,{'Content-Type':'application/json','Cache-Control':'no-store'});res.end(JSON.stringify({name:'FlowDrop',deviceName,platform:'windows',mode:'local',version:'1.13.0',deviceId,offerKey:offers.key,direct:1,sessions:1,discovery:discovery?'mdns+lan':null,addresses:addresses().map(a=>'http://'+a.address+':'+server.address().port)}));return;}
+  if(url.pathname==='/api/config'){res.writeHead(200,{'Content-Type':'application/json','Cache-Control':'no-store'});res.end(JSON.stringify({name:'FlowDrop',secure:security.config(secureServer.address().port),deviceName,platform:'windows',mode:'local',version:'1.14.0',deviceId,offerKey:offers.key,direct:1,sessions:1,discovery:discovery?'mdns+lan':null,addresses:addresses().map(a=>'http://'+a.address+':'+server.address().port)}));return;}
   if(url.pathname==='/api/offers/status'&&req.method==='POST'){
     if(req.headers.origin&&req.headers.origin!==url.origin){json(res,403,{error:'Yêu cầu khác nguồn không được phép.'});return;}
     try{const body=await smallJson(req);json(res,200,offers.status(body.id,body.token));}catch(error){json(res,403,{error:error.message});}return;
@@ -91,20 +110,27 @@ const server=http.createServer({maxHeaderSize:16384,headersTimeout:10000,request
   if(updater.state.phase==='installing'&&(url.pathname==='/api/offers'||url.pathname.startsWith('/api/transfers'))){json(res,503,{error:'FlowDrop đang cài cập nhật. Mở lại ứng dụng sau ít giây.'});return;}
   if(url.pathname==='/api/offers'&&req.method==='POST'){
     if(req.headers.origin&&req.headers.origin!==url.origin){json(res,403,{error:'Yêu cầu khác nguồn không được phép.'});return;}
-    try{json(res,201,await offers.incoming(await smallJson(req),req.socket.remoteAddress));}catch(error){json(res,400,{error:error.message});}return;
+    try{json(res,201,await offers.incoming(await smallJson(req),req.socket.remoteAddress,req.peerId));}catch(error){json(res,400,{error:error.message});}return;
   }
   if(url.pathname==='/api/desktop/stop'){
    const loopback=['127.0.0.1','::1','::ffff:127.0.0.1'].includes(req.socket.remoteAddress);
    if(req.method!=='POST'||!loopback||!sameSecret(req.headers['x-desktop-token'],desktopToken)){res.writeHead(403);res.end();return;}
-   res.writeHead(200,{'Content-Type':'application/json'});res.end('{"ok":true}');setTimeout(()=>server.close(async()=>{updater.close();offers.close();lanDiscovery?.stop();await discovery?.stop();process.exit(0);}),100);return;
+   res.writeHead(200,{'Content-Type':'application/json'});res.end('{"ok":true}');setTimeout(()=>{clearInterval(secureTimer);secureServer.close();server.close(async()=>{updater.close();offers.close();lanDiscovery?.stop();await discovery?.stop();process.exit(0);});},100);return;
   }
   if(/^\/api\/transfers\//.test(url.pathname)&&(req.method==='PUT'||/\/files\//.test(url.pathname))){bulkRequests++;let done=false;const finish=()=>{if(!done){done=true;bulkRequests--;}};res.once('close',finish);res.once('finish',finish);}
+  const codeProbe=req.method==='GET'&&/^\/api\/transfers\/[A-Z2-9]{8}$/.test(url.pathname);
+  if(codeProbe&&!codeGuesses.allowed(req.socket.remoteAddress)){json(res,429,{error:'Quá nhiều mã sai. Chờ một phút rồi thử lại.'});return;}
   const request=new Request(url,{method:req.method,headers:req.headers,...(!['GET','HEAD'].includes(req.method)?{body:Readable.toWeb(req),duplex:'half'}:{})});
   const response=await worker.fetch(request,{BUCKET:bucket},{waitUntil:p=>p.catch(()=>{})});
+  if(codeProbe&&[400,404,410].includes(response.status))codeGuesses.failed(req.socket.remoteAddress);
   if(res.destroyed)return;
   if(response.status>=400)res.shouldKeepAlive=false;res.writeHead(response.status,Object.fromEntries(response.headers));if(response.body)await pipeline(Readable.fromWeb(response.body),res);else res.end();
- }catch(e){if(res.destroyed)return;if(res.headersSent){res.destroy();return;}console.error(e.message);res.writeHead(500);res.end('Chưa hoàn tất được yêu cầu.');}
-});
+ }catch(e){if(res.destroyed)return;if(res.headersSent){res.destroy();return;}console.error('Yêu cầu FlowDrop chưa hoàn tất.');res.writeHead(500);res.end('Chưa hoàn tất được yêu cầu.');}
+};
+const server=http.createServer({maxHeaderSize:16384,headersTimeout:10000,requestTimeout:0,connectionsCheckingInterval:1000},handler);
+const secureServer=https.createServer({...security.tlsOptions(),maxHeaderSize:16384,headersTimeout:10000,requestTimeout:0},handler);
+secureServer.setTimeout(120000);secureServer.maxConnections=128;
+await new Promise((resolve,reject)=>{secureServer.once('error',reject);secureServer.listen(0,'0.0.0.0',resolve);});
 // A steady large upload can run for hours. Keep only an idle socket timeout.
 server.requestTimeout=0;server.headersTimeout=10000;server.maxConnections=128;server.setTimeout(120000);
 const hostIndex=process.argv.indexOf('--host'),host=hostIndex>=0?process.argv[hostIndex+1]:'127.0.0.1';
@@ -131,4 +157,4 @@ server.listen(Number(process.env.PORT||5173),host,async()=>{
   else openBrowser(addresses()[0]?'http://'+addresses()[0].address+':'+port:'http://127.0.0.1:'+port);
  }
 });
-for(const signal of ['SIGTERM','SIGINT'])process.on(signal,()=>{server.close(async()=>{updater.close();offers.close();lanDiscovery?.stop();await discovery?.stop();process.exit(0);});setTimeout(()=>process.exit(0),1500).unref();});
+for(const signal of ['SIGTERM','SIGINT'])process.on(signal,()=>{clearInterval(secureTimer);secureServer.close();server.close(async()=>{updater.close();offers.close();lanDiscovery?.stop();await discovery?.stop();process.exit(0);});setTimeout(()=>process.exit(0),1500).unref();});

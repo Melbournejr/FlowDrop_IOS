@@ -54,7 +54,7 @@ async function handleApi(request,env,ctx,url){
   if(request.method==='GET'&&!action){if(meta.status!=='ready')return fail('File đang được tải lên. Vui lòng chờ người gửi hoàn tất.',409);return json(publicMeta(meta));}
   if(request.method==='POST'&&action==='complete'){
     if(!authorized)return fail('Không có quyền hoàn tất lượt gửi.',403);
-    for(const file of meta.files){const head=await bucket.head(fileKey(code,file.id));if(!head||head.size!==file.size)return fail('Có file chưa tải lên hoàn tất. Vui lòng gửi lại.',409);}
+    for(const file of meta.files){const head=await bucket.head(fileKey(code,file.id));if(!head||head.size!==file.size)return fail('Có file chưa tải lên hoàn tất. Vui lòng gửi lại.',409);if(/^[a-f0-9]{64}$/.test(head.sha256||''))file.sha256=head.sha256;}
     meta.status='ready';await writeMeta(bucket,meta);return json(publicMeta(meta));
   }
   if(id){

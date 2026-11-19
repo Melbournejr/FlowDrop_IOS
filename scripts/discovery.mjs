@@ -4,7 +4,7 @@ import {isIPv4} from 'node:net';
 import {createHash} from 'node:crypto';
 
 // DNS-SD/mDNS is understood by Android's built-in NsdManager.
-export function advertiseFlowDrop({port,version='1.13.0',deviceName=hostname(),deviceId=hostname(),platform='windows',onError=console.warn,options={}}){
+export function advertiseFlowDrop({port,version='1.14.0',deviceName=hostname(),deviceId=hostname(),platform='windows',onError=console.warn,options={}}){
   const instanceName=value=>{let clean='';for(const char of String(value).replace(/[.\x00-\x1f\x7f]/g,' ').trim()){if(Buffer.byteLength(clean+char)>45)break;clean+=char;}return 'FlowDrop - '+(clean||'Thiết bị');};
   let name=instanceName(deviceName),publishing=false;
   let bonjour,service,browser,timer,closed=false,announcedAddresses;

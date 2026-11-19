@@ -24,6 +24,17 @@ public final class HostService extends Service {
   private final Handler main=new Handler(Looper.getMainLooper());
   private final LocalBinder binder=new LocalBinder();
   private volatile TransferServer server;
+  private volatile DeviceSecurity security;
+  private TurboLink turbo;
+  private LinkDiagnostics linkDiagnostics;
+  public org.json.JSONObject linkReport()throws Exception{
+    String build="source";try{android.os.Bundle metadata=getPackageManager().getApplicationInfo(getPackageName(),android.content.pm.PackageManager.GET_META_DATA).metaData;String value=metadata==null?null:metadata.getString("flowdrop.preview.commit");if(value!=null&&value.matches("[a-f0-9]{40}"))build=value;}catch(Exception ignored){}
+    org.json.JSONObject report=new org.json.JSONObject().put("appVersion",ReleaseConfig.VERSION).put("build",build).put("androidApi",Build.VERSION.SDK_INT).put("hostReady",isReady()).put("events",linkDiagnostics==null?new org.json.JSONArray():linkDiagnostics.report());
+    report.put("appForeground",MainActivity.foregroundActivity!=null);try{WifiManager wifi=(WifiManager)getApplicationContext().getSystemService(WIFI_SERVICE);report.put("wifiEnabled",wifi!=null&&wifi.isWifiEnabled());}catch(RuntimeException ignored){report.put("wifiStatusReadable",false);}
+    if(turbo!=null)report.put("link",turbo.diagnostics());if(server!=null)report.put("outgoingBodies",server.sendDiagnostics());return report;
+  }
+  public TurboLink turbo(){return turbo;}
+  public DeviceSecurity security(){return security;}
   private volatile boolean stopped=false;
   private String name,error,displayName;
   private int registrationGeneration;
@@ -32,7 +43,7 @@ public final class HostService extends Service {
   private ConnectivityManager connectivity;
   private ConnectivityManager.NetworkCallback networkCallback;
   private WifiManager.MulticastLock lanLock;
-  public org.json.JSONArray lanPeers()throws Exception{return lan==null?new org.json.JSONArray():lan.peers();}
+  public org.json.JSONArray lanPeers()throws Exception{org.json.JSONArray all=lan==null?new org.json.JSONArray():lan.peers();if(turbo!=null){org.json.JSONArray extra=turbo.peers();for(int i=0;i<extra.length();i++)all.put(extra.getJSONObject(i));}return all;}
   public void rescanLan(){restartLan();if(lan!=null)lan.rescan();}
   private void restartLan(){
     if(stopped||server==null)return;
@@ -41,7 +52,7 @@ public final class HostService extends Service {
     try{
       if(lanLock!=null&&!lanLock.isHeld())lanLock.acquire();
       final Network chosen=next;
-      lan=new LanDiscovery(server.getDeviceId(),displayName,"android","1.13.0",server.getPort(),new LanDiscovery.Adapter(){
+      lan=new LanDiscovery(server.getDeviceId(),displayName,"android","1.14.0",server.getPort(),new LanDiscovery.Adapter(){
         public java.util.List<NetworkInterface> interfaces()throws Exception{return WifiNetwork.interfaces(HostService.this,chosen);}
         public void bind(DatagramSocket socket)throws Exception{chosen.bindSocket(socket);}
         public HttpURLConnection open(URL url)throws Exception{return (HttpURLConnection)chosen.openConnection(url);}
@@ -60,6 +71,8 @@ public final class HostService extends Service {
   public void removeListener(Listener listener){listeners.remove(listener);}
   @Override public void onCreate(){
     super.onCreate();running=true;current=this;
+    android.content.SharedPreferences linkPrefs=getSharedPreferences("link-diagnostics",MODE_PRIVATE);
+    linkDiagnostics=new LinkDiagnostics(linkPrefs.getString("events",""));linkDiagnostics.sink(value->linkPrefs.edit().putString("events",value).apply());linkDiagnostics.event(LinkDiagnostics.Event.HOST_START,0);
     TransferClient.setConnections(url->WifiNetwork.open(this,url));
     try{WifiManager wifi=(WifiManager)getApplicationContext().getSystemService(WIFI_SERVICE);if(wifi!=null){lanLock=wifi.createMulticastLock("flowdrop-lan-presence");lanLock.setReferenceCounted(false);}}catch(RuntimeException ignored){}
     connectivity=(ConnectivityManager)getSystemService(CONNECTIVITY_SERVICE);
@@ -80,8 +93,12 @@ public final class HostService extends Service {
     new Thread(()->{
       try{
         TransferServer created=new TransferServer(new File(getFilesDir(),"flowdrop-transfers"),null,device,5173);
-        main.post(()->{if(stopped){created.close();return;}server=created;TransferClient.setLocalUploadCapability(created.getLocalUrl(),created.getUploadCapability());created.setDeviceName(displayName);created.setConnections(url->WifiNetwork.open(HostService.this,url));register();restartLan();for(Listener listener:listeners)listener.onReady(name,created.getLocalUrl());});
-      }catch(Exception e){main.post(()->{if(stopped)return;error="Chưa tạo được phiên. Kiểm tra bộ nhớ trống và thử lại.";for(Listener listener:listeners)listener.onFailure(error);stopSharing();});}
+        AndroidDeviceVault vault=new AndroidDeviceVault(HostService.this,created.getDeviceId());
+        DeviceSecurity transport=new DeviceSecurity(created.getDeviceId(),displayName,vault.context(),vault.certificate(),vault,url->WifiNetwork.openRaw(HostService.this,url));
+        created.enableSecurity(new TransferServer.SecureAccess(){public java.net.ServerSocket socket()throws Exception{return transport.serverSocket();}public org.json.JSONObject config(int port)throws Exception{return transport.config(port);}public boolean legacy(){return transport.legacy();}public org.json.JSONObject pairing(String route,org.json.JSONObject body,String address)throws Exception{return transport.pairRoute(route,body,address);}public org.json.JSONObject session(java.util.Map<String,String> headers)throws Exception{return transport.session(headers);}public String authorize(String method,String route,java.util.Map<String,String> headers)throws Exception{return transport.authorize(method,route,headers,true);}public void track(String id,java.net.Socket socket){transport.track(id,socket);}});
+        security=transport;WifiNetwork.setConnections(url->transport.open(url));
+        main.post(()->{if(stopped){created.close();return;}server=created;turbo=new TurboLink(HostService.this,created,linkDiagnostics);WifiNetwork.setOwnedRoute(hostName->turbo!=null&&turbo.routes(hostName));TransferClient.setLocalUploadCapability(created.getLocalUrl(),created.getUploadCapability());created.setDeviceName(displayName);created.setConnections(url->WifiNetwork.open(HostService.this,url));register();restartLan();for(Listener listener:listeners)listener.onReady(name,created.getLocalUrl());});
+      }catch(Exception e){main.post(()->{if(stopped)return;error="Chưa tạo được phiên. Kiểm tra bộ nhớ trống và thử lại.";for(Listener listener:listeners)listener.onFailure(error);stopSharing(3);});}
     },"flowdrop-start-host").start();
   }
   public String getDisplayName(){return displayName;}
@@ -94,7 +111,7 @@ public final class HostService extends Service {
     if(registration!=null&&nsd!=null)try{nsd.unregisterService(registration);}catch(RuntimeException ignored){}
 
     nsd=(NsdManager)getSystemService(NSD_SERVICE);if(nsd==null)return;
-    NsdServiceInfo service=new NsdServiceInfo();service.setServiceName(name);service.setServiceType("_flowdrop._tcp.");service.setPort(server.getPort());service.setAttribute("app","flowdrop");service.setAttribute("label",displayName);service.setAttribute("version","1.13.0");service.setAttribute("id",server.getDeviceId());service.setAttribute("platform","android");service.setAttribute("direct","1");service.setAttribute("protocol","1");
+    NsdServiceInfo service=new NsdServiceInfo();service.setServiceName(name);service.setServiceType("_flowdrop._tcp.");service.setPort(server.getPort());service.setAttribute("app","flowdrop");service.setAttribute("label",displayName);service.setAttribute("version","1.14.0");service.setAttribute("id",server.getDeviceId());service.setAttribute("platform","android");service.setAttribute("direct","1");service.setAttribute("protocol","1");
     registration=new NsdManager.RegistrationListener(){
       @Override public void onServiceRegistered(NsdServiceInfo info){main.post(()->{if(stopped||generation!=registrationGeneration){try{nsd.unregisterService(this);}catch(RuntimeException ignored){}return;}name=info.getServiceName();server.setDiscoveryName(name);});}
       @Override public void onRegistrationFailed(NsdServiceInfo info,int code){main.post(()->{if(!stopped&&generation==registrationGeneration)for(Listener listener:listeners)listener.onFailure("Phiên đã mở nhưng chưa phát hiện tự động được. Kiểm tra Wi-Fi hoặc dùng địa chỉ dự phòng.");});}
@@ -105,16 +122,19 @@ public final class HostService extends Service {
   }
   @Override public IBinder onBind(Intent intent){return binder;}
   @Override public int onStartCommand(Intent intent,int flags,int startId){if(intent!=null&&STOP.equals(intent.getAction()))stopSharing();return START_NOT_STICKY;}
-  public void stopSharing(){
-    if(stopped)return;stopped=true;running=false;if(current==this)current=null;
+  public void stopSharing(){stopSharing(0);}
+  private void stopSharing(int reason){
+    if(stopped)return;if(linkDiagnostics!=null)linkDiagnostics.event(LinkDiagnostics.Event.HOST_STOP,reason);stopped=true;running=false;if(current==this)current=null;
     if(registration!=null&&nsd!=null){try{nsd.unregisterService(registration);}catch(RuntimeException ignored){}registration=null;}
     if(lan!=null){lan.close();lan=null;}
     if(connectivity!=null&&networkCallback!=null)try{connectivity.unregisterNetworkCallback(networkCallback);}catch(RuntimeException ignored){}
     if(lanLock!=null&&lanLock.isHeld())try{lanLock.release();}catch(RuntimeException ignored){}
+    if(turbo!=null){turbo.close();turbo=null;}
+    WifiNetwork.setConnections(null);WifiNetwork.setOwnedRoute(null);
     TransferClient.setConnections(null);TransferClient.setLocalUploadCapability(null,null);
     if(server!=null){server.close();server=null;}
     stopForeground(STOP_FOREGROUND_REMOVE);for(Listener listener:listeners)listener.onStopped();stopSelf();
   }
-  @Override public void onTimeout(int startId,int type){stopSharing();}
-  @Override public void onDestroy(){stopSharing();listeners.clear();main.removeCallbacksAndMessages(null);super.onDestroy();}
+  @Override public void onTimeout(int startId,int type){stopSharing(2);}
+  @Override public void onDestroy(){stopSharing(1);listeners.clear();main.removeCallbacksAndMessages(null);super.onDestroy();}
 }

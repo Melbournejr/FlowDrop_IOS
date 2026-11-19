@@ -1,0 +1,91 @@
+name: Native Release Preparation
+'on':
+  pull_request:
+    branches: [main]
+    types: [opened, synchronize, reopened, labeled, ready_for_review]
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: release-preparation-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+env:
+  FLOWDROP_REVIEWED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+jobs:
+  candidates:
+    if: ${{ github.event_name == 'workflow_dispatch' || contains(github.event.pull_request.labels.*.name, 'ci-release-prep') }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    steps:
+    - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1, existing verified pin
+      with: {persist-credentials: false, fetch-depth: 0}
+    - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0, existing verified pin
+      with: {python-version: '3.12.16'}
+    - name: Build fresh production-layout candidates without signing keys
+      run: python3 -m scripts.prepare_native_release --work-root "$RUNNER_TEMP/flowdrop-release" --cache-root "$RUNNER_TEMP/flowdrop-release/download-cache"
+      timeout-minutes: 30
+    - name: Upload source-built candidates and owner signing kit
+      uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+      with:
+        name: FlowDrop-1.14.0-Release-Preparation-${{ github.run_id }}-${{ github.run_attempt }}
+        path: ${{ runner.temp }}/flowdrop-release/release-export/
+        if-no-files-found: error
+        retention-days: 7
+        include-hidden-files: false
+    - name: Screen build evidence
+      if: ${{ always() }}
+      run: python3 -m scripts.native_build_ci.finish logs --work-root "$RUNNER_TEMP/flowdrop-release"
+    - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+      if: ${{ always() }}
+      with:
+        name: FlowDrop-1.14.0-Release-Build-Logs-${{ github.run_id }}-${{ github.run_attempt }}
+        path: ${{ runner.temp }}/flowdrop-release/safe-logs/
+        if-no-files-found: error
+        retention-days: 7
+    - name: Clean owned toolchain/source scratch
+      if: ${{ always() }}
+      run: python3 -m scripts.native_build_ci.finish cleanup --work-root "$RUNNER_TEMP/flowdrop-release"
+  windows_upgrade:
+    needs: candidates
+    runs-on: windows-2025
+    timeout-minutes: 20
+    steps:
+    - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      with: {persist-credentials: false, fetch-depth: 0}
+    - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+      with: {python-version: '3.12.10'} # Same available Windows pin as Native Runtime/Cross-platform
+    - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+      with:
+        name: FlowDrop-1.14.0-Release-Preparation-${{ github.run_id }}-${{ github.run_attempt }}
+        path: ${{ runner.temp }}/release-candidate
+        digest-mismatch: error
+    - name: Actual production-layout upgrade and local signing-kit validation
+      shell: pwsh
+      run: python -m scripts.verify_windows_upgrade --work-root "$env:RUNNER_TEMP/flowdrop-upgrade" --candidate "$env:RUNNER_TEMP/release-candidate"
+    - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+      if: ${{ always() }}
+      with:
+        name: FlowDrop-1.14.0-Windows-Upgrade-${{ github.run_id }}-${{ github.run_attempt }}
+        path: ${{ runner.temp }}/flowdrop-upgrade/upgrade-results.json
+        if-no-files-found: error
+        retention-days: 7
+  summary:
+    if: ${{ always() }}
+    needs: [candidates, windows_upgrade]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+    - name: Explicit release preparation status, not publication/signing approval
+      env:
+        RESULTS: ${{ toJSON(needs) }}
+        REQUESTED: ${{ github.event_name == 'workflow_dispatch' || contains(github.event.pull_request.labels.*.name, 'ci-release-prep') }}
+      run: |
+        python3 - <<'PY'
+        import os,json
+        results=json.loads(os.environ['RESULTS'])
+        with open(os.environ['GITHUB_STEP_SUMMARY'],'a') as report:
+            report.write('## Release preparation\n\n')
+            for name,value in results.items(): report.write(name+': '+value['result']+'\n\n')
+            report.write('Production APK certificate/signature and RSA latest.json: BLOCKED pending owner local keys. Android production install-over: NOT VERIFIED. No release/tag/feed publication performed.\n')
+        if os.environ['REQUESTED']=='true' and any(x['result']!='success' for x in results.values()): raise SystemExit(1)
+        PY

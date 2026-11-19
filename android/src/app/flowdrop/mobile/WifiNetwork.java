@@ -8,12 +8,22 @@ import java.util.*;
 /** Keep discovery and its confirmation requests on Wi-Fi, including when cellular/VPN is default. */
 public final class WifiNetwork {
   private WifiNetwork(){}
+  public interface Connections{HttpURLConnection open(URL url)throws Exception;}
+  public interface OwnedRoute{boolean matches(String host);}
+  private static volatile Connections secureConnections;
+  private static volatile OwnedRoute ownedRoute;
+  public static void setConnections(Connections connections){secureConnections=connections;}
+  public static void setOwnedRoute(OwnedRoute route){ownedRoute=route;}
   public static Network find(Context context){
     ConnectivityManager manager=(ConnectivityManager)context.getSystemService(Context.CONNECTIVITY_SERVICE);if(manager==null)return null;
     for(Network network:manager.getAllNetworks()){NetworkCapabilities caps=manager.getNetworkCapabilities(network);if(caps!=null&&caps.hasTransport(NetworkCapabilities.TRANSPORT_WIFI)&&!caps.hasTransport(NetworkCapabilities.TRANSPORT_VPN))return network;}return null;
   }
   public static HttpURLConnection open(Context context,URL url)throws Exception{
+    Connections provider=secureConnections;return provider==null?openRaw(context,url):provider.open(url);
+  }
+  public static HttpURLConnection openRaw(Context context,URL url)throws Exception{
     String host=url.getHost();if("127.0.0.1".equals(host)||"localhost".equalsIgnoreCase(host)||"::1".equals(host))return (HttpURLConnection)url.openConnection();
+    OwnedRoute route=ownedRoute;if(route!=null&&route.matches(url.getHost()))return (HttpURLConnection)url.openConnection();
     Network network=find(context);return (HttpURLConnection)(network==null?url.openConnection():network.openConnection(url));
   }
   public static List<NetworkInterface> interfaces(Context context,Network network)throws Exception{

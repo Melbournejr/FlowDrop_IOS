@@ -2,7 +2,7 @@
 
 ## Cài đè và gửi trực tiếp
 
-1. Cài `FlowDrop-Setup-1.13.0-Windows-x64.exe` trên Windows 10/11 x64 và `FlowDrop-1.13.0-Android.apk` trên Android 10 trở lên. Cài đè, không gỡ bản cũ. APK versionCode 14 giữ nguyên package và khóa ký.
+1. Cài `FlowDrop-Setup-1.14.0-Windows-x64.exe` trên Windows 10/11 x64 và `FlowDrop-1.14.0-Android.apk` trên Android 10 trở lên. Cài đè, không gỡ bản cũ. APK versionCode 15 giữ nguyên package và khóa ký.
 2. Mở FlowDrop trên các thiết bị cùng Wi-Fi. Android tự bật chia sẻ và tự quét cả điện thoại lẫn máy tính. Windows có cột **Thiết bị gần bạn**. Chọn thiết bị → chọn file → **Gửi đến…**. Thiết bị nhận xác nhận trước khi lưu.
 3. Xem **Phiên truyền** trên cả hai máy để theo dõi byte đã nhận, số file, tốc độ và kết quả. Chỉ báo hoàn tất khi các file đã lưu đủ; file đứt giữa chừng không xuất hiện dưới tên cuối.
 
@@ -62,7 +62,7 @@ Bản 1.11 đã chạy kiểm tra HTTP/JVM hai chiều, discovery UDP/TCP ba eng
 
 Lệnh: `npm test`, `npm run test:network`, `npm run test:android-host`, `npm run test:android-discovery`, `npm run test:features`. Dựng bằng `python scripts/build-installers.py` với Android SDK 35/JDK 21, MinGW-w64 GCC 14, NSIS 3.11 và Node Windows x64 24.15.0. Cần khóa ký APK gốc; script từ chối tạo khóa thay thế.
 
-EXE chưa có chứng thư ký mã nhà phát hành; APK dùng khóa riêng của dự án. Nếu điện thoại báo lỗi mạng khi kiểm tra APK, kết nối Internet ổn định rồi thử lại. Truyền file hiện dùng HTTP trong LAN, chưa mã hóa đầu cuối; dùng mạng tin cậy.
+EXE chưa có chứng thư ký mã nhà phát hành; APK dùng khóa riêng của dự án. Nếu điện thoại báo lỗi mạng khi kiểm tra APK, kết nối Internet ổn định rồi thử lại. FlowDrop 1.14 mặc định dùng pinned TLS và ghép thiết bị. HTTP chỉ dành cho chế độ tương thích 1.13 bật chủ động, có cảnh báo và tắt sau restart. Auto/LAN là mặc định; Turbo đang thử nghiệm.
 
 ## Đổi tên thiết bị
 
@@ -81,4 +81,4 @@ Chọn một hay nhiều ảnh, video hoặc tài liệu → Chia sẻ → FlowD
 
 Khóa quyền API được giữ riêng cho cửa sổ Windows và bộ gửi Android; thiết bị khác trong Wi-Fi và website khác không được tự tạo phiên ghi file. Dữ liệu/tên file, mã nhận và trạng thái phiên được kiểm tra trước khi dùng. Gói thư mục được kiểm tra đường dẫn, CRC và dung lượng trống trước khi khôi phục. Windows dùng Node 24.22.2 LTS đã kiểm tra checksum; khóa ký cập nhật và APK giữ nguyên để cài đè.
 
-Lưu ý: dữ liệu file trong LAN vẫn dùng HTTP, chưa mã hóa đường truyền. Tên thiết bị không phải chứng thực danh tính. Chỉ dùng mạng tin cậy cho dữ liệu nhạy cảm. Xem SECURITY.md trong gói mã nguồn để biết phạm vi và giới hạn của bản nâng cấp.
+Lưu ý: 1.14 dùng pinned TLS; so sánh mã sáu số trên cả hai máy trước khi tin cậy. Tên thiết bị không phải chứng thực danh tính. Chế độ tương thích 1.13 dùng HTTP không mã hóa và không tự bật khi TLS lỗi. Xem SECURITY.md trong gói mã nguồn để biết phạm vi và giới hạn của bản nâng cấp.

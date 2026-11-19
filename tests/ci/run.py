@@ -14,6 +14,8 @@ import time
 
 REPO = Path(__file__).resolve().parents[2]
 JAR_URL = 'https://repo.maven.apache.org/maven2/org/json/json/20240303/json-20240303.jar'
+JAR_CENTRAL_MIRROR = 'https://repo1.maven.org/maven2/org/json/json/20240303/json-20240303.jar'
+JAR_GOOGLE_MIRROR = 'https://maven-central.storage-download.googleapis.com/maven2/org/json/json/20240303/json-20240303.jar'
 JAR_SHA256 = '3cf6cd6892e32e2b4c1c39e0f52f5248a2f5b37646fdfbb79a66b46b618414ed'
 MARKER = '.flowdrop-native-ci-owned'
 GROUPS = {
@@ -21,6 +23,7 @@ GROUPS = {
         ('ci-runner-tests', [sys.executable, '-m', 'unittest', 'discover', '-s', 'tests/ci', '-p', 'test_*.py', '-v'], 90),
         ('asset-integrity', ['sha256sum', '--check', 'docs/assets/FONT-RESTORATION-SHA256SUMS.txt'], 30),
         ('unit', ['npm', 'test'], 90),
+        ('security-114-unit', ['node', '--test', '--test-isolation=none', 'tests/code-114.test.mjs', 'tests/device-security.test.mjs', 'tests/canonical-auth-114.test.mjs', 'tests/turbo-lifecycle.test.mjs', 'tests/release-preparation.test.mjs'], 90),
         ('harness-unit', ['node', '--test', 'tests/harness.test.mjs'], 90),
     ],
     # One process, sequential commands: discovery never shares a namespace with a parallel test.
@@ -32,6 +35,8 @@ GROUPS = {
         ('lan-discovery', ['node', 'tests/lan-discovery-integration.mjs'], 240),
         ('android-discovery', ['node', 'tests/android-discovery-state.mjs'], 120),
         ('security', ['node', 'tests/security-integration.mjs'], 120),
+        ('code-114', ['node', 'tests/code-receive-114.mjs'], 120),
+        ('tls-114', ['node', 'tests/secure-cross-platform-114.mjs'], 180),
     ],
     'stream': [('large-transfer', ['node', 'tests/large-transfer-integration.mjs'], 300)],
     'zip64': [
@@ -47,7 +52,7 @@ def redact(text, env=None):
     for name, value in env.items():
         if len(value) >= 8 and re.search(r'TOKEN|SECRET|PASSWORD|CREDENTIAL|AUTH', name, re.I):
             text = text.replace(value, '[REDACTED_ENV]')
-    text = re.sub(r'(["\x27](?:token|localToken|desktopToken|statusToken|uploadCapability)["\x27]\s*:\s*["\x27])[^"\x27\r\n]+', r'\1[REDACTED]', text, flags=re.I)
+    text = re.sub(r'(["\x27](?:token|secret|nonce|commit|passphrase|code|localToken|desktopToken|statusToken|uploadCapability)["\x27]\s*:\s*["\x27])[^"\x27\r\n]+', r'\1[REDACTED]', text, flags=re.I)
     text = re.sub(r'(X-(?:Desktop|Local|Upload)-Token\s*[:=]\s*)[^\s,}\r\n]+', r'\1[REDACTED]', text, flags=re.I)
     text = re.sub(r'\b(?:[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}){1,2}\b', '[REDACTED_UUID]', text, flags=re.I)
     return re.sub(r'\b(?:gh[pousr]_[A-Za-z0-9]{30,}|github_pat_[A-Za-z0-9_]{40,})\b', '[REDACTED_GITHUB_TOKEN]', text)
@@ -160,20 +165,32 @@ def setup(root):
             write_json(root / 'logs' / 'setup.json', {'status': 'FAIL', 'steps': steps})
             return result['exit_code'] or 1
     jar = root / 'tools' / 'json-20240303.jar'
+    resolved_jar_url = JAR_URL
     commands = [
-        ('jar-download', ['curl', '--fail', '--location', '--retry', '3', '--connect-timeout', '15',
+        ('jar-download', ['curl', '--fail', '--location', '--retry', '3', '--retry-all-errors',
+                          '--retry-delay', '2', '--retry-max-time', '90', '--connect-timeout', '15',
                           '--max-time', '120', '--proto', '=https', JAR_URL, '-o', str(jar)], 150),
         ('npm-ci', ['npm', 'ci', '--ignore-scripts', '--no-audit', '--no-fund', '--cache', str(root / 'tools' / 'npm-cache')], 300),
     ]
     for name, command, deadline in commands:
         result = execute(name, command, deadline, root, env)
         steps.append(result)
+        if name == 'jar-download' and result['exit_code'] != 0:
+            # Same Maven Central artifact, version and mandatory SHA; only a
+            # transport failure may use its other official HTTPS endpoint.
+            for suffix, mirror in [('central-mirror', JAR_CENTRAL_MIRROR), ('google-mirror', JAR_GOOGLE_MIRROR)]:
+                jar.unlink(missing_ok=True)
+                alternate = [mirror if value == JAR_URL else value for value in command]
+                result = execute('jar-download-'+suffix, alternate, deadline, root, env)
+                steps.append(result); resolved_jar_url = mirror
+                if result['exit_code'] == 0: break
         if result['exit_code'] != 0:
             write_json(root / 'logs' / 'setup.json', {'status': 'FAIL', 'steps': steps})
             return result['exit_code']
         if name == 'jar-download':
             verify_jar(jar)
     write_json(root / 'logs' / 'setup.json', {'status': 'PASS', 'jar_url': JAR_URL,
+                                          'jar_resolved_url': resolved_jar_url,
                                           'jar_sha256': JAR_SHA256, 'steps': steps})
     return 0
 

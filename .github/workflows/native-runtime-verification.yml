@@ -77,6 +77,14 @@ jobs:
         if-no-files-found: error
         retention-days: 7
         include-hidden-files: false
+    - name: Upload Preview-only Android installer
+      uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2 (verified pin from Phase 2C.2)
+      with:
+        name: FlowDrop-Preview-Android-${{ github.run_id }}-${{ github.run_attempt }}
+        path: ${{ runner.temp }}/flowdrop-2d1-build-android/export/FlowDrop-Preview-1.14.0-Android-TEST-ONLY.apk
+        if-no-files-found: error
+        retention-days: 7
+        include-hidden-files: false
     - name: Screen build evidence
       run: python3 -m scripts.native_build_ci.finish logs --work-root "$RUNNER_TEMP/flowdrop-2d1-build-android"
       id: evidence
@@ -119,6 +127,14 @@ jobs:
       with:
         name: FlowDrop-2D1-Build-windows-${{ github.run_id }}-${{ github.run_attempt }}
         path: ${{ runner.temp }}/flowdrop-2d1-build-windows/export/
+        if-no-files-found: error
+        retention-days: 7
+        include-hidden-files: false
+    - name: Upload Preview-only Windows installer
+      uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2 (verified pin from Phase 2C.2)
+      with:
+        name: FlowDrop-Preview-Windows-x64-${{ github.run_id }}-${{ github.run_attempt }}
+        path: ${{ runner.temp }}/flowdrop-2d1-build-windows/export/FlowDrop-Preview-Setup-1.14.0-Windows-x64-TEST-ONLY.exe
         if-no-files-found: error
         retention-days: 7
         include-hidden-files: false

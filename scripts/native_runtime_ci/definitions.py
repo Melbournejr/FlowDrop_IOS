@@ -5,7 +5,7 @@ WINDOWS = {
  'W03-install': 'NSIS /S exits zero and baseline install directory exists',
  'W04-payload': 'Installed payload SHA, Node pin, x64 PE and version match producer inventory',
  'W05-start': 'Real FlowDrop.exe process and its real Node backend start',
- 'W06-http': 'Live native backend config version1.13.0, Windows mode and authorization boundary',
+ 'W06-http': 'Live native backend config version1.14.0, Windows mode and authorization boundary',
  'W07-window': 'FlowDrop native HWND created; interactive capability measured separately',
  'W08-single-instance': 'Second native invocation exits and original process survives',
  'W09-shortcuts': 'Send To/Desktop/Start Menu shortcut targets and registry match installer design',
@@ -21,6 +21,7 @@ WINDOWS = {
  'W19-restart': 'Application/backend restart and synthetic received files retain SHA-256',
  'W20-uninstall': 'NSIS uninstall actually removes app, processes, owned shortcuts and uninstall registry',
  'W21-preserve-data': 'Uninstall preserves synthetic user data according to baseline NSIS design',
+ 'W22-preview-coexistence': 'Preview installs/runs/uninstalls beside the original with isolated paths/identity/IPC/shortcuts/registry and no production updater',
 }
 ANDROID = {
  'A01-environment': 'Linux hardware acceleration/owned emulator requirements available',
@@ -39,6 +40,7 @@ ANDROID = {
  'A14-force-stop': 'Force-stop removes app backend, restart resumes Activity and backend without a crash',
  'A15-crash-anr': 'App-specific logcat and Activity/service state contain no crash or ANR',
  'A16-uninstall': 'App/test package actually removed and only owned emulator/adb processes cleaned',
+ 'A17-preview-coexistence': 'Preview installs beside the original app with separate UID/data directory, launches, and uninstalls without changing original APK/private marker',
 }
 INSTRUMENTATIONS = {
  'A09-native-smoke': 'app.flowdrop.mobile.test.NativeSmoke',

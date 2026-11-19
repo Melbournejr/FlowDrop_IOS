@@ -6,8 +6,16 @@ export function validateMetadata(value,code){
   const seen=new Set();let total=0;
   for(const f of value.files){
     if(!f||typeof f.id!=='string'||!/^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/.test(f.id)||seen.has(f.id)||typeof f.name!=='string'||!f.name.trim()||f.name.length>255||/[\x00-\x1f\x7f]/.test(f.name)||!Number.isSafeInteger(f.size)||f.size<0||!Number.isSafeInteger(total+f.size)||f.type!==undefined&&(typeof f.type!=='string'||f.type.length>150||/[\x00-\x1f\x7f]/.test(f.type)))throw new Error('Thông tin file không hợp lệ.');
+    if(f.sha256!==undefined&&(typeof f.sha256!=='string'||!/^[a-f0-9]{64}$/.test(f.sha256)))throw new Error('SHA-256 của file không hợp lệ.');
     total+=f.size;seen.add(f.id);
   }
   return value;
 }
 export function browserRequestAllowed(headers,origin){return (!headers.origin||headers.origin===origin)&&(!headers['sec-fetch-site']||['same-origin','none'].includes(headers['sec-fetch-site']));}
+
+// Failed share-code probes only. Bounded per-address buckets cannot grow without limit.
+export class CodeGuessGuard {
+  constructor({limit=25,windowMs=60000,clock=Date.now}={}){Object.assign(this,{limit,windowMs,clock});this.items=new Map();}
+  allowed(key){const now=this.clock();for(const [k,v] of this.items)if(v.until<=now)this.items.delete(k);return (this.items.get(key)?.failures||0)<this.limit;}
+  failed(key){this.allowed(key);if(!this.items.has(key)){if(this.items.size>=512)this.items.delete(this.items.keys().next().value);this.items.set(key,{until:this.clock()+this.windowMs,failures:0});}this.items.get(key).failures++;}
+}

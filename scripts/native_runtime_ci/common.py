@@ -11,6 +11,8 @@ import signal
 import subprocess
 import time
 
+from scripts.feature_baseline import expected_sha, verify_feature
+
 REPO = Path(__file__).resolve().parents[2]
 BASE = '9171e7f1ffbc0143d6e11374e3f6c847853341fe'
 PURPOSE = 'FlowDrop 2D1 isolated synthetic runtime data v1'
@@ -98,7 +100,7 @@ def sanitize(value, secrets=()):
         if v:
             text = text.replace(v, '[REDACTED]')
     text = re.sub(r'(?is)-----BEGIN (?:[A-Z ]+ )?PRIVATE KEY-----.*?-----END (?:[A-Z ]+ )?PRIVATE KEY-----', '[REDACTED_PRIVATE_KEY]', text)
-    text = re.sub(r'(?i)(?<![A-Za-z0-9_])(["\']?(?:token|statusToken|offerKey|localUploadCapability|authorization|password|code)["\']?\s*[:=]\s*)(?:["\'][^"\'\r\n]*["\']|[^\s,;}]+)', r'\1"[REDACTED]"', text)
+    text = re.sub(r'(?i)(?<![A-Za-z0-9_])(["\']?(?:token|secret|nonce|commit|passphrase|statusToken|offerKey|localUploadCapability|authorization|password|code)["\']?\s*[:=]\s*)(?:["\'][^"\'\r\n]*["\']|[^\s,;}]+)', r'\1"[REDACTED]"', text)
     text = re.sub(r'(?i)Bearer\s+[A-Za-z0-9._~-]+', 'Bearer [REDACTED]', text)
     text = re.sub(r'(?im)((?:androidboot\.)?qemu\.adb\.pubkey=)[^\r\n]+', r'\1[REDACTED_EPHEMERAL_ADB_PUBLIC_KEY]', text)
     text = re.sub(r'github_pat_[A-Za-z0-9_]{40,}|gh[pousr]_[A-Za-z0-9]{30,}', '[REDACTED_CREDENTIAL]', text)
@@ -107,10 +109,11 @@ def sanitize(value, secrets=()):
 
 def protected_source():
     manifest = json.loads((REPO / 'docs/testing/RUNTIME-SOURCE-BASELINE-2D1.json').read_text(encoding='utf-8'))
+    feature = verify_feature()
     for row in manifest['files']:
-        if sha256(REPO / row['path']) != row['sha256']:
+        if sha256(REPO / row['path']) != expected_sha(row['path'], row['sha256']):
             raise Blocked('Protected baseline changed: ' + row['path'])
-    return {'base': manifest['base'], 'protected_files': len(manifest['files']),
+    return {**feature, 'base': manifest['base'], 'protected_files': len(manifest['files']),
             'checkout': subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=REPO, text=True).strip(),
             'reviewed_head': os.environ.get('FLOWDROP_REVIEWED_HEAD', subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=REPO, text=True).strip())}
 

@@ -38,13 +38,15 @@ def certificate_fingerprint(output):
     return found[0].lower()
 
 
-def verify_apk(path, source, root, journal, expected_cert, instrumentation=False, secrets=()):
+def verify_apk(path, source, root, journal, expected_cert, instrumentation=False, secrets=(), preview=False):
     path, source, root = Path(path), Path(source), Path(root)
     if expected_cert == PRODUCTION_CERT or not re.fullmatch('[0-9a-f]{64}', expected_cert):
         raise Blocked('Only a distinct test certificate is permitted')
     bt = root / 'tools/sdk/build-tools/android-15'
     java = root / 'jdk/bin/java'
-    label = 'instrumentation' if instrumentation else 'app'
+    if preview and instrumentation:
+        raise Blocked('Preview is a separate application, not production instrumentation')
+    label = 'preview' if preview else 'instrumentation' if instrumentation else 'app'
     signature = journal.run(label + '-signature', [java, '-jar', bt / 'lib/apksigner.jar', 'verify', '--verbose', '--print-certs', path])
     actual_cert = certificate_fingerprint(signature)
     if actual_cert != expected_cert:
@@ -53,10 +55,12 @@ def verify_apk(path, source, root, journal, expected_cert, instrumentation=False
     badging = journal.run(label + '-badging', [bt / 'aapt2', 'dump', 'badging', path])
     actual = apk_identity(badging)
     manifest = ET.parse(source / ('tests/android-native-smoke/AndroidManifest.xml' if instrumentation else 'android/AndroidManifest.xml')).getroot()
-    expected_package = 'app.flowdrop.mobile.test' if instrumentation else 'app.flowdrop.mobile'
+    expected_package = 'app.flowdrop.preview' if preview else 'app.flowdrop.mobile.test' if instrumentation else 'app.flowdrop.mobile'
+    if preview and ("application-label:'FlowDrop Preview'" not in badging or manifest.get('package') != expected_package):
+        raise Blocked('Preview APK must have its separate package and visible label')
     if actual['package'] != expected_package or actual['min_sdk'] != 29 or actual['target_sdk'] != 35:
         raise Blocked('APK package or SDK levels changed')
-    if not instrumentation and (actual['version_code'] != '14' or actual['version_name'] != '1.13.0'):
+    if not instrumentation and (actual['version_code'] != '15' or actual['version_name'] != '1.14.0'):
         raise Blocked('APK production version metadata changed')
     permissions = sorted(n.attrib[ANDROID_NS + 'name'] for n in manifest if n.tag.startswith('uses-permission'))
     if actual['permissions'] != permissions:
@@ -162,9 +166,12 @@ def pe_info(data):
             'authenticode_directory': list(cert), 'resources': resources}
 
 
-def verify_windows_payload(payload, source):
+def verify_windows_payload(payload, source, preview=False):
     payload, source = Path(payload), Path(source)
-    raw = (payload / 'FlowDrop.exe').read_bytes()
+    executable = 'FlowDropPreview.exe' if preview else 'FlowDrop.exe'
+    if preview and (payload / 'FlowDrop.exe').exists():
+        raise Blocked('Preview payload must not contain the original executable')
+    raw = (payload / executable).read_bytes()
     image = pe_info(raw)
     if image['machine'] != 0x8664 or image['optional_magic'] != 0x20b or image['subsystem'] != 2:
         raise Blocked('FlowDrop.exe must be x64 Windows GUI')
@@ -176,8 +183,10 @@ def verify_windows_payload(payload, source):
         raise Blocked('PE version resource missing')
     for value in versions:
         offset = value.index(signature)
-        if struct.unpack_from('<IIII', value, offset + 8) != (0x0001000d, 0, 0x0001000d, 0):
-            raise Blocked('PE version differs from 1.13.0.0')
+        if struct.unpack_from('<IIII', value, offset + 8) != (0x0001000e, 0, 0x0001000e, 0):
+            raise Blocked('PE version differs from 1.14.0.0')
+    if preview and not any('FlowDrop Preview'.encode('utf-16le') in value and 'FlowDropPreview.exe'.encode('utf-16le') in value for value in versions):
+        raise Blocked('Preview PE branding/original filename is missing')
     icon = (source / 'desktop/windows/FlowDrop.ico').read_bytes()
     count = struct.unpack_from('<H', icon, 4)[0]
     expected_icons = []
@@ -200,7 +209,7 @@ def verify_windows_payload(payload, source):
         for file in (source / folder).rglob('*'):
             if file.is_file() and (not (payload / file.relative_to(source)).is_file() or file.read_bytes() != (payload / file.relative_to(source)).read_bytes()):
                 raise Blocked('Windows web/worker/font payload changed')
-    expected_scripts = ['request-security.mjs','device-name.mjs','dev.mjs','stop.mjs','discovery.mjs','desktop-storage.mjs','local-bucket.mjs','peer-offers.mjs','lan-discovery.mjs','folder-jobs.mjs','folder-zip.mjs','folder-receive.mjs','code-lookup.mjs','secure-update.mjs','release-config.mjs']
+    expected_scripts = ['request-security.mjs','device-security.mjs','device-vault.ps1','device-name.mjs','dev.mjs','stop.mjs','discovery.mjs','desktop-storage.mjs','local-bucket.mjs','peer-offers.mjs','lan-discovery.mjs','folder-jobs.mjs','folder-zip.mjs','folder-receive.mjs','code-lookup.mjs','secure-update.mjs','release-config.mjs']
     for name in expected_scripts:
         if (payload / 'scripts' / name).read_bytes() != (source / 'scripts' / name).read_bytes():
             raise Blocked('Required LAN/folder/security script changed')
@@ -225,12 +234,12 @@ def verify_windows_payload(payload, source):
                 raise Blocked('Build/cache/signing material in Windows payload')
             reject_secret_bytes(file.read_bytes())
             inventory.append({'path': name.as_posix(), 'size': file.stat().st_size, 'sha256': digest(file)})
-    return {'status': 'PASS', 'machine': 'AMD64', 'subsystem': 'WINDOWS_GUI', 'version': '1.13.0.0',
+    return {'status': 'PASS', 'machine': 'AMD64', 'subsystem': 'WINDOWS_GUI', 'version': '1.14.0.0',
             'icon_png_count': len(actual_icons), 'node_version': pin['nodeVersion'],
             'node_sha256': pin['executableSha256'], 'npm_packages': packages, 'inventory': inventory}
 
 
-def inspect_installer(installer, root, journal):
+def inspect_installer(installer, root, journal, preview=False):
     installer, root = Path(installer), Path(root)
     bootstrap = pe_info(installer.read_bytes())
     # The baseline NSIS bootstrap is x86; its installed FlowDrop.exe is x64.
@@ -248,9 +257,9 @@ def inspect_installer(installer, root, journal):
         raise Blocked('Duplicate NSIS member')
     for member in members:
         archive_name(member.replace('\\', '/'))
-    destination = fresh_child(root, root / 'installer-inspection')
+    destination = fresh_child(root, root / ('preview-installer-inspection' if preview else 'installer-inspection'))
     journal.run('nsis-extract', [seven, 'x', '-y', '-o' + str(destination), installer])
-    app = list(destination.rglob('FlowDrop.exe'))
+    app = list(destination.rglob('FlowDropPreview.exe' if preview else 'FlowDrop.exe'))
     if len(app) != 1:
         raise Blocked('NSIS must contain exactly one native application')
     extracted = app[0].parent
@@ -265,9 +274,9 @@ def inspect_installer(installer, root, journal):
                        'size': installer.stat().st_size, 'sha256': digest(installer)}
 
 
-def verify_installer(installer, payload, root, journal):
+def verify_installer(installer, payload, root, journal, preview=False):
     payload = Path(payload)
-    extracted, report = inspect_installer(installer, root, journal)
+    extracted, report = inspect_installer(installer, root, journal, preview=preview)
     expected = {'$PLUGINSDIR/modern-wizard.bmp', '$PLUGINSDIR/nsDialogs.dll', '$PLUGINSDIR/System.dll'}
     for original in payload.rglob('*'):
         if original.is_file():

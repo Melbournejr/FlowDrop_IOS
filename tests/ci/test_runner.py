@@ -26,7 +26,10 @@ class NativeRunnerTests(unittest.TestCase):
 
     def test_all_thirteen_existing_commands_are_present_once_without_skip_flags(self):
         entries = [item for group in ci.GROUPS.values() for item in group]
-        existing = [name for name, _, _ in entries if name not in ['ci-runner-tests', 'asset-integrity']]
+        new_tests = {'security-114-unit', 'code-114', 'tls-114'}
+        existing = [name for name, _, _ in entries if name not in {'ci-runner-tests', 'asset-integrity'} | new_tests]
+        self.assertEqual(new_tests, {name for name, _, _ in entries if name in new_tests})
+        self.assertEqual(len(entries), 18)
         self.assertEqual(len(existing), 13)
         self.assertEqual(len(set(existing)), 13)
         for _, argv, _ in entries:
@@ -92,6 +95,33 @@ class NativeRunnerTests(unittest.TestCase):
         jar.write_bytes(b'synthetic wrong jar fixture')
         with self.assertRaisesRegex(ValueError, 'SHA-256 mismatch'):
             ci.verify_jar(jar)
+
+    def test_transient_download_retries_are_bounded_and_failure_is_not_masked(self):
+        seen=[]
+        def execute(name,argv,deadline,root,env):
+            seen.append((name,argv,deadline))
+            values={'node-version':'v24.0.0','java-version':'version "21.0.0"','python-version':'Python 3.12.0'}
+            if name in values:(root/'logs'/ (name+'.log')).write_text(values[name])
+            return {'exit_code':22 if name.startswith('jar-download') else 0}
+        with patch.object(ci,'execute',side_effect=execute):self.assertEqual(ci.setup(self.root),22)
+        name,argv,deadline=seen[-1]
+        self.assertEqual(name,'jar-download-google-mirror');self.assertIn('--retry-all-errors',argv)
+        self.assertEqual(argv[argv.index('--retry')+1],'3');self.assertEqual(argv[argv.index('--retry-max-time')+1],'90')
+        self.assertEqual(deadline,150);self.assertIn(ci.JAR_GOOGLE_MIRROR,argv)
+        self.assertEqual(len([x for x in seen if x[0].startswith('jar-download')]),3)
+        self.assertEqual(json.loads((self.root/'logs/setup.json').read_text())['status'],'FAIL')
+
+    def test_checksum_failure_after_primary_download_cannot_use_mirror(self):
+        seen=[]
+        def execute(name,argv,deadline,root,env):
+            seen.append(name)
+            values={'node-version':'v24.0.0','java-version':'version "21.0.0"','python-version':'Python 3.12.0'}
+            if name in values:(root/'logs'/(name+'.log')).write_text(values[name])
+            if name=='jar-download':(root/'tools/json-20240303.jar').write_bytes(b'corrupt fixture')
+            return {'exit_code':0}
+        with patch.object(ci,'execute',side_effect=execute):
+            with self.assertRaisesRegex(ValueError,'SHA-256 mismatch'):ci.setup(self.root)
+        self.assertNotIn('jar-download-central-mirror',seen);self.assertNotIn('npm-ci',seen)
 
     def test_cleanup_refuses_unowned_directory_and_preserves_logs(self):
         outside = Path(self.temporary.name) / 'outside'

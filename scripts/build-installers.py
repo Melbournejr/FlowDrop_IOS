@@ -12,10 +12,10 @@ ANDROID_VERSION=ET.parse(ROOT/'android/AndroidManifest.xml').getroot().attrib['{
 SDK=TOOLS/'sdk';BT=SDK/'build-tools/android-15';JAR=SDK/'platforms/android-35/android.jar'
 def run(args,**kwargs):
     return run_command(args,**kwargs)
-def android():
-    signing=load_signing(ROOT)
+def android(unsigned_only=False):
+    signing=None if unsigned_only else load_signing(ROOT)
     OUT.mkdir(exist_ok=True)
-    apk=OUT/('FlowDrop-'+ANDROID_VERSION+'-Android.apk');clear_build_output(apk,OUT)
+    apk=OUT/('FlowDrop-'+ANDROID_VERSION+('-Android-UNSIGNED.apk' if unsigned_only else '-Android.apk'));clear_build_output(apk,OUT)
     build=fresh_build_directory(ROOT/'android/build',ROOT)
     for name in ['aapt2','zipalign']:(BT/name).chmod(0o755)
     run([BT/'aapt2','compile','--dir',ROOT/'android/res','-o',build/'resources.zip'])
@@ -32,6 +32,12 @@ def android():
         for asset in (ROOT/'web/assets/fonts').iterdir():
             if asset.is_file() and asset.suffix in ['.ttf','.txt']:archive.write(asset,'assets/fonts/'+asset.name)
     aligned=build/'aligned.apk';run([BT/'zipalign','-f','-p','4',unsigned,aligned])
+    if unsigned_only:
+        shutil.copyfile(aligned,apk)
+        run([BT/'zipalign','-c','-p','4',apk])
+        run([BT/'aapt2','dump','badging',apk])
+        print('UNSIGNED APK (requires original production key):',apk,flush=True)
+        return
     apk=OUT/('FlowDrop-'+ANDROID_VERSION+'-Android.apk')
     run(['java','-jar',BT/'lib/apksigner.jar','sign',*signing.arguments(),'--v1-signing-enabled','true','--v2-signing-enabled','true','--v3-signing-enabled','true','--out',apk,aligned],signing=True)
     run(['java','-jar',BT/'lib/apksigner.jar','verify','--verbose','--print-certs',apk])
@@ -45,12 +51,12 @@ def windows():
     payload=fresh_build_directory(TOOLS/'windows-payload',TOOLS)
     for folder in ['web','worker','node_modules']:shutil.copytree(ROOT/folder,payload/folder)
     (payload/'scripts').mkdir()
-    for f in ['request-security.mjs','device-name.mjs','dev.mjs','stop.mjs','discovery.mjs','desktop-storage.mjs','local-bucket.mjs','peer-offers.mjs','lan-discovery.mjs','folder-jobs.mjs','folder-zip.mjs','folder-receive.mjs','code-lookup.mjs','secure-update.mjs','release-config.mjs']:shutil.copyfile(ROOT/'scripts'/f,payload/'scripts'/f)
+    for f in ['request-security.mjs','device-security.mjs','device-vault.ps1','device-name.mjs','dev.mjs','stop.mjs','discovery.mjs','desktop-storage.mjs','local-bucket.mjs','peer-offers.mjs','lan-discovery.mjs','folder-jobs.mjs','folder-zip.mjs','folder-receive.mjs','code-lookup.mjs','secure-update.mjs','release-config.mjs']:shutil.copyfile(ROOT/'scripts'/f,payload/'scripts'/f)
     for f in ['FlowDrop.vbs','Stop-FlowDrop.vbs','Allow-LAN.ps1']:shutil.copyfile(ROOT/'desktop/windows'/f,payload/f)
     mingw=TOOLS/'mingw/usr/bin'
     env=os.environ.copy();env['PATH']=str(mingw)+os.pathsep+env['PATH']
     run([mingw/'x86_64-w64-mingw32-windres','--preprocessor='+str(mingw/'x86_64-w64-mingw32-gcc-posix'),'--preprocessor-arg=-E','--preprocessor-arg=-xc','--preprocessor-arg=-DRC_INVOKED','FlowDrop.rc','-O','coff','-o',TOOLS/'flowdrop-res.o'],cwd=ROOT/'desktop/windows',env=env)
-    run([mingw/'x86_64-w64-mingw32-g++-posix','-std=c++17','-O2','-s','-municode','-mwindows','-static','-static-libgcc','-static-libstdc++','-I',ROOT/'desktop/windows/vendor',ROOT/'desktop/windows/FlowDrop.cpp',TOOLS/'flowdrop-res.o','-o',payload/'FlowDrop.exe','-lwinhttp','-lcomctl32','-lole32','-luuid','-lshell32','-luxtheme','-lgdi32','-luser32','-ladvapi32'],env=env)
+    run([mingw/'x86_64-w64-mingw32-g++-posix','-std=c++17','-O2','-s','-municode','-mwindows','-static','-static-libgcc','-static-libstdc++','-I',ROOT/'desktop/windows/vendor',ROOT/'desktop/windows/FlowDrop.cpp',TOOLS/'flowdrop-res.o','-o',payload/'FlowDrop.exe','-lwinhttp','-lcomctl32','-lole32','-luuid','-lshell32','-luxtheme','-lgdi32','-luser32','-ladvapi32','-lws2_32'],env=env)
     shutil.copyfile(ROOT/'desktop/windows/vendor/json.hpp',payload/'nlohmann-json-license-and-source.hpp')
     shutil.copyfile(ROOT/'package.json',payload/'package.json')
     shutil.copyfile(ROOT/'INSTALL.md',payload/'Huong-dan.md')
@@ -65,10 +71,11 @@ def windows():
     print('EXE:',exe,flush=True)
 def main():
     global TOOLS,SDK,BT,JAR
-    parser=argparse.ArgumentParser();parser.add_argument('--only',choices=['android','windows']);args=parser.parse_args()
+    parser=argparse.ArgumentParser();parser.add_argument('--only',choices=['android','windows']);parser.add_argument('--unsigned',action='store_true',help='Build an aligned Android candidate without reading any signing key');args=parser.parse_args()
+    if args.unsigned and args.only!='android':parser.error('--unsigned requires --only android')
     try:
         TOOLS=require_tool_root();SDK=TOOLS/'sdk';BT=SDK/'build-tools/android-15';JAR=SDK/'platforms/android-35/android.jar'
-        if args.only!='windows':android()
+        if args.only!='windows':android(args.unsigned)
         if args.only!='android':windows()
     except (BuildError,OSError,ValueError) as error:
         return report_failure(error)

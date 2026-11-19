@@ -1,0 +1,13 @@
+{
+  "scope": "Real Node production endpoint and Java production TLS/transfer engine; not native OS/hardware",
+  "status": "PASS",
+  "cases": [
+    "LAN cleartext rejected by default on both hosts",
+    "Node initiates pairing with Java; both screen codes match",
+    "One-time two-sided confirmation persists session trust",
+    "Java pinned TLS download from Node: SHA-256 exact",
+    "Node pinned TLS code receive from Java: SHA-256 exact",
+    "Direct offers in both directions retain consent and exact saved bytes",
+    "Java to Java pairing and pinned TLS download: SHA-256 exact"
+  ]
+}

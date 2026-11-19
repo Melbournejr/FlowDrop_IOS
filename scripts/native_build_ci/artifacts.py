@@ -12,21 +12,37 @@ from .verify import (PRODUCTION_CERT, inspect_installer, reject_secret_bytes,
                      verify_apk, verify_windows_payload)
 
 NAMES = {
-    'android': {'FlowDrop-1.13.0-Android-TEST-ONLY.apk', 'FlowDrop-1.13.0-Android-Instrumentation-TEST-ONLY.apk'},
-    'windows': {'FlowDrop-Setup-1.13.0-Windows-x64-TEST-ONLY.exe'},
+    'android': {'FlowDrop-1.14.0-Android-TEST-ONLY.apk', 'FlowDrop-1.14.0-Android-Instrumentation-TEST-ONLY.apk'},
+    'windows': {'FlowDrop-Setup-1.14.0-Windows-x64-TEST-ONLY.exe'},
 }
 PLUGINS = {'$PLUGINSDIR/modern-wizard.bmp', '$PLUGINSDIR/nsDialogs.dll', '$PLUGINSDIR/System.dll'}
 
 
 def check_export(directory, role):
     directory = Path(directory).resolve()
+    manifest_path = directory / 'artifact-manifest.json'
+    if manifest_path.is_symlink():
+        raise Blocked('Artifact manifest cannot be a link')
+    manifest = json.loads(manifest_path.read_text())
+    expected_names = set(NAMES[role])
+    if 'preview' in manifest:
+        from scripts.android_preview import APK_NAME, PACKAGE, LABEL
+        if role != 'android' or manifest['preview'].get('status') != 'PASS' or manifest['preview'].get('identity', {}).get('package') != PACKAGE or manifest['preview'].get('overlay', {}).get('label') != LABEL:
+            raise Blocked('Preview must be independently verified and explicitly declared')
+        expected_names.add(APK_NAME)
+    if 'windows_preview' in manifest:
+        from scripts.windows_preview import SETUP, EXE, LABEL
+        info = manifest['windows_preview']
+        if role != 'windows' or info.get('status') != 'PASS' or info.get('overlay', {}).get('executable') != EXE or info.get('overlay', {}).get('label') != LABEL:
+            raise Blocked('Windows Preview must be explicitly verified and separately identified')
+        expected_names.add(SETUP)
     paths = set()
     for file in directory.rglob('*'):
         if file.is_symlink():
             raise Blocked('Artifact export contains a link')
         if file.is_file():
             name = file.relative_to(directory).as_posix()
-            if name not in NAMES[role] | {'artifact-manifest.json', 'SHA256SUMS.txt'} and not (
+            if name not in expected_names | {'artifact-manifest.json', 'SHA256SUMS.txt'} and not (
                     name.startswith('logs/') and len(Path(name).parts) == 2 and file.suffix in ['.json', '.jsonl', '.log']):
                 raise Blocked('Artifact export contains an unexpected file')
             reject_secret_bytes(file.read_bytes())
@@ -37,12 +53,15 @@ def check_export(directory, role):
         if not match or archive_name(match[2]) is None or match[2] in checksums:
             raise Blocked('Malformed/duplicate artifact checksum record')
         checksums[match[2]] = match[1]
-    if set(checksums) != paths - {'SHA256SUMS.txt'} or not NAMES[role].issubset(paths):
+    if set(checksums) != paths - {'SHA256SUMS.txt'} or not expected_names.issubset(paths):
         raise Blocked('Artifact checksum inventory incomplete')
     for name, expected in checksums.items():
         if digest(directory / name) != expected:
             raise Blocked('Downloaded artifact SHA-256 mismatch')
-    manifest = json.loads((directory / 'artifact-manifest.json').read_text())
+    if 'preview' in manifest and digest(directory / APK_NAME) != manifest['preview'].get('sha256'):
+        raise Blocked('Preview APK differs from verification manifest')
+    if 'windows_preview' in manifest and digest(directory / SETUP) != manifest['windows_preview'].get('windows_installer', {}).get('sha256'):
+        raise Blocked('Windows Preview installer differs from verification manifest')
     if manifest.get('status') != 'PASS' or manifest.get('role') != role:
         raise Blocked('Builder did not complete verification')
     if not manifest.get('builder_steps') or any(step['exit_code'] != 0 for step in manifest['builder_steps']):
@@ -57,12 +76,12 @@ def verify_downloads(root, cache, android, windows):
     source, source_info = source_snapshot(root)
     journal = Journal(root, tool_env(root))
     certificate = manifests['android']['android']['test_certificate_sha256']
-    app = verify_apk(Path(android) / 'FlowDrop-1.13.0-Android-TEST-ONLY.apk', source, root, journal, certificate)
-    instrumentation = verify_apk(Path(android) / 'FlowDrop-1.13.0-Android-Instrumentation-TEST-ONLY.apk', source, root, journal, certificate, instrumentation=True)
+    app = verify_apk(Path(android) / 'FlowDrop-1.14.0-Android-TEST-ONLY.apk', source, root, journal, certificate)
+    instrumentation = verify_apk(Path(android) / 'FlowDrop-1.14.0-Android-Instrumentation-TEST-ONLY.apk', source, root, journal, certificate, instrumentation=True)
     for key, actual in [('android', app), ('instrumentation', instrumentation)]:
         if actual != manifests['android'][key]:
             raise Blocked('APK re-verification differs from producer manifest')
-    setup = Path(windows) / 'FlowDrop-Setup-1.13.0-Windows-x64-TEST-ONLY.exe'
+    setup = Path(windows) / 'FlowDrop-Setup-1.14.0-Windows-x64-TEST-ONLY.exe'
     extracted, installer = inspect_installer(setup, root, journal)
     inventory = manifests['windows']['windows_payload']['inventory']
     expected = {item['path'] for item in inventory}

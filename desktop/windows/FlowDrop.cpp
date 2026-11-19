@@ -5,6 +5,7 @@
 #define _UNICODE
 #endif
 #define NOMINMAX
+#include <winsock2.h>
 #include <windows.h>
 #include <commctrl.h>
 #include <shobjidl.h>
@@ -13,6 +14,8 @@
 #include <winhttp.h>
 #include <uxtheme.h>
 #include <filesystem>
+#include <set>
+#include <wlanapi.h>
 #include <string>
 #include <vector>
 #include <thread>
@@ -29,14 +32,17 @@ constexpr UINT UI_CLOSE = WM_APP + 2;
 constexpr wchar_t CLASS_NAME[] = L"FlowDrop.NativeDesktop";
 enum { PICK=101, SEND, COPY_CODE, RECEIVE, CHOOSE_FOLDER, OPEN_FOLDER, AUTO_SAVE, CLEAR_FILES, REVOKE };
 HWND window, heading, subtitle, sendTitle, fileList, pickButton, clearButton, sendButton;
-HWND folderPickButton,updateButton,updateAutoCheck,lanButton,renameButton;
-constexpr int UPDATE_CHECK=2030,UPDATE_AUTO=2031,ALLOW_LAN=2032,RENAME_DEVICE=2033;
+HWND folderPickButton,updateButton,updateAutoCheck,lanButton,renameButton,securityButton,turboButton;
+constexpr int UPDATE_CHECK=2030,UPDATE_AUTO=2031,ALLOW_LAN=2032,RENAME_DEVICE=2033,SECURITY=2034,TURBO=2035;
+std::wstring connectionMode=L"Auto";
+json securityState=json::object();std::set<std::string> handledPairs;bool pairingPrompt=false;
 json updateState=json::object();bool applyingUpdate=false,checkingUpdate=false,promptingUpdate=false,renamingDevice=false;
 uint64_t handledUpdateCheck=0,handledUpdateError=0;std::string currentDeviceName;
 constexpr ULONG_PTR SHELL_FILES=0x46443132;
 std::vector<fs::path> pendingShellPaths;
 HWND progressBar, sendCode, copyButton, revokeButton, receiveTitle, receiveHelp, receiveCode, receiveButton, receiveList;
 HWND folderLabel, folderText, folderButton, openButton, autoCheck, statusLabel;
+HWND directHint;bool choosingDirectPeer=false;
 HFONT bodyFont, titleFont, codeFont, sectionFont;
 constexpr COLORREF BG=RGB(11,16,32), SURFACE=RGB(19,28,46), FIELD=RGB(12,21,37), TEXT=RGB(237,243,255), MUTED=RGB(158,172,194), ACCENT=RGB(88,230,163), BORDER=RGB(42,55,80);
 HWND queueLabel,peerTitle,peerHelp,peerList,rescanButton,codeOnlyButton;
@@ -68,6 +74,7 @@ std::string utf8(const std::wstring& value) {
   int n=WideCharToMultiByte(CP_UTF8,0,value.data(),(int)value.size(),nullptr,0,nullptr,nullptr);
   std::string result(n,'\0'); WideCharToMultiByte(CP_UTF8,0,value.data(),(int)value.size(),result.data(),n,nullptr,nullptr); return result;
 }
+#include "DirectBluetooth.h"
 std::wstring text(HWND control) {
   int length=GetWindowTextLengthW(control); std::wstring result(length+1,L'\0');
   GetWindowTextW(control,result.data(),length+1); result.resize(length); return result;
@@ -165,15 +172,23 @@ void refreshEnabled() {
   EnableWindow(autoCheck,ready&&!updatingSettings);
   EnableWindow(updateButton,ready&&!applyingUpdate&&!checkingUpdate&&!updateState.value("accepted",false));EnableWindow(renameButton,ready&&!applyingUpdate&&!renamingDevice);EnableWindow(updateAutoCheck,ready&&!applyingUpdate);EnableWindow(lanButton,ready&&!applyingUpdate);
 }
-std::string normalizedCode(const std::wstring& input){std::string result;for(char c:utf8(input)){if(c==' '||c=='-'||c=='\t'||c=='\r'||c=='\n')continue;if(c>='a'&&c<='z')c-=32;result+=c;}return result;}
+std::string normalizedCode(const std::wstring& input){std::string result;for(wchar_t c:input){if(c==L'-'||(c>=9&&c<=13)||c==32||c==0x85||c==0xa0||c==0x1680||(c>=0x2000&&c<=0x200a)||c==0x2028||c==0x2029||c==0x202f||c==0x205f||c==0x3000||c==0xfeff)continue;if(c>=L'a'&&c<=L'z')c-=32;result+=c<=127?static_cast<char>(c):'?';}return result;}
 bool validCode(const std::string& code) {
   if(code.size()!=8) return false;
   for(char c:code) if(!(c>='A'&&c<='Z')&&!(c>='2'&&c<='9')) return false; return true;
+}
+void securityAction(const std::string& action,json body);
+bool ensureTrustedPeer(){
+  if(securityState.value("legacy",false))return true;
+  if(selectedPeerId.empty()){SetWindowTextW(statusLabel,L"Chọn thiết bị gửi trong danh sách rồi ghép nối ở mục Bảo mật.");return false;}
+  for(const auto& item:securityState.value("trusted",json::array()))if(item.value("id",std::string())==selectedPeerId)return true;
+  securityAction("start",{{"peerId",selectedPeerId}});SetWindowTextW(statusLabel,L"So sánh mã trên hai thiết bị và xác nhận ghép nối, rồi gửi/nhận lại.");return false;
 }
 void receiveFiles() {
   std::string code=normalizedCode(text(receiveCode));
   if(!ready||receiving) return;
   if(!validCode(code)) {SetWindowTextW(statusLabel,L"Nhập đủ mã nhận 8 ký tự.");return;}
+  if(!selectedPeerId.empty()&&!ensureTrustedPeer())return;
   receiving=true;lastAutoCode=code;refreshEnabled();SetWindowTextW(statusLabel,L"Đang nhận và lưu file…");
   const auto token=desktopToken;
   auto preferred=selectedPeerId;
@@ -182,6 +197,7 @@ void receiveFiles() {
 void sendFiles(bool direct=true) {
   if(!ready||sending||selectedFiles.empty()) return;
   if(direct&&selectedPeerId.empty())return;
+  if(direct&&!ensureTrustedPeer())return;
   if(direct){uint64_t bytes=0;for(const auto& file:selectedFiles){std::error_code error;auto n=fs::file_size(file,error);if(!error)bytes+=n;}std::string name="thiết bị";for(const auto& peer:peers)if(peer.at("id")==selectedPeerId)name=peer.value("name",name);preparingSession={{"state","preparing"},{"direction","send"},{"name",name},{"count",selectedFiles.size()},{"size",bytes},{"bytes",0},{"filesDone",0}};showSessions(true);}
   auto destination=direct?selectedPeerId:std::string();auto files=selectedFiles;auto folderFiles=selectedFolders;sending=true;refreshEnabled();SetWindowTextW(statusLabel,L"Đang chuẩn bị file…");SendMessageW(progressBar,PBM_SETPOS,0,0);
   backgroundTask("send",[files,folderFiles,destination] {
@@ -258,7 +274,44 @@ void checkUpdate(){
   checkingUpdate=true;refreshEnabled();auto token=desktopToken;
   backgroundTask("update",[token]{auto result=requestJson(L"POST","/api/desktop/update/check",nullptr,token);post({{"kind","updateChecked"},{"result",result}});});
 }
+std::wstring observedWifi(){
+  HMODULE library=LoadLibraryExW(L"wlanapi.dll",nullptr,LOAD_LIBRARY_SEARCH_SYSTEM32);if(!library)return L"Không đọc được Wi-Fi API; băng tần chưa xác minh.";
+  auto open=(decltype(&WlanOpenHandle))GetProcAddress(library,"WlanOpenHandle");auto enumerate=(decltype(&WlanEnumInterfaces))GetProcAddress(library,"WlanEnumInterfaces");auto query=(decltype(&WlanQueryInterface))GetProcAddress(library,"WlanQueryInterface");auto bss=(decltype(&WlanGetNetworkBssList))GetProcAddress(library,"WlanGetNetworkBssList");auto freeMemory=(decltype(&WlanFreeMemory))GetProcAddress(library,"WlanFreeMemory");auto close=(decltype(&WlanCloseHandle))GetProcAddress(library,"WlanCloseHandle");
+  std::wstring result=L"Chưa có Wi-Fi kết nối hoặc OS chưa cho phép đọc băng tần.";HANDLE handle=nullptr;DWORD version=0;
+  if(open&&enumerate&&query&&bss&&freeMemory&&close&&open(2,nullptr,&version,&handle)==ERROR_SUCCESS){PWLAN_INTERFACE_INFO_LIST interfaces=nullptr;if(enumerate(handle,nullptr,&interfaces)==ERROR_SUCCESS){for(DWORD i=0;i<interfaces->dwNumberOfItems;i++){auto& iface=interfaces->InterfaceInfo[i];if(iface.isState!=wlan_interface_state_connected)continue;DWORD size=0;PVOID raw=nullptr;WLAN_OPCODE_VALUE_TYPE opcode;if(query(handle,&iface.InterfaceGuid,wlan_intf_opcode_current_connection,nullptr,&size,&raw,&opcode)==ERROR_SUCCESS&&raw){auto current=(PWLAN_CONNECTION_ATTRIBUTES)raw;PWLAN_BSS_LIST list=nullptr;if(bss(handle,&iface.InterfaceGuid,&current->wlanAssociationAttributes.dot11Ssid,dot11_BSS_type_any,FALSE,nullptr,&list)==ERROR_SUCCESS&&list){for(DWORD j=0;j<list->dwNumberOfItems;j++){auto& entry=list->wlanBssEntries[j];if(memcmp(entry.dot11Bssid,current->wlanAssociationAttributes.dot11Bssid,6)==0){DWORD mhz=entry.ulChCenterFrequency/1000;result=L"Wi-Fi đang kết nối: "+std::to_wstring(mhz)+L" MHz · "+(mhz>=5000&&mhz<5925?L"5 GHz":mhz>=2400&&mhz<2500?L"2.4 GHz":L"băng tần khác / chưa xác minh");break;}}freeMemory(list);}freeMemory(raw);}}freeMemory(interfaces);}close(handle,nullptr);}FreeLibrary(library);return result;
+}
+void turboMenu(){
+  static std::atomic<bool> linking{false};
+  if(linking.load()){MessageBoxW(window,L"Đang kết nối. Kiểm tra yêu cầu xác nhận trên điện thoại.",L"FlowDrop",MB_OK|MB_ICONINFORMATION);return;}std::optional<BTH_ADDR> peer;try{peer=fdlink::choose(window);}catch(const std::exception& e){MessageBoxW(window,wide(e.what()).c_str(),L"FlowDrop · Bluetooth",MB_OK|MB_ICONINFORMATION);return;}if(!peer)return;linking=true;unsigned lease=++fdlink::sessionGeneration;fdlink::monitoring=true;
+  choosingDirectPeer=false;SetWindowTextW(directHint,L"1/3 · Đang nhận thông tin mạng. Bấm Cho phép trên điện thoại.");SetWindowTextW(statusLabel,L"Đang kết nối. Kiểm tra yêu cầu xác nhận trên điện thoại.");
+  std::thread([address=*peer,lease]{try{auto network=fdlink::receive(address);fdlink::join(network,lease);if(fdlink::sessionGeneration.load()==lease){post({{"kind","directLinkReady"}});linking=false;fdlink::monitor(network,lease,[lease](int state){if(fdlink::sessionGeneration.load()==lease)post({{"kind","directLinkState"},{"state",state}});});}}catch(const std::exception& e){if(fdlink::sessionGeneration.load()==lease){fdlink::monitoring=false;post({{"kind","error"},{"operation","direct-link"},{"message",e.what()}});}}linking=false;}).detach();
+}
+void securityAction(const std::string& action,json body=json::object()){
+  auto token=desktopToken;backgroundTask("security",[token,action,body]{requestJson(L"POST","/api/desktop/security/"+action,&body,token);});
+}
+void handlePairings(){
+  if(pairingPrompt||promptingOffer||promptingUpdate||renamingDevice||closing)return;
+  for(const auto& pair:securityState.value("pairings",json::array())){
+    auto id=pair.value("id",std::string()),code=pair.value("code",std::string());if(code.empty()||pair.value("confirmed",false)||pair.value("complete",false)||handledPairs.count(id))continue;
+    handledPairs.insert(id);pairingPrompt=true;auto message=wide("Mã xác nhận: "+code+"\n\nSo sánh mã trên CẢ HAI thiết bị. Chỉ chọn Có nếu mã giống nhau và bạn đang ghép nối với "+pair.value("name",std::string("thiết bị này"))+".");
+    bool accept=MessageBoxW(window,message.c_str(),L"FlowDrop · Ghép nối thiết bị",MB_YESNO|MB_ICONQUESTION|MB_DEFBUTTON2)==IDYES;pairingPrompt=false;securityAction("confirm",{{"id",id},{"accept",accept}});break;
+  }
+}
+void securityMenu(){
+  if(!ready)return;HMENU menu=CreatePopupMenu();AppendMenuW(menu,MF_STRING,1,L"Ghép nối thiết bị đang chọn");AppendMenuW(menu,MF_STRING,2,L"Xem danh tính máy này");AppendMenuW(menu,MF_STRING|(securityState.value("legacy",false)?MF_CHECKED:0),3,L"HTTP tương thích 1.13 (không mã hóa)");auto trusted=securityState.value("trusted",json::array());for(size_t i=0;i<trusted.size();i++){auto label=wide("Xóa tin cậy · "+trusted[i].value("name",std::string()));AppendMenuW(menu,MF_STRING,100+(UINT)i,label.c_str());}POINT point;GetCursorPos(&point);UINT choice=TrackPopupMenu(menu,TPM_RETURNCMD|TPM_NONOTIFY,point.x,point.y,0,window,nullptr);DestroyMenu(menu);
+  if(choice==1){if(selectedPeerId.empty()){MessageBoxW(window,L"Chọn thiết bị trong danh sách trước.",L"FlowDrop",MB_OK);return;}securityAction("start",{{"peerId",selectedPeerId}});}
+  else if(choice==2)MessageBoxW(window,wide(securityState.value("fingerprint",std::string())).c_str(),L"FlowDrop · SHA-256 danh tính TLS",MB_OK);
+  else if(choice==3){bool enabled=!securityState.value("legacy",false);if(!enabled||MessageBoxW(window,L"File và mã truyền qua HTTP có thể bị nghe lén. Chỉ bật tạm để dùng bản 1.13 trên mạng tin cậy. Không tự hạ cấp khi TLS lỗi. Chế độ này tắt khi khởi động lại.",L"FlowDrop · HTTP không mã hóa",MB_YESNO|MB_ICONWARNING|MB_DEFBUTTON2)==IDYES)securityAction("legacy",{{"enabled",enabled}});}
+  else if(choice>=100&&choice-100<trusted.size()){auto item=trusted[choice-100];if(MessageBoxW(window,wide("Xóa thiết bị tin cậy "+item.value("name",std::string())+"?").c_str(),L"FlowDrop",MB_YESNO|MB_DEFBUTTON2)==IDYES)securityAction("forget",{{"id",item.at("id")}});}
+}
 void updateSubtitle(){SetWindowTextW(subtitle,wide("Máy này: "+currentDeviceName+" · Chọn thiết bị trong Wi-Fi để gửi trực tiếp.").c_str());}
+void directPeerHint(){
+  if(!choosingDirectPeer||!fdlink::monitoring.load()||fdlink::monitorPhase.load()!=0)return;
+  int index=fdlink::directPeerIndex(peers,fdlink::directGateway());
+  if(index==-2){SetWindowTextW(directHint,L"3/3 · Có nhiều FlowDrop trên điện thoại. Chọn đúng tên trong Thiết bị gần bạn.");return;}if(index<0){SetWindowTextW(directHint,L"2/3 · Wi-Fi đã nối. Đang tìm FlowDrop trên điện thoại; chưa sẵn sàng gửi.");return;}
+  const auto& peer=peers.at(index);if(selectedPeerId.empty()){selectedPeerId=peer.at("id").get<std::string>();SendMessageW(peerList,LB_SETCURSEL,index,0);}
+  auto label=L"3/3 · Đã thấy "+wide(peer.value("name",std::string("điện thoại")))+(peer.at("id")==selectedPeerId?L" · Đã chọn. Bấm Gửi; xác nhận bảo mật nếu được hỏi.":L" · Chọn tên điện thoại bên trái để gửi.");SetWindowTextW(directHint,label.c_str());
+}
 INT_PTR CALLBACK nameDialog(HWND dialog,UINT message,WPARAM wp,LPARAM lp){
   if(message==WM_INITDIALOG){SetWindowLongPtrW(dialog,DWLP_USER,lp);auto* value=reinterpret_cast<std::wstring*>(lp);SetDlgItemTextW(dialog,6002,value->c_str());SendDlgItemMessageW(dialog,6002,EM_SETLIMITTEXT,100,0);SendDlgItemMessageW(dialog,6002,EM_SETSEL,0,-1);SetFocus(GetDlgItem(dialog,6002));return FALSE;}
   if(message==WM_COMMAND){if(LOWORD(wp)==IDCANCEL){EndDialog(dialog,IDCANCEL);return TRUE;}if(LOWORD(wp)==IDOK){auto value=text(GetDlgItem(dialog,6002));size_t first=value.find_first_not_of(L" "),last=value.find_last_not_of(L" ");value=first==std::wstring::npos?L"":value.substr(first,last-first+1);unsigned count=0;bool invalid=false;for(wchar_t c:value){if(c<32||c==127||c==0x2028||c==0x2029)invalid=true;if(c<0xdc00||c>0xdfff)count++;}if(invalid||!count||count>50){MessageBoxW(dialog,L"Tên thiết bị cần từ 1 đến 50 ký tự, không chứa ký tự điều khiển.",L"Đổi tên thiết bị",MB_OK|MB_ICONINFORMATION);return TRUE;}*reinterpret_cast<std::wstring*>(GetWindowLongPtrW(dialog,DWLP_USER))=value;EndDialog(dialog,IDOK);return TRUE;}}
@@ -379,7 +432,8 @@ void layout() {
   int top=122,bottom=h-202,inside=20,inner=col-40,footer=bottom+18;
   peerPanel={p,top,p+238,bottom};sendPanel={left,top,left+col,bottom};receivePanel={right,top,right+col,bottom};savePanel={p,footer,w-p,h-67};
   auto place=[](HWND c,int x,int y,int width,int height){MoveWindow(c,x,y,width,height,TRUE);};
-  place(heading,p,20,w-2*p-465,44);place(updateButton,w-p-438,23,132,40);place(transferButton,w-p-294,23,132,40);place(sessionsButton,w-p-150,23,150,40);place(subtitle,p,72,w-2*p-112,30);place(renameButton,w-p-104,70,104,32);
+  place(heading,p,20,w-2*p-465,44);place(updateButton,w-p-438,23,132,40);place(transferButton,w-p-294,23,132,40);place(sessionsButton,w-p-150,23,150,40);place(subtitle,p,72,w-2*p-412,30);place(turboButton,w-p-402,70,168,32);place(securityButton,w-p-226,70,114,32);place(renameButton,w-p-104,70,104,32);
+  place(directHint,p,102,w-2*p,19);
   place(peerTitle,p+16,top+19,210,29);place(peerHelp,p+16,top+60,206,65);place(peerList,p+12,top+139,214,std::max(60,bottom-top-258));place(rescanButton,p+16,bottom-104,206,39);place(lanButton,p+16,bottom-57,206,39);
   place(sendTitle,left+inside,top+19,inner,29);place(receiveTitle,right+inside,top+19,inner,29);
   place(pickButton,left+inside,top+66,(inner-20)/3,39);place(folderPickButton,left+inside+(inner-20)/3+10,top+66,(inner-20)/3,39);place(clearButton,left+inside+2*((inner-20)/3+10),top+66,inner-2*((inner-20)/3+10),39);
@@ -405,7 +459,9 @@ LRESULT CALLBACK windowProc(HWND hwnd,UINT message,WPARAM wp,LPARAM lp) {
       codeFont=CreateFontW(-28,0,0,0,FW_SEMIBOLD,FALSE,FALSE,FALSE,DEFAULT_CHARSET,0,0,CLEARTYPE_QUALITY,0,L"Consolas");
       background=CreateSolidBrush(BG);whiteBrush=CreateSolidBrush(FIELD);surfaceBrush=CreateSolidBrush(SURFACE);sectionFont=CreateFontW(-20,0,0,0,FW_BOLD,FALSE,FALSE,FALSE,DEFAULT_CHARSET,0,0,CLEARTYPE_QUALITY,0,L"Be Vietnam Pro");
       heading=control(L"STATIC",L"FlowDrop.",0);SendMessageW(heading,WM_SETFONT,(WPARAM)titleFont,TRUE);
-      subtitle=control(L"STATIC",L"Đang khởi động…",0);renameButton=control(L"BUTTON",L"Đổi tên",BS_OWNERDRAW|WS_TABSTOP,RENAME_DEVICE);
+      subtitle=control(L"STATIC",L"Đang khởi động…",0);directHint=control(L"STATIC",L"",SS_ENDELLIPSIS|SS_NOPREFIX,2036);renameButton=control(L"BUTTON",L"Đổi tên",BS_OWNERDRAW|WS_TABSTOP,RENAME_DEVICE);
+      turboButton=control(L"BUTTON",L"Kết nối trực tiếp",BS_OWNERDRAW|WS_TABSTOP,TURBO);
+      securityButton=control(L"BUTTON",L"Bảo mật",BS_OWNERDRAW|WS_TABSTOP,SECURITY);
       updateButton=control(L"BUTTON",L"Cập nhật",WS_TABSTOP,UPDATE_CHECK);
       transferButton=control(L"BUTTON",L"Gửi / Nhận",WS_TABSTOP,TRANSFER_VIEW);sessionsButton=control(L"BUTTON",L"Phiên truyền (0)",WS_TABSTOP,SESSION_VIEW);
       sessionsTitle=control(L"STATIC",L"Phiên truyền · Gửi và nhận",0);SendMessageW(sessionsTitle,WM_SETFONT,(WPARAM)sectionFont,TRUE);
@@ -424,7 +480,7 @@ LRESULT CALLBACK windowProc(HWND hwnd,UINT message,WPARAM wp,LPARAM lp) {
       sendCode=control(L"EDIT",L"--------",ES_READONLY|ES_CENTER,1001);SendMessageW(sendCode,WM_SETFONT,(WPARAM)codeFont,TRUE);
       copyButton=control(L"BUTTON",L"Sao chép mã",WS_TABSTOP,COPY_CODE);revokeButton=control(L"BUTTON",L"Thu hồi mã",WS_TABSTOP,REVOKE);
       receiveTitle=control(L"STATIC",L"02   Nhận file",0);SendMessageW(receiveTitle,WM_SETFONT,(WPARAM)sectionFont,TRUE);receiveHelp=control(L"STATIC",L"Yêu cầu gửi sẽ hiện để bạn chấp nhận.\nHoặc nhập mã 8 ký tự để nhận dự phòng.",0);
-      receiveCode=control(L"EDIT",L"",ES_UPPERCASE|ES_CENTER|WS_TABSTOP|WS_BORDER,RECEIVE+100);SendMessageW(receiveCode,EM_SETLIMITTEXT,16,0);SendMessageW(receiveCode,WM_SETFONT,(WPARAM)codeFont,TRUE);
+      receiveCode=control(L"EDIT",L"",ES_UPPERCASE|ES_CENTER|WS_TABSTOP|WS_BORDER,RECEIVE+100);SendMessageW(receiveCode,EM_SETLIMITTEXT,64,0);SendMessageW(receiveCode,WM_SETFONT,(WPARAM)codeFont,TRUE);
       receiveButton=control(L"BUTTON",L"Nhận và lưu file",WS_TABSTOP,RECEIVE);receiveList=control(L"LISTBOX",L"",WS_VSCROLL|LBS_NOINTEGRALHEIGHT|LBS_OWNERDRAWFIXED|LBS_HASSTRINGS,1003);
       folderLabel=control(L"STATIC",L"Lưu file theo cách của bạn",0);folderText=control(L"EDIT",L"",ES_READONLY|ES_AUTOHSCROLL,0);
       folderButton=control(L"BUTTON",L"Thay đổi…",WS_TABSTOP,CHOOSE_FOLDER);openButton=control(L"BUTTON",L"Mở thư mục",WS_TABSTOP,OPEN_FOLDER);
@@ -450,7 +506,7 @@ LRESULT CALLBACK windowProc(HWND hwnd,UINT message,WPARAM wp,LPARAM lp) {
       DragFinish(drop);return 0;
     }
     case WM_CTLCOLORSTATIC: case WM_CTLCOLORBTN: {
-      HDC dc=(HDC)wp;HWND item=(HWND)lp;bool outer=item==heading||item==subtitle||item==statusLabel;
+      HDC dc=(HDC)wp;HWND item=(HWND)lp;bool outer=item==heading||item==subtitle||item==statusLabel||item==directHint;
       SetBkMode(dc,TRANSPARENT);SetTextColor(dc,item==heading||item==sendCode?ACCENT:(item==subtitle||item==statusLabel||item==queueLabel||item==receiveHelp||item==peerHelp||item==sessionsHelp?MUTED:TEXT));
       if(item==sendCode||item==folderText){SetBkColor(dc,FIELD);return (LRESULT)whiteBrush;}return (LRESULT)(outer?background:surfaceBrush);
     }
@@ -469,7 +525,7 @@ LRESULT CALLBACK windowProc(HWND hwnd,UINT message,WPARAM wp,LPARAM lp) {
         RECT track={card.left+16,card.top+65,card.right-16,card.top+71};roundRect(dc,track,BORDER,BORDER,5);if(percent>0){auto bar=track;bar.right=bar.left+(track.right-track.left)*std::min(100,percent)/100;roundRect(dc,bar,color,color,5);}
         std::wstring detail=std::to_wstring(percent)+L"% · "+amount(bytes)+L" / "+amount(size)+L" · "+std::to_wstring(done)+L" / "+std::to_wstring(count)+L" file";
         auto started=record.value("startedAt",uint64_t(0));FILETIME ft;GetSystemTimeAsFileTime(&ft);uint64_t now=(((uint64_t)ft.dwHighDateTime<<32)|ft.dwLowDateTime)/10000-11644473600000ULL;
-        if(state=="transferring"&&started&&now>started)detail+=L" · "+amount(bytes*1000/(now-started))+L"/s";
+        if(state=="transferring"&&started&&now>started&&bytes>0)detail+=L" · "+amount(bytes*1000/(now-started))+L"/s · ~"+std::to_wstring((uint64_t)std::min(864000000.0,(double)(size-bytes)*(now-started)/std::max(uint64_t(1),bytes)/1000.0))+L" giây";
         line={card.left+16,card.top+78,card.right-16,card.top+99};SetTextColor(dc,MUTED);DrawTextW(dc,detail.c_str(),-1,&line,DT_SINGLELINE|DT_END_ELLIPSIS|DT_NOPREFIX);
         std::wstring extra=wide(record.value("error",std::string()));if(extra.empty())extra=wide(record.value("currentName",std::string()));
         auto finished=record.value("finishedAt",uint64_t(0));if(extra.empty()&&finished){ULARGE_INTEGER time;time.QuadPart=(finished+11644473600000ULL)*10000;FILETIME utc{time.LowPart,time.HighPart},local;SYSTEMTIME t;FileTimeToLocalFileTime(&utc,&local);FileTimeToSystemTime(&local,&t);wchar_t stamp[64];swprintf(stamp,64,L"Kết thúc %02d:%02d:%02d",t.wHour,t.wMinute,t.wSecond);extra=stamp;}
@@ -509,6 +565,8 @@ LRESULT CALLBACK windowProc(HWND hwnd,UINT message,WPARAM wp,LPARAM lp) {
         case RESCAN:scanPeers(true);break;
         case ALLOW_LAN:allowLan(true);break;
         case RENAME_DEVICE:renameDevice();break;
+        case SECURITY:securityMenu();break;
+        case TURBO:turboMenu();break;
         case UPDATE_CHECK:checkUpdate();break;
         case UPDATE_AUTO:{auto token=desktopToken;bool enabled=SendMessageW(updateAutoCheck,BM_GETCHECK,0,0)==BST_CHECKED;backgroundTask("update",[token,enabled]{json body={{"automatic",enabled}};auto result=requestJson(L"POST","/api/desktop/update/settings",&body,token);post({{"kind","updateChecked"},{"result",result}});});break;}
         case COPY_CODE:copyCode();break;
@@ -522,13 +580,16 @@ LRESULT CALLBACK windowProc(HWND hwnd,UINT message,WPARAM wp,LPARAM lp) {
     case WM_TIMER: if(wp==5){scanPeers();return 0;}if(wp==3) {KillTimer(hwnd,3);auto code=normalizedCode(text(receiveCode));if(ready&&automatic&&!receiving&&validCode(code)&&code!=lastAutoCode)receiveFiles();return 0;}break;
     case UI_EVENT: {
       std::unique_ptr<json> data((json*)lp);const auto& event=*data;auto kind=event.value("kind",std::string());
-      if(kind=="peers") {
+      if(kind=="directLinkReady") {connectionMode=L"Turbo · Wi-Fi đã kết nối";choosingDirectPeer=true;selectedPeerId.clear();SendMessageW(peerList,LB_SETCURSEL,-1,0);SetWindowTextW(directHint,L"2/3 · Wi-Fi đã nối. Đang tìm FlowDrop trên điện thoại; chưa sẵn sàng gửi.");scanPeers(true);SetWindowTextW(statusLabel,L"Đã vào mạng trực tiếp. Chọn thiết bị để gửi; xác nhận ghép nối bảo mật nếu được hỏi.");}
+      else if(kind=="directLinkState"){int state=event.value("state",2);const wchar_t* text=state==0?L"Đã nối lại Wi-Fi. Nếu lượt gửi cũ đã báo lỗi, hãy gửi lại file đó.":state==1?L"Wi-Fi trực tiếp bị ngắt · đang thử nối lại…":state==3?L"Windows đã chuyển sang mạng khác. Bấm Kết nối trực tiếp để chọn lại.":L"Chưa nối lại được mạng. Bấm Kết nối trực tiếp; có thể sao chép chẩn đoán.";SetWindowTextW(statusLabel,text);SetWindowTextW(directHint,text);if(state==0)scanPeers(true);}
+      else if(kind=="peers") {
         const auto& state=event.at("state");const auto& next=state.at("peers");
+        securityState=state.value("security",json::object());handlePairings();
         sessions=state.value("sessions",json::array());renderSessions();
         if(state.contains("deviceName")){currentDeviceName=state.at("deviceName").get<std::string>();updateSubtitle();}
         updateState=state.value("update",json::object());handleUpdateStatus();
         if(next!=peers){peers=next;SendMessageW(peerList,LB_RESETCONTENT,0,0);int selected=-1;for(size_t i=0;i<peers.size();i++){const auto& peer=peers.at(i);auto label=wide((peer.value("platform",std::string())=="android"?"Android · ":"PC · ")+peer.value("name",std::string("Thiết bị")));SendMessageW(peerList,LB_ADDSTRING,0,(LPARAM)label.c_str());if(peer.at("id")==selectedPeerId)selected=(int)i;}if(selected>=0)SendMessageW(peerList,LB_SETCURSEL,selected,0);else selectedPeerId.clear();}
-        SetWindowTextW(peerHelp,peers.empty()?L"Chưa thấy thiết bị. Mở FlowDrop ở máy kia. Kiểm tra cùng Wi-Fi và Firewall.":wide("Tìm thấy "+std::to_string(peers.size())+" thiết bị.\nChọn tên rồi chọn file để gửi.").c_str());
+        directPeerHint();SetWindowTextW(peerHelp,peers.empty()?L"Chưa thấy thiết bị. Mở FlowDrop ở máy kia. Kiểm tra cùng Wi-Fi và Firewall.":wide("Tìm thấy "+std::to_string(peers.size())+" thiết bị.\nChọn tên rồi chọn file để gửi.").c_str());
         if(!applyingUpdate&&!receiving&&!promptingOffer&&!promptingUpdate&&!renamingDevice&&!state.at("offers").empty()){
           auto offer=state.at("offers").at(0);promptingOffer=true;
           auto question=wide(offer.at("name").get<std::string>()+" muốn gửi "+std::to_string(offer.at("count").get<size_t>())+" file.\nNhận và lưu vào thư mục đã chọn?");
@@ -560,7 +621,7 @@ LRESULT CALLBACK windowProc(HWND hwnd,UINT message,WPARAM wp,LPARAM lp) {
         else{applyingUpdate=false;ready=true;auto token=desktopToken;backgroundTask("update",[token]{requestJson(L"POST","/api/desktop/update/failed",nullptr,token);});SetWindowTextW(statusLabel,L"Chưa chạy được bộ cài. Bấm Cập nhật để thử lại.");}
       }
       else if(kind=="serverStopped") {ready=false;SetWindowTextW(statusLabel,L"Máy chủ đã dừng. Đóng và mở lại FlowDrop để kết nối lại.");}
-      else if(kind=="error") {auto operation=event.value("operation",std::string());if(operation=="send"||operation=="revoke"||operation=="folder"){sending=false;if(!preparingSession.is_null()){preparingSession["state"]="failed";preparingSession["error"]=event.value("message",std::string());renderSessions();}}if(operation=="receive"){receiving=false;promptingOffer=false;}if(operation=="rename")renamingDevice=false;if(operation=="update"){applyingUpdate=false;checkingUpdate=false;ready=true;MessageBoxW(hwnd,wide(event.value("message",std::string())).c_str(),L"FlowDrop · Cập nhật",MB_OK|MB_ICONWARNING);}if(operation=="settings"){updatingSettings=false;SendMessageW(autoCheck,BM_SETCHECK,automatic?BST_CHECKED:BST_UNCHECKED,0);}SetWindowTextW(statusLabel,wide(event.value("message",std::string("Chưa hoàn tất được thao tác."))).c_str());}
+      else if(kind=="error") {auto operation=event.value("operation",std::string());if(operation=="send"||operation=="revoke"||operation=="folder"){sending=false;if(!preparingSession.is_null()){preparingSession["state"]="failed";preparingSession["error"]=event.value("message",std::string());renderSessions();}}if(operation=="receive"){receiving=false;promptingOffer=false;}if(operation=="direct-link"){choosingDirectPeer=false;SetWindowTextW(directHint,L"Chưa kết nối trực tiếp. Bấm Kết nối trực tiếp để thử lại.");}if(operation=="rename")renamingDevice=false;if(operation=="update"){applyingUpdate=false;checkingUpdate=false;ready=true;MessageBoxW(hwnd,wide(event.value("message",std::string())).c_str(),L"FlowDrop · Cập nhật",MB_OK|MB_ICONWARNING);}if(operation=="settings"){updatingSettings=false;SendMessageW(autoCheck,BM_SETCHECK,automatic?BST_CHECKED:BST_UNCHECKED,0);}SetWindowTextW(statusLabel,wide(event.value("message",std::string("Chưa hoàn tất được thao tác."))).c_str());}
       drainShellPaths();refreshEnabled();return 0;
     }
     case WM_CLOSE:

@@ -1,0 +1,10 @@
+.................................................................................RUN: bad
+FAIL: bad exit=7 duration=0.019s
+RUN: good
+PASS: good exit=0 duration=0.025s
+.NOT VERIFIED: features (resource/OS preflight)
+.....
+----------------------------------------------------------------------
+Ran 87 tests in 2.451s
+
+OK

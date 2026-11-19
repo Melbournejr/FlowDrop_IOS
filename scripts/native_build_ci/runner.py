@@ -13,6 +13,7 @@ import sys
 import time
 
 from scripts.native_build_support import redact
+from scripts.feature_baseline import expected_sha, verify_feature
 from .paths import Blocked, REPO, digest, fresh_child, owned_root, remove_child, write_json
 from .toolchain import provision, read_lock, tool_env
 from .verify import PRODUCTION_CERT, reject_secret_bytes, verify_apk, verify_windows_payload, verify_installer
@@ -68,8 +69,9 @@ class Journal:
 def source_snapshot(root):
     source = fresh_child(root, root / 'source')
     baseline = json.loads((REPO / 'docs/build/NATIVE-SOURCE-BASELINE-2C2.json').read_text())
+    feature = verify_feature()
     for record in baseline['files']:
-        if digest(REPO / record['path']) != record['sha256']:
+        if digest(REPO / record['path']) != expected_sha(record['path'], record['sha256']):
             raise Blocked('Protected production/baseline file changed: ' + record['path'])
     names = subprocess.check_output(['git', 'ls-files', '--cached', '--others', '--exclude-standard'], cwd=REPO, text=True).splitlines()
     for name in names:
@@ -82,7 +84,7 @@ def source_snapshot(root):
         target.parent.mkdir(parents=True, exist_ok=True)
         shutil.copyfile(file, target)
     return source, {'base_commit': baseline['base'], 'protected_files_checked': len(baseline['files']),
-                    'production_source_equivalence': 'PASS', 'snapshot_files': len(names),
+                    **feature, 'snapshot_files': len(names),
                     'checkout_commit': subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=REPO, text=True).strip(),
                     'uncommitted_paths': subprocess.check_output(['git', 'status', '--porcelain'], cwd=REPO, text=True).splitlines()}
 
@@ -169,12 +171,12 @@ def build(root, cache, role):
             journal.run('build-instrumentation-from-source', [sys.executable, source / 'scripts/build-native-test-apk.py'], env=signing_env, cwd=source, timeout=600)
             report['app_java8_classes'] = classes_are_java8(source / 'android/build/classes')
             report['instrumentation_java8_classes'] = classes_are_java8(root / 'tools/native-instrumentation/classes')
-            app = source / 'artifacts/FlowDrop-1.13.0-Android.apk'
+            app = source / 'artifacts/FlowDrop-1.14.0-Android.apk'
             instrumentation = root / 'tools/native-instrumentation/FlowDrop-native-tests.apk'
             values = [signing_env['FLOWDROP_ANDROID_STORE_PASSWORD'], signing_env['FLOWDROP_ANDROID_KEY_PASSWORD']]
             report['android'] = verify_apk(app, source, root, journal, fingerprint, secrets=values)
             report['instrumentation'] = verify_apk(instrumentation, source, root, journal, fingerprint, instrumentation=True, secrets=values)
-            records = [(app, 'FlowDrop-1.13.0-Android-TEST-ONLY.apk'), (instrumentation, 'FlowDrop-1.13.0-Android-Instrumentation-TEST-ONLY.apk')]
+            records = [(app, 'FlowDrop-1.14.0-Android-TEST-ONLY.apk'), (instrumentation, 'FlowDrop-1.14.0-Android-Instrumentation-TEST-ONLY.apk')]
             remove_child(root, root / 'test-secrets')
             del signing_env
         else:
@@ -187,10 +189,10 @@ def build(root, cache, role):
                         '--userconfig', npmrc, '--globalconfig', global_npmrc], cwd=source, timeout=600)
             journal.run('build-windows-from-source', [sys.executable, source / 'scripts/build-installers.py', '--only', 'windows'], cwd=source, timeout=1800)
             payload = root / 'tools/windows-payload'
-            installer = source / 'artifacts/FlowDrop-Setup-1.13.0-Windows-x64.exe'
+            installer = source / 'artifacts/FlowDrop-Setup-1.14.0-Windows-x64.exe'
             report['windows_payload'] = verify_windows_payload(payload, source)
             report['windows_installer'] = verify_installer(installer, payload, root, journal)
-            records = [(installer, 'FlowDrop-Setup-1.13.0-Windows-x64-TEST-ONLY.exe')]
+            records = [(installer, 'FlowDrop-Setup-1.14.0-Windows-x64-TEST-ONLY.exe')]
         report.update(status='PASS', build_and_structural_verification='PASS', exit_code=0)
         report['builder_steps'] = [json.loads(line) for line in (root / 'logs/builder-steps.jsonl').read_text().splitlines()]
         if not report['builder_steps'] or any(step['exit_code'] != 0 for step in report['builder_steps']):

@@ -1,0 +1,14 @@
+[
+  {
+    "command": "android-source",
+    "exit_code": 0
+  },
+  {
+    "command": "android-instrumentation",
+    "exit_code": 0
+  },
+  {
+    "command": "windows-syntax",
+    "exit_code": 0
+  }
+]

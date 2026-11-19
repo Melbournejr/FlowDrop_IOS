@@ -1,0 +1,6 @@
+[
+  "Two production Java LAN engines and Node Windows engine each find both other devices over real UDP/TCP without mDNS; same-name phones remain distinct; self is excluded",
+  "Android friendly name updates in Node/Java lists without changing device ID or interrupting an active upload; exact SHA-256 preserved",
+  "Non-FlowDrop HTTP server and mismatched device IDs never enter device lists",
+  "Device removal and automatic rediscovery after restart; actual dynamically assigned HTTP ports confirmed"
+]

@@ -16,7 +16,7 @@ try{
  const ptr=seen.filter(r=>r.type==='PTR'&&r.name==='_flowdrop._tcp.local');assert.ok(ptr.some(r=>r.data.includes(first.name)));assert.ok(ptr.some(r=>r.data.includes(second.name)));
  const srv=seen.find(r=>r.type==='SRV'&&r.data.port===5191);assert.match(srv.data.target,/\.local$/);
  assert.ok(seen.some(r=>r.type==='A'&&r.name===srv.data.target));assert.ok(!seen.some(r=>r.type==='AAAA'&&r.name===srv.data.target));
- const txt=seen.find(r=>r.type==='TXT'&&r.name===srv.name);assert.ok(txt);const values=txt.data.map(b=>b.toString());assert.ok(values.includes('app=flowdrop'));assert.ok(values.includes('version=1.13.0'));assert.ok(!values.some(s=>/token|password/i.test(s)));
+ const txt=seen.find(r=>r.type==='TXT'&&r.name===srv.name);assert.ok(txt);const values=txt.data.map(b=>b.toString());assert.ok(values.includes('app=flowdrop'));assert.ok(values.includes('version=1.14.0'));assert.ok(!values.some(s=>/token|password/i.test(s)));
  first.rename('Tên thiết bị mới 📁');
  await waitFor(()=>second.peers().some(p=>p.id==='first'&&p.name==='Tên thiết bị mới 📁'),'Renamed device did not propagate');
  first.rename('Tên cuối cùng');first.rename('Máy đã đổi tên');
